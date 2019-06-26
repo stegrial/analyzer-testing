@@ -1,4 +1,4 @@
-# ta-parser-testing
+# analyzer-testing
 
 You must have installed TrueAutomation client and Ruby actual version.
 
