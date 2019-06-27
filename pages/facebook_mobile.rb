@@ -150,4 +150,5 @@ module FacebookMobile
     check_element_path @confirm_delete_ep, @confirm_delete_il
     find(:xpath, ta(@confirm_delete_ep)).click
   end
+  
 end

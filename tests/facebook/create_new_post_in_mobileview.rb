@@ -284,5 +284,4 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
   end
 
 end
-
   end
