@@ -7,3 +7,7 @@ how_to_get_money:
 facebook:
   page: 'https://maanimo.com/helpful/142606-kak-zarabotat-dengi-v-ukraine'
   login:  'eshapovalov298@gmail.com'
+
+sandbox:
+  page_h4: 'http://localhost:8000/html/h4.html'
+  page_h4_test_1: 'http://localhost:8000/html/h4_tests/h4_test_1.html'
