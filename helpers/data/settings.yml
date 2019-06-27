@@ -8,6 +8,19 @@ facebook:
   page: 'https://www.facebook.com'
   login: 'eshapovalov298@gmail.com'
   pass: 'Tester1234'
+=======
+  new_post: 'test_test'
+
+zachet:
+  page: 'https://zachet.com.ua/#job'
+
+sportlife:
+  page: 'https://www.sportlife.ua/ru/clubs/odessa'
+
+sandbox:
+  page_h4: 'http://localhost:8000/html/h4.html'
+  page_h4_test_1: 'http://localhost:8000/html/h4_tests/h4_test_1.html'
+
 
 staff:
   page: 'https://www.staff-clothes.com'
