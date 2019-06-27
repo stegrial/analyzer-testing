@@ -9,3 +9,9 @@ facebook:
   login: 'eshapovalov298@gmail.com'
   pass: 'Tester1234'
   new_post: 'test_test'
+
+zachet:
+  page: 'https://zachet.com.ua/#job'
+
+sportlife:
+  page: 'https://www.sportlife.ua/ru/clubs/odessa'
