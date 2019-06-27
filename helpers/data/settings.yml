@@ -15,3 +15,7 @@ zachet:
 
 sportlife:
   page: 'https://www.sportlife.ua/ru/clubs/odessa'
+
+sandbox:
+  page_h4: 'http://localhost:8000/html/h4.html'
+  page_h4_test_1: 'http://localhost:8000/html/h4_tests/h4_test_1.html'

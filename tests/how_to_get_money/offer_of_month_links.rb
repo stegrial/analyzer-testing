@@ -6,10 +6,9 @@ include HowToGetMoney
 
 feature 'Analyzer returns the wrong element (link) in the Offer of month section' do
 
-  # Recording
+  # Initial locators with Recording
 
-  scenario 'Recording by initial locators', rec_run: true do
-
+  scenario 'Recording IL', il_run: true do
     step "User goes to the page", settings('how_to_get_money')['page'] do |url|
       page.visit url
     end
@@ -22,8 +21,7 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     Capybara.current_session.driver.quit
   end
 
-  scenario 'Searching when initial locators used', rec_run: true do
-
+  scenario 'Searching IL', il_run: true do
     step "User resizes browser window to maximum" do
       Capybara.current_session.driver.browser.manage.window.maximize
     end
@@ -36,14 +34,12 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
       click_first_loan_link
       check_first_loan_link
     end
-
     sleep 3
   end
 
-  # Repository
+  # Element Picker from Repository
 
-  scenario 'Searching when Element Picker used', repo_run: true do
-
+  scenario 'Searching EP', ep_run: true do
     step "User resizes browser window to maximum" do
       Capybara.current_session.driver.browser.manage.window.maximize
     end
@@ -55,14 +51,12 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     step "User clicks on the link - First loan" do
       ep_click_first_loan_link
     end
-
     sleep 3
   end
 
   # Debug
 
   scenario 'Recording debug', rec_debug: true do
-
     step "User goes to the page", settings('how_to_get_money')['page'] do |url|
       page.visit url
     end
@@ -76,7 +70,6 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
   end
 
   scenario 'Searching debug', search_debug: true do
-
     step "User resizes browser window to maximum" do
       Capybara.current_session.driver.browser.manage.window.maximize
     end
@@ -88,7 +81,6 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     step "User clicks on the link - First loan" do
       click_first_loan_link
     end
-
     sleep 3
   end
 
