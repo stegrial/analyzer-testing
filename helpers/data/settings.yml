@@ -5,8 +5,16 @@ how_to_get_money:
   page: 'https://maanimo.com/helpful/142606-kak-zarabotat-dengi-v-ukraine'
 
 facebook:
-  page: 'https://maanimo.com/helpful/142606-kak-zarabotat-dengi-v-ukraine'
-  login:  'eshapovalov298@gmail.com'
+  page: 'https://www.facebook.com'
+  login: 'eshapovalov298@gmail.com'
+  pass: 'Tester1234'
+  new_post: 'test_test'
+
+zachet:
+  page: 'https://zachet.com.ua/#job'
+
+sportlife:
+  page: 'https://www.sportlife.ua/ru/clubs/odessa'
 
 sandbox:
   page_h4: 'http://localhost:8000/html/h4.html'
