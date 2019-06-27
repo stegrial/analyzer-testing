@@ -283,7 +283,6 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     sleep 3
   end
 
-
 end
 
   end
