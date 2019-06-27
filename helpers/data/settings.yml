@@ -8,4 +8,6 @@ facebook:
   page: 'https://www.facebook.com'
   login: 'eshapovalov298@gmail.com'
   pass: 'Tester1234'
-  new_post: 'test_test'
+
+staff:
+  page: 'https://www.staff-clothes.com'
