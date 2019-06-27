@@ -12,9 +12,9 @@ end
 
 feature 'Analyzer returns the wrong element (link) in the Offer of month section' do
 
-  # Recording
+  # Initial locators with Recording
 
-  scenario 'Recording by initial locators', rec_run: true do
+  scenario 'Recording IL', il_run: true do
 
     step "User goes to the page", settings('facebook')['page'] do |url|
       page.visit url
@@ -68,7 +68,7 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     Capybara.current_session.driver.quit
   end
 
-  scenario 'Searching when initial locators used', rec_run: true do
+  scenario 'Searching IL', il_run: true do
 
     step "User goes to the page", settings('facebook')['page'] do |url|
         page.visit url
@@ -120,9 +120,9 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     sleep 3
   end
 
-  # Repository
+  # Element Picker from Repository
 
-  scenario 'Searching when Element Picker used', repo_run: true do
+  scenario 'Searching EP', ep_run: true do
     step "User goes to the page", settings('facebook')['page'] do |url|
       page.visit url
     end

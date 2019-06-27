@@ -137,7 +137,7 @@ module FacebookMobile
   end
 
   def ep_click_multi_menu
-    # check_element_path @multi_menu_btn_ep, @multi_menu_btn_il
+    check_element_path @multi_menu_btn_ep, @multi_menu_btn_il
     find(:xpath, ta(@multi_menu_btn_ep)).click
   end
 
@@ -150,5 +150,10 @@ module FacebookMobile
     check_element_path @confirm_delete_ep, @confirm_delete_il
     find(:xpath, ta(@confirm_delete_ep)).click
   end
-  
+
 end
+
+
+# /*[1]/*[2]/*[2]/*[2]/*[4]/*[1]/*[1]/*[5]/*[1]/*[2]/*[3]/*[1]/*[1]/*[1]/*[2]/*[1]/*[1]/*[3]/*[1]/*[1]
+#
+# /*[1]/*[3]/*[2]/*[2]/*[4]/*[1]/*[1]/*[5]/*[1]/*[2]/*[2]/*[1]/*[1]/*[1]/*[2]/*[1]/*[1]/*[3]/*[1]/*[1]
