@@ -6,9 +6,9 @@ include Zachet
 
 feature 'Analyzer returns the wrong element (logo) in the Header section' do
 
-  # Recording
+  # Initial locators with Recording
 
-  scenario 'Recording by initial locators', rec_run: true do
+  scenario 'Recording IL', il_run: true do
 
     step "User goes to the page", settings('zachet')['page'] do |url|
       page.visit url
@@ -22,7 +22,8 @@ feature 'Analyzer returns the wrong element (logo) in the Header section' do
     Capybara.current_session.driver.quit
   end
 
-  scenario 'Searching when initial locators used', rec_run: true do
+
+  scenario 'Searching IL', il_run: true do
 
     step "User resizes browser window to maximum" do
       Capybara.current_session.driver.browser.manage.window.maximize
@@ -40,9 +41,9 @@ feature 'Analyzer returns the wrong element (logo) in the Header section' do
     sleep 3
   end
 
-  # Repository
+  # Element Picker from Repository
 
-  scenario 'Searching when Element Picker used', repo_run: true do
+  scenario 'Searching EP', ep_run: true do
 
     step "User resizes browser window to maximum" do
       Capybara.current_session.driver.browser.manage.window.maximize
