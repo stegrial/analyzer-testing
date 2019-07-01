@@ -26,7 +26,6 @@ feature 'Analyzer returns the wrong element (input) in the Sing In section' do
     end
 
     sleep 3
-    Capybara.current_session.driver.quit
   end
 
   scenario 'Searching IL', il_run: true do
@@ -83,7 +82,6 @@ feature 'Analyzer returns the wrong element (input) in the Sing In section' do
     end
 
     sleep 3
-    Capybara.current_session.driver.quit
   end
 
   scenario 'Searching debug', search_debug: true do

@@ -42,7 +42,7 @@ module Favorit
     find(:xpath, ta(@sign_in_button_ep)).click
   end
 
-  def set_pass_with_show_pass (pass)
+  def set_pass_with_show_pass(pass)
     find(:xpath, ta(@pass_with_show_pass_ta, @pass_il)).set(pass)
   end
 
@@ -50,12 +50,12 @@ module Favorit
     check_element_path @pass_with_show_pass_ta, @pass_il
   end
 
-  def ep_set_pass_with_show_pass (pass)
+  def ep_set_pass_with_show_pass(pass)
     check_element_path @pass_with_show_pass_ep, @pass_il
     find(:xpath, ta(@pass_with_show_pass_ep)).set(pass)
   end
 
-  def set_pass_without_show_pass (pass)
+  def set_pass_without_show_pass(pass)
     find(:xpath, ta(@pass_without_show_pass_ta, @pass_il)).set(pass)
   end
 
@@ -63,7 +63,7 @@ module Favorit
     check_element_path @pass_without_show_pass_ta, @pass_il
   end
 
-  def ep_set_pass_without_show_pass (pass)
+  def ep_set_pass_without_show_pass(pass)
     check_element_path @pass_without_show_pass_ep, @pass_il
     find(:xpath, ta(@pass_without_show_pass_ep)).set(pass)
   end
