@@ -8,7 +8,6 @@ facebook:
   page: 'https://www.facebook.com'
   login: 'eshapovalov298@gmail.com'
   pass: 'Tester1234'
-
   new_post: 'test_test'
 
 zachet:
@@ -27,3 +26,7 @@ staff:
 favorit:
   page: 'https://www.favorit.com.ua/uk/bets/#'
   pass: 'Test123'
+
+annieselke:
+  page: 'https://annieselke.com'
+
