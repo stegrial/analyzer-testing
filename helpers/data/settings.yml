@@ -23,10 +23,10 @@ sandbox:
 staff:
   page: 'https://www.staff-clothes.com'
 
-
-
-
-
+favorit:
+  page: 'https://www.favorit.com.ua/uk/bets/#'
+  pass: 'Test123'
 
 annieselke:
   page: 'https://annieselke.com'
+
