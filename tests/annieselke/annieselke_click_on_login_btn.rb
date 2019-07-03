@@ -4,7 +4,7 @@ require_relative '../../helpers/special_methods'
 
 include AnnieSelke
 
-feature 'Analyzer returns the wrong element (link) in the Offer of month section' do
+feature 'TA-911 Element not found when the Dom tree is changed (the Login link)' do
 
   # Initial locators with Recording
 
@@ -15,11 +15,8 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     end
     sleep 200
 
-    if page.has_xpath?("//iframe[@title='Sign up for 15% Off!']")
-      within_frame(1) do
-        find(:xpath, "//button[@title='Close Dialog']").click
-      end
-    end
+    # User clicks on close button for close modal
+    close_modal
 
     step "User clicks on login button" do
       login_btn
@@ -34,11 +31,8 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     step "User goes to the page", settings('annieselke')['page'] do |url|
       page.visit url
     end
-    if page.has_xpath?("//iframe[@title='Sign up for 15% Off!']")
-      within_frame(1) do
-        find(:xpath, "//button[@title='Close Dialog']").click
-      end
-    end
+    # User clicks on close button for close modal
+    close_modal
 
     step "User clicks on login button" do
       login_btn
@@ -58,11 +52,8 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
       page.visit url
     end
 
-    step "User clicks on close button for close modal" do
-      within_frame(1) do
-        page.execute_script("document.querySelector('button.close').click()")
-      end
-    end
+    # User clicks on close button for close modal
+    close_modal
 
     step "User clicks on login button" do
       ep_login_btn
@@ -79,11 +70,8 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
       page.visit url
     end
 
-    if page.has_xpath?("//iframe[@title='Sign up for 15% Off!']")
-      within_frame(1) do
-        find(:xpath, "//button[@title='Close Dialog']").click
-      end
-    end
+    # User clicks on close button for close modal
+    close_modal
 
     step "User clicks on login button" do
       login_btn
@@ -97,11 +85,8 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
       page.visit url
     end
 
-    if page.has_xpath?("//iframe[@title='Sign up for 15% Off!']")
-      within_frame(1) do
-        find(:xpath, "//button[@title='Close Dialog']").click
-      end
-    end
+    # User clicks on close button for close modal
+    close_modal
 
     step "User clicks on login button" do
       login_btn
