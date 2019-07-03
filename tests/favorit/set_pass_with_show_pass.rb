@@ -4,7 +4,7 @@ require_relative '../../helpers/special_methods'
 
 include Favorit
 
-feature 'Analyzer returns the wrong element (input) in the Sing In section' do
+feature 'TA-901 Analyzer returns the wrong element (input) in the Sing In section' do
 
   # Initial locators with Recording
 
