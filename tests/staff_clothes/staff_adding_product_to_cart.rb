@@ -1,13 +1,19 @@
 require 'spec_helper'
+require_relative '../../pages/united_methods'
 require_relative '../../pages/staff_clothes.rb'
 require_relative '../../helpers/special_methods'
 
+include PathCheck
 include StaffClothes
 
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
   end
 
   feature 'Analyzer returns the wrong element (link) in the Offer of month section' do
@@ -56,7 +62,6 @@ describe 'Preconditions' do
         click_to_update_cart
       end
 
-
     end
 
     scenario 'Searching IL', il_run: true do
@@ -66,38 +71,47 @@ describe 'Preconditions' do
       end
 
       step "User clicks on hamburger menu button" do
+        check_element_path @hamburger_menu_ta, @hamburger_menu_il
         click_humburg_menu
       end
 
       step "User clicks for selecting Mans category" do
+        check_element_path @men_category_ta, @men_category_il
         click_men_category
       end
 
       step "User click on Polo and T-shirt" do
+        check_element_path @polo_tshirts_ta, @polo_tshirts_il
         click_polo_tshirts
       end
 
       step "User clicks for selecting staff" do
+        check_element_path @choose_polo_ta, @choose_polo_il
         click_to_choose_polo
       end
 
       step "User clicks for size selecting" do
+        check_element_path @choose_size_ta, @choose_size_il
         click_to_choose_size
       end
 
       step "User clicks for adding to cart" do
+        check_element_path @add_to_cart_ta, @add_to_cart_il
         click_to_add_to_cart
       end
 
       step "User clicks for changing order in cart" do
+        check_element_path @go_to_cart_btn_ta, @go_to_cart_btn_il
         click_to_change_cart
       end
 
       step "User clicks for delete from cart" do
+        check_element_path @delete_order_ta, @delete_order_il
         click_to_delete_order
       end
 
       step "User clicks for changing order in carfort" do
+        check_element_path @comeback_to_catalog_ta, @comeback_to_catalog_il
         click_to_update_cart
       end
     end
@@ -105,45 +119,96 @@ describe 'Preconditions' do
     # Element Picker from Repository
 
     scenario 'Searching EP', ep_run: true do
+
       step "User goes to the page", settings('staff')['page'] do |url|
         page.visit url
       end
 
       step "User clicks on hamburger menu button" do
-        ep_click_humburg_menu
+        check_element_path @hamburger_menu_ep, @hamburger_menu_il
+        click_humburg_menu true
       end
 
       step "User clicks for selecting Mans category" do
-        ep_click_men_category
+        check_element_path @men_category_ep, @men_category_il
+        click_men_category true
       end
 
       step "User click on Polo and T-shirt" do
-        ep_click_polo_tshirts
+        check_element_path @polo_tshirts_ep, @polo_tshirts_il
+        click_polo_tshirts true
       end
 
       step "User clicks for selecting staff" do
-        ep_click_to_choose_polo
+        check_element_path @choose_polo_ep, @choose_polo_il
+        click_to_choose_polo true
       end
 
       step "User clicks for size selecting" do
-        ep_click_to_choose_size
+        check_element_path @choose_size_ep, @choose_size_il
+        click_to_choose_size true
       end
 
       step "User clicks for adding to cart" do
-        ep_click_to_add_to_cart
+        check_element_path @add_to_cart_ep, @add_to_cart_il
+        click_to_add_to_cart true
       end
 
       step "User clicks for changing order in cart" do
-        ep_click_to_change_cart
+        check_element_path @go_to_cart_btn_ep, @go_to_cart_btn_il
+        click_to_change_cart true
       end
 
       step "User clicks for delete from cart" do
-        ep_click_to_delete_order
+        check_element_path @delete_order_ep, @delete_order_il
+        click_to_delete_order true
       end
 
       step "User clicks for changing order in carfort" do
-        ep_click_to_update_cart
+        check_element_path @comeback_to_catalog_ep, @comeback_to_catalog_il
+        click_to_update_cart true
       end
+
+
+      # step "User goes to the page", settings('staff')['page'] do |url|
+      #   page.visit url
+      # end
+      #
+      # step "User clicks on hamburger menu button" do
+      #   ep_click_humburg_menu
+      # end
+      #
+      # step "User clicks for selecting Mans category" do
+      #   ep_click_men_category
+      # end
+      #
+      # step "User click on Polo and T-shirt" do
+      #   ep_click_polo_tshirts
+      # end
+      #
+      # step "User clicks for selecting staff" do
+      #   ep_click_to_choose_polo
+      # end
+      #
+      # step "User clicks for size selecting" do
+      #   ep_click_to_choose_size
+      # end
+      #
+      # step "User clicks for adding to cart" do
+      #   ep_click_to_add_to_cart
+      # end
+      #
+      # step "User clicks for changing order in cart" do
+      #   ep_click_to_change_cart
+      # end
+      #
+      # step "User clicks for delete from cart" do
+      #   ep_click_to_delete_order
+      # end
+      #
+      # step "User clicks for changing order in carfort" do
+      #   ep_click_to_update_cart
+      # end
     end
 
     # Debug
