@@ -95,7 +95,5 @@ module AnnieSelkeMobile
         find(:xpath, "//button[@title='Close Dialog']").click
       end
     end
-
   end
-
 end
