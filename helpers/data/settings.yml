@@ -23,3 +23,13 @@ sandbox:
   page_h4_test_1: 'http://localhost:8000/html/h4_tests/h4_test_1.html'
   withXpath: 'http://www.trueautomation-demo.inf.ua/testing/html5/withXpath.html'
   addedContainerXpath: 'http://www.trueautomation-demo.inf.ua/testing/html5/addedContainerXpath.html'
+
+staff:
+  page: 'https://www.staff-clothes.com'
+
+favorit:
+  page: 'https://www.favorit.com.ua/uk/bets/#'
+  pass: 'Test123'
+
+annieselke:
+  page: 'https://annieselke.com'

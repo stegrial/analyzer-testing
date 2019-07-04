@@ -8,44 +8,44 @@ module FacebookMobile
 
   def initialize(*args)
     @email_il = "//input[@name='email']"
-    @email_ta = "facebook:email"
-    @email_ep = "EP:facebook:email"
+    @email_ta = "facebook_mobile:email"
+    @email_ep = "EP:facebook_mobile:email"
 
     @pass_il = "//input[@name='pass']"
-    @pass_ta = "facebook:pass"
-    @pass_ep = "EP:facebook:pass"
+    @pass_ta = "facebook_mobile:pass"
+    @pass_ep = "EP:facebook_mobile:pass"
 
     @login_btn_il = "//button[@data-sigil='touchable m_login_button']"
-    @login_btn_ta = "facebook:login_btn"
-    @login_btn_ep = "EP:facebook:login_btn"
+    @login_btn_ta = "facebook_mobile:login_btn"
+    @login_btn_ep = "EP:facebook_mobile:login_btn"
 
     @ok_btn_il = "//button[@value='OK']"
-    @ok_btn_ta = "facebook:ok_btn"
-    @ok_btn_ep = "EP:facebook:ok_btn"
+    @ok_btn_ta = "facebook_mobile:ok_btn"
+    @ok_btn_ep = "EP:facebook_mobile:ok_btn"
 
     @new_post_il = "//div[@role='textbox']"
-    @new_post_ta = "facebook:newpost"
-    @new_post_ep = "EP:facebook:newpost"
+    @new_post_ta = "facebook_mobile:newpost"
+    @new_post_ep = "EP:facebook_mobile:newpost"
 
     @set_text_il = "//textarea[@class='composerInput mentions-input']"
-    @set_text_ta = "facebook:set_text"
-    @set_text_ep = "EP:facebook:set_text"
+    @set_text_ta = "facebook_mobile:set_text"
+    @set_text_ep = "EP:facebook_mobile:set_text"
 
     @post_btn_il = "//button[@value='Post']"
-    @post_btn_ta = "facebook:post_btn"
-    @post_btn_ep = "EP:facebook:post_btn"
+    @post_btn_ta = "facebook_mobile:post_btn"
+    @post_btn_ep = "EP:facebook_mobile:post_btn"
 
     @multi_menu_btn_il = "(//a[@data-sigil='touchable'])[1]"
-    @multi_menu_btn_ta = "facebook:multi_menu_btn"
-    @multi_menu_btn_ep = "EP:facebook:multi_menu_btn"
+    @multi_menu_btn_ta = "facebook_mobile:multi_menu_btn"
+    @multi_menu_btn_ep = "EP:facebook_mobile:multi_menu_btn"
 
     @delete_post_il = "//a[@data-sigil='touchable touchable removeStoryButton enabled_action']"
-    @delete_post_ta = "facebook:delete_post"
-    @delete_post_ep = "EP:facebook:delete_post"
+    @delete_post_ta = "facebook_mobile:delete_post"
+    @delete_post_ep = "EP:facebook_mobile:delete_post"
 
     @confirm_delete_il = "//a[@title='Delete']"
-    @confirm_delete_ta = "facebook:accept_delete"
-    @confirm_delete_ep = "EP:facebook:accept_delete"
+    @confirm_delete_ta = "facebook_mobile:accept_delete"
+    @confirm_delete_ep = "EP:facebook_mobile:accept_delete"
 
     super
   end
@@ -74,8 +74,8 @@ module FacebookMobile
     find(:xpath, ta(@new_post_ta, @new_post_il)).click
   end
 
-  def add_text_in_post (text)
-    find(:xpath, ta(@set_text_ta, @set_text_il)).set(text)
+  def add_text_in_post
+    find(:xpath, ta(@set_text_ta, @set_text_il)).set('text')
   end
 
   def expect_publishing
@@ -126,9 +126,9 @@ module FacebookMobile
     find(:xpath, ta(@new_post_ep)).click
   end
 
-  def ep_add_text_in_post (text)
+  def ep_add_text_in_post
     check_element_path @set_text_ep, @set_text_il
-    find(:xpath, ta(@set_text_ep)).set(text)
+    find(:xpath, ta(@set_text_ep)).set('texttext')
   end
 
   def ep_click_post_btn
@@ -152,8 +152,3 @@ module FacebookMobile
   end
 
 end
-
-
-# /*[1]/*[2]/*[2]/*[2]/*[4]/*[1]/*[1]/*[5]/*[1]/*[2]/*[3]/*[1]/*[1]/*[1]/*[2]/*[1]/*[1]/*[3]/*[1]/*[1]
-#
-# /*[1]/*[3]/*[2]/*[2]/*[4]/*[1]/*[1]/*[5]/*[1]/*[2]/*[2]/*[1]/*[1]/*[1]/*[2]/*[1]/*[1]/*[3]/*[1]/*[1]

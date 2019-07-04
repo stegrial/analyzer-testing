@@ -4,7 +4,7 @@ require_relative '../../helpers/special_methods'
 
 include SportLife
 
-feature 'Analyzer returns not found element in the languages section' do
+feature 'TA-908 Analyzer returns not found element in the languages section' do
 
   # Element Picker from Repository
 
