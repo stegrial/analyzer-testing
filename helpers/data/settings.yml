@@ -1,5 +1,7 @@
 venus:
   home_page: 'https://venus.com'
+  email_field: 'denys.shutko@moovweb.com'
+  pass_field: 'asdffdsA1'
 
 how_to_get_money:
   page: 'https://maanimo.com/helpful/142606-kak-zarabotat-dengi-v-ukraine'
@@ -19,6 +21,8 @@ sportlife:
 sandbox:
   page_h4: 'http://localhost:8000/html/h4.html'
   page_h4_test_1: 'http://localhost:8000/html/h4_tests/h4_test_1.html'
+  withXpath: 'http://www.trueautomation-demo.inf.ua/testing/html5/withXpath.html'
+  addedContainerXpath: 'http://www.trueautomation-demo.inf.ua/testing/html5/addedContainerXpath.html'
 
 staff:
   page: 'https://www.staff-clothes.com'
@@ -29,4 +33,3 @@ favorit:
 
 annieselke:
   page: 'https://annieselke.com'
-
