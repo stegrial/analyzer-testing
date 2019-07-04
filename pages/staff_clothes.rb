@@ -1,8 +1,5 @@
 require 'capybara/rspec'
 require 'selenium-webdriver'
-require_relative 'united_methods'
-
-include PathCheck
 
 module StaffClothes
 
@@ -45,86 +42,49 @@ module StaffClothes
     super
   end
 
-  def click_humburg_menu
+  def click_humburg_menu(ep = false)
+    return find(:xpath, ta(@hamburger_menu_ep)).click if ep
     find(:xpath, ta(@hamburger_menu_ta, @hamburger_menu_il)).click
   end
 
-  def click_men_category
+  def click_men_category(ep = false)
+    return find(:xpath, ta(@men_category_ep)).click if ep
     find(:xpath, ta(@men_category_ta, @men_category_il)).click
   end
 
-  def click_polo_tshirts
+  def click_polo_tshirts(ep = false)
+    return find(:xpath, ta(@polo_tshirts_ep)).click if ep
     find(:xpath, ta(@polo_tshirts_ta, @polo_tshirts_il)).click
   end
 
-  def click_to_choose_polo
+  def click_to_choose_polo(ep = false)
+    return find(:xpath, ta(@choose_polo_ep)).click if ep
     find(:xpath, ta(@choose_polo_ta, @choose_polo_il)).click
   end
 
-  def click_to_choose_size
+  def click_to_choose_size(ep = false)
+    return find(:xpath, ta(@choose_size_ep)).click if ep
     find(:xpath, ta(@choose_size_ta, @choose_size_il)).click
   end
 
-  def click_to_add_to_cart
+  def click_to_add_to_cart(ep = false)
+    return find(:xpath, ta(@add_to_cart_ep)).click if ep
     find(:xpath, ta(@add_to_cart_ta, @add_to_cart_il)).click
   end
 
-  def click_to_change_cart
+  def click_to_change_cart(ep = false)
+    return find(:xpath, ta(@go_to_cart_btn_ep)).click if ep
     find(:xpath, ta(@go_to_cart_btn_ta, @go_to_cart_btn_il)).click
   end
 
-  def click_to_delete_order
+  def click_to_delete_order(ep = false)
+    return find(:xpath, ta(@delete_order_ep)).click if ep
     find(:xpath, ta(@delete_order_ta, @delete_order_il)).click
   end
 
-  def click_to_update_cart
+  def click_to_update_cart(ep = false)
+    return find(:xpath, ta(@comeback_to_catalog_ep)).click if ep
     find(:xpath, ta(@comeback_to_catalog_ta, @comeback_to_catalog_il)).click
-  end
-
-
-  def ep_click_humburg_menu
-    check_element_path @hamburger_menu_ep, @hamburger_menu_il
-    find(:xpath, ta(@hamburger_menu_ep)).click
-  end
-
-  def ep_click_men_category
-    check_element_path @men_category_ep, @men_category_il
-    find(:xpath, ta(@men_category_ep)).click
-  end
-
-  def ep_click_polo_tshirts
-    check_element_path @polo_tshirts_ep, @polo_tshirts_il
-    find(:xpath, ta(@polo_tshirts_ep)).click
-  end
-
-  def ep_click_to_choose_polo
-    check_element_path @choose_polo_ep, @choose_polo_il
-    find(:xpath, ta(@choose_polo_ep)).click
-  end
-
-  def ep_click_to_choose_size
-    check_element_path @choose_size_ep, @choose_size_il
-    find(:xpath, ta(@choose_size_ep)).click
-  end
-
-  def ep_click_to_add_to_cart
-    check_element_path @add_to_cart_ep, @add_to_cart_il
-    find(:xpath, ta(@add_to_cart_ep)).click
-  end
-
-  def ep_click_to_change_cart
-    check_element_path @go_to_cart_btn_ep, @go_to_cart_btn_il
-    find(:xpath, ta(@go_to_cart_btn_ep)).click
-  end
-
-  def ep_click_to_delete_order
-    check_element_path @delete_order_ep, @delete_order_il
-    find(:xpath, ta(@delete_order_ep)).click
-  end
-
-  def ep_click_to_update_cart
-    check_element_path @comeback_to_catalog_ep, @comeback_to_catalog_il
-    find(:xpath, ta(@comeback_to_catalog_ep)).click
   end
 
 end
