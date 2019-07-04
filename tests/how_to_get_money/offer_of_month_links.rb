@@ -1,10 +1,12 @@
 require 'spec_helper'
-require_relative '../../pages/how_to_get_money.rb'
 require_relative '../../helpers/special_methods'
+require_relative '../../pages/united_methods'
+require_relative '../../pages/how_to_get_money.rb'
 
+include PathCheck
 include HowToGetMoney
 
-feature 'Analyzer returns the wrong element (link) in the Offer of month section' do
+feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month section' do
 
   # Initial locators with Recording
 
@@ -31,8 +33,8 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     end
 
     step "User clicks on the link - First loan" do
-      click_first_loan_link
-      check_first_loan_link
+      check_element_path @first_loan_ta, @first_loan_il
+      click_first_loan_link true
     end
     sleep 3
   end
@@ -49,7 +51,8 @@ feature 'Analyzer returns the wrong element (link) in the Offer of month section
     end
 
     step "User clicks on the link - First loan" do
-      ep_click_first_loan_link
+      check_element_path @first_loan_ep, @first_loan_il
+      click_first_loan_link true
     end
     sleep 3
   end
