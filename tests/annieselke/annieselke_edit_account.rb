@@ -151,162 +151,56 @@ describe 'Preconditions' do
 
       step "humburger menu " do
         check_element_path @humburger_menu_ep, @humburger_menu_il
-        click_humburger_menu true
+        click_humburger_menu :ep
       end
 
       step "User clicks on login button" do
         check_element_path @login_btn_ep, @login_btn_il
-        login_btn true
+        login_btn :ep
       end
 
       step "User set email" do
         check_element_path @email_ep, @email_il
-        set_email true
+        set_email :ep
       end
       #
       step "User set password" do
         check_element_path @pass_ep, @pass_il
-        set_pass true
+        set_pass :ep
       end
 
       step "User clicks on login button" do
         check_element_path @login_ep, @login_il
-        click_login_btn true
+        click_login_btn :ep
       end
 
       step "User clicks on humburger menu" do
         check_element_path @humburger_menu_ep, @humburger_menu_il
-        click_humburger_menu true
+        click_humburger_menu :ep
       end
 
       step "User clicks on My Account link" do
         check_element_path @myAccount_ep, @myAccount_il
-        click_my_acc_btn true
+        click_my_acc_btn :ep
       end
 
       sleep 5
 
       step "User clicks on personal info button" do
         check_element_path @personal_deteils_ep, @personal_deteils_il
-        click_personal_info_btn true
+        click_personal_info_btn :ep
       end
 
       step "User clicks to select gender" do
         check_element_path @gender_ep, @gender_il
-        select_gender true
+        select_gender :ep
       end
 
       step "User clicks to select gender" do
         check_element_path @save_btn_ep, @save_btn_il
-        click_save_btn true
+        click_save_btn :ep
       end
       sleep 5
-    end
-
-    # Debug
-
-    scenario 'Recording debug', rec_debug: true do
-
-      step "User goes to the page", settings('annieselke')['page'] do |url|
-        page.visit url
-      end
-
-      # User clicks on close button for close modal
-      close_modal
-
-      step "humburger menu " do
-        click_humburger_menu
-      end
-
-      step "User clicks on login button" do
-        login_btn
-      end
-
-      step "User set email" do
-        set_email
-      end
-
-      step "User set password" do
-        set_pass
-      end
-
-      step "User clicks on login button" do
-        click_login_btn
-      end
-
-      step "User clicks on humburger menu" do
-        click_humburger_menu
-      end
-
-      step "User clicks on My Account link" do
-        click_my_acc_btn
-      end
-
-      sleep 5
-
-      step "User clicks on personal info button" do
-        click_personal_info_btn
-      end
-
-      step "User clicks to select gender" do
-        select_gender
-      end
-
-      step "User clicks to select gender" do
-        click_save_btn
-      end
-    end
-
-    scenario 'Searching debug', search_debug: true do
-
-      step "User goes to the page", settings('annieselke')['page'] do |url|
-        page.visit url
-      end
-
-      # User clicks on close button for close modal
-      close_modal
-
-      step "humburger menu " do
-        click_humburger_menu
-      end
-
-      step "User clicks on login button" do
-        login_btn
-      end
-
-      step "User set email" do
-        set_email
-      end
-
-      step "User set password" do
-        set_pass
-      end
-
-      step "User clicks on login button" do
-        click_login_btn
-      end
-
-      step "User clicks on humburger menu" do
-        click_humburger_menu
-      end
-
-      step "User clicks on My Account link" do
-        click_my_acc_btn
-      end
-
-      sleep 5
-
-      step "User clicks on personal info button" do
-        click_personal_info_btn
-      end
-
-      step "User clicks to select gender" do
-        select_gender
-      end
-
-      step "User clicks to select gender" do
-        click_save_btn
-      end
     end
   end
 end

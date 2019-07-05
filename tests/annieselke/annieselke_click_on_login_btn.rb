@@ -56,7 +56,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
 
     step "User clicks on login button" do
       check_element_path @login_btn_ep, @login_btn_il
-      login_btn true
+      login_btn :ep
     end
 
 
