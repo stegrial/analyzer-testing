@@ -43,48 +43,57 @@ module AnnieSelke
     super
   end
 
-  def login_btn(ep = false)
-    return find(:xpath, ta(@login_btn_ep)).click if ep
+  def login_btn(key = nil)
+    return find(:xpath, ta(@login_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@login_btn_il)).click if key ==:il
     find(:xpath, ta(@login_btn_ta, @login_btn_il)).click
   end
 
-  def create_acc(ep = false)
-    return find(:xpath, ta(@create_acc_ep)).click if ep
+  def create_acc(key = nil)
+    return find(:xpath, ta(@create_acc_ep)).click if key ==:ep
+    return find(:xpath, ta(@create_acc_il)).click if key ==:il
     find(:xpath, ta(@create_acc_ta, @create_acc_il)).click
   end
 
-  def set_any_first_name(ep = false)
-    return find(:xpath, ta(@first_name_ep)).click if ep
+  def set_any_first_name(key = nil)
+    return find(:xpath, ta(@first_name_ep)).set("name") if key ==:ep
+    return find(:xpath, ta(@first_name_il)).set("name") if key ==:il
     find(:xpath, ta(@first_name_ta, @first_name_il)).set("name")
   end
 
-  def set_any_last_name(ep = false)
-    return find(:xpath, ta(@last_name_ep)).click if ep
+  def set_any_last_name(key = nil)
+    return find(:xpath, ta(@last_name_ep)).click if key ==:ep
+    return find(:xpath, ta(@last_name_il)).click if key ==:il
     find(:xpath, ta(@last_name_ta, @last_name_il)).set("last_name")
   end
 
-  def set_any_email(ep = false)
-    return find(:xpath, ta(@email_ep)).click if ep
+  def set_any_email(key = nil)
+    return find(:xpath, ta(@email_ep)).set("youre.example@gmail.com") if key ==:ep
+    return find(:xpath, ta(@email_il)).set("youre.example@gmail.com") if key ==:il
     find(:xpath, ta(@email_ta, @email_il)).set("youre.example@gmail.com")
   end
 
-  def set_any_pass(ep = false)
-    return find(:xpath, ta(@pass_ep)).click if ep
+  def set_any_pass(key = nil)
+    return find(:xpath, ta(@pass_ep)).set("pass") if key ==:ep
+    return find(:xpath, ta(@pass_il)).set("pass") if key ==:il
     find(:xpath, ta(@pass_ta, @pass_il)).set("pass")
   end
 
-  def check_any_pass(ep = false)
-    return find(:xpath, ta(@check_pwd_ep)).click if ep
+  def check_any_pass(key = nil)
+    return find(:xpath, ta(@check_pwd_ep)).set("pass") if key ==:ep
+    return find(:xpath, ta(@check_pwd_il)).set("pass") if key ==:il
     find(:xpath, ta(@check_pwd_ta, @check_pwd_il)).set("pass")
   end
 
-  def click_subscribe(ep = false)
-    return find(:xpath, ta(@subscribe_ep)).click if ep
+  def click_subscribe(key = nil)
+    return find(:xpath, ta(@subscribe_ep)).click if key ==:ep
+    return find(:xpath, ta(@subscribe_il)).click if key ==:il
     find(:xpath, ta(@subscribe_ta, @subscribe_il)).click
   end
 
-  def click_register_btn(ep = false)
-    return find(:xpath, ta(@register_ep)).click if ep
+  def click_register_btn(key = nil)
+    return find(:xpath, ta(@register_ep)).click if key ==:ep
+    return find(:xpath, ta(@register_il)).click if key ==:il
     find(:xpath, ta(@register_ta, @register_il)).click
   end
 

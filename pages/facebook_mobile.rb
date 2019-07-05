@@ -47,33 +47,39 @@ module FacebookMobile
     super
   end
 
-  def set_email(login, ep = false)
-    return find(:xpath, ta(@email_ep)).set(email) if ep
+  def set_email(login, key = nil)
+    return find(:xpath, ta(@email_ep)).set(login) if key ==:ep
+    return find(:xpath, ta(@email_il)).set(login) if key ==:il
     find(:xpath, ta(@email_ta, @email_il)).set(login)
   end
 
-  def set_pass (pass, ep = false)
-    return find(:xpath, ta(@pass_ep)).set(pass) if ep
+  def set_pass (pass, key = nil)
+    return find(:xpath, ta(@pass_ep)).set(pass) if key ==:ep
+    return find(:xpath, ta(@pass_il)).set(pass) if key ==:il
     find(:xpath, ta(@pass_ta, @pass_il)).set(pass)
   end
 
-  def click_login_btn(ep = false)
-    return find(:xpath, ta(@login_btn_ep)).click if ep
+  def click_login_btn(key = nil)
+    return find(:xpath, ta(@login_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@login_btn_il)).click if key ==:il
     find(:xpath, ta(@login_btn_ta, @login_btn_il)).click
   end
 
-  def click_ok_btn(ep = false)
-    return find(:xpath, ta(@ok_btn_ep)).click if ep
+  def click_ok_btn(key = nil)
+    return find(:xpath, ta(@ok_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@ok_btn_il)).click if key ==:il
     find(:xpath, ta(@ok_btn_ta, @ok_btn_il)).click
   end
 
-  def click_new_post(ep = false)
-    return find(:xpath, ta(@new_post_ep)).click if ep
+  def click_new_post(key = nil)
+    return find(:xpath, ta(@new_post_ep)).click if key ==:ep
+    return find(:xpath, ta(@new_post_il)).click if key ==:il
     find(:xpath, ta(@new_post_ta, @new_post_il)).click
   end
 
-  def add_text_in_post(ep = false)
-    return find(:xpath, ta(@set_text_ep)).set('text') if ep
+  def add_text_in_post(key = nil)
+    return find(:xpath, ta(@set_text_ep)).set('text') if key ==:ep
+    return find(:xpath, ta(@set_text_il)).set('text') if key ==:il
     find(:xpath, ta(@set_text_ta, @set_text_il)).set('text')
   end
 
@@ -82,23 +88,27 @@ module FacebookMobile
     expect(page).to have_no_text("Your post is now published")
   end
 
-  def click_post_btn(ep = false)
-    return find(:xpath, ta(@post_btn_ep)).click if ep
+  def click_post_btn(key = nil)
+    return find(:xpath, ta(@post_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@post_btn_il)).click if key ==:il
     find(:xpath, ta(@post_btn_ta, @post_btn_il)).click
   end
 
-  def click_multi_menu(ep = false)
-    return find(:xpath, ta(@multi_menu_btn_ep)).click if ep
+  def click_multi_menu(key = nil)
+    return find(:xpath, ta(@multi_menu_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@multi_menu_btn_il)).click if key ==:il
     find(:xpath, ta(@multi_menu_btn_ta, @multi_menu_btn_il)).click
   end
 
-  def deleting_post(ep = false)
-    return find(:xpath, ta(@delete_post_ep)).click if ep
+  def deleting_post(key = nil)
+    return find(:xpath, ta(@delete_post_ep)).click if key ==:ep
+    return find(:xpath, ta(@delete_post_il)).click if key ==:il
     find(:xpath, ta(@delete_post_ta, @delete_post_il)).click
   end
 
-  def confirm_delete(ep = false)
-    return find(:xpath, ta(@confirm_delete_ep)).click if ep
+  def confirm_delete(key = nil)
+    return find(:xpath, ta(@confirm_delete_ep)).click if key ==:ep
+    return find(:xpath, ta(@confirm_delete_il)).click if key ==:il
     find(:xpath, ta(@confirm_delete_ta, @confirm_delete_il)).click
   end
 

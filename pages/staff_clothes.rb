@@ -42,48 +42,57 @@ module StaffClothes
     super
   end
 
-  def click_humburg_menu(ep = false)
-    return find(:xpath, ta(@hamburger_menu_ep)).click if ep
+  def click_humburg_menu(key = nil)
+    return find(:xpath, ta(@hamburger_menu_ep)).click  if key == :ep
+    return find(:xpath, ta(@hamburger_menu_il)).click  if key == :il
     find(:xpath, ta(@hamburger_menu_ta, @hamburger_menu_il)).click
   end
 
-  def click_men_category(ep = false)
-    return find(:xpath, ta(@men_category_ep)).click if ep
+  def click_men_category(key = nil)
+    return find(:xpath, ta(@men_category_ep)).click if key == :ep
+    return find(:xpath, ta(@men_category_il)).click if key == :il
     find(:xpath, ta(@men_category_ta, @men_category_il)).click
   end
 
-  def click_polo_tshirts(ep = false)
-    return find(:xpath, ta(@polo_tshirts_ep)).click if ep
+  def click_polo_tshirts(key = nil)
+    return find(:xpath, ta(@polo_tshirts_ep)).click if key == :ep
+    return find(:xpath, ta(@polo_tshirts_il)).click if key == :il
     find(:xpath, ta(@polo_tshirts_ta, @polo_tshirts_il)).click
   end
 
-  def click_to_choose_polo(ep = false)
-    return find(:xpath, ta(@choose_polo_ep)).click if ep
+  def click_to_choose_polo(key = nil)
+    return find(:xpath, ta(@choose_polo_ep)).click if key == :ep
+    return find(:xpath, ta(@choose_polo_il)).click if key == :il
     find(:xpath, ta(@choose_polo_ta, @choose_polo_il)).click
   end
 
-  def click_to_choose_size(ep = false)
-    return find(:xpath, ta(@choose_size_ep)).click if ep
+  def click_to_choose_size(key = nil)
+    return find(:xpath, ta(@choose_size_ep)).click if key == :ep
+    return find(:xpath, ta(@choose_size_il)).click if key == :il
     find(:xpath, ta(@choose_size_ta, @choose_size_il)).click
   end
 
-  def click_to_add_to_cart(ep = false)
-    return find(:xpath, ta(@add_to_cart_ep)).click if ep
+  def click_to_add_to_cart(key = nil)
+    return find(:xpath, ta(@add_to_cart_ep)).click if key == :ep
+    return find(:xpath, ta(@add_to_cart_il)).click if key == :il
     find(:xpath, ta(@add_to_cart_ta, @add_to_cart_il)).click
   end
 
-  def click_to_change_cart(ep = false)
-    return find(:xpath, ta(@go_to_cart_btn_ep)).click if ep
+  def click_to_change_cart(key = nil)
+    return find(:xpath, ta(@go_to_cart_btn_ep)).click if key == :ep
+    return find(:xpath, ta(@go_to_cart_btn_il)).click if key == :il
     find(:xpath, ta(@go_to_cart_btn_ta, @go_to_cart_btn_il)).click
   end
 
-  def click_to_delete_order(ep = false)
-    return find(:xpath, ta(@delete_order_ep)).click if ep
+  def click_to_delete_order(key = nil)
+    return find(:xpath, ta(@delete_order_ep)).click if key == :ep
+    return find(:xpath, ta(@delete_order_il)).click if key == :il
     find(:xpath, ta(@delete_order_ta, @delete_order_il)).click
   end
 
-  def click_to_update_cart(ep = false)
-    return find(:xpath, ta(@comeback_to_catalog_ep)).click if ep
+  def click_to_update_cart(key = nil)
+    return find(:xpath, ta(@comeback_to_catalog_ep)).click if key == :ep
+    return find(:xpath, ta(@comeback_to_catalog_il)).click if key == :il
     find(:xpath, ta(@comeback_to_catalog_ta, @comeback_to_catalog_il)).click
   end
 

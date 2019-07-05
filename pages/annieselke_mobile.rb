@@ -44,48 +44,57 @@ module AnnieSelkeMobile
     super
   end
 
-  def login_btn(ep = false)
-    return find(:xpath, ta(@login_btn_ep)).click if ep
+  def login_btn(key = nil)
+    return find(:xpath, ta(@login_btn_ep)).click if  key ==:ep
+    return find(:xpath, ta(@login_btn_il)).click if  key ==:il
     find(:xpath, ta(@login_btn_ta, @login_btn_il)).click
   end
 
-  def set_email(ep = false)
-    return find(:xpath, ta(@email_ep)).set("julia.arapova@softesis.com") if ep
+  def set_email(key = nil)
+    return find(:xpath, ta(@email_ep)).set("julia.arapova@softesis.com") if key ==:ep
+    return find(:xpath, ta(@email_il)).set("julia.arapova@softesis.com") if key ==:il
     find(:xpath, ta(@email_ta, @email_il)).set("julia.arapova@softesis.com")
   end
 
-  def set_pass(ep = false)
-    return find(:xpath, ta(@pass_ep)).set("1234tesT") if ep
+  def set_pass(key = nil)
+    return find(:xpath, ta(@pass_ep)).set("1234tesT") if key ==:ep
+    return find(:xpath, ta(@pass_il)).set("1234tesT") if key ==:il
     find(:xpath, ta(@pass_ta, @pass_il)).set("1234tesT")
   end
 
-  def click_login_btn(ep = false)
-    return find(:xpath, ta(@login_ep)).click if ep
+  def click_login_btn(key = nil)
+    return find(:xpath, ta(@login_ep)).click if key ==:ep
+    return find(:xpath, ta(@login_il)).click if key ==:il
     find(:xpath, ta(@login_ta, @login_il)).click
   end
 
-  def click_humburger_menu(ep = false)
-    return find(:xpath, ta(@humburger_menu_ep)).click if ep
+  def click_humburger_menu(key = nil)
+    return find(:xpath, ta(@humburger_menu_ep)).click if key ==:ep
+    return find(:xpath, ta(@humburger_menu_il)).click if key ==:il
     find(:xpath, ta(@humburger_menu_ta, @humburger_menu_il)).click
   end
 
-  def click_my_acc_btn(ep = false)
-    return find(:xpath, ta(@myAccount_ep)).click if ep
+  def click_my_acc_btn(key = nil)
+    return find(:xpath, ta(@myAccount_ep)).click if key ==:ep
+    return find(:xpath, ta(@myAccount_il)).click if key ==:il
     find(:xpath, ta(@myAccount_ta, @myAccount_il)).click
   end
 
-  def click_personal_info_btn(ep = false)
-    return find(:xpath, ta(@personal_deteils_ep)).click if ep
+  def click_personal_info_btn(key = nil)
+    return find(:xpath, ta(@personal_deteils_ep)).click if key ==:ep
+    return find(:xpath, ta(@personal_deteils_il)).click if key ==:il
     find(:xpath, ta(@personal_deteils_ta, @personal_deteils_il)).click
   end
 
-  def select_gender(ep = false)
-    return find(:xpath, ta(@gender_ep)).select('Ms') if ep
+  def select_gender(key = nil)
+    return find(:xpath, ta(@gender_ep)).select('Ms') if key ==:ep
+    return find(:xpath, ta(@gender_il)).select('Ms') if key ==:il
     find(:xpath, ta(@gender_ta, @gender_il)).select('Ms')
   end
 
-  def click_save_btn(ep = false)
-    return find(:xpath, ta(@save_btn_ep)).click if ep
+  def click_save_btn(key = nil)
+    return find(:xpath, ta(@save_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@save_btn_il)).click if key ==:il
     find(:xpath, ta(@save_btn_ta, @save_btn_il)).click
   end
 
