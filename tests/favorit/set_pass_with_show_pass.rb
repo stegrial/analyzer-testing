@@ -2,6 +2,7 @@ require 'spec_helper'
 require_relative '../../pages/favorit.rb'
 require_relative '../../helpers/special_methods'
 
+include PathCheck
 include Favorit
 
 feature 'TA-901 Analyzer returns the wrong element (input) in the Sing In section' do
@@ -34,12 +35,13 @@ feature 'TA-901 Analyzer returns the wrong element (input) in the Sing In sectio
     end
 
     step "User clicks on the Sing in button" do
+      check_element_path @sign_in_button_ta, @sign_in_button_il
       click_sing_in_button
     end
 
     step "User set password in Password field", settings('favorit')['pass'] do |pass|
+      check_element_path @pass_with_show_pass_ta, @pass_il
       set_pass_with_show_pass pass
-      check_pass_with_show_pass
     end
 
     sleep 3
@@ -53,11 +55,13 @@ feature 'TA-901 Analyzer returns the wrong element (input) in the Sing In sectio
     end
 
     step "User clicks on the Sing in button" do
-      ep_click_sign_in_button
+      check_element_path @sign_in_button_ep, @sign_in_button_il
+      click_sing_in_button :ep
     end
 
     step "User set password in Password field", settings('favorit')['pass'] do |pass|
-      ep_set_pass_with_show_pass pass
+      check_element_path @pass_with_show_pass_ep, @pass_il
+      set_pass_with_show_pass pass, :ep
     end
     sleep 3
   end
@@ -70,11 +74,11 @@ feature 'TA-901 Analyzer returns the wrong element (input) in the Sing In sectio
     end
 
     step "User clicks on the Sing in button" do
-      click_sing_in_button_il
+      click_sing_in_button :il
     end
 
     step "User clicks on the Show Pass button" do
-      click_show_pass_button_il
+      click_show_pass_button :il
     end
 
     step "User set password in Password field", settings('favorit')['pass'] do |pass|
@@ -90,12 +94,11 @@ feature 'TA-901 Analyzer returns the wrong element (input) in the Sing In sectio
     end
 
     step "User clicks on the Sing in button" do
-      click_sing_in_button_il
+      click_sing_in_button :il
     end
 
     step "User set password in Password field", settings('favorit')['pass'] do |pass|
       set_pass_with_show_pass pass
-      check_pass_with_show_pass
     end
     sleep 3
   end
