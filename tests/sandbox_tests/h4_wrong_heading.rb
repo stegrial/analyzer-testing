@@ -1,7 +1,9 @@
 require 'spec_helper'
-require_relative '../../pages/sandbox_tests'
 require_relative '../../helpers/special_methods'
+require_relative '../../pages/united_methods'
+require_relative '../../pages/sandbox_tests'
 
+include PathCheck
 include SandboxTests
 
 feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tree and finds a wrong elements' do
@@ -25,8 +27,7 @@ feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tr
     end
 
     step "Check the Heading 4" do
-      check_element_path @second_heading_ta, @second_heading_il
-      check_heading_4
+      check_element_path :xpath, @second_heading_ta, @second_heading_il
     end
     sleep 3
   end
@@ -50,7 +51,7 @@ feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tr
     end
 
     step "Check the Heading 4" do
-      check_heading_4
+      check_element_path :xpath, @second_heading_ta, @second_heading_il
     end
     sleep 3
   end

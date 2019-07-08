@@ -33,7 +33,7 @@ feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month 
     end
 
     step "User clicks on the link - First loan" do
-      check_element_path @first_loan_ta, @first_loan_il
+      check_element_path :xpath, @first_loan_ta, @first_loan_il
       click_first_loan_link true
     end
     sleep 3
@@ -51,7 +51,7 @@ feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month 
     end
 
     step "User clicks on the link - First loan" do
-      check_element_path @first_loan_ep, @first_loan_il
+      check_element_path :xpath, @first_loan_ep, @first_loan_il
       click_first_loan_link true
     end
     sleep 3

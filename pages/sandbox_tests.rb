@@ -1,8 +1,5 @@
 require 'capybara/rspec'
 require 'selenium-webdriver'
-require_relative 'united_methods'
-
-include PathCheck
 
 module SandboxTests
 
@@ -15,20 +12,15 @@ module SandboxTests
     super
   end
 
-  def record_heading_4
+  def record_heading_4(key = nil)
+    return find(:xpath, @second_heading_il) if key == :il
     find(:xpath, ta(@second_heading_ta, @second_heading_il))
   end
 
-  def check_heading_4
-    check_element_path @second_heading_ta, @second_heading_il
-  end
-
-  def record_h2_video
+  def record_h2_video(key = nil)
+    return find(:xpath, @second_heading_il) if key == :il
     find(:xpath, ta(@h2_video_ta, @h2_video_il))
   end
 
-  def check_h2_video
-    check_element_path @h2_video_ta, @h2_video_il
-  end
 
 end
