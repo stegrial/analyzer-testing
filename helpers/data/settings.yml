@@ -33,3 +33,9 @@ favorit:
 
 annieselke:
   page: 'https://annieselke.com'
+
+stageCom:
+  page: "https://www.stage.com/"
+  email: "julia.arapova@softesis.com"
+  pass: "1234tesT"
+

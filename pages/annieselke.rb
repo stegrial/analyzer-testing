@@ -1,8 +1,5 @@
 require 'capybara/rspec'
 require 'selenium-webdriver'
-require_relative 'united_methods'
-
-include PathCheck
 
 module AnnieSelke
 
@@ -46,89 +43,59 @@ module AnnieSelke
     super
   end
 
-  def login_btn
+  def login_btn(key = nil)
+    return find(:xpath, ta(@login_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@login_btn_il)).click if key ==:il
     find(:xpath, ta(@login_btn_ta, @login_btn_il)).click
   end
 
-  def create_acc
+  def create_acc(key = nil)
+    return find(:xpath, ta(@create_acc_ep)).click if key ==:ep
+    return find(:xpath, ta(@create_acc_il)).click if key ==:il
     find(:xpath, ta(@create_acc_ta, @create_acc_il)).click
   end
 
-  def set_any_first_name
+  def set_any_first_name(key = nil)
+    return find(:xpath, ta(@first_name_ep)).set("name") if key ==:ep
+    return find(:xpath, ta(@first_name_il)).set("name") if key ==:il
     find(:xpath, ta(@first_name_ta, @first_name_il)).set("name")
   end
 
-  def set_any_last_name
+  def set_any_last_name(key = nil)
+    return find(:xpath, ta(@last_name_ep)).click if key ==:ep
+    return find(:xpath, ta(@last_name_il)).click if key ==:il
     find(:xpath, ta(@last_name_ta, @last_name_il)).set("last_name")
   end
 
-  def set_any_email
+  def set_any_email(key = nil)
+    return find(:xpath, ta(@email_ep)).set("youre.example@gmail.com") if key ==:ep
+    return find(:xpath, ta(@email_il)).set("youre.example@gmail.com") if key ==:il
     find(:xpath, ta(@email_ta, @email_il)).set("youre.example@gmail.com")
   end
 
-  def set_any_pass
+  def set_any_pass(key = nil)
+    return find(:xpath, ta(@pass_ep)).set("pass") if key ==:ep
+    return find(:xpath, ta(@pass_il)).set("pass") if key ==:il
     find(:xpath, ta(@pass_ta, @pass_il)).set("pass")
   end
 
-  def check_any_pass
+  def check_any_pass(key = nil)
+    return find(:xpath, ta(@check_pwd_ep)).set("pass") if key ==:ep
+    return find(:xpath, ta(@check_pwd_il)).set("pass") if key ==:il
     find(:xpath, ta(@check_pwd_ta, @check_pwd_il)).set("pass")
   end
 
-  def click_subscribe
+  def click_subscribe(key = nil)
+    return find(:xpath, ta(@subscribe_ep)).click if key ==:ep
+    return find(:xpath, ta(@subscribe_il)).click if key ==:il
     find(:xpath, ta(@subscribe_ta, @subscribe_il)).click
   end
 
-  def click_register_btn
+  def click_register_btn(key = nil)
+    return find(:xpath, ta(@register_ep)).click if key ==:ep
+    return find(:xpath, ta(@register_il)).click if key ==:il
     find(:xpath, ta(@register_ta, @register_il)).click
   end
-
-
-
-  def ep_login_btn
-    check_element_path @login_btn_ep, @login_btn_il
-    find(:xpath, ta(@login_btn_ep)).click
-  end
-
-  def ep_create_acc
-    check_element_path @create_acc_ep, @create_acc_il
-    find(:xpath, ta(@create_acc_ep)).click
-  end
-
-  def ep_set_any_first_name
-    check_element_path @first_name_ep, @first_name_il
-    find(:xpath, ta(@first_name_ep)).set("name")
-  end
-
-  def ep_set_any_last_name
-    check_element_path @last_name_ep, @last_name_il
-    find(:xpath, ta(@last_name_ep)).set("last_name")
-  end
-
-  def ep_set_any_email
-    check_element_path @email_ep, @email_il
-    find(:xpath, ta(@email_ep)).set("youre.example@gmail.com")
-  end
-
-  def ep_set_any_pass
-    check_element_path @pass_ep, @pass_il
-    find(:xpath, ta(@pass_ep)).set("pass")
-  end
-
-  def ep_check_any_pass
-    check_element_path @check_pwd_ep, @check_pwd_il
-    find(:xpath, ta(@check_pwd_ep)).set("pass")
-  end
-
-  def ep_click_subscribe
-    check_element_path @subscribe_ep, @subscribe_il
-    find(:xpath, ta(@subscribe_ep)).click
-  end
-
-  def ep_click_register_btn
-    check_element_path @register_ep, @register_il
-    find(:xpath, ta(@register_ep)).click
-  end
-
 
   def close_modal
     if page.has_xpath?("//iframe[@title='Sign up for 15% Off!']")

@@ -1,8 +1,5 @@
 require 'capybara/rspec'
 require 'selenium-webdriver'
-require_relative 'united_methods'
-
-include PathCheck
 
 module FacebookMobile
 
@@ -50,31 +47,39 @@ module FacebookMobile
     super
   end
 
-  def set_email(login)
+  def set_email(login, key = nil)
+    return find(:xpath, ta(@email_ep)).set(login) if key ==:ep
+    return find(:xpath, ta(@email_il)).set(login) if key ==:il
     find(:xpath, ta(@email_ta, @email_il)).set(login)
   end
 
-  def set_pass (pass)
+  def set_pass (pass, key = nil)
+    return find(:xpath, ta(@pass_ep)).set(pass) if key ==:ep
+    return find(:xpath, ta(@pass_il)).set(pass) if key ==:il
     find(:xpath, ta(@pass_ta, @pass_il)).set(pass)
   end
 
-  def click_login_btn
+  def click_login_btn(key = nil)
+    return find(:xpath, ta(@login_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@login_btn_il)).click if key ==:il
     find(:xpath, ta(@login_btn_ta, @login_btn_il)).click
   end
 
-  def click_ok_btn
+  def click_ok_btn(key = nil)
+    return find(:xpath, ta(@ok_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@ok_btn_il)).click if key ==:il
     find(:xpath, ta(@ok_btn_ta, @ok_btn_il)).click
   end
 
-  def check_ok_btn
-    check_element_path @ok_btn_ta, @ok_btn_il
-  end
-
-  def click_new_post
+  def click_new_post(key = nil)
+    return find(:xpath, ta(@new_post_ep)).click if key ==:ep
+    return find(:xpath, ta(@new_post_il)).click if key ==:il
     find(:xpath, ta(@new_post_ta, @new_post_il)).click
   end
 
-  def add_text_in_post
+  def add_text_in_post(key = nil)
+    return find(:xpath, ta(@set_text_ep)).set('text') if key ==:ep
+    return find(:xpath, ta(@set_text_il)).set('text') if key ==:il
     find(:xpath, ta(@set_text_ta, @set_text_il)).set('text')
   end
 
@@ -83,72 +88,28 @@ module FacebookMobile
     expect(page).to have_no_text("Your post is now published")
   end
 
-  def click_post_btn
+  def click_post_btn(key = nil)
+    return find(:xpath, ta(@post_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@post_btn_il)).click if key ==:il
     find(:xpath, ta(@post_btn_ta, @post_btn_il)).click
   end
 
-  def click_multi_menu
+  def click_multi_menu(key = nil)
+    return find(:xpath, ta(@multi_menu_btn_ep)).click if key ==:ep
+    return find(:xpath, ta(@multi_menu_btn_il)).click if key ==:il
     find(:xpath, ta(@multi_menu_btn_ta, @multi_menu_btn_il)).click
   end
 
-  def deleting_post
+  def deleting_post(key = nil)
+    return find(:xpath, ta(@delete_post_ep)).click if key ==:ep
+    return find(:xpath, ta(@delete_post_il)).click if key ==:il
     find(:xpath, ta(@delete_post_ta, @delete_post_il)).click
   end
 
-  def confirm_delete
+  def confirm_delete(key = nil)
+    return find(:xpath, ta(@confirm_delete_ep)).click if key ==:ep
+    return find(:xpath, ta(@confirm_delete_il)).click if key ==:il
     find(:xpath, ta(@confirm_delete_ta, @confirm_delete_il)).click
-  end
-
-
-
-  def ep_set_email (login)
-    check_element_path @email_ep, @email_il
-    find(:xpath, ta(@email_ep)).set(login)
-  end
-
-  def ep_set_pass (pass)
-    check_element_path @pass_ep, @pass_il
-    find(:xpath, ta(@pass_ep)).set(pass)
-  end
-
-  def ep_click_login_btn
-    check_element_path @login_btn_ep, @login_btn_il
-    find(:xpath, ta(@login_btn_ep)).click
-  end
-
-  def ep_click_ok_btn
-    check_element_path @ok_btn_ep, @ok_btn_il
-    find(:xpath, ta(@ok_btn_ep)).click
-  end
-
-  def ep_click_new_post
-    check_element_path @new_post_ep, @new_post_il
-    find(:xpath, ta(@new_post_ep)).click
-  end
-
-  def ep_add_text_in_post
-    check_element_path @set_text_ep, @set_text_il
-    find(:xpath, ta(@set_text_ep)).set('texttext')
-  end
-
-  def ep_click_post_btn
-    check_element_path @post_btn_ep, @post_btn_il
-    find(:xpath, ta(@post_btn_ep)).click
-  end
-
-  def ep_click_multi_menu
-    check_element_path @multi_menu_btn_ep, @multi_menu_btn_il
-    find(:xpath, ta(@multi_menu_btn_ep)).click
-  end
-
-  def ep_click_delete_post
-    check_element_path @delete_post_ep, @delete_post_il
-    find(:xpath, ta(@delete_post_ep)).click
-  end
-
-  def ep_confirm_delete_post
-    check_element_path @confirm_delete_ep, @confirm_delete_il
-    find(:xpath, ta(@confirm_delete_ep)).click
   end
 
 end

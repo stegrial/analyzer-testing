@@ -2,8 +2,6 @@ require 'capybara/rspec'
 require 'selenium-webdriver'
 require_relative 'united_methods'
 
-include PathCheck
-
 module Zachet
 
   def initialize(*args)
@@ -13,17 +11,10 @@ module Zachet
     super
   end
 
-  def click_logotype
+  def click_logotype(key = nil)
+    return find(:xpath, ta(@logotype_ep)).click if key == :ep
+    return find(:xpath, @logotype_il).click if key == :il
     find(:xpath, ta(@logotype_ta, @logotype_il)).click
-  end
-
-  def check_logotype
-    check_element_path @logotype_ta, @logotype_il
-  end
-
-  def ep_click_logotype
-    check_element_path @logotype_ep, @logotype_il
-    find(:xpath, ta(@logotype_ep)).click
   end
 
 

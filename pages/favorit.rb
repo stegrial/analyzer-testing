@@ -2,8 +2,6 @@ require 'capybara/rspec'
 require 'selenium-webdriver'
 require_relative 'united_methods'
 
-include PathCheck
-
 module Favorit
 
   def initialize(*args)
@@ -25,66 +23,28 @@ module Favorit
     super
   end
 
-  def click_sing_in_button_il
-    find(:xpath, @sign_in_button_il).click
-  end
-
-  def click_sing_in_button
+  def click_sing_in_button(key = nil)
+    return find(:xpath, ta(@sign_in_button_ep)).click if key == :ep
+    return find(:xpath, @sign_in_button_il).click if key == :il
     find(:xpath, ta(@sign_in_button_ta, @sign_in_button_il)).click
   end
 
-  def check_sign_in_button
-    check_element_path @sign_in_button_ta, @sign_in_button_il
+  def set_pass_with_show_pass(pass, key = nil)
+    return find(:xpath, ta(@pass_with_show_pass_ep)).set(pass) if key == :ep
+    return find(:xpath, @pass_il).set(pass) if key == :il
+    find(:id, ta(@pass_with_show_pass_ta, @pass_il)).set(pass)
   end
 
-  def ep_click_sign_in_button
-    check_element_path @sign_in_button_ep, @sign_in_button_il
-    find(:xpath, ta(@sign_in_button_ep)).click
+  def set_pass_without_show_pass(pass, key = nil)
+    return find(:xpath, ta(@pass_without_show_pass_ep)).set(pass) if key == :ep
+    return find(:xpath, @pass_il).set(pass) if key == :il
+    find(:id, ta(@pass_without_show_pass_ta, @pass_il)).set(pass)
   end
 
-  def set_pass_with_show_pass(pass)
-    find(:xpath, ta(@pass_with_show_pass_ta, @pass_il)).set(pass)
-  end
-
-  def check_pass_with_show_pass
-    check_element_path @pass_with_show_pass_ta, @pass_il
-  end
-
-  def ep_set_pass_with_show_pass(pass)
-    check_element_path @pass_with_show_pass_ep, @pass_il
-    find(:xpath, ta(@pass_with_show_pass_ep)).set(pass)
-  end
-
-  def set_pass_without_show_pass(pass)
-    find(:xpath, ta(@pass_without_show_pass_ta, @pass_il)).set(pass)
-  end
-
-  def check_pass_without_show_pass
-    check_element_path @pass_without_show_pass_ta, @pass_il
-  end
-
-  def ep_set_pass_without_show_pass(pass)
-    check_element_path @pass_without_show_pass_ep, @pass_il
-    find(:xpath, ta(@pass_without_show_pass_ep)).set(pass)
-  end
-
-  def click_show_pass_button_il
-    find(:xpath, @show_pass_button_il).click
-  end
-
-  def click_show_pass_button
+  def click_show_pass_button(key = nil)
+    return find(:xpath, ta(@show_pass_button_ep)).click if key == :ep
+    return find(:xpath, @show_pass_button_il).click if key == :il
     find(:xpath, ta(@show_pass_button_ta, @show_pass_button_il)).click
   end
-
-  def check_show_pass_button
-    check_element_path @show_pass_button_ta, @show_pass_button_il
-  end
-
-  def ep_click_show_pass_button
-    check_element_path @show_pass_button_ep, @show_pass_button_il
-    find(:xpath, ta(@show_pass_button_ep)).click
-  end
-
-
 
 end
