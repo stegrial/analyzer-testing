@@ -1,7 +1,9 @@
 require 'spec_helper'
-require_relative '../../pages/sandbox_tests'
 require_relative '../../helpers/special_methods'
+require_relative '../../pages/united_methods'
+require_relative '../../pages/sandbox_tests'
 
+include PathCheck
 include SandboxTests
 
 feature 'TA-148 TA finds the wrong element, if the element was added into additional container' do
@@ -25,7 +27,7 @@ feature 'TA-148 TA finds the wrong element, if the element was added into additi
     end
 
     step "Check the Heading 2 - Video" do
-      check_h2_video
+      check_element_path :xpath, @h2_video_ta, @h2_video_il
     end
     sleep 3
   end
@@ -49,7 +51,7 @@ feature 'TA-148 TA finds the wrong element, if the element was added into additi
     end
 
     step "Check the Heading 2 - Video" do
-      check_h2_video
+      check_element_path :xpath, @h2_video_ta, @h2_video_il
     end
     sleep 3
   end
