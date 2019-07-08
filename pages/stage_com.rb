@@ -32,6 +32,35 @@ module StageCom
     @minicart_il = "//a[@class='m-header__minicart m-header__miniCartInnerContent']"
     @minicart_ta = "stageCom:minicart"
     @minicart_ep = "EP:stageCom:minicart"
+
+    @category_kids_il = "//ul/a[@data-menu-id='Kids']"
+    @category_kids_ta = "stageCom:category_kids"
+    @category_kids_ep = "EP:stageCom:category_kids"
+
+    @subcategory_baby_il = "(//a[text()='Baby'])[1]"
+    @subcategory_baby_ta = "stageCom:subcategory_baby"
+    @subcategory_baby_ep = "EP:stageCom:subcategory_baby"
+
+    @subcategory_babygirl_il = "(//a[text()='Baby Girl (0-24 months)'])[1]"
+    @subcategory_babygirl_ta = "stageCom:subcategory_babygirl"
+    @subcategory_babygirl_ep = "EP:stageCom:subcategory_babygirl"
+
+    @girl_dress_il = "//h2[text()='Dresses']"
+    @girl_dress_ta = "stageCom:girl_dress"
+    @girl_dress_ep = "EP:stageCom:girl_dress"
+
+    @pink_dress_il = "(//a[@class='product-image'])[1]"
+    @pink_dress_ta = "stageCom:pink_dress"
+    @pink_dress_ep = "EP:stageCom:pink_dress"
+
+    @baby_size_il = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
+    @baby_size_ta = "stageCom:baby_size"
+    @baby_size_ep = "EP:stageCom:baby_size"
+
+    @add_to_cart_il = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
+    @add_to_cart_ta = "stageCom:add_to_cart"
+    @add_to_cart_ep = "EP:stageCom:add_to_cart"
+
     super
 
   end
@@ -78,6 +107,47 @@ module StageCom
     find(:xpath, ta(@minicart_ta, @minicart_il)).click
   end
 
+  def click_category_kids(key = nil)
+    return find(:xpath, ta(@category_kids_ep)).click if key == :ep
+    return find(:xpath, ta(@category_kids_il)).click if key == :il
+    find(:xpath, ta(@category_kids_еф, @category_kids_il)).click
+  end
+
+  def click_subcategory_baby(key = nil)
+    return find(:xpath, ta(@subcategory_baby_ep)).click if key == :ep
+    return find(:xpath, ta(@subcategory_baby_il)).click if key == :il
+    find(:xpath, ta(@subcategory_baby_ta, @subcategory_baby_il)).click
+  end
+
+  def click_subcategory_babygirl(key = nil)
+    return find(:xpath, ta(@subcategory_babygirl_ep)).click if key == :ep
+    return find(:xpath, ta(@subcategory_babygirl_il)).click if key == :il
+    find(:xpath, ta(@subcategory_babygirl_ta, @subcategory_babygirl_il)).click
+  end
+
+  def click_girl_dress(key = nil)
+    return find(:xpath, ta(@girl_dress_ep)).click if key == :ep
+    return find(:xpath, ta(@girl_dress_il)).click if key == :il
+    find(:xpath, ta(@girl_dress_ta, @girl_dress_il)).click
+  end
+
+  def click_pink_dress(key = nil)
+    return find(:xpath, ta(@pink_dress_ep)).click if key == :ep
+    return find(:xpath, ta(@pink_dress_il)).click if key == :il
+    find(:xpath, ta(@pink_dress_ta, @pink_dress_il)).click
+  end
+
+  def click_baby_size(key = nil)
+    return find(:xpath, ta(@baby_size_ep)).click if key == :ep
+    return find(:xpath, ta(@baby_size_il)).click if key == :il
+    find(:xpath, ta(@baby_size_ta, @baby_size_il)).click
+  end
+
+  def click_add_to_cart(key = nil)
+    return find(:xpath, ta(@add_to_cart_ep)).click if key == :ep
+    return find(:xpath, ta(@add_to_cart_il)).click if key == :il
+    find(:xpath, ta(@add_to_cart_ta, @add_to_cart_il)).click
+  end
 
   def close_modal
     if page.has_xpath?("//span[@class='modalClose modal-close']")
