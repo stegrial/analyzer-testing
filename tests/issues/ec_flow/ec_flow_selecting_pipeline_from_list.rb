@@ -13,7 +13,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', ili_run: true do
+    scenario 'Recording IL', il_run: true do
 
       step "User goes to the page", settings('ec_flow')['page'] do |url|
         page.visit url
