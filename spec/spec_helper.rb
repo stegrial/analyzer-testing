@@ -6,6 +6,7 @@ require 'rspec-steps'
 require 'capybara/rspec'
 require 'true_automation/rspec'
 require 'true_automation/driver/capybara'
+require 'true_automation/dsl'
 
 def camelize(str)
   str.split('_').map {|w| w.capitalize}.join

@@ -1,8 +1,10 @@
-require 'capybara/rspec'
-require 'selenium-webdriver'
+require 'spec_helper'
 
+class AnnieSelkeMobile
 
-module AnnieSelkeMobile
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
 
   def initialize(*args)
     @login_btn_il = "(//a[text()='Login'])[1]"
@@ -25,9 +27,9 @@ module AnnieSelkeMobile
     @humburger_menu_ta = "annieselke_mobile:humburger_menu"
     @humburger_menu_ep = "EP:annieselke_mobile:humburger_menu"
 
-    @myAccount_il = "//a[text()='My Account']"
-    @myAccount_ta = "annieselke_mobile:my_account"
-    @myAccount_ep = "EP:annieselke_mobile:my_account"
+    @my_account_il = "//a[text()='My Account']"
+    @my_account_ta = "annieselke_mobile:my_account"
+    @my_account_ep = "EP:annieselke_mobile:my_account"
 
     @personal_deteils_il = "//a[text()='Update personal details']"
     @personal_deteils_ta = "annieselke_mobile:personal_details"
@@ -40,7 +42,6 @@ module AnnieSelkeMobile
     @save_btn_il = "//button[text()='Save Updates']"
     @save_btn_ta = "annieselke_mobile:save_btn"
     @save_btn_ep = "EP:annieselke_mobile:save_btn"
-
     super
   end
 
@@ -105,4 +106,6 @@ module AnnieSelkeMobile
       end
     end
   end
+
+
 end

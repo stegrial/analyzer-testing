@@ -1,9 +1,8 @@
 require 'spec_helper'
-require_relative '../../pages/annieselke.rb'
-require_relative '../../helpers/special_methods'
+require_relative '../../helpers/rs/special_methods'
 require_relative '../../pages/united_methods'
+require_relative '../../pages/annieselke'
 
-include PathCheck
 include AnnieSelke
 
 feature 'Analyzer returns the wrong element (link) in the Offer of month section' do

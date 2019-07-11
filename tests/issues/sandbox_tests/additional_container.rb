@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../../helpers/rs/special_methods'
 require_relative '../../pages/united_methods'
 require_relative '../../pages/sandbox_tests'
 
