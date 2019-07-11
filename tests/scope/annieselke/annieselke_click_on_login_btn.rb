@@ -1,9 +1,8 @@
 require 'spec_helper'
+require_relative '../../helpers/rs/special_methods'
 require_relative '../../pages/united_methods'
 require_relative '../../pages/annieselke.rb'
-require_relative '../../helpers/special_methods'
 
-include PathCheck
 include AnnieSelke
 
 feature 'TA-911 Element not found when the Dom tree is changed (the Login link)' do

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../pages/sport_life.rb'
+require_relative '../../pages/es/sport_life.rb'
 require_relative '../../helpers/special_methods'
 
 include PathCheck

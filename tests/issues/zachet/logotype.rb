@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../pages/zachet.rb'
+require_relative '../../pages/es/zachet.rb'
 require_relative '../../helpers/special_methods'
 
 include PathCheck

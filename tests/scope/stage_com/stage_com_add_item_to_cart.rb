@@ -1,11 +1,8 @@
 require 'spec_helper'
+require_relative '../../helpers/rs/special_methods'
 require_relative '../../pages/united_methods'
-require_relative '../../pages/stage_com.rb'
-require_relative '../../helpers/special_methods'
+require_relative '../../pages/stage_com'
 
-
-include PathCheck
-include StageCom
 describe 'Preconditions' do
 
   before(:all) do
@@ -22,7 +19,7 @@ describe 'Preconditions' do
 
     scenario 'Recording IL', il_run: true do
 
-      step "User goes to the page", settings('stageCom')['page'] do |url|
+      step "User goes to the page", settings('stage_com')['page'] do |url|
         page.visit url
       end
 
@@ -65,7 +62,7 @@ describe 'Preconditions' do
 
     scenario 'Searching IL', il_run: true do
 
-      step "User goes to the page", settings('stageCom')['page'] do |url|
+      step "User goes to the page", settings('stage_com')['page'] do |url|
         page.visit url
       end
 
@@ -118,7 +115,7 @@ describe 'Preconditions' do
 
     scenario 'Searching EP', ep_run: true do
 
-      step "User goes to the page", settings('stageCom')['page'] do |url|
+      step "User goes to the page", settings('stage_com')['page'] do |url|
         page.visit url
       end
 
@@ -136,13 +133,13 @@ describe 'Preconditions' do
       end
       close_modal
 
-      step "User set  account email" , settings('stageCom')['email'] do |email|
+      step "User set  account email" , settings('stage_com')['email'] do |email|
         check_element_path @account_email_ep, @account_email_il
         click_account_email email, :ep
       end
       # User clicks on close button for close modal
 
-      step "User set paass ", settings('stageCom')['pass'] do |password|
+      step "User set paass ", settings('stage_com')['pass'] do |password|
         check_element_path @pass_ep, @pass_il
         click_pass password, :ep
       end

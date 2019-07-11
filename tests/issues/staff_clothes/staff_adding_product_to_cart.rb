@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../pages/united_methods'
+require_relative '../../pages/es/united_methods'
 require_relative '../../pages/staff_clothes.rb'
 require_relative '../../helpers/special_methods'
 

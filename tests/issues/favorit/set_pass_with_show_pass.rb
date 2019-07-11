@@ -1,10 +1,11 @@
 require 'spec_helper'
-require_relative '../../pages/favorit.rb'
+require_relative '../../pages/es/favorit.rb'
 require_relative '../../helpers/special_methods'
 
+include PathCheck
 include Favorit
 
-feature 'TA-902 Analyzer returns the wrong element (input) in the Sing In section' do
+feature 'TA-901 Analyzer returns the wrong element (input) in the Sing In section' do
 
   # Initial locators with Recording
 
@@ -17,8 +18,12 @@ feature 'TA-902 Analyzer returns the wrong element (input) in the Sing In sectio
       click_sing_in_button
     end
 
+    step "User clicks on the Show Pass button" do
+      click_show_pass_button
+    end
+
     step "User set password in Password field", settings('favorit')['pass'] do |pass|
-      set_pass_without_show_pass pass
+      set_pass_with_show_pass pass
     end
 
     sleep 3
@@ -34,15 +39,9 @@ feature 'TA-902 Analyzer returns the wrong element (input) in the Sing In sectio
       click_sing_in_button
     end
 
-    step "User clicks on the Show Pass button" do
-      check_element_path @show_pass_button_ta, @show_pass_button_il
-      click_show_pass_button
-    end
-
     step "User set password in Password field", settings('favorit')['pass'] do |pass|
-      check_element_path @pass_without_show_pass_ta, @pass_il
-      set_pass_without_show_pass pass
-
+      check_element_path @pass_with_show_pass_ta, @pass_il
+      set_pass_with_show_pass pass
     end
 
     sleep 3
@@ -60,14 +59,9 @@ feature 'TA-902 Analyzer returns the wrong element (input) in the Sing In sectio
       click_sing_in_button :ep
     end
 
-    step "User clicks on the Show Pass button" do
-      check_element_path @show_pass_button_ep, @show_pass_button_il
-      click_show_pass_button :ep
-    end
-
     step "User set password in Password field", settings('favorit')['pass'] do |pass|
-      check_element_path @pass_without_show_pass_ep, @pass_il
-      set_pass_without_show_pass pass, :ep
+      check_element_path @pass_with_show_pass_ep, @pass_il
+      set_pass_with_show_pass pass, :ep
     end
     sleep 3
   end
@@ -83,8 +77,12 @@ feature 'TA-902 Analyzer returns the wrong element (input) in the Sing In sectio
       click_sing_in_button :il
     end
 
+    step "User clicks on the Show Pass button" do
+      click_show_pass_button :il
+    end
+
     step "User set password in Password field", settings('favorit')['pass'] do |pass|
-      set_pass_without_show_pass pass
+      set_pass_with_show_pass pass
     end
 
     sleep 3
@@ -99,16 +97,10 @@ feature 'TA-902 Analyzer returns the wrong element (input) in the Sing In sectio
       click_sing_in_button :il
     end
 
-    step "User clicks on the Show Pass button" do
-      click_show_pass_button :il
-    end
-
     step "User set password in Password field", settings('favorit')['pass'] do |pass|
-      set_pass_without_show_pass pass
+      set_pass_with_show_pass pass
     end
     sleep 3
   end
-
-
 
 end

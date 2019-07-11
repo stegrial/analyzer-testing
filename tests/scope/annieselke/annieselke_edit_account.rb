@@ -1,9 +1,8 @@
 require 'spec_helper'
-require_relative '../../pages/annieselke_mobile.rb'
-require_relative '../../helpers/special_methods'
+require_relative '../../helpers/rs/special_methods'
 require_relative '../../pages/united_methods'
+require_relative '../../pages/annieselke_mobile'
 
-include PathCheck
 include AnnieSelkeMobile
 
 describe 'Preconditions' do
@@ -202,5 +201,7 @@ describe 'Preconditions' do
       end
       sleep 5
     end
+
+
   end
 end

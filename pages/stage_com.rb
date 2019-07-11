@@ -4,65 +4,62 @@ require 'selenium-webdriver'
 module StageCom
 
   def initialize(*args)
-
     @humburger_menu_il = "//button[@id='nav-button']"
-    @humburger_menu_ta = "stageCom:humburger_menu"
-    @humburger_menu_ep = "EP:stageCom:humburger_menu"
+    @humburger_menu_ta = "stage_com:humburger_menu"
+    @humburger_menu_ep = "EP:stage_com:humburger_menu"
 
     @signin_link_il = "//p[@class='m-menu__account__links']/a[text()='Sign in']"
-    @signin_link_ta = "stageCom:signin_link"
-    @signin_link_ep = "EP:stageCom:signin_link"
+    @signin_link_ta = "stage_com:signin_link"
+    @signin_link_ep = "EP:stage_com:signin_link"
 
     @account_email_il = "//input[@id='email']"
-    @account_email_ta = "stageCom:email"
-    @account_email_ep = "EP:stageCom:email"
+    @account_email_ta = "stage_com:email"
+    @account_email_ep = "EP:stage_com:email"
 
     @pass_il = "//input[@id='password']"
-    @pass_ta = "stageCom:pass"
-    @pass_ep = "EP:stageCom:pass"
+    @pass_ta = "stage_com:pass"
+    @pass_ep = "EP:stage_com:pass"
 
     @signin_btn_il = "//input[@value='sign in']"
-    @signin_btn_ta = "stageCom:sigin_btn"
-    @signin_btn_ep = "EP:stageCom:sigin_btn"
+    @signin_btn_ta = "stage_com:sigin_btn"
+    @signin_btn_ep = "EP:stage_com:sigin_btn"
 
     @logo_il = "//a[@class='m-header__logo']"
-    @logo_ta = "stageCom:logo"
-    @logo_ep = "EP:stageCom:logo"
+    @logo_ta = "stage_com:logo"
+    @logo_ep = "EP:stage_com:logo"
 
     @minicart_il = "//a[@class='m-header__minicart m-header__miniCartInnerContent']"
-    @minicart_ta = "stageCom:minicart"
-    @minicart_ep = "EP:stageCom:minicart"
+    @minicart_ta = "stage_com:minicart"
+    @minicart_ep = "EP:stage_com:minicart"
 
     @category_kids_il = "//ul/a[@data-menu-id='Kids']"
-    @category_kids_ta = "stageCom:category_kids"
-    @category_kids_ep = "EP:stageCom:category_kids"
+    @category_kids_ta = "stage_com:category_kids"
+    @category_kids_ep = "EP:stage_com:category_kids"
 
     @subcategory_baby_il = "(//a[text()='Baby'])[1]"
-    @subcategory_baby_ta = "stageCom:subcategory_baby"
-    @subcategory_baby_ep = "EP:stageCom:subcategory_baby"
+    @subcategory_baby_ta = "stage_com:subcategory_baby"
+    @subcategory_baby_ep = "EP:stage_com:subcategory_baby"
 
     @subcategory_babygirl_il = "(//a[text()='Baby Girl (0-24 months)'])[1]"
-    @subcategory_babygirl_ta = "stageCom:subcategory_babygirl"
-    @subcategory_babygirl_ep = "EP:stageCom:subcategory_babygirl"
+    @subcategory_babygirl_ta = "stage_com:subcategory_babygirl"
+    @subcategory_babygirl_ep = "EP:stage_com:subcategory_babygirl"
 
     @girl_dress_il = "//h2[text()='Dresses']"
-    @girl_dress_ta = "stageCom:girl_dress"
-    @girl_dress_ep = "EP:stageCom:girl_dress"
+    @girl_dress_ta = "stage_com:girl_dress"
+    @girl_dress_ep = "EP:stage_com:girl_dress"
 
     @pink_dress_il = "(//a[@class='product-image'])[1]"
-    @pink_dress_ta = "stageCom:pink_dress"
-    @pink_dress_ep = "EP:stageCom:pink_dress"
+    @pink_dress_ta = "stage_com:pink_dress"
+    @pink_dress_ep = "EP:stage_com:pink_dress"
 
     @baby_size_il = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
-    @baby_size_ta = "stageCom:baby_size"
-    @baby_size_ep = "EP:stageCom:baby_size"
+    @baby_size_ta = "stage_com:baby_size"
+    @baby_size_ep = "EP:stage_com:baby_size"
 
     @add_to_cart_il = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
-    @add_to_cart_ta = "stageCom:add_to_cart"
-    @add_to_cart_ep = "EP:stageCom:add_to_cart"
-
+    @add_to_cart_ta = "stage_com:add_to_cart"
+    @add_to_cart_ep = "EP:stage_com:add_to_cart"
     super
-
   end
 
   def click_humburger_menu(key = nil)
@@ -160,4 +157,6 @@ module StageCom
       find(:xpath, "//button[@class='modal__header__close-button']").click
     end
   end
+
+
 end
