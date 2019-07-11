@@ -3,6 +3,10 @@ require_relative '../../helpers/rs/special_methods'
 require_relative '../../pages/united_methods'
 require_relative '../../pages/stage_com'
 
+it = Stagecom.new
+
+# This tests runs when the vpn is ON
+
 describe 'Preconditions' do
 
   before(:all) do
@@ -13,7 +17,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature '' do
+  feature 'Stagecom - adding item and open cart' do
 
   # Initial locators with Recording
 
@@ -27,35 +31,35 @@ describe 'Preconditions' do
       close_modal
 
       step "User clicks on humburger menu" do
-        click_humburger_menu
+        it.click_humburger_menu
       end
 
       step "User clicks on signin link" do
-        click_signin_link
+        it.click_signin_link
       end
       close_modal
 
       step "User set  account email" , settings('stage_com')['email'] do |email|
-        click_account_email email
+        it.click_account_email email
       end
       # User clicks on close button for close modal
 
       step "User set paass ", settings('stage_com')['pass'] do |password|
-        click_pass password
+        it.click_pass password
       end
 
       step "User clicks on signin btn" do
-        click_signin_btn
+        it.click_signin_btn
       end
 
       # User clicks on close button for close modal
       close_modal_rewards
 
       step "User clicks on logo" do
-        click_logo
+        it.click_logo
       end
       step "User clicks on minicart" do
-        click_minicart
+        it.click_minicart
       end
       sleep 5
 
@@ -71,42 +75,42 @@ describe 'Preconditions' do
       close_modal
 
       step "User clicks on humburger menu" do
-        check_element_path @humburger_menu_ta, @humburger_menu_il
-        click_humburger_menu
+        check_element_path :xpath, Stagecom::HUMBURGER_MENU_TA, Stagecom::HUMBURGER_MENU_IL
+        it.click_humburger_menu
       end
 
       step "User clicks on signin link" do
-        check_element_path @signin_link_ta, @signin_link_il
-        click_signin_link
+        check_element_path :xpath, Stagecom::SIGNIN_LINK_TA, Stagecom::SIGNIN_LINK_IL
+        it.click_signin_link
       end
       close_modal
 
       step "User set  account email" , settings('stage_com')['email'] do |email|
-        check_element_path @account_email_ta, @account_email_il
-        click_account_email email
+        check_element_path :xpath, Stagecom::ACCOUNT_EMAIL_TA, Stagecom::ACCOUNT_EMAIL_IL
+        it.click_account_email email
       end
       # User clicks on close button for close modal
 
       step "User set paass ", settings('stage_com')['pass'] do |password|
-        check_element_path @pass_ta, @pass_il
-        click_pass password
+        check_element_path :xpath, Stagecom::PASS_TA, Stagecom::PASS_IL
+        it.click_pass password
       end
 
       step "User clicks on signin btn" do
-        check_element_path @signin_btn_ta, @signin_btn_il
-        click_signin_btn
+        check_element_path :xpath, Stagecom::SIGNIN_BTN_TA, Stagecom::SIGNIN_BTN_IL
+        it.click_signin_btn
       end
 
       # User clicks on close button for close modal
       close_modal_rewards
 
       step "User clicks on logo" do
-        check_element_path @logo_ta, @logo_il
-        click_logo
+        check_element_path :xpath, Stagecom::LOGO_TA, Stagecom::LOGO_IL
+        it.click_logo
       end
       step "User clicks on minicart" do
-        check_element_path @minicart_ta, @minicart_il
-        click_minicart
+        check_element_path :xpath, Stagecom::MINICART_TA, Stagecom::MINICART_IL
+        it.click_minicart
       end
       sleep 5
 
@@ -124,42 +128,42 @@ describe 'Preconditions' do
       close_modal
 
       step "User clicks on humburger menu" do
-        check_element_path @humburger_menu_ep, @humburger_menu_il
-        click_humburger_menu :ep
+        check_element_path :xpath, Stagecom::HUMBURGER_MENU_TA, Stagecom::HUMBURGER_MENU_IL
+        it.click_humburger_menu :ep
       end
 
       step "User clicks on signin link" do
-        check_element_path @signin_link_ep, @signin_link_il
-        click_signin_link :ep
+        check_element_path :xpath, Stagecom::SIGNIN_LINK_TA, Stagecom::SIGNIN_LINK_IL
+        it.click_signin_link :ep
       end
       close_modal
 
       step "User set  account email" , settings('stage_com')['email'] do |email|
-        check_element_path @account_email_ep, @account_email_il
-        click_account_email email, :ep
+        check_element_path :xpath, Stagecom::ACCOUNT_EMAIL_TA, Stagecom::ACCOUNT_EMAIL_IL
+        it.click_account_email email, :ep
       end
       # User clicks on close button for close modal
 
       step "User set paass ", settings('stage_com')['pass'] do |password|
-        check_element_path @pass_ep, @pass_il
-        click_pass password, :ep
+        check_element_path :xpath, Stagecom::PASS_TA, Stagecom::PASS_IL
+        it.click_pass password, :ep
       end
 
       step "User clicks on signin btn" do
-        check_element_path @signin_btn_ep, @signin_btn_il
-        click_signin_btn :ep
+        check_element_path :xpath, Stagecom::SIGNIN_BTN_TA, Stagecom::SIGNIN_BTN_IL
+        it.click_signin_btn :ep
       end
 
       # User clicks on close button for close modal
       close_modal_rewards
 
       step "User clicks on logo" do
-        check_element_path @logo_ep, @logo_il
-        click_logo :ep
+        check_element_path :xpath, Stagecom::LOGO_TA, Stagecom::LOGO_IL
+        it.click_logo :ep
       end
       step "User clicks on minicart" do
-        check_element_path @minicart_ep, @minicart_il
-        click_minicart :ep
+        check_element_path :xpath, Stagecom::MINICART_TA, Stagecom::MINICART_IL
+        it.click_minicart :ep
       end
       sleep 5
 

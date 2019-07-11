@@ -3,7 +3,7 @@ require_relative '../../helpers/rs/special_methods'
 require_relative '../../pages/united_methods'
 require_relative '../../pages/annieselke_mobile'
 
-include AnnieSelkeMobile
+it =  AnnieselkeMobile.new
 
 describe 'Preconditions' do
 
@@ -15,7 +15,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-911 Element not found when the Dom tree is changed (the Login link)' do
+  feature 'Annie Selke - edit new account' do
 
   # Initial locators with Recording
 
@@ -29,45 +29,45 @@ describe 'Preconditions' do
       close_modal
 
       step "humburger menu " do
-        click_humburger_menu
+        it.click_humburger_menu
       end
 
       step "User clicks on login button" do
-        login_btn
+        it.login_btn
       end
 
       step "User set email" do
-        set_email
+        it.set_email
       end
 
       step "User set password" do
-        set_pass
+        it.set_pass
       end
 
       step "User clicks on login button" do
-        click_login_btn
+        it.click_login_btn
       end
 
       step "User clicks on humburger menu" do
-        click_humburger_menu
+        it.click_humburger_menu
       end
 
       step "User clicks on My Account link" do
-        click_my_acc_btn
+        it.click_my_acc_btn
       end
 
       sleep 5
 
       step "User clicks on personal info button" do
-        click_personal_info_btn
+        it.click_personal_info_btn
       end
 
       step "User clicks to select gender" do
-        select_gender
+        it.select_gender
       end
 
       step "User clicks to select gender" do
-        click_save_btn
+        it.click_save_btn
       end
       sleep 5
 
@@ -83,55 +83,55 @@ describe 'Preconditions' do
       close_modal
 
       step "humburger menu " do
-        check_element_path @humburger_menu_ta, @humburger_menu_il
-        click_humburger_menu
+        check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_TA, AnnieselkeMobile::HUMBURGER_MENU_IL
+        it.click_humburger_menu
       end
 
       step "User clicks on login button" do
-        check_element_path @login_btn_ta, @login_btn_il
-        login_btn
+        check_element_path :xpath, AnnieselkeMobile::LOGIN_BTN_TA, AnnieselkeMobile::LOGIN_BTN_IL
+        it.login_btn
       end
 
       step "User set email" do
-        check_element_path @email_ta, @email_il
-        set_email
+        check_element_path :xpath, AnnieselkeMobile::EMAIL_TA, AnnieselkeMobile::EMAIL_IL
+        it.set_email
       end
       #
       step "User set password" do
-        check_element_path @pass_ta, @pass_il
-        set_pass
+        check_element_path :xpath, AnnieselkeMobile::PASS_TA, AnnieselkeMobile::PASS_IL
+        it.set_pass
       end
 
       step "User clicks on login button" do
-        check_element_path @login_ta, @login_il
-        click_login_btn
+        check_element_path :xpath, AnnieselkeMobile::LOGIN_TA, AnnieselkeMobile::LOGIN_IL
+        it.click_login_btn
       end
 
       step "User clicks on humburger menu" do
-        check_element_path @humburger_menu_ta, @humburger_menu_il
-        click_humburger_menu
+        check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_TA, AnnieselkeMobile::HUMBURGER_MENU_IL
+        it.click_humburger_menu
       end
 
       step "User clicks on My Account link" do
-        check_element_path @myAccount_ta, @myAccount_il
-        click_my_acc_btn
+        check_element_path :xpath, AnnieselkeMobile::MY_ACCOUNT_TA, AnnieselkeMobile::MY_ACCOUNT_IL
+        it.click_my_acc_btn
       end
 
       sleep 5
 
       step "User clicks on personal info button" do
-        check_element_path @personal_deteils_ta, @personal_deteils_il
-        click_personal_info_btn
+        check_element_path :xpath, AnnieselkeMobile::PERSONAL_DETEILS_TA, AnnieselkeMobile::PERSONAL_DETEILS_IL
+        it.click_personal_info_btn
       end
 
       step "User clicks to select gender" do
-        check_element_path @gender_ta, @gender_il
-        select_gender
+        check_element_path :xpath,  AnnieselkeMobile::GENDER_TA, AnnieselkeMobile::GENDER_IL
+        it.select_gender
       end
 
       step "User clicks to select gender" do
-        check_element_path @save_btn_ta, @save_btn_il
-        click_save_btn
+        check_element_path :xpath, AnnieselkeMobile::SAVE_BTN_TA, AnnieselkeMobile::SAVE_BTN_IL
+        it.click_save_btn
       end
       sleep 5
 
@@ -149,55 +149,55 @@ describe 'Preconditions' do
       close_modal
 
       step "humburger menu " do
-        check_element_path @humburger_menu_ep, @humburger_menu_il
-        click_humburger_menu :ep
+        check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_EP, AnnieselkeMobile::HUMBURGER_MENU_IL
+        it.click_humburger_menu :ep
       end
 
       step "User clicks on login button" do
-        check_element_path @login_btn_ep, @login_btn_il
-        login_btn :ep
+        check_element_path :xpath,AnnieselkeMobile::LOGIN_BTN_EP, AnnieselkeMobile::LOGIN_BTN_IL
+        it.login_btn :ep
       end
 
       step "User set email" do
-        check_element_path @email_ep, @email_il
-        set_email :ep
+        check_element_path :xpath, AnnieselkeMobile::EMAIL_EP, AnnieselkeMobile::EMAIL_IL
+        it.set_email :ep
       end
       #
       step "User set password" do
-        check_element_path @pass_ep, @pass_il
-        set_pass :ep
+        check_element_path :xpath, AnnieselkeMobile::PASS_EP, AnnieselkeMobile::PASS_IL
+        it.set_pass :ep
       end
 
       step "User clicks on login button" do
-        check_element_path @login_ep, @login_il
-        click_login_btn :ep
+        check_element_path :xpath, AnnieselkeMobile::LOGIN_EP, AnnieselkeMobile::LOGIN_IL
+        it.click_login_btn :ep
       end
 
       step "User clicks on humburger menu" do
-        check_element_path @humburger_menu_ep, @humburger_menu_il
-        click_humburger_menu :ep
+        check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_EP, AnnieselkeMobile::HUMBURGER_MENU_IL
+        it.click_humburger_menu :ep
       end
 
       step "User clicks on My Account link" do
-        check_element_path @myAccount_ep, @myAccount_il
-        click_my_acc_btn :ep
+        check_element_path :xpath, AnnieselkeMobile::MY_ACCOUNT_EP, AnnieselkeMobile::MY_ACCOUNT_IL
+        it.click_my_acc_btn :ep
       end
 
       sleep 5
 
       step "User clicks on personal info button" do
-        check_element_path @personal_deteils_ep, @personal_deteils_il
-        click_personal_info_btn :ep
+        check_element_path :xpath, AnnieselkeMobile::PERSONAL_DETEILS_EP, AnnieselkeMobile::PERSONAL_DETEILS_IL
+        it.click_personal_info_btn :ep
       end
 
       step "User clicks to select gender" do
-        check_element_path @gender_ep, @gender_il
-        select_gender :ep
+        check_element_path :xpath, AnnieselkeMobile::GENDER_EP, AnnieselkeMobile::GENDER_IL
+        it.select_gender :ep
       end
 
       step "User clicks to select gender" do
-        check_element_path @save_btn_ep, @save_btn_il
-        click_save_btn :ep
+        check_element_path :xpath, AnnieselkeMobile::SAVE_BTN_EP, AnnieselkeMobile::SAVE_BTN_IL
+        it.click_save_btn :ep
       end
       sleep 5
     end

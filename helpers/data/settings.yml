@@ -39,3 +39,8 @@ stage_com:
   email: "julia.arapova@softesis.com"
   pass: "1234tesT"
 
+ec_flow:
+  page: "https://ectest.trueautomation.io/flow"
+  login: "admin"
+  password: "changeme"
+

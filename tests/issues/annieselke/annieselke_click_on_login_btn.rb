@@ -3,7 +3,8 @@ require_relative '../../helpers/rs/special_methods'
 require_relative '../../pages/united_methods'
 require_relative '../../pages/annieselke.rb'
 
-include AnnieSelke
+it = Annieselke.new
+
 
 feature 'TA-911 Element not found when the Dom tree is changed (the Login link)' do
 
@@ -20,7 +21,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     close_modal
 
     step "User clicks on login button" do
-      login_btn
+      it.login_btn
     end
 
     Capybara.current_session.driver.quit
@@ -36,8 +37,8 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     close_modal
 
     step "User clicks on login button" do
-      check_element_path @login_btn_ta, @login_btn_il
-      login_btn
+      check_element_path :xpath, Annieselke::LOGIN_BTN_TA, Annieselke::LOGIN_BTN_IL
+      it.login_btn
     end
 
   end
@@ -54,8 +55,8 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     close_modal
 
     step "User clicks on login button" do
-      check_element_path @login_btn_ep, @login_btn_il
-      login_btn :ep
+      check_element_path :xpath, Annieselke::LOGIN_BTN_EP, Annieselke::LOGIN_BTN_IL
+      it.login_btn :ep
     end
 
 
@@ -73,7 +74,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     close_modal
 
     step "User clicks on login button" do
-      login_btn
+      it.login_btn
     end
 
   end
@@ -88,7 +89,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     close_modal
 
     step "User clicks on login button" do
-      login_btn
+      it.login_btn
     end
 
   end
