@@ -21,14 +21,14 @@ describe 'Preconditions' do
 
   # Initial locators with Recording
 
-    scenario 'Recording IL', ili_run: true do
+    scenario 'Recording IL', il_run: true do
 
       step "User goes to the page", settings('stage_com')['page'] do |url|
         page.visit url
       end
 
       # User clicks on close button for close modal
-      close_modal
+      it.close_modal
 
       step "User clicks on humburger menu" do
         it.click_humburger_menu
@@ -37,7 +37,7 @@ describe 'Preconditions' do
       step "User clicks on signin link" do
         it.click_signin_link
       end
-      close_modal
+      it.close_modal
 
       step "User set  account email" , settings('stage_com')['email'] do |email|
         it.click_account_email email
@@ -53,7 +53,7 @@ describe 'Preconditions' do
       end
 
       # User clicks on close button for close modal
-      close_modal_rewards
+      it.close_modal_rewards
 
       step "User clicks on logo" do
         it.click_logo
@@ -72,7 +72,7 @@ describe 'Preconditions' do
       end
 
       # User clicks on close button for close modal
-      close_modal
+      it.close_modal
 
       step "User clicks on humburger menu" do
         check_element_path :xpath, Stagecom::HUMBURGER_MENU_TA, Stagecom::HUMBURGER_MENU_IL
@@ -83,7 +83,7 @@ describe 'Preconditions' do
         check_element_path :xpath, Stagecom::SIGNIN_LINK_TA, Stagecom::SIGNIN_LINK_IL
         it.click_signin_link
       end
-      close_modal
+      it.close_modal
 
       step "User set  account email" , settings('stage_com')['email'] do |email|
         check_element_path :xpath, Stagecom::ACCOUNT_EMAIL_TA, Stagecom::ACCOUNT_EMAIL_IL
@@ -102,7 +102,7 @@ describe 'Preconditions' do
       end
 
       # User clicks on close button for close modal
-      close_modal_rewards
+      it.close_modal_rewards
 
       step "User clicks on logo" do
         check_element_path :xpath, Stagecom::LOGO_TA, Stagecom::LOGO_IL
@@ -125,7 +125,7 @@ describe 'Preconditions' do
       end
 
       # User clicks on close button for close modal
-      close_modal
+      it.close_modal
 
       step "User clicks on humburger menu" do
         check_element_path :xpath, Stagecom::HUMBURGER_MENU_TA, Stagecom::HUMBURGER_MENU_IL
@@ -136,7 +136,7 @@ describe 'Preconditions' do
         check_element_path :xpath, Stagecom::SIGNIN_LINK_TA, Stagecom::SIGNIN_LINK_IL
         it.click_signin_link :ep
       end
-      close_modal
+      it.close_modal
 
       step "User set  account email" , settings('stage_com')['email'] do |email|
         check_element_path :xpath, Stagecom::ACCOUNT_EMAIL_TA, Stagecom::ACCOUNT_EMAIL_IL
@@ -155,7 +155,7 @@ describe 'Preconditions' do
       end
 
       # User clicks on close button for close modal
-      close_modal_rewards
+      it.close_modal_rewards
 
       step "User clicks on logo" do
         check_element_path :xpath, Stagecom::LOGO_TA, Stagecom::LOGO_IL
@@ -168,6 +168,5 @@ describe 'Preconditions' do
       sleep 5
 
     end
-
   end
 end
