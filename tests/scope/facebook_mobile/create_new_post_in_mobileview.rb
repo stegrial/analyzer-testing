@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../../pages/es/united_methods'
-require_relative '../../pages/facebook_mobile.rb'
-require_relative '../../helpers/special_methods'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/facebook_mobile'
 
 it = FacebookMobile.new
 

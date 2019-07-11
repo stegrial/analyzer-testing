@@ -1,99 +1,96 @@
-require 'capybara/rspec'
-require 'selenium-webdriver'
+require 'spec_helper'
 
-module StaffClothes
 
-  def initialize(*args)
-    @hamburger_menu_il = "//div[@class='hamburger-inner']"
-    @hamburger_menu_ta = "staff:hamburger"
-    @hamburger_menu_ep = "EP:staff:hamburger"
+class Staffclothes
 
-    @men_category_il = "//div[text()='Для парней']"
-    @men_category_ta = "staff:for_men"
-    @men_category_ep = "EP:staff:for_men"
+    HUMBURGER_MENU_IL = "//div[@class='hamburger-inner']"
+    HUMBURGER_MENU_TA = "staff:hamburger"
+    HUMBURGER_MENU_EP = "EP:staff:hamburger"
 
-    @polo_tshirts_il = "//div[@style='height: inherit;'][5]"
-    @polo_tshirts_ta = "staff:polo_Tshirts"
-    @polo_tshirts_ep = "EP:staff:polo_Tshirts"
+    MEN_CATEGORY_IL = "//div[text()='Для парней']"
+    MEN_CATEGORY_TA = "staff:for_men"
+    MEN_CATEGORY_EP = "EP:staff:for_men"
 
-    @choose_polo_il = "(//span[@class='product-card__info--title'])[2]"
-    @choose_polo_ta = "staff:choose_polo"
-    @choose_polo_ep = "EP:staff:choose_polo"
+    POLO_TSHIRTS_IL = "//div[@style='height: inherit;'][5]"
+    POLO_TSHIRTS_TA = "staff:polo_Tshirts"
+    POLO_TSHIRTS_EP = "EP:staff:polo_Tshirts"
 
-    @choose_size_il = "(//button[@class='product__sizes '])[1]"
-    @choose_size_ta = "staff:choose_size"
-    @choose_size_ep = "EP:staff:choose_size"
+    CHOOSE_POLO_IL = "(//span[@class='product-card__info--title'])[2]"
+    CHOOSE_POLO_TA = "staff:choose_polo"
+    CHOOSE_POLO_EP = "EP:staff:choose_polo"
 
-    @add_to_cart_il = "(//button[@class='main-button'])[1]"
-    @add_to_cart_ta = "staff:add_to_cart"
-    @add_to_cart_ep = "EP:staff:add_to_cart"
+    CHOOSE_SIZE_IL = "(//button[@class='product__sizes '])[1]"
+    CHOOSE_SIZE_TA = "staff:choose_size"
+    CHOOSE_SIZE_EP = "EP:staff:choose_size"
 
-    @go_to_cart_btn_il = "//div[@class='modal__success-error-button modal__success-error-button--black']"
-    @go_to_cart_btn_ta = "staff:changing_btn"
-    @go_to_cart_btn_ep = "EP:staff:changing_btn"
+    ADD_TO_CART_IL = "(//button[@class='main-button'])[1]"
+    ADD_TO_CART_TA = "staff:add_to_cart"
+    ADD_TO_CART_EP = "EP:staff:add_to_cart"
 
-    @delete_order_il = "//button[@class='cart__delete']"
-    @delete_order_ta = "staff:delete_order"
-    @delete_order_ep = "EP:staff:delete_order"
+    GO_TO_CART_BTN_IL = "//div[@class='modal__success-error-button modal__success-error-button--black']"
+    GO_TO_CART_BTN_TA = "staff:changing_btn"
+    GO_TO_CART_BTN_EP = "EP:staff:changing_btn"
 
-    @comeback_to_catalog_il = "//button[@class='main-button']"
-    @comeback_to_catalog_ta = "staff:update_cart"
-    @comeback_to_catalog_ep = "EP:staff:update_cart"
-    super
-  end
+    DELETE_PRDER_IL = "//button[@class='cart__delete']"
+    DELETE_PRDER_TA = "staff:delete_order"
+    DELETE_PRDER_EP = "EP:staff:delete_order"
+
+    COMEBACK_TO_CATALOG_IL = "//button[@class='main-button']"
+    COMEBACK_TO_CATALOG_TA = "staff:update_cart"
+    COMEBACK_TO_CATALOG_EP = "EP:staff:update_cart"
 
   def click_humburg_menu(key = nil)
-    return find(:xpath, ta(@hamburger_menu_ep)).click  if key == :ep
-    return find(:xpath, ta(@hamburger_menu_il)).click  if key == :il
-    find(:xpath, ta(@hamburger_menu_ta, @hamburger_menu_il)).click
+    return find(:xpath, ta(HUMBURGER_MENU_EP)).click  if key == :ep
+    return find(:xpath, ta(HUMBURGER_MENU_IL)).click  if key == :il
+    find(:xpath, ta(HUMBURGER_MENU_TA, HUMBURGER_MENU_IL)).click
   end
 
   def click_men_category(key = nil)
-    return find(:xpath, ta(@men_category_ep)).click if key == :ep
-    return find(:xpath, ta(@men_category_il)).click if key == :il
-    find(:xpath, ta(@men_category_ta, @men_category_il)).click
+    return find(:xpath, ta(MEN_CATEGORY_EP)).click if key == :ep
+    return find(:xpath, ta(MEN_CATEGORY_IL)).click if key == :il
+    find(:xpath, ta(MEN_CATEGORY_TA, MEN_CATEGORY_IL)).click
   end
 
   def click_polo_tshirts(key = nil)
-    return find(:xpath, ta(@polo_tshirts_ep)).click if key == :ep
-    return find(:xpath, ta(@polo_tshirts_il)).click if key == :il
-    find(:xpath, ta(@polo_tshirts_ta, @polo_tshirts_il)).click
+    return find(:xpath, ta(POLO_TSHIRTS_EP)).click if key == :ep
+    return find(:xpath, ta(POLO_TSHIRTS_IL)).click if key == :il
+    find(:xpath, ta(POLO_TSHIRTS_TA, POLO_TSHIRTS_IL)).click
   end
 
   def click_to_choose_polo(key = nil)
-    return find(:xpath, ta(@choose_polo_ep)).click if key == :ep
-    return find(:xpath, ta(@choose_polo_il)).click if key == :il
-    find(:xpath, ta(@choose_polo_ta, @choose_polo_il)).click
+    return find(:xpath, ta(CHOOSE_POLO_EP)).click if key == :ep
+    return find(:xpath, ta(CHOOSE_POLO_IL)).click if key == :il
+    find(:xpath, ta(CHOOSE_POLO_TA, CHOOSE_POLO_IL)).click
   end
 
   def click_to_choose_size(key = nil)
-    return find(:xpath, ta(@choose_size_ep)).click if key == :ep
-    return find(:xpath, ta(@choose_size_il)).click if key == :il
-    find(:xpath, ta(@choose_size_ta, @choose_size_il)).click
+    return find(:xpath, ta(CHOOSE_SIZE_EP)).click if key == :ep
+    return find(:xpath, ta(CHOOSE_SIZE_IL)).click if key == :il
+    find(:xpath, ta(CHOOSE_SIZE_TA, CHOOSE_SIZE_IL)).click
   end
 
   def click_to_add_to_cart(key = nil)
-    return find(:xpath, ta(@add_to_cart_ep)).click if key == :ep
-    return find(:xpath, ta(@add_to_cart_il)).click if key == :il
-    find(:xpath, ta(@add_to_cart_ta, @add_to_cart_il)).click
+    return find(:xpath, ta(ADD_TO_CART_EP)).click if key == :ep
+    return find(:xpath, ta(ADD_TO_CART_IL)).click if key == :il
+    find(:xpath, ta(ADD_TO_CART_TA, ADD_TO_CART_IL)).click
   end
 
   def click_to_change_cart(key = nil)
-    return find(:xpath, ta(@go_to_cart_btn_ep)).click if key == :ep
-    return find(:xpath, ta(@go_to_cart_btn_il)).click if key == :il
-    find(:xpath, ta(@go_to_cart_btn_ta, @go_to_cart_btn_il)).click
+    return find(:xpath, ta(GO_TO_CART_BTN_EP)).click if key == :ep
+    return find(:xpath, ta(GO_TO_CART_BTN_IL)).click if key == :il
+    find(:xpath, ta(GO_TO_CART_BTN_TA, GO_TO_CART_BTN_IL)).click
   end
 
   def click_to_delete_order(key = nil)
-    return find(:xpath, ta(@delete_order_ep)).click if key == :ep
-    return find(:xpath, ta(@delete_order_il)).click if key == :il
-    find(:xpath, ta(@delete_order_ta, @delete_order_il)).click
+    return find(:xpath, ta(DELETE_PRDER_EP)).click if key == :ep
+    return find(:xpath, ta(DELETE_PRDER_IL)).click if key == :il
+    find(:xpath, ta(DELETE_PRDER_TA, DELETE_PRDER_IL)).click
   end
 
   def click_to_update_cart(key = nil)
-    return find(:xpath, ta(@comeback_to_catalog_ep)).click if key == :ep
-    return find(:xpath, ta(@comeback_to_catalog_il)).click if key == :il
-    find(:xpath, ta(@comeback_to_catalog_ta, @comeback_to_catalog_il)).click
+    return find(:xpath, ta(COMEBACK_TO_CATALOG_EP)).click if key == :ep
+    return find(:xpath, ta(COMEBACK_TO_CATALOG_IL)).click if key == :il
+    find(:xpath, ta(COMEBACK_TO_CATALOG_TA, COMEBACK_TO_CATALOG_IL)).click
   end
 
 end

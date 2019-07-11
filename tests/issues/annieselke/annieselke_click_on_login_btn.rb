@@ -1,7 +1,8 @@
 require 'spec_helper'
-require_relative '../../helpers/rs/special_methods'
-require_relative '../../pages/united_methods'
-require_relative '../../pages/annieselke.rb'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/annieselke'
+
 
 it = Annieselke.new
 
@@ -58,7 +59,6 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
       check_element_path :xpath, Annieselke::LOGIN_BTN_EP, Annieselke::LOGIN_BTN_IL
       it.login_btn :ep
     end
-
 
   end
 
