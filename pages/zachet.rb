@@ -1,22 +1,19 @@
-require 'capybara/rspec'
-require 'selenium-webdriver'
-require_relative 'united_methods'
+require 'spec_helper'
 
-module Zachet
+class Zachet
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
 
-  def initialize(*args)
-    @logotype_il = "//div[@class='logo top-menu']"
-    @logotype_ta = "zachet:logotype"
-    @logotype_ep = "EP:zachet:logotype"
-    super
-  end
+  ZACHET_LOGO_IL = "//div[@class='logo top-menu']"
+  ZACHET_LOGO_TA = "zachet:logotype"
+  ZACHET_LOGO_EP = "EP:zachet:logotype"
 
   def click_logotype(key = nil)
-    return find(:xpath, ta(@logotype_ep)).click if key == :ep
-    return find(:xpath, @logotype_il).click if key == :il
-    find(:xpath, ta(@logotype_ta, @logotype_il)).click
+    return find(:xpath, ta(ZACHET_LOGO_EP)).click if key == :ep
+    return find(:xpath, ZACHET_LOGO_IL).click if key == :il
+    find(:xpath, ta(ZACHET_LOGO_TA, ZACHET_LOGO_IL)).click
   end
-
 
 end
 

@@ -1,9 +1,9 @@
 require 'spec_helper'
-require_relative '../../pages/es/zachet.rb'
-require_relative '../../helpers/special_methods'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/zachet'
 
-include PathCheck
-include Zachet
+it = Zachet.new
 
 feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section' do
 
@@ -16,7 +16,7 @@ feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section'
     end
 
     step "User clicks on the logo" do
-      click_logotype
+      it.click_logotype
     end
 
     sleep 3
@@ -35,8 +35,8 @@ feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section'
     end
 
     step "User clicks on the logo" do
-      check_element_path @logotype_ta, @logotype_il
-      click_logotype
+      check_element_path :xpath, Zachet::ZACHET_LOGO_TA, Zachet::ZACHET_LOGO_IL
+      it.click_logotype
     end
 
     sleep 3
@@ -55,8 +55,8 @@ feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section'
     end
 
     step "User clicks on the logo" do
-      check_element_path @logotype_ep, @logotype_il
-      click_logotype :ep
+      check_element_path :xpath, Zachet::ZACHET_LOGO_EP, Zachet::ZACHET_LOGO_IL
+      it.click_logotype :ep
     end
 
     sleep 3
@@ -71,7 +71,7 @@ feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section'
     end
 
     step "User clicks on the logo" do
-      click_logotype
+      it.click_logotype
     end
 
     sleep 3
@@ -89,7 +89,7 @@ feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section'
     end
 
     step "User clicks on the logo" do
-      click_logotype
+      it.click_logotype
     end
 
     sleep 3

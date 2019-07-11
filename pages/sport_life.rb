@@ -1,31 +1,28 @@
-require 'capybara/rspec'
-require 'selenium-webdriver'
-require_relative 'united_methods'
+require 'spec_helper'
 
-module SportLife
+class SportLife
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
 
-  def initialize(*args)
-    @russian_lang_il = "//a[contains(.,'рус')]"
-    @ukraine_lang_il = "//a[contains(.,'укр')]"
+  RUSSIAN_LANG_IL = "//a[contains(.,'рус')]"
+  RUSSIAN_LANG_TA = "sport_life:rus_lang"
+  RUSSIAN_LANG_EP = "EP:sport_life:rus_lang"
 
-    @russian_lang_ep = "EP:sport_life:rus_lang"
-    @ukraine_lang_ep = "EP:sport_life:ukr_lang"
-
-    @russian_lang_ta = "sport_life:rus_lang"
-    @ukraine_lang_ta = "sport_life:ukr_lang"
-    super
-  end
+  UKRAINE_LANG_IL = "//a[contains(.,'укр')]"
+  UKRAINE_LANG_TA = "sport_life:ukr_lang"
+  UKRAINE_LANG_EP = "EP:sport_life:ukr_lang"
 
   def click_ukraine_lang(key = nil)
-    return find(:xpath, ta(@ukraine_lang_ep)).click if key == :ep
-    return find(:xpath, @ukraine_lang_il).click if key == :il
-    find(:xpath, ta(@ukraine_lang_ta, @ukraine_lang_il)).click
+    return find(:xpath, ta(UKRAINE_LANG_EP)).click if key == :ep
+    return find(:xpath, UKRAINE_LANG_IL).click if key == :il
+    find(:xpath, ta(UKRAINE_LANG_TA, UKRAINE_LANG_IL)).click
   end
 
   def click_russian_lang(key = nil)
-    return find(:xpath, ta(@russian_lang_ep)).click if key == :ep
-    return find(:xpath, @russian_lang_il).click if key == :il
-    find(:xpath, ta(@russian_lang_ta, @russian_lang_il)).click
+    return find(:xpath, ta(RUSSIAN_LANG_EP)).click if key == :ep
+    return find(:xpath, RUSSIAN_LANG_IL).click if key == :il
+    find(:xpath, ta(RUSSIAN_LANG_TA, RUSSIAN_LANG_IL)).click
   end
 
 end

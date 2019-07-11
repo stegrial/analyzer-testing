@@ -1,9 +1,9 @@
 require 'spec_helper'
-require_relative '../../pages/es/sport_life.rb'
-require_relative '../../helpers/special_methods'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/sport_life'
 
-include PathCheck
-include SportLife
+it = SportLife.new
 
 feature 'TA-908 Analyzer returns not found element in the languages section' do
 
@@ -16,13 +16,13 @@ feature 'TA-908 Analyzer returns not found element in the languages section' do
     end
 
     step "User clicks on the ukraine language" do
-      check_element_path @ukraine_lang_ep, @ukraine_lang_il
-      click_ukraine_lang :ep
+      check_element_path :xpath, SportLife::UKRAINE_LANG_EP, SportLife::UKRAINE_LANG_IL
+      it.click_ukraine_lang :ep
     end
 
     step "User clicks on the russian language" do
-      check_element_path @russian_lang_ep, @russian_lang_il
-      click_russian_lang :ep
+      check_element_path :xpath, SportLife::RUSSIAN_LANG_EP, SportLife::RUSSIAN_LANG_IL
+      it.click_russian_lang :ep
     end
 
     sleep 3
@@ -37,11 +37,11 @@ feature 'TA-908 Analyzer returns not found element in the languages section' do
     end
 
     step "User clicks on the ukraine language" do
-      click_ukraine_lang :il
+      it.click_ukraine_lang :il
     end
 
     step "User clicks on the russian language" do
-      click_russian_lang :ep
+      it.click_russian_lang :ep
     end
 
     sleep 3

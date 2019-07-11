@@ -1,50 +1,48 @@
-require 'capybara/rspec'
-require 'selenium-webdriver'
-require_relative 'united_methods'
+require 'spec_helper'
 
-module Favorit
+class Favorit
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
 
-  def initialize(*args)
-    @sign_in_button_il = "//button[@class='but-blue-1 loginpagecl']"
-    @sign_in_button_ta = "favorit:sign_in_button"
-    @sign_in_button_ep = "EP:favorit:sign_in_button"
+  SING_IN_BUTTON_IL = "//button[@class='but-blue-1 loginpagecl']"
+  SING_IN_BUTTON_TA = "favorit:sign_in_button"
+  SING_IN_BUTTON_EP = "EP:favorit:sign_in_button"
 
-    @pass_il = "//input[@id='password']"
+  PASS_IL = "//input[@id='password']"
 
-    @pass_without_show_pass_ta = "favorit:pass_without_show_pass"
-    @pass_without_show_pass_ep = "EP:favorit:pass_without_show_pass"
+  PASS_WITHOUT_SHOW_PASS_TA = "favorit:pass_without_show_pass"
+  PASS_WITHOUT_SHOW_PASS_EP = "EP:favorit:pass_without_show_pass"
 
-    @pass_with_show_pass_ta = "favorit:pass_with_show_pass"
-    @pass_with_show_pass_ep = "EP:favorit:pass_with_show_pass"
+  PASS_WITH_SHOW_PASS_TA = "favorit:pass_with_show_pass"
+  PASS_WITH_SHOW_PASS_EP = "EP:favorit:pass_with_show_pass"
 
-    @show_pass_button_il = "//button[@class='show_password']"
-    @show_pass_button_ta = "favorit:show_pass_button"
-    @show_pass_button_ep = "EP:favorit:show_pass_button"
-    super
-  end
+  SHOW_PASS_BUTTON_IL = "//button[@class='show_password']"
+  SHOW_PASS_BUTTON_TA = "favorit:show_pass_button"
+  SHOW_PASS_BUTTON_EP = "EP:favorit:show_pass_button"
 
   def click_sing_in_button(key = nil)
-    return find(:xpath, ta(@sign_in_button_ep)).click if key == :ep
-    return find(:xpath, @sign_in_button_il).click if key == :il
-    find(:xpath, ta(@sign_in_button_ta, @sign_in_button_il)).click
+    return find(:xpath, ta(SING_IN_BUTTON_EP)).click if key == :ep
+    return find(:xpath, SING_IN_BUTTON_IL).click if key == :il
+    find(:xpath, ta(SING_IN_BUTTON_TA, SING_IN_BUTTON_IL)).click
   end
 
-  def set_pass_with_show_pass(pass, key = nil)
-    return find(:xpath, ta(@pass_with_show_pass_ep)).set(pass) if key == :ep
-    return find(:xpath, @pass_il).set(pass) if key == :il
-    find(:id, ta(@pass_with_show_pass_ta, @pass_il)).set(pass)
+  def set_pass_with_show_pass(key = nil, pass)
+    return find(:xpath, ta(PASS_WITH_SHOW_PASS_EP)).set(pass) if key == :ep
+    return find(:xpath, PASS_IL).set(pass) if key == :il
+    find(:xpath, ta(PASS_WITH_SHOW_PASS_TA, PASS_IL)).set(pass)
   end
 
-  def set_pass_without_show_pass(pass, key = nil)
-    return find(:xpath, ta(@pass_without_show_pass_ep)).set(pass) if key == :ep
-    return find(:xpath, @pass_il).set(pass) if key == :il
-    find(:id, ta(@pass_without_show_pass_ta, @pass_il)).set(pass)
+  def set_pass_without_show_pass(key = nil, pass)
+    return find(:xpath, ta(PASS_WITHOUT_SHOW_PASS_EP)).set(pass) if key == :ep
+    return find(:xpath, PASS_IL).set(pass) if key == :il
+    find(:xpath, ta(PASS_WITHOUT_SHOW_PASS_TA, PASS_IL)).set(pass)
   end
 
   def click_show_pass_button(key = nil)
-    return find(:xpath, ta(@show_pass_button_ep)).click if key == :ep
-    return find(:xpath, @show_pass_button_il).click if key == :il
-    find(:xpath, ta(@show_pass_button_ta, @show_pass_button_il)).click
+    return find(:xpath, ta(SHOW_PASS_BUTTON_EP)).click if key == :ep
+    return find(:xpath, SHOW_PASS_BUTTON_IL).click if key == :il
+    find(:xpath, ta(SHOW_PASS_BUTTON_TA, SHOW_PASS_BUTTON_IL)).click
   end
 
 end
