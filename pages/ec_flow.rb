@@ -2,6 +2,10 @@ require 'spec_helper'
 
 class Ecflow
 
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
+
   LOGIN_IL = "//input[@id='username']"
   LOGIN_TA = "ec_flow:login"
   LOGIN_EP = "EP:ec_flow:login"
@@ -27,13 +31,13 @@ class Ecflow
   CHOOSE_PIPELINE_EP = "EP:ec_flow:choose_pipeline"
 
 
-  def set_login(login, key = nil)
+  def set_login(key = nil,login)
     return find(:xpath, ta(LOGIN_EP)).set(login) if key ==:ep
     return find(:xpath, ta(LOGIN_IL)).set(login) if key ==:il
     find(:xpath, ta(LOGIN_TA, LOGIN_IL)).set(login)
   end
 
-  def set_password(pass, key = nil)
+  def set_password(key = nil,pass)
     return find(:xpath, ta(PASSWORD_EP)).set(pass) if key ==:ep
     return find(:xpath, ta(PASSWORD_IL)).set(pass) if key ==:il
     find(:xpath, ta(PASSWORD_TA, PASSWORD_IL)).set(pass)
