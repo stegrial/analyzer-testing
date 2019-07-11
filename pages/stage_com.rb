@@ -1,149 +1,150 @@
-require 'capybara/rspec'
-require 'selenium-webdriver'
+require 'spec_helper'
 
-module StageCom
+class Stagecom
 
-  def initialize(*args)
-    @humburger_menu_il = "//button[@id='nav-button']"
-    @humburger_menu_ta = "stage_com:humburger_menu"
-    @humburger_menu_ep = "EP:stage_com:humburger_menu"
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
 
-    @signin_link_il = "//p[@class='m-menu__account__links']/a[text()='Sign in']"
-    @signin_link_ta = "stage_com:signin_link"
-    @signin_link_ep = "EP:stage_com:signin_link"
+  HUMBURGER_MENU_IL = "//button[@id='nav-button']"
+  HUMBURGER_MENU_TA = "stage_com:humburger_menu"
+  HUMBURGER_MENU_EP = "EP:stage_com:humburger_menu"
 
-    @account_email_il = "//input[@id='email']"
-    @account_email_ta = "stage_com:email"
-    @account_email_ep = "EP:stage_com:email"
+  SIGNIN_LINK_IL = "//p[@class='m-menu__account__links']/a[text()='Sign in']"
+  SIGNIN_LINK_TA = "stage_com:signin_link"
+  SIGNIN_LINK_EP = "EP:stage_com:signin_link"
 
-    @pass_il = "//input[@id='password']"
-    @pass_ta = "stage_com:pass"
-    @pass_ep = "EP:stage_com:pass"
+  ACCOUNT_EMAIL_IL = "//input[@id='email']"
+  ACCOUNT_EMAIL_TA = "stage_com:email"
+  ACCOUNT_EMAIL_EP = "EP:stage_com:email"
 
-    @signin_btn_il = "//input[@value='sign in']"
-    @signin_btn_ta = "stage_com:sigin_btn"
-    @signin_btn_ep = "EP:stage_com:sigin_btn"
+  PASS_IL = "//input[@id='password']"
+  PASS_TA = "stage_com:pass"
+  PASS_EP = "EP:stage_com:pass"
 
-    @logo_il = "//a[@class='m-header__logo']"
-    @logo_ta = "stage_com:logo"
-    @logo_ep = "EP:stage_com:logo"
+  SIGNIN_BTN_IL = "//input[@value='sign in']"
+  SIGNIN_BTN_TA = "stage_com:sigin_btn"
+  SIGNIN_BTN_EP = "EP:stage_com:sigin_btn"
 
-    @minicart_il = "//a[@class='m-header__minicart m-header__miniCartInnerContent']"
-    @minicart_ta = "stage_com:minicart"
-    @minicart_ep = "EP:stage_com:minicart"
+  LOGO_IL = "//a[@class='m-header__logo']"
+  LOGO_TA = "stage_com:logo"
+  LOGO_EP = "EP:stage_com:logo"
 
-    @category_kids_il = "//ul/a[@data-menu-id='Kids']"
-    @category_kids_ta = "stage_com:category_kids"
-    @category_kids_ep = "EP:stage_com:category_kids"
+  MINICART_IL = "//a[@class='m-header__minicart m-header__miniCartInnerContent']"
+  MINICART_TA = "stage_com:minicart"
+  MINICART_EP = "EP:stage_com:minicart"
 
-    @subcategory_baby_il = "(//a[text()='Baby'])[1]"
-    @subcategory_baby_ta = "stage_com:subcategory_baby"
-    @subcategory_baby_ep = "EP:stage_com:subcategory_baby"
+  CATEGORY_KIDS_IL = "//ul/a[@data-menu-id='Kids']"
+  CATEGORY_KIDS_TA = "stage_com:category_kids"
+  CATEGORY_KIDS_EP = "EP:stage_com:category_kids"
 
-    @subcategory_babygirl_il = "(//a[text()='Baby Girl (0-24 months)'])[1]"
-    @subcategory_babygirl_ta = "stage_com:subcategory_babygirl"
-    @subcategory_babygirl_ep = "EP:stage_com:subcategory_babygirl"
+  SUBCATEGORY_BABY_IL = "(//a[text()='Baby'])[1]"
+  SUBCATEGORY_BABY_TA = "stage_com:subcategory_baby"
+  SUBCATEGORY_BABY_EP = "EP:stage_com:subcategory_baby"
 
-    @girl_dress_il = "//h2[text()='Dresses']"
-    @girl_dress_ta = "stage_com:girl_dress"
-    @girl_dress_ep = "EP:stage_com:girl_dress"
+  SUBCATEGORY_BABYGIRL_IL = "(//a[text()='Baby Girl (0-24 months)'])[1]"
+  SUBCATEGORY_BABYGIRL_TA = "stage_com:subcategory_babygirl"
+  SUBCATEGORY_BABYGIRL_EP = "EP:stage_com:subcategory_babygirl"
 
-    @pink_dress_il = "(//a[@class='product-image'])[1]"
-    @pink_dress_ta = "stage_com:pink_dress"
-    @pink_dress_ep = "EP:stage_com:pink_dress"
+  GIRL_DRESS_IL = "//h2[text()='Dresses']"
+  GIRL_DRESS_TA = "stage_com:girl_dress"
+  GIRL_DRESS_EP = "EP:stage_com:girl_dress"
 
-    @baby_size_il = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
-    @baby_size_ta = "stage_com:baby_size"
-    @baby_size_ep = "EP:stage_com:baby_size"
+  PINK_DRESS_IL = "(//a[@class='product-image'])[1]"
+  PINK_DRESS_TA = "stage_com:pink_dress"
+  PINK_DRESS_EP = "EP:stage_com:pink_dress"
 
-    @add_to_cart_il = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
-    @add_to_cart_ta = "stage_com:add_to_cart"
-    @add_to_cart_ep = "EP:stage_com:add_to_cart"
-    super
-  end
+  BABY_SIZE_IL = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
+  BABY_SIZE_TA = "stage_com:baby_size"
+  BABY_SIZE_EP = "EP:stage_com:baby_size"
+
+  ADD_TO_CART_IL = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
+  ADD_TO_CART_TA = "stage_com:add_to_cart"
+  ADD_TO_CART_EP = "EP:stage_com:add_to_cart"
+
 
   def click_humburger_menu(key = nil)
-    return find(:xpath, ta(@humburger_menu_ta)).click if key == :ep
-    return find(:xpath, ta(@humburger_menu_il)).click if key == :il
-    find(:xpath, ta(@humburger_menu_ta, @humburger_menu_il)).click
+    return find(:xpath, ta(HUMBURGER_MENU_EP)).click if key == :ep
+    return find(:xpath, ta(HUMBURGER_MENU_IL)).click if key == :il
+    find(:xpath, ta(HUMBURGER_MENU_TA, HUMBURGER_MENU_IL)).click
   end
 
   def click_signin_link(key = nil)
-    return find(:xpath, ta(@signin_link_ep)).click if key == :ep
-    return find(:xpath, ta(@signin_link_il)).click if key == :il
-    find(:xpath, ta(@signin_link_ta, @signin_link_il)).click
+    return find(:xpath, ta(SIGNIN_LINK_EP)).click if key == :ep
+    return find(:xpath, ta(SIGNIN_LINK_IL)).click if key == :il
+    find(:xpath, ta(SIGNIN_LINK_TA, SIGNIN_LINK_IL)).click
   end
 
   def click_account_email(email, key = nil)
-    return find(:xpath, ta(@account_email_ep)).click if key == :ep
-    return find(:xpath, ta(@account_email_il)).click if key == :il
-    find(:xpath, ta(@account_email_ta, @account_email_il)).set(email)
+    return find(:xpath, ta(ACCOUNT_EMAIL_EP)).click if key == :ep
+    return find(:xpath, ta(ACCOUNT_EMAIL_IL)).click if key == :il
+    find(:xpath, ta(ACCOUNT_EMAIL_TA, ACCOUNT_EMAIL_IL)).set(email)
   end
 
   def click_pass (pass, key = nil)
-    return find(:xpath, ta(@pass_ep)).set(pass) if key == :ep
-    return find(:xpath, ta(@pass_il)).set(pass) if key == :il
-    find(:xpath, ta(@pass_ta, @pass_il)).set(pass)
+    return find(:xpath, ta(PASS_EP)).set(pass) if key == :ep
+    return find(:xpath, ta(PASS_IL)).set(pass) if key == :il
+    find(:xpath, ta(PASS_TA, PASS_IL)).set(pass)
   end
 
   def click_signin_btn(key = nil)
-    return find(:xpath, ta(@signin_btn_ep)).click if key == :ep
-    return find(:xpath, ta(@signin_btn_il)).click if key == :il
-    find(:xpath, ta(@signin_btn_ta, @signin_btn_il)).click
+    return find(:xpath, ta(SIGNIN_BTN_EP)).click if key == :ep
+    return find(:xpath, ta(SIGNIN_BTN_IL)).click if key == :il
+    find(:xpath, ta(SIGNIN_BTN_TA, SIGNIN_BTN_IL)).click
   end
 
   def click_logo(key = nil)
-    return find(:xpath, ta(@logo_ep)).click if key == :ep
-    return find(:xpath, ta(@logo_il)).click if key == :il
-    find(:xpath, ta(@logo_ta, @logo_il)).click
+    return find(:xpath, ta(LOGO_EP)).click if key == :ep
+    return find(:xpath, ta(LOGO_IL)).click if key == :il
+    find(:xpath, ta(LOGO_TA, LOGO_IL)).click
   end
 
   def click_minicart(key = nil)
-    return find(:xpath, ta(@minicart_ep)).click if key == :ep
-    return find(:xpath, ta(@minicart_il)).click if key == :il
-    find(:xpath, ta(@minicart_ta, @minicart_il)).click
+    return find(:xpath, ta(MINICART_EP)).click if key == :ep
+    return find(:xpath, ta(MINICART_IL)).click if key == :il
+    find(:xpath, ta(MINICART_TA, MINICART_IL)).click
   end
 
   def click_category_kids(key = nil)
-    return find(:xpath, ta(@category_kids_ep)).click if key == :ep
-    return find(:xpath, ta(@category_kids_il)).click if key == :il
-    find(:xpath, ta(@category_kids_еф, @category_kids_il)).click
+    return find(:xpath, ta(CATEGORY_KIDS_EP)).click if key == :ep
+    return find(:xpath, ta(CATEGORY_KIDS_IL)).click if key == :il
+    find(:xpath, ta(CATEGORY_KIDS_TA, CATEGORY_KIDS_IL)).click
   end
 
   def click_subcategory_baby(key = nil)
-    return find(:xpath, ta(@subcategory_baby_ep)).click if key == :ep
-    return find(:xpath, ta(@subcategory_baby_il)).click if key == :il
-    find(:xpath, ta(@subcategory_baby_ta, @subcategory_baby_il)).click
+    return find(:xpath, ta(SUBCATEGORY_BABY_EP)).click if key == :ep
+    return find(:xpath, ta(SUBCATEGORY_BABY_IL)).click if key == :il
+    find(:xpath, ta(SUBCATEGORY_BABY_TA, SUBCATEGORY_BABY_IL)).click
   end
 
   def click_subcategory_babygirl(key = nil)
-    return find(:xpath, ta(@subcategory_babygirl_ep)).click if key == :ep
-    return find(:xpath, ta(@subcategory_babygirl_il)).click if key == :il
-    find(:xpath, ta(@subcategory_babygirl_ta, @subcategory_babygirl_il)).click
+    return find(:xpath, ta(SUBCATEGORY_BABYGIRL_EP)).click if key == :ep
+    return find(:xpath, ta(SUBCATEGORY_BABYGIRL_IL)).click if key == :il
+    find(:xpath, ta(SUBCATEGORY_BABYGIRL_TA, SUBCATEGORY_BABYGIRL_IL)).click
   end
 
   def click_girl_dress(key = nil)
-    return find(:xpath, ta(@girl_dress_ep)).click if key == :ep
-    return find(:xpath, ta(@girl_dress_il)).click if key == :il
-    find(:xpath, ta(@girl_dress_ta, @girl_dress_il)).click
+    return find(:xpath, ta(GIRL_DRESS_EP)).click if key == :ep
+    return find(:xpath, ta(GIRL_DRESS_IL)).click if key == :il
+    find(:xpath, ta(GIRL_DRESS_TA, GIRL_DRESS_IL)).click
   end
 
   def click_pink_dress(key = nil)
-    return find(:xpath, ta(@pink_dress_ep)).click if key == :ep
-    return find(:xpath, ta(@pink_dress_il)).click if key == :il
-    find(:xpath, ta(@pink_dress_ta, @pink_dress_il)).click
+    return find(:xpath, ta(PINK_DRESS_EP)).click if key == :ep
+    return find(:xpath, ta(PINK_DRESS_IL)).click if key == :il
+    find(:xpath, ta(PINK_DRESS_TA, PINK_DRESS_IL)).click
   end
 
   def click_baby_size(key = nil)
-    return find(:xpath, ta(@baby_size_ep)).click if key == :ep
-    return find(:xpath, ta(@baby_size_il)).click if key == :il
-    find(:xpath, ta(@baby_size_ta, @baby_size_il)).click
+    return find(:xpath, ta(BABY_SIZE_EP)).click if key == :ep
+    return find(:xpath, ta(BABY_SIZE_IL)).click if key == :il
+    find(:xpath, ta(BABY_SIZE_TA, BABY_SIZE_IL)).click
   end
 
   def click_add_to_cart(key = nil)
-    return find(:xpath, ta(@add_to_cart_ep)).click if key == :ep
-    return find(:xpath, ta(@add_to_cart_il)).click if key == :il
-    find(:xpath, ta(@add_to_cart_ta, @add_to_cart_il)).click
+    return find(:xpath, ta(ADD_TO_CART_EP)).click if key == :ep
+    return find(:xpath, ta(ADD_TO_CART_IL)).click if key == :il
+    find(:xpath, ta(ADD_TO_CART_TA, ADD_TO_CART_IL)).click
   end
 
   def close_modal

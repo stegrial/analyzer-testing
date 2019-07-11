@@ -3,6 +3,10 @@ require_relative '../../helpers/rs/special_methods'
 require_relative '../../pages/united_methods'
 require_relative '../../pages/stage_com'
 
+it = Stagecom.new
+
+# This tests runs when the vpn is ON
+
 describe 'Preconditions' do
 
   before(:all) do
@@ -13,7 +17,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature '' do
+  feature 'Stagecom - adding item to sart' do
 
   # Initial locators with Recording
 
@@ -27,35 +31,35 @@ describe 'Preconditions' do
       close_modal
 
       step "User clicks on humburger menu" do
-        click_humburger_menu
+        it.click_humburger_menu
       end
 
       step "User clicks to select category Kids" do
-        click_category_kids
+        it.click_category_kids
       end
 
       step "# User clicks to" do
-        click_subcategory_baby
+        it.click_subcategory_baby
       end
 
       step "# User clicks to" do
-        click_subcategory_babygirl
+        it.click_subcategory_babygirl
       end
 
       step "# User clicks to" do
-        click_girl_dress
+        it.click_girl_dress
       end
 
       step "# User clicks to" do
-        click_pink_dress
+        it.click_pink_dress
       end
 
       step "# User clicks to" do
-        click_baby_size
+        it.click_baby_size
       end
 
       step "# User clicks to" do
-        click_add_to_cart
+        it.click_add_to_cart
       end
 
     end
@@ -70,43 +74,43 @@ describe 'Preconditions' do
       close_modal
 
       step "User clicks on humburger menu" do
-        check_element_path @humburger_menu_ta, @humburger_menu_il
-        click_humburger_menu
+        check_element_path :xpath, Stagecom::HUMBURGER_MENU_TA, Stagecom::HUMBURGER_MENU_IL
+        it.click_humburger_menu
       end
 
       step "User clicks to select category Kids" do
-        check_element_path @category_kids_ta, @category_kids_il
-        click_category_kids
+        check_element_path :xpath, Stagecom::CATEGORY_KIDS_TA, Stagecom::CATEGORY_KIDS_IL
+        it.click_category_kids
       end
 
       step "# User clicks to" do
-        check_element_path @subcategory_baby_ta, @subcategory_baby_il
-        click_subcategory_baby
+        check_element_path :xpath, Stagecom::SUBCATEGORY_BABY_TA,Stagecom::SUBCATEGORY_BABY_IL
+        it.click_subcategory_baby
       end
 
       step "# User clicks to" do
-        check_element_path @subcategory_babygirl_ta, @subcategory_babygirl_il
-        click_subcategory_babygirl
+        check_element_path :xpath, Stagecom::SUBCATEGORY_BABYGIRL_TA, Stagecom::SUBCATEGORY_BABYGIRL_IL
+        it.click_subcategory_babygirl
       end
 
       step "# User clicks to" do
-        check_element_path @girl_dress_ta, @girl_dress_il
-        click_girl_dress
+        check_element_path :xpath, Stagecom::GIRL_DRESS_TA, Stagecom::GIRL_DRESS_IL
+        it.click_girl_dress
       end
 
       step "# User clicks to" do
-        check_element_path @pink_dress_ta, @pink_dress_il
-        click_pink_dress
+        check_element_path :xpath, Stagecom::PINK_DRESS_TA, Stagecom::PINK_DRESS_IL
+        it.click_pink_dress
       end
 
       step "# User clicks to" do
-        check_element_path @baby_size_ta, @baby_size_il
-        click_baby_size
+        check_element_path :xpath, Stagecom::BABY_SIZE_TA, Stagecom::BABY_SIZE_IL
+        it.click_baby_size
       end
 
       step "# User clicks to" do
-        check_element_path @add_to_cart_ta, @add_to_cart_il
-        click_add_to_cart
+        check_element_path :xpath, Stagecom::ADD_TO_CART_TA, Stagecom::ADD_TO_CART_IL
+        it.click_add_to_cart
       end
 
     end
@@ -123,45 +127,44 @@ describe 'Preconditions' do
       close_modal
 
       step "User clicks on humburger menu" do
-        check_element_path @humburger_menu_ep, @humburger_menu_il
-        click_humburger_menu :ep
+        check_element_path :xpath, Stagecom::HUMBURGER_MENU_EP, Stagecom::HUMBURGER_MENU_IL
+        it.click_humburger_menu :ep
       end
 
-      step "User clicks on signin link" do
-        check_element_path @signin_link_ep, @signin_link_il
-        click_signin_link :ep
-      end
-      close_modal
-
-      step "User set  account email" , settings('stage_com')['email'] do |email|
-        check_element_path @account_email_ep, @account_email_il
-        click_account_email email, :ep
-      end
-      # User clicks on close button for close modal
-
-      step "User set paass ", settings('stage_com')['pass'] do |password|
-        check_element_path @pass_ep, @pass_il
-        click_pass password, :ep
+      step "User clicks to select category Kids" do
+        check_element_path :xpath, Stagecom::CATEGORY_KIDS_EP, Stagecom::CATEGORY_KIDS_IL
+        it.click_category_kids :ep
       end
 
-      step "User clicks on signin btn" do
-        check_element_path @signin_btn_ep, @signin_btn_il
-        click_signin_btn :ep
+      step "# User clicks to" do
+        check_element_path :xpath, Stagecom::SUBCATEGORY_BABY_EP, Stagecom::SUBCATEGORY_BABY_IL
+        it.click_subcategory_baby :ep
       end
 
-      # User clicks on close button for close modal
-      close_modal_rewards
-
-      step "User clicks on logo" do
-        check_element_path @logo_ep, @logo_il
-        click_logo :ep
+      step "# User clicks to" do
+        check_element_path :xpath, Stagecom::SUBCATEGORY_BABYGIRL_EP, Stagecom::SUBCATEGORY_BABYGIRL_IL
+        it.click_subcategory_babygirl :ep
       end
-      step "User clicks on minicart" do
-        check_element_path @minicart_ep, @minicart_il
-        click_minicart :ep
-      end
-      sleep 5
 
+      step "# User clicks to" do
+        check_element_path :xpath, Stagecom::GIRL_DRESS_EP, Stagecom::GIRL_DRESS_IL
+        it.click_girl_dress :ep
+      end
+
+      step "# User clicks to" do
+        check_element_path :xpath, Stagecom::PINK_DRESS_EP, Stagecom::PINK_DRESS_IL
+        it.click_pink_dress :ep
+      end
+
+      step "# User clicks to" do
+        check_element_path :xpath, Stagecom::BABY_SIZE_EP, Stagecom::BABY_SIZE_IL
+        it.click_baby_size :ep
+      end
+
+      step "# User clicks to" do
+        check_element_path :xpath, Stagecom::ADD_TO_CART_EP, Stagecom::ADD_TO_CART_IL
+        it.click_add_to_cart :ep
+      end
     end
 
   end

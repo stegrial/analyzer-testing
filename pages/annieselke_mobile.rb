@@ -1,102 +1,99 @@
 require 'spec_helper'
 
-class AnnieSelkeMobile
+class AnnieselkeMobile
 
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
 
-  def initialize(*args)
-    @login_btn_il = "(//a[text()='Login'])[1]"
-    @login_btn_ta = "annieselke_mobile:login_btn"
-    @login_btn_ep = "EP:annieselke_mobile:login_btn"
+  LOGIN_BTN_IL = "(//a[text()='Login'])[1]"
+  LOGIN_BTN_TA = "annieselke_mobile:login_btn"
+  LOGIN_BTN_EP = "EP:annieselke_mobile:login_btn"
 
-    @email_il = "//input[@id='j_username']"
-    @email_ta = "annieselke_mobile:email"
-    @email_ep = "EP:annieselke_mobile:email"
+  EMAIL_IL = "//input[@id='j_username']"
+  EMAIL_TA = "annieselke_mobile:email"
+  EMAIL_EP = "EP:annieselke_mobile:email"
 
-    @pass_il = "//input[@id='j_password']"
-    @pass_ta = "annieselke_mobile:pass"
-    @pass_ep = "EP:annieselke_mobile:pass"
+  PASS_IL = "//input[@id='j_password']"
+  PASS_TA = "annieselke_mobile:pass"
+  PASS_EP = "EP:annieselke_mobile:pass"
 
-    @login_il = "(//button[@class='primary'])[1]"
-    @login_ta = "annieselke_mobile:register"
-    @login_ep = "EP:annieselke_mobile:register"
+  LOGIN_IL = "(//button[@class='primary'])[1]"
+  LOGIN_TA = "annieselke_mobile:register"
+  LOGIN_EP = "EP:annieselke_mobile:register"
 
-    @humburger_menu_il = "//button[@aria-label='Menu']"
-    @humburger_menu_ta = "annieselke_mobile:humburger_menu"
-    @humburger_menu_ep = "EP:annieselke_mobile:humburger_menu"
+  HUMBURGER_MENU_IL = "//button[@aria-label='Menu']"
+  HUMBURGER_MENU_TA = "annieselke_mobile:humburger_menu"
+  HUMBURGER_MENU_EP = "EP:annieselke_mobile:humburger_menu"
 
-    @my_account_il = "//a[text()='My Account']"
-    @my_account_ta = "annieselke_mobile:my_account"
-    @my_account_ep = "EP:annieselke_mobile:my_account"
+  MY_ACCOUNT_IL = "//a[text()='My Account']"
+  MY_ACCOUNT_TA = "annieselke_mobile:my_account"
+  MY_ACCOUNT_EP = "EP:annieselke_mobile:my_account"
 
-    @personal_deteils_il = "//a[text()='Update personal details']"
-    @personal_deteils_ta = "annieselke_mobile:personal_details"
-    @personal_deteils_ep = "EP:annieselke_mobile:personal_details"
+  PERSONAL_DETEILS_IL = "//a[text()='Update personal details']"
+  PERSONAL_DETEILS_TA = "annieselke_mobile:personal_details"
+  PERSONAL_DETEILS_EP = "EP:annieselke_mobile:personal_details"
 
-    @gender_il = "//select[@id='profile.title']"
-    @gender_ta = "annieselke_mobile:gender"
-    @gender_ep = "EP:annieselke_mobile:gender"
+  GENDER_IL = "//select[@id='profile.title']"
+  GENDER_TA = "annieselke_mobile:gender"
+  GENDER_EP = "EP:annieselke_mobile:gender"
 
-    @save_btn_il = "//button[text()='Save Updates']"
-    @save_btn_ta = "annieselke_mobile:save_btn"
-    @save_btn_ep = "EP:annieselke_mobile:save_btn"
-    super
-  end
+  SAVE_BTN_IL = "//button[text()='Save Updates']"
+  SAVE_BTN_TA = "annieselke_mobile:save_btn"
+  SAVE_BTN_EP = "EP:annieselke_mobile:save_btn"
 
   def login_btn(key = nil)
-    return find(:xpath, ta(@login_btn_ep)).click if  key ==:ep
-    return find(:xpath, ta(@login_btn_il)).click if  key ==:il
-    find(:xpath, ta(@login_btn_ta, @login_btn_il)).click
+    return find(:xpath, ta(LOGIN_BTN_EP)).click if  key ==:ep
+    return find(:xpath, ta(LOGIN_BTN_IL)).click if  key ==:il
+    find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click
   end
 
   def set_email(key = nil)
-    return find(:xpath, ta(@email_ep)).set("julia.arapova@softesis.com") if key ==:ep
-    return find(:xpath, ta(@email_il)).set("julia.arapova@softesis.com") if key ==:il
-    find(:xpath, ta(@email_ta, @email_il)).set("julia.arapova@softesis.com")
+    return find(:xpath, ta(EMAIL_EP)).set("julia.arapova@softesis.com") if key ==:ep
+    return find(:xpath, ta(EMAIL_IL)).set("julia.arapova@softesis.com") if key ==:il
+    find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set("julia.arapova@softesis.com")
   end
 
   def set_pass(key = nil)
-    return find(:xpath, ta(@pass_ep)).set("1234tesT") if key ==:ep
-    return find(:xpath, ta(@pass_il)).set("1234tesT") if key ==:il
-    find(:xpath, ta(@pass_ta, @pass_il)).set("1234tesT")
+    return find(:xpath, ta(PASS_EP)).set("1234tesT") if key ==:ep
+    return find(:xpath, ta(PASS_IL)).set("1234tesT") if key ==:il
+    find(:xpath, ta(PASS_TA, PASS_IL)).set("1234tesT")
   end
 
   def click_login_btn(key = nil)
-    return find(:xpath, ta(@login_ep)).click if key ==:ep
-    return find(:xpath, ta(@login_il)).click if key ==:il
-    find(:xpath, ta(@login_ta, @login_il)).click
+    return find(:xpath, ta(LOGIN_EP)).click if key ==:ep
+    return find(:xpath, ta(LOGIN_IL)).click if key ==:il
+    find(:xpath, ta(LOGIN_TA, LOGIN_IL)).click
   end
 
   def click_humburger_menu(key = nil)
-    return find(:xpath, ta(@humburger_menu_ep)).click if key ==:ep
-    return find(:xpath, ta(@humburger_menu_il)).click if key ==:il
-    find(:xpath, ta(@humburger_menu_ta, @humburger_menu_il)).click
+    return find(:xpath, ta(HUMBURGER_MENU_EP)).click if key ==:ep
+    return find(:xpath, ta(HUMBURGER_MENU_IL)).click if key ==:il
+    find(:xpath, ta(HUMBURGER_MENU_TA, HUMBURGER_MENU_IL)).click
   end
 
   def click_my_acc_btn(key = nil)
-    return find(:xpath, ta(@myAccount_ep)).click if key ==:ep
-    return find(:xpath, ta(@myAccount_il)).click if key ==:il
-    find(:xpath, ta(@myAccount_ta, @myAccount_il)).click
+    return find(:xpath, ta(MY_ACCOUNT_EP)).click if key ==:ep
+    return find(:xpath, ta(MY_ACCOUNT_IL)).click if key ==:il
+    find(:xpath, ta(MY_ACCOUNT_TA, MY_ACCOUNT_IL)).click
   end
 
   def click_personal_info_btn(key = nil)
-    return find(:xpath, ta(@personal_deteils_ep)).click if key ==:ep
-    return find(:xpath, ta(@personal_deteils_il)).click if key ==:il
-    find(:xpath, ta(@personal_deteils_ta, @personal_deteils_il)).click
+    return find(:xpath, ta(PERSONAL_DETEILS_EP)).click if key ==:ep
+    return find(:xpath, ta(PERSONAL_DETEILS_IL)).click if key ==:il
+    find(:xpath, ta(PERSONAL_DETEILS_TA, PERSONAL_DETEILS_IL)).click
   end
 
   def select_gender(key = nil)
-    return find(:xpath, ta(@gender_ep)).select('Ms') if key ==:ep
-    return find(:xpath, ta(@gender_il)).select('Ms') if key ==:il
-    find(:xpath, ta(@gender_ta, @gender_il)).select('Ms')
+    return find(:xpath, ta(GENDER_EP)).select('Ms') if key ==:ep
+    return find(:xpath, ta(GENDER_IL)).select('Ms') if key ==:il
+    find(:xpath, ta(GENDER_TA, GENDER_IL)).select('Ms')
   end
 
   def click_save_btn(key = nil)
-    return find(:xpath, ta(@save_btn_ep)).click if key ==:ep
-    return find(:xpath, ta(@save_btn_il)).click if key ==:il
-    find(:xpath, ta(@save_btn_ta, @save_btn_il)).click
+    return find(:xpath, ta(SAVE_BTN_EP)).click if key ==:ep
+    return find(:xpath, ta(SAVE_BTN_IL)).click if key ==:il
+    find(:xpath, ta(SAVE_BTN_TA, SAVE_BTN_IL)).click
   end
 
   def close_modal

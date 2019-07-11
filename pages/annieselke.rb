@@ -1,100 +1,99 @@
-require 'capybara/rspec'
-require 'selenium-webdriver'
+require 'spec_helper'
 
-module AnnieSelke
+class Annieselke
 
-  def initialize(*args)
-    @login_btn_il = "(//a[text()='Login'])[1]"
-    @login_btn_ta = "annieselke:login_btn"
-    @login_btn_ep = "EP:annieselke:login_btn"
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
 
-    @create_acc_il = "//h3[text()='Create an Account']"
-    @create_acc_ta = "annieselke:create_acc"
-    @create_acc_ep = "EP:annieselke:create_acc"
+  LOGIN_BTN_IL = "(//a[text()='Login'])[1]"
+  LOGIN_BTN_TA = "annieselke:login_btn"
+  LOGIN_BTN_EP = "EP:annieselke:login_btn"
 
-    @first_name_il = "//input[@name='firstName']"
-    @first_name_ta = "annieselke:first_name"
-    @first_name_ep = "EP:annieselke:first_name"
+  CREATE_ACC_IL = "//h3[text()='Create an Account']"
+  CREATE_ACC_TA = "annieselke:create_acc"
+  CREATE_ACC_EP = "EP:annieselke:create_acc"
 
-    @last_name_il = "//input[@name='lastName']"
-    @last_name_ta = "annieselke:last_name"
-    @last_name_ep = "EP:annieselke:last_name"
+  FIRST_NAME_IL = "//input[@name='firstName']"
+  FIRST_NAME_TA = "annieselke:first_name"
+  FIRST_NAME_EP = "EP:annieselke:first_name"
 
-    @email_il = "//input[@name='email']"
-    @email_ta = "annieselke:email"
-    @email_ep = "EP:annieselke:email"
+  LAST_NAME_IL = "//input[@name='lastName']"
+  LAST_NAME_TA = "annieselke:last_name"
+  LAST_NAME_EP = "EP:annieselke:last_name"
 
-    @pass_il = "//input[@id='password']"
-    @pass_ta = "annieselke:pass"
-    @pass_ep = "EP:annieselke:pass"
+  EMAIL_IL = "//input[@name='email']"
+  EMAIL_TA = "annieselke:email"
+  EMAIL_EP = "EP:annieselke:email"
 
-    @check_pwd_il = "//input[@id='register.checkPwd']"
-    @check_pwd_ta = "annieselke:check_pwd"
-    @check_pwd_ep = "EP:annieselke:check_pwd"
+  PASS_IL = "//input[@id='password']"
+  PASS_TA = "annieselke:pass"
+  PASS_EP = "EP:annieselke:pass"
 
-    @subscribe_il = "//label[@for='subscribe']"
-    @subscribe_ta = "annieselke:subscribe"
-    @subscribe_ep = "EP:annieselke:subscribe"
+  CHECK_PWD_IL = "//input[@id='register.checkPwd']"
+  CHECK_PWD_TA = "annieselke:check_pwd"
+  CHECK_PWD_EP = "EP:annieselke:check_pwd"
 
-    @register_il = "(//button[@class='primary actionSet'])[2]"
-    @register_ta = "annieselke:register"
-    @register_ep = "EP:annieselke:register"
+  SUBSCRIBE_IL = "//label[@for='subscribe']"
+  SUBSCRIBE_TA = "annieselke:subscribe"
+  SUBSCRIBE_EP = "EP:annieselke:subscribe"
 
-    super
-  end
+  REGISTER_IL = "(//button[@class='primary actionSet'])[2]"
+  REGISTER_TA = "annieselke:register"
+  REGISTER_EP = "EP:annieselke:register"
 
   def login_btn(key = nil)
-    return find(:xpath, ta(@login_btn_ep)).click if key ==:ep
-    return find(:xpath, ta(@login_btn_il)).click if key ==:il
-    find(:xpath, ta(@login_btn_ta, @login_btn_il)).click
+    return find(:xpath, ta(LOGIN_BTN_EP)).click if key ==:ep
+    return find(:xpath, ta(LOGIN_BTN_IL)).click if key ==:il
+    find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click
   end
 
   def create_acc(key = nil)
-    return find(:xpath, ta(@create_acc_ep)).click if key ==:ep
-    return find(:xpath, ta(@create_acc_il)).click if key ==:il
-    find(:xpath, ta(@create_acc_ta, @create_acc_il)).click
+    return find(:xpath, ta(CREATE_ACC_EP)).click if key ==:ep
+    return find(:xpath, ta(CREATE_ACC_IL)).click if key ==:il
+    find(:xpath, ta(CREATE_ACC_TA, CREATE_ACC_IL)).click
   end
 
   def set_any_first_name(key = nil)
-    return find(:xpath, ta(@first_name_ep)).set("name") if key ==:ep
-    return find(:xpath, ta(@first_name_il)).set("name") if key ==:il
-    find(:xpath, ta(@first_name_ta, @first_name_il)).set("name")
+    return find(:xpath, ta(FIRST_NAME_EP)).set("name") if key ==:ep
+    return find(:xpath, ta(FIRST_NAME_IL)).set("name") if key ==:il
+    find(:xpath, ta(FIRST_NAME_TA, FIRST_NAME_IL)).set("name")
   end
 
   def set_any_last_name(key = nil)
-    return find(:xpath, ta(@last_name_ep)).click if key ==:ep
-    return find(:xpath, ta(@last_name_il)).click if key ==:il
-    find(:xpath, ta(@last_name_ta, @last_name_il)).set("last_name")
+    return find(:xpath, ta(LAST_NAME_EP)).click if key ==:ep
+    return find(:xpath, ta(LAST_NAME_IL)).click if key ==:il
+    find(:xpath, ta(LAST_NAME_TA, LAST_NAME_IL)).set("last_name")
   end
 
   def set_any_email(key = nil)
-    return find(:xpath, ta(@email_ep)).set("youre.example@gmail.com") if key ==:ep
-    return find(:xpath, ta(@email_il)).set("youre.example@gmail.com") if key ==:il
-    find(:xpath, ta(@email_ta, @email_il)).set("youre.example@gmail.com")
+    return find(:xpath, ta(EMAIL_EP)).set("youre.example@gmail.com") if key ==:ep
+    return find(:xpath, ta(EMAIL_IL)).set("youre.example@gmail.com") if key ==:il
+    find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set("youre.example@gmail.com")
   end
 
   def set_any_pass(key = nil)
-    return find(:xpath, ta(@pass_ep)).set("pass") if key ==:ep
-    return find(:xpath, ta(@pass_il)).set("pass") if key ==:il
-    find(:xpath, ta(@pass_ta, @pass_il)).set("pass")
+    return find(:xpath, ta(PASS_EP)).set("pass") if key ==:ep
+    return find(:xpath, ta(PASS_IL)).set("pass") if key ==:il
+    find(:xpath, ta(PASS_TA, PASS_IL)).set("pass")
   end
 
   def check_any_pass(key = nil)
-    return find(:xpath, ta(@check_pwd_ep)).set("pass") if key ==:ep
-    return find(:xpath, ta(@check_pwd_il)).set("pass") if key ==:il
-    find(:xpath, ta(@check_pwd_ta, @check_pwd_il)).set("pass")
+    return find(:xpath, ta(CHECK_PWD_EP)).set("pass") if key ==:ep
+    return find(:xpath, ta(CHECK_PWD_IL)).set("pass") if key ==:il
+    find(:xpath, ta(CHECK_PWD_TA, CHECK_PWD_IL)).set("pass")
   end
 
   def click_subscribe(key = nil)
-    return find(:xpath, ta(@subscribe_ep)).click if key ==:ep
-    return find(:xpath, ta(@subscribe_il)).click if key ==:il
-    find(:xpath, ta(@subscribe_ta, @subscribe_il)).click
+    return find(:xpath, ta(SUBSCRIBE_EP)).click if key ==:ep
+    return find(:xpath, ta(SUBSCRIBE_IL)).click if key ==:il
+    find(:xpath, ta(SUBSCRIBE_TA, SUBSCRIBE_IL)).click
   end
 
   def click_register_btn(key = nil)
-    return find(:xpath, ta(@register_ep)).click if key ==:ep
-    return find(:xpath, ta(@register_il)).click if key ==:il
-    find(:xpath, ta(@register_ta, @register_il)).click
+    return find(:xpath, ta(REGISTER_EP)).click if key ==:ep
+    return find(:xpath, ta(REGISTER_IL)).click if key ==:il
+    find(:xpath, ta(REGISTER_TA, REGISTER_IL)).click
   end
 
   def close_modal
