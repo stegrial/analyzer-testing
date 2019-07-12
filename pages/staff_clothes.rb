@@ -3,41 +3,45 @@ require 'spec_helper'
 
 class Staffclothes
 
-    HUMBURGER_MENU_IL = "//div[@class='hamburger-inner']"
-    HUMBURGER_MENU_TA = "staff:hamburger"
-    HUMBURGER_MENU_EP = "EP:staff:hamburger"
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
 
-    MEN_CATEGORY_IL = "//div[text()='Для парней']"
-    MEN_CATEGORY_TA = "staff:for_men"
-    MEN_CATEGORY_EP = "EP:staff:for_men"
+  HUMBURGER_MENU_IL = "//div[@class='hamburger-inner']"
+  HUMBURGER_MENU_TA = "staff:hamburger"
+  HUMBURGER_MENU_EP = "EP:staff:hamburger"
 
-    POLO_TSHIRTS_IL = "//div[@style='height: inherit;'][5]"
-    POLO_TSHIRTS_TA = "staff:polo_Tshirts"
-    POLO_TSHIRTS_EP = "EP:staff:polo_Tshirts"
+  MEN_CATEGORY_IL = "//div[text()='Для парней']"
+  MEN_CATEGORY_TA = "staff:for_men"
+  MEN_CATEGORY_EP = "EP:staff:for_men"
 
-    CHOOSE_POLO_IL = "(//span[@class='product-card__info--title'])[2]"
-    CHOOSE_POLO_TA = "staff:choose_polo"
-    CHOOSE_POLO_EP = "EP:staff:choose_polo"
+  POLO_TSHIRTS_IL = "//div[@style='height: inherit;'][5]"
+  POLO_TSHIRTS_TA = "staff:polo_Tshirts"
+  POLO_TSHIRTS_EP = "EP:staff:polo_Tshirts"
 
-    CHOOSE_SIZE_IL = "(//button[@class='product__sizes '])[1]"
-    CHOOSE_SIZE_TA = "staff:choose_size"
-    CHOOSE_SIZE_EP = "EP:staff:choose_size"
+  CHOOSE_POLO_IL = "(//span[@class='product-card__info--title'])[2]"
+  CHOOSE_POLO_TA = "staff:choose_polo"
+  CHOOSE_POLO_EP = "EP:staff:choose_polo"
 
-    ADD_TO_CART_IL = "(//button[@class='main-button'])[1]"
-    ADD_TO_CART_TA = "staff:add_to_cart"
-    ADD_TO_CART_EP = "EP:staff:add_to_cart"
+  CHOOSE_SIZE_IL = "(//button[@class='product__sizes '])[1]"
+  CHOOSE_SIZE_TA = "staff:choose_size"
+  CHOOSE_SIZE_EP = "EP:staff:choose_size"
 
-    GO_TO_CART_BTN_IL = "//div[@class='modal__success-error-button modal__success-error-button--black']"
-    GO_TO_CART_BTN_TA = "staff:changing_btn"
-    GO_TO_CART_BTN_EP = "EP:staff:changing_btn"
+  ADD_TO_CART_IL = "(//button[@class='main-button'])[1]"
+  ADD_TO_CART_TA = "staff:add_to_cart"
+  ADD_TO_CART_EP = "EP:staff:add_to_cart"
 
-    DELETE_PRDER_IL = "//button[@class='cart__delete']"
-    DELETE_PRDER_TA = "staff:delete_order"
-    DELETE_PRDER_EP = "EP:staff:delete_order"
+  GO_TO_CART_BTN_IL = "//div[@class='modal__success-error-button modal__success-error-button--black']"
+  GO_TO_CART_BTN_TA = "staff:changing_btn"
+  GO_TO_CART_BTN_EP = "EP:staff:changing_btn"
 
-    COMEBACK_TO_CATALOG_IL = "//button[@class='main-button']"
-    COMEBACK_TO_CATALOG_TA = "staff:update_cart"
-    COMEBACK_TO_CATALOG_EP = "EP:staff:update_cart"
+  DELETE_PRDER_IL = "//button[@class='cart__delete']"
+  DELETE_PRDER_TA = "staff:delete_order"
+  DELETE_PRDER_EP = "EP:staff:delete_order"
+
+  COMEBACK_TO_CATALOG_IL = "//button[@class='main-button']"
+  COMEBACK_TO_CATALOG_TA = "staff:update_cart"
+  COMEBACK_TO_CATALOG_EP = "EP:staff:update_cart"
 
   def click_humburg_menu(key = nil)
     return find(:xpath, ta(HUMBURGER_MENU_EP)).click  if key == :ep

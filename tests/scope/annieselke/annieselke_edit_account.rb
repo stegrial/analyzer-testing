@@ -26,7 +26,7 @@ describe 'Preconditions' do
       end
 
       # User clicks on close button for close modal
-      close_modal
+      it.close_modal
 
       step "humburger menu " do
         it.click_humburger_menu
@@ -80,7 +80,7 @@ describe 'Preconditions' do
       end
 
       # User clicks on close button for close modal
-      close_modal
+      it.close_modal
 
       step "humburger menu " do
         check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_TA, AnnieselkeMobile::HUMBURGER_MENU_IL
@@ -146,7 +146,7 @@ describe 'Preconditions' do
       end
 
       # User clicks on close button for close modal
-      close_modal
+      it.close_modal
 
       step "humburger menu " do
         check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_EP, AnnieselkeMobile::HUMBURGER_MENU_IL

@@ -124,6 +124,7 @@ describe 'Preconditions' do
         check_element_path :xpath, FacebookMobile::DELETE_POST_TA, FacebookMobile::DELETE_POST_IL
         it.deleting_post
       end
+    sleep 4
 
       step "User is confirms deleting post" do
         check_element_path :xpath, FacebookMobile::CONFIRM_DELETE_TA, FacebookMobile::CONFIRM_DELETE_IL

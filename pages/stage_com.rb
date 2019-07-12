@@ -159,5 +159,10 @@ class Stagecom
     end
   end
 
+  def close_modal_feedback
+    if page.has_xpath?("//a[@class='acsCloseButton--link acsCloseButton acsDeclineButton']")
+      find(:xpath, "//a[@class='acsCloseButton--link acsCloseButton acsDeclineButton']").click
+    end
+  end
 
 end
