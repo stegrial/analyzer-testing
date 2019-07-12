@@ -15,7 +15,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
       page.visit url
     end
     # User clicks on close button for close modal
-    # close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       it.login_btn
@@ -31,7 +31,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
       page.visit url
     end
     # User clicks on close button for close modal
-    close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       check_element_path :xpath, Annieselke::LOGIN_BTN_TA, Annieselke::LOGIN_BTN_IL
@@ -49,7 +49,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     end
 
     # User clicks on close button for close modal
-    close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       check_element_path :xpath, Annieselke::LOGIN_BTN_EP, Annieselke::LOGIN_BTN_IL
@@ -67,7 +67,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     end
 
     # User clicks on close button for close modal
-    close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       it.login_btn
@@ -82,7 +82,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     end
 
     # User clicks on close button for close modal
-    close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       it.login_btn
