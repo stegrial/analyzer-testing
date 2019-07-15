@@ -8,7 +8,6 @@ random_string = SecureRandom.hex
 it = Ecflow.new
 
 # This tests runs when the vpn is ON
-
 describe 'Preconditions' do
 
   feature 'EC Flow - creating new application commponent - GWT - fields' do
