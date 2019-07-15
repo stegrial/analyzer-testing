@@ -9,7 +9,7 @@ it = Ecflow.new
 
 describe 'Preconditions' do
 
-  feature 'TA-866 EC Flow - selecting pipeline from list.rb' do
+  feature 'TA-866 EC Flow - selecting pipeline from list' do
 
     # Initial locators with Recording
 
