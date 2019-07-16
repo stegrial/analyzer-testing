@@ -94,6 +94,15 @@ class Ecflow
   OK_BTN_TA = "ec_flow:ok_btn"
   OK_BTN_EP = "EP:ec_flow:ok_btn"
 
+  OK_WARNING_IL = "//div[@class='ec-wizard-btn ec-ok at-ok-btn']"
+  OK_WARNING_TA = "ec_flow:ok_warning_btn"
+  OK_WARNING_EP = "EP:ec_flow:ok_warning_btn"
+
+  # Ok_IN_MODAL_IL = "//div[@class='ec-react-wizard__window']//div[@class='ec-wizard-btn ec-ok at-ok-btn']"
+  Ok_IN_MODAL_IL = "div.at-ok-btn"
+  Ok_IN_MODAL_TA = "ec_flow:ok_in_modal_btn"
+  Ok_IN_MODAL_EP = "EP:ec_flow:ok_in_modal_btn"
+
   NEXT_BTN_IL = "//div[text()='Next']"
   NEXT_BTN_TA = "ec_flow:ok_btn"
   NEXT_BTN_EP = "EP:ec_flow:ok_btn"
@@ -237,6 +246,18 @@ class Ecflow
     return find(ta(OK_BTN_EP)).click() if key ==:ep
     return find(:css, ta(OK_BTN_IL)).click() if key ==:il
     find(:css, ta(OK_BTN_TA, OK_BTN_IL)).click()
+  end
+
+  def click_warning_ok_btn(key = nil)
+    return find(ta(OK_WARNING_EP)).click() if key ==:ep
+    return find(:xpath, ta(OK_WARNING_IL)).click() if key ==:il
+    find(:xpath, ta(OK_WARNING_TA, OK_WARNING_IL)).click()
+  end
+
+  def click_ok_in_modal_btn(key = nil)
+    return find(ta(Ok_IN_MODAL_EP)).click() if key ==:ep
+    return find(:css, ta(Ok_IN_MODAL_IL)).click() if key ==:il
+    find(:css, ta(Ok_IN_MODAL_TA, Ok_IN_MODAL_IL)).click()
   end
 
   def click_next_btn(key = nil)
