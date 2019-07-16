@@ -100,7 +100,8 @@ describe 'Preconditions' do
       end
 
       step "User click on ok button" do
-        it.click_ok_btn
+        sleep 5
+        it.click_ok_in_modal_btn
       end
 
       step "User click on multimenu button" do
@@ -112,13 +113,13 @@ describe 'Preconditions' do
       end
 
       step "User click on ok button for accepting" do
-        it.click_ok_btn
+        it.click_warning_ok_btn
       end
       Capybara.current_session.driver.quit
 
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il_run2: true do
 
       step "User goes to the page", settings('ec_flow')['page'] do |url|
         page.visit url
@@ -225,12 +226,12 @@ describe 'Preconditions' do
       end
 
       step "User click on ok button" do
-        check_element_path :css, Ecflow::OK_BTN_TA, Ecflow::OK_BTN_TA
-        it.click_ok_btn
+        check_element_path :css, Ecflow::Ok_IN_MODAL_TA, Ecflow::Ok_IN_MODAL_IL
+        it.click_ok_in_modal_btn
       end
 
       step "User click on multimenu button" do
-        check_element_path :css, Ecflow::MULTI_MENU_BTN_IL, Ecflow::MULTI_MENU_BTN_TA
+        check_element_path :css, Ecflow::MULTI_MENU_BTN_TA, Ecflow::MULTI_MENU_BTN_IL
         it.click_multi_menu
       end
 
@@ -240,8 +241,9 @@ describe 'Preconditions' do
       end
 
       step "User click on ok button for accepting" do
-        check_element_path :css, Ecflow::OK_BTN_TA, Ecflow::OK_BTN_TA
-        it.click_ok_btn
+        sleep 4
+        check_element_path :xpath, Ecflow::OK_WARNING_TA, Ecflow::OK_WARNING_IL
+        it.click_warning_ok_btn
       end
     end
 
@@ -354,9 +356,25 @@ describe 'Preconditions' do
       end
 
       step "User click on ok button" do
-        check_element_path :xpath, Ecflow::OK_BTN_EP, Ecflow::OK_BTN_TA
-        it.click_ok_btn
+        check_element_path :xpath, Ecflow::Ok_IN_MODAL_EP, Ecflow::Ok_IN_MODAL_TA
+        it.click_ok_in_modal_btn
       end
+
+      step "User click on multimenu button" do
+        check_element_path :css, Ecflow::MULTI_MENU_BTN_EP, Ecflow::MULTI_MENU_BTN_TA
+        it.click_multi_menu
+      end
+
+      step "User click on delete item for deleting" do
+        check_element_path :css, Ecflow::DELETE_EP, Ecflow::DELETE_IL
+        it.click_delete
+      end
+
+      step "User click on ok button for accepting" do
+        check_element_path :xpath, Ecflow::OK_WARNING_EP, Ecflow::OK_WARNING_IL
+        it.click_warning_ok_btn
+      end
+
     end
   end
 end
