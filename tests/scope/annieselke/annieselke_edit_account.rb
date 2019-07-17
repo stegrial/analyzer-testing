@@ -55,21 +55,18 @@ describe 'Preconditions' do
       step "User clicks on My Account link" do
         it.click_my_acc_btn
       end
-
-      sleep 5
-
+      
       step "User clicks on personal info button" do
         it.click_personal_info_btn
       end
 
-      step "User clicks to select gender" do
-        it.select_gender
+      step "User clicks to select gender", 'Mr' do |gender|
+        it.select_gender(gender)
       end
 
       step "User clicks to select gender" do
         it.click_save_btn
       end
-      sleep 5
 
     end
 
@@ -117,23 +114,20 @@ describe 'Preconditions' do
         it.click_my_acc_btn
       end
 
-      sleep 5
-
       step "User clicks on personal info button" do
         check_element_path :xpath, AnnieselkeMobile::PERSONAL_DETEILS_TA, AnnieselkeMobile::PERSONAL_DETEILS_IL
         it.click_personal_info_btn
       end
 
-      step "User clicks to select gender" do
+      step "User clicks to select gender", "Mr" do |gender|
         check_element_path :xpath,  AnnieselkeMobile::GENDER_TA, AnnieselkeMobile::GENDER_IL
-        it.select_gender
+        it.select_gender(gender)
       end
 
       step "User clicks to select gender" do
         check_element_path :xpath, AnnieselkeMobile::SAVE_BTN_TA, AnnieselkeMobile::SAVE_BTN_IL
         it.click_save_btn
       end
-      sleep 5
 
     end
 
@@ -183,8 +177,6 @@ describe 'Preconditions' do
         it.click_my_acc_btn :ep
       end
 
-      sleep 5
-
       step "User clicks on personal info button" do
         check_element_path :xpath, AnnieselkeMobile::PERSONAL_DETEILS_EP, AnnieselkeMobile::PERSONAL_DETEILS_IL
         it.click_personal_info_btn :ep
@@ -201,7 +193,6 @@ describe 'Preconditions' do
       end
       sleep 5
     end
-
 
   end
 end
