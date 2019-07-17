@@ -1,10 +1,9 @@
 require 'spec_helper'
-require_relative '../../helpers/rs/special_methods'
-require_relative '../../pages/united_methods'
-require_relative '../../pages/how_to_get_money'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/how_to_get_money'
 
-include PathCheck
-include HowToGetMoney
+it = HowToGetMoney.new
 
 feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month section' do
 
@@ -16,7 +15,7 @@ feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month 
     end
 
     step "User clicks on the link - First loan" do
-      click_first_loan_link
+      it.click_first_loan_link
     end
 
     sleep 3
@@ -33,8 +32,8 @@ feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month 
     end
 
     step "User clicks on the link - First loan" do
-      check_element_path :xpath, @first_loan_ta, @first_loan_il
-      click_first_loan_link true
+      check_element_path :xpath, HowToGetMoney::FIRST_LOAN_TA, HowToGetMoney::FIRST_LOAN_IL
+      it.click_first_loan_link
     end
     sleep 3
   end
@@ -51,8 +50,8 @@ feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month 
     end
 
     step "User clicks on the link - First loan" do
-      check_element_path :xpath, @first_loan_ep, @first_loan_il
-      click_first_loan_link true
+      check_element_path :xpath, HowToGetMoney::FIRST_LOAN_EP, HowToGetMoney::FIRST_LOAN_IL
+      it.click_first_loan_link :ep
     end
     sleep 3
   end
@@ -65,7 +64,7 @@ feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month 
     end
 
     step "User clicks on the link - First loan" do
-      click_first_loan_link
+      it.click_first_loan_link
     end
 
     sleep 3
@@ -82,7 +81,7 @@ feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month 
     end
 
     step "User clicks on the link - First loan" do
-      click_first_loan_link
+      it.click_first_loan_link
     end
     sleep 3
   end

@@ -1,25 +1,21 @@
-require 'capybara/rspec'
-require 'selenium-webdriver'
+require 'spec_helper'
 
-module SandboxTests
+class SandboxTests
 
-  def initialize(*args)
-    @second_heading_il = "//div[@id='div-01']//h4"
-    @second_heading_ta = 'sandbox:h4:test_1'
+  SECOND_HEADING_IL = "//div[@id='div-01']//h4"
+  SECOND_HEADING_TA = 'sandbox:h4:test_1'
 
-    @h2_video_il = "//article[@id='embedded__video']//h2[text()='Video']"
-    @h2_video_ta = 'sandbox:html5:articleVideo:h2'
-    super
-  end
+  H2_VIDEO_IL = "//article[@id='embedded__video']//h2[text()='Video']"
+  H2_VIDEO_TA = 'sandbox:html5:articleVideo:h2'
 
   def record_heading_4(key = nil)
-    return find(:xpath, @second_heading_il) if key == :il
-    find(:xpath, ta(@second_heading_ta, @second_heading_il))
+    return find(:xpath, SECOND_HEADING_IL) if key == :il
+    find(:xpath, ta(SECOND_HEADING_TA, SECOND_HEADING_IL))
   end
 
   def record_h2_video(key = nil)
-    return find(:xpath, @second_heading_il) if key == :il
-    find(:xpath, ta(@h2_video_ta, @h2_video_il))
+    return find(:xpath, H2_VIDEO_IL) if key == :il
+    find(:xpath, ta(H2_VIDEO_TA, H2_VIDEO_IL))
   end
 
 

@@ -1,10 +1,9 @@
 require 'spec_helper'
-require_relative '../../helpers/rs/special_methods'
-require_relative '../../pages/united_methods'
-require_relative '../../pages/sandbox_tests'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/sandbox_tests'
 
-include PathCheck
-include SandboxTests
+it = SandboxTests.new
 
 feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tree and finds a wrong elements' do
 
@@ -16,7 +15,7 @@ feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tr
     end
 
     step "Record the Heading 4 " do
-      record_heading_4
+      it.record_heading_4
     end
     sleep 3
   end
@@ -27,7 +26,7 @@ feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tr
     end
 
     step "Check the Heading 4" do
-      check_element_path :xpath, @second_heading_ta, @second_heading_il
+      check_element_path :xpath, SandboxTests::SECOND_HEADING_TA, SandboxTests::SECOND_HEADING_IL
     end
     sleep 3
   end
@@ -40,7 +39,7 @@ feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tr
     end
 
     step "Record the Heading 4" do
-      record_heading_4
+      it.record_heading_4
     end
     sleep 3
   end
@@ -51,7 +50,7 @@ feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tr
     end
 
     step "Check the Heading 4" do
-      check_element_path :xpath, @second_heading_ta, @second_heading_il
+      check_element_path :xpath, SandboxTests::SECOND_HEADING_TA, SandboxTests::SECOND_HEADING_IL
     end
     sleep 3
   end
