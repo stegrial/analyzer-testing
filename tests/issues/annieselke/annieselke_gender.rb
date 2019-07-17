@@ -19,7 +19,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il_run1: true do
 
       step "User goes to the page", settings('annieselke')['page'] do |url|
         page.visit url
@@ -33,6 +33,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on login button" do
+        sleep 3
         it.login_btn :il
       end
 
@@ -56,20 +57,19 @@ describe 'Preconditions' do
         it.click_my_acc_btn :il
       end
 
-      sleep 5
+      # sleep 5
 
       step "User clicks on personal info button" do
         it.click_personal_info_btn :il
       end
 
       step "User clicks to select gender", 'Mr' do |gender|
-        sleep 2
         it.select_gender(gender)
       end
 
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il_run2: true do
 
       step "User goes to the page", settings('annieselke')['page'] do |url|
         page.visit url
@@ -85,6 +85,7 @@ describe 'Preconditions' do
 
       step "User clicks on login button" do
         # check_element_path :xpath, AnnieselkeMobile::LOGIN_BTN_TA, AnnieselkeMobile::LOGIN_BTN_IL
+        sleep 3
         it.login_btn :il
       end
 
@@ -113,17 +114,16 @@ describe 'Preconditions' do
         it.click_my_acc_btn :il
       end
 
+      sleep 3
+
       step "User clicks on personal info button" do
         # check_element_path :xpath, AnnieselkeMobile::PERSONAL_DETEILS_TA, AnnieselkeMobile::PERSONAL_DETEILS_IL
         it.click_personal_info_btn :il
       end
 
       step "User clicks to select gender", "Mr" do |gender|
-        # sleep 2
-        # check_element_path :xpath,  AnnieselkeMobile::GENDER_TA, AnnieselkeMobile::GENDER_IL
-        it.select_gender(gender)
-
         sleep 2
+        # check_element_path :xpath,  AnnieselkeMobile::GENDER_TA, AnnieselkeMobile::GENDER_IL
         it.select_gender(gender)
       end
     end
