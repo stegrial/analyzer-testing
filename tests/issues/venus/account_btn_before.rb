@@ -25,6 +25,18 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Account button" do
+        it.click_account_button
+      end
+
+      sleep 3
+    end
+
+    scenario 'Searching IL', il_run: true do
+      step "User goes to the page", settings('venus')['home_page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the Account button" do
         it.click_account_button :il
       end
 
@@ -40,20 +52,8 @@ describe 'Preconditions' do
         it.click_sign_in_button :il
       end
 
-      step "User clicks on the Account button" do
-        it.click_account_button
-      end
-
-      sleep 3
-    end
-
-    scenario 'Searching IL', il_run: true do
-      step "User goes to the page", settings('venus')['home_page'] do |url|
-        page.visit url
-      end
-
-      2.times do
-        step "User clicks on the Account button two times (for different pages)" do
+      4.times do
+        step "User clicks on the Account button" do
           check_element_path :xpath, Venus::ACCOUNT_BUTTON_TA, Venus::ACCOUNT_BUTTON_IL
           it.click_account_button
         end
@@ -69,8 +69,24 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      2.times do
-        step "User clicks on the Account button two times (for different pages)" do
+      step "User clicks on the Account button" do
+        it.click_account_button :il
+      end
+
+      step "User fills the Email field", settings('venus')['email_field'] do |email|
+        it.fill_email_field :il, email
+      end
+
+      step "User fills the Pass field", settings('venus')['pass_field'] do |pass|
+        it.fill_pass_field :il, pass
+      end
+
+      step "User clicks on the Sign In button" do
+        it.click_sign_in_button :il
+      end
+
+      4.times do
+        step "User clicks on the Account button" do
           check_element_path :xpath, Venus::ACCOUNT_BUTTON_EP, Venus::ACCOUNT_BUTTON_IL
           it.click_account_button :ep
         end
@@ -87,6 +103,18 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Account button" do
+        it.click_account_button
+      end
+
+      sleep 3
+    end
+
+    scenario 'Searching debug', search_debug: true do
+      step "User goes to the page", settings('venus')['home_page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the Account button" do
         it.click_account_button :il
       end
 
@@ -100,18 +128,6 @@ describe 'Preconditions' do
 
       step "User clicks on the Sign In button" do
         it.click_sign_in_button :il
-      end
-
-      step "User clicks on the Account button" do
-        it.click_account_button
-      end
-
-      sleep 3
-    end
-
-    scenario 'Searching debug', search_debug: true do
-      step "User goes to the page", settings('venus')['home_page'] do |url|
-        page.visit url
       end
 
       1.times do

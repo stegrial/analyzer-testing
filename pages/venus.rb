@@ -49,13 +49,6 @@ class Venus
   VIEW_DETAIL_SECOND_TA = 'venus:search_results:view_detail_second'
   VIEW_DETAIL_SECOND_EP = 'EP:venus:search_results:view_detail_second'
 
-  # def initialize(*args)
-  #   @account_button_il = "(//button[@aria-label='Account'])[1]"
-  #   @account_button_ta = 'venus:account_button'
-  #   @account_button_ep = 'EP:venus:account_button'
-  #   super
-  # end
-
   def click_account_button(key = nil)
     return find(:xpath, ta(ACCOUNT_BUTTON_EP)).click if key == :ep
     return find(:xpath, ACCOUNT_BUTTON_IL).click if key == :il

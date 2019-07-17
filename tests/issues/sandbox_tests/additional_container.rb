@@ -1,10 +1,9 @@
 require 'spec_helper'
-require_relative '../../helpers/rs/special_methods'
-require_relative '../../pages/united_methods'
-require_relative '../../pages/sandbox_tests'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/sandbox_tests'
 
-include PathCheck
-include SandboxTests
+it = SandboxTests.new
 
 feature 'TA-148 TA finds the wrong element, if the element was added into additional container' do
 
@@ -16,7 +15,7 @@ feature 'TA-148 TA finds the wrong element, if the element was added into additi
     end
 
     step "Record the Heading 2 - Video" do
-      record_h2_video
+      it.record_h2_video
     end
     sleep 3
   end
@@ -27,7 +26,7 @@ feature 'TA-148 TA finds the wrong element, if the element was added into additi
     end
 
     step "Check the Heading 2 - Video" do
-      check_element_path :xpath, @h2_video_ta, @h2_video_il
+      check_element_path :xpath, SandboxTests::H2_VIDEO_TA, SandboxTests::H2_VIDEO_IL
     end
     sleep 3
   end
@@ -40,7 +39,7 @@ feature 'TA-148 TA finds the wrong element, if the element was added into additi
     end
 
     step "Record the Heading 2 - Video" do
-      record_h2_video
+      it.record_h2_video
     end
     sleep 3
   end
@@ -51,7 +50,7 @@ feature 'TA-148 TA finds the wrong element, if the element was added into additi
     end
 
     step "Check the Heading 2 - Video" do
-      check_element_path :xpath, @h2_video_ta, @h2_video_il
+      check_element_path :xpath, SandboxTests::H2_VIDEO_TA, SandboxTests::H2_VIDEO_IL
     end
     sleep 3
   end
