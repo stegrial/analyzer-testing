@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../../helpers/rs/special_methods'
-require_relative '../../pages/united_methods'
-require_relative '../../pages/stage_com'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/ec_flow'
 
 it = Ecflow.new
 
@@ -9,11 +9,11 @@ it = Ecflow.new
 
 describe 'Preconditions' do
 
-  feature 'TA-866 EC Flow - selecting pipeline from list.rb' do
+  feature 'TA-866 EC Flow - selecting pipeline from list' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', ili_run: true do
+    scenario 'Recording IL', il_run: true do
 
       step "User goes to the page", settings('ec_flow')['page'] do |url|
         page.visit url

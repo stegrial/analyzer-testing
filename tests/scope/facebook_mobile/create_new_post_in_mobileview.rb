@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../../pages/es/united_methods'
-require_relative '../../pages/facebook_mobile.rb'
-require_relative '../../helpers/special_methods'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/facebook_mobile'
 
 it = FacebookMobile.new
 
@@ -124,6 +124,7 @@ describe 'Preconditions' do
         check_element_path :xpath, FacebookMobile::DELETE_POST_TA, FacebookMobile::DELETE_POST_IL
         it.deleting_post
       end
+    sleep 4
 
       step "User is confirms deleting post" do
         check_element_path :xpath, FacebookMobile::CONFIRM_DELETE_TA, FacebookMobile::CONFIRM_DELETE_IL

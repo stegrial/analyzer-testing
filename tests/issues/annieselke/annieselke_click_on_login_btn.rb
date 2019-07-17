@@ -1,10 +1,9 @@
 require 'spec_helper'
-require_relative '../../helpers/rs/special_methods'
-require_relative '../../pages/united_methods'
-require_relative '../../pages/annieselke.rb'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/annieselke'
 
 it = Annieselke.new
-
 
 feature 'TA-911 Element not found when the Dom tree is changed (the Login link)' do
 
@@ -15,10 +14,8 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     step "User goes to the page", settings('annieselke')['page'] do |url|
       page.visit url
     end
-    sleep 200
-
     # User clicks on close button for close modal
-    close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       it.login_btn
@@ -34,7 +31,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
       page.visit url
     end
     # User clicks on close button for close modal
-    close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       check_element_path :xpath, Annieselke::LOGIN_BTN_TA, Annieselke::LOGIN_BTN_IL
@@ -52,13 +49,12 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     end
 
     # User clicks on close button for close modal
-    close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       check_element_path :xpath, Annieselke::LOGIN_BTN_EP, Annieselke::LOGIN_BTN_IL
       it.login_btn :ep
     end
-
 
   end
 
@@ -71,7 +67,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     end
 
     # User clicks on close button for close modal
-    close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       it.login_btn
@@ -86,7 +82,7 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     end
 
     # User clicks on close button for close modal
-    close_modal
+    it.close_modal
 
     step "User clicks on login button" do
       it.login_btn

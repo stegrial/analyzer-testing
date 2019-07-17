@@ -2,45 +2,50 @@ require 'spec_helper'
 
 class FacebookMobile
 
-    EMAIL_IL = "//input[@name='email']"
-    EMAIL_TA = "facebook_mobile:email"
-    EMAIL_EP = "EP:facebook_mobile:email"
 
-    PASS_IL = "//input[@name='pass']"
-    PASS_TA = "facebook_mobile:pass"
-    PASS_EP = "EP:facebook_mobile:pass"
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
 
-    LOGIN_BTN_IL = "//button[@data-sigil='touchable m_login_button']"
-    LOGIN_BTN_TA = "facebook_mobile:login_btn"
-    LOGIN_BTN_EP = "EP:facebook_mobile:login_btn"
+  EMAIL_IL = "//input[@name='email']"
+  EMAIL_TA = "facebook_mobile:email"
+  EMAIL_EP = "EP:facebook_mobile:email"
 
-    OK_BTN_IL = "//button[@value='OK']"
-    OK_BTN_TA = "facebook_mobile:ok_btn"
-    OK_BTN_EP = "EP:facebook_mobile:ok_btn"
+  PASS_IL = "//input[@name='pass']"
+  PASS_TA = "facebook_mobile:pass"
+  PASS_EP = "EP:facebook_mobile:pass"
 
-    NEW_POST_IL = "//div[@role='textbox']"
-    NEW_POST_TA = "facebook_mobile:newpost"
-    NEW_POST_EP = "EP:facebook_mobile:newpost"
+  LOGIN_BTN_IL = "//button[@data-sigil='touchable m_login_button']"
+  LOGIN_BTN_TA = "facebook_mobile:login_btn"
+  LOGIN_BTN_EP = "EP:facebook_mobile:login_btn"
 
-    SET_TEXT_IL = "//textarea[@class='composerInput mentions-input']"
-    SET_TEXT_TA = "facebook_mobile:set_text"
-    SET_TEXT_EP = "EP:facebook_mobile:set_text"
+  OK_BTN_IL = "//button[@value='OK']"
+  OK_BTN_TA = "facebook_mobile:ok_btn"
+  OK_BTN_EP = "EP:facebook_mobile:ok_btn"
 
-    POST_BTN_IL = "//button[@value='Post']"
-    POST_BTN_TA = "facebook_mobile:post_btn"
-    POST_BTN_EP = "EP:facebook_mobile:post_btn"
+  NEW_POST_IL = "//div[@role='textbox']"
+  NEW_POST_TA = "facebook_mobile:newpost"
+  NEW_POST_EP = "EP:facebook_mobile:newpost"
 
-    MULTI_MENU_BTN_IL = "(//a[@data-sigil='touchable'])[1]"
-    MULTI_MENU_BTN_TA = "facebook_mobile:multi_menu_btn"
-    MULTI_MENU_BTN_EP = "EP:facebook_mobile:multi_menu_btn"
+  SET_TEXT_IL = "//textarea[@class='composerInput mentions-input']"
+  SET_TEXT_TA = "facebook_mobile:set_text"
+  SET_TEXT_EP = "EP:facebook_mobile:set_text"
 
-    DELETE_POST_IL = "//a[@data-sigil='touchable touchable removeStoryButton enabled_action']"
-    DELETE_POST_TA = "facebook_mobile:delete_post"
-    DELETE_POST_EP = "EP:facebook_mobile:delete_post"
+  POST_BTN_IL = "//button[@value='Post']"
+  POST_BTN_TA = "facebook_mobile:post_btn"
+  POST_BTN_EP = "EP:facebook_mobile:post_btn"
 
-    CONFIRM_DELETE_IL = "//a[@title='Delete']"
-    CONFIRM_DELETE_TA = "facebook_mobile:accept_delete"
-    CONFIRM_DELETE_EP = "EP:facebook_mobile:accept_delete"
+  MULTI_MENU_BTN_IL = "(//a[@data-sigil='touchable'])[1]"
+  MULTI_MENU_BTN_TA = "facebook_mobile:multi_menu_btn"
+  MULTI_MENU_BTN_EP = "EP:facebook_mobile:multi_menu_btn"
+
+  DELETE_POST_IL = "//a[@data-sigil='touchable touchable removeStoryButton enabled_action']"
+  DELETE_POST_TA = "facebook_mobile:delete_post"
+  DELETE_POST_EP = "EP:facebook_mobile:delete_post"
+
+  CONFIRM_DELETE_IL = "//a[@title='Delete']"
+  CONFIRM_DELETE_TA = "facebook_mobile:accept_delete"
+  CONFIRM_DELETE_EP = "EP:facebook_mobile:accept_delete"
 
   def set_email(login, key = nil)
     return find(:xpath, ta(EMAIL_EP)).set(login) if key ==:ep
@@ -86,7 +91,7 @@ class FacebookMobile
   def click_post_btn(key = nil)
     return find(:xpath, ta(POST_BTN_EP)).click if key ==:ep
     return find(:xpath, ta(POST_BTN_IL)).click if key ==:il
-    find(:xpath, ta(POST_BTN_TA, POST_BTN_TA)).click
+    find(:xpath, ta(POST_BTN_TA, POST_BTN_IL)).click
   end
 
   def click_multi_menu(key = nil)
