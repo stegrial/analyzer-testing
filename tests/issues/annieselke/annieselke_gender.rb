@@ -15,11 +15,11 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Annie Selke - gender issue' do
+  feature 'TA-927 Annie Selke - gender issue' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run1: true do
+    scenario 'Recording IL', il_run: true do
 
       step "User goes to the page", settings('annieselke')['page'] do |url|
         page.visit url
@@ -69,7 +69,7 @@ describe 'Preconditions' do
 
     end
 
-    scenario 'Searching IL', il_run2: true do
+    scenario 'Searching IL', il_run: true do
 
       step "User goes to the page", settings('annieselke')['page'] do |url|
         page.visit url
@@ -122,7 +122,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select gender", "Mr" do |gender|
-        sleep 2
         # check_element_path :xpath,  AnnieselkeMobile::GENDER_TA, AnnieselkeMobile::GENDER_IL
         it.select_gender(gender)
       end
