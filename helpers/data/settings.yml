@@ -48,3 +48,6 @@ ec_flow:
   page: 'https://24timezones.com/worldmap'
   page1: 'https://24timezones.com/karta-mira'
 
+amazon:
+  page: "https://www.amazon.com/"
+  

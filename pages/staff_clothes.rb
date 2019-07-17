@@ -45,55 +45,55 @@ class Staffclothes
 
   def click_humburg_menu(key = nil)
     return find(:xpath, ta(HUMBURGER_MENU_EP)).click  if key == :ep
-    return find(:xpath, ta(HUMBURGER_MENU_IL)).click  if key == :il
+    return find(:xpath, HUMBURGER_MENU_IL).click  if key == :il
     find(:xpath, ta(HUMBURGER_MENU_TA, HUMBURGER_MENU_IL)).click
   end
 
   def click_men_category(key = nil)
     return find(:xpath, ta(MEN_CATEGORY_EP)).click if key == :ep
-    return find(:xpath, ta(MEN_CATEGORY_IL)).click if key == :il
+    return find(:xpath, MEN_CATEGORY_IL).click if key == :il
     find(:xpath, ta(MEN_CATEGORY_TA, MEN_CATEGORY_IL)).click
   end
 
   def click_polo_tshirts(key = nil)
     return find(:xpath, ta(POLO_TSHIRTS_EP)).click if key == :ep
-    return find(:xpath, ta(POLO_TSHIRTS_IL)).click if key == :il
+    return find(:xpath, POLO_TSHIRTS_IL).click if key == :il
     find(:xpath, ta(POLO_TSHIRTS_TA, POLO_TSHIRTS_IL)).click
   end
 
   def click_to_choose_polo(key = nil)
     return find(:xpath, ta(CHOOSE_POLO_EP)).click if key == :ep
-    return find(:xpath, ta(CHOOSE_POLO_IL)).click if key == :il
+    return find(:xpath, CHOOSE_POLO_IL).click if key == :il
     find(:xpath, ta(CHOOSE_POLO_TA, CHOOSE_POLO_IL)).click
   end
 
   def click_to_choose_size(key = nil)
     return find(:xpath, ta(CHOOSE_SIZE_EP)).click if key == :ep
-    return find(:xpath, ta(CHOOSE_SIZE_IL)).click if key == :il
+    return find(:xpath, CHOOSE_SIZE_IL).click if key == :il
     find(:xpath, ta(CHOOSE_SIZE_TA, CHOOSE_SIZE_IL)).click
   end
 
   def click_to_add_to_cart(key = nil)
     return find(:xpath, ta(ADD_TO_CART_EP)).click if key == :ep
-    return find(:xpath, ta(ADD_TO_CART_IL)).click if key == :il
+    return find(:xpath, ADD_TO_CART_IL).click if key == :il
     find(:xpath, ta(ADD_TO_CART_TA, ADD_TO_CART_IL)).click
   end
 
   def click_to_change_cart(key = nil)
     return find(:xpath, ta(GO_TO_CART_BTN_EP)).click if key == :ep
-    return find(:xpath, ta(GO_TO_CART_BTN_IL)).click if key == :il
+    return find(:xpath, GO_TO_CART_BTN_IL).click if key == :il
     find(:xpath, ta(GO_TO_CART_BTN_TA, GO_TO_CART_BTN_IL)).click
   end
 
   def click_to_delete_order(key = nil)
     return find(:xpath, ta(DELETE_PRDER_EP)).click if key == :ep
-    return find(:xpath, ta(DELETE_PRDER_IL)).click if key == :il
+    return find(:xpath, DELETE_PRDER_IL).click if key == :il
     find(:xpath, ta(DELETE_PRDER_TA, DELETE_PRDER_IL)).click
   end
 
   def click_to_update_cart(key = nil)
     return find(:xpath, ta(COMEBACK_TO_CATALOG_EP)).click if key == :ep
-    return find(:xpath, ta(COMEBACK_TO_CATALOG_IL)).click if key == :il
+    return find(:xpath, COMEBACK_TO_CATALOG_IL).click if key == :il
     find(:xpath, ta(COMEBACK_TO_CATALOG_TA, COMEBACK_TO_CATALOG_IL)).click
   end
 
