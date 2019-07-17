@@ -44,3 +44,5 @@ ec_flow:
   login: 'admin'
   password: 'changeme'
 
+amazon:
+  page: "https://www.amazon.com/"

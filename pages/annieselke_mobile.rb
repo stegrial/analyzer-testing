@@ -30,6 +30,7 @@ class AnnieselkeMobile
   MY_ACCOUNT_TA = "annieselke_mobile:my_account"
   MY_ACCOUNT_EP = "EP:annieselke_mobile:my_account"
 
+
   PERSONAL_DETEILS_IL = "//a[text()='Update personal details']"
   PERSONAL_DETEILS_TA = "annieselke_mobile:personal_details"
   PERSONAL_DETEILS_EP = "EP:annieselke_mobile:personal_details"
@@ -44,55 +45,55 @@ class AnnieselkeMobile
 
   def login_btn(key = nil)
     return find(:xpath, ta(LOGIN_BTN_EP)).click if  key ==:ep
-    return find(:xpath, ta(LOGIN_BTN_IL)).click if  key ==:il
+    return find(:xpath, LOGIN_BTN_IL).click if  key ==:il
     find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click
   end
 
   def set_email(key = nil)
     return find(:xpath, ta(EMAIL_EP)).set("julia.arapova@softesis.com") if key ==:ep
-    return find(:xpath, ta(EMAIL_IL)).set("julia.arapova@softesis.com") if key ==:il
+    return find(:xpath, EMAIL_IL).set("julia.arapova@softesis.com") if key ==:il
     find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set("julia.arapova@softesis.com")
   end
 
   def set_pass(key = nil)
     return find(:xpath, ta(PASS_EP)).set("1234tesT") if key ==:ep
-    return find(:xpath, ta(PASS_IL)).set("1234tesT") if key ==:il
+    return find(:xpath, PASS_IL).set("1234tesT") if key ==:il
     find(:xpath, ta(PASS_TA, PASS_IL)).set("1234tesT")
   end
 
   def click_login_btn(key = nil)
     return find(:xpath, ta(LOGIN_EP)).click if key ==:ep
-    return find(:xpath, ta(LOGIN_IL)).click if key ==:il
+    return find(:xpath, LOGIN_IL).click if key ==:il
     find(:xpath, ta(LOGIN_TA, LOGIN_IL)).click
   end
 
   def click_humburger_menu(key = nil)
-    return find(:xpath, ta(HUMBURGER_MENU_EP)).click if key ==:ep
-    return find(:xpath, ta(HUMBURGER_MENU_IL)).click if key ==:il
+    return find(:xpath, ta(HUMBURGER_MENU_EP)).click if key == :ep
+    return find(:xpath, HUMBURGER_MENU_IL).click if key == :il
     find(:xpath, ta(HUMBURGER_MENU_TA, HUMBURGER_MENU_IL)).click
   end
 
   def click_my_acc_btn(key = nil)
     return find(:xpath, ta(MY_ACCOUNT_EP)).click if key ==:ep
-    return find(:xpath, ta(MY_ACCOUNT_IL)).click if key ==:il
+    return find(:xpath, MY_ACCOUNT_IL).click if key ==:il
     find(:xpath, ta(MY_ACCOUNT_TA, MY_ACCOUNT_IL)).click
   end
 
   def click_personal_info_btn(key = nil)
     return find(:xpath, ta(PERSONAL_DETEILS_EP)).click if key ==:ep
-    return find(:xpath, ta(PERSONAL_DETEILS_IL)).click if key ==:il
+    return find(:xpath, PERSONAL_DETEILS_IL).click if key ==:il
     find(:xpath, ta(PERSONAL_DETEILS_TA, PERSONAL_DETEILS_IL)).click
   end
 
-  def select_gender(key = nil)
-    return find(:xpath, ta(GENDER_EP)).select('Ms') if key ==:ep
-    return find(:xpath, ta(GENDER_IL)).select('Ms') if key ==:il
-    find(:xpath, ta(GENDER_TA, GENDER_IL)).select('Ms')
+  def select_gender(key = nil, gender)
+    return find(:xpath, ta(GENDER_EP)).select(gender) if key ==:ep
+    return find(:xpath, GENDER_IL).select(gender) if key ==:il
+    find(:xpath, ta(GENDER_TA, GENDER_IL)).select(gender)
   end
 
   def click_save_btn(key = nil)
     return find(:xpath, ta(SAVE_BTN_EP)).click if key ==:ep
-    return find(:xpath, ta(SAVE_BTN_IL)).click if key ==:il
+    return find(:xpath, SAVE_BTN_IL).click if key ==:il
     find(:xpath, ta(SAVE_BTN_TA, SAVE_BTN_IL)).click
   end
 
