@@ -45,5 +45,6 @@ ec_flow:
   password: 'changeme'
 
 24timezones:
-  page: 'https://24timezones.com/karta-mira'
+  page: 'https://24timezones.com/worldmap'
+  page1: 'https://24timezones.com/karta-mira'
 
