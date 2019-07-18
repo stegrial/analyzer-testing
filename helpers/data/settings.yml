@@ -50,4 +50,11 @@ ec_flow:
 
 amazon:
   page: "https://www.amazon.com/"
-  
+
+olx:
+  page: "https://www.olx.ua/"
+
+pinterest:
+  page: "https://www.pinterest.com/"
+  email: "arapova.jul2@gmail.com"
+  password: "4321test"
