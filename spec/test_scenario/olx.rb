@@ -1,3 +1,9 @@
+#
+#
+# ADDED to scope
+#
+#
+#
 require 'spec_helper'
 
 feature 'TrueAutomation.IO capybara example' do
@@ -6,8 +12,8 @@ feature 'TrueAutomation.IO capybara example' do
 
     # My profile button click
     #find(:xpath, '//span[@data-cy="common_link_header_myaccount"]').click
-    #find(:xpath, ta('olx:home:myaccount', '//span[@data-cy="common_link_header_myaccount"]')).click
-    find(ta('p:olx:home:myaccount')).click
+    find(:xpath, ta('olx:home:myaccount', '//span[@data-cy="common_link_header_myaccount"]')).click
+    # find(ta('JUli:p:olx:home:myaccount')).click
     sleep 3
 
     # Registration button click
@@ -28,8 +34,8 @@ feature 'TrueAutomation.IO capybara example' do
 
     # sleep 55
     #find(:xpath, '(//h3[@class="lheight22 margintop5"])[1]').click
-    #find(:xpath, ta('p:olx:searchResult:firstResult', '(//h3[@class="lheight22 margintop5"])[1]')).click
-    find(:xpath, ta('p:olx:searchResult:firstResult').click
+    find(:xpath, ta('p:olx:searchResult:firstResult', '(//h3[@class="lheight22 margintop5"])[1]')).click
+    # find(:xpath, ta('JULI:p:olx:searchResult:firstResult')).click
 
     sleep 5
 
