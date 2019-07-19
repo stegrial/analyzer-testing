@@ -58,3 +58,6 @@ pinterest:
   page: "https://www.pinterest.com/"
   email: "arapova.jul2@gmail.com"
   password: "4321test"
+
+walmart:
+  page: "https://www.walmart.com/"
