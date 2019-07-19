@@ -5,8 +5,6 @@ require_relative '../../../pages/pinterest'
 
 it = Pinterest.new
 
-# This tests runs when the vpn is ON
-
 describe 'Preconditions' do
 
 
