@@ -1,3 +1,9 @@
+#
+#
+# ADDED to scope
+#
+#
+#
 require 'spec_helper'
 
 feature 'TrueAutomation.IO capybara example' do
