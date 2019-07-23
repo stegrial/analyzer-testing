@@ -183,5 +183,4 @@ class Epicgames
     return find(:css, NOT_ROBOT_IL).click if key ==:il
     find(:css, ta(NOT_ROBOT_TA, NOT_ROBOT_IL)).click
   end
-
 end
