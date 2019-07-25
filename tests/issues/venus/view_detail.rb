@@ -15,7 +15,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-698 TA returns the wrong element (Venus - Clicking on the View Detail for second item in the list)' do
+  feature 'TA-698, TA returns the wrong element (Venus - Clicking on the View Detail for second item in the list)' do
 
     # Initial locators with Recording
 

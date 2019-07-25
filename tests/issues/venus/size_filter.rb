@@ -1,54 +1,56 @@
 require 'spec_helper'
+require_relative '../../../helpers/special_methods'
+require_relative '../../../pages/united_methods'
+require_relative '../../../pages/venus'
+
+it = Venus.new
 
 describe 'Preconditions' do
 
-before (:all) do
-  $caps_chrome['chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
-  # Capybara.current_session.driver.browser.manage.window.resize_to(320,568)
-end
-
-after (:all) do
-  Capybara.current_session.driver.quit
-  # Capybara.current_session.driver.browser.manage.window.resize_to(1024,640)
-end
-
-feature 'TrueAutomation.IO capybara example' do
-  scenario 'Clicking on the S-size checkbox in the Filter dropdown menu' do
-    #to reproduce, just need to increase wait before opening the Clothing dropdown menu
-
-    visit 'https://venus-preprod.moovweb.cloud'
-
-    # sleep 10
-    # find(:xpath, "//button[contains(., 'Clothing')]").click
-    find(:xpath, ta('venus:clothing_link', "//button[contains(., 'Clothing')]")).click
-    # find(ta("venus:clothing_link")).click
-
-    # sleep 10 # sleep 2
-    # find(:xpath, "//div[@role='button' and text()='Clothing']").click
-    find(:xpath, ta('venus:clothing_section:main_dropdown', "//div[@role='button' and text()='Clothing']")).click
-    # find(ta("venus:clothing_section:main_dropdown")).click
-
-    # sleep 5
-    # find(:xpath, "//li[text()='Tops']").click
-    find(:xpath, ta('venus:clothing_section:main_dropdown:tops', "//li[text()='Tops']")).click
-    # find(ta("venus:clothing_section:main_dropdown:tops")).click
-
-    # sleep 5
-    # find(:xpath, "//button[.//span[text()='Filter']]").click
-    find(:xpath, ta('venus:subsection:filter', "//button[.//span[text()='Filter']]")).click
-    # find(ta("venus:subsection:filter")).click
-
-    # sleep 5
-    # find(:xpath, "//label[.//span[text()='S (4-6)']]").click
-    find(:xpath, ta('venus:subsection:filter:S', "//label[.//span[text()='S (4-6)']]")).click
-    # find(ta("venus:subsection:filter:S")).click # wrong element was found
-
-    # sleep 5
-    # find(:xpath, "//button[contains(., 'View Results')]").click
-    find(:xpath, ta('venus:subsection:filter:view_results', "//button[contains(., 'View Results')]")).click
-    # find(ta("venus:subsection:filter:view_results")).click
-
-    sleep 5
+  before(:all) do
+    $caps_chrome['chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   end
-end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'Size filter applying' do
+
+    # Initial locators with Recording
+
+    scenario 'Recording IL', il_run: true do
+      step "User goes to the page", settings('venus')['home_page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the Clothing category" do
+        it.click_clothing_category
+      end
+
+      step "User opens dropdown in the Clothing category" do
+        it.open_category_dropdown
+      end
+
+      step "User chooses the Tops subcategory in the dropdown" do
+        it.choose_tops_subcategory
+      end
+
+      step "User opens the Size filter" do
+        it.open_size_filter
+      end
+
+      step "User chooses size in the list", 'S (4-6)' do |size|
+        it.choose_size size
+      end
+
+      step "User clicks on the View Results button" do
+        it.click_view_results_btn
+      end
+
+      sleep 3
+    end
+
+
+  end
 end
