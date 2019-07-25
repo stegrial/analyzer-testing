@@ -44,3 +44,26 @@ ec_flow:
   login: 'admin'
   password: 'changeme'
 
+24timezones:
+  page: 'https://24timezones.com/worldmap'
+  page1: 'https://24timezones.com/karta-mira'
+
+amazon:
+  page: "https://www.amazon.com/"
+
+olx:
+  page: "https://www.olx.ua/"
+
+pinterest:
+  page: "https://www.pinterest.com/"
+  email: "arapova.jul2@gmail.com"
+  password: "4321test"
+
+walmart:
+  page: "https://www.walmart.com/"
+
+epicgames:
+  page: "https://www.epicgames.com"
+
+tumblr:
+  page: "https://www.tumblr.com/"
