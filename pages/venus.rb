@@ -49,6 +49,40 @@ class Venus
   VIEW_DETAIL_SECOND_TA = 'venus:search_results:view_detail_second'
   VIEW_DETAIL_SECOND_EP = 'EP:venus:search_results:view_detail_second'
 
+  CLOTHING_CATEGORY_IL = "//button[contains(., 'Clothing')]"
+  CLOTHING_CATEGORY_TA = 'venus:main:clothing_category'
+  CLOTHING_CATEGORY_EP = 'EP:venus:main:clothing_category'
+
+  CATEGORY_DROPDOWN_IL = "//div[@data-page='Category']//div[@id='select-subcategories']"
+  CATEGORY_DROPDOWN_TA = 'venus:category:category_dropdown'
+  CATEGORY_DROPDOWN_EP = 'EP:venus:category:category_dropdown'
+
+  TOPS_SUBCATEGORY_IL = "//li[text()='Tops']"
+  TOPS_SUBCATEGORY_TA = 'venus:category_dropdown:tops_subcategory'
+  TOPS_SUBCATEGORY_EP = 'EP:venus:category_dropdown:tops_subcategory'
+
+  SUBCATEGORY_DROPDOWN_IL = "//div[@data-page='Subcategory']//div[@id='select-subcategories']"
+  SUBCATEGORY_DROPDOWN_TA = 'venus:subcategory:subcategory_dropdown'
+  SUBCATEGORY_DROPDOWN_EP = 'EP:venus:subcategory:subcategory_dropdown'
+
+  CLOTHING_CATEGORY_DROPDOWN_IL = "//li[text()='Clothing']"
+  CLOTHING_CATEGORY_DROPDOWN_TA = 'venus:subcategory_dropdown:clothing_category'
+  CLOTHING_CATEGORY_DROPDOWN_EP = 'EP:venus:subcategory_dropdown:clothing_category'
+
+  SIZE_FILTER_IL = "//button[.//span[text()='Filter']]"
+  SIZE_FILTER_TA = 'venus:subcategory:size_filter'
+  SIZE_FILTER_EP = 'EP:venus:subcategory:size_filter'
+
+  def size(locator, size)
+    return @size_il = "//label[.//span[text()='#{size}']]" if locator == :il
+    return @size_ta = "venus:size_filter:'#{size}'" if locator == :ta
+    @size_ep = "EP:venus:size_filter:'#{size}'" if locator == :ep
+  end
+
+  VIEW_RESULTS_BTN_IL = "//button[contains(., 'View Results')]"
+  VIEW_RESULTS_BTN_TA = 'venus:size_filter:view_results_btn'
+  VIEW_RESULTS_BTN_EP = 'EP:venus:size_filter:view_results_btn'
+
   def click_account_button(key = nil)
     return find(:xpath, ta(ACCOUNT_BUTTON_EP)).click if key == :ep
     return find(:xpath, ACCOUNT_BUTTON_IL).click if key == :il
@@ -113,6 +147,54 @@ class Venus
     return find(:xpath, ta(VIEW_DETAIL_SECOND_EP)).click if key == :ep
     return find(:xpath, VIEW_DETAIL_SECOND_IL).click if key == :il
     find(:xpath, ta(VIEW_DETAIL_SECOND_TA, VIEW_DETAIL_SECOND_IL)).click
+  end
+
+  def click_clothing_category(key = nil)
+    return find(ta(CLOTHING_CATEGORY_EP)).click if key == :ep
+    return find(:xpath, CLOTHING_CATEGORY_IL).click if key == :il
+    find(:xpath, ta(CLOTHING_CATEGORY_TA, CLOTHING_CATEGORY_IL)).click
+  end
+
+  def open_category_dropdown(key = nil)
+    return find(ta(CATEGORY_DROPDOWN_EP)).click if key == :ep
+    return find(:xpath, CATEGORY_DROPDOWN_IL).click if key == :il
+    find(:xpath, ta(CATEGORY_DROPDOWN_TA, CATEGORY_DROPDOWN_IL)).click
+  end
+
+  def choose_tops_subcategory(key = nil)
+    return find(ta(TOPS_SUBCATEGORY_EP)).click if key == :ep
+    return find(:xpath, TOPS_SUBCATEGORY_IL).click if key == :il
+    find(:xpath, ta(TOPS_SUBCATEGORY_TA, TOPS_SUBCATEGORY_IL)).click
+  end
+
+  def open_subcategory_dropdown(key = nil)
+    return find(ta(SUBCATEGORY_DROPDOWN_EP)).click if key == :ep
+    return find(:xpath, SUBCATEGORY_DROPDOWN_IL).click if key == :il
+    find(:xpath, ta(SUBCATEGORY_DROPDOWN_TA, SUBCATEGORY_DROPDOWN_IL)).click
+  end
+
+  def choose_clothing_category(key = nil)
+    return find(ta(CLOTHING_CATEGORY_DROPDOWN_EP)).click if key == :ep
+    return find(:xpath, CLOTHING_CATEGORY_DROPDOWN_IL).click if key == :il
+    find(:xpath, ta(CLOTHING_CATEGORY_DROPDOWN_TA, CLOTHING_CATEGORY_DROPDOWN_IL)).click
+  end
+
+  def open_size_filter(key = nil)
+    return find(ta(SIZE_FILTER_EP)).click if key == :ep
+    return find(:xpath, SIZE_FILTER_IL).click if key == :il
+    find(:xpath, ta(SIZE_FILTER_TA, SIZE_FILTER_IL)).click
+  end
+
+  def choose_size(key = nil, size)
+    return find(ta(size(:ep, size))).click if key == :ep
+    return find(:xpath, size(:il, size)).click if key == :il
+    find(:xpath, ta(size(:ep, size), size(:ep, size))).click
+  end
+
+  def click_view_results_btn(key = nil)
+    return find(ta(VIEW_RESULTS_BTN_EP)).click if key == :ep
+    return find(:xpath, VIEW_RESULTS_BTN_IL).click if key == :il
+    find(:xpath, ta(VIEW_RESULTS_BTN_TA, VIEW_RESULTS_BTN_IL)).click
   end
 
 
