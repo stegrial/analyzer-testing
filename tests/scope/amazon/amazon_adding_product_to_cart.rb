@@ -40,15 +40,18 @@ describe 'Preconditions' do
         it.click_product_from_search_result
       end
 
-      step "User clicks on the appropriate button to select size" do
+      step "User clicks on the appropriate button to click size btn" do
+        sleep 5
         it.click_to_select_size_btn
+      end
+
+      step "User clicks on the appropriate button to select size" do
+        it.click_to_select_size
       end
 
       step "User clicks add to cart button" do
         it.click_for_add_to_cart
       end
-
-      # Capybara.current_session.driver.quit
     end
 
     scenario 'Searching IL', il_run: true do
@@ -72,9 +75,14 @@ describe 'Preconditions' do
         it.click_product_from_search_result
       end
 
-      step "User clicks on the appropriate button to select size" do
+      step "User clicks on the appropriate button to click size button" do
         check_element_path :xpath, Amazon::SIZE_LIST_TA, Amazon::SIZE_LIST_IL
         it.click_to_select_size_btn
+      end
+
+      step "User clicks on the appropriate button to select size" do
+        check_element_path :xpath, Amazon::SIZE_TA, Amazon::SIZE_IL
+        it.click_to_select_size
       end
 
       step "User clicks add to cart button" do
