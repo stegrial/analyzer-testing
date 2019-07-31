@@ -18,9 +18,13 @@ class Amazon
   PRODUCT_FROM_SEARCH_TA = "amazon:product_from_search"
   PRODUCT_FROM_SEARCH_EP = "EP:amazon:product_from_search"
 
-  SIZE_LIST_IL = "//select[@name='dropdown_selected_size_name']"
+  SIZE_LIST_IL = "(//span[@class='a-button-text a-declarative'])[1]"
   SIZE_LIST_TA = "amazon:size_list"
   SIZE_LIST_EP = "EP:amazon:size_list"
+
+  SIZE_IL = "//ul[@class='a-nostyle a-list-link']/li[2]"
+  SIZE_TA = "amazon:size"
+  SIZE_EP = "EP:amazon:size"
 
   ADD_TO_CART_IL = "//span[@id='submit.add-to-cart']"
   ADD_TO_CART_TA = "amazon:add_to_cart"
@@ -45,9 +49,15 @@ class Amazon
   end
 
   def click_to_select_size_btn(key = nil)
-    return find(:xpath, ta(SIZE_LIST_EP)).select('Large') if key ==:ep
-    return find(:xpath, SIZE_LIST_IL).select('Large') if key ==:il
-    find(:xpath, ta(SIZE_LIST_TA, SIZE_LIST_IL)).select('Large')
+      return find(:xpath, ta(SIZE_LIST_EP)).click if key ==:ep
+      return find(:xpath, SIZE_LIST_IL).click if key ==:il
+      find(:xpath, ta(SIZE_LIST_TA, SIZE_LIST_IL)).click
+  end
+
+  def click_to_select_size(key = nil)
+    return find(:xpath, ta(SIZE_EP)).click if key ==:ep
+    return find(:xpath, SIZE_IL).click if key ==:il
+    find(:xpath, ta(SIZE_TA, SIZE_IL)).click
   end
 
   def click_for_add_to_cart(key = nil)
