@@ -17,7 +17,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Stagecom - adding item and open cart' do
+  feature 'Amazon  - adding product to cart' do
 
     # Initial locators with Recording
 
@@ -36,6 +36,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the desired search result" do
+        sleep 5
         it.click_product_from_search_result
       end
 

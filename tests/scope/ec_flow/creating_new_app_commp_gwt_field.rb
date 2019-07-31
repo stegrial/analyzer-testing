@@ -119,7 +119,7 @@ describe 'Preconditions' do
 
     end
 
-    scenario 'Searching IL', il_run2: true do
+    scenario 'Searching IL', il_run: true do
 
       step "User goes to the page", settings('ec_flow')['page'] do |url|
         page.visit url

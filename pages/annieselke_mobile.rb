@@ -90,6 +90,17 @@ class AnnieselkeMobile
     return find(:xpath, GENDER_IL).select(gender) if key ==:il
     find(:xpath, ta(GENDER_TA, GENDER_IL)).select(gender)
   end
+  GENDER__SELECT_IL = "profile.title"
+  GENDER__SELECT_TA = "annieselke_mobile:gender_select"
+  GENDER__SELECT_EP = "EP:annieselke_mobile:gender_select"
+
+  OPTION__MR_IL = "option[2]"
+  OPTION__MR_TA = "annieselke_mobile:gender_mr"
+  OPTION__MR_EP = "EP:annieselke_mobile:gender_mr"
+
+  OPTION__MS_IL = "option[3]"
+  OPTION__MS_TA = "annieselke_mobile:gender_ms"
+  OPTION__MS_EP = "EP:annieselke_mobile:gender_ms"
 
   def click_save_btn(key = nil)
     return find(:xpath, ta(SAVE_BTN_EP)).click if key ==:ep

@@ -59,10 +59,9 @@ describe 'Preconditions' do
         it.click_logo
       end
       step "User clicks on minicart" do
+        sleep 4
         it.click_minicart
       end
-      sleep 5
-      Capybara.current_session.driver.quit
     end
 
     scenario 'Searching IL', il_run: true do

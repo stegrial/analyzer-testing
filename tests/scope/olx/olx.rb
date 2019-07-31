@@ -37,6 +37,7 @@ feature 'OLX - search results' do
     end
 
     step "User clicks to select search result" do
+      sleep 5
       it.click_to_select_some_result
     end
   end

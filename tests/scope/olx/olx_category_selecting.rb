@@ -28,6 +28,7 @@ feature 'OLX - category selecting' do
     end
 
     step "User clicks to select product" do
+      sleep 3
       it.click_to_select_product
     end
 
