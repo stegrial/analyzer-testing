@@ -6,11 +6,12 @@ class Stagecom
   include Capybara::DSL
   include RSpec::Matchers
 
-  HUMBURGER_MENU_IL = "//button[@id='nav-button']"
+  HUMBURGER_MENU_IL = "//a[@on='tap:moov_menu.toggle']"
+  # HUMBURGER_MENU_IL = "//button[@aria-label='Menu']"
   HUMBURGER_MENU_TA = "stage_com:humburger_menu"
   HUMBURGER_MENU_EP = "EP:stage_com:humburger_menu"
 
-  SIGNIN_LINK_IL = "//p[@class='m-menu__account__links']/a[text()='Sign in']"
+  SIGNIN_LINK_IL = "//button[text()='Sign in']"
   SIGNIN_LINK_TA = "stage_com:signin_link"
   SIGNIN_LINK_EP = "EP:stage_com:signin_link"
 
@@ -30,35 +31,35 @@ class Stagecom
   LOGO_TA = "stage_com:logo"
   LOGO_EP = "EP:stage_com:logo"
 
-  MINICART_IL = "//a[@class='m-header__minicart m-header__miniCartInnerContent']"
+  MINICART_IL = "//button[@aria-label='Cart']"
   MINICART_TA = "stage_com:minicart"
   MINICART_EP = "EP:stage_com:minicart"
 
-  CATEGORY_KIDS_IL = "//ul/a[@data-menu-id='Kids']"
+  CATEGORY_KIDS_IL = "(//div[text()='Kids'])[1]"
   CATEGORY_KIDS_TA = "stage_com:category_kids"
   CATEGORY_KIDS_EP = "EP:stage_com:category_kids"
 
-  SUBCATEGORY_BABY_IL = "(//a[text()='Baby'])[1]"
+  SUBCATEGORY_BABY_IL = "(//div[text()='Baby'])[1]"
   SUBCATEGORY_BABY_TA = "stage_com:subcategory_baby"
   SUBCATEGORY_BABY_EP = "EP:stage_com:subcategory_baby"
 
-  SUBCATEGORY_BABYGIRL_IL = "(//a[text()='Baby Girl (0-24 months)'])[1]"
+  SUBCATEGORY_BABYGIRL_IL = "(//div[text()='Baby Girl (0-24 months)'])[1]"
   SUBCATEGORY_BABYGIRL_TA = "stage_com:subcategory_babygirl"
   SUBCATEGORY_BABYGIRL_EP = "EP:stage_com:subcategory_babygirl"
 
-  GIRL_DRESS_IL = "//h2[text()='Dresses']"
+  GIRL_DRESS_IL = "(//a[contains(., 'Dresses')])[1]"
   GIRL_DRESS_TA = "stage_com:girl_dress"
   GIRL_DRESS_EP = "EP:stage_com:girl_dress"
 
-  PINK_DRESS_IL = "(//a[@class='product-image'])[1]"
+  PINK_DRESS_IL = "(//h6[text()])[2]"
   PINK_DRESS_TA = "stage_com:pink_dress"
   PINK_DRESS_EP = "EP:stage_com:pink_dress"
 
-  BABY_SIZE_IL = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
+  BABY_SIZE_IL = "//button/span[text()='12months']"
   BABY_SIZE_TA = "stage_com:baby_size"
   BABY_SIZE_EP = "EP:stage_com:baby_size"
 
-  ADD_TO_CART_IL = "(//div[@class='pdp__size']//a[@class='attr-swatch'])[1]"
+  ADD_TO_CART_IL = "//span[text()='Add To Bag']"
   ADD_TO_CART_TA = "stage_com:add_to_cart"
   ADD_TO_CART_EP = "EP:stage_com:add_to_cart"
 

@@ -14,7 +14,7 @@ class Amazon
   SEARCH_BTN_TA = "amazon:search_btn"
   SEARCH_BTN_EP = "EP:amazon:search_btn"
 
-  PRODUCT_FROM_SEARCH_IL = "(//img[@class='mediaCentralImage imageContainer__image'])[2]"
+  PRODUCT_FROM_SEARCH_IL = "(//div[@class='a-section a-spacing-medium'])[5]" # old atribute section is miss
   PRODUCT_FROM_SEARCH_TA = "amazon:product_from_search"
   PRODUCT_FROM_SEARCH_EP = "EP:amazon:product_from_search"
 

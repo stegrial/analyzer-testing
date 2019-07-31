@@ -31,6 +31,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on pin" do
+       sleep 4
         it.click_to_open_pin
       end
 

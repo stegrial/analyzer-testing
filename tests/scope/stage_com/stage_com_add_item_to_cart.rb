@@ -53,6 +53,7 @@ describe 'Preconditions' do
       end
 
       step "# User clicks to" do
+        sleep 5
         it.click_pink_dress
       end
 
@@ -65,8 +66,6 @@ describe 'Preconditions' do
       step "# User clicks to" do
         it.click_add_to_cart
       end
-      Capybara.current_session.driver.quit
-
     end
 
     scenario 'Searching IL', il_run: true do

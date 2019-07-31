@@ -16,6 +16,7 @@ feature 'Tumblr - search results' do
     end
 
     step "User click sign up button"  do
+      sleep 3
       it.click_sign_up_btn
     end
 
@@ -117,7 +118,7 @@ feature 'Tumblr - search results' do
 
   # Element Picker from Repository
 
-  scenario 'Searching EP', ep_run: true do
+  scenario 'TA-826 - Searching EP', ep_run: true do
 
     step "User goes to the page", settings('tumblr')['page'] do |url|
       page.visit url

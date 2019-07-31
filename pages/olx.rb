@@ -17,7 +17,7 @@ class Olx
   GALLERY_VIEW_TA = "olx:gallery_view"
   GALLERY_VIEW_EP = "EP:olx:gallery_view"
 
-  PRODUCT_IL = "(//a[@class='marginright5 link linkWithHash detailsLink'])[20]"
+  PRODUCT_IL = "//li[@data-adnumber='17']"
   PRODUCT_TA = "olx:product"
   PRODUCT_EP = "EP:olx:product"
 
@@ -45,7 +45,7 @@ class Olx
   CLEAR_REGION_BTN_TA = "olx:clear_region_btn"
   CLEAR_REGION_BTN_EP = "EP:olx:clear_region_btn"
 
-  EXAMPLE_RESULT_IL = "(//h3[@class='lheight22 margintop5'])[2]"
+  EXAMPLE_RESULT_IL = "(//table[1]//div[@class='space rel'])[5]"
   EXAMPLE_RESULT_TA = "olx:some_result"
   EXAMPLE_RESULT_EP = "EP:olx:some_result"
 
