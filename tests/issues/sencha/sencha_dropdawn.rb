@@ -1,6 +1,16 @@
 require 'spec_helper'
 
-feature 'TrueAutomation.IO capybara example' do
+describe 'Preconditions' do
+
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'TrueAutomation.IO capybara example' do
 
   scenario 'Test sencha dropdawn' do
     # Element is recorded after reloading the page
@@ -30,4 +40,6 @@ feature 'TrueAutomation.IO capybara example' do
 
   sleep 3
   end
+end
+
 end

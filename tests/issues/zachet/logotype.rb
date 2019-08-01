@@ -5,7 +5,17 @@ require_relative '../../../pages/zachet'
 
 it = Zachet.new
 
-feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section' do
+describe 'Preconditions' do
+
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section' do
 
   # Initial locators with Recording
 
@@ -95,5 +105,7 @@ feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section'
     sleep 3
   end
 
+
+end
 
 end

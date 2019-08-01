@@ -4,8 +4,16 @@ require_relative '../../../pages/united_methods'
 require_relative '../../../pages/annieselke'
 
 it = Annieselke.new
+describe 'Preconditions' do
 
-feature 'TA-911 Element not found when the Dom tree is changed (the Login link)' do
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+  feature 'TA-911 Element not found when the Dom tree is changed (the Login link)' do
 
   # Initial locators with Recording
 
@@ -89,4 +97,5 @@ feature 'TA-911 Element not found when the Dom tree is changed (the Login link)'
     end
 
   end
+end
 end

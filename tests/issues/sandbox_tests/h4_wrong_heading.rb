@@ -5,7 +5,17 @@ require_relative '../../../pages/sandbox_tests'
 
 it = SandboxTests.new
 
-feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tree and finds a wrong elements' do
+describe 'Preconditions' do
+
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tree and finds a wrong elements' do
 
   # Initial locators with Recording
 
@@ -54,5 +64,7 @@ feature 'TA-152 TA ignores the attributes of intermediate elements in the DOM tr
     end
     sleep 3
   end
+
+end
 
 end

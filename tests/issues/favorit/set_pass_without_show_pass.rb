@@ -5,7 +5,17 @@ require_relative '../../../pages/favorit'
 
 it = Favorit.new
 
-feature 'TA-902 Analyzer returns the wrong element (input) in the Sing In section' do
+describe 'Preconditions' do
+
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'TA-902 Analyzer returns the wrong element (input) in the Sing In section' do
 
   # Initial locators with Recording
 
@@ -112,4 +122,5 @@ feature 'TA-902 Analyzer returns the wrong element (input) in the Sing In sectio
 
 
 
+end
 end
