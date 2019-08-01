@@ -6,3 +6,4 @@ data_files/
 analyzer-testing.iml
 trueautomation.json
 tests/issues/venus/1_zvenus.rb
+vendor/
