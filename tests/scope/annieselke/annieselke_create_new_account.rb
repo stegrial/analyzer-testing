@@ -4,8 +4,16 @@ require_relative '../../../pages/united_methods'
 require_relative '../../../pages/annieselke'
 
 it = Annieselke.new
+describe 'Preconditions' do
 
-feature 'Annie Selke - creating new account' do
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+  feature 'Annie Selke - creating new account' do
 
   # Initial locators with Recording
 
@@ -168,4 +176,5 @@ feature 'Annie Selke - creating new account' do
       it.click_register_btn :ep
     end
   end
+end
 end

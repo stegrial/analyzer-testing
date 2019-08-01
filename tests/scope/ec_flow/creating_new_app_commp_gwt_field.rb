@@ -10,6 +10,13 @@ it = Ecflow.new
 # This tests runs when the vpn is ON
 describe 'Preconditions' do
 
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
   feature 'EC Flow - creating new application commponent - GWT - fields' do
 
     # Initial locators with Recording

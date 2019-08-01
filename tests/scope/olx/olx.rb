@@ -4,8 +4,17 @@ require_relative '../../../pages/united_methods'
 require_relative '../../../pages/olx'
 
 it = Olx.new
+describe 'Preconditions' do
 
-feature 'OLX - search results' do
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'OLX - search results' do
 
   # Initial locators with Recording
 
@@ -119,4 +128,5 @@ feature 'OLX - search results' do
     end
 
   end
+end
 end
