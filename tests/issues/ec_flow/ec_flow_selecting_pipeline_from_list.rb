@@ -9,6 +9,13 @@ it = Ecflow.new
 
 describe 'Preconditions' do
 
+    before(:all) do
+      $caps_chrome['chromeOptions'].delete('mobileEmulation')
+    end
+
+    after(:all) do
+      Capybara.current_session.driver.quit
+    end
   feature 'TA-866 EC Flow - selecting pipeline from list' do
 
     # Initial locators with Recording

@@ -4,8 +4,16 @@ require_relative '../../../pages/united_methods'
 require_relative '../../../pages/24timezones'
 
 it = TimeZones.new
+describe 'Preconditions' do
 
-feature 'TA-926 Analyzer returns wrong element in the languages section' do
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+  feature 'TA-926 Analyzer returns wrong element in the languages section' do
 
   # Initial locators with Recording
 
@@ -85,4 +93,5 @@ feature 'TA-926 Analyzer returns wrong element in the languages section' do
     sleep 3
   end
 
+  end
 end

@@ -5,7 +5,17 @@ require_relative '../../../pages/how_to_get_money'
 
 it = HowToGetMoney.new
 
-feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month section' do
+describe 'Preconditions' do
+
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month section' do
 
   # Initial locators with Recording
 
@@ -86,5 +96,7 @@ feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month 
     sleep 3
   end
 
+
+end
 
 end

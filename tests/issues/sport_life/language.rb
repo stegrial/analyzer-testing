@@ -5,7 +5,17 @@ require_relative '../../../pages/sport_life'
 
 it = SportLife.new
 
-feature 'TA-908 Analyzer returns not found element in the languages section' do
+describe 'Preconditions' do
+
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'TA-908 Analyzer returns not found element in the languages section' do
 
   # Element Picker from Repository
 
@@ -46,5 +56,7 @@ feature 'TA-908 Analyzer returns not found element in the languages section' do
 
     sleep 3
   end
+
+end
 
 end
