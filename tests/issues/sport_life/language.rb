@@ -17,46 +17,45 @@ describe 'Preconditions' do
 
   feature 'TA-908 Analyzer returns not found element in the languages section' do
 
-  # Element Picker from Repository
+    # Element Picker from Repository
 
-  scenario 'Searching EP', ep_run: true do
+    scenario 'Searching EP', ep_run: true do
 
-    step "User goes to the page", settings('sportlife')['page'] do |url|
-      page.visit url
+      step "User goes to the page", settings('sportlife')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the ukraine language" do
+        check_element_path :xpath, SportLife::UKRAINE_LANG_EP, SportLife::UKRAINE_LANG_IL
+        it.click_ukraine_lang :ep
+      end
+
+      step "User clicks on the russian language" do
+        check_element_path :xpath, SportLife::RUSSIAN_LANG_EP, SportLife::RUSSIAN_LANG_IL
+        it.click_russian_lang :ep
+      end
+
+      sleep 3
     end
 
-    step "User clicks on the ukraine language" do
-      check_element_path :xpath, SportLife::UKRAINE_LANG_EP, SportLife::UKRAINE_LANG_IL
-      it.click_ukraine_lang :ep
+    # Debug
+
+    scenario 'Searching debug', search_debug: true do
+
+      step "User goes to the page", settings('sportlife')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the ukraine language" do
+        it.click_ukraine_lang :il
+      end
+
+
+      step "User clicks on the russian language" do
+        it.click_russian_lang :ep
+      end
+
+      sleep 3
     end
-
-    step "User clicks on the russian language" do
-      check_element_path :xpath, SportLife::RUSSIAN_LANG_EP, SportLife::RUSSIAN_LANG_IL
-      it.click_russian_lang :ep
-    end
-
-    sleep 3
-  end
-
-  # Debug
-
-  scenario 'Searching debug', search_debug: true do
-
-    step "User goes to the page", settings('sportlife')['page'] do |url|
-      page.visit url
-    end
-
-    step "User clicks on the ukraine language" do
-      it.click_ukraine_lang :il
-    end
-
-    step "User clicks on the russian language" do
-      it.click_russian_lang :ep
-    end
-
-    sleep 3
-  end
-
 end
-
 end
