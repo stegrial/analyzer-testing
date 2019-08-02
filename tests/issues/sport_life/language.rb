@@ -50,11 +50,12 @@ describe 'Preconditions' do
         it.click_ukraine_lang :il
       end
 
+
       step "User clicks on the russian language" do
         it.click_russian_lang :ep
       end
 
       sleep 3
     end
-  end
+end
 end

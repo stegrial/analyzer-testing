@@ -7,6 +7,7 @@ it = Zachet.new
 
 describe 'Preconditions' do
 
+
   before(:all) do
     $caps_chrome['chromeOptions'].delete('mobileEmulation')
   end

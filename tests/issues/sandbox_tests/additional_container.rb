@@ -5,7 +5,17 @@ require_relative '../../../pages/sandbox_tests'
 
 it = SandboxTests.new
 
-feature 'TA-148 TA finds the wrong element, if the element was added into additional container' do
+describe 'Preconditions' do
+
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'TA-148 TA finds the wrong element, if the element was added into additional container' do
 
   # Initial locators with Recording
 
@@ -53,6 +63,8 @@ feature 'TA-148 TA finds the wrong element, if the element was added into additi
       check_element_path :xpath, SandboxTests::H2_VIDEO_TA, SandboxTests::H2_VIDEO_IL
     end
     sleep 3
+  end
+
   end
 
 end

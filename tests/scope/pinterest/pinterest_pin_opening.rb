@@ -7,7 +7,13 @@ it = Pinterest.new
 
 describe 'Preconditions' do
 
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
 
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
   feature 'Pinterest - open pin' do
 
   # Initial locators with Recording
