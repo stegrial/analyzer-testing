@@ -72,7 +72,7 @@ describe 'Preconditions' do
 
       step "User clicks on the desired search result" do
         check_element_path :xpath, Amazon::PRODUCT_FROM_SEARCH_TA, Amazon::PRODUCT_FROM_SEARCH_IL
-       sleep 2
+       # sleep 2
         it.click_product_from_search_result
       end
 

@@ -49,6 +49,7 @@ describe 'Preconditions' do
       it.close_modal
 
       step "# User clicks to" do
+        sleep 4
         it.click_girl_dress
       end
 
