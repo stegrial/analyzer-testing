@@ -25,7 +25,7 @@ describe 'Preconditions' do
       end
 
       step "User click sign up button"  do
-        sleep 3
+        sleep 5
         it.click_sign_up_btn
       end
 

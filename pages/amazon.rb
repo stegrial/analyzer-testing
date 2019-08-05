@@ -30,6 +30,47 @@ class Amazon
   ADD_TO_CART_TA = "amazon:add_to_cart"
   ADD_TO_CART_EP = "EP:amazon:add_to_cart"
 
+
+  DEPARTMENS_LINK_IL = "a#nav-link-shopall"
+  DEPARTMENS_LINK_TA = "amazon:departments"
+  DEPARTMENS_LINK_EP = "EP:amazon:departments"
+
+  BABY_LINK_IL = "//span[text()='Baby']"
+  BABY_LINK_TA = "amazon:baby"
+  BABY_LINK_EP = "EP:amazon:baby"
+
+  NURSERY_IMG_IL= "//a/img[@alt='Nursery']"
+  NURSERY_IMG_TA = "amazon:nursery"
+  NURSERY_IMG_EP = "EP:amazon:nursery"
+
+  PRODUCT_IL = "(//span[@class='rush-component']/a[@class='a-link-normal']/div)[6]"
+  PRODUCT_TA = "amazon:product_from_category"
+  PRODUCT_EP = "EP:amazon:product_from_category"
+
+  def hover_departments(key = nil)
+    return find(:xpath, ta(DEPARTMENS_LINK_EP)).hover if key ==:ep
+    return find(:css, DEPARTMENS_LINK_IL).hover if key ==:il
+    find(:css, ta(DEPARTMENS_LINK_TA, DEPARTMENS_LINK_IL)).hover
+  end
+
+  def click_baby_link(key = nil)
+    return find(:xpath, ta(BABY_LINK_EP)).click if key ==:ep
+    return find(:xpath, BABY_LINK_IL).click if key ==:il
+    find(:xpath, ta(BABY_LINK_TA, BABY_LINK_IL)).click
+  end
+
+  def click_nursery(key = nil)
+    return find(:xpath, ta(NURSERY_IMG_EP)).click if key ==:ep
+    return find(:xpath, NURSERY_IMG_IL).click if key ==:il
+    find(:xpath, ta(NURSERY_IMG_TA, NURSERY_IMG_IL)).click
+  end
+
+  def click_product(key = nil)
+    return find(:xpath, ta(PRODUCTY_EP)).click if key ==:ep
+    return find(:xpath, PRODUCT_IL).click if key ==:il
+    find(:xpath, ta(PRODUCT_TA, PRODUCT_IL)).click
+  end
+
   def set_data_in_search(key = nil, data)
     return find(:xpath, ta(MAIN_SEARCH_EP)).set(data) if key ==:ep
     return find(:xpath, MAIN_SEARCH_IL).set(data) if key ==:il
