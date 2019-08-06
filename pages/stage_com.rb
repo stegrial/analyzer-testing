@@ -47,7 +47,7 @@ class Stagecom
   SUBCATEGORY_BABYGIRL_TA = "stage_com:subcategory_babygirl"
   SUBCATEGORY_BABYGIRL_EP = "EP:stage_com:subcategory_babygirl"
 
-  GIRL_DRESS_IL = "(//a[contains(., 'Dresses')])[1]"
+  GIRL_DRESS_IL = "(//a[contains(., 'Dresses')])[2]"
   GIRL_DRESS_TA = "stage_com:girl_dress"
   GIRL_DRESS_EP = "EP:stage_com:girl_dress"
 
