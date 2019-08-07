@@ -115,42 +115,42 @@ describe 'Preconditions' do
 
       step "User set email", settings('pinterest')['email'] do  |email|
         check_element_path :xpath, Pinterest::EMAIL_EP, Pinterest::EMAIL_IL
-        it.set_email(email)
+        it.set_email(:ep,email)
       end
 
       step "User set password",  settings('pinterest')['password'] do  |pass|
         check_element_path :xpath, Pinterest::PASSWORD_EP, Pinterest::PASSWORD_IL
-        it.set_password(pass)
+        it.set_password(:ep,pass)
       end
 
       step "User clicks on OK button"  do
         check_element_path :xpath, Pinterest::OK_BTN_EP, Pinterest::OK_BTN_IL
-        it.click_ok_btn
+        it.click_ok_btn :ep
       end
       step "User clicks on subscriptions" do
         sleep 3
         check_element_path :xpath, Pinterest::SUBSCRIOTIONS_EP, Pinterest::SUBSCRIOTIONS_IL
-        it.click_subscriptions
+        it.click_subscriptions :ep
       end
 
       step "User clicks to look recomendations" do
         check_element_path :xpath, Pinterest::FIND_RECOMENDATION_EP, Pinterest::FIND_RECOMENDATION_IL
-        it.click_to_find_recomendations
+        it.click_to_find_recomendations  :ep
       end
 
       step "User clicks to look more" do
         check_element_path :xpath, Pinterest::MORE_DROPDOWN_EP, Pinterest::MORE_DROPDOWN_IL
-        it.click_to_look_more
+        it.click_to_look_more :ep
       end
 
       step "User clicks to look tattoo category" do
         check_element_path :xpath, Pinterest::TATTOO_EP, Pinterest::TATTOO_IL
-        it.click_to_look_tattoo
+        it.click_to_look_tattoo :ep
       end
 
       step "User clicks to select category" do
         check_element_path :xpath, Pinterest::FOURTH_CATEGORY_EP, Pinterest::FOURTH_CATEGORY_IL
-        it.click_to_select_category
+        it.click_to_select_category :ep
       end
     end
   end

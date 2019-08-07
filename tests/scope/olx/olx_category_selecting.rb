@@ -83,22 +83,22 @@ feature 'OLX - category selecting' do
     step "User clicks on animal category button" do
      sleep 4
       check_element_path :xpath, Olx::ANIMAL_CATEGORY_EP, Olx::ANIMAL_CATEGORY_IL
-      it.click_animal_category
+      it.click_animal_category :ep
     end
 
     step "User clicks on free animal matting button" do
       check_element_path :xpath, Olx::FREE_ANIMAL_MATING_EP, Olx::FREE_ANIMAL_MATING_IL
-      it.click_free_animal_matting
+      it.click_free_animal_matting :ep
     end
 
     step "User clicks on gallary view button" do
       check_element_path :xpath, Olx::GALLERY_VIEW_EP, Olx::GALLERY_VIEW_IL
-      it.click_gallery_view
+      it.click_gallery_view :ep
     end
 
     step "User clicks to select product" do
       check_element_path :xpath, Olx::PRODUCT_EP, Olx::PRODUCT_IL
-      it.click_to_select_product
+      it.click_to_select_product :ep
     end
 
   end
