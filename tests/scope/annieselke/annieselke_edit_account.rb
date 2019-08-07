@@ -186,7 +186,7 @@ describe 'Preconditions' do
 
       step "User clicks to select gender", "Mr" do |gender|
         check_element_path :xpath, AnnieselkeMobile::GENDER_EP, AnnieselkeMobile::GENDER_IL
-        it.select_gender(gender)
+        it.select_gender(:ep, gender)
       end
 
       step "User clicks to select gender" do
