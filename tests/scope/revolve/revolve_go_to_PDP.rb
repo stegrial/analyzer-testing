@@ -44,7 +44,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on buy btn" do
-        it.click_buy_btn
+        it.click_add_to_bag
       end
     end
 
@@ -75,8 +75,8 @@ describe 'Preconditions' do
       end
 
       step "User clicks on buy btn" do
-        check_element_path :xpath, Revolve::REVOLVE_LOGO_TA, Revolve::REVOLVE_LOGO_IL
-        it.click_buy_btn
+        check_element_path :xpath, Revolve::ADD_TO_BAG_TA, Revolve::ADD_TO_BAG_IL
+        it.click_add_to_bag
       end
     end
     # Element Picker from Repository

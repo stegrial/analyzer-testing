@@ -17,7 +17,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il_run1: true do
 
       step "User goes to the page", settings('olx')['page'] do |url|
         page.visit url
@@ -32,7 +32,8 @@ describe 'Preconditions' do
       end
 
       step "User clicks on gallary view button" do
-        it.click_gallery_view
+        sleep 300
+        # it.click_gallery_view
       end
 
     end
