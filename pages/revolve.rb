@@ -134,6 +134,27 @@ class Revolve
   ORDER_EMAIL_TA = "revolve:order_email"
   ORDER_EMAIL_EP = "EP:revolve:order_email"
 
+  SORT_BTN_IL = "//button[contains(., 'Sort By')]"
+  SORT_BTN_TA = "revolve:sort_by_btn"
+  SORT_BTN_EP = "EP:revolve:sort_by_btn"
+
+  SORT_BY_PRICE_IL = "//button[contains(., 'Price: Low to High')]"
+  SORT_BY_PRICE_TA = "revolve:sort_by_price"
+  SORT_BY_PRICE_EP = "EP:revolve:sort_by_price"
+
+  SEARCH_BTN_IL = "//button[@aria-label='Search']"
+  SEARCH_BTN_TA = "revolve:search_btn"
+  SEARCH_BTN_EP = "EP:revolve:search_btn"
+
+  DATA_INPUT_IL = "//input[@placeholder='Search...']"
+  DATA_INPUT_TA = "revolve:data"
+  DATA_INPUT_EP = "EP:revolve:data"
+
+  SEARCH_RESULT_IL = "(//mark[@class='highlight'])[2]"
+  SEARCH_RESULT_TA = "revolve:search_result"
+  SEARCH_RESULT_EP = "EP:revolve:search_result"
+
+
   def click_new_in_top_navmenu(key = nil)
     return find(ta(NEW_NAVMENU_EP)).click if key == :ep
     return find(:xpath, NEW_NAVMENU_IL).click if key == :il
@@ -230,11 +251,11 @@ class Revolve
       find(:xpath, ta(SIZE_BUTTON_S_TA, SIZE_BUTTON_S_IL)).click
   end
 
-  def click_buy_btn(key = nil)
-    return find(:xpath, ta(BUY_BTN_EP)).click if key == :ep
-    return find(:xpath, BUY_BTN_IL).click if key == :il
-    find(:xpath, ta(BUY_BTN_TA, BUY_BTN_IL)).click
-  end
+  # def click_buy_btn(key = nil)
+  #   return find(:xpath, ta(BUY_BTN_EP)).click if key == :ep
+  #   return find(:xpath, BUY_BTN_IL).click if key == :il
+  #   find(:xpath, ta(BUY_BTN_TA, BUY_BTN_IL)).click
+  # end
 
   def click_jewelry_product_img(key=nil)
     return find(:xpath, ta(PRODUCT_IMG_EP)).click if key == :ep
@@ -317,4 +338,39 @@ class Revolve
     end
   end
 
+  def click_sort_by(key=nil)
+    return find(:xpath, ta(SORT_BTN_EP)).click if key == :ep
+    return find(:xpath, SORT_BTN_IL).click if key == :il
+    find(:xpath, ta(SORT_BTN_TA, SORT_BTN_IL)).click
+  end
+
+ def click_sort_by_price(key=nil)
+    return find(:xpath, ta(SORT_BY_PRICE_EP)).click if key == :ep
+    return find(:xpath, SORT_BY_PRICE_IL).click if key == :il
+    find(:xpath, ta(SORT_BY_PRICE_TA, SORT_BY_PRICE_IL)).click
+ end
+
+  def check_sorting
+    carusel = "//button[contains(., 'Price: Low to High')]"
+    expect(page).to have_selector(:xpath, carusel)
+  end
+
+
+  def click_search_btn(key = nil)
+    return find(ta(SEARCH_BTN_EP)).click if key == :ep
+    return find(:xpath, SEARCH_BTN_IL).click if key == :il
+    find(:xpath, ta(SEARCH_BTN_TA, SEARCH_BTN_IL)).click
+  end
+
+  def set_search_data(key=nil, data)
+    return find(ta(DATA_INPUT_EP)).set(data) if key == :ep
+    return find(:xpath, DATA_INPUT_IL).set(data) if key == :il
+    find(:xpath, ta(DATA_INPUT_TA, DATA_INPUT_IL)).set(data)
+  end
+
+  def click_second_search_result(key = nil)
+    return find(ta(SEARCH_RESULT_EP)).click if key == :ep
+    return find(:xpath, SEARCH_RESULT_IL).click if key == :il
+    find(:xpath, ta(SEARCH_RESULT_TA, SEARCH_RESULT_IL)).click
+  end
 end
