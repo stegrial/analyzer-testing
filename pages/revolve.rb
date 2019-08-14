@@ -86,7 +86,7 @@ class Revolve
   ADD_TO_BAG_TA = "revolve:add_to_bag"
   ADD_TO_BAG_EP = "EP:revolve:add_to_bag"
 
-  VIEW_BAG_IL = "//a[@href='https://revolve-pwa.moovweb.cloud:/cart']"
+  VIEW_BAG_IL = "//a[text()='View Bag / Checkout']"
   VIEW_BAG_TA = "revolve:view_cart_bag"
   VIEW_BAG_EP = "EP:revolve:view_cart_bag"
 

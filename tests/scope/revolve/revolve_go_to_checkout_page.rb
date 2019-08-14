@@ -18,7 +18,7 @@ describe 'Preconditions' do
 
   feature 'Select categories and product' do
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il_run1: true do
 
       step "User goes to the page" do
         visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
@@ -63,6 +63,7 @@ describe 'Preconditions' do
       end
 
       step "User set phone ", "475628461" do |number|
+        sleep 3
         it.set_phone(number)
         end
       step "User set phone ", "julia.arapova@softesis.com" do |email|
