@@ -25,15 +25,15 @@ describe 'Preconditions' do
       end
 
       step "User clicks on jewelry product img" do
-        it.click_jewelry_product_img :il
+        it.click_jewelry_product_img
       end
 
       step "User clicks on buy button" do
-        it.click_add_to_bag :il
+        it.click_add_to_bag
       end
 
       step "User clicks cart page" do
-        it.click_view_bag :il
+        it.click_view_bag
       end
 
       step "User clicks on checkout page" do
@@ -43,18 +43,24 @@ describe 'Preconditions' do
       end
 
       step "User set name ", "juli test" do |name|
-        it.set_name( name)
+        sleep 2
+        it.set_name(name)
       end
 
       step "User set address ", "Home st." do |address|
-        it.set_address( address)
+        sleep 2
+        it.set_address(address)
       end
 
       step "User set more address", "apt.12" do |address2|
+        sleep 2
         it.set_deep_address(address2)
       end
 
-    sleep  5
+      step "User set zip code ", "10001" do |zip|
+        sleep 2
+        it.set_zip_code(zip)
+      end
 
     end
   end
