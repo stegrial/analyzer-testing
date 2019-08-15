@@ -16,7 +16,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Select categories and product' do
+  feature 'TA-981 Filling checkout page' do
 
     scenario 'Recording IL', il_run1: true do
 
