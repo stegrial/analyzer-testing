@@ -251,12 +251,6 @@ class Revolve
       find(:xpath, ta(SIZE_BUTTON_S_TA, SIZE_BUTTON_S_IL)).click
   end
 
-  # def click_buy_btn(key = nil)
-  #   return find(:xpath, ta(BUY_BTN_EP)).click if key == :ep
-  #   return find(:xpath, BUY_BTN_IL).click if key == :il
-  #   find(:xpath, ta(BUY_BTN_TA, BUY_BTN_IL)).click
-  # end
-
   def click_jewelry_product_img(key=nil)
     return find(:xpath, ta(PRODUCT_IMG_EP)).click if key == :ep
     return find(:xpath, PRODUCT_IMG_IL).click if key == :il
@@ -329,12 +323,10 @@ class Revolve
   def click_proceed_to_checkout1
     if page.has_xpath?("(//span[text()='Proceed to checkout'])[1]")
       find(:xpath, "(//span[text()='Proceed to checkout'])[1]").click
-    end
-  end
-
-  def click_proceed_to_checkout2
-    if page.has_xpath?("(//a[text()='Proceed To Checkout'])[1]")
+      p "span"
+    else
       find(:xpath, "(//a[text()='Proceed To Checkout'])[1]").click
+      p "a"
     end
   end
 
@@ -354,7 +346,6 @@ class Revolve
     carusel = "//button[contains(., 'Price: Low to High')]"
     expect(page).to have_selector(:xpath, carusel)
   end
-
 
   def click_search_btn(key = nil)
     return find(ta(SEARCH_BTN_EP)).click if key == :ep
