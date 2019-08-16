@@ -63,7 +63,6 @@ describe 'Preconditions' do
     end
 
     # Element Picker from Repository
-    # # # # #  NOT ADDED
 
     scenario 'Searching EP', ep_run: true do
       step "User goes to the page", settings('revolve')['page'] do |url|
@@ -71,24 +70,19 @@ describe 'Preconditions' do
       end
 
       step "User clicks on categories link in top navigation menu" do
-        check_element_path :xpath, Revolve::NEW_NAVMENU_EP, Revolve::NEW_NAVMENU_IL
-        it.click_new_in_top_navmenu :ep
+        check_element_path :xpath, Revolve::SEARCH_BTN_EP, Revolve::SEARCH_BTN_IL
+        it.click_search_btn :ep
       end
 
-      step "User clicks on dresses categories button" do
-        check_element_path :xpath, Revolve::SORT_BTN_EP, Revolve::SORT_BTN_IL
-        it.click_sort_by :ep
+      step "User clicks on dresses categories button", "dress" do |data|
+        check_element_path :xpath, Revolve::DATA_INPUT_EP, Revolve::DATA_INPUT_IL
+        it.set_search_data(:ep, data)
       end
 
       step "User clicks on product item 4" do
-        check_element_path :xpath, Revolve::SORT_BY_PRICE_EP, Revolve::SORT_BY_PRICE_IL
-        it.click_sort_by_price :ep
+        check_element_path :xpath, Revolve::SEARCH_RESULT_EP, Revolve::SEARCH_RESULT_IL
+        it.click_second_search_result :ep
       end
-
-      step "Checking sorting" do
-        it.check_sorting
-      end
-
     end
   end
 end

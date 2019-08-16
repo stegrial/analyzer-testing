@@ -73,15 +73,15 @@ class Venus
   SIZE_FILTER_TA = 'venus:subcategory:size_filter'
   SIZE_FILTER_EP = 'EP:venus:subcategory:size_filter'
 
+  VIEW_RESULTS_BTN_IL = "//button[contains(., 'View Results')]"
+  VIEW_RESULTS_BTN_TA = 'venus:size_filter:view_results_btn'
+  VIEW_RESULTS_BTN_EP = 'EP:venus:size_filter:view_results_btn'
+
   def size(locator, size)
     return @size_il = "//label[.//span[text()='#{size}']]" if locator == :il
     return @size_ta = "venus:size_filter:'#{size}'" if locator == :ta
     @size_ep = "EP:venus:size_filter:'#{size}'" if locator == :ep
   end
-
-  VIEW_RESULTS_BTN_IL = "//button[contains(., 'View Results')]"
-  VIEW_RESULTS_BTN_TA = 'venus:size_filter:view_results_btn'
-  VIEW_RESULTS_BTN_EP = 'EP:venus:size_filter:view_results_btn'
 
   def click_account_button(key = nil)
     return find(:xpath, ta(ACCOUNT_BUTTON_EP)).click if key == :ep

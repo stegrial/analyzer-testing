@@ -79,8 +79,9 @@ describe 'Preconditions' do
         it.click_add_to_bag
       end
     end
+
     # Element Picker from Repository
-    # # # # #  NOT ADDED
+
     scenario 'Searching EP', ep_run: true do
       step "User goes to the page", settings('revolve')['page'] do |url|
         page.visit url
@@ -108,7 +109,7 @@ describe 'Preconditions' do
 
       step "User clicks on buy btn" do
         check_element_path :xpath, Revolve::REVOLVE_LOGO_EP, Revolve::REVOLVE_LOGO_IL
-        it.click_buy_btn :ep
+        it.click_add_to_bag :ep
       end
     end
   end
