@@ -69,7 +69,6 @@ describe 'Preconditions' do
     end
 
     # Element Picker from Repository
-    # # # # #  NOT ADDED
 
     scenario 'Searching EP', ep_run: true do
       step "User goes to the page", settings('revolve')['page'] do |url|
@@ -92,7 +91,7 @@ describe 'Preconditions' do
       end
 
       step "Checking sorting" do
-        it.check_sorting
+        it.check_sorting :ep
       end
 
     end

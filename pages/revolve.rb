@@ -116,7 +116,7 @@ class Revolve
 
   ZIP_CODE_IL = "input#shipping_zip_code"
   ZIP_CODE_TA = "revolve:zip_code"
-  ZIP_CODE_EP = "EP:revolve:zip_Code"
+  ZIP_CODE_EP = "EP:revolve:zip_code"
 
   PHONE_IL = "input#shipping_telephone"
   PHONE_TA = "revolve:telephone"
@@ -153,6 +153,14 @@ class Revolve
   SEARCH_RESULT_IL = "(//mark[@class='highlight'])[2]"
   SEARCH_RESULT_TA = "revolve:search_result"
   SEARCH_RESULT_EP = "EP:revolve:search_result"
+
+  LANGUAGE_DROPDOWN_IL = "//div[text()='English']"
+  LANGUAGE_DROPDOWN_TA = "revolve:language"
+  LANGUAGE_DROPDOWN_EP = "EP:revolve:language"
+
+  ITALIANO_LG_IL = "//li[@data-value='it']"
+  ITALIANO_LG_TA = "revolve:italiano"
+  ITALIANO_LG_EP = "EP:revolve:italiano"
 
 
   def click_new_in_top_navmenu(key = nil)
@@ -364,4 +372,23 @@ class Revolve
     return find(:xpath, SEARCH_RESULT_IL).click if key == :il
     find(:xpath, ta(SEARCH_RESULT_TA, SEARCH_RESULT_IL)).click
   end
+
+  def click_language(key = nil)
+  return find(ta(LANGUAGE_DROPDOWN_EP)).click if key == :ep
+    return find(:xpath, LANGUAGE_DROPDOWN_IL).click if key == :il
+    find(:xpath, ta(LANGUAGE_DROPDOWN_TA, LANGUAGE_DROPDOWN_IL)).click
+  end
+
+  def click_italiano_language(key = nil)
+    return find(ta(ITALIANO_LG_EP)).click if key == :ep
+    return find(:xpath, ITALIANO_LG_IL).click if key == :il
+    find(:xpath, ta(ITALIANO_LG_TA, ITALIANO_LG_IL)).click
+  end
+
+  def click_english_language(key = nil)
+    return find(ta(ENGLISH_LG_EP)).click if key == :ep
+    return find(:xpath, ENGLISH_LG_IL).click if key == :il
+    find(:xpath, ta(ENGLISH_LG_TA, ENGLISH_LG_IL)).click
+  end
+
 end

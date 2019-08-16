@@ -140,10 +140,66 @@ describe 'Preconditions' do
 
     end
     # Element Picker from Repository
-    # # # # #  NOT ADDED
     scenario 'Searching EP', ep_run: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
-        page.visit url
+
+      step "User goes to the page" do
+        visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
+      end
+
+      step "User clicks on jewelry product img" do
+        check_element_path :xpath, Revolve::PRODUCT_IMG_EP, Revolve::PRODUCT_IMG_IL
+        it.click_jewelry_product_img :ep
+      end
+
+      step "User clicks on buy button" do
+        check_element_path :xpath, Revolve::ADD_TO_BAG_EP, Revolve::ADD_TO_BAG_IL
+        it.click_add_to_bag :ep
+      end
+
+      step "User clicks cart page" do
+        check_element_path :xpath, Revolve::VIEW_BAG_EP, Revolve::VIEW_BAG_IL
+        it.click_view_bag :ep
+      end
+
+      step "User clicks on checkout page" do
+        sleep 5
+        it.click_proceed_to_checkout1
+        it.click_proceed_to_checkout2
+      end
+
+      step "User set name ", "juli test" do |name|
+        check_element_path :xpath, Revolve::FULL_NAME_EP, Revolve::FULL_NAME_IL
+        it.set_name(:ep, name)
+      end
+
+      step "User set address ", "Home st." do |address|
+        check_element_path :xpath, Revolve::ADDRESS_EP, Revolve::ADDRESS_IL
+        it.set_address(:ep, address)
+      end
+
+      step "User set more address", "apt.12" do |address2|
+        check_element_path :xpath, Revolve::DEEP_ADDRESS_EP, Revolve::DEEP_ADDRESS_IL
+        it.set_deep_address(:ep, address2)
+      end
+
+      step "User set zip code ", "10001" do |zip|
+        check_element_path :xpath, Revolve::ZIP_CODE_EP, Revolve::ZIP_CODE_IL
+        it.set_zip_code(:ep, zip)
+      end
+
+      step "User set phone ", "475628461" do |number|
+        check_element_path :xpath, Revolve::PHONE_EP, Revolve::PHONE_IL
+        it.set_phone(:ep, number)
+      end
+
+      step "User set phone ", "julia.arapova@softesis.com" do |email|
+        check_element_path :xpath, Revolve::ORDER_EMAIL_EP, Revolve::ORDER_EMAIL_IL
+        it.set_order_email(:ep, email)
+      end
+
+      step "User clicks save button and continue checkout" do
+        check_element_path :xpath, Revolve::SAVE_CONTINUE_BTN_EP, Revolve::SAVE_CONTINUE_BTN_IL
+        it.click_continue_save_btn :ep
       end
 
 
