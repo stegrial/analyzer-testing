@@ -8,7 +8,7 @@ it = Revolve.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
+    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   end
 
   after(:all) do

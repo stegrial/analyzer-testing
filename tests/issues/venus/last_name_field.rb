@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Preconditions' do
 
 before (:all) do
-  $caps_chrome['chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
+  $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   # Capybara.current_session.driver.browser.manage.window.resize_to(320,568)
 end
 

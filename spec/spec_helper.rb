@@ -33,8 +33,8 @@ RSpec.configure do |config|
   # end
 
   $caps_chrome = Selenium::WebDriver::Remote::Capabilities.chrome
-  $caps_chrome['chromeOptions'] = {}
-  $caps_chrome['chromeOptions']['args'] = ['--disable-notifications']
+  $caps_chrome['goog:chromeOptions'] = {}
+  $caps_chrome['goog:chromeOptions']['args'] = ['--disable-notifications']
 
   # caps_chrome['chromeOptions'] = {'mobileEmulation' => {
   #     'deviceMetrics' => { 'width' => 360, 'height' => 640, 'pixelRatio' => 3.0 },
