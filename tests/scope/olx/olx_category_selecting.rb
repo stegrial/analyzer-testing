@@ -7,7 +7,6 @@ it = Olx.new
 describe 'Preconditions' do
 
   before(:all) do
-    # $caps_chrome['chromeOptions']['mobileEmulation'] = {}
     $caps_chrome['chromeOptions'].delete('mobileEmulation')
   end
 
