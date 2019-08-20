@@ -27,23 +27,24 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Clothing category" do
-        it.click_clothing_category
+        it.click_clothing_cat
       end
 
       step "User opens dropdown in the Clothing category" do
-        it.open_category_dropdown
+        it.open_cat_dropdown
+        sleep 2
       end
 
-      step "User chooses the Tops subcategory in the dropdown" do
-        it.choose_tops_subcategory
+      step "User chooses the subcategory in the dropdown", 'Clothing', 'Tops' do |*name|
+        it.choose_subcat_by_first_name name
       end
 
       step "User opens dropdown in the Tops subcategory" do
-        it.open_subcategory_dropdown
+        it.open_subcat_dropdown
       end
 
       step "User chooses the Clothing category in the dropdown" do
-        it.choose_clothing_category
+        it.choose_clothing_cat
       end
 
       sleep 3
@@ -55,30 +56,30 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Clothing category" do
-        # check_element_path :xpath, Venus::CLOTHING_CATEGORY_TA, Venus::CLOTHING_CATEGORY_IL
-        it.click_clothing_category
+        check_element_path :xpath, Venus::CLOTHING_CATEGORY_TA, Venus::CLOTHING_CATEGORY_IL
+        it.click_clothing_cat
       end
 
       2.times do
         step "User opens dropdown in the Clothing category" do
-          # check_element_path :xpath, Venus::CATEGORY_DROPDOWN_TA, Venus::CATEGORY_DROPDOWN_IL
-          it.open_category_dropdown
+          check_element_path :xpath, Venus::CATEGORY_DROPDOWN_TA, Venus::CATEGORY_DROPDOWN_IL
+          it.open_cat_dropdown
         end
 
-        step "User chooses the Tops subcategory in the dropdown" do
-          # check_element_path :xpath, Venus::TOPS_SUBCATEGORY_TA, Venus::TOPS_SUBCATEGORY_IL
-          it.choose_tops_subcategory
+        step "User chooses the subcategory in the dropdown", 'Clothing', 'Tops' do |*name|
+          check_element_path :xpath, it.subcat_name(:ta, name), it.subcat_name(:il, name)
+          it.choose_subcat_by_first_name name
           sleep 2
         end
 
         step "User opens dropdown in the Tops subcategory" do
-          # check_element_path :xpath, Venus::SUBCATEGORY_DROPDOWN_TA, Venus::SUBCATEGORY_DROPDOWN_IL
-          it.open_subcategory_dropdown
+          check_element_path :xpath, Venus::SUBCATEGORY_DROPDOWN_TA, Venus::SUBCATEGORY_DROPDOWN_IL
+          it.open_subcat_dropdown
         end
 
         step "User chooses the Clothing category in the dropdown" do
-          # check_element_path :xpath, Venus::CLOTHING_CATEGORY_DROPDOWN_TA, Venus::CLOTHING_CATEGORY_DROPDOWN_IL
-          it.choose_clothing_category
+          check_element_path :xpath, Venus::CLOTHING_CATEGORY_DROPDOWN_TA, Venus::CLOTHING_CATEGORY_DROPDOWN_IL
+          it.choose_clothing_cat
         end
       end
 
@@ -94,29 +95,29 @@ describe 'Preconditions' do
 
       step "User clicks on the Clothing category" do
         check_element_path :xpath, Venus::CLOTHING_CATEGORY_EP, Venus::CLOTHING_CATEGORY_IL
-        it.click_clothing_category :ep
+        it.click_clothing_cat :ep
       end
 
       2.times do
         step "User opens dropdown in the Clothing category" do
           check_element_path :xpath, Venus::CATEGORY_DROPDOWN_EP, Venus::CATEGORY_DROPDOWN_IL
-          it.open_category_dropdown :ep
+          it.open_cat_dropdown :ep
         end
 
-        step "User chooses the Tops subcategory in the dropdown" do
+        step "User chooses the Clothing - Tops subcategory in the dropdown" do
           check_element_path :xpath, Venus::TOPS_SUBCATEGORY_EP, Venus::TOPS_SUBCATEGORY_IL
-          it.choose_tops_subcategory :ep
+          it.choose_clothing_tops_subcat :ep
           sleep 2
         end
 
         step "User opens dropdown in the Tops subcategory" do
           check_element_path :xpath, Venus::SUBCATEGORY_DROPDOWN_EP, Venus::SUBCATEGORY_DROPDOWN_IL
-          it.open_subcategory_dropdown :ep
+          it.open_subcat_dropdown :ep
         end
 
         step "User chooses the Clothing category in the dropdown" do
           check_element_path :xpath, Venus::CLOTHING_CATEGORY_DROPDOWN_EP, Venus::CLOTHING_CATEGORY_DROPDOWN_IL
-          it.choose_clothing_category :ep
+          it.choose_clothing_cat :ep
         end
       end
 

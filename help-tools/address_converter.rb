@@ -1,15 +1,15 @@
-address = "/*[1]/*[2]/*[8]/*[2]/*[1]/*[2]/*[2]/*[1]/*[1]/*[8]"
+address = "0.1.1.0.4.1.0.4.38.0.0.0"
 
-  # array = address.split(".")
-  # for i in array
-  # print "/*[#{i.to_i + 1}]"
-  # end
-
-  array = address.split("/*[")
+  array = address.split(".")
   for i in array
-    next if i == array[0]
-    print "#{(i[0...-1]).to_i - 1}."
+  print "/*[#{i.to_i + 1}]"
   end
+
+  # array = address.split("/*[")
+  # for i in array
+  #   next if i == array[0]
+  #   print "#{(i[0...-1]).to_i - 1}."
+  # end
 
 
 # Test
@@ -74,3 +74,14 @@ end
 # extend Test
 
 # demo_2 # undefined local variable or method `demo_2' for main:Object => WTF
+
+
+# def size(locator, size)
+#   return @size_il = "//label[.//span[text()='#{size}']]" if locator == :il
+#   return @size_ta =  "venus:size_filter:#{size.tr('^A-Za-z0-9_', '')}" if locator == :ta
+#   @size_ep = "EP:venus:size_filter:#{size.tr('^A-Za-z0-9_', '')}" if locator == :ep
+# end
+#
+# attr_accessor :size_ta, :size_ep, :size_il
+#
+# p size :ep, 'weddewd'
