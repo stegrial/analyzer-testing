@@ -53,11 +53,11 @@ describe 'Preconditions' do
         it.click_account_button :il
       end
 
-      step "User fills the Email field", settings('venus')['email_field'] do |email|
+      step "User fills the Email field", settings('venus')['email'] do |email|
         it.fill_email_field :il, email
       end
 
-      step "User fills the Pass field", settings('venus')['pass_field'] do |pass|
+      step "User fills the Pass field", settings('venus')['pass'] do |pass|
         it.fill_pass_field :il, pass
       end
 
@@ -100,11 +100,11 @@ describe 'Preconditions' do
         it.click_account_button :il
       end
 
-      step "User fills the Email field", settings('venus')['email_field'] do |email|
+      step "User fills the Email field", settings('venus')['email'] do |email|
         it.fill_email_field :il, email
       end
 
-      step "User fills the Pass field", settings('venus')['pass_field'] do |pass|
+      step "User fills the Pass field", settings('venus')['pass'] do |pass|
         it.fill_pass_field :il, pass
       end
 
@@ -171,11 +171,11 @@ describe 'Preconditions' do
         it.click_account_button :il
       end
 
-      step "User fills the Email field", settings('venus')['email_field'] do |email|
+      step "User fills the Email field", settings('venus')['email'] do |email|
         it.fill_email_field :il, email
       end
 
-      step "User fills the Pass field", settings('venus')['pass_field'] do |pass|
+      step "User fills the Pass field", settings('venus')['pass'] do |pass|
         it.fill_pass_field :il, pass
       end
 
@@ -188,7 +188,7 @@ describe 'Preconditions' do
       end
 
       step "User enters value to search", 'white' do |value|
-        sleep 120
+        # sleep 120
         it.enter_search_value value
       end
 =begin can't reproduce: TA-921 (new issue)

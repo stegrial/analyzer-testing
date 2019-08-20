@@ -1,7 +1,12 @@
 venus:
   home_page: 'https://venus.com'
-  email_field: 'denys.shutko@moovweb.com'
-  pass_field: 'asdffdsA1'
+  login_page: 'https://www.venus.com/secure/login.aspx'
+  pro_tops_subcategory_page: 'https://www.venus.com/products.aspx?BRANCH=7~63~'
+  create_account_page: 'https://www.venus.com/secure/newaccount.aspx'
+  email: 'denys.shutko@moovweb.com'
+  pass: 'asdffdsA1'
+  first_name: 'Denys'
+  last_name: 'Shutko'
 
 how_to_get_money:
   page: 'https://maanimo.com/helpful/142606-kak-zarabotat-dengi-v-ukraine'

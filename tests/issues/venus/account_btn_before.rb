@@ -40,11 +40,11 @@ describe 'Preconditions' do
         it.click_account_button :il
       end
 
-      step "User fills the Email field", settings('venus')['email_field'] do |email|
+      step "User fills the Email field", settings('venus')['email'] do |email|
         it.fill_email_field :il, email
       end
 
-      step "User fills the Pass field", settings('venus')['pass_field'] do |pass|
+      step "User fills the Pass field", settings('venus')['pass'] do |pass|
         it.fill_pass_field :il, pass
       end
 
@@ -73,11 +73,11 @@ describe 'Preconditions' do
         it.click_account_button :il
       end
 
-      step "User fills the Email field", settings('venus')['email_field'] do |email|
+      step "User fills the Email field", settings('venus')['email'] do |email|
         it.fill_email_field :il, email
       end
 
-      step "User fills the Pass field", settings('venus')['pass_field'] do |pass|
+      step "User fills the Pass field", settings('venus')['pass'] do |pass|
         it.fill_pass_field :il, pass
       end
 
@@ -118,11 +118,11 @@ describe 'Preconditions' do
         it.click_account_button :il
       end
 
-      step "User fills the Email field", settings('venus')['email_field'] do |email|
+      step "User fills the Email field", settings('venus')['email'] do |email|
         it.fill_email_field :il, email
       end
 
-      step "User fills the Pass field", settings('venus')['pass_field'] do |pass|
+      step "User fills the Pass field", settings('venus')['pass'] do |pass|
         it.fill_pass_field :il, pass
       end
 
