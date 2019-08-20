@@ -4,8 +4,17 @@ require_relative '../../../pages/united_methods'
 require_relative '../../../pages/olx'
 
 it = Olx.new
+describe 'Preconditions' do
 
-feature 'OLX - search results' do
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
+
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
+
+  feature 'OLX - search results' do
 
   # Initial locators with Recording
 
@@ -37,6 +46,7 @@ feature 'OLX - search results' do
     end
 
     step "User clicks to select search result" do
+      sleep 5
       it.click_to_select_some_result
     end
   end
@@ -89,12 +99,12 @@ feature 'OLX - search results' do
 
     step "User clicks on my account button" do
       check_element_path :xpath, Olx::MY_ACCOUNT_EP, Olx::MY_ACCOUNT_IL
-      it.click_my_acc_btn
+      it.click_my_acc_btn :ep
     end
 
     step "User clicks on registration tab" do
       check_element_path :css, Olx::REGISTER_TAB_EP, Olx::REGISTER_TAB_IL
-      it.click_register_tab
+      it.click_register_tab :ep
     end
 
     step "User clicks on animal category button" do
@@ -104,18 +114,19 @@ feature 'OLX - search results' do
 
     step "User set search query for searching", "iphone\n" do |searchTExt|
       check_element_path :css, Olx::SEARCH_INPUT_EP, Olx::SEARCH_INPUT_IL
-      it.set_search_input(searchTExt)
+      it.set_search_input(:ep, searchTExt)
     end
 
     step "User clicks X for clear search input" do
       check_element_path :xpath, Olx::CLEAR_SEARCH_BTN_EP, Olx::CLEAR_SEARCH_BTN_IL
-      it.click_to_clear_search
+      it.click_to_clear_search :ep
     end
 
     step "User clicks to select search result" do
       check_element_path :xpath, Olx::EXAMPLE_RESULT_EP, Olx::EXAMPLE_RESULT_IL
-      it.click_to_select_some_result
+      it.click_to_select_some_result :ep
     end
 
   end
+end
 end

@@ -10,14 +10,14 @@ it = Amazon.new
 describe 'Preconditions' do
 
   before(:all) do
-
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
   end
 
   after(:all) do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Stagecom - adding item and open cart' do
+  feature 'Amazon  - adding product to cart' do
 
     # Initial locators with Recording
 
@@ -36,18 +36,22 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the desired search result" do
+        sleep 5
         it.click_product_from_search_result
       end
 
-      step "User clicks on the appropriate button to select size" do
+      step "User clicks on the appropriate button to click size btn" do
+        sleep 5
         it.click_to_select_size_btn
+      end
+
+      step "User clicks on the appropriate button to select size" do
+        it.click_to_select_size
       end
 
       step "User clicks add to cart button" do
         it.click_for_add_to_cart
       end
-
-      # Capybara.current_session.driver.quit
     end
 
     scenario 'Searching IL', il_run: true do
@@ -68,12 +72,18 @@ describe 'Preconditions' do
 
       step "User clicks on the desired search result" do
         check_element_path :xpath, Amazon::PRODUCT_FROM_SEARCH_TA, Amazon::PRODUCT_FROM_SEARCH_IL
+       # sleep 2
         it.click_product_from_search_result
       end
 
-      step "User clicks on the appropriate button to select size" do
+      step "User clicks on the appropriate button to click size button" do
         check_element_path :xpath, Amazon::SIZE_LIST_TA, Amazon::SIZE_LIST_IL
         it.click_to_select_size_btn
+      end
+
+      step "User clicks on the appropriate button to select size" do
+        check_element_path :xpath, Amazon::SIZE_TA, Amazon::SIZE_IL
+        it.click_to_select_size
       end
 
       step "User clicks add to cart button" do
@@ -94,27 +104,27 @@ describe 'Preconditions' do
 
       step "User clicks on ", "dress" do |data|
         check_element_path :xpath, Amazon::MAIN_SEARCH_EP, Amazon::MAIN_SEARCH_IL
-        it.set_data_in_search(data)
+        it.set_data_in_search(:ep, data)
       end
 
       step "User clicks on search button " do
         check_element_path :xpath, Amazon::SEARCH_BTN_EP, Amazon::SEARCH_BTN_IL
-        it.click_search_btn
+        it.click_search_btn :ep
       end
 
       step "User clicks on the desired search result" do
         check_element_path :xpath, Amazon::PRODUCT_FROM_SEARCH_EP, Amazon::PRODUCT_FROM_SEARCH_IL
-        it.click_product_from_search_result
+        it.click_product_from_search_result :ep
       end
 
       step "User clicks on the appropriate button to select size" do
         check_element_path :xpath, Amazon::SIZE_LIST_EP, Amazon::SIZE_LIST_IL
-        it.click_to_select_size_btn
+        it.click_to_select_size_btn :ep
       end
 
       step "User clicks add to cart button" do
         check_element_path :xpath, Amazon::ADD_TO_CART_EP, Amazon::ADD_TO_CART_IL
-        it.click_for_add_to_cart
+        it.click_for_add_to_cart :ep
         end
 
     end

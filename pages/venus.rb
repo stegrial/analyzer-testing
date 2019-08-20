@@ -150,6 +150,9 @@ class Venus
   REMOVE_WISH_LIST_BTN_TA = "venus:product:remove_wish_list_btn"
   REMOVE_WISH_LIST_BTN_EP = "EP:venus:product:remove_wish_list_btn"
 
+
+
+
   def click_account_button(key = nil)
     return find(:xpath, ta(ACCOUNT_BUTTON_EP)).click if key == :ep
     return find(:xpath, ACCOUNT_BUTTON_IL).click if key == :il

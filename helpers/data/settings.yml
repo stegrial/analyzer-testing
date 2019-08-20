@@ -72,3 +72,8 @@ epicgames:
 
 tumblr:
   page: "https://www.tumblr.com/"
+
+revolve:
+  page: "https://revolve-pwa.moovweb.cloud/"
+  email: "julia.arapova@softesis.com"
+  pass: "1234tesT"

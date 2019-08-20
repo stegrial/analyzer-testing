@@ -5,95 +5,108 @@ require_relative '../../../pages/zachet'
 
 it = Zachet.new
 
-feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section' do
+describe 'Preconditions' do
 
-  # Initial locators with Recording
 
-  scenario 'Recording IL', il_run: true do
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
 
-    step "User goes to the page", settings('zachet')['page'] do |url|
-      page.visit url
-    end
-
-    step "User clicks on the logo" do
-      it.click_logotype
-    end
-
-    sleep 3
+  after(:all) do
     Capybara.current_session.driver.quit
   end
 
 
-  scenario 'Searching IL', il_run: true do
+  feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section' do
 
-    step "User resizes browser window to maximum" do
-      Capybara.current_session.driver.browser.manage.window.maximize
+    # Initial locators with Recording
+
+    scenario 'Recording IL', il_run: true do
+
+      step "User goes to the page", settings('zachet')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the logo" do
+        it.click_logotype
+      end
+
+      sleep 3
+      Capybara.current_session.driver.quit
     end
 
-    step "User goes to the page", settings('zachet')['page'] do |url|
-      page.visit url
+
+    scenario 'Searching IL', il_run: true do
+
+      step "User resizes browser window to maximum" do
+        Capybara.current_session.driver.browser.manage.window.maximize
+      end
+
+      step "User goes to the page", settings('zachet')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the logo" do
+        check_element_path :xpath, Zachet::ZACHET_LOGO_TA, Zachet::ZACHET_LOGO_IL
+        it.click_logotype
+      end
+
+      sleep 3
     end
 
-    step "User clicks on the logo" do
-      check_element_path :xpath, Zachet::ZACHET_LOGO_TA, Zachet::ZACHET_LOGO_IL
-      it.click_logotype
+    # Element Picker from Repository
+
+    scenario 'Searching EP', ep_run: true do
+
+      step "User resizes browser window to maximum" do
+        Capybara.current_session.driver.browser.manage.window.maximize
+      end
+
+      step "User goes to the page", settings('zachet')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the logo" do
+        check_element_path :xpath, Zachet::ZACHET_LOGO_EP, Zachet::ZACHET_LOGO_IL
+        it.click_logotype :ep
+      end
+
+      sleep 3
     end
 
-    sleep 3
+    # Debug
+
+    scenario 'Recording debug', rec_debug: true do
+
+      step "User goes to the page", settings('zachet')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the logo" do
+        it.click_logotype
+      end
+
+      sleep 3
+      Capybara.current_session.driver.quit
+    end
+
+    scenario 'Searching debug', search_debug: true do
+
+      step "User resizes browser window to maximum" do
+        Capybara.current_session.driver.browser.manage.window.maximize
+      end
+
+      step "User goes to the page", settings('zachet')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the logo" do
+        it.click_logotype
+      end
+
+      sleep 3
+    end
+
+
   end
-
-  # Element Picker from Repository
-
-  scenario 'Searching EP', ep_run: true do
-
-    step "User resizes browser window to maximum" do
-      Capybara.current_session.driver.browser.manage.window.maximize
-    end
-
-    step "User goes to the page", settings('zachet')['page'] do |url|
-      page.visit url
-    end
-
-    step "User clicks on the logo" do
-      check_element_path :xpath, Zachet::ZACHET_LOGO_EP, Zachet::ZACHET_LOGO_IL
-      it.click_logotype :ep
-    end
-
-    sleep 3
-  end
-
-  # Debug
-
-  scenario 'Recording debug', rec_debug: true do
-
-    step "User goes to the page", settings('zachet')['page'] do |url|
-      page.visit url
-    end
-
-    step "User clicks on the logo" do
-      it.click_logotype
-    end
-
-    sleep 3
-    Capybara.current_session.driver.quit
-  end
-
-  scenario 'Searching debug', search_debug: true do
-
-    step "User resizes browser window to maximum" do
-      Capybara.current_session.driver.browser.manage.window.maximize
-    end
-
-    step "User goes to the page", settings('zachet')['page'] do |url|
-      page.visit url
-    end
-
-    step "User clicks on the logo" do
-      it.click_logotype
-    end
-
-    sleep 3
-  end
-
-
 end

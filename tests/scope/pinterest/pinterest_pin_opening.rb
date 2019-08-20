@@ -7,7 +7,13 @@ it = Pinterest.new
 
 describe 'Preconditions' do
 
+  before(:all) do
+    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+  end
 
+  after(:all) do
+    Capybara.current_session.driver.quit
+  end
   feature 'Pinterest - open pin' do
 
   # Initial locators with Recording
@@ -31,6 +37,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on pin" do
+       sleep 6
         it.click_to_open_pin
       end
 
@@ -74,22 +81,22 @@ describe 'Preconditions' do
 
       step "User set email", settings('pinterest')['email'] do  |email|
         check_element_path :xpath, Pinterest::EMAIL_EP, Pinterest::EMAIL_IL
-        it.set_email(email)
+        it.set_email(:ep,email)
       end
 
       step "User set password",  settings('pinterest')['password'] do  |pass|
         check_element_path :xpath, Pinterest::PASSWORD_EP, Pinterest::PASSWORD_IL
-        it.set_password(pass)
+        it.set_password(:ep, pass)
       end
 
       step "User clicks on OK button"  do
         check_element_path :xpath, Pinterest::OK_BTN_EP, Pinterest::OK_BTN_IL
-        it.click_ok_btn
+        it.click_ok_btn :ep
       end
 
       step "User clicks on pin" do
         check_element_path :xpath, Pinterest::SOME_PIN_EP, Pinterest::SOME_PIN_IL
-        it.click_to_open_pin
+        it.click_to_open_pin :ep
       end
     end
   end

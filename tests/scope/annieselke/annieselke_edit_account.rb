@@ -8,14 +8,14 @@ it =  AnnieselkeMobile.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
+    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   end
 
   after(:all) do
     Capybara.current_session.driver.quit
   end
-
-  feature 'Annie Selke - edit new account' do
+  # Now it doesn't  work TA-927
+  feature 'TA-927 Annie Selke - edit new account' do
 
   # Initial locators with Recording
 
@@ -55,8 +55,9 @@ describe 'Preconditions' do
       step "User clicks on My Account link" do
         it.click_my_acc_btn
       end
-      
+
       step "User clicks on personal info button" do
+        sleep 5
         it.click_personal_info_btn
       end
 
@@ -119,8 +120,9 @@ describe 'Preconditions' do
         it.click_personal_info_btn
       end
 
-      step "User clicks to select gender", "Mr" do |gender|
-        check_element_path :xpath,  AnnieselkeMobile::GENDER_TA, AnnieselkeMobile::GENDER_IL
+      step "User clicks to select gender", "Mrs" do |gender|
+       sleep 3
+       check_element_path :xpath,  AnnieselkeMobile::GENDER_TA, AnnieselkeMobile::GENDER_IL
         it.select_gender(gender)
       end
 
@@ -182,9 +184,9 @@ describe 'Preconditions' do
         it.click_personal_info_btn :ep
       end
 
-      step "User clicks to select gender" do
+      step "User clicks to select gender", "Mr" do |gender|
         check_element_path :xpath, AnnieselkeMobile::GENDER_EP, AnnieselkeMobile::GENDER_IL
-        it.select_gender :ep
+        it.select_gender(:ep, gender)
       end
 
       step "User clicks to select gender" do

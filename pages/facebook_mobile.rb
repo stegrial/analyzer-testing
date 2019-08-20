@@ -84,8 +84,11 @@ class FacebookMobile
   end
 
   def expect_publishing
-    expect(page).to have_text("Your post is now published")
-    expect(page).to have_no_text("Your post is now published")
+    if expect(page).to have_text("Stay on Facebook while we upload your post")
+      sleep 3
+      expect(page).to have_no_text("Your post is now published")
+      sleep 5
+    end
   end
 
   def click_post_btn(key = nil)
@@ -104,6 +107,8 @@ class FacebookMobile
     return find(:xpath, ta(DELETE_POST_EP)).click if key ==:ep
     return find(:xpath, DELETE_POST_IL).click if key ==:il
     find(:xpath, ta(DELETE_POST_TA, DELETE_POST_IL)).click
+    sleep 4
+
   end
 
   def confirm_delete(key = nil)

@@ -8,7 +8,7 @@ it = FacebookMobile.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
+    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   end
 
   after(:all) do
@@ -124,13 +124,11 @@ describe 'Preconditions' do
         check_element_path :xpath, FacebookMobile::DELETE_POST_TA, FacebookMobile::DELETE_POST_IL
         it.deleting_post
       end
-    sleep 4
 
       step "User is confirms deleting post" do
         check_element_path :xpath, FacebookMobile::CONFIRM_DELETE_TA, FacebookMobile::CONFIRM_DELETE_IL
-        confirm_delete
+        it.confirm_delete
       end
-      sleep 3
     end
 
     # Element Picker from Repository

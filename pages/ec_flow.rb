@@ -177,9 +177,9 @@ class Ecflow
   end
 
   def click_for_create_new_app_component(key = nil)
-    return find(ta(CREATE_NEW_APP_COMPONENT_EP)).click() if key ==:ep
-    return find(:css, CREATE_NEW_APP_COMPONENT_IL).click() if key ==:il
-    find(:css, ta(CREATE_NEW_APP_COMPONENT_TA, CREATE_NEW_APP_COMPONENT_IL)).click()
+    return find(ta(CREATE_NEW_APP_COMPONENT_EP)).set("appName"+ SecureRandom.hex(3)) if key ==:ep
+    return find(:css, CREATE_NEW_APP_COMPONENT_IL).set("appName"+ SecureRandom.hex(3)) if key ==:il
+    find(:css, ta(CREATE_NEW_APP_COMPONENT_TA, CREATE_NEW_APP_COMPONENT_IL)).set("appName"+ SecureRandom.hex(3))
   end
 
   def set_new_name(key = nil)
@@ -189,9 +189,9 @@ class Ecflow
   end
 
   def set_description(key = nil)
-    return find(ta(COMPONENT_DESCRIPTION_EP)).click() if key ==:ep
-    return find(:css, COMPONENT_DESCRIPTION_IL).click() if key ==:il
-    find(:css, ta(COMPONENT_DESCRIPTION_TA, COMPONENT_DESCRIPTION_IL)).click()
+    return find(ta(COMPONENT_DESCRIPTION_EP)).set("description"+ SecureRandom.hex(10))  if key ==:ep
+    return find(:css, COMPONENT_DESCRIPTION_IL).set("description"+ SecureRandom.hex(10))  if key ==:il
+    find(:css, ta(COMPONENT_DESCRIPTION_TA, COMPONENT_DESCRIPTION_IL)).set("description"+ SecureRandom.hex(10))
   end
 
   def click_component_dropdown(key = nil)
