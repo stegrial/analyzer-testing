@@ -49,6 +49,11 @@ ec_flow:
   login: 'admin'
   password: 'changeme'
 
+cloud_bees:
+  login_page: 'https://ectest.trueautomation.io/flow'
+  username: 'admin'
+  pass: 'changeme'
+
 24timezones:
   page: 'https://24timezones.com/worldmap'
   page1: 'https://24timezones.com/karta-mira'
