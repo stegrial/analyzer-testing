@@ -18,7 +18,7 @@ describe 'Preconditions' do
 
   feature 'TA-981 Filling checkout page' do
 
-    scenario 'Recording IL', il_run1: true do
+    scenario 'Recording IL', il_run: true do
 
       step "User goes to the page" do
         visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
