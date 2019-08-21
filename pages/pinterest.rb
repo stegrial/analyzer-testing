@@ -42,55 +42,55 @@ class Pinterest
   FOURTH_CATEGORY_EP = "EP:pinterest:category"
 
   def set_email(key = nil, email)
-    return find(:xpath, ta(EMAIL_EP)).set(email) if key == :ep
+    return find(ta(EMAIL_EP)).set(email) if key == :ep
     return find(:xpath, EMAIL_IL).set(email) if key == :il
     find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set(email)
   end
 
   def set_password(key = nil, pass)
-    return find(:xpath, ta(PASSWORD_EP)).set(pass) if key == :ep
+    return find( ta(PASSWORD_EP)).set(pass) if key == :ep
     return find(:xpath, PASSWORD_IL).set(pass) if key == :il
     find(:xpath, ta(PASSWORD_TA, PASSWORD_IL)).set(pass)
   end
 
   def click_ok_btn(key = nil)
-    return find(:xpath, ta(OK_BTN_EP)).click if key == :ep
+    return find( ta(OK_BTN_EP)).click if key == :ep
     return find(:xpath, OK_BTN_IL).click if key == :il
     find(:xpath, ta(OK_BTN_TA, OK_BTN_IL)).click
   end
 
   def click_to_open_pin(key = nil)
-    return find(:xpath, ta(SOME_PIN_EP)).click if key == :ep
+    return find(ta(SOME_PIN_EP)).click if key == :ep
     return find(:xpath, SOME_PIN_IL).click if key == :il
     find(:xpath, ta(SOME_PIN_TA, SOME_PIN_IL)).click
   end
 
   def click_subscriptions(key = nil)
-    return find(:xpath, ta(SUBSCRIOTIONS_EP)).click if key == :ep
+    return find( ta(SUBSCRIOTIONS_EP)).click if key == :ep
     return find(:xpath, SUBSCRIOTIONS_IL).click if key == :il
     find(:xpath, ta(SUBSCRIOTIONS_TA, SUBSCRIOTIONS_IL)).click
   end
 
   def click_to_find_recomendations(key = nil)
-    return find(:xpath, ta(FIND_RECOMENDATION_EP)).click if key == :ep
+    return find(ta(FIND_RECOMENDATION_EP)).click if key == :ep
     return find(:xpath, FIND_RECOMENDATION_IL).click if key == :il
     find(:xpath, ta(FIND_RECOMENDATION_TA, FIND_RECOMENDATION_IL)).click
   end
 
   def click_to_look_more(key = nil)
-    return find(:xpath, ta(MORE_DROPDOWN_EP)).click if key == :ep
+    return find( ta(MORE_DROPDOWN_EP)).click if key == :ep
     return find(:xpath, MORE_DROPDOWN_IL).click if key == :il
     find(:xpath, ta(MORE_DROPDOWN_TA, MORE_DROPDOWN_IL)).click
   end
 
   def click_to_look_tattoo(key = nil)
-    return find(:xpath, ta(TATTOO_EP)).click if key == :ep
+    return find( ta(TATTOO_EP)).click if key == :ep
     return find(:xpath, TATTOO_IL).click if key == :il
     find(:xpath, ta(TATTOO_TA, TATTOO_IL)).click
   end
 
   def click_to_select_category(key = nil)
-    return find(:xpath, ta(FOURTH_CATEGORY_EP)).click if key == :ep
+    return find( ta(FOURTH_CATEGORY_EP)).click if key == :ep
     return find(:xpath, FOURTH_CATEGORY_IL).click if key == :il
     find(:xpath, ta(FOURTH_CATEGORY_TA, FOURTH_CATEGORY_IL)).click
   end
