@@ -44,16 +44,11 @@ stage_com:
   email: "julia.arapova@softesis.com"
   pass: "1234tesT"
 
-ec_flow:
-  page: 'https://ectest.trueautomation.io/flow'
+cloud_bees:
+  login_page: 'https://ectest.trueautomation.io/flow'
   catalogs_page: "https://ectest.trueautomation.io/flow/#catalogs"
   pipelines_page: "https://ectest.trueautomation.io/flow/#pipelines"
   applications_page: "https://ectest.trueautomation.io/flow/#applications"
-  login: 'admin'
-  password: 'changeme'
-
-cloud_bees:
-  login_page: 'https://ectest.trueautomation.io/flow'
   username: 'admin'
   pass: 'changeme'
 
