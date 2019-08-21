@@ -26,20 +26,20 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User set login in input" , settings('cloud_bees')['username'] do |login|
-        it.set_login(login)
+      step "User set login in input" , settings('cloud_bees')['username'] do |username|
+        it.fill_username_field(username)
       end
 
-      step "User set pass in input" , settings('cloud_bees')['pass'] do |password|
-        it.set_password(password)
+      step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
+        it.fill_pass_field(pass)
       end
 
       step "User clicks on login bth" do
-        it.click_login_btn
+        it.click_sign_in_button
       end
 
       step "User clicks on humburg bth" do
-        it.click_humburg_btn
+        it.click_hamburger_menu
       end
 
       step "User clicks on pipelines link" do
@@ -57,24 +57,24 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User set login in input" , settings('cloud_bees')['username'] do |login|
-        check_element_path :xpath, CloudBees::LOGIN_TA, CloudBees::LOGIN_IL
-        it.set_login(login)
+      step "User set login in input" , settings('cloud_bees')['username'] do |username|
+        check_element_path :xpath, CloudBees::USERNAME_FIELD_TA, CloudBees::USERNAME_FIELD_IL
+        it.fill_username_field(username)
       end
 
-      step "User set pass in input" , settings('cloud_bees')['pass'] do |password|
-        check_element_path :xpath, CloudBees::PASSWORD_TA, CloudBees::PASSWORD_IL
-        it.set_password(password)
+      step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
+        check_element_path :xpath, CloudBees::PASSWORD_FIELD_TA, CloudBees::PASSWORD_FIELD_IL
+        it.fill_pass_field(pass)
       end
 
       step "User clicks on login bth" do
-        check_element_path :xpath, CloudBees::LOGIN_BTN_TA, CloudBees::LOGIN_BTN_IL
-        it.click_login_btn
+        check_element_path :xpath, CloudBees::SIGN_IN_BTN_TA, CloudBees::SIGN_IN_BTN_IL
+        it.click_sign_in_button
       end
 
       step "User clicks on humburg bth" do
-        check_element_path :xpath, CloudBees::HUMBURG_BTN_TA, CloudBees::HUMBURG_BTN_IL
-        it.click_humburg_btn
+        check_element_path :xpath, CloudBees::HAM_MENU_BTN_TA, CloudBees::HAM_MENU_BTN_IL
+        it.click_hamburger_menu
       end
 
       step "User clicks on pipelines link" do
@@ -96,24 +96,24 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User set login in input" , settings('cloud_bees')['username'] do |login|
-        check_element_path :xpath, CloudBees::LOGIN_EP, CloudBees::LOGIN_IL
-        it.set_login(:ep, login)
+      step "User set login in input" , settings('cloud_bees')['username'] do |username|
+        check_element_path :xpath, CloudBees::USERNAME_FIELD_EP, CloudBees::USERNAME_FIELD_IL
+        it.fill_username_field(:ep, username)
       end
 
-      step "User set pass in input" , settings('cloud_bees')['pass'] do |password|
-        check_element_path :xpath, CloudBees::PASSWORD_EP, CloudBees::PASSWORD_IL
-        it.set_password(:ep,password)
+      step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
+        check_element_path :xpath, CloudBees::PASSWORD_FIELD_EP, CloudBees::PASSWORD_FIELD_IL
+        it.fill_pass_field(:ep,pass)
       end
 
       step "User clicks on login bth" do
-        check_element_path :xpath, CloudBees::LOGIN_BTN_EP, CloudBees::LOGIN_BTN_IL
-        it.click_login_btn :ep
+        check_element_path :xpath, CloudBees::SIGN_IN_BTN_EP, CloudBees::SIGN_IN_BTN_IL
+        it.click_sign_in_button :ep
       end
 
       step "User clicks on humburg bth" do
-        check_element_path :xpath, CloudBees::HUMBURG_BTN_EP, CloudBees::HUMBURG_BTN_IL
-        it.click_humburg_btn :ep
+        check_element_path :xpath, CloudBees::HAM_MENU_BTN_EP, CloudBees::HAM_MENU_BTN_IL
+        it.click_hamburger_menu :ep
       end
 
       step "User clicks on pipelines link" do
@@ -135,20 +135,20 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User set login in input" , settings('cloud_bees')['username'] do |login|
-        it.set_login(:il, login)
+      step "User set login in input" , settings('cloud_bees')['username'] do |username|
+        it.fill_username_field(:il, username)
       end
 
-      step "User set pass in input" , settings('cloud_bees')['pass'] do |password|
-        it.set_password(:il,password)
+      step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
+        it.fill_pass_field(:il,pass)
       end
 
       step "User clicks on login bth" do
-        it.click_login_btn :il
+        it.click_sign_in_button :il
       end
 
       step "User clicks on humburg bth" do
-        it.click_humburg_btn :il
+        it.click_hamburger_menu :il
       end
 
       step "User clicks on pipelines link" do
@@ -166,20 +166,20 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User set login in input" , settings('cloud_bees')['username'] do |login|
-        it.set_login(:il, login)
+      step "User set login in input" , settings('cloud_bees')['username'] do |username|
+        it.fill_username_field(:il, username)
       end
 
-      step "User set pass in input" , settings('cloud_bees')['pass'] do |password|
-        it.set_password(:il,password)
+      step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
+        it.fill_pass_field(:il,pass)
       end
 
       step "User clicks on login bth" do
-        it.click_login_btn :il
+        it.click_sign_in_button :il
       end
 
       step "User clicks on humburg bth" do
-        it.click_humburg_btn :il
+        it.click_hamburger_menu :il
       end
 
       step "User clicks on pipelines link" do

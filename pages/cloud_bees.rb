@@ -37,23 +37,7 @@ class CloudBees
   REAL_NAME_FIELD_TA = 'cloud_bees:new_user:real_name_fld'
   REAL_NAME_FIELD_EP = 'EP:cloud_bees:new_user:real_name_fld'
 
-  LOGIN_IL = "//input[@id='username']"
-  LOGIN_TA = "ec_flow:login"
-  LOGIN_EP = "EP:ec_flow:login"
-
-  PASSWORD_IL = "//input[@id='password']"
-  PASSWORD_TA = "ec_flow:password"
-  PASSWORD_EP = "EP:ec_flow:password"
-
-  LOGIN_BTN_IL = "//button[text()='Login']"
-  LOGIN_BTN_TA = "ec_flow:login_bth"
-  LOGIN_BTN_EP = "EP:ec_flow:login_btn"
-
-  HUMBURG_BTN_IL = "//div[@class='at-main-menu-btn ch-icon-container menu']"
-  HUMBURG_BTN_TA = "ec_flow:humburg"
-  HUMBURG_BTN_EP = "EP:ec_flow:humburg"
-
-  PIPELINES_IL = "//a[@class='black-link nav-menu-category__item at-main-menu-pipelines']"
+  PIPELINES_IL = '.at-main-menu-pipelines'
   PIPELINES_TA = "ec_flow:pipelines"
   PIPELINES_EP = "EP:ec_flow:pipelines"
 
@@ -120,10 +104,6 @@ class CloudBees
   EXTENSION_IL = "(//tr//input[@class='gwt-TextBox'])[11]"
   EXTENSION_TA = "ec_flow:extention"
   EXTENSION_EP = "EP:ec_flow:extention"
-
-  OK_BTN_IL = "div.at-ok-btn"
-  OK_BTN_TA = "ec_flow:ok_btn"
-  OK_BTN_EP = "EP:ec_flow:ok_btn"
 
   OK_WARNING_IL = "//div[@class='ec-wizard-btn ec-ok at-ok-btn']"
   OK_WARNING_TA = "ec_flow:ok_warning_btn"
@@ -198,30 +178,6 @@ class CloudBees
       return find(:css, REAL_NAME_FIELD_IL).set(name) if key == :il
       find(:css, ta(REAL_NAME_FIELD_TA, REAL_NAME_FIELD_IL)).set(name)
     end
-  end
-
-  def set_login(key = nil,login)
-    return find(ta(LOGIN_EP)).set(login) if key ==:ep
-    return find(:xpath, LOGIN_IL).set(login) if key ==:il
-    find(:xpath, ta(LOGIN_TA, LOGIN_IL)).set(login)
-  end
-
-  def set_password(key = nil,pass)
-    return find(ta(PASSWORD_EP)).set(pass) if key ==:ep
-    return find(:xpath, PASSWORD_IL).set(pass) if key ==:il
-    find(:xpath, ta(PASSWORD_TA, PASSWORD_IL)).set(pass)
-  end
-
-  def click_login_btn(key = nil)
-    return find(ta(LOGIN_BTN_EP)).click if key ==:ep
-    return find(:xpath, LOGIN_BTN_IL).click if key ==:il
-    find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click
-  end
-
-  def click_humburg_btn(key = nil)
-    return find(ta(HUMBURG_BTN_EP)).click if key ==:ep
-    return find(:xpath, HUMBURG_BTN_IL).click if key ==:il
-    find(:xpath, ta(HUMBURG_BTN_TA, HUMBURG_BTN_IL)).click
   end
 
   def click_pipelines(key = nil)
@@ -324,12 +280,6 @@ class CloudBees
     return find(ta(EXTENSION_EP)).set("test") if key ==:ep
     return find(:xpath, EXTENSION_IL).set("test") if key ==:il
     find(:xpath, ta(EXTENSION_TA, EXTENSION_IL)).set("test")
-  end
-
-  def click_ok_btn(key = nil)
-    return find(ta(OK_BTN_EP)).click if key ==:ep
-    return find(:css, OK_BTN_IL).click if key ==:il
-    find(:css, ta(OK_BTN_TA, OK_BTN_IL)).click
   end
 
   def click_warning_ok_btn(key = nil)
