@@ -98,10 +98,9 @@ class Ecflow
   OK_WARNING_TA = "ec_flow:ok_warning_btn"
   OK_WARNING_EP = "EP:ec_flow:ok_warning_btn"
 
-  # Ok_IN_MODAL_IL = "//div[@class='ec-react-wizard__window']//div[@class='ec-wizard-btn ec-ok at-ok-btn']"
-  Ok_IN_MODAL_IL = "div.at-ok-btn"
-  Ok_IN_MODAL_TA = "ec_flow:ok_in_modal_btn"
-  Ok_IN_MODAL_EP = "EP:ec_flow:ok_in_modal_btn"
+  OK_IN_MODAL_IL = "div.at-ok-btn"
+  OK_IN_MODAL_TA = "ec_flow:ok_in_modal_btn"
+  OK_IN_MODAL_EP = "EP:ec_flow:ok_in_modal_btn"
 
   NEXT_BTN_IL = "//div[text()='Next']"
   NEXT_BTN_TA = "ec_flow:ok_btn"
@@ -129,51 +128,51 @@ class Ecflow
   end
 
   def click_login_btn(key = nil)
-    return find(ta(LOGIN_BTN_EP)).click() if key ==:ep
-    return find(:xpath, LOGIN_BTN_IL).click() if key ==:il
-    find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click()
+    return find(ta(LOGIN_BTN_EP)).click if key ==:ep
+    return find(:xpath, LOGIN_BTN_IL).click if key ==:il
+    find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click
   end
 
   def click_humburg_btn(key = nil)
-    return find(ta(HUMBURG_BTN_EP)).click() if key ==:ep
-    return find(:xpath, HUMBURG_BTN_IL).click() if key ==:il
-    find(:xpath, ta(HUMBURG_BTN_TA, HUMBURG_BTN_IL)).click()
+    return find(ta(HUMBURG_BTN_EP)).click if key ==:ep
+    return find(:xpath, HUMBURG_BTN_IL).click if key ==:il
+    find(:xpath, ta(HUMBURG_BTN_TA, HUMBURG_BTN_IL)).click
   end
 
   def click_pipelines(key = nil)
-    return find(ta(PIPELINES_EP)).click() if key ==:ep
-    return find(:xpath, PIPELINES_IL).click() if key ==:il
-    find(:xpath, ta(PIPELINES_TA, PIPELINES_IL)).click()
+    return find(ta(PIPELINES_EP)).click if key ==:ep
+    return find(:xpath, PIPELINES_IL).click if key ==:il
+    find(:xpath, ta(PIPELINES_TA, PIPELINES_IL)).click
   end
 
   def choose_pipeline_from_list(key = nil)
-    return find(ta(CHOOSE_PIPELINE_EP)).click() if key ==:ep
-    return find(:xpath, CHOOSE_PIPELINE_IL).click() if key ==:il
-    find(:xpath, ta(CHOOSE_PIPELINE_TA, CHOOSE_PIPELINE_IL)).click()
+    return find(ta(CHOOSE_PIPELINE_EP)).click if key ==:ep
+    return find(:xpath, CHOOSE_PIPELINE_IL).click if key ==:il
+    find(:xpath, ta(CHOOSE_PIPELINE_TA, CHOOSE_PIPELINE_IL)).click
   end
 
   def click_applications(key = nil)
-    return find(ta(APPLICATIONS_EP)).click() if key ==:ep
-    return find(:css, APPLICATIONS_IL).click() if key ==:il
-    find(:css, ta(APPLICATIONS_TA, APPLICATIONS_IL)).click()
+    return find(ta(APPLICATIONS_EP)).click if key ==:ep
+    return find(:css, APPLICATIONS_IL).click if key ==:il
+    find(:css, ta(APPLICATIONS_TA, APPLICATIONS_IL)).click
   end
 
   def select_application_from_list(key = nil)
-    return find(ta(APPLICATION_FROM_LIST_EP)).click() if key ==:ep
-    return find(:xpath, APPLICATION_FROM_LIST_IL).click() if key ==:il
-    find(:xpath, ta(APPLICATION_FROM_LIST_TA, APPLICATION_FROM_LIST_IL)).click()
+    return find(ta(APPLICATION_FROM_LIST_EP)).click if key ==:ep
+    return find(:xpath, APPLICATION_FROM_LIST_IL).click if key ==:il
+    find(:xpath, ta(APPLICATION_FROM_LIST_TA, APPLICATION_FROM_LIST_IL)).click
   end
 
   def click_add_new_component(key = nil)
-    return find(ta(ADD_NEW_COMPONENT_EP)).click() if key ==:ep
-    return find(:css, ADD_NEW_COMPONENT_IL).click() if key ==:il
-    find(:css, ta(ADD_NEW_COMPONENT_TA, ADD_NEW_COMPONENT_IL)).click()
+    return find(ta(ADD_NEW_COMPONENT_EP)).click if key ==:ep
+    return find(:css, ADD_NEW_COMPONENT_IL).click if key ==:il
+    find(:css, ta(ADD_NEW_COMPONENT_TA, ADD_NEW_COMPONENT_IL)).click
   end
 
   def click_component_btn(key = nil)
-    return find(ta(ADD_COMPONENT_BTN_EP)).click() if key ==:ep
-    return find(:css, ADD_COMPONENT_BTN_IL).click() if key ==:il
-    find(:css, ta(ADD_COMPONENT_BTN_TA, ADD_COMPONENT_BTN_IL)).click()
+    return find(ta(ADD_COMPONENT_BTN_EP)).click if key ==:ep
+    return find(:css, ADD_COMPONENT_BTN_IL).click if key ==:il
+    find(:css, ta(ADD_COMPONENT_BTN_TA, ADD_COMPONENT_BTN_IL)).click
   end
 
   def click_for_create_new_app_component(key = nil)
@@ -195,15 +194,15 @@ class Ecflow
   end
 
   def click_component_dropdown(key = nil)
-    return find(ta(COMPONENT_DROPDOWN_EP)).click() if key ==:ep
-    return find(:css, COMPONENT_DROPDOWN_IL).click() if key ==:il
-    find(:css, ta(COMPONENT_DROPDOWN_TA, COMPONENT_DROPDOWN_IL)).click()
+    return find(ta(COMPONENT_DROPDOWN_EP)).click if key ==:ep
+    return find(:css, COMPONENT_DROPDOWN_IL).click if key ==:il
+    find(:css, ta(COMPONENT_DROPDOWN_TA, COMPONENT_DROPDOWN_IL)).click
   end
 
   def click_artifact(key = nil)
-    return find(ta(EC_ARTIFACTORY_EP)).click() if key ==:ep
-    return find(:xpath, EC_ARTIFACTORY_IL).click() if key ==:il
-    find(:xpath, ta(EC_ARTIFACTORY_TA, EC_ARTIFACTORY_IL)).click()
+    return find(ta(EC_ARTIFACTORY_EP)).click if key ==:ep
+    return find(:xpath, EC_ARTIFACTORY_IL).click if key ==:il
+    find(:xpath, ta(EC_ARTIFACTORY_TA, EC_ARTIFACTORY_IL)).click
   end
 
   def set_configuration(key = nil)
@@ -243,38 +242,38 @@ class Ecflow
   end
 
   def click_ok_btn(key = nil)
-    return find(ta(OK_BTN_EP)).click() if key ==:ep
-    return find(:css, OK_BTN_IL).click() if key ==:il
-    find(:css, ta(OK_BTN_TA, OK_BTN_IL)).click()
+    return find(ta(OK_BTN_EP)).click if key ==:ep
+    return find(:css, OK_BTN_IL).click if key ==:il
+    find(:css, ta(OK_BTN_TA, OK_BTN_IL)).click
   end
 
   def click_warning_ok_btn(key = nil)
-    return find(ta(OK_WARNING_EP)).click() if key ==:ep
-    return find(:xpath, OK_WARNING_IL).click() if key ==:il
-    find(:xpath, ta(OK_WARNING_TA, OK_WARNING_IL)).click()
+    return find(ta(OK_WARNING_EP)).click if key ==:ep
+    return find(:xpath, OK_WARNING_IL).click if key ==:il
+    find(:xpath, ta(OK_WARNING_TA, OK_WARNING_IL)).click
   end
 
   def click_ok_in_modal_btn(key = nil)
-    return find(ta(Ok_IN_MODAL_EP)).click() if key ==:ep
-    return find(:css, Ok_IN_MODAL_IL).click() if key ==:il
-    find(:css, ta(Ok_IN_MODAL_TA, Ok_IN_MODAL_IL)).click()
+    return find(ta(OK_IN_MODAL_EP)).click if key ==:ep
+    return find(:css, OK_IN_MODAL_IL).click if key ==:il
+    find(:css, ta(OK_IN_MODAL_TA, OK_IN_MODAL_IL)).click
   end
 
   def click_next_btn(key = nil)
-    return find(ta(NEXT_BTN_EP)).click() if key ==:ep
-    return find(:xpath, NEXT_BTN_IL).click() if key ==:il
-    find(:xpath, ta(NEXT_BTN_TA, NEXT_BTN_IL)).click()
+    return find(ta(NEXT_BTN_EP)).click if key ==:ep
+    return find(:xpath, NEXT_BTN_IL).click if key ==:il
+    find(:xpath, ta(NEXT_BTN_TA, NEXT_BTN_IL)).click
   end
 
   def click_multi_menu(key = nil)
-    return find(ta(MULTI_MENU_BTN_EP)).click() if key ==:ep
-    return find(:css, MULTI_MENU_BTN_IL).click() if key ==:il
-    find(:css, ta(MULTI_MENU_BTN_TA, MULTI_MENU_BTN_IL)).click()
+    return find(ta(MULTI_MENU_BTN_EP)).click if key ==:ep
+    return find(:css, MULTI_MENU_BTN_IL).click if key ==:il
+    find(:css, ta(MULTI_MENU_BTN_TA, MULTI_MENU_BTN_IL)).click
   end
 
   def click_delete(key = nil)
-    return find(ta(DELETE_EP)).click() if key ==:ep
-    return find(:css, DELETE_IL).click() if key ==:il
-    find(:css, ta(DELETE_TA, DELETE_IL)).click()
+    return find(ta(DELETE_EP)).click if key ==:ep
+    return find(:css, DELETE_IL).click if key ==:il
+    find(:css, ta(DELETE_TA, DELETE_IL)).click
   end
 end
