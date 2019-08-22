@@ -44,15 +44,18 @@ stage_com:
   email: "julia.arapova@softesis.com"
   pass: "1234tesT"
 
-ec_flow:
-  page: 'https://ectest.trueautomation.io/flow'
-  login: 'admin'
-  password: 'changeme'
-
 cloud_bees:
   login_page: 'https://ectest.trueautomation.io/flow'
+  catalogs_page: "https://ectest.trueautomation.io/flow/#catalogs"
+  pipelines_page: "https://ectest.trueautomation.io/flow/#pipelines"
+  applications_page: "https://ectest.trueautomation.io/flow/#applications"
   username: 'admin'
   pass: 'changeme'
+  new_username: 'eugenShapovalov'
+  #new_username: 'automationQA'
+  new_realname: 'Real automationQA'
+  new_email: 'automationqa@gmail.com'
+  new_password: '1111'
 
 24timezones:
   page: 'https://24timezones.com/worldmap'
@@ -82,3 +85,6 @@ revolve:
   page: "https://revolve-pwa.moovweb.cloud/"
   email: "julia.arapova@softesis.com"
   pass: "1234tesT"
+
+booking:
+  page: "https://www.booking.com/index.ru.html?label=gen173nr-1DCAEoggI46AdIIVgEaIkCiAECmAEhuAEHyAEN2AED6AEB-AECiAIBqAIDuAK73e7qBcACAQ;sid=6e74b4194271cd26e483b3cc7003b0c7"
