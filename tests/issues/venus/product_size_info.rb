@@ -279,7 +279,7 @@ describe 'Preconditions' do
       step "User chooses a product by name in the list", 'love print top' do |name|
         it.choose_product_by_name name
       end
-=begin can't reproduce: TA-999 (new issue)
+=begin can't reproduce: TA-999 (new issue TA-1000)
       step "User chooses a size in the list", 'L' do |size|
         it.choose_list_size :il, size
       end
@@ -344,7 +344,7 @@ describe 'Preconditions' do
       step "User chooses a product by name in the list", 'love print top' do |name|
         it.choose_product_by_name name
       end
-=begin can't reproduce: TA-999 (new issue)
+=begin can't reproduce: TA-999 (new issue TA-1000)
       step "User chooses a size in the list", 'M' do |size|
         it.choose_list_size :il, size
       end
