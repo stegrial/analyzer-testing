@@ -51,6 +51,11 @@ cloud_bees:
   applications_page: "https://ectest.trueautomation.io/flow/#applications"
   username: 'admin'
   pass: 'changeme'
+  new_username: 'eugenShapovalov'
+  #new_username: 'automationQA'
+  new_realname: 'Real automationQA'
+  new_email: 'automationqa@gmail.com'
+  new_password: '1111'
 
 24timezones:
   page: 'https://24timezones.com/worldmap'

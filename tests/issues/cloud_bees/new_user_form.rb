@@ -50,11 +50,11 @@ describe 'Preconditions' do
       end
 
       step "User fills the User Name field", 'UserName' do |name|
-        it.fill_user_name_field name
+        it.fill_new_user_name_field name
       end
 
       step "User fills the Real Name field", 'My Real Name' do |name|
-        it.fill_real_name_field name
+        it.fill_new_real_name_field name
       end
 
       sleep 3
@@ -97,13 +97,13 @@ describe 'Preconditions' do
 
       step "User fills the User Name field", 'UserName' do |name|
         within_frame(0) { check_element_path :css, CloudBees::USER_NAME_FIELD_TA, CloudBees::USER_NAME_FIELD_IL }
-        it.fill_user_name_field name
+        it.fill_new_user_name_field name
       end
 
       2.times do
         step "User fills the Real Name field", 'My Real Name' do |name|
           within_frame(0) { check_element_path :css, CloudBees::REAL_NAME_FIELD_TA, CloudBees::REAL_NAME_FIELD_IL }
-          it.fill_real_name_field name
+          it.fill_new_real_name_field name
         end
       end
 
@@ -149,13 +149,13 @@ describe 'Preconditions' do
 
       step "User fills the User Name field", 'UserName' do |name|
         within_frame(0) { check_element_path :css, CloudBees::USER_NAME_FIELD_EP, CloudBees::USER_NAME_FIELD_IL }
-        it.fill_user_name_field :ep, name
+        it.fill_new_user_name_field :ep, name
       end
 
       2.times do
         step "User fills the Real Name field", 'My Real Name' do |name|
           within_frame(0) { check_element_path :css, CloudBees::REAL_NAME_FIELD_EP, CloudBees::REAL_NAME_FIELD_IL }
-          it.fill_real_name_field :ep, name
+          it.fill_new_real_name_field :ep, name
         end
       end
 
@@ -194,11 +194,11 @@ describe 'Preconditions' do
       end
 
       step "User fills the User Name field", 'UserName' do |name|
-        it.fill_user_name_field :il, name
+        it.fill_new_user_name_field :il, name
       end
 
       step "User fills the Real Name field", 'My Real Name' do |name|
-        it.fill_real_name_field name
+        it.fill_new_real_name_field name
       end
 
       sleep 3
@@ -234,15 +234,15 @@ describe 'Preconditions' do
       end
 
       step "User fills the User Name field", 'UserName' do |name|
-        it.fill_user_name_field :il, name
+        it.fill_new_user_name_field :il, name
       end
 
       step "User fills the Real Name field", 'My Real Name' do |name|
-        it.fill_real_name_field :il, name
+        it.fill_new_real_name_field :il, name
       end
 
       step "User fills the Real Name field", 'My Real Name' do |name|
-        it.fill_real_name_field name
+        it.fill_new_real_name_field name
       end
 
       sleep 3
