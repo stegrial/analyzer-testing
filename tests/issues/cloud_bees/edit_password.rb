@@ -1,9 +1,12 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
-require_relative '../../../pages/cloud_bees'
+require_relative '../../../pages/cloud_bees_pages/cloud_bees_global'
 
-it = CloudBees.new
+global_page = CloudBeesGlobal.new
+login_page = CloudBeesLogin.new
+users_page = CloudBeesUsers.new
+new_user_page = CloudBeesNewUser.new
 
 describe 'Preconditions' do
 

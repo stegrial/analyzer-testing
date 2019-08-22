@@ -1,9 +1,12 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
-require_relative '../../../pages/cloud_bees'
+required_relative_all "/pages/cloud_bees_pages/*.rb"
 
-it = CloudBees.new
+global_page = CloudBeesGlobal.new
+login_page = CloudBeesLogin.new
+users_page = CloudBeesUsers.new
+new_user_page = CloudBeesNewUser.new
 
 describe 'Preconditions' do
 
@@ -26,35 +29,35 @@ describe 'Preconditions' do
       end
 
       step "User fills the Username field", settings('cloud_bees')['username'] do |username|
-        it.fill_username_field username
+        login_page.fill_username_field username
       end
 
       step "User fills the Password field", settings('cloud_bees')['pass'] do |pass|
-        it.fill_pass_field pass
+        login_page.fill_pass_field pass
       end
 
       step "User clicks on the Sign In button" do
-        it.click_sign_in_button
+        login_page.click_sign_in_button
       end
 
       step "User clicks on the Hamburger menu button" do
-        it.click_hamburger_menu
+        global_page.click_hamburger_menu
       end
 
       step "User chooses the Users section in the Hamburger menu" do
-        it.choose_users_section
+        global_page.choose_users_section
       end
 
       step "User presses the Create Local User button" do
-        it.press_create_user_btn
+        users_page.press_create_user_btn
       end
 
       step "User fills the User Name field", 'UserName' do |name|
-        it.fill_new_user_name_field name
+        new_user_page.fill_new_user_name_field name
       end
 
       step "User fills the Real Name field", 'My Real Name' do |name|
-        it.fill_new_real_name_field name
+        new_user_page.fill_new_real_name_field name
       end
 
       sleep 3
@@ -66,44 +69,44 @@ describe 'Preconditions' do
       end
 
       step "User fills the Username field", settings('cloud_bees')['username'] do |username|
-        check_element_path :css, CloudBees::USERNAME_FIELD_TA, CloudBees::USERNAME_FIELD_IL
-        it.fill_username_field username
+        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
+        login_page.fill_username_field username
       end
 
       step "User fills the Password field", settings('cloud_bees')['pass'] do |pass|
-        check_element_path :css, CloudBees::PASSWORD_FIELD_TA, CloudBees::PASSWORD_FIELD_IL
-        it.fill_pass_field pass
+        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_TA, CloudBeesLogin::PASSWORD_FIELD_IL
+        login_page.fill_pass_field pass
       end
 
       step "User clicks on the Sign In button" do
-        check_element_path :css, CloudBees::SIGN_IN_BTN_TA, CloudBees::SIGN_IN_BTN_IL
-        it.click_sign_in_button
+        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
+        login_page.click_sign_in_button
       end
 
       step "User clicks on the Hamburger menu button" do
-        check_element_path :css, CloudBees::HAM_MENU_BTN_TA, CloudBees::HAM_MENU_BTN_IL
-        it.click_hamburger_menu
+        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
+        global_page.click_hamburger_menu
       end
 
       step "User chooses the Users section in the Hamburger menu" do
-        check_element_path :xpath, CloudBees::USERS_SECTION_TA, CloudBees::USERS_SECTION_IL
-        it.choose_users_section
+        check_element_path :xpath, CloudBeesGlobal::USERS_SECTION_TA, CloudBeesGlobal::USERS_SECTION_IL
+        global_page.choose_users_section
       end
 
       step "User presses the Create Local User button" do
-        within_frame(0) { check_element_path :xpath, CloudBees::CREATE_USER_BTN_TA, CloudBees::CREATE_USER_BTN_IL }
-        it.press_create_user_btn
+        within_frame(0) { check_element_path :xpath, CloudBeesUsers::CREATE_USER_BTN_TA, CloudBeesUsers::CREATE_USER_BTN_IL }
+        users_page.press_create_user_btn
       end
 
       step "User fills the User Name field", 'UserName' do |name|
-        within_frame(0) { check_element_path :css, CloudBees::USER_NAME_FIELD_TA, CloudBees::USER_NAME_FIELD_IL }
-        it.fill_new_user_name_field name
+        within_frame(0) { check_element_path :css, CloudBeesNewUser::USER_NAME_FIELD_TA, CloudBeesNewUser::USER_NAME_FIELD_IL }
+        new_user_page.fill_new_user_name_field name
       end
 
       2.times do
         step "User fills the Real Name field", 'My Real Name' do |name|
-          within_frame(0) { check_element_path :css, CloudBees::REAL_NAME_FIELD_TA, CloudBees::REAL_NAME_FIELD_IL }
-          it.fill_new_real_name_field name
+          within_frame(0) { check_element_path :css, CloudBeesNewUser::REAL_NAME_FIELD_TA, CloudBeesNewUser::REAL_NAME_FIELD_IL }
+          new_user_page.fill_new_real_name_field name
         end
       end
 
@@ -118,44 +121,44 @@ describe 'Preconditions' do
       end
 
       step "User fills the Username field", settings('cloud_bees')['username'] do |username|
-        check_element_path :css, CloudBees::USERNAME_FIELD_EP, CloudBees::USERNAME_FIELD_IL
-        it.fill_username_field :ep, username
+        check_element_path :css, CloudBeesGlobal::USERNAME_FIELD_EP, CloudBeesGlobal::USERNAME_FIELD_IL
+        login_page.fill_username_field :ep, username
       end
 
       step "User fills the Password field", settings('cloud_bees')['pass'] do |pass|
-        check_element_path :css, CloudBees::PASSWORD_FIELD_EP, CloudBees::PASSWORD_FIELD_IL
-        it.fill_pass_field :ep, pass
+        check_element_path :css, CloudBeesGlobal::PASSWORD_FIELD_EP, CloudBeesGlobal::PASSWORD_FIELD_IL
+        login_page.fill_pass_field :ep, pass
       end
 
       step "User clicks on the Sign In button" do
-        check_element_path :css, CloudBees::SIGN_IN_BTN_EP, CloudBees::SIGN_IN_BTN_IL
-        it.click_sign_in_button :ep
+        check_element_path :css, CloudBeesGlobal::SIGN_IN_BTN_EP, CloudBeesGlobal::SIGN_IN_BTN_IL
+        login_page.click_sign_in_button :ep
       end
 
       step "User clicks on the Hamburger menu button" do
-        check_element_path :css, CloudBees::HAM_MENU_BTN_EP, CloudBees::HAM_MENU_BTN_IL
-        it.click_hamburger_menu :ep
+        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
+        global_page.click_hamburger_menu :ep
       end
 
       step "User chooses the Users section in the Hamburger menu" do
-        check_element_path :xpath, CloudBees::USERS_SECTION_EP, CloudBees::USERS_SECTION_IL
-        it.choose_users_section :ep
+        check_element_path :xpath, CloudBeesGlobal::USERS_SECTION_EP, CloudBeesGlobal::USERS_SECTION_IL
+        global_page.choose_users_section :ep
       end
 
       step "User presses the Create Local User button" do
-        within_frame(0) { check_element_path :xpath, CloudBees::CREATE_USER_BTN_EP, CloudBees::CREATE_USER_BTN_IL }
-        it.press_create_user_btn :ep
+        within_frame(0) { check_element_path :xpath, CloudBeesGlobal::CREATE_USER_BTN_EP, CloudBeesGlobal::CREATE_USER_BTN_IL }
+        users_page.press_create_user_btn :ep
       end
 
       step "User fills the User Name field", 'UserName' do |name|
-        within_frame(0) { check_element_path :css, CloudBees::USER_NAME_FIELD_EP, CloudBees::USER_NAME_FIELD_IL }
-        it.fill_new_user_name_field :ep, name
+        within_frame(0) { check_element_path :css, CloudBeesGlobal::USER_NAME_FIELD_EP, CloudBeesGlobal::USER_NAME_FIELD_IL }
+        new_user_page.fill_new_user_name_field :ep, name
       end
 
       2.times do
         step "User fills the Real Name field", 'My Real Name' do |name|
-          within_frame(0) { check_element_path :css, CloudBees::REAL_NAME_FIELD_EP, CloudBees::REAL_NAME_FIELD_IL }
-          it.fill_new_real_name_field :ep, name
+          within_frame(0) { check_element_path :css, CloudBeesGlobal::REAL_NAME_FIELD_EP, CloudBeesGlobal::REAL_NAME_FIELD_IL }
+          new_user_page.fill_new_real_name_field :ep, name
         end
       end
 
@@ -170,35 +173,35 @@ describe 'Preconditions' do
       end
 
       step "User fills the Username field", settings('cloud_bees')['username'] do |username|
-        it.fill_username_field :il, username
+        login_page.fill_username_field :il, username
       end
 
       step "User fills the Password field", settings('cloud_bees')['pass'] do |pass|
-        it.fill_pass_field :il, pass
+        login_page.fill_pass_field :il, pass
       end
 
       step "User clicks on the Sign In button" do
-        it.click_sign_in_button :il
+        login_page.click_sign_in_button :il
       end
 
       step "User clicks on the Hamburger menu button" do
-        it.click_hamburger_menu :il
+        global_page.click_hamburger_menu :il
       end
 
       step "User chooses the Users section in the Hamburger menu" do
-        it.choose_users_section :il
+        global_page.choose_users_section :il
       end
 
       step "User presses the Create Local User button" do
-        it.press_create_user_btn :il
+        users_page.press_create_user_btn :il
       end
 
       step "User fills the User Name field", 'UserName' do |name|
-        it.fill_new_user_name_field :il, name
+        new_user_page.fill_new_user_name_field :il, name
       end
 
       step "User fills the Real Name field", 'My Real Name' do |name|
-        it.fill_new_real_name_field name
+        new_user_page.fill_new_real_name_field name
       end
 
       sleep 3
@@ -210,39 +213,39 @@ describe 'Preconditions' do
       end
 
       step "User fills the Username field", settings('cloud_bees')['username'] do |username|
-        it.fill_username_field :il, username
+        login_page.fill_username_field :il, username
       end
 
       step "User fills the Password field", settings('cloud_bees')['pass'] do |pass|
-        it.fill_pass_field :il, pass
+        login_page.fill_pass_field :il, pass
       end
 
       step "User clicks on the Sign In button" do
-        it.click_sign_in_button :il
+        login_page.click_sign_in_button :il
       end
 
       step "User clicks on the Hamburger menu button" do
-        it.click_hamburger_menu :il
+        global_page.click_hamburger_menu :il
       end
 
       step "User chooses the Users section in the Hamburger menu" do
-        it.choose_users_section :il
+        global_page.choose_users_section :il
       end
 
       step "User presses the Create Local User button" do
-        it.press_create_user_btn :il
+        users_page.press_create_user_btn :il
       end
 
       step "User fills the User Name field", 'UserName' do |name|
-        it.fill_new_user_name_field :il, name
+        new_user_page.fill_new_user_name_field :il, name
       end
 
       step "User fills the Real Name field", 'My Real Name' do |name|
-        it.fill_new_real_name_field :il, name
+        new_user_page.fill_new_real_name_field :il, name
       end
 
       step "User fills the Real Name field", 'My Real Name' do |name|
-        it.fill_new_real_name_field name
+        new_user_page.fill_new_real_name_field name
       end
 
       sleep 3
