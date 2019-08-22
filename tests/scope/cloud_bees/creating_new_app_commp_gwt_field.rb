@@ -1,11 +1,11 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
-require_relative '../../../pages/cloud_bees'
+require_relative '../../../pages/cloud_bees_pages/cloud_bees_global'
 require 'securerandom'
 random_string = SecureRandom.hex
 
-it = CloudBees.new
+it = CloudBeesGlobal.new
 
 # This tests runs when the vpn is ON
 describe 'Preconditions' do
@@ -133,123 +133,123 @@ describe 'Preconditions' do
       end
 
       step "User set login in input" , settings('cloud_bees')['username'] do |username|
-        check_element_path :xpath, CloudBees::USERNAME_FIELD_TA, CloudBees::USERNAME_FIELD_IL
+        check_element_path :xpath, CloudBeesGlobal::USERNAME_FIELD_TA, CloudBeesGlobal::USERNAME_FIELD_IL
         it.fill_username_field(username)
       end
 
       step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
-        check_element_path :xpath, CloudBees::PASSWORD_FIELD_TA, CloudBees::PASSWORD_FIELD_IL
+        check_element_path :xpath, CloudBeesGlobal::PASSWORD_FIELD_TA, CloudBeesGlobal::PASSWORD_FIELD_IL
         it.fill_pass_field(pass)
       end
 
       step "User clicks on login bth" do
-        check_element_path :xpath, CloudBees::SIGN_IN_BTN_TA, CloudBees::SIGN_IN_BTN_IL
+        check_element_path :xpath, CloudBeesGlobal::SIGN_IN_BTN_TA, CloudBeesGlobal::SIGN_IN_BTN_IL
         it.click_sign_in_button
       end
 
       step "User clicks on humburg bth" do
-        check_element_path :xpath, CloudBees::HAM_MENU_BTN_TA, CloudBees::HAM_MENU_BTN_IL
+        check_element_path :xpath, CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
         it.click_hamburger_menu
       end
 
       step "User clicks on applications link" do
-        check_element_path :css, CloudBees::APPLICATIONS_TA, CloudBees::APPLICATIONS_IL
+        check_element_path :css, CloudBeesGlobal::APPS_SECTION_TA, CloudBeesGlobal::APPS_SECTION_IL
         it.click_applications
       end
 
       step "User clicks on pipeline to select" do
-        check_element_path :xpath, CloudBees::APPLICATION_FROM_LIST_TA, CloudBees::APPLICATION_FROM_LIST_IL
+        check_element_path :xpath, CloudBeesGlobal::APPLICATION_FROM_LIST_TA, CloudBeesGlobal::APPLICATION_FROM_LIST_IL
         it.select_application_from_list
       end
 
       step "User clicks on add new application" do
-        check_element_path :css, CloudBees::ADD_NEW_COMPONENT_TA, CloudBees::ADD_NEW_COMPONENT_IL
+        check_element_path :css, CloudBeesGlobal::ADD_NEW_COMPONENT_TA, CloudBeesGlobal::ADD_NEW_COMPONENT_IL
         it.click_add_new_component
       end
 
       step "User clicks on component button" do
-        check_element_path :css, CloudBees::ADD_COMPONENT_BTN_TA, CloudBees::ADD_COMPONENT_BTN_IL
+        check_element_path :css, CloudBeesGlobal::ADD_COMPONENT_BTN_TA, CloudBeesGlobal::ADD_COMPONENT_BTN_IL
         it.click_component_btn
       end
 
       step "User clicks on create new application component" do
-        check_element_path :css, CloudBees::CREATE_NEW_APP_COMPONENT_TA, CloudBees::CREATE_NEW_APP_COMPONENT_IL
+        check_element_path :css, CloudBeesGlobal::CREATE_NEW_APP_COMPONENT_TA, CloudBeesGlobal::CREATE_NEW_APP_COMPONENT_IL
         it.click_for_create_new_app_component
       end
 
       step "User sets new application component name" do
-        check_element_path :css, CloudBees::NEW_COMPONENT_NAME_TA, CloudBees::NEW_COMPONENT_NAME_IL
+        check_element_path :css, CloudBeesGlobal::NEW_COMPONENT_NAME_TA, CloudBeesGlobal::NEW_COMPONENT_NAME_IL
         it.set_new_name
       end
 
       step "User sets new application component description" do
-        check_element_path :css, CloudBees::COMPONENT_DESCRIPTION_TA, CloudBees::COMPONENT_DESCRIPTION_IL
+        check_element_path :css, CloudBeesGlobal::COMPONENT_DESCRIPTION_TA, CloudBeesGlobal::COMPONENT_DESCRIPTION_IL
         it.set_description
       end
 
       step "User click on ok button" do
-        check_element_path :xpath, CloudBees::NEXT_BTN_TA, CloudBees::NEXT_BTN_IL
+        check_element_path :xpath, CloudBeesGlobal::NEXT_BTN_TA, CloudBeesGlobal::NEXT_BTN_IL
         it.click_next_btn
       end
 
       step "User click on dropdown" do
-        check_element_path :css, CloudBees::COMPONENT_DROPDOWN_TA, CloudBees::COMPONENT_DROPDOWN_IL
+        check_element_path :css, CloudBeesGlobal::COMPONENT_DROPDOWN_TA, CloudBeesGlobal::COMPONENT_DROPDOWN_IL
         it.click_component_dropdown
       end
 
       step "User select artifact" do
-        check_element_path :xpath, CloudBees::EC_ARTIFACTORY_TA, CloudBees::EC_ARTIFACTORY_IL
+        check_element_path :xpath, CloudBeesGlobal::EC_ARTIFACTORY_TA, CloudBeesGlobal::EC_ARTIFACTORY_IL
         it.click_artifact
       end
 
       step "User set configuration text in input" do
-        check_element_path :xpath, CloudBees::CONFIGURATION_TA, CloudBees::CONFIGURATION_IL
+        check_element_path :xpath, CloudBeesGlobal::CONFIGURATION_TA, CloudBeesGlobal::CONFIGURATION_IL
         it.set_configuration
       end
 
       step "User set repository in input" do
-        check_element_path :xpath, CloudBees::REPOSITORY_KEY_TA, CloudBees::REPOSITORY_KEY_IL
+        check_element_path :xpath, CloudBeesGlobal::REPOSITORY_KEY_TA, CloudBeesGlobal::REPOSITORY_KEY_IL
         it.set_repository_key
       end
 
       step "User set organization in input" do
-        check_element_path :xpath, CloudBees::ORGANIZATION_PATH_TA, CloudBees::ORGANIZATION_PATH_IL
+        check_element_path :xpath, CloudBeesGlobal::ORGANIZATION_PATH_TA, CloudBeesGlobal::ORGANIZATION_PATH_IL
         it.set_organization_path
       end
 
       step "User set artifact in input" do
-        check_element_path :xpath, CloudBees::ARTIFACT_TA, CloudBees::ARTIFACT_IL
+        check_element_path :xpath, CloudBeesGlobal::ARTIFACT_TA, CloudBeesGlobal::ARTIFACT_IL
         it.set_artifact
       end
 
       step "User set version in input" do
-        check_element_path :xpath, CloudBees::VERSION_TA, CloudBees::VERSION_IL
+        check_element_path :xpath, CloudBeesGlobal::VERSION_TA, CloudBeesGlobal::VERSION_IL
         it.set_version
       end
 
       step "User set extention in inputt" do
-        check_element_path :xpath, CloudBees::EXTENSION_TA, CloudBees::EXTENSION_IL
+        check_element_path :xpath, CloudBeesGlobal::EXTENSION_TA, CloudBeesGlobal::EXTENSION_IL
         it.set_extention
       end
 
       step "User click on ok button" do
-        check_element_path :css, CloudBees::Ok_IN_MODAL_TA, CloudBees::Ok_IN_MODAL_IL
+        check_element_path :css, CloudBeesGlobal::Ok_IN_MODAL_TA, CloudBeesGlobal::Ok_IN_MODAL_IL
         it.click_ok_in_modal_btn
       end
 
       step "User click on multimenu button" do
-        check_element_path :css, CloudBees::MULTI_MENU_BTN_TA, CloudBees::MULTI_MENU_BTN_IL
+        check_element_path :css, CloudBeesGlobal::MULTI_MENU_BTN_TA, CloudBeesGlobal::MULTI_MENU_BTN_IL
         it.click_multi_menu
       end
 
       step "User click on delete item for deleting" do
-        check_element_path :css, CloudBees::DELETE_TA, CloudBees::DELETE_IL
+        check_element_path :css, CloudBeesGlobal::DELETE_TA, CloudBeesGlobal::DELETE_IL
         it.click_delete
       end
 
       step "User click on ok button for accepting" do
         sleep 4
-        check_element_path :xpath, CloudBees::OK_WARNING_TA, CloudBees::OK_WARNING_IL
+        check_element_path :xpath, CloudBeesGlobal::OK_WARNING_TA, CloudBeesGlobal::OK_WARNING_IL
         it.click_warning_ok_btn
       end
     end
@@ -263,122 +263,122 @@ describe 'Preconditions' do
       end
 
       step "User set login in input" , settings('cloud_bees')['username'] do |username|
-        check_element_path :xpath, CloudBees::USERNAME_FIELD_EP, CloudBees::USERNAME_FIELD_IL
+        check_element_path :xpath, CloudBeesGlobal::USERNAME_FIELD_EP, CloudBeesGlobal::USERNAME_FIELD_IL
         it.fill_username_field(:ep,username)
       end
 
       step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
-        check_element_path :xpath, CloudBees::PASSWORD_FIELD_EP, CloudBees::PASSWORD_FIELD_IL
+        check_element_path :xpath, CloudBeesGlobal::PASSWORD_FIELD_EP, CloudBeesGlobal::PASSWORD_FIELD_IL
         it.fill_pass_field(:ep, pass)
       end
 
       step "User clicks on login bth" do
-        check_element_path :xpath, CloudBees::SIGN_IN_BTN_EP, CloudBees::SIGN_IN_BTN_IL
+        check_element_path :xpath, CloudBeesGlobal::SIGN_IN_BTN_EP, CloudBeesGlobal::SIGN_IN_BTN_IL
         it.click_sign_in_button :ep
       end
 
       step "User clicks on humburg bth" do
-        check_element_path :xpath, CloudBees::HAM_MENU_BTN_EP, CloudBees::HAM_MENU_BTN_IL
+        check_element_path :xpath, CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
         it.click_hamburger_menu :ep
       end
 
       step "User clicks on applications link" do
-        check_element_path :xpath, CloudBees::APPLICATIONS_EP, CloudBees::APPLICATIONS_IL
+        check_element_path :xpath, CloudBeesGlobal::APPS_SECTION_EP, CloudBeesGlobal::APPS_SECTION_IL
         it.click_applications :ep
       end
 
       step "User clicks on pipeline to select" do
-        check_element_path :xpath, CloudBees::APPLICATION_FROM_LIST_EP, CloudBees::APPLICATION_FROM_LIST_IL
+        check_element_path :xpath, CloudBeesGlobal::APPLICATION_FROM_LIST_EP, CloudBeesGlobal::APPLICATION_FROM_LIST_IL
         it.select_application_from_list :ep
       end
 
       step "User clicks on add new application" do
-        check_element_path :xpath, CloudBees::ADD_NEW_COMPONENT_EP, CloudBees::ADD_NEW_COMPONENT_IL
+        check_element_path :xpath, CloudBeesGlobal::ADD_NEW_COMPONENT_EP, CloudBeesGlobal::ADD_NEW_COMPONENT_IL
         it.click_add_new_component :ep
       end
 
       step "User clicks on component button" do
-        check_element_path :xpath, CloudBees::ADD_COMPONENT_BTN_EP, CloudBees::ADD_COMPONENT_BTN_IL
+        check_element_path :xpath, CloudBeesGlobal::ADD_COMPONENT_BTN_EP, CloudBeesGlobal::ADD_COMPONENT_BTN_IL
         it.click_component_btn :ep
       end
 
       step "User clicks on create new application component" do
-        check_element_path :xpath, CloudBees::CREATE_NEW_APP_COMPONENT_EP, CloudBees::CREATE_NEW_APP_COMPONENT_IL
+        check_element_path :xpath, CloudBeesGlobal::CREATE_NEW_APP_COMPONENT_EP, CloudBeesGlobal::CREATE_NEW_APP_COMPONENT_IL
         it.click_for_create_new_app_component :ep
       end
 
       step "User sets new application component name" do
-        check_element_path :xpath, CloudBees::NEW_COMPONENT_NAME_EP, CloudBees::NEW_COMPONENT_NAME_IL
+        check_element_path :xpath, CloudBeesGlobal::NEW_COMPONENT_NAME_EP, CloudBeesGlobal::NEW_COMPONENT_NAME_IL
         it.set_new_name :ep
       end
 
       step "User sets new application component description" do
-        check_element_path :xpath, CloudBees::COMPONENT_DESCRIPTION_EP, CloudBees::COMPONENT_DESCRIPTION_IL
+        check_element_path :xpath, CloudBeesGlobal::COMPONENT_DESCRIPTION_EP, CloudBeesGlobal::COMPONENT_DESCRIPTION_IL
         it.set_description :ep
       end
 
       step "User click on ok button" do
-        check_element_path :xpath, CloudBees::NEXT_BTN_EP, CloudBees::NEXT_BTN_IL
+        check_element_path :xpath, CloudBeesGlobal::NEXT_BTN_EP, CloudBeesGlobal::NEXT_BTN_IL
         it.click_next_btn :ep
       end
 
       step "User click on dropdown" do
-        check_element_path :xpath, CloudBees::COMPONENT_DROPDOWN_EP, CloudBees::COMPONENT_DROPDOWN_IL
+        check_element_path :xpath, CloudBeesGlobal::COMPONENT_DROPDOWN_EP, CloudBeesGlobal::COMPONENT_DROPDOWN_IL
         it.click_component_dropdown :ep
       end
 
       step "User select artifact" do
-        check_element_path :xpath, CloudBees::EC_ARTIFACTORY_EP, CloudBees::EC_ARTIFACTORY_IL
+        check_element_path :xpath, CloudBeesGlobal::EC_ARTIFACTORY_EP, CloudBeesGlobal::EC_ARTIFACTORY_IL
         it.click_artifact :ep
       end
 
       step "User set configuration text in input" do
-        check_element_path  :xpath, CloudBees::CONFIGURATION_EP, CloudBees::CONFIGURATION_IL
+        check_element_path :xpath, CloudBeesGlobal::CONFIGURATION_EP, CloudBeesGlobal::CONFIGURATION_IL
         it.set_configuration :ep
       end
 
       step "User set repository in input" do
-        check_element_path :xpath, CloudBees::REPOSITORY_KEY_EP, CloudBees::REPOSITORY_KEY_IL
+        check_element_path :xpath, CloudBeesGlobal::REPOSITORY_KEY_EP, CloudBeesGlobal::REPOSITORY_KEY_IL
         it.set_repository_key :ep
       end
 
       step "User set organization in input" do
-        check_element_path :xpath, CloudBees::ORGANIZATION_PATH_EP, CloudBees::ORGANIZATION_PATH_IL
+        check_element_path :xpath, CloudBeesGlobal::ORGANIZATION_PATH_EP, CloudBeesGlobal::ORGANIZATION_PATH_IL
         it.set_organization_path :ep
       end
 
       step "User set artifact in input" do
-        check_element_path :xpath, CloudBees::ARTIFACT_EP, CloudBees::ARTIFACT_IL
+        check_element_path :xpath, CloudBeesGlobal::ARTIFACT_EP, CloudBeesGlobal::ARTIFACT_IL
         it.set_artifact :ep
       end
 
       step "User set version in input" do
-        check_element_path :xpath, CloudBees::VERSION_EP, CloudBees::VERSION_IL
+        check_element_path :xpath, CloudBeesGlobal::VERSION_EP, CloudBeesGlobal::VERSION_IL
         it.set_version :ep
       end
 
       step "User set extention in inputt" do
-        check_element_path :xpath, CloudBees::EXTENSION_EP, CloudBees::EXTENSION_IL
+        check_element_path :xpath, CloudBeesGlobal::EXTENSION_EP, CloudBeesGlobal::EXTENSION_IL
         it.set_extention :ep
       end
 
       step "User click on ok button" do
-        check_element_path :xpath, CloudBees::Ok_IN_MODAL_EP, CloudBees::Ok_IN_MODAL_TA
+        check_element_path :xpath, CloudBeesGlobal::Ok_IN_MODAL_EP, CloudBeesGlobal::Ok_IN_MODAL_TA
         it.click_ok_in_modal_btn :ep
       end
 
       step "User click on multimenu button" do
-        check_element_path :css, CloudBees::MULTI_MENU_BTN_EP, CloudBees::MULTI_MENU_BTN_TA
+        check_element_path :css, CloudBeesGlobal::MULTI_MENU_BTN_EP, CloudBeesGlobal::MULTI_MENU_BTN_TA
         it.click_multi_menu :ep
       end
 
       step "User click on delete item for deleting" do
-        check_element_path :css, CloudBees::DELETE_EP, CloudBees::DELETE_IL
+        check_element_path :css, CloudBeesGlobal::DELETE_EP, CloudBeesGlobal::DELETE_IL
         it.click_delete :ep
       end
 
       step "User click on ok button for accepting" do
-        check_element_path :xpath, CloudBees::OK_WARNING_EP, CloudBees::OK_WARNING_IL
+        check_element_path :xpath, CloudBeesGlobal::OK_WARNING_EP, CloudBeesGlobal::OK_WARNING_IL
         it.click_warning_ok_btn :ep
       end
 
