@@ -29,13 +29,57 @@ class CloudBees
   CREATE_USER_BTN_TA = 'cloud_bees:users_page:create_user_btn'
   CREATE_USER_BTN_EP = 'EP:cloud_bees:users_page:create_user_btn'
 
-  USER_NAME_FIELD_IL = '[id=userName]'
-  USER_NAME_FIELD_TA = 'cloud_bees:new_user:user_name_fld'
-  USER_NAME_FIELD_EP = 'EP:cloud_bees:new_user:user_name_fld'
+  NEW_USER_NAME_FIELD_IL = '[id=userName]'
+  NEW_USER_NAME_FIELD_TA = 'cloud_bees:new_user:user_name_fld'
+  NEW_USER_NAME_FIELD_EP = 'EP:cloud_bees:new_user:user_name_fld'
 
-  REAL_NAME_FIELD_IL = '[id=fullUserName]'
-  REAL_NAME_FIELD_TA = 'cloud_bees:new_user:real_name_fld'
-  REAL_NAME_FIELD_EP = 'EP:cloud_bees:new_user:real_name_fld'
+  NEW_REAL_NAME_FIELD_IL = '[id=fullUserName]'
+  NEW_REAL_NAME_FIELD_TA = 'cloud_bees:new_user:real_name_fld'
+  NEW_REAL_NAME_FIELD_EP = 'EP:cloud_bees:new_user:real_name_fld'
+
+  NEW_EMAIL_FIELD_IL = '[id=email]'
+  NEW_EMAIL_FIELD_TA = 'cloud_bees:new_user:email_fld'
+  NEW_EMAIL_FIELD_EP = 'EP:cloud_bees:new_user:email_fld'
+
+  NEW_PASSWORD_FIELD_IL = '[id=password]'
+  NEW_PASSWORD_FIELD_TA = 'cloud_bees:new_user:password_fld'
+  NEW_PASSWORD_FIELD_EP = 'EP:cloud_bees:new_user:password_fld'
+
+  NEW_REPASSWORD_FIELD_IL = '[id=password_confirm]'
+  NEW_REPASSWORD_FIELD_TA = 'cloud_bees:new_user:repassword_fld'
+  NEW_REPASSWORD_FIELD_EP = 'EP:cloud_bees:new_user:repassword_fld'
+
+  CONFIRM_NEW_USER_IL = '[id=submitButton]'
+  CONFIRM_NEW_USER_TA = 'cloud_bees:new_user:confirm_btn'
+  CONFIRM_NEW_USER_EP = 'EP:cloud_bees:new_user:confirm_btn'
+
+  USER_FILTER_FIELD_IL = '[id=filter]'
+  USER_FILTER_FIELD_TA = 'cloud_bees:users:user_filter_fld'
+  USER_FILTER_FIELD_EP = 'EP:cloud_bees:users:user_filter_fld'
+
+  APPLY_USER_FILTER_IL = '[id=submitButton]'
+  APPLY_USER_FILTER_TA = 'cloud_bees:users:apply_user_filter_btn'
+  APPLY_USER_FILTER_EP = 'EP:cloud_bees:users:apply_user_filter_btn'
+
+  EDIT_USER_BTN_IL = '.edit-icon'
+  EDIT_USER_BTN_TA = 'cloud_bees:users:edit_user_btn'
+  EDIT_USER_BTN_EP = 'EP:cloud_bees:users:edit_user_btn'
+
+  EDIT_ADMIN_PASS_FIELD_IL = '[id=sessionPassword]'
+  EDIT_ADMIN_PASS_FIELD_TA = 'cloud_bees:edit_user:admin_password_fld'
+  EDIT_ADMIN_PASS_FIELD_EP = 'EP:cloud_bees:edit_user:admin_password_fld'
+
+  EDIT_USER_PASS_FIELD_IL = '[id=password]'
+  EDIT_USER_PASS_FIELD_TA = 'cloud_bees:edit_user:password_fld'
+  EDIT_USER_PASS_FIELD_EP = 'EP:cloud_bees:edit_user:password_fld'
+
+  EDIT_USER_REPASS_FIELD_IL = '[id=password_confirm]'
+  EDIT_USER_REPASS_FIELD_TA = 'cloud_bees:edit_user:repassword_fld'
+  EDIT_USER_REPASS_FIELD_EP = 'EP:cloud_bees:edit_user:repassword_fld'
+
+  APPLY_NEW_USER_DATA_BTN_IL = '[id=submitButton]'
+  APPLY_NEW_USER_DATA_BTN_TA = 'cloud_bees:edit_user:apply_data_btn'
+  APPLY_NEW_USER_DATA_BTN_EP = 'EP:cloud_bees:edit_user:apply_data_btn'
 
   PIPELINES_IL = '.at-main-menu-pipelines'
   PIPELINES_TA = "ec_flow:pipelines"
@@ -164,152 +208,251 @@ class CloudBees
     end
   end
 
-  def fill_user_name_field(key = nil, name)
+  def fill_new_user_name_field(key = nil, name)
     within_frame(0) do
-      return find(ta(USER_NAME_FIELD_EP)).set(name) if key == :ep
-      return find(:css, USER_NAME_FIELD_IL).set(name) if key == :il
-      find(:css, ta(USER_NAME_FIELD_TA, USER_NAME_FIELD_IL)).set(name)
+      return find(ta(NEW_USER_NAME_FIELD_EP)).set(name) if key == :ep
+      return find(:css, NEW_USER_NAME_FIELD_IL).set(name) if key == :il
+      find(:css, ta(NEW_USER_NAME_FIELD_TA, NEW_USER_NAME_FIELD_IL)).set(name)
     end
   end
 
-  def fill_real_name_field(key = nil, name)
+  def fill_new_real_name_field(key = nil, name)
     within_frame(0) do
-      return find(ta(REAL_NAME_FIELD_EP)).set(name) if key == :ep
-      return find(:css, REAL_NAME_FIELD_IL).set(name) if key == :il
-      find(:css, ta(REAL_NAME_FIELD_TA, REAL_NAME_FIELD_IL)).set(name)
+      return find(ta(NEW_REAL_NAME_FIELD_EP)).set(name) if key == :ep
+      return find(:css, NEW_REAL_NAME_FIELD_IL).set(name) if key == :il
+      find(:css, ta(NEW_REAL_NAME_FIELD_TA, NEW_REAL_NAME_FIELD_IL)).set(name)
+    end
+  end
+
+  def fill_new_email_field(key = nil, email)
+    within_frame(0) do
+      return find(ta(NEW_EMAIL_FIELD_EP)).set(email) if key == :ep
+      return find(:css, NEW_EMAIL_FIELD_IL).set(email) if key == :il
+      find(:css, ta(NEW_EMAIL_FIELD_TA, NEW_EMAIL_FIELD_IL)).set(email)
+    end
+  end
+
+  def fill_new_password_field(key = nil, pass)
+    within_frame(0) do
+      return find(ta(NEW_PASSWORD_FIELD_EP)).set(pass) if key == :ep
+      return find(:css, NEW_PASSWORD_FIELD_IL).set(pass) if key == :il
+      find(:css, ta(NEW_PASSWORD_FIELD_TA, NEW_PASSWORD_FIELD_IL)).set(pass)
+    end
+  end
+
+  def fill_new_repassword_field(key = nil, repass)
+    within_frame(0) do
+      return find(ta(NEW_REPASSWORD_FIELD_EP)).set(repass) if key == :ep
+      return find(:css, NEW_REPASSWORD_FIELD_IL).set(repass) if key == :il
+      find(:css, ta(NEW_REPASSWORD_FIELD_TA, NEW_REPASSWORD_FIELD_IL)).set(repass)
+    end
+  end
+
+  def confirm_create_new_user(key = nil)
+    within_frame(0) do
+      return find(ta(CONFIRM_NEW_USER_EP)).click if key == :ep
+      return find(:css, CONFIRM_NEW_USER_IL).click if key == :il
+      find(:css, ta(CONFIRM_NEW_USER_TA, CONFIRM_NEW_USER_IL)).click
+    end
+  end
+
+  def fill_user_filter_field(key = nil, name)
+    within_frame(0) do
+      return find(ta(USER_FILTER_FIELD_EP)).set(name) if key == :ep
+      return find(:css, USER_FILTER_FIELD_IL).set(name) if key == :il
+      find(:css, ta(USER_FILTER_FIELD_TA, USER_FILTER_FIELD_IL)).set(name)
+    end
+  end
+
+  def apply_user_filter(key = nil)
+    within_frame(0) do
+      return find(ta(APPLY_USER_FILTER_EP)).click if key == :ep
+      return find(:css, APPLY_USER_FILTER_IL).click if key == :il
+      find(:css, ta(APPLY_USER_FILTER_TA, APPLY_USER_FILTER_IL)).click
+    end
+  end
+
+  def press_edit_user_btn(key = nil)
+    within_frame(0) do
+      return find(ta(EDIT_USER_BTN_EP)).click if key == :ep
+      return find(:css, EDIT_USER_BTN_IL).click if key == :il
+      find(:css, ta(EDIT_USER_BTN_TA, EDIT_USER_BTN_IL)).click
+    end
+  end
+
+  def fill_admin_password_field(key = nil, name)
+    # within_frame(0) do
+    #
+    #   return find(ta(EDIT_ADMIN_PASS_FIELD_EP)).set(name) if key == :ep
+    #   return find(:css, EDIT_ADMIN_PASS_FIELD_IL).set(name) if key == :il
+    #   find(:css, ta(EDIT_ADMIN_PASS_FIELD_TA, EDIT_ADMIN_PASS_FIELD_IL)).set(name)
+    # end
+
+    within_frame(0) do
+      fill_in ta(EDIT_ADMIN_PASS_FIELD_TA), with: name
+    end
+  end
+
+  def update_user_password(key = nil, name)
+    # within_frame(0) do
+    #   return find(ta(EDIT_USER_PASS_FIELD_EP)).set(name) if key == :ep
+    #   return find(:css, EDIT_USER_PASS_FIELD_IL).set(name) if key == :il
+    #   find(:css, ta(EDIT_USER_PASS_FIELD_TA, EDIT_USER_PASS_FIELD_IL)).set(name)
+    # end
+
+    within_frame(0) do
+      fill_in ta(EDIT_USER_PASS_FIELD_TA), with: name
+    end
+  end
+
+  def update_user_repassword(key = nil, name)
+    # within_frame(0) do
+    #   return find(ta(EDIT_USER_REPASS_FIELD_EP)).set(name) if key == :ep
+    #   return find(:css, EDIT_USER_REPASS_FIELD_IL).set(name) if key == :il
+    #   find(:css, ta(EDIT_USER_REPASS_FIELD_TA, EDIT_USER_REPASS_FIELD_IL)).set(name)
+    # end
+    within_frame(0) do
+      fill_in ta(EDIT_USER_REPASS_FIELD_TA), with: name
+    end
+  end
+
+  def apply_new_user_data(key = nil)
+    within_frame(0) do
+      return find(ta(APPLY_NEW_USER_DATA_BTN_EP)).click if key == :ep
+      return find(:css, APPLY_NEW_USER_DATA_BTN_IL).click if key == :il
+      find(:css, ta(APPLY_NEW_USER_DATA_BTN_TA, APPLY_NEW_USER_DATA_BTN_IL)).click
     end
   end
 
   def click_pipelines(key = nil)
-    return find(ta(PIPELINES_EP)).click if key ==:ep
-    return find(:xpath, PIPELINES_IL).click if key ==:il
+    return find(ta(PIPELINES_EP)).click if key == :ep
+    return find(:xpath, PIPELINES_IL).click if key == :il
     find(:xpath, ta(PIPELINES_TA, PIPELINES_IL)).click
   end
 
   def choose_pipeline_from_list(key = nil)
-    return find(ta(CHOOSE_PIPELINE_EP)).click if key ==:ep
-    return find(:xpath, CHOOSE_PIPELINE_IL).click if key ==:il
+    return find(ta(CHOOSE_PIPELINE_EP)).click if key == :ep
+    return find(:xpath, CHOOSE_PIPELINE_IL).click if key == :il
     find(:xpath, ta(CHOOSE_PIPELINE_TA, CHOOSE_PIPELINE_IL)).click
   end
 
   def click_applications(key = nil)
-    return find(ta(APPLICATIONS_EP)).click if key ==:ep
-    return find(:css, APPLICATIONS_IL).click if key ==:il
+    return find(ta(APPLICATIONS_EP)).click if key == :ep
+    return find(:css, APPLICATIONS_IL).click if key == :il
     find(:css, ta(APPLICATIONS_TA, APPLICATIONS_IL)).click
   end
 
   def select_application_from_list(key = nil)
-    return find(ta(APPLICATION_FROM_LIST_EP)).click if key ==:ep
-    return find(:xpath, APPLICATION_FROM_LIST_IL).click if key ==:il
+    return find(ta(APPLICATION_FROM_LIST_EP)).click if key == :ep
+    return find(:xpath, APPLICATION_FROM_LIST_IL).click if key == :il
     find(:xpath, ta(APPLICATION_FROM_LIST_TA, APPLICATION_FROM_LIST_IL)).click
   end
 
   def click_add_new_component(key = nil)
-    return find(ta(ADD_NEW_COMPONENT_EP)).click if key ==:ep
-    return find(:css, ADD_NEW_COMPONENT_IL).click if key ==:il
+    return find(ta(ADD_NEW_COMPONENT_EP)).click if key == :ep
+    return find(:css, ADD_NEW_COMPONENT_IL).click if key == :il
     find(:css, ta(ADD_NEW_COMPONENT_TA, ADD_NEW_COMPONENT_IL)).click
   end
 
   def click_component_btn(key = nil)
-    return find(ta(ADD_COMPONENT_BTN_EP)).click if key ==:ep
-    return find(:css, ADD_COMPONENT_BTN_IL).click if key ==:il
+    return find(ta(ADD_COMPONENT_BTN_EP)).click if key == :ep
+    return find(:css, ADD_COMPONENT_BTN_IL).click if key == :il
     find(:css, ta(ADD_COMPONENT_BTN_TA, ADD_COMPONENT_BTN_IL)).click
   end
 
   def click_for_create_new_app_component(key = nil)
-    return find(ta(CREATE_NEW_APP_COMPONENT_EP)).set("appName"+ SecureRandom.hex(3)) if key ==:ep
-    return find(:css, CREATE_NEW_APP_COMPONENT_IL).set("appName"+ SecureRandom.hex(3)) if key ==:il
-    find(:css, ta(CREATE_NEW_APP_COMPONENT_TA, CREATE_NEW_APP_COMPONENT_IL)).set("appName"+ SecureRandom.hex(3))
+    return find(ta(CREATE_NEW_APP_COMPONENT_EP)).set("appName" + SecureRandom.hex(3)) if key == :ep
+    return find(:css, CREATE_NEW_APP_COMPONENT_IL).set("appName" + SecureRandom.hex(3)) if key == :il
+    find(:css, ta(CREATE_NEW_APP_COMPONENT_TA, CREATE_NEW_APP_COMPONENT_IL)).set("appName" + SecureRandom.hex(3))
   end
 
   def set_new_name(key = nil)
-    return find(ta(NEW_COMPONENT_NAME_EP)).set("") if key ==:ep
-    return find(:css, NEW_COMPONENT_NAME_IL).set("") if key ==:il
-    find(:css, ta(NEW_COMPONENT_NAME_TA, NEW_COMPONENT_NAME_IL)).set("appName"+SecureRandom.hex(5))
+    return find(ta(NEW_COMPONENT_NAME_EP)).set("") if key == :ep
+    return find(:css, NEW_COMPONENT_NAME_IL).set("") if key == :il
+    find(:css, ta(NEW_COMPONENT_NAME_TA, NEW_COMPONENT_NAME_IL)).set("appName" + SecureRandom.hex(5))
   end
 
   def set_description(key = nil)
-    return find(ta(COMPONENT_DESCRIPTION_EP)).set("description"+ SecureRandom.hex(10))  if key ==:ep
-    return find(:css, COMPONENT_DESCRIPTION_IL).set("description"+ SecureRandom.hex(10))  if key ==:il
-    find(:css, ta(COMPONENT_DESCRIPTION_TA, COMPONENT_DESCRIPTION_IL)).set("description"+ SecureRandom.hex(10))
+    return find(ta(COMPONENT_DESCRIPTION_EP)).set("description" + SecureRandom.hex(10)) if key == :ep
+    return find(:css, COMPONENT_DESCRIPTION_IL).set("description" + SecureRandom.hex(10)) if key == :il
+    find(:css, ta(COMPONENT_DESCRIPTION_TA, COMPONENT_DESCRIPTION_IL)).set("description" + SecureRandom.hex(10))
   end
 
   def click_component_dropdown(key = nil)
-    return find(ta(COMPONENT_DROPDOWN_EP)).click if key ==:ep
-    return find(:css, COMPONENT_DROPDOWN_IL).click if key ==:il
+    return find(ta(COMPONENT_DROPDOWN_EP)).click if key == :ep
+    return find(:css, COMPONENT_DROPDOWN_IL).click if key == :il
     find(:css, ta(COMPONENT_DROPDOWN_TA, COMPONENT_DROPDOWN_IL)).click
   end
 
   def click_artifact(key = nil)
-    return find(ta(EC_ARTIFACTORY_EP)).click if key ==:ep
-    return find(:xpath, EC_ARTIFACTORY_IL).click if key ==:il
+    return find(ta(EC_ARTIFACTORY_EP)).click if key == :ep
+    return find(:xpath, EC_ARTIFACTORY_IL).click if key == :il
     find(:xpath, ta(EC_ARTIFACTORY_TA, EC_ARTIFACTORY_IL)).click
   end
 
   def set_configuration(key = nil)
-    return find(ta(CONFIGURATION_EP)).set("test") if key ==:ep
-    return find(:xpath, CONFIGURATION_IL).set("test") if key ==:il
+    return find(ta(CONFIGURATION_EP)).set("test") if key == :ep
+    return find(:xpath, CONFIGURATION_IL).set("test") if key == :il
     find(:xpath, ta(CONFIGURATION_TA, CONFIGURATION_IL)).set("test")
   end
 
   def set_repository_key(key = nil)
-    return find(ta(REPOSITORY_KEY_EP)).set("test") if key ==:ep
-    return find(:xpath, REPOSITORY_KEY_IL).set("test") if key ==:il
+    return find(ta(REPOSITORY_KEY_EP)).set("test") if key == :ep
+    return find(:xpath, REPOSITORY_KEY_IL).set("test") if key == :il
     find(:xpath, ta(REPOSITORY_KEY_TA, REPOSITORY_KEY_IL)).set("test")
   end
 
   def set_organization_path(key = nil)
-    return find(ta(ORGANIZATION_PATH_EP)).set("test") if key ==:ep
-    return find(:xpath, ORGANIZATION_PATH_IL).set("test") if key ==:il
+    return find(ta(ORGANIZATION_PATH_EP)).set("test") if key == :ep
+    return find(:xpath, ORGANIZATION_PATH_IL).set("test") if key == :il
     find(:xpath, ta(ORGANIZATION_PATH_TA, ORGANIZATION_PATH_IL)).set("test")
   end
 
   def set_artifact(key = nil)
-    return find(ta(ARTIFACT_EP)).set("test") if key ==:ep
-    return find(:xpath, ARTIFACT_IL).set("test") if key ==:il
+    return find(ta(ARTIFACT_EP)).set("test") if key == :ep
+    return find(:xpath, ARTIFACT_IL).set("test") if key == :il
     find(:xpath, ta(ARTIFACT_TA, ARTIFACT_IL)).set("test")
   end
 
   def set_version(key = nil)
-    return find(ta(VERSION_EP)).set("test") if key ==:ep
-    return find(:xpath, VERSION_IL).set("test") if key ==:il
+    return find(ta(VERSION_EP)).set("test") if key == :ep
+    return find(:xpath, VERSION_IL).set("test") if key == :il
     find(:xpath, ta(VERSION_TA, VERSION_IL)).set("test")
   end
 
   def set_extention(key = nil)
-    return find(ta(EXTENSION_EP)).set("test") if key ==:ep
-    return find(:xpath, EXTENSION_IL).set("test") if key ==:il
+    return find(ta(EXTENSION_EP)).set("test") if key == :ep
+    return find(:xpath, EXTENSION_IL).set("test") if key == :il
     find(:xpath, ta(EXTENSION_TA, EXTENSION_IL)).set("test")
   end
 
   def click_warning_ok_btn(key = nil)
-    return find(ta(OK_WARNING_EP)).click if key ==:ep
-    return find(:xpath, OK_WARNING_IL).click if key ==:il
+    return find(ta(OK_WARNING_EP)).click if key == :ep
+    return find(:xpath, OK_WARNING_IL).click if key == :il
     find(:xpath, ta(OK_WARNING_TA, OK_WARNING_IL)).click
   end
 
   def click_ok_in_modal_btn(key = nil)
-    return find(ta(OK_IN_MODAL_EP)).click if key ==:ep
-    return find(:css, OK_IN_MODAL_IL).click if key ==:il
+    return find(ta(OK_IN_MODAL_EP)).click if key == :ep
+    return find(:css, OK_IN_MODAL_IL).click if key == :il
     find(:css, ta(OK_IN_MODAL_TA, OK_IN_MODAL_IL)).click
   end
 
   def click_next_btn(key = nil)
-    return find(ta(NEXT_BTN_EP)).click if key ==:ep
-    return find(:xpath, NEXT_BTN_IL).click if key ==:il
+    return find(ta(NEXT_BTN_EP)).click if key == :ep
+    return find(:xpath, NEXT_BTN_IL).click if key == :il
     find(:xpath, ta(NEXT_BTN_TA, NEXT_BTN_IL)).click
   end
 
   def click_multi_menu(key = nil)
-    return find(ta(MULTI_MENU_BTN_EP)).click if key ==:ep
-    return find(:css, MULTI_MENU_BTN_IL).click if key ==:il
+    return find(ta(MULTI_MENU_BTN_EP)).click if key == :ep
+    return find(:css, MULTI_MENU_BTN_IL).click if key == :il
     find(:css, ta(MULTI_MENU_BTN_TA, MULTI_MENU_BTN_IL)).click
   end
 
   def click_delete(key = nil)
-    return find(ta(DELETE_EP)).click if key ==:ep
-    return find(:css, DELETE_IL).click if key ==:il
+    return find(ta(DELETE_EP)).click if key == :ep
+    return find(:css, DELETE_IL).click if key == :il
     find(:css, ta(DELETE_TA, DELETE_IL)).click
   end
-
 end
