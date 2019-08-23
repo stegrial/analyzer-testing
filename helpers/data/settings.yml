@@ -48,6 +48,7 @@ cloud_bees:
   login_page: 'https://ectest.trueautomation.io/flow'
   catalogs_page: "https://ectest.trueautomation.io/flow/#catalogs"
   pipelines_page: "https://ectest.trueautomation.io/flow/#pipelines"
+  pipelines_run_page: "https://ectest.trueautomation.io/flow/#pipeline-run"
   applications_page: "https://ectest.trueautomation.io/flow/#applications"
   users_page: 'https://ectest.trueautomation.io/flow/#users'
   username: 'admin'
