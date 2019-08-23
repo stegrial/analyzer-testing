@@ -52,20 +52,17 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User set login in input" , settings('cloud_bees')['username'] do |username|
+      step "Admin do login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field(:il, username)
-      end
+        login_page.fill_username_field credentials['username']
 
-      step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
         check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_TA, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field(:il, pass)
+        login_page.fill_pass_field credentials['pass']
+
+        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
+        login_page.click_sign_in_button
       end
 
-      step "User clicks on login bth" do
-        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
-        login_page.click_sign_in_button :il
-      end
 
       step "User clicks on humburg bth" do
         check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
@@ -91,19 +88,15 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User set login in input" , settings('cloud_bees')['username'] do |username|
-        check_element_path :xpath, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field(:ep, username)
-      end
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
+        login_page.fill_username_field credentials['username']
 
-      step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
-        check_element_path :xpath, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field(:ep,pass)
-      end
+        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
+        login_page.fill_pass_field credentials['pass']
 
-      step "User clicks on login bth" do
-        check_element_path :xpath, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
-        login_page.click_sign_in_button :ep
+        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
+        login_page.click_sign_in_button
       end
 
       step "User clicks on humburg bth" do
@@ -130,16 +123,10 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User set login in input" , settings('cloud_bees')['username'] do |username|
-        login_page.fill_username_field(:il, username)
-      end
-
-      step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
-        login_page.fill_pass_field(:il,pass)
-      end
-
-      step "User clicks on login bth" do
-        login_page.click_sign_in_button :il
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field credentials['username']
+        login_page.fill_pass_field credentials['pass']
+        login_page.click_sign_in_button
       end
 
       step "User clicks on humburg bth" do
@@ -161,16 +148,11 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User set login in input" , settings('cloud_bees')['username'] do |username|
-        login_page.fill_username_field(:il, username)
-      end
-
-      step "User set pass in input" , settings('cloud_bees')['pass'] do |pass|
-        login_page.fill_pass_field(:il,pass)
-      end
-
-      step "User clicks on login bth" do
-        login_page.click_sign_in_button :il
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
+        login_page.fill_username_field credentials['username']
+        login_page.fill_pass_field credentials['pass']
+        login_page.click_sign_in_button
       end
 
       step "User clicks on humburg bth" do

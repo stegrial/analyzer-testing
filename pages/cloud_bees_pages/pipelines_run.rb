@@ -25,9 +25,18 @@ class CloudBeesPipelinesRuns
   CHANGE_HISTORY_MULTI_MENU_TA = "cloud_bees:change_history_multi_menu"
   CHANGE_HISTORY_MULTI_MENU_EP = "EP:cloud_bees:change_history_multi_menu"
 
-  CLOSE_MODAL_ICON_IL = ".at-button-close-modal"
-  CLOSE_MODAL_ICON_TA = "cloud_bees:close_modal"
-  CLOSE_MODAL_ICON_EP = "EP:cloud_bees:close_modal"
+  CLOSE_MODAL_PROPERTIES_ICON_IL = ".at-button-close-modal"
+  CLOSE_MODAL_PROPERTIES_ICON_TA = "cloud_bees:close_modal_property"
+  CLOSE_MODAL_PROPERTIES_ICON_EP = "EP:cloud_bees:close_modal_property"
+
+  CLOSE_MODAL_ACCESS_ICON_IL = ".at-button-close-modal"
+  CLOSE_MODAL_ACCESS_ICON_TA = "cloud_bees:close_modal_access"
+  CLOSE_MODAL_ACCESS_ICON_EP = "EP:cloud_bees:close_modal_access"
+
+  HISTORY_CLOSE_MODAL_ICON_IL = ".at-history-close"
+  HISTORY_CLOSE_MODAL_ICON_TA = "cloud_bees:close_modal_history"
+  HISTORY_CLOSE_MODAL_ICON_EP = "EP:cloud_bees:close_modal_history"
+
 
   def choose_pipeline_from_list(key = nil)
     return find(ta(CHOOSE_PIPELINE_EP)).click if key == :ep
@@ -59,10 +68,21 @@ class CloudBeesPipelinesRuns
     find(:xpath, ta(CHANGE_HISTORY_MULTI_MENU_TA, CHANGE_HISTORY_MULTI_MENU_IL)).click
   end
 
-  def click_close_modal(key = nil)
-    return find(ta(CLOSE_MODAL_ICON_EP)).click if key == :ep
-    return find(:css, CLOSE_MODAL_ICON_IL).click if key == :il
-    find(:css, ta(CLOSE_MODAL_ICON_TA, CLOSE_MODAL_ICON_IL)).click
+  def click_close_modal_properties(key = nil)
+    return find(ta(CLOSE_MODAL_PROPERTIES_ICON_EP)).click if key == :ep
+    return find(:css, CLOSE_MODAL_PROPERTIES_ICON_IL).click if key == :il
+    find(:css, ta(CLOSE_MODAL_PROPERTIES_ICON_TA, CLOSE_MODAL_PROPERTIES_ICON_IL)).click
   end
 
+  def click_close_modal_access(key = nil)
+    return find(ta(CLOSE_MODAL_ACCESS_ICON_EP)).click if key == :ep
+    return find(:css, CLOSE_MODAL_ACCESS_ICON_IL).click if key == :il
+    find(:css, ta(CLOSE_MODAL_ACCESS_ICON_TA, CLOSE_MODAL_ACCESS_ICON_IL)).click
+  end
+
+  def click_history_close_modal(key = nil)
+    return find(ta( HISTORY_CLOSE_MODAL_ICON_EP)).click if key == :ep
+    return find(:css,  HISTORY_CLOSE_MODAL_ICON_IL).click if key == :il
+    find(:css, ta( HISTORY_CLOSE_MODAL_ICON_TA,  HISTORY_CLOSE_MODAL_ICON_IL)).click
+  end
 end
