@@ -57,6 +57,9 @@ cloud_bees:
   user_realname: 'Eugen Shapovalov QA'
   user_email: 'qa_automation@gmail.com'
   user_password: '1111'
+  app_name: 'appTest'
+  component_name: 'compTest'
+  artifact_name: 'test'
 
 24timezones:
   page: 'https://24timezones.com/worldmap'
