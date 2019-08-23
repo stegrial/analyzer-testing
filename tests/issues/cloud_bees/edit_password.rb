@@ -1,12 +1,13 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
-require_relative '../../../pages/cloud_bees_pages/cloud_bees_global'
+required_relative_all "/pages/cloud_bees_pages/*.rb"
 
 global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
 users_page = CloudBeesUsers.new
 new_user_page = CloudBeesNewUser.new
+edit_user_page = CloudBeesEditUser.new
 
 describe 'Preconditions' do
 
@@ -16,6 +17,17 @@ describe 'Preconditions' do
   end
 
   after(:all) do
+    step "Remove created user", settings('cloud_bees') do |data|
+      page.visit data['login_page']
+      login_page.fill_username_field data['username']
+      login_page.fill_pass_field data['pass']
+      login_page.click_sign_in_button
+      page.visit data['users_page']
+      users_page.fill_user_filter_field data['user_username']
+      users_page.apply_user_filter
+      users_page.press_delete_user_btn
+      users_page.confirm_user_deletion
+    end
     Capybara.current_session.driver.quit
   end
 
@@ -28,60 +40,53 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User do login", settings('cloud_bees') do |credentials|
-        it.fill_username_field credentials['username']
-        it.fill_pass_field credentials['pass']
-        it.click_sign_in_button
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field credentials['username']
+        login_page.fill_pass_field credentials['pass']
+        login_page.click_sign_in_button
       end
 
-      step "User clicks on the Hamburger menu button" do
-        it.click_hamburger_menu
+      step "Admin clicks on the Hamburger menu button" do
+        global_page.click_hamburger_menu
       end
 
-      step "User chooses the Users section in the Hamburger menu" do
-        it.choose_users_section
+      step "Admin chooses the Users section in the Hamburger menu" do
+        global_page.choose_users_section
       end
 
-      # step "User presses the Create Local User button" do
-      #   it.press_create_user_btn
-      # end
+      step "Admin presses the Create Local User button" do
+        users_page.press_create_user_btn
+      end
 
-      # step "Admin create new user", settings('cloud_bees') do |user_data|
-      #   it.fill_new_user_name_field user_data['new_username']
-      #   it.fill_new_real_name_field user_data['new_realname']
-      #   it.fill_new_email_field user_data['new_email']
-      #   it.fill_new_password_field user_data['new_password']
-      #   it.fill_new_repassword_field user_data['new_password']
-      #   it.confirm_create_new_user
-      # end
+      step "Admin creates new user", settings('cloud_bees') do |user_data|
+        new_user_page.fill_user_name_field user_data['user_username']
+        new_user_page.fill_real_name_field user_data['user_realname']
+        new_user_page.fill_email_field user_data['user_email']
+        new_user_page.fill_password_field user_data['user_password']
+        new_user_page.fill_repassword_field user_data['user_password']
+        new_user_page.confirm_create_new_user
+      end
 
-      step "Admin filter the user", settings('cloud_bees') do |user_data|
-        it.fill_user_filter_field user_data['new_username']
-        it.apply_user_filter
+      step "Admin filters the user", settings('cloud_bees') do |user_data|
+        users_page.fill_user_filter_field user_data['user_username']
+        users_page.apply_user_filter
       end
 
       step "Admin presses the Edit user button" do
-        it.press_edit_user_btn
+        users_page.press_edit_user_btn
       end
 
       step "Admin updates user password", settings('cloud_bees') do |data|
-       # within_frame 0 do
-          # fill_in ta('editUser:username'), with: 'NewEugene'
-          # fill_in ta('editUser:email'), with: 'eugene@email.com'
-          # fill_in ta('editUser:persone'), with: 'asdasdasdasdkasd kjdask jdaskd kjhaskjhaskdhas kdfhaskfhadskfh kfha'
+        within_frame(0) do
+        fill_in ta('editUser:username'), with: 'eugen_shapovalov1'
+        fill_in ta('editUser:email'), with: 'eugene@email.com'
+        fill_in ta('editUser:persone'), with: 'asdasdasdasdkasd kjdask jdaskd kjhaskjhaskdhas kdfhaskfhadskfh kfha'
+        end
 
-          # fill_in ta('editUser:password'), with: 'password'
-          # fill_in ta('editUser:newPassword'), with: 'newpassword'
-          # fill_in ta('editUser:retypePassword'), with: 'newpassword'
-       # end
-
-
-        it.fill_admin_password_field data['pass']
-        it.update_user_password data['new_password']
-        it.update_user_repassword data['new_password']
-
-
-        it.apply_new_user_data
+        edit_user_page.fill_admin_password_field :ep, data['pass']
+        edit_user_page.fill_new_user_password :ep, data['user_password']
+        edit_user_page.fill_new_user_repassword :ep, data['user_password']
+        edit_user_page.update_user_data
       end
 
       sleep 3
