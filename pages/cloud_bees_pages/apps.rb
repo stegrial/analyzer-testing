@@ -6,8 +6,8 @@ class CloudBeesApps
   include RSpec::Matchers
 
   APPLICATION_FROM_LIST_IL = "//a[@title='AppJul_NOT_DELETE']"
-  APPLICATION_FROM_LIST_TA = "ec_flow:application_from_list"
-  APPLICATION_FROM_LIST_EP = "EP:ec_flow:application_from_list"
+  APPLICATION_FROM_LIST_TA = "cloud_bees:application_from_list"
+  APPLICATION_FROM_LIST_EP = "EP:cloud_bees:application_from_list"
 
   def select_application_from_list(key = nil)
     return find(ta(APPLICATION_FROM_LIST_EP)).click if key == :ep
