@@ -49,13 +49,13 @@ cloud_bees:
   catalogs_page: "https://ectest.trueautomation.io/flow/#catalogs"
   pipelines_page: "https://ectest.trueautomation.io/flow/#pipelines"
   applications_page: "https://ectest.trueautomation.io/flow/#applications"
+  users_page: 'https://ectest.trueautomation.io/flow/#users'
   username: 'admin'
   pass: 'changeme'
-  new_username: 'eugenShapovalov'
-  #new_username: 'automationQA'
-  new_realname: 'Real automationQA'
-  new_email: 'automationqa@gmail.com'
-  new_password: '1111'
+  user_username: 'eugen_shapovalov'
+  user_realname: 'Eugen Shapovalov QA'
+  user_email: 'qa_automation@gmail.com'
+  user_password: '1111'
 
 24timezones:
   page: 'https://24timezones.com/worldmap'
