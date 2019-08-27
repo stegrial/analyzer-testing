@@ -42,7 +42,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on pipeline to select" do
-        pipelines_page.choose_pipeline_from_list
+        pipelines_page.choose_pipeline_ta866_from_list
       end
     end
 
@@ -75,8 +75,8 @@ describe 'Preconditions' do
       end
 
       step "User clicks on pipeline to select" do
-        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_TA, CloudBeesPipelines::CHOOSE_PIPELINE_IL
-        pipelines_page.choose_pipeline_from_list
+        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_TA866_TA, CloudBeesPipelines::CHOOSE_PIPELINE_TA866_IL
+        pipelines_page.choose_pipeline_ta866_from_list
       end
     end
 
@@ -110,8 +110,8 @@ describe 'Preconditions' do
       end
 
       step "User clicks on pipeline to select" do
-        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_EP, CloudBeesPipelines::CHOOSE_PIPELINE_IL
-        pipelines_page.choose_pipeline_from_list :ep
+        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_TA866_EP, CloudBeesPipelines::CHOOSE_PIPELINE_TA866_IL
+        pipelines_page.choose_pipeline_ta866_from_list :ep
       end
     end
 
@@ -138,7 +138,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on pipeline to select" do
-        pipelines_page.choose_pipeline_from_list
+        pipelines_page.choose_pipeline_ta866_from_list
       end
     end
 
@@ -164,7 +164,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on pipeline to select" do
-        pipelines_page.choose_pipeline_from_list
+        pipelines_page.choose_pipeline_ta866_from_list
       end
     end
   end

@@ -60,6 +60,8 @@ cloud_bees:
   app_name: 'appTest'
   component_name: 'compTest'
   artifact_name: 'test'
+  pipeline_name: 'pipeTest'
+  task_name: 'taskTest'
 
 24timezones:
   page: 'https://24timezones.com/worldmap'

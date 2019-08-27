@@ -5,8 +5,6 @@ required_relative_all "/pages/cloud_bees_pages/*.rb"
 
 global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
-users_page = CloudBeesUsers.new
-new_user_page = CloudBeesNewUser.new
 apps_page = CloudBeesApps.new
 
 describe 'Preconditions' do
