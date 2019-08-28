@@ -8,76 +8,76 @@ class CloudBeesAppsEditor
   include RSpec::Matchers
 
   ADD_NEW_COMPONENT_IL = "span.at-add-comp-to-tier-btn"
-  ADD_NEW_COMPONENT_TA = "cloud_bees:add_new_component"
-  ADD_NEW_COMPONENT_EP = "EP:cloud_bees:add_new_component"
+  ADD_NEW_COMPONENT_TA = "cloud_bees:apps_editor:add_new_component"
+  ADD_NEW_COMPONENT_EP = "EP:cloud_bees:apps_editor:add_new_component"
 
   ADD_COMPONENT_BTN_IL = "span.at-tier-cell-add-btn"
-  ADD_COMPONENT_BTN_TA = "cloud_bees:add_component_btn"
-  ADD_COMPONENT_BTN_EP = "EP:cloud_bees:add_component_btn"
+  ADD_COMPONENT_BTN_TA = "cloud_bees:apps_editor:add_component_btn"
+  ADD_COMPONENT_BTN_EP = "EP:cloud_bees:apps_editor:add_component_btn"
 
   CREATE_NEW_APP_COMPONENT_IL = "div.at-component-scratch"
-  CREATE_NEW_APP_COMPONENT_TA = "cloud_bees:create_new_app_component"
-  CREATE_NEW_APP_COMPONENT_EP = "EP:cloud_bees:create_new_app_component"
+  CREATE_NEW_APP_COMPONENT_TA = "cloud_bees:apps_editor:create_new_app_component"
+  CREATE_NEW_APP_COMPONENT_EP = "EP:cloud_bees:apps_editor:create_new_app_component"
 
   NEW_COMPONENT_NAME_IL = "input.at-component-name-input"
-  NEW_COMPONENT_NAME_TA = "cloud_bees:component_name"
-  NEW_COMPONENT_NAME_EP = "EP:cloud_bees:component_name"
+  NEW_COMPONENT_NAME_TA = "cloud_bees:apps_editor:component_name"
+  NEW_COMPONENT_NAME_EP = "EP:cloud_bees:apps_editor:component_name"
 
   COMPONENT_DESCRIPTION_IL = "textarea.at-react-form-textarea"
-  COMPONENT_DESCRIPTION_TA = "cloud_bees:component_description"
-  COMPONENT_DESCRIPTION_EP = "EP:cloud_bees:component_description"
+  COMPONENT_DESCRIPTION_TA = "cloud_bees:apps_editor:component_description"
+  COMPONENT_DESCRIPTION_EP = "EP:cloud_bees:apps_editor:component_description"
 
   COMPONENT_DROPDOWN_IL = ".at-select"
-  COMPONENT_DROPDOWN_TA = "cloud_bees:component_dropdown"
-  COMPONENT_DROPDOWN_EP = "EP:cloud_bees:component_dropdown"
+  COMPONENT_DROPDOWN_TA = "cloud_bees:apps_editor:component_dropdown"
+  COMPONENT_DROPDOWN_EP = "EP:cloud_bees:apps_editor:component_dropdown"
 
   EC_ARTIFACTORY_IL = "//span[@title='EC-Artifactory']"
-  EC_ARTIFACTORY_TA = "cloud_bees:ec_artifactory"
-  EC_ARTIFACTORY_EP = "EP:cloud_bees:ec_artifactory"
+  EC_ARTIFACTORY_TA = "cloud_bees:apps_editor:ec_artifactory"
+  EC_ARTIFACTORY_EP = "EP:cloud_bees:apps_editor:ec_artifactory"
 
   CONFIGURATION_IL = "(//tr//input[@class='gwt-TextBox'])[1]"
-  CONFIGURATION_TA = "cloud_bees:configuration"
-  CONFIGURATION_EP = "EP:cloud_bees:configuration"
+  CONFIGURATION_TA = "cloud_bees:apps_editor:configuration"
+  CONFIGURATION_EP = "EP:cloud_bees:apps_editor:configuration"
 
   REPOSITORY_KEY_IL = "(//tr//input[@class='gwt-TextBox'])[2]"
-  REPOSITORY_KEY_TA = "cloud_bees:repository_key"
-  REPOSITORY_KEY_EP = "EP:cloud_bees:repository_key"
+  REPOSITORY_KEY_TA = "cloud_bees:apps_editor:repository_key"
+  REPOSITORY_KEY_EP = "EP:cloud_bees:apps_editor:repository_key"
 
   ORGANIZATION_PATH_IL = "(//tr//input[@class='gwt-TextBox'])[4]"
-  ORGANIZATION_PATH_TA = "cloud_bees:organization_path"
-  ORGANIZATION_PATH_EP = "EP:cloud_bees:organization_path"
+  ORGANIZATION_PATH_TA = "cloud_bees:apps_editor:organization_path"
+  ORGANIZATION_PATH_EP = "EP:cloud_bees:apps_editor:organization_path"
 
   ARTIFACT_IL = "(//tr//input[@class='gwt-TextBox'])[6]"
-  ARTIFACT_TA = "cloud_bees:artifact"
-  ARTIFACT_EP = "EP:cloud_bees:artifact"
+  ARTIFACT_TA = "cloud_bees:apps_editor:artifact"
+  ARTIFACT_EP = "EP:cloud_bees:apps_editor:artifact"
 
   VERSION_IL = "(//tr//input[@class='gwt-TextBox'])[7]"
-  VERSION_TA = "cloud_bees:version"
-  VERSION_EP = "EP:cloud_bees:version"
+  VERSION_TA = "cloud_bees:apps_editor:version"
+  VERSION_EP = "EP:cloud_bees:apps_editor:version"
 
   EXTENSION_IL = "(//tr//input[@class='gwt-TextBox'])[11]"
-  EXTENSION_TA = "cloud_bees:extention"
-  EXTENSION_EP = "EP:cloud_bees:extention"
+  EXTENSION_TA = "cloud_bees:apps_editor:extention"
+  EXTENSION_EP = "EP:cloud_bees:apps_editor:extention"
 
   OK_WARNING_IL = "//div[@class='ec-wizard-btn ec-ok at-ok-btn']"
-  OK_WARNING_TA = "cloud_bees:ok_warning_btn"
-  OK_WARNING_EP = "EP:cloud_bees:ok_warning_btn"
+  OK_WARNING_TA = "cloud_bees:apps_editor:ok_warning_btn"
+  OK_WARNING_EP = "EP:cloud_bees:apps_editor:ok_warning_btn"
 
   OK_IN_MODAL_IL = "div.at-ok-btn"
-  OK_IN_MODAL_TA = "cloud_bees:ok_in_modal_btn"
-  OK_IN_MODAL_EP = "EP:cloud_bees:ok_in_modal_btn"
+  OK_IN_MODAL_TA = "cloud_bees:apps_editor:ok_in_modal_btn"
+  OK_IN_MODAL_EP = "EP:cloud_bees:apps_editor:ok_in_modal_btn"
 
   NEXT_BTN_IL = "//div[text()='Next']"
-  NEXT_BTN_TA = "cloud_bees:ok_btn"
-  NEXT_BTN_EP = "EP:cloud_bees:ok_btn"
+  NEXT_BTN_TA = "cloud_bees:apps_editor:next_btn"
+  NEXT_BTN_EP = "EP:cloud_bees:apps_editor:next_btn"
 
   MULTI_MENU_BTN_IL = "span.at-show-component-menu-btn-2"
-  MULTI_MENU_BTN_TA = "cloud_bees:multi_menu_btn"
-  MULTI_MENU_BTN_EP = "EP:cloud_bees:multi_menu_btn"
+  MULTI_MENU_BTN_TA = "cloud_bees:apps_editor:multi_menu_btn"
+  MULTI_MENU_BTN_EP = "EP:cloud_bees:apps_editor:multi_menu_btn"
 
   DELETE_IL = "div.at-item-delete"
-  DELETE_TA = "cloud_bees:delete_item"
-  DELETE_EP = "EP:cloud_bees:delete_item"
+  DELETE_TA = "cloud_bees:apps_editor:delete_item"
+  DELETE_EP = "EP:cloud_bees:apps_editor:delete_item"
 
   def click_add_new_component(key = nil)
     return find(ta(ADD_NEW_COMPONENT_EP)).click if key == :ep

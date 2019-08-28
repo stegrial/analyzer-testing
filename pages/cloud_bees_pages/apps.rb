@@ -5,9 +5,9 @@ class CloudBeesApps
   include Capybara::DSL
   include RSpec::Matchers
 
-  APPLICATION_FROM_LIST_IL = "//a[@title='AppJul_NOT_DELETE']"
-  APPLICATION_FROM_LIST_TA = "cloud_bees:application_from_list"
-  APPLICATION_FROM_LIST_EP = "EP:cloud_bees:application_from_list"
+  APPLICATION_FROM_LIST_IL = "//a[@title='app_with_artifacts_gwt_field(scope)']"
+  APPLICATION_FROM_LIST_TA = "cloud_bees:apps:application_from_list"
+  APPLICATION_FROM_LIST_EP = "EP:cloud_bees:apps:application_from_list"
 
   NEW_APPLICATION_BTN_IL = "//div[text()='New']"
   NEW_APPLICATION_BTN_TA = 'cloud_bees:apps:new_application'
