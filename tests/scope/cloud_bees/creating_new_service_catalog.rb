@@ -60,7 +60,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        sleep 8
+        # sleep 8
         catalogs_page.click_to_create_new_catalog
       end
 
@@ -78,7 +78,7 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-       sleep 5
+       # sleep 5
        catalogs_page.select_proj_from_list
       end
 
@@ -167,7 +167,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        sleep 5
+        # sleep 5
         check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_TA, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog
       end
@@ -188,7 +188,7 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-        sleep 5
+        # sleep 5
         check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_TA, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list
       end
@@ -214,7 +214,7 @@ describe 'Preconditions' do
       end
 
       step "User set name in form" do
-        sleep 3
+        # sleep 3
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_TA, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
         catalogs_page.set_name_in_form2
       end
@@ -280,13 +280,13 @@ describe 'Preconditions' do
       end
 
       step "Admin do login", settings('cloud_bees') do |credentials|
-        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
+        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field :ep,  credentials['username']
 
-        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_TA, CloudBeesLogin::PASSWORD_FIELD_IL
+        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
         login_page.fill_pass_field :ep, credentials['pass']
 
-        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
+        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
         login_page.click_sign_in_button :ep
       end
 
@@ -295,107 +295,107 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        sleep 5
-        check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_TA, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
+        # sleep 5
+        check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_EP, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog :ep
       end
 
       step "User clicks to create new button" do
-        check_element_path :css, CloudBeesCatalogs::CREATE_NEW_BUTTON_TA, CloudBeesCatalogs::CREATE_NEW_BUTTON_IL
+        check_element_path :css, CloudBeesCatalogs::CREATE_NEW_BUTTON_EP, CloudBeesCatalogs::CREATE_NEW_BUTTON_IL
         catalogs_page.click_to_create_new_btn :ep
       end
 
       step "User set name new catalog" do
-        check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FLD_TA, CloudBeesCatalogs::CATALOGS_NAME_FLD_IL
+        check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FLD_EP, CloudBeesCatalogs::CATALOGS_NAME_FLD_IL
         catalogs_page.set_catalog_name :ep
       end
 
       step "User clicks to open project dropdown of new catalog" do
-        check_element_path :css, CloudBeesCatalogs::PROJECT_DROPDOWN_TA, CloudBeesCatalogs::PROJECT_DROPDOWN_IL
+        check_element_path :css, CloudBeesCatalogs::PROJECT_DROPDOWN_EP, CloudBeesCatalogs::PROJECT_DROPDOWN_IL
         catalogs_page.click_to_open_proj_drpodown :ep
       end
 
       step "User select default project from list" do
-        sleep 5
-        check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_TA, CloudBeesCatalogs::DEFAULT_PROJECT_IL
+        # sleep 5
+        check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_EP, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list :ep
       end
 
       step "User clicks ok button in modal" do
-        check_element_path :css, CloudBeesCatalogs::OK_IN_MODAL_BTN_TA, CloudBeesCatalogs::OK_IN_MODAL_BTN_IL
+        check_element_path :css, CloudBeesCatalogs::OK_IN_MODAL_BTN_EP, CloudBeesCatalogs::OK_IN_MODAL_BTN_IL
         catalogs_page.click_ok_in_modal_btn :ep
       end
 
       step "User set name in form" do
-        check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_TA, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
+        check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_EP, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
         catalogs_page.set_name_in_form :ep
       end
 
       step "User set description in form" do
-        check_element_path :css, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_TA, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_IL
+        check_element_path :css, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_EP, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_IL
         catalogs_page.set_description_in_form :ep
       end
 
       step "User clicks add another button" do
-        check_element_path :css, CloudBeesCatalogs::ADD_ANOTHER_BTN_TA, CloudBeesCatalogs::ADD_ANOTHER_BTN_IL
+        check_element_path :css, CloudBeesCatalogs::ADD_ANOTHER_BTN_EP, CloudBeesCatalogs::ADD_ANOTHER_BTN_IL
         catalogs_page.click_add_another :ep
       end
 
       step "User set name in form" do
-        sleep 3
-        check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_TA, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
+        # sleep 3
+        check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_EP, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
         catalogs_page.set_name_in_form2 :ep
       end
 
       step "User clicks define button" do
-        check_element_path :css, CloudBeesCatalogs::DEFINE_BTN_TA, CloudBeesCatalogs::DEFINE_BTN_IL
+        check_element_path :css, CloudBeesCatalogs::DEFINE_BTN_EP, CloudBeesCatalogs::DEFINE_BTN_IL
         catalogs_page.click_define_btn :ep
       end
 
       step "User clicks to select cloud bees icon" do
-        check_element_path :xpath, CloudBeesCatalogs::CLOUD_BEES_ICON_TA, CloudBeesCatalogs::CLOUD_BEES_ICON_IL
+        check_element_path :xpath, CloudBeesCatalogs::CLOUD_BEES_ICON_EP, CloudBeesCatalogs::CLOUD_BEES_ICON_IL
         catalogs_page.click_to_select_cloud_bees_icon :ep
       end
 
       step "User clicks to select label" do
-        check_element_path :css, CloudBeesCatalogs::SELECT_BTN_LABEL_TA, CloudBeesCatalogs::SELECT_BTN_LABEL_IL
+        check_element_path :css, CloudBeesCatalogs::SELECT_BTN_LABEL_EP, CloudBeesCatalogs::SELECT_BTN_LABEL_IL
         catalogs_page.click_to_select_label :ep
       end
 
       step "User clicks to select execute option" do
-        sleep 5
-        check_element_path :css, CloudBeesCatalogs::EXECUTE_OPTION_TA, CloudBeesCatalogs::EXECUTE_OPTION_IL
+        # sleep 5
+        check_element_path :css, CloudBeesCatalogs::EXECUTE_OPTION_EP, CloudBeesCatalogs::EXECUTE_OPTION_IL
         catalogs_page.click_to_select_execute_option :ep
       end
 
       step "User clicks on procedure definition" do
-        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_DEFINITION_TA, CloudBeesCatalogs::PROCEDURE_DEFINITION_IL
+        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_DEFINITION_EP, CloudBeesCatalogs::PROCEDURE_DEFINITION_IL
         catalogs_page.click_on_procedure_definition :ep
       end
 
       step "User clicks to open procedure project dropdown" do
-        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_PROJ_TA, CloudBeesCatalogs::PROCEDURE_PROJ_IL
+        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_PROJ_EP, CloudBeesCatalogs::PROCEDURE_PROJ_IL
         catalogs_page.click_procedure_proj_dropdown :ep
       end
 
       step "User clicks on ec example project" do
-        sleep 5
-        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_TA, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_IL
+        # sleep 5
+        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_EP, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_IL
         catalogs_page.click_to_select_ec_example_proj :ep
       end
 
       step "User clicks to open procedure dropdown" do
-        check_element_path :xpath, CloudBeesCatalogs::SELECT_PROCEDURE_TA, CloudBeesCatalogs::SELECT_PROCEDURE_IL
+        check_element_path :xpath, CloudBeesCatalogs::SELECT_PROCEDURE_EP, CloudBeesCatalogs::SELECT_PROCEDURE_IL
         catalogs_page.click_select_procedure :ep
       end
 
       step "User clicks to select approve procedure" do
-        check_element_path :css, CloudBeesCatalogs::SELECT_APPROVE_PROCEDURE_TA, CloudBeesCatalogs::SELECT_APPROVE_PROCEDURE_IL
+        check_element_path :css, CloudBeesCatalogs::SELECT_APPROVE_PROCEDURE_EP, CloudBeesCatalogs::SELECT_APPROVE_PROCEDURE_IL
         catalogs_page.click_select_approve_procedure :ep
       end
 
       step "User clicks ok button in modal" do
-        check_element_path :css, CloudBeesCatalogs::OK_IN_MODAL_BTN_TA, CloudBeesCatalogs::OK_IN_MODAL_BTN_IL
+        check_element_path :css, CloudBeesCatalogs::OK_IN_MODAL_BTN_EP, CloudBeesCatalogs::OK_IN_MODAL_BTN_IL
         catalogs_page.click_ok_in_modal_btn :ep
       end
     end
