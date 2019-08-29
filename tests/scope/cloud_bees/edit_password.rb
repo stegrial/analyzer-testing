@@ -30,7 +30,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-1001, TA Analyzer returns the wrong input field in the form when the needed input field is already filled' do
+  feature 'Editing user password by Admin' do
 
     # Initial locators with Recording
 

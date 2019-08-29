@@ -77,5 +77,13 @@ class CloudBeesNewUser
     end
   end
 
+  def check_no_user_filter(key = nil, il, ta, ep)
+    within_frame(0) do
+      return expect(page).not_to have_selector(ta(ep)) if key == :ep
+      return expect(page).not_to have_selector(:css, il) if key == :il
+      expect(page).not_to have_selector(:css, ta(ta, il))
+    end
+  end
+
 
 end

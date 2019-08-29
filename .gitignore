@@ -3,6 +3,7 @@ log/
 logs/
 mkmf.log
 data_files/
+help-tools/draft.rb
 analyzer-testing.iml
 trueautomation.json
 vendor/
