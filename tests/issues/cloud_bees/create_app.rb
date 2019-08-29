@@ -14,11 +14,21 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
+  after(:each) do
+    step "Remove created application", settings('cloud_bees') do |data|
+      page.visit data['applications_page']
+      apps_page.find_application_name_field :il, data['app_name']
+      apps_page.choose_application :il
+      apps_page.delete_application :il
+      apps_page.confirm_delete_application :il
+    end
+  end
+
   after(:all) do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Creating and Deleting application' do
+  feature 'TA-1009, TA Analyzer returns the wrong element on the page (Cloud Bees - Tier 1 Component)' do
 
     # Initial locators with Recording
 
