@@ -69,6 +69,34 @@ class CloudBeesPipelines
   CONFIRM_DELETE_PIPELINE_TA = 'cloud_bees:pipeline:confirm_delete_pipeline'
   CONFIRM_DELETE_PIPELINE_EP = 'EP:cloud_bees:pipeline:confirm_delete_pipeline'
 
+  RUN_PIPELINE_BTN_IL = "//div[@class='object__action object__button object__button--run']"
+  RUN_PIPELINE_BTN_TA = 'cloud_bees:pipeline:run_pipeline_btn'
+  RUN_PIPELINE_BTN_EP = 'EP:cloud_bees:pipeline:run_pipeline_btn'
+
+  NEW_RUN_PIPELINE_BTN_IL = "//div[text()='New Run']"
+  NEW_RUN_PIPELINE_BTN_TA = 'cloud_bees:pipeline:new_run_pipeline_btn'
+  NEW_RUN_PIPELINE_BTN_EP = 'EP:cloud_bees:pipeline:new_run_pipeline_btn'
+
+  CONFIRM_RUN_PIPELINE_IL = "//div[text()='Run' and @class='at-pipeline-release-run-btn ec-wizard-btn ec-ok at-ok-btn']"
+  CONFIRM_RUN_PIPELINE_TA = 'cloud_bees:pipeline:confirm_run_pipeline'
+  CONFIRM_RUN_PIPELINE_EP = 'EP:cloud_bees:pipeline:confirm_run_pipeline'
+
+  RESPONSE_REQUIRED_BNT_IL = "//div[text()='Response required']"
+  RESPONSE_REQUIRED_BNT_TA = 'cloud_bees:pipeline:response_required_btn'
+  RESPONSE_REQUIRED_BNT_EP = 'EP:cloud_bees:pipeline:response_required_btn'
+
+  MANUAL_TASK_IL = "//div[@class='run-app-manual-approvals__item-name']"
+  MANUAL_TASK_TA = 'cloud_bees:pipeline:manual_task'
+  MANUAL_TASK_EP = 'EP:cloud_bees:pipeline:manual_task'
+
+  COMPLETED_RADIO_BTN_IL = "//div[text()='Completed']"
+  COMPLETED_RADIO_BTN_TA = 'cloud_bees:pipeline:completed_radio_btn'
+  COMPLETED_RADIO_BTN_EP = 'EP:cloud_bees:pipeline:completed_radio_btn'
+
+  CONFIRM_COMPLETED_TASK_IL = "//div[text()='OK']"
+  CONFIRM_COMPLETED_TASK_TA = 'cloud_bees:pipeline:confirm_completed_task'
+  CONFIRM_COMPLETED_TASK_EP = 'EP:cloud_bees:pipeline:confirm_completed_task'
+
   def choose_pipeline_ta866_from_list(key = nil)
     return find(ta(CHOOSE_PIPELINE_TA866_EP)).click if key == :ep
     return find(:xpath, CHOOSE_PIPELINE_TA866_IL).click if key == :il
@@ -163,6 +191,48 @@ class CloudBeesPipelines
     return find(ta(CONFIRM_DELETE_PIPELINE_EP)).click if key == :ep
     return find(:xpath, CONFIRM_DELETE_PIPELINE_IL).click if key == :il
     find(:xpath, ta(CONFIRM_DELETE_PIPELINE_TA, CONFIRM_DELETE_PIPELINE_IL)).click
+  end
+
+  def click_run_pipeline(key = nil)
+    return find(ta(RUN_PIPELINE_BTN_EP)).click if key == :ep
+    return find(:xpath, RUN_PIPELINE_BTN_IL).click if key == :il
+    find(:xpath, ta(RUN_PIPELINE_BTN_TA, RUN_PIPELINE_BTN_IL)).click
+  end
+
+  def click_new_run_pipeline(key = nil)
+    return find(ta(NEW_RUN_PIPELINE_BTN_EP)).click if key == :ep
+    return find(:xpath, NEW_RUN_PIPELINE_BTN_IL).click if key == :il
+    find(:xpath, ta(NEW_RUN_PIPELINE_BTN_TA, NEW_RUN_PIPELINE_BTN_IL)).click
+  end
+
+  def confirm_run_pipeline(key = nil)
+    return find(ta(CONFIRM_RUN_PIPELINE_EP)).click if key == :ep
+    return find(:xpath, CONFIRM_RUN_PIPELINE_IL).click if key == :il
+    find(:xpath, ta(CONFIRM_RUN_PIPELINE_TA, CONFIRM_RUN_PIPELINE_IL)).click
+  end
+
+  def click_response_required(key = nil)
+    return find(ta(RESPONSE_REQUIRED_BNT_EP)).click if key == :ep
+    return find(:xpath, RESPONSE_REQUIRED_BNT_IL).click if key == :il
+    find(:xpath, ta(RESPONSE_REQUIRED_BNT_TA, RESPONSE_REQUIRED_BNT_IL)).click
+  end
+
+  def click_manual_task_on_stage(key = nil)
+    return find(ta(MANUAL_TASK_EP)).click if key == :ep
+    return find(:xpath, MANUAL_TASK_IL).click if key == :il
+    find(:xpath, ta(MANUAL_TASK_TA, MANUAL_TASK_IL)).click
+  end
+
+  def click_completed_radio_button(key = nil)
+    return find(ta(COMPLETED_RADIO_BTN_EP)).click if key == :ep
+    return find(:xpath, COMPLETED_RADIO_BTN_IL).click if key == :il
+    find(:xpath, ta(COMPLETED_RADIO_BTN_TA, COMPLETED_RADIO_BTN_IL)).click
+  end
+
+  def confirm_completed_task(key = nil)
+    return find(ta(CONFIRM_COMPLETED_TASK_EP)).click if key == :ep
+    return find(:xpath, CONFIRM_COMPLETED_TASK_IL).click if key == :il
+    find(:xpath, ta(CONFIRM_COMPLETED_TASK_TA, CONFIRM_COMPLETED_TASK_IL)).click
   end
 
 end
