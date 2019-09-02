@@ -158,9 +158,6 @@ describe 'Preconditions' do
         pipelines_page.click_on_select_project
       end
 
-      sleep 3
-      #Next step is problematic
-      #Can't reproduce TA-1004
       step "Admin select on the drop-down Default project" do
         check_element_path :xpath, CloudBeesPipelines::SELECT_DEFAULT_PROJECT_TA, CloudBeesPipelines::SELECT_DEFAULT_PROJECT_IL
         pipelines_page.select_default_project
@@ -277,9 +274,6 @@ describe 'Preconditions' do
         pipelines_page.click_on_select_project :ep
       end
 
-      sleep 3
-      #Next step is problematic
-      #Can't reproduce TA-1004
       step "Admin select on the drop-down Default project" do
         check_element_path :xpath, CloudBeesPipelines::SELECT_DEFAULT_PROJECT_EP, CloudBeesPipelines::SELECT_DEFAULT_PROJECT_IL
         pipelines_page.select_default_project :ep

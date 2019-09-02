@@ -170,9 +170,6 @@ describe 'Preconditions' do
         apps_page.click_on_select_project
       end
 
-      sleep 3
-      #Next step is problematic
-      #Can't reproduce TA-1004
       step "Admin select on the drop-down Default project" do
         check_element_path :xpath, CloudBeesApps::SELECT_DEFAULT_PROJECT_TA, CloudBeesApps::SELECT_DEFAULT_PROJECT_IL
         apps_page.select_default_project
@@ -183,9 +180,6 @@ describe 'Preconditions' do
         apps_page.confirm_create_new_application
       end
 
-      sleep 3
-      #Next step is problematic
-      #Can't reproduce TA-1009
       step "Admin clicks on the Component tier" do
         check_element_path :xpath, CloudBeesApps::COMPONENT_TIER_TA, CloudBeesApps::COMPONENT_TIER_IL
         apps_page.click_component_tier
@@ -307,9 +301,6 @@ describe 'Preconditions' do
         apps_page.click_on_select_project :ep
       end
 
-      sleep 3
-      #Next step is problematic
-      #Can't reproduce TA-1004
       step "Admin select on the drop-down Default project" do
         check_element_path :xpath, CloudBeesApps::SELECT_DEFAULT_PROJECT_EP, CloudBeesApps::SELECT_DEFAULT_PROJECT_IL
         apps_page.select_default_project :ep
@@ -320,9 +311,6 @@ describe 'Preconditions' do
         apps_page.confirm_create_new_application :ep
       end
 
-      sleep 3
-      #Next step is problematic
-      #Can't reproduce TA-1009
       step "Admin clicks on the Component tier" do
         check_element_path :xpath, CloudBeesApps::COMPONENT_TIER_EP, CloudBeesApps::COMPONENT_TIER_IL
         apps_page.click_component_tier :ep
