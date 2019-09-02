@@ -21,6 +21,10 @@ class CloudBeesGlobal
   APPS_SECTION_TA = "cloud_bees:applications"
   APPS_SECTION_EP = "EP:cloud_bees:applications"
 
+  ENV_SECTION_IL = "a.at-main-menu-environments"
+  ENV_SECTION_TA = "cloud_bees:environments"
+  ENV_SECTION_EP = "EP:cloud_bees:environments"
+
   ADMIN_MENU_IL = "//div[@class='user at-user-logged-in']"
   ADMIN_MENU_TA = "cloud_bees:admin_menu"
   ADMIN_MENU_EP = "EP:cloud_bees:admin_menu"
@@ -51,6 +55,12 @@ class CloudBeesGlobal
     return find(ta(APPS_SECTION_EP)).click if key == :ep
     return find(:css, APPS_SECTION_IL).click if key == :il
     find(:css, ta(APPS_SECTION_TA, APPS_SECTION_IL)).click
+  end
+
+  def click_environments(key = nil)
+    return find(ta(ENV_SECTION_EP)).click if key == :ep
+    return find(:css, ENV_SECTION_IL).click if key == :il
+    find(:css, ta(ENV_SECTION_TA, ENV_SECTION_IL)).click
   end
 
   def click_admin_menu(key = nil)
