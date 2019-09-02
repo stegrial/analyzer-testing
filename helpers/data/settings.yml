@@ -62,6 +62,8 @@ cloud_bees:
   artifact_name: 'test'
   pipeline_name: 'pipeTest'
   task_name: 'taskTest'
+  process_name: 'processTest'
+  step_name: 'stepTest'
 
 24timezones:
   page: 'https://24timezones.com/worldmap'
