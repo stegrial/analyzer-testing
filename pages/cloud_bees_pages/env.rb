@@ -44,11 +44,7 @@ class CloudBeesEnv
   FIND_ENV_FIELD_IL = "//input[@placeholder='Find...']"
   FIND_ENV_FIELD_TA = 'cloud_bees:env:find_env_field'
   FIND_ENV_FIELD_EP = 'EP:cloud_bees:env:find_env_field'
-
-  CONFIRM_DELETE_ENV_IL = "//div[text()='OK']"
-  CONFIRM_DELETE_ENV_TA = 'cloud_bees:env:confirm_delete_env'
-  CONFIRM_DELETE_ENV_EP = 'EP:cloud_bees:env:confirm_delete_env'
-
+  
   def create_new_env(key = nil)
     return find(ta(CREATE_ENV_PLUS_BTN_EP)).click if key == :ep
     return find(:css, CREATE_ENV_PLUS_BTN_IL).click if key == :il
