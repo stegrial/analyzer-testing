@@ -20,7 +20,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'EC Flow - creating new application component - GWT - fields' do
+  feature 'CloudBees - creating new application component - GWT - fields' do
 
     # Initial locators with Recording
 
@@ -77,7 +77,7 @@ describe 'Preconditions' do
       end
 
       step "User select artifact" do
-        apps_editor.click_artifact
+        apps_editor.click_artifactory
       end
 
       step "User set configuration text in input" do
@@ -194,7 +194,7 @@ describe 'Preconditions' do
 
       step "User select artifact" do
         check_element_path :xpath, CloudBeesAppsEditor::EC_ARTIFACTORY_TA, CloudBeesAppsEditor::EC_ARTIFACTORY_IL
-        apps_editor.click_artifact
+        apps_editor.click_artifactory
       end
 
       step "User set configuration text in input" do
@@ -322,7 +322,7 @@ describe 'Preconditions' do
 
       step "User select artifact" do
         check_element_path :xpath, CloudBeesAppsEditor::EC_ARTIFACTORY_EP, CloudBeesAppsEditor::EC_ARTIFACTORY_IL
-        apps_editor.click_artifact :ep
+        apps_editor.click_artifactory :ep
       end
 
       step "User set configuration text in input" do
