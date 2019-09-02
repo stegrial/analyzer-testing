@@ -75,5 +75,4 @@ class CloudBeesGlobal
     find(:xpath, ta(LOGOUT_BTN_TA, LOGOUT_BTN_IL)).click
   end
 
-
 end
