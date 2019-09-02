@@ -109,10 +109,4 @@ class CloudBeesEnv
     find(:xpath, ta(CONFIRM_DELETE_ENV_TA, CONFIRM_DELETE_ENV_IL)).click
   end
 
-  def confirm_delete_application(key = nil)
-    return find(ta(CONFIRM_DELETE_ENV_EP)).click if key == :ep
-    return find(:xpath, CONFIRM_DELETE_ENV_IL).click if key == :il
-    find(:xpath, ta(CONFIRM_DELETE_ENV_TA, CONFIRM_DELETE_ENV_IL)).click
-  end
-
 end
