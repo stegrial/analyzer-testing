@@ -19,13 +19,14 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
       step "User goes to the page", settings('venus')['home_page'] do |url|
         page.visit url
       end
 
       step "User clicks on the third banner" do
         it.click_third_banner
+        sleep 2 # To see that the page is opened!
       end
 
       step "User clicks on the Venus logo" do
@@ -35,7 +36,7 @@ describe 'Preconditions' do
       sleep 3
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
       step "User goes to the page", settings('venus')['home_page'] do |url|
         page.visit url
       end
@@ -60,7 +61,7 @@ describe 'Preconditions' do
 
     # Element Picker from Repository
 
-    scenario 'Searching EP', ep_run: true do
+    scenario 'Searching EP', ep: true do
       step "User goes to the page", settings('venus')['home_page'] do |url|
         page.visit url
       end

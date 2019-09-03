@@ -49,7 +49,7 @@ describe 'Preconditions' do
         it.choose_subcat_by_first_name name
       end
 
-      step "User chooses a product by name in the list", 'love print top' do |name|
+      step "User chooses a product by name in the list", 'color block top' do |name|
         it.choose_product_by_name name
       end
 
@@ -120,7 +120,7 @@ describe 'Preconditions' do
         it.choose_subcat_by_first_name name
       end
 
-      step "User chooses a product by name in the list", 'love print top' do |name|
+      step "User chooses a product by name in the list", 'color block top' do |name|
         check_element_path :xpath, it.product_name(:ta, name), it.product_name(:il, name)
         it.choose_product_by_name name
       end
@@ -201,7 +201,7 @@ describe 'Preconditions' do
         it.choose_subcat_by_first_name :ep, name
       end
 
-      step "User chooses a product by name in the list", 'love print top' do |name|
+      step "User chooses a product by name in the list", 'color block top' do |name|
         check_element_path :xpath, it.product_name(:ep, name), it.product_name(:il, name)
         it.choose_product_by_name name
       end
@@ -276,7 +276,7 @@ describe 'Preconditions' do
         it.choose_subcat_by_first_name :il, name
       end
 
-      step "User chooses a product by name in the list", 'love print top' do |name|
+      step "User chooses a product by name in the list", 'color block top' do |name|
         it.choose_product_by_name name
       end
 =begin can't reproduce: TA-999 (new issue TA-1000)
@@ -341,7 +341,7 @@ describe 'Preconditions' do
         it.choose_subcat_by_first_name :il, name
       end
 
-      step "User chooses a product by name in the list", 'love print top' do |name|
+      step "User chooses a product by name in the list", 'color block top' do |name|
         it.choose_product_by_name name
       end
 =begin can't reproduce: TA-999 (new issue TA-1000)

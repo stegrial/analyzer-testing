@@ -19,7 +19,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
       step "User goes to the page", settings('venus')['home_page'] do |url|
         page.visit url
       end
@@ -44,7 +44,7 @@ describe 'Preconditions' do
       sleep 3
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
       step "User goes to the page", settings('venus')['home_page'] do |url|
         page.visit url
       end
@@ -91,7 +91,7 @@ describe 'Preconditions' do
 
     # Element Picker from Repository
 
-    scenario 'Searching EP', ep_run: true do
+    scenario 'Searching EP', ep: true do
       step "User goes to the page", settings('venus')['home_page'] do |url|
         page.visit url
       end
@@ -138,7 +138,7 @@ describe 'Preconditions' do
 
     # Debug
 
-    scenario 'Recording debug', rec_debug: true do
+    scenario 'Recording debug', record_debug: true do
       step "User goes to the page", settings('venus')['home_page'] do |url|
         page.visit url
       end
