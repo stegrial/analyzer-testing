@@ -37,6 +37,10 @@ class CloudBeesGlobal
   RELEASE_CALENDAR_BTN_TA = "cloud_bees:admin_menu:release_calendar_btn"
   RELEASE_CALENDAR_BTN_EP = "EP:cloud_bees:admin_menu:release_calendar_btn"
 
+  CHANGE_HISTORY_SECTION_IL = '.at-main-menu-change_history'
+  CHANGE_HISTORY_SECTION_TA = 'cloud_bees:change_history'
+  CHANGE_HISTORY_SECTION_EP = 'EP:cloud_bees:change_history'
+
   def click_hamburger_menu(key = nil)
     return find(ta(HAM_MENU_BTN_EP)).click if key == :ep
     return find(:css, HAM_MENU_BTN_IL).click if key == :il
@@ -83,5 +87,11 @@ class CloudBeesGlobal
     return find(ta(RELEASE_CALENDAR_BTN_EP)).click if key == :ep
     return find(:css, RELEASE_CALENDAR_BTN_IL).click if key == :il
     find(:css, ta(RELEASE_CALENDAR_BTN_TA, RELEASE_CALENDAR_BTN_IL)).click
+  end
+
+  def click_change_history(key = nil)
+    return find(ta(CHANGE_HISTORY_SECTION_EP)).click if key == :ep
+    return find(:css, CHANGE_HISTORY_SECTION_IL).click if key == :il
+    find(:css, ta(CHANGE_HISTORY_SECTION_TA, CHANGE_HISTORY_SECTION_IL)).click
   end
 end
