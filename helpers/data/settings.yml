@@ -53,6 +53,7 @@ cloud_bees:
   environments_page: "https://ectest.trueautomation.io/flow/#environments/environments"
   users_page: 'https://ectest.trueautomation.io/flow/#users'
   platform_home_page: "https://ectest.trueautomation.io/commander/pages/EC-Homepage/homepage?firstPage=1&s=Home"
+  release_calendar_page: "https://ectest.trueautomation.io/flow/#releases-calendar page"
   username: 'admin'
   pass: 'changeme'
   user_username: 'eugen_shapovalov'

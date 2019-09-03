@@ -33,6 +33,10 @@ class CloudBeesGlobal
   LOGOUT_BTN_TA = "cloud_bees:admin_menu:logout"
   LOGOUT_BTN_EP = "EP:cloud_bees:admin_menu:logout"
 
+  RELEASE_CALENDAR_BTN_IL = ".at-icon-nav-item-releases-calendar"
+  RELEASE_CALENDAR_BTN_TA = "cloud_bees:admin_menu:release_calendar_btn"
+  RELEASE_CALENDAR_BTN_EP = "EP:cloud_bees:admin_menu:release_calendar_btn"
+
   def click_hamburger_menu(key = nil)
     return find(ta(HAM_MENU_BTN_EP)).click if key == :ep
     return find(:css, HAM_MENU_BTN_IL).click if key == :il
@@ -75,4 +79,9 @@ class CloudBeesGlobal
     find(:xpath, ta(LOGOUT_BTN_TA, LOGOUT_BTN_IL)).click
   end
 
+  def click_release_calendar_btn(key = nil)
+    return find(ta(RELEASE_CALENDAR_BTN_EP)).click if key == :ep
+    return find(:css, RELEASE_CALENDAR_BTN_IL).click if key == :il
+    find(:css, ta(RELEASE_CALENDAR_BTN_TA, RELEASE_CALENDAR_BTN_IL)).click
+  end
 end
