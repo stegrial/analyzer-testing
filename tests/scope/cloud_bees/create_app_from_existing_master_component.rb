@@ -18,7 +18,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Creating and Deleting application' do
+  feature 'Create Application Component from Existing Master Component' do
 
     # Initial locators with Recording
 
@@ -69,32 +69,36 @@ describe 'Preconditions' do
         apps_page.click_component_tier
       end
 
-      step "Admin clicks on the Create new  Component" do
-        apps_page.create_new_component
+      step "Admin clicks on the Create from Existing Master Component" do
+        apps_page.create_existing_master_component
+      end
+
+      step "Admin choose JBossMC Component" do
+        apps_page.choose_jbossmc_component
+      end
+
+      step "Admin clicks on the checkbox near JBossMC Component" do
+        apps_page.click_on_checkbox_near_jbossmc
+      end
+
+      step "Admin close Attention in Component" do
+        apps_page.close_attention_in_component
+      end
+
+      step "Admin clicks Next button" do
+        apps_page.component_existing_master_next
       end
 
       step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
         apps_page.fill_component_name_field compname
       end
 
-      step "Admin clicks on the Next button in the modal component" do
-        apps_page.click_component_next
+      step "Admin clicks OK button" do
+        apps_page.click_component_ok
       end
 
-      step "Admin clicks on the Content location drop-down" do
-        apps_page.click_on_content_location
-      end
-
-      step "Admin select on the drop-down EC-Artifact" do
-        apps_page.select_ec_artifact
-      end
-
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
-        apps_page.fill_artifact_name_field artname
-      end
-
-      step "Admin click on the OK button" do
-        apps_page.confirm_new_artifact
+      step "Admin clicks on dropdown in Tier 1" do
+        apps_page.click_on_dropdown_in_tier
       end
 
       step "Admin clicks on the Hamburger menu button" do
@@ -185,9 +189,29 @@ describe 'Preconditions' do
         apps_page.click_component_tier
       end
 
-      step "Admin clicks on the Create new  Component" do
-        check_element_path :xpath, CloudBeesApps::CREATE_NEW_COMPONENT_TA, CloudBeesApps::CREATE_NEW_COMPONENT_IL
-        apps_page.create_new_component
+      step "Admin clicks on the Create from Existing Master Component" do
+        check_element_path :xpath, CloudBeesApps::CREATE_EXISTING_MASTER_COMPONENT_TA, CloudBeesApps::CREATE_EXISTING_MASTER_COMPONENT_IL
+        apps_page.create_existing_master_component
+      end
+
+      step "Admin choose JBossMC Component" do
+        check_element_path :xpath, CloudBeesApps::COMPONENT_JBOSSMC_TA, CloudBeesApps::COMPONENT_JBOSSMC_IL
+        apps_page.choose_jbossmc_component
+      end
+
+      step "Admin clicks on the checkbox near JBossMC Component" do
+        check_element_path :xpath, CloudBeesApps::CHECKBOX_NEAR_JBOSSMC_TA, CloudBeesApps::CHECKBOX_NEAR_JBOSSMC_IL
+        apps_page.click_on_checkbox_near_jbossmc
+      end
+
+      step "Admin close Attention in Component" do
+        check_element_path :xpath, CloudBeesApps::CLOSE_ATTENTION_IN_COMPONENT_TA, CloudBeesApps::CLOSE_ATTENTION_IN_COMPONENT_IL
+        apps_page.close_attention_in_component
+      end
+
+      step "Admin clicks Next button" do
+        check_element_path :xpath, CloudBeesApps::COMPONENT_EXISTING_MASTER_NEXT_TA, CloudBeesApps::COMPONENT_EXISTING_MASTER_NEXT_IL
+        apps_page.component_existing_master_next
       end
 
       step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
@@ -195,29 +219,14 @@ describe 'Preconditions' do
         apps_page.fill_component_name_field compname
       end
 
-      step "Admin clicks on the Next button in the modal component" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_NEXT_TA, CloudBeesApps::COMPONENT_NEXT_IL
-        apps_page.click_component_next
+      step "Admin clicks OK button" do
+        check_element_path :xpath, CloudBeesApps::COMPONENT_OK_BTN_TA, CloudBeesApps::COMPONENT_OK_BTN_IL
+        apps_page.click_component_ok
       end
 
-      step "Admin clicks on the Content location drop-down" do
-        check_element_path :xpath, CloudBeesApps::CONTENT_LOCATION_TA, CloudBeesApps::CONTENT_LOCATION_IL
-        apps_page.click_on_content_location
-      end
-
-      step "Admin select on the drop-down EC-Artifact" do
-        check_element_path :xpath, CloudBeesApps::SELECT_EC_ARTIFACT_TA, CloudBeesApps::SELECT_EC_ARTIFACT_IL
-        apps_page.select_ec_artifact
-      end
-
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
-        check_element_path :xpath, CloudBeesApps::ARTIFACT_NAME_TA, CloudBeesApps::ARTIFACT_NAME_IL
-        apps_page.fill_artifact_name_field artname
-      end
-
-      step "Admin click on the OK button" do
-        check_element_path :xpath, CloudBeesApps::CONFIRM_NEW_ARTIFACT_TA, CloudBeesApps::CONFIRM_NEW_ARTIFACT_IL
-        apps_page.confirm_new_artifact
+      step "Admin clicks on dropdown in Tier 1" do
+        check_element_path :xpath, CloudBeesApps::DROPDOWN_IN_TIER_TA, CloudBeesApps::DROPDOWN_IN_TIER_IL
+        apps_page.click_on_dropdown_in_tier
       end
 
       step "Admin clicks on the Hamburger menu button" do
@@ -316,9 +325,29 @@ describe 'Preconditions' do
         apps_page.click_component_tier :ep
       end
 
-      step "Admin clicks on the Create new  Component" do
-        check_element_path :xpath, CloudBeesApps::CREATE_NEW_COMPONENT_EP, CloudBeesApps::CREATE_NEW_COMPONENT_IL
-        apps_page.create_new_component :ep
+      step "Admin clicks on the Create from Existing Master Component" do
+        check_element_path :xpath, CloudBeesApps::CREATE_EXISTING_MASTER_COMPONENT_EP, CloudBeesApps::CREATE_EXISTING_MASTER_COMPONENT_IL
+        apps_page.create_existing_master_component :ep
+      end
+
+      step "Admin choose JBossMC Component" do
+        check_element_path :xpath, CloudBeesApps::COMPONENT_JBOSSMC_EP, CloudBeesApps::COMPONENT_JBOSSMC_IL
+        apps_page.choose_jbossmc_component :ep
+      end
+
+      step "Admin clicks on the checkbox near JBossMC Component" do
+        check_element_path :xpath, CloudBeesApps::CHECKBOX_NEAR_JBOSSMC_EP, CloudBeesApps::CHECKBOX_NEAR_JBOSSMC_IL
+        apps_page.click_on_checkbox_near_jbossmc :ep
+      end
+
+      step "Admin close Attention in Component" do
+        check_element_path :xpath, CloudBeesApps::CLOSE_ATTENTION_IN_COMPONENT_EP, CloudBeesApps::CLOSE_ATTENTION_IN_COMPONENT_IL
+        apps_page.close_attention_in_component :ep
+      end
+
+      step "Admin clicks Next button" do
+        check_element_path :xpath, CloudBeesApps::COMPONENT_EXISTING_MASTER_NEXT_EP, CloudBeesApps::COMPONENT_EXISTING_MASTER_NEXT_IL
+        apps_page.component_existing_master_next :ep
       end
 
       step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
@@ -326,29 +355,14 @@ describe 'Preconditions' do
         apps_page.fill_component_name_field :ep, compname
       end
 
-      step "Admin clicks on the Next button in the modal component" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_NEXT_EP, CloudBeesApps::COMPONENT_NEXT_IL
-        apps_page.click_component_next :ep
+      step "Admin clicks OK button" do
+        check_element_path :xpath, CloudBeesApps::COMPONENT_OK_BTN_EP, CloudBeesApps::COMPONENT_OK_BTN_IL
+        apps_page.click_component_ok :ep
       end
 
-      step "Admin clicks on the Content location drop-down" do
-        check_element_path :xpath, CloudBeesApps::CONTENT_LOCATION_EP, CloudBeesApps::CONTENT_LOCATION_IL
-        apps_page.click_on_content_location :ep
-      end
-
-      step "Admin select on the drop-down EC-Artifact" do
-        check_element_path :xpath, CloudBeesApps::SELECT_EC_ARTIFACT_EP, CloudBeesApps::SELECT_EC_ARTIFACT_IL
-        apps_page.select_ec_artifact :ep
-      end
-
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
-        check_element_path :xpath, CloudBeesApps::ARTIFACT_NAME_EP, CloudBeesApps::ARTIFACT_NAME_IL
-        apps_page.fill_artifact_name_field :ep, artname
-      end
-
-      step "Admin click on the OK button" do
-        check_element_path :xpath, CloudBeesApps::CONFIRM_NEW_ARTIFACT_EP, CloudBeesApps::CONFIRM_NEW_ARTIFACT_IL
-        apps_page.confirm_new_artifact :ep
+      step "Admin clicks on dropdown in Tier 1" do
+        check_element_path :xpath, CloudBeesApps::DROPDOWN_IN_TIER_EP, CloudBeesApps::DROPDOWN_IN_TIER_IL
+        apps_page.click_on_dropdown_in_tier :ep
       end
 
       step "Admin clicks on the Hamburger menu button" do

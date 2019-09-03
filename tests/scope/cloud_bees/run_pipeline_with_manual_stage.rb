@@ -18,7 +18,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Creating and Deleting pipeline' do
+  feature 'Run pipeline with manual stage' do
 
     # Initial locators with Recording
 
@@ -58,7 +58,7 @@ describe 'Preconditions' do
       end
 
       step "Admin select on the drop-down Default project" do
-       pipelines_page.select_default_project
+        pipelines_page.select_default_project
       end
 
       step "Admin confirm new pipeline" do
@@ -83,6 +83,50 @@ describe 'Preconditions' do
 
       step "Admin clicks on the Done icon for ending creating new task in Stage 1" do
         pipelines_page.confirm_new_task
+      end
+
+      step "Admin clicks on the Hamburger menu button" do
+        global_page.click_hamburger_menu
+      end
+
+      step "Admin chooses the Pipelines section in the Hamburger menu" do
+        global_page.click_pipelines
+      end
+
+      step "Admin fills the pipeline name field", settings('cloud_bees')['pipeline_name'] do |pipename|
+        pipelines_page.find_pipeline_name_field pipename
+      end
+
+      step "Admin clicks on new created pipeline" do
+        pipelines_page.choose_pipeline_from_list
+      end
+
+      step "Admin clicks on run pipeline button" do
+        pipelines_page.click_run_pipeline
+      end
+
+      step "Admin clicks on new run pipeline button" do
+        pipelines_page.click_new_run_pipeline
+      end
+
+      step "Admin confirm run pipeline button" do
+        pipelines_page.confirm_run_pipeline
+      end
+
+      step "Admin clicks on response required button" do
+        pipelines_page.click_response_required
+      end
+
+      step "Admin clicks on manual task button on modal Stage 1" do
+        pipelines_page.click_manual_task_on_stage
+      end
+
+      step "Admin clicks on Completed radio button" do
+        pipelines_page.click_completed_radio_button
+      end
+
+      step "Admin confirm Completed task, clicks OK button" do
+        pipelines_page.confirm_completed_task
       end
 
       step "Admin clicks on the Hamburger menu button" do
@@ -191,6 +235,61 @@ describe 'Preconditions' do
       step "Admin clicks on the Done icon for ending creating new task in Stage 1" do
         check_element_path :xpath, CloudBeesPipelines::CONFIRM_NEW_TASK_TA, CloudBeesPipelines::CONFIRM_NEW_TASK_IL
         pipelines_page.confirm_new_task
+      end
+
+      step "Admin clicks on the Hamburger menu button" do
+        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
+        global_page.click_hamburger_menu
+      end
+
+      step "Admin chooses the Pipelines section in the Hamburger menu" do
+        check_element_path :css, CloudBeesGlobal::PIPELINES_SECTION_TA, CloudBeesGlobal::PIPELINES_SECTION_IL
+        global_page.click_pipelines
+      end
+
+      step "Admin fills the pipeline name field", settings('cloud_bees')['pipeline_name'] do |pipename|
+        check_element_path :xpath, CloudBeesPipelines::FIND_PIPELINE_FIELD_TA, CloudBeesPipelines::FIND_PIPELINE_FIELD_IL
+        pipelines_page.find_pipeline_name_field pipename
+      end
+
+      step "Admin clicks on new created pipeline" do
+        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_TA, CloudBeesPipelines::CHOOSE_PIPELINE_IL
+        pipelines_page.choose_pipeline_from_list
+      end
+
+      step "Admin clicks on run pipeline button" do
+        check_element_path :xpath, CloudBeesPipelines::RUN_PIPELINE_BTN_TA, CloudBeesPipelines::RUN_PIPELINE_BTN_IL
+        pipelines_page.click_run_pipeline
+      end
+
+      step "Admin clicks on new run pipeline button" do
+        check_element_path :xpath, CloudBeesPipelines::NEW_RUN_PIPELINE_BTN_TA, CloudBeesPipelines::NEW_RUN_PIPELINE_BTN_IL
+        pipelines_page.click_new_run_pipeline
+      end
+
+      step "Admin confirm run pipeline button" do
+        check_element_path :xpath, CloudBeesPipelines::CONFIRM_RUN_PIPELINE_TA, CloudBeesPipelines::CONFIRM_RUN_PIPELINE_IL
+        pipelines_page.confirm_run_pipeline
+      end
+
+      step "Admin clicks on response required button" do
+        check_element_path :xpath, CloudBeesPipelines::RESPONSE_REQUIRED_BNT_TA, CloudBeesPipelines::RESPONSE_REQUIRED_BNT_IL
+        pipelines_page.click_response_required
+      end
+
+      step "Admin clicks on manual task button on modal Stage 1" do
+        check_element_path :xpath, CloudBeesPipelines::MANUAL_TASK_TA, CloudBeesPipelines::MANUAL_TASK_IL
+        pipelines_page.click_manual_task_on_stage
+      end
+
+      step "Admin clicks on Completed radio button" do
+        check_element_path :xpath, CloudBeesPipelines::COMPLETED_RADIO_BTN_TA, CloudBeesPipelines::COMPLETED_RADIO_BTN_IL
+        pipelines_page.click_completed_radio_button
+      end
+
+      step "Admin confirm Completed task, clicks OK button" do
+        check_element_path :xpath, CloudBeesPipelines::CONFIRM_COMPLETED_TASK_TA, CloudBeesPipelines::CONFIRM_COMPLETED_TASK_IL
+        pipelines_page.confirm_completed_task
       end
 
       step "Admin clicks on the Hamburger menu button" do
@@ -329,6 +428,61 @@ describe 'Preconditions' do
         pipelines_page.choose_pipeline_from_list :ep
       end
 
+      step "Admin clicks on run pipeline button" do
+        check_element_path :xpath, CloudBeesPipelines::RUN_PIPELINE_BTN_EP, CloudBeesPipelines::RUN_PIPELINE_BTN_IL
+        pipelines_page.click_run_pipeline :ep
+      end
+
+      step "Admin clicks on new run pipeline button" do
+        check_element_path :xpath, CloudBeesPipelines::NEW_RUN_PIPELINE_BTN_EP, CloudBeesPipelines::NEW_RUN_PIPELINE_BTN_IL
+        pipelines_page.click_new_run_pipeline :ep
+      end
+
+      step "Admin confirm run pipeline button" do
+        check_element_path :xpath, CloudBeesPipelines::CONFIRM_RUN_PIPELINE_EP, CloudBeesPipelines::CONFIRM_RUN_PIPELINE_IL
+        pipelines_page.confirm_run_pipeline :ep
+      end
+
+      step "Admin clicks on response required button" do
+        check_element_path :xpath, CloudBeesPipelines::RESPONSE_REQUIRED_BNT_EP, CloudBeesPipelines::RESPONSE_REQUIRED_BNT_IL
+        pipelines_page.click_response_required :ep
+      end
+
+      step "Admin clicks on manual task button on modal Stage 1" do
+        check_element_path :xpath, CloudBeesPipelines::MANUAL_TASK_EP, CloudBeesPipelines::MANUAL_TASK_IL
+        pipelines_page.click_manual_task_on_stage :ep
+      end
+
+      step "Admin clicks on Completed radio button" do
+        check_element_path :xpath, CloudBeesPipelines::COMPLETED_RADIO_BTN_EP, CloudBeesPipelines::COMPLETED_RADIO_BTN_IL
+        pipelines_page.click_completed_radio_button :ep
+      end
+
+      step "Admin confirm Completed task, clicks OK button" do
+        check_element_path :xpath, CloudBeesPipelines::CONFIRM_COMPLETED_TASK_EP, CloudBeesPipelines::CONFIRM_COMPLETED_TASK_IL
+        pipelines_page.confirm_completed_task :ep
+      end
+
+      step "Admin clicks on the Hamburger menu button" do
+        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
+        global_page.click_hamburger_menu :ep
+      end
+
+      step "Admin chooses the Pipelines section in the Hamburger menu" do
+        check_element_path :css, CloudBeesGlobal::PIPELINES_SECTION_EP, CloudBeesGlobal::PIPELINES_SECTION_IL
+        global_page.click_pipelines :ep
+      end
+
+      step "Admin fills the pipeline name field", settings('cloud_bees')['pipeline_name'] do |pipename|
+        check_element_path :xpath, CloudBeesPipelines::FIND_PIPELINE_FIELD_EP, CloudBeesPipelines::FIND_PIPELINE_FIELD_IL
+        pipelines_page.find_pipeline_name_field :ep, pipename
+      end
+
+      step "Admin clicks on new created pipeline" do
+        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_EP, CloudBeesPipelines::CHOOSE_PIPELINE_IL
+        pipelines_page.choose_pipeline_from_list :ep
+      end
+
       step "Admin clicks on delete button" do
         check_element_path :xpath, CloudBeesPipelines::DELETE_PIPELINE_EP, CloudBeesPipelines::DELETE_PIPELINE_IL
         pipelines_page.delete_pipeline :ep
@@ -341,7 +495,6 @@ describe 'Preconditions' do
 
       sleep 3
     end
-
 
   end
 end

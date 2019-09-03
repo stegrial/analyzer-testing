@@ -50,7 +50,11 @@ cloud_bees:
   pipelines_page: "https://ectest.trueautomation.io/flow/#pipelines"
   pipelines_run_page: "https://ectest.trueautomation.io/flow/#pipeline-run"
   applications_page: "https://ectest.trueautomation.io/flow/#applications"
+  environments_page: "https://ectest.trueautomation.io/flow/#environments/environments"
   users_page: 'https://ectest.trueautomation.io/flow/#users'
+  components_page: 'https://ectest.trueautomation.io/flow/#applications/components'
+  platform_home_page: "https://ectest.trueautomation.io/commander/pages/EC-Homepage/homepage?firstPage=1&s=Home"
+  release_calendar_page: "https://ectest.trueautomation.io/flow/#releases-calendar page"
   username: 'admin'
   pass: 'changeme'
   user_username: 'eugen_shapovalov'
@@ -58,10 +62,13 @@ cloud_bees:
   user_email: 'qa_automation@gmail.com'
   user_password: '1111'
   app_name: 'appTest'
+  env_name: 'envName'
   component_name: 'compTest'
   artifact_name: 'test'
   pipeline_name: 'pipeTest'
   task_name: 'taskTest'
+  process_name: 'processTest'
+  step_name: 'stepTest'
 
 24timezones:
   page: 'https://24timezones.com/worldmap'

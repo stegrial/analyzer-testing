@@ -33,6 +33,75 @@ class CloudBeesPipelinesRuns
   HISTORY_CLOSE_MODAL_ICON_TA = "cloud_bees:pipelines_runs:close_modal_history"
   HISTORY_CLOSE_MODAL_ICON_EP = "EP:cloud_bees:pipelines_runs:close_modal_history"
 
+  PROJ_SELECT_IL = "(//div[contains(@class,'at-project-select')])[1]"
+  PROJ_SELECT_TA = "cloud_bees:pipelines_runs:proj_select"
+  PROJ_SELECT_EP = "EP:cloud_bees:pipelines_runs:proj_select"
+
+  EC_EXAMPLES_PROJ_IL = "//div[contains(text(),'EC-Examples')]"
+  EC_EXAMPLES_PROJ_TA = "cloud_bees:pipelines_runs:ec_examples_proj"
+  EC_EXAMPLES_PROJ_EP = "EP:cloud_bees:pipelines_runs:ec_examples_proj"
+
+  ACCEPT_DROPDOWN_SELECTION_IL = ".at-project-select-submit"
+  ACCEPT_DROPDOWN_SELECTION_TA = "cloud_bees:pipelines_runs:accept_proj_selection"
+  ACCEPT_DROPDOWN_SELECTION_EP = "EP:cloud_bees:pipelines_runs:accept_proj_selection"
+
+  RUN_STATUS_SELECT_IL = "(//div[contains(@class,'at-status-select')])[1]"
+  RUN_STATUS_SELECT_TA = "cloud_bees:pipelines_runs:run_status_select"
+  RUN_STATUS_SELECT_EP = "EP:cloud_bees:pipelines_runs:run_status_select"
+
+  SUCCESSFUL_RUN_STATUS_IL = ".at-run-status-successful"
+  SUCCESSFUL_RUN_STATUS_TA = "cloud_bees:pipelines_runs:successful_run_status_select"
+  SUCCESSFUL_RUN_STATUS_EP = "EP:cloud_bees:pipelines_runs:successful_run_status_select"
+
+  ERROR_RUN_STATUS_IL = ".at-run-status-error"
+  ERROR_RUN_STATUS_TA = "cloud_bees:pipelines_runs:error_run_status_select"
+  ERROR_RUN_STATUS_EP = "EP:cloud_bees:pipelines_runs:error_run_status_select"
+
+  APPLY_RUN_STATUS_IL = ".at-multiselect-picker-submit"
+  APPLY_RUN_STATUS_TA = "cloud_bees:pipelines_runs:apply_run_status"
+  APPLY_RUN_STATUS_EP = "EP:cloud_bees:pipelines_runs:apply_run_status"
+
+  def click_to_select_proj(key = nil)
+    return find(ta(PROJ_SELECT_EP)).click if key == :ep
+    return find(:xpath, PROJ_SELECT_IL).click if key == :il
+    find(:xpath, ta(PROJ_SELECT_TA, PROJ_SELECT_IL)).click
+  end
+
+  def click_to_select_ec_examples_proj(key = nil)
+    return find(ta(EC_EXAMPLES_PROJ_EP)).click if key == :ep
+    return find(:xpath, EC_EXAMPLES_PROJ_IL).click if key == :il
+    find(:xpath, ta(EC_EXAMPLES_PROJ_TA, EC_EXAMPLES_PROJ_IL)).click
+  end
+
+  def click_to_accept_proj(key = nil)
+    return find(ta(ACCEPT_DROPDOWN_SELECTION_EP)).click if key == :ep
+    return find(:css, ACCEPT_DROPDOWN_SELECTION_IL).click if key == :il
+    find(:css, ta(ACCEPT_DROPDOWN_SELECTION_TA, ACCEPT_DROPDOWN_SELECTION_IL)).click
+  end
+
+  def click_to_run_status(key = nil)
+    return find(ta(RUN_STATUS_SELECT_EP)).click if key == :ep
+    return find(:xpath, RUN_STATUS_SELECT_IL).click if key == :il
+    find(:xpath, ta(RUN_STATUS_SELECT_TA, RUN_STATUS_SELECT_IL)).click
+  end
+
+  def click_to_select_successful_status(key = nil)
+    return find(ta(SUCCESSFUL_RUN_STATUS_EP)).click if key == :ep
+    return find(:css, SUCCESSFUL_RUN_STATUS_IL).click if key == :il
+    find(:css, ta(SUCCESSFUL_RUN_STATUS_TA, SUCCESSFUL_RUN_STATUS_IL)).click
+  end
+
+  def click_to_select_error_status(key = nil)
+    return find(ta(ERROR_RUN_STATUS_EP)).click if key == :ep
+    return find(:css, ERROR_RUN_STATUS_IL).click if key == :il
+    find(:css, ta(ERROR_RUN_STATUS_TA, ERROR_RUN_STATUS_IL)).click
+  end
+
+  def click_to_apply_status(key = nil)
+    return find(ta(APPLY_RUN_STATUS_EP)).click if key == :ep
+    return find(:css, APPLY_RUN_STATUS_IL).click if key == :il
+    find(:css, ta(APPLY_RUN_STATUS_TA, APPLY_RUN_STATUS_IL)).click
+  end
 
   def choose_pipeline_from_list(key = nil)
     return find(ta(CHOOSE_PIPELINE_EP)).click if key == :ep
