@@ -73,7 +73,7 @@ class CloudBeesChangeHistory
   APPLICATION_TA = 'cloud_bees:change_history:application'
   APPLICATION_EP = 'EP:cloud_bees:change_history:application'
 
-  COMPONENT_IL = "//span[text()='Component']"
+  COMPONENT_IL = "(//span[text()='Component'])[1]"
   COMPONENT_TA = 'cloud_bees:change_history:component'
   COMPONENT_EP = 'EP:cloud_bees:change_history:component'
 
