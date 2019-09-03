@@ -126,22 +126,22 @@ describe 'Preconditions' do
 
     # Element Picker from Repository
 
-    scenario 'Searching EP', ep: true do
-      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
-        page.visit url
-      end
-
-      step "Admin do login", settings('cloud_bees') do |credentials|
-        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field :ep, credentials['username']
-
-        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field :ep, credentials['pass']
-
-        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
-        login_page.click_sign_in_button :ep
-      end
-
-    end
+    # scenario 'Searching EP', ep: true do
+    #   step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+    #     page.visit url
+    #   end
+    #
+    #   step "Admin do login", settings('cloud_bees') do |credentials|
+    #     check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
+    #     login_page.fill_username_field :ep, credentials['username']
+    #
+    #     check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
+    #     login_page.fill_pass_field :ep, credentials['pass']
+    #
+    #     check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
+    #     login_page.click_sign_in_button :ep
+    #   end
+    #
+    # end
   end
 end
