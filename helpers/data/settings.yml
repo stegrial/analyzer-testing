@@ -52,6 +52,7 @@ cloud_bees:
   applications_page: "https://ectest.trueautomation.io/flow/#applications"
   environments_page: "https://ectest.trueautomation.io/flow/#environments/environments"
   users_page: 'https://ectest.trueautomation.io/flow/#users'
+  components_page: 'https://ectest.trueautomation.io/flow/#applications/components'
   platform_home_page: "https://ectest.trueautomation.io/commander/pages/EC-Homepage/homepage?firstPage=1&s=Home"
   release_calendar_page: "https://ectest.trueautomation.io/flow/#releases-calendar page"
   username: 'admin'
