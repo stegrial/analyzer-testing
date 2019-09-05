@@ -44,7 +44,7 @@ describe 'Preconditions' do
         components_page.click_create_new_component
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |component_name|
+      step "Admin fills the component name field", "component_test_name" do |component_name|
         components_page.fill_component_name_field component_name
       end
 
@@ -68,7 +68,7 @@ describe 'Preconditions' do
         components_page.select_ec_artifact
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
         components_page.fill_artifact_name_field artname
       end
 
@@ -76,12 +76,12 @@ describe 'Preconditions' do
         components_page.confirm_new_artifact
       end
 
-      step "Admin find component name field", settings('cloud_bees')['component_name'] do |find_comp|
+      step "Admin find component name field", "component_test_name" do |find_comp|
         components_page.find_component_name_field find_comp
       end
 
       step "Admin choose Component" do
-        components_page.choose_component
+        components_page.select_master_component_from_list
       end
 
       step "Admin click context menu of component" do
@@ -96,7 +96,7 @@ describe 'Preconditions' do
         components_page.click_add_one_parameters
       end
 
-      step "Admin fill parameter name field", 'test' do |param_name|
+      step "Admin fill parameter name field", 'test_parameter' do |param_name|
         components_page.fill_parameter_name_field param_name
       end
 
@@ -157,7 +157,7 @@ describe 'Preconditions' do
         components_page.click_create_new_component
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |component_name|
+      step "Admin fills the component name field", "component_test_name" do |component_name|
         check_element_path :xpath, CloudBeesComponents::COMPONENT_NAME_TA, CloudBeesComponents::COMPONENT_NAME_IL
         components_page.fill_component_name_field component_name
       end
@@ -187,7 +187,7 @@ describe 'Preconditions' do
         components_page.select_ec_artifact
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
         check_element_path :xpath, CloudBeesComponents::ARTIFACT_NAME_TA, CloudBeesComponents::ARTIFACT_NAME_IL
         components_page.fill_artifact_name_field artname
       end
@@ -197,14 +197,14 @@ describe 'Preconditions' do
         components_page.confirm_new_artifact
       end
 
-      step "Admin find component name field", settings('cloud_bees')['component_name'] do |find_comp|
+      step "Admin find component name field", "component_test_name" do |find_comp|
         check_element_path :xpath, CloudBeesComponents::FIND_COMPONENT_NAME_TA, CloudBeesComponents::FIND_COMPONENT_NAME_IL
         components_page.find_component_name_field find_comp
       end
 
       step "Admin choose Component" do
-        check_element_path :xpath, CloudBeesComponents::CHOOSE_COMPONENT_TA, CloudBeesComponents::CHOOSE_COMPONENT_IL
-        components_page.choose_component
+        check_element_path :css, CloudBeesComponents::MASTER_COMPONENT_LIST_TA, CloudBeesComponents::MASTER_COMPONENT_LIST_IL
+        components_page.select_master_component_from_list
       end
 
       step "Admin click context menu of component" do
@@ -222,7 +222,7 @@ describe 'Preconditions' do
         components_page.click_add_one_parameters
       end
 
-      step "Admin fill parameter name field", 'test' do |param_name|
+      step "Admin fill parameter name field", 'test_parameter' do |param_name|
         check_element_path :xpath, CloudBeesComponents::PARAMETER_NAME_TA, CloudBeesComponents::PARAMETER_NAME_IL
         components_page.fill_parameter_name_field param_name
       end
@@ -292,7 +292,7 @@ describe 'Preconditions' do
         components_page.click_create_new_component :ep
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |component_name|
+      step "Admin fills the component name field", "component_test_name" do |component_name|
         check_element_path :xpath, CloudBeesComponents::COMPONENT_NAME_EP, CloudBeesComponents::COMPONENT_NAME_IL
         components_page.fill_component_name_field :ep, component_name
       end
@@ -322,7 +322,7 @@ describe 'Preconditions' do
         components_page.select_ec_artifact :ep
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
         check_element_path :xpath, CloudBeesComponents::ARTIFACT_NAME_EP, CloudBeesComponents::ARTIFACT_NAME_IL
         components_page.fill_artifact_name_field :ep, artname
       end
@@ -332,14 +332,14 @@ describe 'Preconditions' do
         components_page.confirm_new_artifact :ep
       end
 
-      step "Admin find component name field", settings('cloud_bees')['component_name'] do |find_comp|
+      step "Admin find component name field", "component_test_name" do |find_comp|
         check_element_path :xpath, CloudBeesComponents::FIND_COMPONENT_NAME_EP, CloudBeesComponents::FIND_COMPONENT_NAME_IL
         components_page.find_component_name_field :ep, find_comp
       end
 
       step "Admin choose Component" do
-        check_element_path :xpath, CloudBeesComponents::CHOOSE_COMPONENT_EP, CloudBeesComponents::CHOOSE_COMPONENT_IL
-        components_page.choose_component :ep
+        check_element_path :css, CloudBeesComponents::MASTER_COMPONENT_LIST_EP, CloudBeesComponents::MASTER_COMPONENT_LIST_IL
+        components_page.select_master_component_from_list :ep
       end
 
       step "Admin click context menu of component" do
@@ -357,7 +357,7 @@ describe 'Preconditions' do
         components_page.click_add_one_parameters :ep
       end
 
-      step "Admin fill parameter name field", 'test' do |param_name|
+      step "Admin fill parameter name field", 'test_parameter' do |param_name|
         check_element_path :xpath, CloudBeesComponents::PARAMETER_NAME_EP, CloudBeesComponents::PARAMETER_NAME_IL
         components_page.fill_parameter_name_field :ep, param_name
       end

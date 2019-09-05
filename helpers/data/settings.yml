@@ -65,10 +65,7 @@ cloud_bees:
   user_password: '1111'
   app_name: 'application_test_name'
   env_name: 'envName'
-  component_name: 'compTest'
-  artifact_name: 'test'
-  pipeline_name: 'pipeTest'
-  task_name: 'taskTest'
+  pipeline_name: 'pipeline_test_name'
   process_name: 'processTest'
   step_name: 'stepTest'
 

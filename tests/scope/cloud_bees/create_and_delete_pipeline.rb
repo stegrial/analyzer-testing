@@ -69,7 +69,7 @@ describe 'Preconditions' do
         pipelines_page.click_new_task
       end
 
-      step "Admin fills the task name field", settings('cloud_bees')['task_name'] do |taskname|
+      step "Admin fills the task name field", "task_test_name" do |taskname|
         pipelines_page.fill_task_name_field taskname
       end
 
@@ -98,7 +98,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created pipeline" do
-        pipelines_page.choose_pipeline_from_list
+        pipelines_page.select_pipeline_from_list
       end
 
       step "Admin clicks on delete button" do
@@ -173,7 +173,7 @@ describe 'Preconditions' do
         pipelines_page.click_new_task
       end
 
-      step "Admin fills the task name field", settings('cloud_bees')['task_name'] do |taskname|
+      step "Admin fills the task name field", "task_test_name" do |taskname|
         check_element_path :xpath, CloudBeesPipelines::TASK_NAME_TA, CloudBeesPipelines::TASK_NAME_IL
         pipelines_page.fill_task_name_field taskname
       end
@@ -209,8 +209,8 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created pipeline" do
-        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_TA, CloudBeesPipelines::CHOOSE_PIPELINE_IL
-        pipelines_page.choose_pipeline_from_list
+        check_element_path :css, CloudBeesPipelines::PIPELINE_LIST_ITEM_TA, CloudBeesPipelines::PIPELINE_LIST_ITEM_IL
+        pipelines_page.select_pipeline_from_list
       end
 
       step "Admin clicks on delete button" do
@@ -289,7 +289,7 @@ describe 'Preconditions' do
         pipelines_page.click_new_task :ep
       end
 
-      step "Admin fills the task name field", settings('cloud_bees')['task_name'] do |taskname|
+      step "Admin fills the task name field", "task_test_name" do |taskname|
         check_element_path :xpath, CloudBeesPipelines::TASK_NAME_EP, CloudBeesPipelines::TASK_NAME_IL
         pipelines_page.fill_task_name_field :ep, taskname
       end
@@ -325,8 +325,8 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created pipeline" do
-        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_EP, CloudBeesPipelines::CHOOSE_PIPELINE_IL
-        pipelines_page.choose_pipeline_from_list :ep
+        check_element_path :css, CloudBeesPipelines::PIPELINE_LIST_ITEM_EP, CloudBeesPipelines::PIPELINE_LIST_ITEM_IL
+        pipelines_page.select_pipeline_from_list :ep
       end
 
       step "Admin clicks on delete button" do

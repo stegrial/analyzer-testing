@@ -14,6 +14,16 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
+  after(:each) do
+    step "Remove created pipeline", settings('cloud_bees') do |data|
+      page.visit data['pipelines_page']
+      pipelines_page.find_pipeline_name_field :il, data['pipeline_name']
+      pipelines_page.select_pipeline_from_list :il
+      pipelines_page.delete_pipeline :il
+      pipelines_page.confirm_delete_pipeline :il
+    end
+  end
+
   after(:all) do
     Capybara.current_session.driver.quit
   end
@@ -69,7 +79,7 @@ describe 'Preconditions' do
         pipelines_page.click_new_task
       end
 
-      step "Admin fills the task name field", settings('cloud_bees')['task_name'] do |taskname|
+      step "Admin fills the task name field", "task_test_name" do |taskname|
         pipelines_page.fill_task_name_field taskname
       end
 
@@ -98,7 +108,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created pipeline" do
-        pipelines_page.choose_pipeline_from_list
+        pipelines_page.select_pipeline_from_list
       end
 
       step "Admin clicks on run pipeline button" do
@@ -127,30 +137,6 @@ describe 'Preconditions' do
 
       step "Admin confirm Completed task, clicks OK button" do
         pipelines_page.confirm_completed_task
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu
-      end
-
-      step "Admin chooses the Pipelines section in the Hamburger menu" do
-        global_page.click_pipelines
-      end
-
-      step "Admin fills the pipeline name field", settings('cloud_bees')['pipeline_name'] do |pipename|
-        pipelines_page.find_pipeline_name_field pipename
-      end
-
-      step "Admin clicks on new created pipeline" do
-        pipelines_page.choose_pipeline_from_list
-      end
-
-      step "Admin clicks on delete button" do
-        pipelines_page.delete_pipeline
-      end
-
-      step "Admin clicks on the OK button" do
-        pipelines_page.confirm_delete_pipeline
       end
 
       sleep 3
@@ -217,7 +203,7 @@ describe 'Preconditions' do
         pipelines_page.click_new_task
       end
 
-      step "Admin fills the task name field", settings('cloud_bees')['task_name'] do |taskname|
+      step "Admin fills the task name field", "task_test_name" do |taskname|
         check_element_path :xpath, CloudBeesPipelines::TASK_NAME_TA, CloudBeesPipelines::TASK_NAME_IL
         pipelines_page.fill_task_name_field taskname
       end
@@ -253,8 +239,8 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created pipeline" do
-        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_TA, CloudBeesPipelines::CHOOSE_PIPELINE_IL
-        pipelines_page.choose_pipeline_from_list
+        check_element_path :css, CloudBeesPipelines::PIPELINE_LIST_ITEM_TA, CloudBeesPipelines::PIPELINE_LIST_ITEM_IL
+        pipelines_page.select_pipeline_from_list
       end
 
       step "Admin clicks on run pipeline button" do
@@ -290,36 +276,6 @@ describe 'Preconditions' do
       step "Admin confirm Completed task, clicks OK button" do
         check_element_path :xpath, CloudBeesPipelines::CONFIRM_COMPLETED_TASK_TA, CloudBeesPipelines::CONFIRM_COMPLETED_TASK_IL
         pipelines_page.confirm_completed_task
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu
-      end
-
-      step "Admin chooses the Pipelines section in the Hamburger menu" do
-        check_element_path :css, CloudBeesGlobal::PIPELINES_SECTION_TA, CloudBeesGlobal::PIPELINES_SECTION_IL
-        global_page.click_pipelines
-      end
-
-      step "Admin fills the pipeline name field", settings('cloud_bees')['pipeline_name'] do |pipename|
-        check_element_path :xpath, CloudBeesPipelines::FIND_PIPELINE_FIELD_TA, CloudBeesPipelines::FIND_PIPELINE_FIELD_IL
-        pipelines_page.find_pipeline_name_field pipename
-      end
-
-      step "Admin clicks on new created pipeline" do
-        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_TA, CloudBeesPipelines::CHOOSE_PIPELINE_IL
-        pipelines_page.choose_pipeline_from_list
-      end
-
-      step "Admin clicks on delete button" do
-        check_element_path :xpath, CloudBeesPipelines::DELETE_PIPELINE_TA, CloudBeesPipelines::DELETE_PIPELINE_IL
-        pipelines_page.delete_pipeline
-      end
-
-      step "Admin clicks on the OK button" do
-        check_element_path :xpath, CloudBeesPipelines::CONFIRM_DELETE_PIPELINE_TA, CloudBeesPipelines::CONFIRM_DELETE_PIPELINE_IL
-        pipelines_page.confirm_delete_pipeline
       end
 
       sleep 3
@@ -388,7 +344,7 @@ describe 'Preconditions' do
         pipelines_page.click_new_task :ep
       end
 
-      step "Admin fills the task name field", settings('cloud_bees')['task_name'] do |taskname|
+      step "Admin fills the task name field", "task_test_name" do |taskname|
         check_element_path :xpath, CloudBeesPipelines::TASK_NAME_EP, CloudBeesPipelines::TASK_NAME_IL
         pipelines_page.fill_task_name_field :ep, taskname
       end
@@ -424,8 +380,8 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created pipeline" do
-        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_EP, CloudBeesPipelines::CHOOSE_PIPELINE_IL
-        pipelines_page.choose_pipeline_from_list :ep
+        check_element_path :css, CloudBeesPipelines::PIPELINE_LIST_ITEM_EP, CloudBeesPipelines::PIPELINE_LIST_ITEM_IL
+        pipelines_page.select_pipeline_from_list :ep
       end
 
       step "Admin clicks on run pipeline button" do
@@ -461,36 +417,6 @@ describe 'Preconditions' do
       step "Admin confirm Completed task, clicks OK button" do
         check_element_path :xpath, CloudBeesPipelines::CONFIRM_COMPLETED_TASK_EP, CloudBeesPipelines::CONFIRM_COMPLETED_TASK_IL
         pipelines_page.confirm_completed_task :ep
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu :ep
-      end
-
-      step "Admin chooses the Pipelines section in the Hamburger menu" do
-        check_element_path :css, CloudBeesGlobal::PIPELINES_SECTION_EP, CloudBeesGlobal::PIPELINES_SECTION_IL
-        global_page.click_pipelines :ep
-      end
-
-      step "Admin fills the pipeline name field", settings('cloud_bees')['pipeline_name'] do |pipename|
-        check_element_path :xpath, CloudBeesPipelines::FIND_PIPELINE_FIELD_EP, CloudBeesPipelines::FIND_PIPELINE_FIELD_IL
-        pipelines_page.find_pipeline_name_field :ep, pipename
-      end
-
-      step "Admin clicks on new created pipeline" do
-        check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_EP, CloudBeesPipelines::CHOOSE_PIPELINE_IL
-        pipelines_page.choose_pipeline_from_list :ep
-      end
-
-      step "Admin clicks on delete button" do
-        check_element_path :xpath, CloudBeesPipelines::DELETE_PIPELINE_EP, CloudBeesPipelines::DELETE_PIPELINE_IL
-        pipelines_page.delete_pipeline :ep
-      end
-
-      step "Admin clicks on the OK button" do
-        check_element_path :xpath, CloudBeesPipelines::CONFIRM_DELETE_PIPELINE_EP, CloudBeesPipelines::CONFIRM_DELETE_PIPELINE_IL
-        pipelines_page.confirm_delete_pipeline :ep
       end
 
       sleep 3

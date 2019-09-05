@@ -367,7 +367,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created application" do
-        check_element_path :css, CloudBeesApps::APPLICATION_LIST_ITEM_TA, CloudBeesApps::APPLICATION_LIST_ITEM_IL
+        check_element_path :css, CloudBeesApps::APPLICATION_LIST_ITEM_EP, CloudBeesApps::APPLICATION_LIST_ITEM_IL
         apps_page.select_app_list_item :ep
       end
 
