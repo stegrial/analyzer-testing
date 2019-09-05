@@ -21,7 +21,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', il1: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -49,39 +49,39 @@ describe 'Preconditions' do
         resources_page.set_resource_name name
       end
 
-      step "Admin set description of new resource input", 'test' do |value|
+      step "Admin set description of new resource input", '123' do |value|
         resources_page.set_description_of_resource value
       end
 
-      step "Admin set host of new resource input" , 'test' do |value|
+      step "Admin set host of new resource input" , '123' do |value|
         resources_page.set_host_of_resource value
       end
 
-      step "Admin set port of new resource input" , 'test' do |value|
+      step "Admin set port of new resource input" , '123' do |value|
         resources_page.set_port_of_resource value
       end
 
-      step "Admin set pools of new resource input" , 'test' do |value|
+      step "Admin set pools of new resource input" , '123' do |value|
         resources_page.set_pools_of_resource value
       end
 
-      step "Admin set shell of new resource input" , 'test' do |value|
+      step "Admin set shell of new resource input" , '123' do |value|
         resources_page.set_shell_of_resource value
       end
 
-      step "Admin set step limit of new resource input" , 'test' do |value|
+      step "Admin set step limit of new resource input" , '123' do |value|
         resources_page.set_step_limit_of_resource value
       end
 
-      step "Admin set cache dirictory of new resource input" , 'test' do |value|
+      step "Admin set cache directory of new resource input" , '123' do |value|
         resources_page.set_cache_directory_of_resource value
       end
 
-      step "Admin set cache tags of new resource input" , 'test' do |value|
+      step "Admin set cache tags of new resource input" , '123' do |value|
         resources_page.set_tags_of_resource value
       end
-
-      step "Admin clicks ok button " do
+      sleep 3
+      step "Admin clicks ok button" do
         resources_page.click_ok_button
       end
 
@@ -102,13 +102,10 @@ describe 'Preconditions' do
         resources_page.click_to_delete_new_resource
       end
 
-      # COUlDNT switch to frame
-
-
-
       step "Admin clicks ok for delete resource " do
         resources_page.click_ok_to_delete_new_resource
       end
+      sleep 4
     end
 
     scenario 'Searching IL', il: true do
@@ -146,42 +143,42 @@ describe 'Preconditions' do
         resources_page.set_resource_name name
       end
 
-      step "Admin set description of new resource input", 'test' do |value|
+      step "Admin set description of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_DESCRIPTION_TA, CloudBeesResources::RESOURCE_DESCRIPTION_IL }
         resources_page.set_description_of_resource value
       end
 
-      step "Admin set host of new resource input", 'test' do |value|
+      step "Admin set host of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_HOST_NAME_TA, CloudBeesResources::RESOURCE_HOST_NAME_IL }
         resources_page.set_host_of_resource value
       end
 
-      step "Admin set port of new resource input", 'test' do |value|
+      step "Admin set port of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_PORT_TA, CloudBeesResources::RESOURCE_PORT_IL }
         resources_page.set_port_of_resource value
       end
 
-      step "Admin set pools of new resource input", 'test' do |value|
+      step "Admin set pools of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_POOLS_TA, CloudBeesResources::RESOURCE_POOLS_IL }
         resources_page.set_pools_of_resource value
       end
 
-      step "Admin set shell of new resource input", 'test' do |value|
+      step "Admin set shell of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_SHELL_TA, CloudBeesResources::RESOURCE_SHELL_IL }
         resources_page.set_shell_of_resource value
       end
 
-      step "Admin set step limit of new resource input", 'test' do |value|
+      step "Admin set step limit of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_STEP_LIMIT_TA, CloudBeesResources::RESOURCE_STEP_LIMIT_IL }
         resources_page.set_step_limit_of_resource value
       end
 
-      step "Admin set cache dirictory of new resource input", 'test' do |value|
+      step "Admin set cache dirictory of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_CACHE_DIRECTORY_TA, CloudBeesResources::RESOURCE_CACHE_DIRECTORY_IL }
         resources_page.set_cache_directory_of_resource value
       end
 
-      step "Admin set cache tags of new resource input", 'test' do |value|
+      step "Admin set cache tags of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_TAGS_TA, CloudBeesResources::RESOURCE_TAGS_IL }
         resources_page.set_tags_of_resource value
       end
@@ -242,7 +239,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Add New Resource dropdown" do
-        within_frame(0) { check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_EP, CloudBeesResources::ADD_NEW_RESOURCE_IL }
+        # within_frame(0) { check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_EP, CloudBeesResources::ADD_NEW_RESOURCE_IL }
         resources_page.click_add_new_resource :ep
       end
       step "Admin clicks create new resource button" do
@@ -256,42 +253,42 @@ describe 'Preconditions' do
         resources_page.set_resource_name :ep, name
       end
 
-      step "Admin set description of new resource input", 'test' do |value|
+      step "Admin set description of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_DESCRIPTION_EP, CloudBeesResources::RESOURCE_DESCRIPTION_IL }
         resources_page.set_description_of_resource :ep, value
       end
 
-      step "Admin set host of new resource input", 'test' do |value|
+      step "Admin set host of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_HOST_NAME_EP, CloudBeesResources::RESOURCE_HOST_NAME_IL }
         resources_page.set_host_of_resource :ep, value
       end
 
-      step "Admin set port of new resource input", 'test' do |value|
+      step "Admin set port of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_PORT_EP, CloudBeesResources::RESOURCE_PORT_IL }
         resources_page.set_port_of_resource  :ep , value
       end
 
-      step "Admin set pools of new resource input", 'test' do |value|
+      step "Admin set pools of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_POOLS_EP, CloudBeesResources::RESOURCE_POOLS_IL }
         resources_page.set_pools_of_resource :ep, value
       end
 
-      step "Admin set shell of new resource input", 'test' do |value|
+      step "Admin set shell of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_SHELL_EP, CloudBeesResources::RESOURCE_SHELL_IL }
         resources_page.set_shell_of_resource :ep, value
       end
 
-      step "Admin set step limit of new resource input", 'test' do |value|
+      step "Admin set step limit of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_STEP_LIMIT_EP, CloudBeesResources::RESOURCE_STEP_LIMIT_IL }
         resources_page.set_step_limit_of_resource :ep, value
       end
 
-      step "Admin set cache dirictory of new resource input", 'test' do |value|
+      step "Admin set cache dirictory of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_CACHE_DIRECTORY_EP, CloudBeesResources::RESOURCE_CACHE_DIRECTORY_IL }
         resources_page.set_cache_directory_of_resource :ep, value
       end
 
-      step "Admin set cache tags of new resource input", 'test' do |value|
+      step "Admin set cache tags of new resource input", '123' do |value|
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_TAGS_EP, CloudBeesResources::RESOURCE_TAGS_IL }
         resources_page.set_tags_of_resource :ep, value
       end
