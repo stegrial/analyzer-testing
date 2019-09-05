@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-class CloudBeesReleasesCalandar
+class CloudBeesReleasesCalendar
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
@@ -14,9 +14,14 @@ class CloudBeesReleasesCalandar
   SEARCH_TIMEZONE_DROPDOWN_TA = "cloud_bees:releases_calendar:search_timezone_dropdown"
   SEARCH_TIMEZONE_DROPDOWN_EP = "EP:cloud_bees:releases_calendar:search_timezone_dropdown"
 
-  SELECT_KIEV_TIMEZONE_IL = "//span[contains(@title, '(GMT+03:00 EEST) Europe/Kiev')]"
-  SELECT_KIEV_TIMEZONE_TA = "cloud_bees:releases_calendar:select_timezone"
-  SELECT_KIEV_TIMEZONE_EP = "EP:cloud_bees:releases_calendar:select_timezone"
+  def timezone_name(locator, timezone)
+    case locator
+      when :il then "//span[contains(@title, '#{timezone}')]"
+      when :ta then "cloud_bees:releases_calendar:select_timezone:#{timezone.tr('^A-Za-z0-9_', '')}"
+      when :ep then "EP:cloud_bees:releases_calendar:select_timezone:#{timezone.tr('^A-Za-z0-9_', '')}"
+      else p 'Locator type is not set'
+    end
+  end
 
   OK_BUTTON_MODAL_IL = ".at-ok-btn"
   OK_BUTTON_MODAL_TA = "cloud_bees:releases_calendar:ok_btn"
@@ -41,16 +46,16 @@ class CloudBeesReleasesCalandar
     find(:css, ta(SELECT_USER_TIMEZONE_TA, SELECT_USER_TIMEZONE_IL)).click
   end
 
-  def set_into_search_timezone_dropdown(key = nil)
-    return find(ta(SEARCH_TIMEZONE_DROPDOWN_EP)).set('Kiev') if key == :ep
-    return find(:xpath, SEARCH_TIMEZONE_DROPDOWN_IL).set('Kiev') if key == :il
-    find(:xpath, ta(SEARCH_TIMEZONE_DROPDOWN_TA, SEARCH_TIMEZONE_DROPDOWN_IL)).set('Kiev')
+  def set_timezone_search_value(key = nil, value)
+    return find(ta(SEARCH_TIMEZONE_DROPDOWN_EP)).set(value) if key == :ep
+    return find(:xpath, SEARCH_TIMEZONE_DROPDOWN_IL).set(value) if key == :il
+    find(:xpath, ta(SEARCH_TIMEZONE_DROPDOWN_TA, SEARCH_TIMEZONE_DROPDOWN_IL)).set(value)
   end
 
-  def click_to_select_timezone(key = nil)
-    return find(ta(SELECT_KIEV_TIMEZONE_EP)).click if key == :ep
-    return find(:xpath, SELECT_KIEV_TIMEZONE_IL).click if key == :il
-    find(:xpath, ta(SELECT_KIEV_TIMEZONE_TA, SELECT_KIEV_TIMEZONE_IL)).click
+  def select_timezone(key = nil, timezone)
+    return find(ta(timezone_name(:ep, timezone))).click if key == :ep
+    return find(:xpath, timezone_name(:il, timezone)).click if key == :il
+    find(:xpath, ta(timezone_name(:ta, timezone), timezone_name(:il, timezone))).click
   end
 
   def click_ok_button(key = nil)

@@ -11,12 +11,12 @@ describe 'Preconditions' do
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
-
   end
 
   after(:all) do
     Capybara.current_session.driver.quit
   end
+
   feature 'TA-1016 CloudBees - Creating new resource' do
 
     # Initial locators with Recording
@@ -26,7 +26,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field credentials['username']
         login_page.fill_pass_field credentials['pass']
         login_page.click_sign_in_button
@@ -36,26 +36,27 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin clicks Add button for creating new resource" do
-        resources_page.click_to_add_new_resource
+      step "Admin clicks Add New Resource dropdown" do
+        resources_page.click_add_new_resource
       end
+
       step "Admin clicks create new resource button" do
         resources_page.click_create_resource_btn
       end
 
-      step "Admin set name of new resource input" do
-        resources_page.set_name_of_resource
+      step "Admin enters a new resource name", 'NewResourceName' do |name|
+        resources_page.set_resource_name name
       end
 
-      sleep 4
+      sleep 3
     end
 
-    scenario 'Searching IL', il1: true do
+    scenario 'Searching IL', il: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field  credentials['username']
 
@@ -70,20 +71,22 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin clicks Add button for creating new resource" do
-        check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_TA, CloudBeesResources::ADD_NEW_RESOURCE_IL
-        resources_page.click_to_add_new_resource
+      step "Admin clicks Add New Resource dropdown" do
+        within_frame(0) { check_element_path  :xpath, CloudBeesResources::ADD_NEW_RESOURCE_TA, CloudBeesResources::ADD_NEW_RESOURCE_IL }
+        resources_page.click_add_new_resource
       end
 
       step "Admin clicks create new resource button" do
-        check_element_path :xpath, CloudBeesResources::CREATE_RESOURCE_BTN_TA, CloudBeesResources::CREATE_RESOURCE_BTN_IL
+        within_frame(0) { check_element_path :xpath, CloudBeesResources::CREATE_RESOURCE_BTN_TA, CloudBeesResources::CREATE_RESOURCE_BTN_IL }
         resources_page.click_create_resource_btn
       end
 
-      step "Admin set name of new resource input" do
-        check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_TA, CloudBeesResources::RESOURCE_NAME_IL
-        resources_page.set_name_of_resource
+      step "Admin enters a new resource name", 'NewResourceName' do |name|
+        within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_TA, CloudBeesResources::RESOURCE_NAME_IL }
+        resources_page.set_resource_name name
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -93,7 +96,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field :ep,  credentials['username']
 
@@ -108,21 +111,22 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin clicks Add button for creating new resource" do
-        check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_EP, CloudBeesResources::ADD_NEW_RESOURCE_IL
-        resources_page.click_to_add_new_resource :ep
+      step "Admin clicks Add New Resource dropdown" do
+        within_frame(0) { check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_EP, CloudBeesResources::ADD_NEW_RESOURCE_IL }
+        resources_page.click_add_new_resource :ep
       end
 
       step "Admin clicks create new resource button" do
-        check_element_path :xpath, CloudBeesResources::CREATE_RESOURCE_BTN_EP, CloudBeesResources::CREATE_RESOURCE_BTN_IL
+        within_frame(0) { check_element_path :xpath, CloudBeesResources::CREATE_RESOURCE_BTN_EP, CloudBeesResources::CREATE_RESOURCE_BTN_IL }
         resources_page.click_create_resource_btn :ep
       end
 
-      step "Admin set name of new resource input" do
-        check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_EP, CloudBeesResources::RESOURCE_NAME_IL
-        resources_page.set_name_of_resource :ep
+      step "Admin enters a new resource name", 'NewResourceName' do |name|
+        within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_EP, CloudBeesResources::RESOURCE_NAME_IL }
+        resources_page.set_resource_name :ep, name
       end
 
+      sleep 3
     end
 
     scenario 'Recording debug', record_debug: true do
@@ -130,7 +134,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field :il, credentials['username']
         login_page.fill_pass_field :il, credentials['pass']
         login_page.click_sign_in_button :il
@@ -140,15 +144,15 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin clicks Add button for creating new resource" do
-        resources_page.click_to_add_new_resource :il
+      step "Admin clicks Add New Resource dropdown" do
+        resources_page.click_add_new_resource :il
       end
       step "Admin clicks create new resource button" do
         resources_page.click_create_resource_btn :il
       end
 
-      step "Admin set name of new resource input" do
-        resources_page.set_name_of_resource
+      step "Admin enters a new resource name", 'NewResourceName' do |name|
+        resources_page.set_resource_name name
       end
 
       sleep 3
@@ -159,7 +163,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field :il, credentials['username']
         login_page.fill_pass_field :il, credentials['pass']
         login_page.click_sign_in_button :il
@@ -168,17 +172,18 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin clicks Add button for creating new resource" do
-        resources_page.click_to_add_new_resource :il
+      step "Admin clicks Add New Resource dropdown" do
+        resources_page.click_add_new_resource :il
       end
       step "Admin clicks create new resource button" do
         resources_page.click_create_resource_btn :il
       end
 
-      step "Admin set name of new resource input" do
-        check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_TA, CloudBeesResources::RESOURCE_NAME_IL
-        resources_page.set_name_of_resource
+      step "Admin enters a new resource name", 'NewResourceName' do |name|
+        resources_page.set_resource_name name
       end
+
+      sleep 3
     end
   end
 end

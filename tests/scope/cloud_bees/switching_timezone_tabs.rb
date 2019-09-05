@@ -5,7 +5,7 @@ required_relative_all "/pages/cloud_bees_pages/*.rb"
 
 global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
-releases_calendar = CloudBeesReleasesCalandar.new
+releases_calendar = CloudBeesReleasesCalendar.new
 
 describe 'Preconditions' do
 
@@ -40,15 +40,15 @@ describe 'Preconditions' do
        releases_calendar.click_to_timezone_dropdown
       end
 
-      step "Admin set kiev in search timezone dropdown " do
-        releases_calendar.set_into_search_timezone_dropdown
+      step "Admin enters a value in the timezone search field", 'Kiev' do |value|
+        releases_calendar.set_timezone_search_value value
       end
 
-      step "Admin clicks for select timezone" do
-        releases_calendar.click_to_select_timezone
+      step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
+        releases_calendar.select_timezone timezone
       end
 
-      step "Admin clicks ok button" do
+      step "Admin clicks on the OK button" do
         releases_calendar.click_ok_button
       end
 
@@ -56,11 +56,11 @@ describe 'Preconditions' do
         releases_calendar.click_week_tab_button
       end
 
-      step "Admin clicks on day tabk" do
+      step "Admin clicks on the day tab" do
         releases_calendar.click_day_tab_button
       end
 
-      step "Admin clicks on month tab" do
+      step "Admin clicks on the month tab" do
         releases_calendar.click_month_tab_button
       end
 
@@ -89,37 +89,37 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on timezone dropdown" do
-        check_element_path :css, CloudBeesReleasesCalandar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalandar::SELECT_USER_TIMEZONE_IL
+        check_element_path :css, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_IL
         releases_calendar.click_to_timezone_dropdown
       end
 
-      step "Admin set kiev in search timezone dropdown " do
-        check_element_path :xpath, CloudBeesReleasesCalandar::SEARCH_TIMEZONE_DROPDOWN_TA, CloudBeesReleasesCalandar::SEARCH_TIMEZONE_DROPDOWN_IL
-        releases_calendar.set_into_search_timezone_dropdown
+      step "Admin enters a value in the timezone search field", 'Kiev' do |value|
+        check_element_path :xpath, CloudBeesReleasesCalendar::SEARCH_TIMEZONE_DROPDOWN_TA, CloudBeesReleasesCalendar::SEARCH_TIMEZONE_DROPDOWN_IL
+        releases_calendar.set_timezone_search_value value
       end
 
-      step "Admin clicks for select timezone" do
-        check_element_path :xpath, CloudBeesReleasesCalandar::SELECT_KIEV_TIMEZONE_TA, CloudBeesReleasesCalandar::SELECT_KIEV_TIMEZONE_IL
-        releases_calendar.click_to_select_timezone
+      step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
+        check_element_path :xpath, releases_calendar.timezone_name(:ta, timezone), releases_calendar.timezone_name(:il, timezone)
+        releases_calendar.select_timezone timezone
       end
 
-      step "Admin clicks ok button" do
-        check_element_path :css, CloudBeesReleasesCalandar::OK_BUTTON_MODAL_TA, CloudBeesReleasesCalandar::OK_BUTTON_MODAL_IL
+      step "Admin clicks on the OK button" do
+        check_element_path :css, CloudBeesReleasesCalendar::OK_BUTTON_MODAL_TA, CloudBeesReleasesCalendar::OK_BUTTON_MODAL_IL
         releases_calendar.click_ok_button
       end
 
-      step "Admin clicks on week tab" do
-        check_element_path :css, CloudBeesReleasesCalandar::WEEK_TAB_TA, CloudBeesReleasesCalandar::WEEK_TAB_IL
+      step "Admin clicks on the week tab" do
+        check_element_path :css, CloudBeesReleasesCalendar::WEEK_TAB_TA, CloudBeesReleasesCalendar::WEEK_TAB_IL
         releases_calendar.click_week_tab_button
       end
 
-      step "Admin clicks on day tabk" do
-        check_element_path :css, CloudBeesReleasesCalandar::DAY_TAB_TA, CloudBeesReleasesCalandar::DAY_TAB_IL
+      step "Admin clicks on the day tab" do
+        check_element_path :css, CloudBeesReleasesCalendar::DAY_TAB_TA, CloudBeesReleasesCalendar::DAY_TAB_IL
         releases_calendar.click_day_tab_button
       end
 
-      step "Admin clicks on month tab" do
-        check_element_path :css, CloudBeesReleasesCalandar::MONTH_TAB_TA, CloudBeesReleasesCalandar::MONTH_TAB_IL
+      step "Admin clicks on the month tab" do
+        check_element_path :css, CloudBeesReleasesCalendar::MONTH_TAB_TA, CloudBeesReleasesCalendar::MONTH_TAB_IL
         releases_calendar.click_month_tab_button
       end
     end
@@ -148,37 +148,37 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on timezone dropdown" do
-        check_element_path :css, CloudBeesReleasesCalandar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalandar::SELECT_USER_TIMEZONE_IL
+        check_element_path :css, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_IL
         releases_calendar.click_to_timezone_dropdown :ep
       end
 
-      step "Admin set kiev in search timezone dropdown " do
-        check_element_path :xpath, CloudBeesReleasesCalandar::SEARCH_TIMEZONE_DROPDOWN_TA, CloudBeesReleasesCalandar::SEARCH_TIMEZONE_DROPDOWN_IL
-        releases_calendar.set_into_search_timezone_dropdown :ep
+      step "Admin enters a value in the timezone search field", 'Kiev' do |value|
+        check_element_path :xpath, CloudBeesReleasesCalendar::SEARCH_TIMEZONE_DROPDOWN_TA, CloudBeesReleasesCalendar::SEARCH_TIMEZONE_DROPDOWN_IL
+        releases_calendar.set_timezone_search_value :ep, value
       end
 
-      step "Admin clicks for select timezone" do
-        check_element_path :xpath, CloudBeesReleasesCalandar::SELECT_KIEV_TIMEZONE_TA, CloudBeesReleasesCalandar::SELECT_KIEV_TIMEZONE_IL
-        releases_calendar.click_to_select_timezone :ep
+      step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
+        check_element_path :xpath, releases_calendar.timezone_name(:ta, timezone), releases_calendar.timezone_name(:il, timezone)
+        releases_calendar.select_timezone :ep, timezone
       end
 
-      step "Admin clicks ok button" do
-        check_element_path :css, CloudBeesReleasesCalandar::OK_BUTTON_MODAL_TA, CloudBeesReleasesCalandar::OK_BUTTON_MODAL_IL
+      step "Admin clicks on the OK button" do
+        check_element_path :css, CloudBeesReleasesCalendar::OK_BUTTON_MODAL_TA, CloudBeesReleasesCalendar::OK_BUTTON_MODAL_IL
         releases_calendar.click_ok_button :ep
       end
 
-      step "Admin clicks on week tab" do
-        check_element_path :css, CloudBeesReleasesCalandar::WEEK_TAB_TA, CloudBeesReleasesCalandar::WEEK_TAB_IL
+      step "Admin clicks on the week tab" do
+        check_element_path :css, CloudBeesReleasesCalendar::WEEK_TAB_TA, CloudBeesReleasesCalendar::WEEK_TAB_IL
         releases_calendar.click_week_tab_button :ep
       end
 
-      step "Admin clicks on day tabk" do
-        check_element_path :css, CloudBeesReleasesCalandar::DAY_TAB_TA, CloudBeesReleasesCalandar::DAY_TAB_IL
+      step "Admin clicks on the day tab" do
+        check_element_path :css, CloudBeesReleasesCalendar::DAY_TAB_TA, CloudBeesReleasesCalendar::DAY_TAB_IL
         releases_calendar.click_day_tab_button :ep
       end
 
-      step "Admin clicks on month tab" do
-        check_element_path :css, CloudBeesReleasesCalandar::MONTH_TAB_TA, CloudBeesReleasesCalandar::MONTH_TAB_IL
+      step "Admin clicks on the month tab" do
+        check_element_path :css, CloudBeesReleasesCalendar::MONTH_TAB_TA, CloudBeesReleasesCalendar::MONTH_TAB_IL
         releases_calendar.click_month_tab_button :ep
       end
 
