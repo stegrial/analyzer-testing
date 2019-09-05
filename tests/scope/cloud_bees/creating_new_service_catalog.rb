@@ -8,13 +8,9 @@ catalogs_page = CloudBeesCatalogs.new
 
 # This tests runs when the vpn is ON
 #
-#
-#
-#
 #  TA-1004 - sleeps delivered due to bug
 #
-#
-#
+
 #
 
 describe 'Preconditions' do
@@ -69,8 +65,8 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_btn
       end
 
-      step "User set name new catalog" do
-        catalogs_page.set_catalog_name
+      step "User set name new catalog",  'new_name_catalog' do |value|
+        catalogs_page.set_catalog_name value
       end
 
       step "User clicks to open project dropdown of new catalog" do
@@ -86,21 +82,21 @@ describe 'Preconditions' do
         catalogs_page.click_ok_in_modal_btn
       end
 
-      step "User set name in form" do
-        catalogs_page.set_name_in_form
+      step "User set name in form", 'new_form_name' do |value|
+        catalogs_page.set_name_in_form value
       end
 
-      step "User set description in form" do
-        catalogs_page.set_description_in_form
+      step "User set description in form", 'description' do |value|
+        catalogs_page.set_description_in_form value
       end
 
       step "User clicks add another button" do
         catalogs_page.click_add_another
       end
 
-      step "User set name in form" do
+      step "User set name in form", 'new_form_name2' do |value|
         sleep 3
-        catalogs_page.set_name_in_form2
+        catalogs_page.set_name_in_form2 value
       end
 
       step "User clicks define button" do
@@ -177,9 +173,9 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_btn
       end
 
-      step "User set name new catalog" do
+      step "User set name new catalog",  'new_name_catalog' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FLD_TA, CloudBeesCatalogs::CATALOGS_NAME_FLD_IL
-        catalogs_page.set_catalog_name
+        catalogs_page.set_catalog_name value
       end
 
       step "User clicks to open project dropdown of new catalog" do
@@ -198,14 +194,14 @@ describe 'Preconditions' do
         catalogs_page.click_ok_in_modal_btn
       end
 
-      step "User set name in form" do
+      step "User set name in form", 'new_form_name' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_TA, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
-        catalogs_page.set_name_in_form
+        catalogs_page.set_name_in_form value
       end
 
-      step "User set description in form" do
+      step "User set description in form", 'description' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_TA, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_IL
-        catalogs_page.set_description_in_form
+        catalogs_page.set_description_in_form  value
       end
 
       step "User clicks add another button" do
@@ -213,10 +209,10 @@ describe 'Preconditions' do
         catalogs_page.click_add_another
       end
 
-      step "User set name in form" do
+      step "User set name in form", 'new_form_name2' do |value|
         # sleep 3
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_TA, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
-        catalogs_page.set_name_in_form2
+        catalogs_page.set_name_in_form2 value
       end
 
       step "User clicks define button" do
@@ -305,9 +301,9 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_btn :ep
       end
 
-      step "User set name new catalog" do
+      step "User set name new catalog",  'new_name_catalog' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FLD_EP, CloudBeesCatalogs::CATALOGS_NAME_FLD_IL
-        catalogs_page.set_catalog_name :ep
+        catalogs_page.set_catalog_name :ep, value
       end
 
       step "User clicks to open project dropdown of new catalog" do
@@ -326,14 +322,14 @@ describe 'Preconditions' do
         catalogs_page.click_ok_in_modal_btn :ep
       end
 
-      step "User set name in form" do
+      step "User set name in form", 'new_form_name' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_EP, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
-        catalogs_page.set_name_in_form :ep
+        catalogs_page.set_name_in_form :ep, value
       end
 
-      step "User set description in form" do
+      step "User set description in form", description do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_EP, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_IL
-        catalogs_page.set_description_in_form :ep
+        catalogs_page.set_description_in_form :ep, value
       end
 
       step "User clicks add another button" do
@@ -341,10 +337,10 @@ describe 'Preconditions' do
         catalogs_page.click_add_another :ep
       end
 
-      step "User set name in form" do
+      step "User set name in form", 'new_form_name2' do |value|
         # sleep 3
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_EP, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
-        catalogs_page.set_name_in_form2 :ep
+        catalogs_page.set_name_in_form2 :ep, value
       end
 
       step "User clicks define button" do

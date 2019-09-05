@@ -57,8 +57,8 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_btn
       end
 
-      step "User set name new catalog" do
-        catalogs_page.set_catalog_name
+      step "User set name new catalog", 'new_name_catalog' do |value|
+        catalogs_page.set_catalog_name value
       end
 
       step "User clicks to open project dropdown of new catalog" do
@@ -119,9 +119,9 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_btn
       end
 
-      step "User set name new catalog" do
+      step "User set name new catalog", 'new_name_catalog' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FLD_TA, CloudBeesCatalogs::CATALOGS_NAME_FLD_IL
-        catalogs_page.set_catalog_name
+        catalogs_page.set_catalog_name value
       end
 
       step "User clicks to open project dropdown of new catalog" do
@@ -190,9 +190,9 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_btn :ep
       end
 
-      step "User set name new catalog" do
+      step "User set name new catalog", 'new_name_catalog' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FLD_EP, CloudBeesCatalogs::CATALOGS_NAME_FLD_IL
-        catalogs_page.set_catalog_name :ep
+        catalogs_page.set_catalog_name :ep, value
       end
 
       step "User clicks to open project dropdown of new catalog" do
