@@ -81,9 +81,9 @@ class CloudBeesComponents
   CLOSE_PARAMETERS_TA = 'cloud_bees:components:close_parameters'
   CLOSE_PARAMETERS_EP = 'EP:cloud_bees:components:close_parameters'
 
-  CHOOSE_COMPONENT_IL = "//div[contains(@class, 'at-master-component-list-item-name') and .//div[@title='compTest']]"
-  CHOOSE_COMPONENT_TA = 'cloud_bees:components:choose_component'
-  CHOOSE_COMPONENT_EP = 'EP:cloud_bees:components:choose_component'
+  MASTER_COMPONENT_LIST_IL = ".at-master-component-list-item"
+  MASTER_COMPONENT_LIST_TA = 'cloud_bees:components:master_component_list'
+  MASTER_COMPONENT_LIST_EP = 'EP:cloud_bees:components:master_component_list'
 
   DELETE_COMPONENT_IL = "//span[text()='Delete']"
   DELETE_COMPONENT_TA = 'cloud_bees:components:delete_component'
@@ -207,10 +207,10 @@ class CloudBeesComponents
     find(:xpath, ta(CLOSE_PARAMETERS_TA, CLOSE_PARAMETERS_IL)).click
   end
 
-  def choose_component(key = nil)
-    return find(ta(CHOOSE_COMPONENT_EP)).click if key == :ep
-    return find(:xpath, CHOOSE_COMPONENT_IL).click if key == :il
-    find(:xpath, ta(CHOOSE_COMPONENT_TA, CHOOSE_COMPONENT_IL)).click
+  def select_master_component_from_list(key = nil)
+    return find(ta(MASTER_COMPONENT_LIST_EP)).click if key == :ep
+    return find(:css, MASTER_COMPONENT_LIST_IL).click if key == :il
+    find(:css, ta(MASTER_COMPONENT_LIST_TA, MASTER_COMPONENT_LIST_IL)).click
   end
 
   def click_delete_component(key = nil)

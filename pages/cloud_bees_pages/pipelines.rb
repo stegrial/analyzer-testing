@@ -57,9 +57,9 @@ class CloudBeesPipelines
   FIND_PIPELINE_FIELD_TA = 'cloud_bees:pipeline:find_pipeline_field'
   FIND_PIPELINE_FIELD_EP = 'EP:cloud_bees:pipeline:find_pipeline_field'
 
-  CHOOSE_PIPELINE_IL = "//div[contains(@class, 'object ') and .//a[@title='pipeTest']]"
-  CHOOSE_PIPELINE_TA = 'cloud_bees:pipeline:choose_pipeline'
-  CHOOSE_PIPELINE_EP = 'EP:cloud_bees:pipeline:choose_pipeline'
+  PIPELINE_LIST_ITEM_IL = ".at-object-list-row"
+  PIPELINE_LIST_ITEM_TA = 'cloud_bees:pipeline:pipeline_list_item'
+  PIPELINE_LIST_ITEM_EP = 'EP:cloud_bees:pipeline:pipeline_list_item'
 
   DELETE_PIPELINE_IL = "//span[text()='Delete']"
   DELETE_PIPELINE_TA = 'cloud_bees:pipeline:delete_pipeline'
@@ -175,10 +175,10 @@ class CloudBeesPipelines
     find(:xpath, ta(FIND_PIPELINE_FIELD_TA, FIND_PIPELINE_FIELD_IL)).set(pipename)
   end
 
-  def choose_pipeline_from_list(key = nil)
-    return find(ta(CHOOSE_PIPELINE_EP)).click if key == :ep
-    return find(:xpath, CHOOSE_PIPELINE_IL).click if key == :il
-    find(:xpath, ta(CHOOSE_PIPELINE_TA, CHOOSE_PIPELINE_IL)).click
+  def select_pipeline_from_list(key = nil)
+    return find(ta(PIPELINE_LIST_ITEM_EP)).click if key == :ep
+    return find(:css, PIPELINE_LIST_ITEM_IL).click if key == :il
+    find(:css, ta(PIPELINE_LIST_ITEM_TA, PIPELINE_LIST_ITEM_IL)).click
   end
 
   def delete_pipeline(key = nil)

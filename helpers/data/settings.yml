@@ -64,10 +64,8 @@ cloud_bees:
   user_email: 'qa_automation@gmail.com'
   user_password: '1111'
   app_name: 'application_test_name'
-  pipeline_name: 'pipeTest'
-  task_name: 'taskTest'
-  process_name: 'processTest'
-  step_name: 'stepTest'
+  env_name: 'envName'
+  pipeline_name: 'pipeline_test_name'
 
 24timezones:
   page: 'https://24timezones.com/worldmap'

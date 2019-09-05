@@ -103,12 +103,6 @@ class CloudBeesPipelinesRuns
     find(:css, ta(APPLY_RUN_STATUS_TA, APPLY_RUN_STATUS_IL)).click
   end
 
-  def choose_pipeline_from_list(key = nil)
-    return find(ta(CHOOSE_PIPELINE_EP)).click if key == :ep
-    return find(:xpath, CHOOSE_PIPELINE_IL).click if key == :il
-    find(:xpath, ta(CHOOSE_PIPELINE_TA, CHOOSE_PIPELINE_IL)).click
-  end
-
   def click_multi_action_menu(key = nil)
     return find(ta(FIRST_MULTI_MENU_EP)).click if key == :ep
     return find(:xpath, FIRST_MULTI_MENU_IL).click if key == :il

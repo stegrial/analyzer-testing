@@ -14,6 +14,16 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
+  after(:each) do
+    step "Remove created application", settings('cloud_bees') do |data|
+      page.visit data['applications_page']
+      apps_page.find_application_name_field :il, data['app_name']
+      apps_page.select_app_list_item :il
+      apps_page.delete_application :il
+      apps_page.confirm_delete_application :il
+    end
+  end
+
   after(:all) do
     Capybara.current_session.driver.quit
   end
@@ -73,7 +83,7 @@ describe 'Preconditions' do
         apps_page.create_new_component
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
+      step "Admin fills the component name field", "component_test_name" do |compname|
         apps_page.fill_component_name_field compname
       end
 
@@ -89,7 +99,7 @@ describe 'Preconditions' do
         apps_page.select_ec_artifact
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
         apps_page.fill_artifact_name_field artname
       end
 
@@ -105,7 +115,7 @@ describe 'Preconditions' do
         apps_page.create_new_component_processes
       end
 
-      step "Admin fills the process name field", settings('cloud_bees')['process_name'] do |processname|
+      step "Admin fills the process name field", "process_test_name" do |processname|
         apps_page.fill_process_name_field processname
       end
 
@@ -133,7 +143,7 @@ describe 'Preconditions' do
         apps_page.click_on_new_step
       end
 
-      step "Admin fills the process name field", settings('cloud_bees')['step_name'] do |stepname|
+      step "Admin fills the process name field", "step_test_name" do |stepname|
         apps_page.fill_step_name_field stepname
       end
 
@@ -163,30 +173,6 @@ describe 'Preconditions' do
 
       step "Admin confirm delete Component Step" do
         apps_page.confirm_delete_component_step
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu
-      end
-
-      step "Admin chooses the Applications section in the Hamburger menu" do
-        global_page.click_applications
-      end
-
-      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        apps_page.find_application_name_field appname
-      end
-
-      step "Admin clicks on new created application" do
-        apps_page.choose_application
-      end
-
-      step "Admin clicks on delete button" do
-        apps_page.delete_application
-      end
-
-      step "Admin clicks on the OK button" do
-        apps_page.confirm_delete_application
       end
 
       sleep 3
@@ -258,7 +244,7 @@ describe 'Preconditions' do
         apps_page.create_new_component
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
+      step "Admin fills the component name field", "component_test_name" do |compname|
         check_element_path :xpath, CloudBeesApps::COMPONENT_NAME_TA, CloudBeesApps::COMPONENT_NAME_IL
         apps_page.fill_component_name_field compname
       end
@@ -278,7 +264,7 @@ describe 'Preconditions' do
         apps_page.select_ec_artifact
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
         check_element_path :xpath, CloudBeesApps::ARTIFACT_NAME_TA, CloudBeesApps::ARTIFACT_NAME_IL
         apps_page.fill_artifact_name_field artname
       end
@@ -298,7 +284,7 @@ describe 'Preconditions' do
         apps_page.create_new_component_processes
       end
 
-      step "Admin fills the process name field", settings('cloud_bees')['process_name'] do |processname|
+      step "Admin fills the process name field", "process_test_name" do |processname|
         check_element_path :xpath, CloudBeesApps::PROCESS_NAME_TA, CloudBeesApps::PROCESS_NAME_IL
         apps_page.fill_process_name_field processname
       end
@@ -333,7 +319,7 @@ describe 'Preconditions' do
         apps_page.click_on_new_step
       end
 
-      step "Admin fills the process name field", settings('cloud_bees')['step_name'] do |stepname|
+      step "Admin fills the process name field", "step_test_name" do |stepname|
         check_element_path :xpath, CloudBeesApps::STEP_NAME_TA, CloudBeesApps::STEP_NAME_IL
         apps_page.fill_step_name_field stepname
       end
@@ -371,36 +357,6 @@ describe 'Preconditions' do
       step "Admin confirm delete Component Step" do
         check_element_path :xpath, CloudBeesApps::CONFIRM_DELETE_COMPONENT_STEP_TA, CloudBeesApps::CONFIRM_DELETE_COMPONENT_STEP_IL
         apps_page.confirm_delete_component_step
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu
-      end
-
-      step "Admin chooses the Applications section in the Hamburger menu" do
-        check_element_path :css, CloudBeesGlobal::APPS_SECTION_TA, CloudBeesGlobal::APPS_SECTION_IL
-        global_page.click_applications
-      end
-
-      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_TA, CloudBeesApps::FIND_APPLICATION_FIELD_IL
-        apps_page.find_application_name_field appname
-      end
-
-      step "Admin clicks on new created application" do
-        check_element_path :xpath, CloudBeesApps::CHOOSE_APPLICATION_TA, CloudBeesApps::CHOOSE_APPLICATION_IL
-        apps_page.choose_application
-      end
-
-      step "Admin clicks on delete button" do
-        check_element_path :xpath, CloudBeesApps::DELETE_APPLICATION_TA, CloudBeesApps::DELETE_APPLICATION_IL
-        apps_page.delete_application
-      end
-
-      step "Admin clicks on the OK button" do
-        check_element_path :xpath, CloudBeesApps::CONFIRM_DELETE_APPLICATION_TA, CloudBeesApps::CONFIRM_DELETE_APPLICATION_IL
-        apps_page.confirm_delete_application
       end
 
       sleep 3
@@ -474,7 +430,7 @@ describe 'Preconditions' do
         apps_page.create_new_component :ep
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
+      step "Admin fills the component name field", "component_test_name" do |compname|
         check_element_path :xpath, CloudBeesApps::COMPONENT_NAME_EP, CloudBeesApps::COMPONENT_NAME_IL
         apps_page.fill_component_name_field :ep, compname
       end
@@ -494,7 +450,7 @@ describe 'Preconditions' do
         apps_page.select_ec_artifact :ep
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
         check_element_path :xpath, CloudBeesApps::ARTIFACT_NAME_EP, CloudBeesApps::ARTIFACT_NAME_IL
         apps_page.fill_artifact_name_field :ep, artname
       end
@@ -514,7 +470,7 @@ describe 'Preconditions' do
         apps_page.create_new_component_processes :ep
       end
 
-      step "Admin fills the process name field", settings('cloud_bees')['process_name'] do |processname|
+      step "Admin fills the process name field", "process_test_name" do |processname|
         check_element_path :xpath, CloudBeesApps::PROCESS_NAME_EP, CloudBeesApps::PROCESS_NAME_IL
         apps_page.fill_process_name_field :ep, processname
       end
@@ -549,7 +505,7 @@ describe 'Preconditions' do
         apps_page.click_on_new_step :ep
       end
 
-      step "Admin fills the process name field", settings('cloud_bees')['step_name'] do |stepname|
+      step "Admin fills the process name field", "step_test_name" do |stepname|
         check_element_path :xpath, CloudBeesApps::STEP_NAME_EP, CloudBeesApps::STEP_NAME_IL
         apps_page.fill_step_name_field :ep, stepname
       end
@@ -587,36 +543,6 @@ describe 'Preconditions' do
       step "Admin confirm delete Component Step" do
         check_element_path :xpath, CloudBeesApps::CONFIRM_DELETE_COMPONENT_STEP_EP, CloudBeesApps::CONFIRM_DELETE_COMPONENT_STEP_IL
         apps_page.confirm_delete_component_step :ep
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu :ep
-      end
-
-      step "Admin chooses the Applications section in the Hamburger menu" do
-        check_element_path :css, CloudBeesGlobal::APPS_SECTION_EP, CloudBeesGlobal::APPS_SECTION_IL
-        global_page.click_applications :ep
-      end
-
-      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_EP, CloudBeesApps::FIND_APPLICATION_FIELD_IL
-        apps_page.find_application_name_field :ep, appname
-      end
-
-      step "Admin clicks on new created application" do
-        check_element_path :xpath, CloudBeesApps::CHOOSE_APPLICATION_EP, CloudBeesApps::CHOOSE_APPLICATION_IL
-        apps_page.choose_application :ep
-      end
-
-      step "Admin clicks on delete button" do
-        check_element_path :xpath, CloudBeesApps::DELETE_APPLICATION_EP, CloudBeesApps::DELETE_APPLICATION_IL
-        apps_page.delete_application :ep
-      end
-
-      step "Admin clicks on the OK button" do
-        check_element_path :xpath, CloudBeesApps::CONFIRM_DELETE_APPLICATION_EP, CloudBeesApps::CONFIRM_DELETE_APPLICATION_IL
-        apps_page.confirm_delete_application :ep
       end
 
       sleep 3

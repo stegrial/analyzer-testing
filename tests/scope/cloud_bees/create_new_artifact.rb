@@ -3,7 +3,6 @@ require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
 required_relative_all "/pages/cloud_bees_pages/*.rb"
 
-global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
 artifact_page = CloudBeesArtifact.new
 
@@ -41,23 +40,23 @@ describe 'Preconditions' do
         artifact_page.create_new_artifact
       end
 
-      step "Admin fills the group id name field", 'test' do |group_id|
+      step "Admin fills the group id name field", 'test_group_id' do |group_id|
         artifact_page.fill_group_id_name_field group_id
       end
 
-      step "Admin fills the artifact key name field", 'test' do |art_key|
+      step "Admin fills the artifact key name field", 'test_artifact_key' do |art_key|
         artifact_page.fill_artifact_key_name_field art_key
       end
 
-      step "Admin fills the Description field", 'test' do |description|
+      step "Admin fills the Description field", 'test_description' do |description|
         artifact_page.fill_description_field description
       end
 
-      step "Admin fills the Artifact Version Name Template field", 'test' do |version_name|
+      step "Admin fills the Artifact Version Name Template field", 'test_version_name' do |version_name|
         artifact_page.fill_artifact_version_name_field version_name
       end
 
-      step "Admin fills the Tags name field", 'test' do |tag_name|
+      step "Admin fills the Tags name field", 'test_tag_name' do |tag_name|
         artifact_page.fill_tags_name_field tag_name
       end
 
@@ -65,11 +64,11 @@ describe 'Preconditions' do
         artifact_page.click_publish_artifact_version
       end
 
-      step "Admin fills the Version name field", 'test' do |ver_name|
+      step "Admin fills the Version name field", 'test_version_name' do |ver_name|
         artifact_page.fill_version_name_field ver_name
       end
 
-      step "Admin fills the Publish Tags name field", 'test' do |tag_name|
+      step "Admin fills the Publish Tags name field", 'test_tag_name' do |tag_name|
         artifact_page.fill_publish_tag_name_field tag_name
       end
 
@@ -105,27 +104,27 @@ describe 'Preconditions' do
         artifact_page.create_new_artifact
       end
 
-      step "Admin fills the group id name field", 'test' do |group_id|
+      step "Admin fills the group id name field", 'test_group_id' do |group_id|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::GROUP_ID_NAME_TA, CloudBeesArtifact::GROUP_ID_NAME_IL }
         artifact_page.fill_group_id_name_field group_id
       end
 
-      step "Admin fills the artifact key name field", 'test' do |art_key|
+      step "Admin fills the artifact key name field", 'test_artifact_key' do |art_key|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::ARTIFACT_KEY_NAME_TA, CloudBeesArtifact::ARTIFACT_KEY_NAME_IL }
         artifact_page.fill_artifact_key_name_field art_key
       end
 
-      step "Admin fills the Description field", 'test' do |description|
+      step "Admin fills the Description field", 'test_description' do |description|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::DESCRIPTION_TEXTAREA_TA, CloudBeesArtifact::DESCRIPTION_TEXTAREA_IL }
         artifact_page.fill_description_field description
       end
 
-      step "Admin fills the Artifact Version Name Template field", 'test' do |version_name|
+      step "Admin fills the Artifact Version Name Template field", 'test_version_name' do |version_name|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::ARTIFACT_VERSION_NAME_TA, CloudBeesArtifact::ARTIFACT_VERSION_NAME_IL }
         artifact_page.fill_artifact_version_name_field version_name
       end
 
-      step "Admin fills the Tags name field", 'test' do |tag_name|
+      step "Admin fills the Tags name field", 'test_tag_name' do |tag_name|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::TAGS_NAME_TA, CloudBeesArtifact::TAGS_NAME_IL }
         artifact_page.fill_tags_name_field tag_name
       end
@@ -135,12 +134,12 @@ describe 'Preconditions' do
         artifact_page.click_publish_artifact_version
       end
 
-      step "Admin fills the Version name field", 'test' do |ver_name|
+      step "Admin fills the Version name field", 'test_version_name' do |ver_name|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::VERSION_NAME_TA, CloudBeesArtifact::VERSION_NAME_IL }
         artifact_page.fill_version_name_field ver_name
       end
 
-      step "Admin fills the Publish Tags name field", 'test' do |tag_name|
+      step "Admin fills the Publish Tags name field", 'test_tag_name' do |tag_name|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::PUBLISH_TAGS_NAME_TA, CloudBeesArtifact::PUBLISH_TAGS_NAME_IL }
         artifact_page.fill_publish_tag_name_field tag_name
       end
@@ -180,27 +179,27 @@ describe 'Preconditions' do
         artifact_page.create_new_artifact :ep
       end
 
-      step "Admin fills the group id name field", 'test' do |group_id|
+      step "Admin fills the group id name field", 'test_group_id' do |group_id|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::GROUP_ID_NAME_EP, CloudBeesArtifact::GROUP_ID_NAME_IL }
         artifact_page.fill_group_id_name_field :ep, group_id
       end
 
-      step "Admin fills the artifact key name field", 'test' do |art_key|
+      step "Admin fills the artifact key name field", 'test_artifact_name' do |art_key|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::ARTIFACT_KEY_NAME_EP, CloudBeesArtifact::ARTIFACT_KEY_NAME_IL }
         artifact_page.fill_artifact_key_name_field :ep, art_key
       end
 
-      step "Admin fills the Description field", 'test' do |description|
+      step "Admin fills the Description field", 'test_description' do |description|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::DESCRIPTION_TEXTAREA_EP, CloudBeesArtifact::DESCRIPTION_TEXTAREA_IL }
         artifact_page.fill_description_field :ep, description
       end
 
-      step "Admin fills the Artifact Version Name Template field", 'test' do |version_name|
+      step "Admin fills the Artifact Version Name Template field", 'test_version_name' do |version_name|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::ARTIFACT_VERSION_NAME_EP, CloudBeesArtifact::ARTIFACT_VERSION_NAME_IL }
         artifact_page.fill_artifact_version_name_field :ep, version_name
       end
 
-      step "Admin fills the Tags name field", 'test' do |tag_name|
+      step "Admin fills the Tags name field", 'test_tag_name' do |tag_name|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::TAGS_NAME_EP, CloudBeesArtifact::TAGS_NAME_IL }
         artifact_page.fill_tags_name_field :ep, tag_name
       end
@@ -210,12 +209,12 @@ describe 'Preconditions' do
         artifact_page.click_publish_artifact_version :ep
       end
 
-      step "Admin fills the Version name field", 'test' do |ver_name|
+      step "Admin fills the Version name field", 'test_version_name' do |ver_name|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::VERSION_NAME_EP, CloudBeesArtifact::VERSION_NAME_IL }
         artifact_page.fill_version_name_field :ep, ver_name
       end
 
-      step "Admin fills the Publish Tags name field", 'test' do |tag_name|
+      step "Admin fills the Publish Tags name field", 'test_tag_name' do |tag_name|
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::PUBLISH_TAGS_NAME_EP, CloudBeesArtifact::PUBLISH_TAGS_NAME_IL }
         artifact_page.fill_publish_tag_name_field :ep, tag_name
       end

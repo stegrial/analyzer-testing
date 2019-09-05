@@ -11,11 +11,13 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800) # reproduce on desktop display
+    #Capybara.page.driver.browser.manage.window.resize_to(1920, 1080) # reproduce on Full HD monitor
   end
 
   after(:each) do
     step "Remove created application", settings('cloud_bees') do |data|
+      page.visit data['pipelines_page']
       page.visit data['applications_page']
       apps_page.find_application_name_field :il, data['app_name']
       apps_page.select_app_list_item :il
@@ -28,7 +30,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Create Application Component from Existing Master Component' do
+  feature 'TA-1020, TA-1021 TA Analyzer returns the wrong element on the page (Cloud Bees - Application list item)' do
 
     # Initial locators with Recording
 
@@ -75,40 +77,20 @@ describe 'Preconditions' do
         apps_page.confirm_create_new_application
       end
 
-      step "Admin clicks on the Component tier" do
-        apps_page.click_component_tier
+      step "Admin clicks on the Hamburger menu button" do
+        global_page.click_hamburger_menu
       end
 
-      step "Admin clicks on the Create from Existing Master Component" do
-        apps_page.create_existing_master_component
+      step "Admin chooses the Applications section in the Hamburger menu" do
+        global_page.click_applications
       end
 
-      step "Admin choose JBossMC Component" do
-        apps_page.choose_jbossmc_component
+      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
+        apps_page.find_application_name_field appname
       end
 
-      step "Admin clicks on the checkbox near JBossMC Component" do
-        apps_page.click_on_checkbox_near_jbossmc
-      end
-
-      step "Admin close Attention in Component" do
-        apps_page.close_attention_in_component
-      end
-
-      step "Admin clicks Next button" do
-        apps_page.component_existing_master_next
-      end
-
-      step "Admin fills the component name field", "component_test_name" do |compname|
-        apps_page.fill_component_name_field compname
-      end
-
-      step "Admin clicks OK button" do
-        apps_page.click_component_ok
-      end
-
-      step "Admin clicks on dropdown in Tier 1" do
-        apps_page.click_on_dropdown_in_tier
+      step "Admin clicks on new created application" do
+        apps_page.select_app_list_item
       end
 
       sleep 3
@@ -170,49 +152,28 @@ describe 'Preconditions' do
         apps_page.confirm_create_new_application
       end
 
-      step "Admin clicks on the Component tier" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_TIER_TA, CloudBeesApps::COMPONENT_TIER_IL
-        apps_page.click_component_tier
+      step "Admin clicks on the Hamburger menu button" do
+        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
+        global_page.click_hamburger_menu
       end
 
-      step "Admin clicks on the Create from Existing Master Component" do
-        check_element_path :xpath, CloudBeesApps::CREATE_EXISTING_MASTER_COMPONENT_TA, CloudBeesApps::CREATE_EXISTING_MASTER_COMPONENT_IL
-        apps_page.create_existing_master_component
+      step "Admin chooses the Applications section in the Hamburger menu" do
+        check_element_path :css, CloudBeesGlobal::APPS_SECTION_TA, CloudBeesGlobal::APPS_SECTION_IL
+        global_page.click_applications
       end
 
-      step "Admin choose JBossMC Component" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_JBOSSMC_TA, CloudBeesApps::COMPONENT_JBOSSMC_IL
-        apps_page.choose_jbossmc_component
+      step "Admin resize window browser" do
+        Capybara.page.driver.browser.manage.window.maximize
       end
 
-      step "Admin clicks on the checkbox near JBossMC Component" do
-        check_element_path :xpath, CloudBeesApps::CHECKBOX_NEAR_JBOSSMC_TA, CloudBeesApps::CHECKBOX_NEAR_JBOSSMC_IL
-        apps_page.click_on_checkbox_near_jbossmc
+      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
+        check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_TA, CloudBeesApps::FIND_APPLICATION_FIELD_IL
+        apps_page.find_application_name_field appname
       end
 
-      step "Admin close Attention in Component" do
-        check_element_path :xpath, CloudBeesApps::CLOSE_ATTENTION_IN_COMPONENT_TA, CloudBeesApps::CLOSE_ATTENTION_IN_COMPONENT_IL
-        apps_page.close_attention_in_component
-      end
-
-      step "Admin clicks Next button" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_EXISTING_MASTER_NEXT_TA, CloudBeesApps::COMPONENT_EXISTING_MASTER_NEXT_IL
-        apps_page.component_existing_master_next
-      end
-
-      step "Admin fills the component name field", "component_test_name" do |compname|
-        check_element_path :xpath, CloudBeesApps::COMPONENT_NAME_TA, CloudBeesApps::COMPONENT_NAME_IL
-        apps_page.fill_component_name_field compname
-      end
-
-      step "Admin clicks OK button" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_OK_BTN_TA, CloudBeesApps::COMPONENT_OK_BTN_IL
-        apps_page.click_component_ok
-      end
-
-      step "Admin clicks on dropdown in Tier 1" do
-        check_element_path :xpath, CloudBeesApps::DROPDOWN_IN_TIER_TA, CloudBeesApps::DROPDOWN_IN_TIER_IL
-        apps_page.click_on_dropdown_in_tier
+      step "Admin clicks on new created application" do
+        check_element_path :css, CloudBeesApps::APPLICATION_LIST_ITEM_TA, CloudBeesApps::APPLICATION_LIST_ITEM_IL
+        apps_page.select_app_list_item
       end
 
       sleep 3
@@ -276,49 +237,158 @@ describe 'Preconditions' do
         apps_page.confirm_create_new_application :ep
       end
 
-      step "Admin clicks on the Component tier" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_TIER_EP, CloudBeesApps::COMPONENT_TIER_IL
-        apps_page.click_component_tier :ep
+      step "Admin clicks on the Hamburger menu button" do
+        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
+        global_page.click_hamburger_menu :ep
       end
 
-      step "Admin clicks on the Create from Existing Master Component" do
-        check_element_path :xpath, CloudBeesApps::CREATE_EXISTING_MASTER_COMPONENT_EP, CloudBeesApps::CREATE_EXISTING_MASTER_COMPONENT_IL
-        apps_page.create_existing_master_component :ep
+      step "Admin chooses the Applications section in the Hamburger menu" do
+        check_element_path :css, CloudBeesGlobal::APPS_SECTION_EP, CloudBeesGlobal::APPS_SECTION_IL
+        global_page.click_applications :ep
       end
 
-      step "Admin choose JBossMC Component" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_JBOSSMC_EP, CloudBeesApps::COMPONENT_JBOSSMC_IL
-        apps_page.choose_jbossmc_component :ep
+      # step "Admin resize window browser" do
+      #   Capybara.page.driver.browser.manage.window.maximize
+      # end
+
+      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
+        check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_EP, CloudBeesApps::FIND_APPLICATION_FIELD_IL
+        apps_page.find_application_name_field :ep, appname
       end
 
-      step "Admin clicks on the checkbox near JBossMC Component" do
-        check_element_path :xpath, CloudBeesApps::CHECKBOX_NEAR_JBOSSMC_EP, CloudBeesApps::CHECKBOX_NEAR_JBOSSMC_IL
-        apps_page.click_on_checkbox_near_jbossmc :ep
+      step "Admin clicks on new created application" do
+        check_element_path :css, CloudBeesApps::APPLICATION_LIST_ITEM_EP, CloudBeesApps::APPLICATION_LIST_ITEM_IL
+        apps_page.select_app_list_item :ep
       end
 
-      step "Admin close Attention in Component" do
-        check_element_path :xpath, CloudBeesApps::CLOSE_ATTENTION_IN_COMPONENT_EP, CloudBeesApps::CLOSE_ATTENTION_IN_COMPONENT_IL
-        apps_page.close_attention_in_component :ep
+      sleep 3
+    end
+
+    scenario 'Recording debug', record_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
       end
 
-      step "Admin clicks Next button" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_EXISTING_MASTER_NEXT_EP, CloudBeesApps::COMPONENT_EXISTING_MASTER_NEXT_IL
-        apps_page.component_existing_master_next :ep
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il, credentials['username']
+        login_page.fill_pass_field :il, credentials['pass']
+        login_page.click_sign_in_button :il
       end
 
-      step "Admin fills the component name field", "component_test_name" do |compname|
-        check_element_path :xpath, CloudBeesApps::COMPONENT_NAME_EP, CloudBeesApps::COMPONENT_NAME_IL
-        apps_page.fill_component_name_field :ep, compname
+      step "Admin clicks on the Hamburger menu button" do
+        global_page.click_hamburger_menu :il
       end
 
-      step "Admin clicks OK button" do
-        check_element_path :xpath, CloudBeesApps::COMPONENT_OK_BTN_EP, CloudBeesApps::COMPONENT_OK_BTN_IL
-        apps_page.click_component_ok :ep
+      step "Admin chooses the Applications section in the Hamburger menu" do
+        global_page.click_applications :il
       end
 
-      step "Admin clicks on dropdown in Tier 1" do
-        check_element_path :xpath, CloudBeesApps::DROPDOWN_IN_TIER_EP, CloudBeesApps::DROPDOWN_IN_TIER_IL
-        apps_page.click_on_dropdown_in_tier :ep
+      step "Admin clicks on the new application button" do
+        apps_page.click_new_application :il
+      end
+
+      step "Admin clicks on the create new application button" do
+        apps_page.create_new_application :il
+      end
+
+      step "Admin fills the application name field", settings('cloud_bees')['app_name'] do |appname|
+        apps_page.fill_application_name_field :il, appname
+      end
+
+      step "Admin clicks on the Select project drop-down" do
+        apps_page.click_on_select_project :il
+      end
+
+      step "Admin select on the drop-down Default project" do
+        apps_page.select_default_project :il
+      end
+
+      step "Admin confirm new application" do
+        apps_page.confirm_create_new_application :il
+      end
+
+      step "Admin clicks on the Hamburger menu button" do
+        global_page.click_hamburger_menu :il
+      end
+
+      step "Admin chooses the Applications section in the Hamburger menu" do
+        global_page.click_applications :il
+      end
+
+      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
+        apps_page.find_application_name_field :il, appname
+      end
+
+      step "Admin clicks on new created application" do
+        apps_page.select_app_list_item
+      end
+
+      sleep 3
+    end
+
+    scenario 'Searching debug', search_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
+      end
+
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il, credentials['username']
+        login_page.fill_pass_field :il, credentials['pass']
+        login_page.click_sign_in_button :il
+      end
+
+      step "Admin clicks on the Hamburger menu button" do
+        global_page.click_hamburger_menu :il
+      end
+
+      step "Admin chooses the Applications section in the Hamburger menu" do
+        global_page.click_applications :il
+      end
+
+      step "Admin clicks on the new application button" do
+        apps_page.click_new_application :il
+      end
+
+      step "Admin clicks on the create new application button" do
+        apps_page.create_new_application :il
+      end
+
+      step "Admin fills the application name field", settings('cloud_bees')['app_name'] do |appname|
+        apps_page.fill_application_name_field :il, appname
+      end
+
+      step "Admin clicks on the Select project drop-down" do
+        apps_page.click_on_select_project :il
+      end
+
+      step "Admin select on the drop-down Default project" do
+        apps_page.select_default_project :il
+      end
+
+      step "Admin confirm new application" do
+        apps_page.confirm_create_new_application :il
+      end
+
+      step "Admin clicks on the Hamburger menu button" do
+        global_page.click_hamburger_menu :il
+      end
+
+      step "Admin chooses the Applications section in the Hamburger menu" do
+        global_page.click_applications :il
+      end
+
+      step "Admin resize window browser" do
+        Capybara.page.driver.browser.manage.window.maximize # reproduce on desktop display
+        #Capybara.page.driver.browser.manage.window.resize_to(1440, 800) # reproduce on Full HD monitor
+      end
+
+      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
+        apps_page.find_application_name_field :il, appname
+        sleep 3 #to wait for filter to be apply
+      end
+
+      step "Admin clicks on new created application" do
+        apps_page.select_app_list_item
       end
 
       sleep 3
