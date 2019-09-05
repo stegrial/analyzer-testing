@@ -70,7 +70,7 @@ class CloudBeesResources
   DELETE_NEW_RESOURCE_TA = "cloud_bees:resource:delete_new_resource"
   DELETE_NEW_RESOURCE_EP = "EP:cloud_bees:resource:delete_new_resource"
 
-  ACCEPT_DELETE_RESOURCE_IL = "//button[text()='OK']"
+  ACCEPT_DELETE_RESOURCE_IL = "//div[contains(@class, 'gwt-DialogBox')]//button[@class='gwt-Button ok_button']"
   ACCEPT_DELETE_RESOURCE_TA = "cloud_bees:resource:accept_delete_new_resource"
   ACCEPT_DELETE_RESOURCE_EP = "EP:cloud_bees:resource:accept_delete_new_resource"
 
@@ -102,7 +102,7 @@ class CloudBeesResources
     within_frame(0) do
       return find(ta(RESOURCE_DESCRIPTION_EP)).set(value) if key == :ep
       return find(:xpath, RESOURCE_DESCRIPTION_IL).set(value) if key == :il
-      find(:xpath, ta(RESOURCE_DESCRIPTION_TA, RESOURCE_DESCRIPTION_IL)).set('1')
+      find(:xpath, ta(RESOURCE_DESCRIPTION_TA, RESOURCE_DESCRIPTION_IL)).set(value)
     end
   end
 
