@@ -9,7 +9,7 @@ class CloudBeesEnv
   CREATE_ENV_PLUS_BTN_TA = "cloud_bees:env:env_plus_btn"
   CREATE_ENV_PLUS_BTN_EP = "EP:cloud_bees:env:env_plus_btn"
 
-  CHOOSE_ENV_IL = "//div[contains(@class, 'object__name at-environment-list-item-name') and .//a[@title='envName']]"
+  CHOOSE_ENV_IL = ".at-environment-list-item-name"
   CHOOSE_ENV_TA = 'cloud_bees:env:choose_env'
   CHOOSE_ENV_EP = 'EP:cloud_bees:env:choose_env'
 
@@ -89,8 +89,8 @@ class CloudBeesEnv
 
   def choose_env(key = nil)
     return find(ta(CHOOSE_ENV_EP)).click if key == :ep
-    return find(:xpath, CHOOSE_ENV_IL).click if key == :il
-    find(:xpath, ta(CHOOSE_ENV_TA, CHOOSE_ENV_IL)).click
+    return find(:css, CHOOSE_ENV_IL).click if key == :il
+    find(:css, ta(CHOOSE_ENV_TA, CHOOSE_ENV_IL)).click
   end
 
   def delete_env(key = nil)

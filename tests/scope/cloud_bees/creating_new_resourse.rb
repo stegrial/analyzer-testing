@@ -86,7 +86,7 @@ describe 'Preconditions' do
       end
 
       # sleep 4
-      step "Admin set resource name in quick search" do
+      step "Admin set  resource name in quick search" do
         resources_page.click_quick_search
       end
 

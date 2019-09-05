@@ -63,8 +63,8 @@ describe 'Preconditions' do
         apps_editor.set_new_name
       end
 
-      step "User sets new application component description" do
-        apps_editor.set_description
+      step "User sets new application component description",'description' do |value|
+        apps_editor.set_description value
       end
 
       step "User click on ok button" do
@@ -80,28 +80,28 @@ describe 'Preconditions' do
         apps_editor.click_artifactory
       end
 
-      step "User set configuration text in input" do
-        apps_editor.set_configuration
+      step "User set configuration text in input", 'test' do |value|
+        apps_editor.set_configuration value
       end
 
-      step "User set repository in input" do
-        apps_editor.set_repository_key
+      step "User set repository in input",'test' do |value|
+        apps_editor.set_repository_key value
       end
 
-      step "User set organization in input" do
-        apps_editor.set_organization_path
+      step "User set organization in input",'test' do |value|
+        apps_editor.set_organization_path value
       end
 
-      step "User set artifact in input" do
-        apps_editor.set_artifact
+      step "User set artifact in input",'test' do |value|
+        apps_editor.set_artifact value
       end
 
-      step "User set version in input" do
-        apps_editor.set_version
+      step "User set version in input",'test' do |value|
+        apps_editor.set_version value
       end
 
-      step "User set extention in inputt" do
-        apps_editor.set_extention
+      step "User set extention in inputt",'test' do |value|
+        apps_editor.set_extention value
       end
 
       step "User click on ok button" do
@@ -176,9 +176,9 @@ describe 'Preconditions' do
         apps_editor.set_new_name
       end
 
-      step "User sets new application component description" do
+      step "User sets new application component description",'description' do |value|
         check_element_path :css, CloudBeesAppsEditor::COMPONENT_DESCRIPTION_TA, CloudBeesAppsEditor::COMPONENT_DESCRIPTION_IL
-        apps_editor.set_description
+        apps_editor.set_description value
       end
 
       step "User click on ok button" do
@@ -197,34 +197,34 @@ describe 'Preconditions' do
         apps_editor.click_artifactory
       end
 
-      step "User set configuration text in input" do
+      step "User set configuration text in input",'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::CONFIGURATION_TA, CloudBeesAppsEditor::CONFIGURATION_IL
-        apps_editor.set_configuration
+        apps_editor.set_configuration value
       end
 
-      step "User set repository in input" do
+      step "User set repository in input",'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::REPOSITORY_KEY_TA, CloudBeesAppsEditor::REPOSITORY_KEY_IL
-        apps_editor.set_repository_key
+        apps_editor.set_repository_key value
       end
 
-      step "User set organization in input" do
+      step "User set organization in input" ,'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::ORGANIZATION_PATH_TA, CloudBeesAppsEditor::ORGANIZATION_PATH_IL
-        apps_editor.set_organization_path
+        apps_editor.set_organization_path value
       end
 
-      step "User set artifact in input" do
+      step "User set artifact in input" ,'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::ARTIFACT_TA, CloudBeesAppsEditor::ARTIFACT_IL
-        apps_editor.set_artifact
+        apps_editor.set_artifact value
       end
 
-      step "User set version in input" do
+      step "User set version in input",'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::VERSION_TA, CloudBeesAppsEditor::VERSION_IL
-        apps_editor.set_version
+        apps_editor.set_version value
       end
 
-      step "User set extention in inputt" do
+      step "User set extention in inputt" ,'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::EXTENSION_TA, CloudBeesAppsEditor::EXTENSION_IL
-        apps_editor.set_extention
+        apps_editor.set_extention value
       end
 
       step "User click on ok button" do
@@ -305,9 +305,9 @@ describe 'Preconditions' do
         apps_editor.set_new_name :ep
       end
 
-      step "User sets new application component description" do
+      step "User sets new application component description" ,'description' do |value|
         check_element_path :css, CloudBeesAppsEditor::COMPONENT_DESCRIPTION_EP, CloudBeesAppsEditor::COMPONENT_DESCRIPTION_IL
-        apps_editor.set_description :ep
+        apps_editor.set_description :ep, value
       end
 
       step "User click on ok button" do
@@ -325,34 +325,34 @@ describe 'Preconditions' do
         apps_editor.click_artifactory :ep
       end
 
-      step "User set configuration text in input" do
+      step "User set configuration text in input",'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::CONFIGURATION_EP, CloudBeesAppsEditor::CONFIGURATION_IL
-        apps_editor.set_configuration :ep
+        apps_editor.set_configuration :ep, value
       end
 
-      step "User set repository in input" do
+      step "User set repository in input",'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::REPOSITORY_KEY_EP, CloudBeesAppsEditor::REPOSITORY_KEY_IL
-        apps_editor.set_repository_key :ep
+        apps_editor.set_repository_key :ep, value
       end
 
-      step "User set organization in input" do
+      step "User set organization in input" ,'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::ORGANIZATION_PATH_EP, CloudBeesAppsEditor::ORGANIZATION_PATH_IL
-        apps_editor.set_organization_path :ep
+        apps_editor.set_organization_path :ep, value
       end
 
-      step "User set artifact in input" do
+      step "User set artifact in input" ,'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::ARTIFACT_EP, CloudBeesAppsEditor::ARTIFACT_IL
-        apps_editor.set_artifact :ep
+        apps_editor.set_artifact :ep, value
       end
 
-      step "User set version in input" do
+      step "User set version in input" ,'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::VERSION_EP, CloudBeesAppsEditor::VERSION_IL
-        apps_editor.set_version :ep
+        apps_editor.set_version :ep, value
       end
 
-      step "User set extention in inputt" do
+      step "User set extention in inputt" ,'test' do |value|
         check_element_path :xpath, CloudBeesAppsEditor::EXTENSION_EP, CloudBeesAppsEditor::EXTENSION_IL
-        apps_editor.set_extention :ep
+        apps_editor.set_extention :ep, value
       end
 
       step "User click on ok button" do
