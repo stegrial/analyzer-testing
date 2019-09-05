@@ -36,16 +36,17 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin clicks Add button for creating new resource" do
-        resources_page.click_to_add_new_resource
+      step "Admin clicks Add New Resource dropdown" do
+        resources_page.click_add_new_resource
       end
+
       step "Admin clicks create new resource button" do
         resources_page.click_create_resource_btn
       end
 
-      step "Admin set name of new resource input" do
+      step "Admin enters a new resource name", 'NewResourceName' do |name|
         sleep 5  # TA-1016
-        resources_page.set_name_of_resource
+        resources_page.set_resource_name name
       end
 
       step "Admin set description of new resource input" do
@@ -132,19 +133,19 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin clicks Add button for creating new resource" do
+      step "Admin clicks Add New Resource dropdown" do
         check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_TA, CloudBeesResources::ADD_NEW_RESOURCE_IL
-        resources_page.click_to_add_new_resource
+        resources_page.click_add_new_resource
       end
       step "Admin clicks create new resource button" do
         check_element_path :xpath, CloudBeesResources::CREATE_RESOURCE_BTN_TA, CloudBeesResources::CREATE_RESOURCE_BTN_IL
         resources_page.click_create_resource_btn
       end
 
-      step "Admin set name of new resource input" do
+      step "Admin enters a new resource name", 'NewResourceName' do |name|
         sleep 5  # TA-1016
         check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_TA, CloudBeesResources::RESOURCE_NAME_IL
-        resources_page.set_name_of_resource
+        resources_page.set_resource_name name
       end
 
       step "Admin set description of new resource input" do
@@ -242,19 +243,19 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin clicks Add button for creating new resource" do
+      step "Admin clicks Add New Resource dropdown" do
         check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_EP, CloudBeesResources::ADD_NEW_RESOURCE_IL
-        resources_page.click_to_add_new_resource :ep
+        resources_page.click_add_new_resource :ep
       end
       step "Admin clicks create new resource button" do
         check_element_path :xpath, CloudBeesResources::CREATE_RESOURCE_BTN_EP, CloudBeesResources::CREATE_RESOURCE_BTN_IL
         resources_page.click_create_resource_btn  :ep
       end
 
-      step "Admin set name of new resource input" do
+      step "Admin enters a new resource name", 'NewResourceName' do |name|
         sleep 5  # TA-1016
         check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_EP, CloudBeesResources::RESOURCE_NAME_IL
-        resources_page.set_name_of_resource :ep
+        resources_page.set_resource_name :ep, name
       end
 
       step "Admin set description of new resource input" do

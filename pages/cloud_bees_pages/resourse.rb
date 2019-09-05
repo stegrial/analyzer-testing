@@ -74,7 +74,7 @@ class CloudBeesResources
   ACCEPT_DELETE_RESOURCE_TA = "cloud_bees:resource:accept_delete_new_resource"
   ACCEPT_DELETE_RESOURCE_EP = "EP:cloud_bees:resource:accept_delete_new_resource"
 
-  def click_to_add_new_resource(key = nil)
+  def click_add_new_resource(key = nil)
     within_frame(0) do
       return find(ta(ADD_NEW_RESOURCE_EP)).click if key == :ep
       return find(:xpath, ADD_NEW_RESOURCE_IL).click if key == :il
@@ -90,11 +90,11 @@ class CloudBeesResources
     end
   end
 
-  def set_name_of_resource(key = nil)
+  def set_resource_name(key = nil, name)
     within_frame(0) do
-      return find(ta(RESOURCE_NAME_EP)).set('Name1') if key == :ep
-      return find(:xpath, RESOURCE_NAME_IL).set('Name1') if key == :il
-      find(:xpath, ta(RESOURCE_NAME_TA, RESOURCE_NAME_IL)).set('Name1')
+      return find(ta(RESOURCE_NAME_EP)).set(name) if key == :ep
+      return find(:xpath, RESOURCE_NAME_IL).set(name) if key == :il
+      find(:xpath, ta(RESOURCE_NAME_TA, RESOURCE_NAME_IL)).set(name)
     end
   end
 

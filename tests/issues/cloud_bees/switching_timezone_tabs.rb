@@ -5,12 +5,13 @@ required_relative_all "/pages/cloud_bees_pages/*.rb"
 
 global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
-releases_calendar = CloudBeesReleasesCalandar.new
+releases_calendar = CloudBeesReleasesCalendar.new
 
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
   after(:all) do
@@ -32,7 +33,7 @@ describe 'Preconditions' do
         login_page.click_sign_in_button
       end
 
-      step "Admin clicks on release calendar page" do
+      step "Admin clicks on release calendar button" do
         global_page.click_release_calendar_btn
       end
 
@@ -40,14 +41,16 @@ describe 'Preconditions' do
        releases_calendar.click_to_timezone_dropdown
       end
 
-      step "Admin set kiev in search timezone dropdown " do
-        releases_calendar.set_into_search_timezone_dropdown
+      step "Admin enters a value in the timezone search field", 'Kiev' do |value|
+        releases_calendar.set_timezone_search_value :il, value
+        sleep 2 # need to wait for the filter to be applied
       end
 
-      step "Admin clicks for select timezone" do
-        releases_calendar.click_to_select_timezone
+      step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
+        releases_calendar.select_timezone timezone
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -72,20 +75,16 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on timezone dropdown" do
-        check_element_path :css, CloudBeesReleasesCalandar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalandar::SELECT_USER_TIMEZONE_IL
+        check_element_path :css, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_IL
         releases_calendar.click_to_timezone_dropdown
       end
 
-      step "Admin set kiev in search timezone dropdown " do
-        check_element_path :xpath, CloudBeesReleasesCalandar::SEARCH_TIMEZONE_DROPDOWN_TA, CloudBeesReleasesCalandar::SEARCH_TIMEZONE_DROPDOWN_IL
-        releases_calendar.set_into_search_timezone_dropdown
+      step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
+        check_element_path :xpath, releases_calendar.timezone_name(:ta, timezone), releases_calendar.timezone_name(:il, timezone)
+        releases_calendar.select_timezone timezone
       end
 
-      step "Admin clicks for select timezone" do
-        check_element_path :xpath, CloudBeesReleasesCalandar::SELECT_KIEV_TIMEZONE_TA, CloudBeesReleasesCalandar::SELECT_KIEV_TIMEZONE_IL
-        releases_calendar.click_to_select_timezone
-      end
-
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -100,32 +99,31 @@ describe 'Preconditions' do
         login_page.fill_username_field :ep, credentials['username']
 
         check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_TA, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field :ep,credentials['pass']
+        login_page.fill_pass_field :ep, credentials['pass']
 
         check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
-        login_page.click_sign_in_button :ep,
+        login_page.click_sign_in_button :ep
       end
 
       step "Admin clicks on release calendar page" do
         check_element_path :css, CloudBeesGlobal::RELEASE_CALENDAR_BTN_TA, CloudBeesGlobal::RELEASE_CALENDAR_BTN_IL
-        global_page.click_release_calendar_btn :ep,
+        global_page.click_release_calendar_btn :ep
       end
 
       step "Admin clicks on timezone dropdown" do
-        check_element_path :css, CloudBeesReleasesCalandar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalandar::SELECT_USER_TIMEZONE_IL
-        releases_calendar.click_to_timezone_dropdown :ep,
+        check_element_path :css, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_IL
+        releases_calendar.click_to_timezone_dropdown :ep
       end
 
-      step "Admin set kiev in search timezone dropdown " do
-        check_element_path :xpath, CloudBeesReleasesCalandar::SEARCH_TIMEZONE_DROPDOWN_TA, CloudBeesReleasesCalandar::SEARCH_TIMEZONE_DROPDOWN_IL
-        releases_calendar.set_into_search_timezone_dropdown :ep,
+      step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
+        check_element_path :xpath, releases_calendar.timezone_name(:ta, timezone), releases_calendar.timezone_name(:il, timezone)
+        releases_calendar.select_timezone :ep, timezone
       end
 
-      step "Admin clicks for select timezone" do
-        check_element_path :xpath, CloudBeesReleasesCalandar::SELECT_KIEV_TIMEZONE_TA, CloudBeesReleasesCalandar::SELECT_KIEV_TIMEZONE_IL
-        releases_calendar.click_to_select_timezone :ep,
-      end
+      sleep 3
     end
+
+    # Debug
 
     scenario 'Recording debug', record_debug: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
@@ -146,18 +144,22 @@ describe 'Preconditions' do
         releases_calendar.click_to_timezone_dropdown :il
       end
 
-      step "Admin set kiev in search timezone dropdown " do
-        releases_calendar.set_into_search_timezone_dropdown :il
+      step "Admin enters a value in the timezone search field", 'Kiev' do |value|
+        releases_calendar.set_timezone_search_value :il, value
+        sleep 2 # need to wait for the filter to be applied
       end
 
-      sleep 5
-
-      step "Admin clicks for select timezone" do
-        releases_calendar.click_to_select_timezone
+      step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
+        releases_calendar.select_timezone timezone
       end
+
+      sleep 3
     end
 
     scenario 'Searching debug', search_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
+      end
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field :il, credentials['username']
@@ -173,13 +175,13 @@ describe 'Preconditions' do
         releases_calendar.click_to_timezone_dropdown :il
       end
 
-      step "Admin set kiev in search timezone dropdown " do
-        releases_calendar.set_into_search_timezone_dropdown :il
+      step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
+        releases_calendar.select_timezone timezone
       end
 
-      step "Admin clicks for select timezone" do
-        releases_calendar.click_to_select_timezone
-      end
+      sleep 3
     end
+
+
   end
 end
