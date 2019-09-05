@@ -66,8 +66,6 @@ cloud_bees:
   app_name: 'application_test_name'
   env_name: 'envName'
   pipeline_name: 'pipeline_test_name'
-  process_name: 'processTest'
-  step_name: 'stepTest'
 
 24timezones:
   page: 'https://24timezones.com/worldmap'
