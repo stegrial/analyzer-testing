@@ -69,9 +69,9 @@ class CloudBeesApps
   FIND_APPLICATION_FIELD_TA = 'cloud_bees:apps:find_application_field'
   FIND_APPLICATION_FIELD_EP = 'EP:cloud_bees:apps:find_application_field'
 
-  CHOOSE_APPLICATION_IL = "//div[contains(@class, 'object at-application-list') and .//a[@title='appTest']]"
-  CHOOSE_APPLICATION_TA = 'cloud_bees:apps:choose_application'
-  CHOOSE_APPLICATION_EP = 'EP:cloud_bees:apps:choose_application'
+  APPLICATION_LIST_ITEM_IL = ".at-application-list-item"
+  APPLICATION_LIST_ITEM_TA = 'cloud_bees:apps:application_list_item'
+  APPLICATION_LIST_ITEM_EP = 'EP:cloud_bees:apps:application_list_item'
 
   DELETE_APPLICATION_IL = "//span[text()='Delete']"
   DELETE_APPLICATION_TA = 'cloud_bees:apps:delete_application'
@@ -274,10 +274,10 @@ class CloudBeesApps
     find(:xpath, ta(FIND_APPLICATION_FIELD_TA, FIND_APPLICATION_FIELD_IL)).set(appname)
   end
 
-  def choose_application(key = nil)
-    return find(ta(CHOOSE_APPLICATION_EP)).click if key == :ep
-    return find(:xpath, CHOOSE_APPLICATION_IL).click if key == :il
-    find(:xpath, ta(CHOOSE_APPLICATION_TA, CHOOSE_APPLICATION_IL)).click
+  def select_app_list_item(key = nil)
+    return find(ta(APPLICATION_LIST_ITEM_EP)).click if key == :ep
+    return find(:css, APPLICATION_LIST_ITEM_IL).click if key == :il
+    find(:css, ta(APPLICATION_LIST_ITEM_TA, APPLICATION_LIST_ITEM_IL)).click
   end
 
   def delete_application(key = nil)

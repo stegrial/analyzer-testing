@@ -73,7 +73,7 @@ describe 'Preconditions' do
         apps_page.create_new_component
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
+      step "Admin fills the component name field", "component_test_name" do |compname|
         apps_page.fill_component_name_field compname
       end
 
@@ -89,7 +89,7 @@ describe 'Preconditions' do
         apps_page.select_ec_artifact
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
         apps_page.fill_artifact_name_field artname
       end
 
@@ -110,7 +110,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created application" do
-        apps_page.choose_application
+        apps_page.select_app_list_item
       end
 
       step "Admin clicks on delete button" do
@@ -190,7 +190,7 @@ describe 'Preconditions' do
         apps_page.create_new_component
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
+      step "Admin fills the component name field", "component_test_name" do |compname|
         check_element_path :xpath, CloudBeesApps::COMPONENT_NAME_TA, CloudBeesApps::COMPONENT_NAME_IL
         apps_page.fill_component_name_field compname
       end
@@ -210,7 +210,7 @@ describe 'Preconditions' do
         apps_page.select_ec_artifact
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
         check_element_path :xpath, CloudBeesApps::ARTIFACT_NAME_TA, CloudBeesApps::ARTIFACT_NAME_IL
         apps_page.fill_artifact_name_field artname
       end
@@ -236,8 +236,8 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created application" do
-        check_element_path :xpath, CloudBeesApps::CHOOSE_APPLICATION_TA, CloudBeesApps::CHOOSE_APPLICATION_IL
-        apps_page.choose_application
+        check_element_path :css, CloudBeesApps::APPLICATION_LIST_ITEM_TA, CloudBeesApps::APPLICATION_LIST_ITEM_IL
+        apps_page.select_app_list_item
       end
 
       step "Admin clicks on delete button" do
@@ -321,7 +321,7 @@ describe 'Preconditions' do
         apps_page.create_new_component :ep
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
+      step "Admin fills the component name field", "component_test_name" do |compname|
         check_element_path :xpath, CloudBeesApps::COMPONENT_NAME_EP, CloudBeesApps::COMPONENT_NAME_IL
         apps_page.fill_component_name_field :ep, compname
       end
@@ -341,7 +341,7 @@ describe 'Preconditions' do
         apps_page.select_ec_artifact :ep
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
         check_element_path :xpath, CloudBeesApps::ARTIFACT_NAME_EP, CloudBeesApps::ARTIFACT_NAME_IL
         apps_page.fill_artifact_name_field :ep, artname
       end
@@ -367,8 +367,8 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on new created application" do
-        check_element_path :xpath, CloudBeesApps::CHOOSE_APPLICATION_EP, CloudBeesApps::CHOOSE_APPLICATION_IL
-        apps_page.choose_application :ep
+        check_element_path :css, CloudBeesApps::APPLICATION_LIST_ITEM_TA, CloudBeesApps::APPLICATION_LIST_ITEM_IL
+        apps_page.select_app_list_item :ep
       end
 
       step "Admin clicks on delete button" do
