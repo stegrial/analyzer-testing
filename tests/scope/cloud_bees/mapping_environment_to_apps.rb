@@ -37,7 +37,7 @@ describe 'Preconditions' do
 
       global_page.click_hamburger_menu :il
       global_page.click_environments :il
-      env.find_env_name_field :il, data['env_name']
+      env.find_env_name_field :il, 'envName'
       env.choose_env :il
       env.delete_env :il
       env.confirm_delete_env :il
@@ -80,7 +80,7 @@ describe 'Preconditions' do
         apps_page.create_new_application
       end
 
-      step "Admin fills the application name field", settings('cloud_bees')['app_name'] do |appname|
+      step "Admin fills the application name field", 'appName' do |appname|
         apps_page.fill_application_name_field appname
       end
 
@@ -106,7 +106,7 @@ describe 'Preconditions' do
         apps_page.create_new_component
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
+      step "Admin fills the component name field", 'compName' do |compname|
         apps_page.fill_component_name_field compname
       end
 
@@ -123,7 +123,7 @@ describe 'Preconditions' do
         apps_page.select_ec_artifact
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", 'artName' do |artname|
         apps_page.fill_artifact_name_field artname
       end
 
@@ -145,8 +145,8 @@ describe 'Preconditions' do
         env.click_new_env_btn
       end
 
-      step "Admin fills the env name field",settings('cloud_bees')['env_name'] do |envName|
-        env.fill_env_name_field(envName)
+      step "Admin fills the env name field",'envName' do |envName|
+        env.fill_env_name_field envName
       end
 
       step "Admin click on Select Project dropdown" do
@@ -244,7 +244,7 @@ describe 'Preconditions' do
         apps_page.create_new_application
       end
 
-      step "Admin fills the application name field", settings('cloud_bees')['app_name'] do |appname|
+      step "Admin fills the application name field",'appName' do |appname|
         check_element_path :xpath  , CloudBeesApps::APPLICATION_NAME_TA, CloudBeesApps::APPLICATION_NAME_IL
         apps_page.fill_application_name_field appname
       end
@@ -276,7 +276,7 @@ describe 'Preconditions' do
         apps_page.create_new_component
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
+      step "Admin fills the component name field",'compName' do |compname|
         check_element_path :xpath  , CloudBeesApps::COMPONENT_NAME_TA, CloudBeesApps::COMPONENT_NAME_IL
         apps_page.fill_component_name_field compname
       end
@@ -297,7 +297,7 @@ describe 'Preconditions' do
         apps_page.select_ec_artifact
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", 'artName' do |artname|
         check_element_path :xpath  , CloudBeesApps::ARTIFACT_NAME_TA, CloudBeesApps::ARTIFACT_NAME_IL
         apps_page.fill_artifact_name_field artname
       end
@@ -323,9 +323,9 @@ describe 'Preconditions' do
         env.click_new_env_btn
       end
 
-      step "Admin fills the env name field",settings('cloud_bees')['env_name'] do |envName|
+      step "Admin fills the env name field",'envName' do |envName|
         check_element_path :xpath  , CloudBeesEnv::ENV_NAME_TA, CloudBeesEnv::ENV_NAME_IL
-        env.fill_env_name_field(envName)
+        env.fill_env_name_field envName
       end
 
       step "Admin click on Select Project dropdown" do
@@ -437,7 +437,7 @@ describe 'Preconditions' do
         apps_page.create_new_application :ep
       end
 
-      step "Admin fills the application name field", settings('cloud_bees')['app_name'] do |appname|
+      step "Admin fills the application name field", 'appName' do |appname|
         check_element_path :xpath  , CloudBeesApps::APPLICATION_NAME_EP, CloudBeesApps::APPLICATION_NAME_IL
         apps_page.fill_application_name_field  :ep, appname
       end
@@ -469,7 +469,7 @@ describe 'Preconditions' do
         apps_page.create_new_component :ep
       end
 
-      step "Admin fills the component name field", settings('cloud_bees')['component_name'] do |compname|
+      step "Admin fills the component name field", 'compName' do |compname|
         check_element_path :xpath  , CloudBeesApps::COMPONENT_NAME_EP, CloudBeesApps::COMPONENT_NAME_IL
         apps_page.fill_component_name_field :ep, compname
       end
@@ -490,7 +490,7 @@ describe 'Preconditions' do
         apps_page.select_ec_artifact :ep
       end
 
-      step "Admin fills the artifact name field", settings('cloud_bees')['artifact_name'] do |artname|
+      step "Admin fills the artifact name field", 'artName' do |artname|
         check_element_path :xpath  , CloudBeesApps::ARTIFACT_NAME_EP, CloudBeesApps::ARTIFACT_NAME_IL
         apps_page.fill_artifact_name_field :ep, artname
       end
@@ -516,9 +516,9 @@ describe 'Preconditions' do
         env.click_new_env_btn :ep
       end
 
-      step "Admin fills the env name field",settings('cloud_bees')['env_name'] do |envName|
+      step "Admin fills the env name field",'envName' do |envName|
         check_element_path :xpath  , CloudBeesEnv::ENV_NAME_EP, CloudBeesEnv::ENV_NAME_IL
-        env.fill_env_name_field(:ep, envName)
+        env.fill_env_name_field :ep, envName
       end
 
       step "Admin click on Select Project dropdown" do

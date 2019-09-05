@@ -69,7 +69,7 @@ class CloudBeesApps
   FIND_APPLICATION_FIELD_TA = 'cloud_bees:apps:find_application_field'
   FIND_APPLICATION_FIELD_EP = 'EP:cloud_bees:apps:find_application_field'
 
-  CHOOSE_APPLICATION_IL = "//div[contains(@class, 'object at-application-list') and .//a[@title='appTest']]"
+  CHOOSE_APPLICATION_IL = "//div[contains(@class, 'object at-application-list') and .//a[@title='appName']]"
   CHOOSE_APPLICATION_TA = 'cloud_bees:apps:choose_application'
   CHOOSE_APPLICATION_EP = 'EP:cloud_bees:apps:choose_application'
 
