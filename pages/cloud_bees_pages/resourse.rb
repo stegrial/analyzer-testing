@@ -98,67 +98,67 @@ class CloudBeesResources
     end
   end
 
-  def set_description_of_resource(key = nil)
+  def set_description_of_resource(key = nil, value)
     within_frame(0) do
-      return find(ta(RESOURCE_DESCRIPTION_EP)).set('1') if key == :ep
-      return find(:xpath, RESOURCE_DESCRIPTION_IL).set('1') if key == :il
+      return find(ta(RESOURCE_DESCRIPTION_EP)).set(value) if key == :ep
+      return find(:xpath, RESOURCE_DESCRIPTION_IL).set(value) if key == :il
       find(:xpath, ta(RESOURCE_DESCRIPTION_TA, RESOURCE_DESCRIPTION_IL)).set('1')
     end
   end
 
-  def set_host_of_resource(key = nil)
+  def set_host_of_resource(key = nil, value)
     within_frame(0) do
-      return find(ta(RESOURCE_HOST_NAME_EP)).set('1') if key == :ep
-      return find(:xpath, RESOURCE_HOST_NAME_IL).set('1') if key == :il
-      find(:xpath, ta(RESOURCE_HOST_NAME_TA, RESOURCE_HOST_NAME_IL)).set('1')
+      return find(ta(RESOURCE_HOST_NAME_EP)).set(value) if key == :ep
+      return find(:xpath, RESOURCE_HOST_NAME_IL).set(value) if key == :il
+      find(:xpath, ta(RESOURCE_HOST_NAME_TA, RESOURCE_HOST_NAME_IL)).set(value)
     end
   end
 
-  def set_port_of_resource(key = nil)
+  def set_port_of_resource(key = nil, value)
     within_frame(0) do
-      return find(ta(RESOURCE_PORT_EP)).set('1') if key == :ep
-      return find(:xpath, RESOURCE_PORT_IL).set('1') if key == :il
-      find(:xpath, ta(RESOURCE_PORT_TA, RESOURCE_PORT_IL)).set('1')
+      return find(ta(RESOURCE_PORT_EP)).set(value) if key == :ep
+      return find(:xpath, RESOURCE_PORT_IL).set(value) if key == :il
+      find(:xpath, ta(RESOURCE_PORT_TA, RESOURCE_PORT_IL)).set(value)
     end
   end
 
-  def set_pools_of_resource(key = nil)
+  def set_pools_of_resource(key = nil, value)
     within_frame(0) do
-      return find(ta(RESOURCE_POOLS_EP)).set('1') if key == :ep
-      return find(:xpath, RESOURCE_POOLS_IL).set('1') if key == :il
-      find(:xpath, ta(RESOURCE_POOLS_TA, RESOURCE_POOLS_IL)).set('1')
+      return find(ta(RESOURCE_POOLS_EP)).set(value) if key == :ep
+      return find(:xpath, RESOURCE_POOLS_IL).set(value) if key == :il
+      find(:xpath, ta(RESOURCE_POOLS_TA, RESOURCE_POOLS_IL)).set(value)
     end
   end
 
-  def set_shell_of_resource(key = nil)
+  def set_shell_of_resource(key = nil, value)
     within_frame(0) do
-      return find(ta(RESOURCE_SHELL_EP)).set('1') if key == :ep
-      return find(:xpath, RESOURCE_SHELL_IL).set('1') if key == :il
-      find(:xpath, ta(RESOURCE_SHELL_TA, RESOURCE_SHELL_IL)).set('1')
+      return find(ta(RESOURCE_SHELL_EP)).set(value) if key == :ep
+      return find(:xpath, RESOURCE_SHELL_IL).set(value) if key == :il
+      find(:xpath, ta(RESOURCE_SHELL_TA, RESOURCE_SHELL_IL)).set(value)
     end
   end
 
-  def set_step_limit_of_resource(key = nil)
+  def set_step_limit_of_resource(key = nil, value)
     within_frame(0) do
-      return find(ta(RESOURCE_STEP_LIMIT_EP)).set('1') if key == :ep
-      return find(:xpath, RESOURCE_STEP_LIMIT_IL).set('1') if key == :il
-      find(:xpath, ta(RESOURCE_STEP_LIMIT_TA, RESOURCE_STEP_LIMIT_IL)).set('1')
+      return find(ta(RESOURCE_STEP_LIMIT_EP)).set(value) if key == :ep
+      return find(:xpath, RESOURCE_STEP_LIMIT_IL).set(value) if key == :il
+      find(:xpath, ta(RESOURCE_STEP_LIMIT_TA, RESOURCE_STEP_LIMIT_IL)).set(value)
     end
   end
 
-  def set_cache_directory_of_resource(key = nil)
+  def set_cache_directory_of_resource(key = nil, value)
     within_frame(0) do
-      return find(ta(RESOURCE_CACHE_DIRECTORY_EP)).set('1') if key == :ep
-      return find(:xpath, RESOURCE_CACHE_DIRECTORY_IL).set('1') if key == :il
-      find(:xpath, ta(RESOURCE_CACHE_DIRECTORY_TA, RESOURCE_CACHE_DIRECTORY_IL)).set('1')
+      return find(ta(RESOURCE_CACHE_DIRECTORY_EP)).set(value) if key == :ep
+      return find(:xpath, RESOURCE_CACHE_DIRECTORY_IL).set(value) if key == :il
+      find(:xpath, ta(RESOURCE_CACHE_DIRECTORY_TA, RESOURCE_CACHE_DIRECTORY_IL)).set(value)
     end
   end
 
-  def set_tags_of_resource(key = nil)
+  def set_tags_of_resource(key = nil, value)
     within_frame(0) do
-      return find(ta(RESOURCE_TAGS_EP)).set('1') if key == :ep
-      return find(:xpath, RESOURCE_TAGS_IL).set('1') if key == :il
-      find(:xpath, ta(RESOURCE_TAGS_TA, RESOURCE_TAGS_IL)).set('1')
+      return find(ta(RESOURCE_TAGS_EP)).set(value) if key == :ep
+      return find(:xpath, RESOURCE_TAGS_IL).set(value) if key == :il
+      find(:xpath, ta(RESOURCE_TAGS_TA, RESOURCE_TAGS_IL)).set(value)
     end
   end
 
@@ -170,11 +170,11 @@ class CloudBeesResources
     end
   end
 
-  def click_quick_search(key = nil)
+  def click_quick_search(key = nil, value)
     within_frame(0) do
-      return find(ta(QUICK_SEARCH_INPUT_EP)).set('Name1') if key == :ep
-      return find(:xpath, QUICK_SEARCH_INPUT_IL).set('Name1') if key == :il
-      find(:xpath, ta(QUICK_SEARCH_INPUT_TA, QUICK_SEARCH_INPUT_IL)).set('Name1')
+      return find(ta(QUICK_SEARCH_INPUT_EP)).set(value) if key == :ep
+      return find(:xpath, QUICK_SEARCH_INPUT_IL).set(value) if key == :il
+      find(:xpath, ta(QUICK_SEARCH_INPUT_TA, QUICK_SEARCH_INPUT_IL)).set(value)
     end
   end
 

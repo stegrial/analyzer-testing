@@ -30,8 +30,8 @@ describe 'Preconditions' do
 
       global_page.click_hamburger_menu :il
       global_page.click_applications :il
-      apps_page.find_application_name_field :il, data['app_name']
-      apps_page.choose_application :il
+      apps_page.find_application_name_field :il, 'appName'
+      apps_page.select_app_list_item :il
       apps_page.delete_application :il
       apps_page.confirm_delete_application :il
 
