@@ -59,8 +59,8 @@ describe 'Preconditions' do
         apps_editor.click_for_create_new_app_component
       end
 
-      step "User sets new application component name" do
-        apps_editor.set_new_name
+      step "User sets new application component name", 'appName' do |value|
+        apps_editor.set_new_name value
       end
 
       step "User sets new application component description",'description' do |value|
@@ -171,9 +171,9 @@ describe 'Preconditions' do
         apps_editor.click_for_create_new_app_component
       end
 
-      step "User sets new application component name" do
+      step "User sets new application component name", 'appName' do |value|
         check_element_path :css, CloudBeesAppsEditor::NEW_COMPONENT_NAME_TA, CloudBeesAppsEditor::NEW_COMPONENT_NAME_IL
-        apps_editor.set_new_name
+        apps_editor.set_new_name value
       end
 
       step "User sets new application component description",'description' do |value|
@@ -300,9 +300,9 @@ describe 'Preconditions' do
         apps_editor.click_for_create_new_app_component :ep
       end
 
-      step "User sets new application component name" do
+      step "User sets new application component name", 'appName' do |value|
         check_element_path :css, CloudBeesAppsEditor::NEW_COMPONENT_NAME_EP, CloudBeesAppsEditor::NEW_COMPONENT_NAME_IL
-        apps_editor.set_new_name :ep
+        apps_editor.set_new_name :ep, value
       end
 
       step "User sets new application component description" ,'description' do |value|

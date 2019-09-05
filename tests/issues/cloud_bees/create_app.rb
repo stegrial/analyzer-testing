@@ -18,7 +18,7 @@ describe 'Preconditions' do
     step "Remove created application", settings('cloud_bees') do |data|
       page.visit data['applications_page']
       apps_page.find_application_name_field :il, data['app_name']
-      apps_page.choose_application :il
+      apps_page.select_app_list_item :il
       apps_page.delete_application :il
       apps_page.confirm_delete_application :il
     end

@@ -35,10 +35,6 @@ class CloudBeesAppsEditor
   EC_ARTIFACTORY_TA = "cloud_bees:apps_editor:ec_artifactory"
   EC_ARTIFACTORY_EP = "EP:cloud_bees:apps_editor:ec_artifactory"
 
-  # EC_ARTIFACT_IL = "//span[@title='EC-Artifact']"
-  # EC_ARTIFACT_TA = "cloud_bees:apps_editor:ec_artifactory"
-  # EC_ARTIFACT_EP = "EP:cloud_bees:apps_editor:ec_artifactory"
-
   CONFIGURATION_IL = "(//tr//input[@class='gwt-TextBox'])[1]"
   CONFIGURATION_TA = "cloud_bees:apps_editor:configuration"
   CONFIGURATION_EP = "EP:cloud_bees:apps_editor:configuration"
@@ -83,9 +79,6 @@ class CloudBeesAppsEditor
   DELETE_TA = "cloud_bees:apps_editor:delete_item"
   DELETE_EP = "EP:cloud_bees:apps_editor:delete_item"
 
-  # ARTIFACT_OF_EC_ARTIFACT_IL = "//input[contains(@class, 'gwt-SuggestBox')]"
-  # ARTIFACT_OF_EC_ARTIFACT_TA = "cloud_bees:apps_editor:artifact_of_ec_artifact"
-  # ARTIFACT_OF_EC_ARTIFACT_EP = "EP:cloud_bees:apps_editor:artifact_of_ec_artifact"
 
   def click_add_new_component(key = nil)
     return find(ta(ADD_NEW_COMPONENT_EP)).click if key == :ep
@@ -105,10 +98,10 @@ class CloudBeesAppsEditor
     find(:css, ta(CREATE_NEW_APP_COMPONENT_TA, CREATE_NEW_APP_COMPONENT_IL)).click
   end
 
-  def set_new_name(key = nil)
-    return find(ta(NEW_COMPONENT_NAME_EP)).set("appName" + SecureRandom.hex(5)) if key == :ep
-    return find(:css, NEW_COMPONENT_NAME_IL).set("appName" + SecureRandom.hex(5)) if key == :il
-    find(:css, ta(NEW_COMPONENT_NAME_TA, NEW_COMPONENT_NAME_IL)).set("appName" + SecureRandom.hex(5))
+  def set_new_name(key = nil, value)
+    return find(ta(NEW_COMPONENT_NAME_EP)).set(value + SecureRandom.hex(5)) if key == :ep
+    return find(:css, NEW_COMPONENT_NAME_IL).set(value + SecureRandom.hex(5)) if key == :il
+    find(:css, ta(NEW_COMPONENT_NAME_TA, NEW_COMPONENT_NAME_IL)).set(value + SecureRandom.hex(5))
   end
 
   def set_description(key = nil, value)
@@ -128,18 +121,6 @@ class CloudBeesAppsEditor
     return find(:xpath, EC_ARTIFACTORY_IL).click if key == :il
     find(:xpath, ta(EC_ARTIFACTORY_TA, EC_ARTIFACTORY_IL)).click
   end
-
-  # def click_artifact(key = nil)
-  #   return find(ta(EC_ARTIFACT_EP)).click if key == :ep
-  #   return find(:xpath, EC_ARTIFACT_IL).click if key == :il
-  #   find(:xpath, ta(EC_ARTIFACT_TA, EC_ARTIFACT_IL)).click
-  # end
-
-  # def set_artifact_in_ec_artifact(key = nil)
-  #   return find(ta(ARTIFACT_OF_EC_ARTIFACT_EP)).set("test") if key == :ep
-  #   return find(:xpath, ARTIFACT_OF_EC_ARTIFACT_IL).set("test") if key == :il
-  #   find(:xpath, ta(ARTIFACT_OF_EC_ARTIFACT_TA, ARTIFACT_OF_EC_ARTIFACT_IL)).set("test")
-  # end
 
   def set_configuration(key = nil, value)
     return find(ta(CONFIGURATION_EP)).set(value) if key == :ep
