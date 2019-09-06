@@ -81,17 +81,21 @@ class CloudBeesCatalogs
   ALL_CATALOGS_TA = "cloud_bees:catalogs_page:all_catalogs"
   ALL_CATALOGS_EP = "EP:cloud_bees:catalogs_page:all_catalogs"
 
-  CREATED_CATALOG_IL = "//span[contains(text(), 'test1')]"
-  CREATED_CATALOG_TA = "cloud_bees:catalogs_page:test1"
-  CREATED_CATALOG_EP = "EP:cloud_bees:catalogs_page:test1"
+  CREATED_CATALOG_IL = ".popover-objects-header > .at-search-collapsable"
+  CREATED_CATALOG_TA = "cloud_bees:catalogs_page:new_catalog_name"
+  CREATED_CATALOG_EP = "EP:cloud_bees:catalogs_page:new_catalog_name"
+
+  SELECT_CATALOG_IL = ".at-popover-list-element-name-new_name_catalog"
+  SELECT_CATALOG_TA = "cloud_bees:catalogs_page:select_new_catalog"
+  SELECT_CATALOG_EP = "EP:cloud_bees:catalogs_page:select_new_catalog"
 
   CATALOG_EDITOR_IL = "//a[contains(@class, 'navigation__link')][2]"
   CATALOG_EDITOR_TA =  "cloud_bees:catalogs_page:catalog_editor"
   CATALOG_EDITOR_EP =  "EP:cloud_bees:catalogs_page:catalog_editor"
 
-  CATALOG_HUMBURGER_MENU_IL = ".at-slide-menu-btn"
-  CATALOG_HUMBURGER_MENU_TA = "cloud_bees:catalogs_page:catalog_menu"
-  CATALOG_HUMBURGER_MENU_EP = "EP:cloud_bees:catalogs_page:catalog_menu"
+  CATALOG_HAMBURGER_MENU_IL = ".at-slide-menu-btn"
+  CATALOG_HAMBURGER_MENU_TA = "cloud_bees:catalogs_page:catalog_menu"
+  CATALOG_HAMBURGER_MENU_EP = "EP:cloud_bees:catalogs_page:catalog_menu"
 
   DELETE_CATALOG_IL = ".at-slide-menu-item-6"
   DELETE_CATALOG_TA = "cloud_bees:catalogs_page:delete_catalog"
@@ -238,11 +242,18 @@ class CloudBeesCatalogs
     find(:css, ta(ALL_CATALOGS_TA, ALL_CATALOGS_IL)).click
   end
 
-  def click_to_select_created_catalog(key = nil)
-    return find(ta(CREATED_CATALOG_EP)).click if key == :ep
-    return find(:xpath, CREATED_CATALOG_IL).click if key == :il
-    find(:xpath, ta(CREATED_CATALOG_TA, CREATED_CATALOG_IL)).click
+  def click_to_select_created_catalog(key = nil, catalogName)
+    return find(ta(CREATED_CATALOG_EP)).set(catalogName) if key == :ep
+    return find(:css, CREATED_CATALOG_IL).set(catalogName) if key == :il
+    find(:css, ta(CREATED_CATALOG_TA, CREATED_CATALOG_IL)).set(catalogName)
   end
+
+  def select_created_catalog(key = nil)
+    return find(ta(SELECT_CATALOG_EP)).click if key == :ep
+    return find(:css, SELECT_CATALOG_IL).click if key == :il
+    find(:css, ta(SELECT_CATALOG_TA, SELECT_CATALOG_IL)).click
+  end
+
 
   def click_editor_catalog(key = nil)
     return find(ta(CATALOG_EDITOR_EP)).click if key == :ep
@@ -251,9 +262,9 @@ class CloudBeesCatalogs
   end
 
   def click_catalog_menu(key = nil)
-    return find(ta(CATALOG_HUMBURGER_MENU_EP)).click if key == :ep
-    return find(:css, CATALOG_HUMBURGER_MENU_IL).click if key == :il
-    find(:css, ta(CATALOG_HUMBURGER_MENU_TA, CATALOG_HUMBURGER_MENU_IL)).click
+    return find(ta(CATALOG_HAMBURGER_MENU_EP)).click if key == :ep
+    return find(:css, CATALOG_HAMBURGER_MENU_IL).click if key == :il
+    find(:css, ta(CATALOG_HAMBURGER_MENU_TA, CATALOG_HAMBURGER_MENU_IL)).click
   end
 
   def click_delete_catalog(key = nil)

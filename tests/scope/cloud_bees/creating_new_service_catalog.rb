@@ -25,7 +25,8 @@ describe 'Preconditions' do
       page.visit data['catalogs_page']
      sleep 3
       catalogs_page.click_all_catalogs :il
-      catalogs_page.click_to_select_created_catalog :il
+      catalogs_page.click_to_select_created_catalog :il, 'new_name_catalog'
+      catalogs_page.select_created_catalog :il
       catalogs_page.click_editor_catalog :il
       catalogs_page.click_catalog_menu :il
       catalogs_page.click_delete_catalog
@@ -95,7 +96,7 @@ describe 'Preconditions' do
       end
 
       step "User set name in form", 'new_form_name2' do |value|
-        sleep 3
+        # sleep 3
         catalogs_page.set_name_in_form2 value
       end
 
@@ -112,7 +113,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select execute option" do
-        sleep 5
+        # sleep 5
         catalogs_page.click_to_select_execute_option
       end
 
@@ -125,7 +126,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on ec example project" do
-        sleep 5
+        # sleep 5
         catalogs_page.click_to_select_ec_example_proj
       end
 
@@ -247,7 +248,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on ec example project" do
-        sleep 5
+        # sleep 5
         check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_TA, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_IL
         catalogs_page.click_to_select_ec_example_proj
       end

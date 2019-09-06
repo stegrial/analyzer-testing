@@ -120,7 +120,6 @@ describe 'Preconditions' do
       step "User click on ok button for accepting" do
         apps_editor.click_warning_ok_btn
       end
-      Capybara.current_session.driver.quit
 
     end
 

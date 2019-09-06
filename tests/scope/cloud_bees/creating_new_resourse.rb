@@ -21,7 +21,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il1: true do
+    scenario 'Recording IL', il: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -45,7 +45,7 @@ describe 'Preconditions' do
       end
 
       step "Admin enters a new resource name", 'NewResourceName' do |name|
-        sleep 5  # TA-1016
+        # sleep 5  # TA-1016
         resources_page.set_resource_name name
       end
 
@@ -80,7 +80,7 @@ describe 'Preconditions' do
       step "Admin set cache tags of new resource input" , '123' do |value|
         resources_page.set_tags_of_resource value
       end
-      sleep 3
+      # sleep 3
       step "Admin clicks ok button" do
         resources_page.click_ok_button
       end
@@ -138,7 +138,7 @@ describe 'Preconditions' do
       end
 
       step "Admin enters a new resource name", 'NewResourceName' do |name|
-        sleep 5  # TA-1016
+        # sleep 5  # TA-1016
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_TA, CloudBeesResources::RESOURCE_NAME_IL }
         resources_page.set_resource_name name
       end
@@ -208,7 +208,7 @@ describe 'Preconditions' do
         resources_page.click_to_delete_new_resource
       end
 
-      sleep 2
+      # sleep 2
 
       step "Admin clicks ok for delete resource " do
         within_frame(0) { check_element_path :xpath, CloudBeesResources::ACCEPT_DELETE_RESOURCE_TA, CloudBeesResources::ACCEPT_DELETE_RESOURCE_IL }
@@ -248,7 +248,7 @@ describe 'Preconditions' do
       end
 
       step "Admin enters a new resource name", 'NewResourceName' do |name|
-        sleep 5  # TA-1016
+        # sleep 5  # TA-1016
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_EP, CloudBeesResources::RESOURCE_NAME_IL }
         resources_page.set_resource_name :ep, name
       end
@@ -318,8 +318,7 @@ describe 'Preconditions' do
         resources_page.click_to_delete_new_resource :ep
       end
 
-      sleep 2
-
+      # sleep 2
       step "Admin clicks ok for delete resource " do
         within_frame(0) { check_element_path :xpath, CloudBeesResources::ACCEPT_DELETE_RESOURCE_EP, CloudBeesResources::ACCEPT_DELETE_RESOURCE_IL }
         resources_page.click_ok_to_delete_new_resource :ep

@@ -43,7 +43,7 @@ describe 'Preconditions' do
 
       step "Admin enters a value in the timezone search field", 'Kiev' do |value|
         releases_calendar.set_timezone_search_value :il, value
-        sleep 2 # need to wait for the filter to be applied
+        # sleep 2 # need to wait for the filter to be applied
       end
 
       step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
@@ -146,7 +146,7 @@ describe 'Preconditions' do
 
       step "Admin enters a value in the timezone search field", 'Kiev' do |value|
         releases_calendar.set_timezone_search_value :il, value
-        sleep 2 # need to wait for the filter to be applied
+        # sleep 2 # need to wait for the filter to be applied
       end
 
       step "Admin chooses timezone", 'Europe/Kiev' do |timezone|

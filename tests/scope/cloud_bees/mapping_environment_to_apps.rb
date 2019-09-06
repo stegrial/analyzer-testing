@@ -89,7 +89,6 @@ describe 'Preconditions' do
       end
 
       step "Admin select on the drop-down Default project" do
-        sleep 3
         apps_page.select_default_project
       end
 
@@ -98,7 +97,6 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on the Component tier" do
-        sleep 3
         apps_page.click_component_tier
       end
 
@@ -115,7 +113,6 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on the Content location drop-down" do
-        sleep 3
         apps_page.click_on_content_location
       end
 
@@ -130,8 +127,6 @@ describe 'Preconditions' do
       step "Admin click on the OK button" do
         apps_page.confirm_new_artifact
       end
-
-      sleep 5
 
       step "Admin goes to the page", settings('cloud_bees')['environments_page'] do |url|
         page.visit url
@@ -154,7 +149,6 @@ describe 'Preconditions' do
       end
 
       step "Admin select project from dropdown" do
-        sleep 3
         env.click_to_select_default_project
       end
 
@@ -163,12 +157,10 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks to create resource tier" do
-        sleep 4
         env_editor.click_resource_tier
       end
 
       step "Admin clicks to add resource" do
-       sleep 2
        env_editor.click_to_add_resource
       end
 
@@ -184,16 +176,19 @@ describe 'Preconditions' do
         env_editor.click_map_to_app_hierarchy_menu
       end
 
-      step "Admin select application from map list" do
-        sleep 3
+      step "Admin set application in search field", 'appName' do |appName|
+        env_editor.set_app_in_search appName
+      end
+
+      step "Admin select application from map list " do
         env_editor.select_app_from_maplist
       end
+
       step "Admin clicks hamburger menu button to mapping" do
         env_editor.click_mapping_select_btn
       end
 
       step "Admin select tier map from popover" do
-        sleep 3
         env_editor.click_to_select_tier_for_map
       end
 
@@ -255,7 +250,6 @@ describe 'Preconditions' do
       end
 
       step "Admin select on the drop-down Default project" do
-        sleep 3
         check_element_path :xpath  , CloudBeesApps::SELECT_DEFAULT_PROJECT_TA, CloudBeesApps::SELECT_DEFAULT_PROJECT_IL
         apps_page.select_default_project
       end
@@ -266,7 +260,6 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on the Component tier" do
-        sleep 3
         check_element_path :xpath  , CloudBeesApps::COMPONENT_TIER_TA, CloudBeesApps::COMPONENT_TIER_IL
         apps_page.click_component_tier
       end
@@ -287,7 +280,6 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on the Content location drop-down" do
-        sleep 3
         check_element_path :xpath  , CloudBeesApps::CONTENT_LOCATION_TA, CloudBeesApps::CONTENT_LOCATION_IL
         apps_page.click_on_content_location
       end
@@ -307,7 +299,6 @@ describe 'Preconditions' do
         apps_page.confirm_new_artifact
       end
 
-      sleep 5
 
       step "Admin goes to the page", settings('cloud_bees')['environments_page'] do |url|
         page.visit url
@@ -334,7 +325,6 @@ describe 'Preconditions' do
       end
 
       step "Admin select project from dropdown" do
-        sleep 3
         check_element_path :xpath  , CloudBeesEnv::SELECT_DEFAULT_PROJECT_TA, CloudBeesEnv::SELECT_DEFAULT_PROJECT_IL
         env.click_to_select_default_project
       end
@@ -345,13 +335,11 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks to create resource tier" do
-        sleep 4
         check_element_path :xpath  , CloudBeesEnvEditor::RESOURCE_TIER_TA, CloudBeesEnvEditor::RESOURCE_TIER_IL
         env_editor.click_resource_tier
       end
 
       step "Admin clicks to add resource" do
-        sleep 2
         check_element_path :css  , CloudBeesEnvEditor::ADD_RESOURCE_BTN_TA, CloudBeesEnvEditor::ADD_RESOURCE_BTN_IL
         env_editor.click_to_add_resource
       end
@@ -371,11 +359,16 @@ describe 'Preconditions' do
         env_editor.click_map_to_app_hierarchy_menu
       end
 
-      step "Admin select application from map list" do
-        sleep 3
-        check_element_path :xpath  , CloudBeesEnvEditor::APP_FROM_MAPPING_LIST_TA, CloudBeesEnvEditor::APP_FROM_MAPPING_LIST_IL
+      step "Admin set application in search field", 'appName' do |appName|
+        check_element_path :css  , CloudBeesEnvEditor::APPNAME_IN_SEARCH_FIELD_TA, CloudBeesEnvEditor::APPNAME_IN_SEARCH_FIELD_IL
+        env_editor.set_app_in_search appName
+      end
+
+      step "Admin select application from map list " do
+        check_element_path :css  , CloudBeesEnvEditor::APPS_NAME_IN_MAPPING_MODAL_TA, CloudBeesEnvEditor::APPS_NAME_IN_MAPPING_MODAL_IL
         env_editor.select_app_from_maplist
       end
+
       step "Admin clicks hamburger menu button to mapping" do
         check_element_path :css  , CloudBeesEnvEditor::MAPPING_SELECT_BTN_TA, CloudBeesEnvEditor::MAPPING_SELECT_BTN_IL
         env_editor.click_mapping_select_btn
@@ -383,7 +376,6 @@ describe 'Preconditions' do
 
       step "Admin select tier map from popover" do
         check_element_path :css  , CloudBeesEnvEditor::TIER_MAPPING_POPOVER_TA, CloudBeesEnvEditor::TIER_MAPPING_POPOVER_IL
-        sleep 3
         env_editor.click_to_select_tier_for_map
       end
 
@@ -564,11 +556,17 @@ describe 'Preconditions' do
         env_editor.click_map_to_app_hierarchy_menu :ep
       end
 
-      step "Admin select application from map list" do
+      step "Admin set application in search field", 'appName' do |appName|
         sleep 3
-        check_element_path :xpath  , CloudBeesEnvEditor::APP_FROM_MAPPING_LIST_EP, CloudBeesEnvEditor::APP_FROM_MAPPING_LIST_IL
+        check_element_path :css  , CloudBeesEnvEditor::APPNAME_IN_SEARCH_FIELD_EP, CloudBeesEnvEditor::APPNAME_IN_SEARCH_FIELD_IL
+        env_editor.set_app_in_search :ep, appName
+      end
+
+      step "Admin select application from map list " do
+        check_element_path :css  , CloudBeesEnvEditor::APPS_NAME_IN_MAPPING_MODAL_EP, CloudBeesEnvEditor::APPS_NAME_IN_MAPPING_MODAL_IL
         env_editor.select_app_from_maplist :ep
       end
+
       step "Admin clicks hamburger menu button to mapping" do
         check_element_path :css  , CloudBeesEnvEditor::MAPPING_SELECT_BTN_EP, CloudBeesEnvEditor::MAPPING_SELECT_BTN_IL
         env_editor.click_mapping_select_btn :ep
