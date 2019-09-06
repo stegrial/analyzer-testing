@@ -141,7 +141,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on catalog hamburger menu button" do
-        check_element_path :css, CloudBeesCatalogs::CATALOG_HUMBURGER_MENU_TA, CloudBeesCatalogs::CATALOG_HUMBURGER_MENU_IL
+        check_element_path :css, CloudBeesCatalogs::CATALOG_HAMBURGER_MENU_TA, CloudBeesCatalogs::CATALOG_HAMBURGER_MENU_IL
         catalogs_page.click_catalog_menu
       end
 
@@ -212,7 +212,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on catalog hamburger menu button" do
-        check_element_path :css, CloudBeesCatalogs::CATALOG_HUMBURGER_MENU_EP, CloudBeesCatalogs::CATALOG_HUMBURGER_MENU_IL
+        check_element_path :css, CloudBeesCatalogs::CATALOG_HAMBURGER_MENU_EP, CloudBeesCatalogs::CATALOG_HAMBURGER_MENU_IL
         catalogs_page.click_catalog_menu :ep
       end
 

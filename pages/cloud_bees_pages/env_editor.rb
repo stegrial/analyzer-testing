@@ -21,9 +21,13 @@ class CloudBeesEnvEditor
   MAP_TO_APP_BTN_TA = "cloud_bees:env_editor:map_to_app_hierarchy_menu"
   MAP_TO_APP_BTN_EP = "EP:cloud_bees:env_editor:map_to_app_hierarchy_menu"
 
-  APP_FROM_MAPPING_LIST_IL = "//span[@title='appTest']"
-  APP_FROM_MAPPING_LIST_TA = "cloud_bees:env_editor:app_from_maplist"
-  APP_FROM_MAPPING_LIST_EP = "EP:cloud_bees:env_editor:app_from_maplist"
+  APPNAME_IN_SEARCH_FIELD_IL = ".at-search-collapsable-input"
+  APPNAME_IN_SEARCH_FIELD_TA = "cloud_bees:env_editor:app_from_search"
+  APPNAME_IN_SEARCH_FIELD_EP = "EP:cloud_bees:env_editor:app_from_search"
+
+  APPS_NAME_IN_MAPPING_MODAL_IL = ".ec-grid-primary__row--pointer"
+  APPS_NAME_IN_MAPPING_MODAL_TA = "cloud_bees:env_editor:app_from_maplist"
+  APPS_NAME_IN_MAPPING_MODAL_EP = "EP:cloud_bees:env_editor:app_from_maplist"
 
   MAPPING_SELECT_BTN_IL = ".at-mapping-select-btn"
   MAPPING_SELECT_BTN_TA = "cloud_bees:env_editor:mapping_select_btn"
@@ -62,12 +66,17 @@ class CloudBeesEnvEditor
     find(:css, ta(MAP_TO_APP_BTN_TA, MAP_TO_APP_BTN_IL)).click
   end
 
-  def select_app_from_maplist(key = nil)
-    return find(ta(APP_FROM_MAPPING_LIST_EP)).click if key == :ep
-    return find(:xpath, APP_FROM_MAPPING_LIST_IL).click if key == :il
-    find(:xpath, ta(APP_FROM_MAPPING_LIST_TA, APP_FROM_MAPPING_LIST_IL)).click
+  def set_app_in_search(key = nil, appName)
+    return find(ta(APPNAME_IN_SEARCH_FIELD_EP)).set(appName) if key == :ep
+    return find(:css, APPNAME_IN_SEARCH_FIELD_IL).set(appName) if key == :il
+    find(:css, ta(APPNAME_IN_SEARCH_FIELD_TA, APPNAME_IN_SEARCH_FIELD_IL)).set(appName)
   end
 
+  def select_app_from_maplist(key = nil)
+    return find(ta(APPS_NAME_IN_MAPPING_MODAL_EP)).click if key == :ep
+    return find(:css, APPS_NAME_IN_MAPPING_MODAL_IL).click if key == :il
+    find(:css, ta(APPS_NAME_IN_MAPPING_MODAL_TA, APPS_NAME_IN_MAPPING_MODAL_IL)).click
+  end
   def click_mapping_select_btn(key = nil)
     return find(ta(MAPPING_SELECT_BTN_EP)).click if key == :ep
     return find(:css, MAPPING_SELECT_BTN_IL).click if key == :il
