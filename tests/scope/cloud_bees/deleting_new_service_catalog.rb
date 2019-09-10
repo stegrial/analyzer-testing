@@ -143,9 +143,7 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_TA, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
         catalogs_page.click_ok_btn_for_accept_delete
       end
-
     end
-
     # Element Picker from Repository
 
     scenario 'Searching EP', ep: true do

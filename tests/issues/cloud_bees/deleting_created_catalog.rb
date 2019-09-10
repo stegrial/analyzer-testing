@@ -320,5 +320,6 @@ describe 'Preconditions' do
         catalogs_page.click_ok_btn_for_accept_delete :il
       end
     end
-    end
+
+  end
 end
