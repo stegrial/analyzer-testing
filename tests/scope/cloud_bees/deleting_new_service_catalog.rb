@@ -212,7 +212,6 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_EP, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
         catalogs_page.click_ok_btn_for_accept_delete :ep
       end
-
     end
   end
 end
