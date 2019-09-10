@@ -302,5 +302,4 @@ class CloudBeesCatalogs
     return find(:css, UTILITY_IN_CATALOG_LIST_IL).click if key == :il
     find(:css, ta(UTILITY_IN_CATALOG_LIST_TA, UTILITY_IN_CATALOG_LIST_IL)).click
   end
-  
 end
