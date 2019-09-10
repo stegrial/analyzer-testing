@@ -55,7 +55,7 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-       catalogs_page.select_proj_from_list
+        catalogs_page.select_proj_from_list
       end
 
       step "User clicks ok button in modal" do
@@ -67,10 +67,10 @@ describe 'Preconditions' do
       end
 
       step "User clicks delete button in menu" do
-        sleep 4  # needed to bypass the bug  TA-1024
         catalogs_page.click_delete_catalog
       end
 
+      # Need to delete created catalog for  able to create a new
       step "User clicks ok button in modal" do
         catalogs_page.click_ok_btn_for_accept_delete
       end
@@ -84,10 +84,10 @@ describe 'Preconditions' do
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field  credentials['username']
+        login_page.fill_username_field   credentials['username']
 
         check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_TA, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field  credentials['pass']
+        login_page.fill_pass_field   credentials['pass']
 
         check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
         login_page.click_sign_in_button
@@ -98,7 +98,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        sleep 5
         check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_TA, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog
       end
@@ -110,7 +109,7 @@ describe 'Preconditions' do
 
       step "User set name new catalog", 'new_name_catalog' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FLD_TA, CloudBeesCatalogs::CATALOGS_NAME_FLD_IL
-        catalogs_page.set_catalog_name value
+        catalogs_page.set_catalog_name  value
       end
 
       step "User clicks to open project dropdown of new catalog" do
@@ -119,7 +118,6 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-        sleep 5
         check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_TA, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list
       end
@@ -134,11 +132,13 @@ describe 'Preconditions' do
         catalogs_page.click_catalog_menu
       end
 
+      # Issue step
       step "User clicks delete button in menu" do
         check_element_path :css, CloudBeesCatalogs::DELETE_CATALOG_TA, CloudBeesCatalogs::DELETE_CATALOG_IL
         catalogs_page.click_delete_catalog
       end
 
+      # Need to delete created catalog for  able to create a new
       step "User clicks ok button in modal" do
         check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_TA, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
         catalogs_page.click_ok_btn_for_accept_delete
@@ -214,7 +214,111 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_EP, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
         catalogs_page.click_ok_btn_for_accept_delete :ep
       end
-
     end
-  end
+
+    scenario 'Recording debug', record_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
+      end
+
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il,credentials['username']
+        login_page.fill_pass_field :il,credentials['pass']
+        login_page.click_sign_in_button :il
+      end
+
+      step "User goes to the page", settings('cloud_bees')['catalogs_page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks to create new catalog" do
+        catalogs_page.click_to_create_new_catalog :il
+      end
+
+      step "User clicks to create new button" do
+        catalogs_page.click_to_create_new_btn :il
+      end
+
+      step "User set name new catalog", 'new_name_catalog' do |value|
+        catalogs_page.set_catalog_name :il, value
+      end
+
+      step "User clicks to open project dropdown of new catalog" do
+        catalogs_page.click_to_open_proj_drpodown :il
+      end
+
+      step "User select default project from list" do
+        catalogs_page.select_proj_from_list :il
+      end
+
+      step "User clicks ok button in modal" do
+        catalogs_page.click_ok_in_modal_btn :il
+      end
+
+      step "User clicks on catalog hamburger menu button" do
+        catalogs_page.click_catalog_menu :il
+      end
+
+      step "User clicks delete button in menu" do
+        catalogs_page.click_delete_catalog
+      end
+
+      step "User clicks ok button in modal" do
+        catalogs_page.click_ok_btn_for_accept_delete :il
+      end
+    end
+
+    scenario 'Searching debug', search_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
+      end
+
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field  :il, credentials['username']
+        login_page.fill_pass_field  :il, credentials['pass']
+        login_page.click_sign_in_button :il
+      end
+
+      step "User goes to the page", settings('cloud_bees')['catalogs_page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks to create new catalog" do
+        catalogs_page.click_to_create_new_catalog :il
+      end
+
+      step "User clicks to create new button" do
+        catalogs_page.click_to_create_new_btn :il
+      end
+
+      step "User set name new catalog", 'new_name_catalog' do |value|
+        catalogs_page.set_catalog_name :il, value
+      end
+
+      step "User clicks to open project dropdown of new catalog" do
+        catalogs_page.click_to_open_proj_drpodown :il
+      end
+
+      step "User select default project from list" do
+        catalogs_page.select_proj_from_list :il
+      end
+
+      step "User clicks ok button in modal" do
+        catalogs_page.click_ok_in_modal_btn :il
+      end
+
+      step "User clicks on catalog hamburger menu button" do
+        catalogs_page.click_catalog_menu :il
+      end
+
+      step "User clicks delete button in menu" do
+        check_element_path :css, CloudBeesCatalogs::DELETE_CATALOG_TA, CloudBeesCatalogs::DELETE_CATALOG_IL
+        catalogs_page.click_delete_catalog
+      end
+
+      step "User clicks ok button in modal" do
+        catalogs_page.click_ok_btn_for_accept_delete :il
+      end
+    end
+    end
 end
