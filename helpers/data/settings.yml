@@ -98,3 +98,6 @@ revolve:
 
 booking:
   page: "https://www.booking.com/index.ru.html?label=gen173nr-1DCAEoggI46AdIIVgEaIkCiAECmAEhuAEHyAEN2AED6AEB-AECiAIBqAIDuAK73e7qBcACAQ;sid=6e74b4194271cd26e483b3cc7003b0c7"
+
+ta:
+  website_home: "https://trueautomation.io/"
