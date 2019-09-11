@@ -97,7 +97,7 @@ class CloudBeesCatalogs
   CATALOG_HAMBURGER_MENU_TA = "cloud_bees:catalogs_page:catalog_menu"
   CATALOG_HAMBURGER_MENU_EP = "EP:cloud_bees:catalogs_page:catalog_menu"
 
-  DELETE_CATALOG_IL = ".at-slide-menu-item-6"
+  DELETE_CATALOG_IL = ".ec-context-menu__list> .at-slide-menu-item-6"
   DELETE_CATALOG_TA = "cloud_bees:catalogs_page:delete_catalog"
   DELETE_CATALOG_EP = "EP:cloud_bees:catalogs_page:delete_catalog"
 
@@ -302,4 +302,5 @@ class CloudBeesCatalogs
     return find(:css, UTILITY_IN_CATALOG_LIST_IL).click if key == :il
     find(:css, ta(UTILITY_IN_CATALOG_LIST_TA, UTILITY_IN_CATALOG_LIST_IL)).click
   end
+  
 end
