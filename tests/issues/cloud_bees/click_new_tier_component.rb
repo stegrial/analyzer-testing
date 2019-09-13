@@ -68,7 +68,7 @@ describe 'Preconditions' do
       end
 
       step "Admin select on the drop-down Default project" do
-        apps_page.select_default_project
+        apps_page.select_default_project :il # TA-1004
       end
 
       step "Admin confirm new application" do
@@ -129,8 +129,8 @@ describe 'Preconditions' do
       end
 
       step "Admin select on the drop-down Default project" do
-        check_element_path :xpath, CloudBeesApps::SELECT_DEFAULT_PROJECT_TA, CloudBeesApps::SELECT_DEFAULT_PROJECT_IL
-        apps_page.select_default_project
+        # check_element_path :xpath, CloudBeesApps::SELECT_DEFAULT_PROJECT_TA, CloudBeesApps::SELECT_DEFAULT_PROJECT_IL
+        apps_page.select_default_project :il # TA-1004
       end
 
       step "Admin confirm new application" do

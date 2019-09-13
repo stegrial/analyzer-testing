@@ -209,4 +209,5 @@ class CloudBeesResources
       find(:xpath, ta(ACCEPT_DELETE_RESOURCE_TA, ACCEPT_DELETE_RESOURCE_IL)).click
     end
   end
+
 end

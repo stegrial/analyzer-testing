@@ -18,7 +18,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'CloudBees - Deleting new Service Catalog' do
+  feature 'TA -1024, CloudBees - Deleting new Service Catalog' do
 
     # Initial locators with Recording
 
@@ -40,7 +40,6 @@ describe 'Preconditions' do
       step "User clicks to create new catalog" do
         catalogs_page.click_to_create_new_catalog
       end
-
 
       step "User clicks to create new button" do
         catalogs_page.click_to_create_new_btn
@@ -70,11 +69,12 @@ describe 'Preconditions' do
         catalogs_page.click_delete_catalog
       end
 
-      # Need to delete created catalog for  able to create a new
+      # Need to delete created catalog for able to create a new
       step "User clicks ok button in modal" do
         catalogs_page.click_ok_btn_for_accept_delete
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -138,12 +138,13 @@ describe 'Preconditions' do
         catalogs_page.click_delete_catalog
       end
 
-      # Need to delete created catalog for  able to create a new
+      # Need to delete created catalog for able to create a new
       step "User clicks ok button in modal" do
         check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_TA, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
         catalogs_page.click_ok_btn_for_accept_delete
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -214,7 +215,11 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_EP, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
         catalogs_page.click_ok_btn_for_accept_delete :ep
       end
+
+      sleep 3
     end
+
+    # Debug
 
     scenario 'Recording debug', record_debug: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
@@ -266,6 +271,8 @@ describe 'Preconditions' do
       step "User clicks ok button in modal" do
         catalogs_page.click_ok_btn_for_accept_delete :il
       end
+
+      sleep 3
     end
 
     scenario 'Searching debug', search_debug: true do
@@ -312,13 +319,14 @@ describe 'Preconditions' do
       end
 
       step "User clicks delete button in menu" do
-        check_element_path :css, CloudBeesCatalogs::DELETE_CATALOG_TA, CloudBeesCatalogs::DELETE_CATALOG_IL
         catalogs_page.click_delete_catalog
       end
 
       step "User clicks ok button in modal" do
         catalogs_page.click_ok_btn_for_accept_delete :il
       end
+
+      sleep 3
     end
 
   end
