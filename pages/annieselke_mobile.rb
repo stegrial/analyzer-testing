@@ -22,9 +22,9 @@ class AnnieselkeMobile
   LOGIN_TA = "annieselke_mobile:register"
   LOGIN_EP = "EP:annieselke_mobile:register"
 
-  HUMBURGER_MENU_IL = "//button[@aria-label='Menu']"
-  HUMBURGER_MENU_TA = "annieselke_mobile:humburger_menu"
-  HUMBURGER_MENU_EP = "EP:annieselke_mobile:humburger_menu"
+  HAMBURGER_MENU_IL = "//button[@aria-label='Menu']"
+  HAMBURGER_MENU_TA = "annieselke_mobile:humburger_menu"
+  HAMBURGER_MENU_EP = "EP:annieselke_mobile:humburger_menu"
 
   MY_ACCOUNT_IL = "//a[text()='My Account']"
   MY_ACCOUNT_TA = "annieselke_mobile:my_account"
@@ -67,10 +67,10 @@ class AnnieselkeMobile
     find(:xpath, ta(LOGIN_TA, LOGIN_IL)).click
   end
 
-  def click_humburger_menu(key = nil)
-    return find(:xpath, ta(HUMBURGER_MENU_EP)).click if key == :ep
-    return find(:xpath, HUMBURGER_MENU_IL).click if key == :il
-    find(:xpath, ta(HUMBURGER_MENU_TA, HUMBURGER_MENU_IL)).click
+  def click_hamburger_menu(key = nil)
+    return find(:xpath, ta(HAMBURGER_MENU_EP)).click if key == :ep
+    return find(:xpath, HAMBURGER_MENU_IL).click if key == :il
+    find(:xpath, ta(HAMBURGER_MENU_TA, HAMBURGER_MENU_IL)).click
   end
 
   def click_my_acc_btn(key = nil)

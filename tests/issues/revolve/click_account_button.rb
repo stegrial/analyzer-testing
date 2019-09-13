@@ -24,8 +24,8 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks on humburger menu button" do
-        it.click_humburger_menu
+      step "User clicks on hamburger menu button" do
+        it.click_hamburger_menu
       end
 
       step "User clicks on the Account button" do
@@ -45,9 +45,9 @@ describe 'Preconditions' do
         it.click_sign_in_button :il
       end
 
-      step "User clicks on humburger menu button" do
+      step "User clicks on hamburger menu button" do
         sleep 3
-        it.click_humburger_menu
+        it.click_hamburger_menu
       end
 
       step "User clicks on the Account button" do
@@ -65,8 +65,8 @@ describe 'Preconditions' do
 
       2.times do
 
-        step "User clicks on humburger menu button" do
-          it.click_humburger_menu
+        step "User clicks on hamburger menu button" do
+          it.click_hamburger_menu
         end
 
         step "User clicks on the Account button two times (for different pages)" do
@@ -88,8 +88,8 @@ describe 'Preconditions' do
 
 
       2.times do
-        step "User clicks on humburger menu button" do
-          it.click_humburger_menu
+        step "User clicks on hamburger menu button" do
+          it.click_hamburger_menu
         end
 
         step "User clicks on the Account button two times (for different pages)" do
@@ -108,8 +108,8 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks on humburger menu button" do
-        it.click_humburger_menu
+      step "User clicks on hamburger menu button" do
+        it.click_hamburger_menu
       end
 
       step "User clicks on the Account button" do
@@ -142,8 +142,8 @@ describe 'Preconditions' do
 
       1.times do
 
-        step "User clicks on humburger menu button" do
-          it.click_humburger_menu :il
+        step "User clicks on hamburger menu button" do
+          it.click_hamburger_menu :il
         end
 
         step "User clicks on the Account button" do
