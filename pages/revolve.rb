@@ -38,9 +38,9 @@ class Revolve
   PRODUCT_ITEM_TA = "revolve:product_item4"
   PRODUCT_ITEM_EP = "EP:revolve:product_item4"
   #
-  HUMBURGER_MENU_IL = "//button[@aria-label='Menu']"
-  HUMBURGER_MENU_TA = "revolve:humburger_menu"
-  HUMBURGER_MENU_EP = "EP:revolve:humburger_menu"
+  HAMBURGER_MENU_IL = "//button[@aria-label='Menu']"
+  HAMBURGER_MENU_TA = "revolve:hamburger_menu"
+  HAMBURGER_MENU_EP = "EP:revolve:hamburger_menu"
 
   ACCOUNT_BUTTON_IL = "(//a[text()='Hey, Sign in / Sign Up'])[1]"
   ACCOUNT_BUTTON_TA = "revolve:account_button"
@@ -235,10 +235,10 @@ class Revolve
     find(:xpath, ta(SIGN_IN_BTN_TA, SIGN_IN_BTN_IL)).click
   end
 
-  def click_humburger_menu(key = nil)
-    return find(ta(HUMBURGER_MENU_EP)).click if key == :ep
-    return find(:xpath, HUMBURGER_MENU_IL).click if key == :il
-    find(:xpath, ta(HUMBURGER_MENU_TA, HUMBURGER_MENU_IL)).click
+  def click_hamburger_menu(key = nil)
+    return find(ta(HAMBURGER_MENU_EP)).click if key == :ep
+    return find(:xpath, HAMBURGER_MENU_IL).click if key == :il
+    find(:xpath, ta(HAMBURGER_MENU_TA, HAMBURGER_MENU_IL)).click
   end
 
   def click_hot_list_banner(key = nil)

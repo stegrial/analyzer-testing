@@ -29,7 +29,7 @@ describe 'Preconditions' do
       it.close_modal
 
       step "humburger menu " do
-        it.click_humburger_menu
+        it.click_hamburger_menu
       end
 
       step "User clicks on login button" do
@@ -49,7 +49,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on humburger menu" do
-        it.click_humburger_menu
+        it.click_hamburger_menu
       end
 
       step "User clicks on My Account link" do
@@ -82,7 +82,7 @@ describe 'Preconditions' do
 
       step "humburger menu " do
         check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_TA, AnnieselkeMobile::HUMBURGER_MENU_IL
-        it.click_humburger_menu
+        it.click_hamburger_menu
       end
 
       step "User clicks on login button" do
@@ -107,7 +107,7 @@ describe 'Preconditions' do
 
       step "User clicks on humburger menu" do
         check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_TA, AnnieselkeMobile::HUMBURGER_MENU_IL
-        it.click_humburger_menu
+        it.click_hamburger_menu
       end
 
       step "User clicks on My Account link" do
@@ -146,7 +146,7 @@ describe 'Preconditions' do
 
       step "humburger menu " do
         check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_EP, AnnieselkeMobile::HUMBURGER_MENU_IL
-        it.click_humburger_menu :ep
+        it.click_hamburger_menu :ep
       end
 
       step "User clicks on login button" do
@@ -171,7 +171,7 @@ describe 'Preconditions' do
 
       step "User clicks on humburger menu" do
         check_element_path :xpath, AnnieselkeMobile::HUMBURGER_MENU_EP, AnnieselkeMobile::HUMBURGER_MENU_IL
-        it.click_humburger_menu :ep
+        it.click_hamburger_menu :ep
       end
 
       step "User clicks on My Account link" do
