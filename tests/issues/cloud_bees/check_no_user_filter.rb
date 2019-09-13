@@ -44,6 +44,7 @@ describe 'Preconditions' do
       end
 
       step "Admin filters the user", settings('cloud_bees') do |user_data|
+        sleep 3 # to wait iframe
         users_page.fill_user_filter_field user_data['user_username']
         users_page.apply_user_filter
       end
@@ -82,6 +83,8 @@ describe 'Preconditions' do
       end
 
       step "Admin filters the user", settings('cloud_bees') do |user_data|
+        sleep 3 # to wait iframe
+
         within_frame(0) { check_element_path :css, CloudBeesUsers::USER_FILTER_FIELD_TA, CloudBeesUsers::USER_FILTER_FIELD_IL }
         users_page.fill_user_filter_field user_data['user_username']
 
@@ -95,6 +98,7 @@ describe 'Preconditions' do
       end
 
       step "Admin does not see the User Filter on the New User Creating page" do
+        sleep 3 # to wait iframe
         new_user_page.check_no_user_filter CloudBeesUsers::USER_FILTER_FIELD_IL, CloudBeesUsers::USER_FILTER_FIELD_TA, CloudBeesUsers::USER_FILTER_FIELD_EP
       end
 
@@ -130,6 +134,8 @@ describe 'Preconditions' do
       end
 
       step "Admin filters the user", settings('cloud_bees') do |user_data|
+        sleep 3 # to wait iframe
+
         within_frame(0) { check_element_path :css, CloudBeesUsers::USER_FILTER_FIELD_EP, CloudBeesUsers::USER_FILTER_FIELD_IL }
         users_page.fill_user_filter_field :ep, user_data['user_username']
 
@@ -143,6 +149,7 @@ describe 'Preconditions' do
       end
 
       step "Admin does not see the User Filter on the New User Creating page" do
+        sleep 3 # to wait iframe
         new_user_page.check_no_user_filter :ep, CloudBeesUsers::USER_FILTER_FIELD_IL, CloudBeesUsers::USER_FILTER_FIELD_TA, CloudBeesUsers::USER_FILTER_FIELD_EP
       end
 
@@ -171,6 +178,7 @@ describe 'Preconditions' do
       end
 
       step "Admin filters the user", settings('cloud_bees') do |user_data|
+        sleep 3 # to wait iframe
         users_page.fill_user_filter_field user_data['user_username']
         users_page.apply_user_filter :il
       end
@@ -202,6 +210,7 @@ describe 'Preconditions' do
       end
 
       step "Admin filters the user", settings('cloud_bees') do |user_data|
+        sleep 3 # to wait iframe
         users_page.fill_user_filter_field :il, user_data['user_username']
         users_page.apply_user_filter :il
       end
@@ -211,6 +220,7 @@ describe 'Preconditions' do
       end
 
       step "Admin does not see the User Filter on the New User Creating page" do
+        sleep 3 # to wait iframe
         new_user_page.check_no_user_filter CloudBeesUsers::USER_FILTER_FIELD_IL, CloudBeesUsers::USER_FILTER_FIELD_TA, CloudBeesUsers::USER_FILTER_FIELD_EP
       end
 

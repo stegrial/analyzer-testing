@@ -49,10 +49,12 @@ describe 'Preconditions' do
       end
 
       step "User presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         users_page.press_create_user_btn
       end
 
       step "User fills the User Name field", 'UserName' do |name|
+        sleep 3 # to waiting iframe
         new_user_page.fill_user_name_field name
       end
 
@@ -94,11 +96,13 @@ describe 'Preconditions' do
       end
 
       step "User presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         within_frame(0) { check_element_path :xpath, CloudBeesUsers::CREATE_USER_BTN_TA, CloudBeesUsers::CREATE_USER_BTN_IL }
         users_page.press_create_user_btn
       end
 
       step "User fills the User Name field", 'UserName' do |name|
+        sleep 3 # to waiting iframe
         within_frame(0) { check_element_path :css, CloudBeesNewUser::USER_NAME_FIELD_TA, CloudBeesNewUser::USER_NAME_FIELD_IL }
         new_user_page.fill_user_name_field name
       end
@@ -146,11 +150,13 @@ describe 'Preconditions' do
       end
 
       step "User presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         within_frame(0) { check_element_path :xpath, CloudBeesGlobal::CREATE_USER_BTN_EP, CloudBeesGlobal::CREATE_USER_BTN_IL }
         users_page.press_create_user_btn :ep
       end
 
       step "User fills the User Name field", 'UserName' do |name|
+        sleep 3 # to waiting iframe
         within_frame(0) { check_element_path :css, CloudBeesGlobal::USER_NAME_FIELD_EP, CloudBeesGlobal::USER_NAME_FIELD_IL }
         new_user_page.fill_user_name_field :ep, name
       end
@@ -193,10 +199,12 @@ describe 'Preconditions' do
       end
 
       step "User presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         users_page.press_create_user_btn :il
       end
 
       step "User fills the User Name field", 'UserName' do |name|
+        sleep 3 # to waiting iframe
         new_user_page.fill_user_name_field :il, name
       end
 
@@ -233,10 +241,12 @@ describe 'Preconditions' do
       end
 
       step "User presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         users_page.press_create_user_btn :il
       end
 
       step "User fills the User Name field", 'UserName' do |name|
+        sleep 3 # to waiting iframe
         new_user_page.fill_user_name_field :il, name
       end
 

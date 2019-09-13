@@ -12,6 +12,7 @@ describe 'Preconditions' do
 
     before(:all) do
       $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+      Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
     end
 
     after(:all) do
@@ -44,6 +45,8 @@ describe 'Preconditions' do
       step "User clicks on pipeline to select" do
         pipelines_page.choose_pipeline_ta866_from_list
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -78,6 +81,8 @@ describe 'Preconditions' do
         check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_TA866_TA, CloudBeesPipelines::CHOOSE_PIPELINE_TA866_IL
         pipelines_page.choose_pipeline_ta866_from_list
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -113,6 +118,8 @@ describe 'Preconditions' do
         check_element_path :xpath, CloudBeesPipelines::CHOOSE_PIPELINE_TA866_EP, CloudBeesPipelines::CHOOSE_PIPELINE_TA866_IL
         pipelines_page.choose_pipeline_ta866_from_list :ep
       end
+
+      sleep 3
     end
 
     # Debug
@@ -140,6 +147,8 @@ describe 'Preconditions' do
       step "User clicks on pipeline to select" do
         pipelines_page.choose_pipeline_ta866_from_list
       end
+
+      sleep 3
     end
 
     scenario 'Searching debug', search_debug: true do
@@ -166,6 +175,9 @@ describe 'Preconditions' do
       step "User clicks on pipeline to select" do
         pipelines_page.choose_pipeline_ta866_from_list
       end
+
+      sleep 3
     end
+
   end
 end

@@ -37,6 +37,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Add New Resource dropdown" do
+        sleep 3 # to wait iframe
         resources_page.click_add_new_resource
       end
 
@@ -72,6 +73,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Add New Resource dropdown" do
+        sleep 3 # to wait iframe
         within_frame(0) { check_element_path  :xpath, CloudBeesResources::ADD_NEW_RESOURCE_TA, CloudBeesResources::ADD_NEW_RESOURCE_IL }
         resources_page.click_add_new_resource
       end
@@ -112,6 +114,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Add New Resource dropdown" do
+        sleep 3 # to wait iframe
         within_frame(0) { check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_EP, CloudBeesResources::ADD_NEW_RESOURCE_IL }
         resources_page.click_add_new_resource :ep
       end
@@ -145,6 +148,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Add New Resource dropdown" do
+        sleep 3 # to wait iframe
         resources_page.click_add_new_resource :il
       end
       step "Admin clicks create new resource button" do
@@ -173,6 +177,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Add New Resource dropdown" do
+        sleep 3 # to wait iframe
         resources_page.click_add_new_resource :il
       end
       step "Admin clicks create new resource button" do

@@ -65,7 +65,7 @@ class CloudBeesApps
   CONFIRM_NEW_ARTIFACT_TA = 'cloud_bees:apps:confirm_new_artifact'
   CONFIRM_NEW_ARTIFACT_EP = 'EP:cloud_bees:apps:confirm_new_artifact'
 
-  FIND_APPLICATION_FIELD_IL = "//input[@placeholder='Find...']"
+  FIND_APPLICATION_FIELD_IL = ".control-bar-container input[placeholder='Find...']"
   FIND_APPLICATION_FIELD_TA = 'cloud_bees:apps:find_application_field'
   FIND_APPLICATION_FIELD_EP = 'EP:cloud_bees:apps:find_application_field'
 
@@ -274,8 +274,8 @@ class CloudBeesApps
 
   def find_application_name_field(key = nil, appname)
     return find(ta(FIND_APPLICATION_FIELD_EP)).set(appname) if key == :ep
-    return find(:xpath, FIND_APPLICATION_FIELD_IL).set(appname) if key == :il
-    find(:xpath, ta(FIND_APPLICATION_FIELD_TA, FIND_APPLICATION_FIELD_IL)).set(appname)
+    return find(:css, FIND_APPLICATION_FIELD_IL).set(appname) if key == :il
+    find(:css, ta(FIND_APPLICATION_FIELD_TA, FIND_APPLICATION_FIELD_IL)).set(appname)
   end
 
   def select_app_list_item(key = nil)

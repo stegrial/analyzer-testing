@@ -27,7 +27,7 @@ Dir[File.join(spec_dir, 'support/**/*.rb')].each {|f| require f}
 RSpec.configure do |config|
   # $options = Selenium::WebDriver::Chrome::Options.new
   # $options.add_argument('--disable-notifications')
-  #
+
   # Capybara.register_driver :true_automation_driver do |app|
   #   Capybara::Selenium::Driver.new(app, browser: :chrome, options: $options)
   # end
