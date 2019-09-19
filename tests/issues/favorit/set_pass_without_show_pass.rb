@@ -8,7 +8,7 @@ it = Favorit.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
   after(:all) do
@@ -46,7 +46,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Show Pass button" do
-        check_element_path :xpath, Favorit::SHOW_PASS_BUTTON_TA, Favorit::SHOW_PASS_BUTTON_IL
         it.click_show_pass_button
       end
 
@@ -72,7 +71,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Show Pass button" do
-        check_element_path :xpath, Favorit::SHOW_PASS_BUTTON_EP, Favorit::SHOW_PASS_BUTTON_IL
         it.click_show_pass_button :ep
       end
 

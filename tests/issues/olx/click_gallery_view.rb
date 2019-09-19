@@ -7,7 +7,7 @@ it = Olx.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
   after(:all) do
@@ -131,7 +131,7 @@ describe 'Preconditions' do
       step "User clicks on gallary view button" do
         it.click_gallery_view
       end
-
+sleep 5
     end
   end
 end
