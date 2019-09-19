@@ -132,8 +132,8 @@ describe 'Preconditions' do
         catalogs_page.click_catalog_menu
       end
 
-      # Issue step
       step "User clicks delete button in menu" do
+        sleep 5 # need wait to reproduce the problem, (record should be without this wait)
         check_element_path :css, CloudBeesCatalogs::DELETE_CATALOG_TA, CloudBeesCatalogs::DELETE_CATALOG_IL
         catalogs_page.click_delete_catalog
       end
@@ -170,7 +170,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        sleep 5
         check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_EP, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog :ep
       end
@@ -191,7 +190,6 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-        sleep 5
         check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_EP, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list :ep
       end
@@ -207,6 +205,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks delete button in menu" do
+        sleep 5 # need wait to reproduce the problem, (record should be without this wait)
         check_element_path :css, CloudBeesCatalogs::DELETE_CATALOG_EP, CloudBeesCatalogs::DELETE_CATALOG_IL
         catalogs_page.click_delete_catalog :ep
       end
@@ -319,6 +318,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks delete button in menu" do
+        sleep 5 # need wait to reproduce the problem, (record should be without this wait)
         catalogs_page.click_delete_catalog
       end
 
