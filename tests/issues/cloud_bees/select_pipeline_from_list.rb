@@ -66,7 +66,6 @@ describe 'Preconditions' do
         login_page.click_sign_in_button
       end
 
-
       step "User clicks on humburg bth" do
         check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
         global_page.click_hamburger_menu
