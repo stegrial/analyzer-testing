@@ -18,7 +18,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'TA-1040 Cloud Bees - click to select EC-examples project' do
+  feature 'AT-80 Cloud Bees - click to select EC-examples project' do
 
     # Initial locators with Recording
 

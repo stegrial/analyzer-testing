@@ -19,7 +19,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'TA-1033 CloudBees - Click hamburger menu ' do
+  feature 'AT-83 CloudBees - Click hamburger menu ' do
 
     # Initial locators with Recording
 

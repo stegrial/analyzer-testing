@@ -18,7 +18,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'TA-1039 - click properties multi menu' do
+  feature 'AT-78 - Click properties multi menu' do
 
     # Initial locators with Recording
 
