@@ -17,7 +17,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'AT-51 CloudBees - Creating new resource' do
+  feature 'AT-81, CloudBees - Click creat new resource' do
 
     # Initial locators with Recording
 
@@ -43,10 +43,6 @@ describe 'Preconditions' do
 
       step "Admin clicks create new resource button" do
         resources_page.click_create_resource_btn
-      end
-
-      step "Admin enters a new resource name", 'NewResourceName' do |name|
-        resources_page.set_resource_name name
       end
 
       sleep 3
@@ -81,11 +77,6 @@ describe 'Preconditions' do
       step "Admin clicks create new resource button" do
         within_frame(0) { check_element_path :xpath, CloudBeesResources::CREATE_RESOURCE_BTN_TA, CloudBeesResources::CREATE_RESOURCE_BTN_IL }
         resources_page.click_create_resource_btn
-      end
-
-      step "Admin enters a new resource name", 'NewResourceName' do |name|
-        within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_TA, CloudBeesResources::RESOURCE_NAME_IL }
-        resources_page.set_resource_name name
       end
 
       sleep 3
@@ -124,11 +115,6 @@ describe 'Preconditions' do
         resources_page.click_create_resource_btn :ep
       end
 
-      step "Admin enters a new resource name", 'NewResourceName' do |name|
-        within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_EP, CloudBeesResources::RESOURCE_NAME_IL }
-        resources_page.set_resource_name :ep, name
-      end
-
       sleep 3
     end
 
@@ -152,11 +138,7 @@ describe 'Preconditions' do
         resources_page.click_add_new_resource :il
       end
       step "Admin clicks create new resource button" do
-        resources_page.click_create_resource_btn :il
-      end
-
-      step "Admin enters a new resource name", 'NewResourceName' do |name|
-        resources_page.set_resource_name name
+        resources_page.click_create_resource_btn
       end
 
       sleep 3
@@ -180,12 +162,9 @@ describe 'Preconditions' do
         sleep 3 # to wait iframe
         resources_page.click_add_new_resource :il
       end
-      step "Admin clicks create new resource button" do
-        resources_page.click_create_resource_btn :il
-      end
 
-      step "Admin enters a new resource name", 'NewResourceName' do |name|
-        resources_page.set_resource_name name
+      step "Admin clicks create new resource button" do
+        resources_page.click_create_resource_btn
       end
 
       sleep 3

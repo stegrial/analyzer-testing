@@ -3,20 +3,22 @@ require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
 required_relative_all "/pages/cloud_bees_pages/*.rb"
 
-global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
+pipelines_runs = CloudBeesPipelinesRuns.new
 
+# This tests runs when the vpn is ON
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+
   end
 
   after(:all) do
     Capybara.current_session.driver.quit
   end
-
-  feature 'AT-83 CloudBees - Click hamburger menu ' do
+  feature 'AT-76 - Cloud Bees - Click to select run status' do
 
     # Initial locators with Recording
 
@@ -26,25 +28,22 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin does login", settings('cloud_bees') do |credentials|
+      step "Admin do login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field  credentials['username']
-        login_page.fill_pass_field  credentials['pass']
+        login_page.fill_pass_field credentials['pass']
         login_page.click_sign_in_button
       end
 
-      step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu
-      end
-
-      sleep 3
-    end
-
-    scenario 'Searching IL', il: true do
-
-      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
         page.visit url
       end
 
+      step "User clicks to select run status" do
+        pipelines_runs.click_to_run_status
+      end
+    end
+
+    scenario 'Searching IL', il: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -60,21 +59,19 @@ describe 'Preconditions' do
         login_page.click_sign_in_button
       end
 
-      step "User clicks on humburg bth" do
-        check_element_path :css  , CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu
+      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
+        page.visit url
       end
 
-      sleep 3
+      step "User clicks to select run status" do
+        check_element_path :xpath, CloudBeesPipelinesRuns::RUN_STATUS_SELECT_TA, CloudBeesPipelinesRuns::RUN_STATUS_SELECT_IL
+        pipelines_runs.click_to_run_status
+      end
     end
 
     # Element Picker from Repository
 
     scenario 'Searching EP', ep: true do
-
-      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
-        page.visit url
-      end
 
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
@@ -91,15 +88,17 @@ describe 'Preconditions' do
         login_page.click_sign_in_button :ep
       end
 
-      step "User clicks on humburg bth" do
-        check_element_path :css  , CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu :ep
+      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
+        page.visit url
       end
 
-      sleep 3
+      step "User clicks to select run status" do
+        check_element_path :xpath, CloudBeesPipelinesRuns::RUN_STATUS_SELECT_EP, CloudBeesPipelinesRuns::RUN_STATUS_SELECT_IL
+        pipelines_runs.click_to_run_status :ep
+      end
     end
 
-    scenario 'Recording Debug', record_debug: true do
+    scenario 'Recording debug', rec_debug: true do
 
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
@@ -107,18 +106,20 @@ describe 'Preconditions' do
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field :il, credentials['username']
-        login_page.fill_pass_field :il, credentials['pass']
+        login_page.fill_pass_field :il,credentials['pass']
         login_page.click_sign_in_button :il
       end
 
-      step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu
+      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
+        page.visit url
       end
 
-      sleep 3
+      step "User clicks to select run status" do
+        pipelines_runs.click_to_run_status
+      end
     end
 
-    scenario 'Searching Debug', search_debug: true do
+    scenario 'Searching debug', search_debug: true do
 
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
@@ -126,17 +127,18 @@ describe 'Preconditions' do
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field :il, credentials['username']
-        login_page.fill_pass_field :il, credentials['pass']
+        login_page.fill_pass_field :il,credentials['pass']
         login_page.click_sign_in_button :il
       end
 
-      step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu
+      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
+        page.visit url
       end
 
-      sleep 3
+      step "User clicks to select run status" do
+        pipelines_runs.click_to_run_status
+      end
     end
-
 
   end
 end

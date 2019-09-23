@@ -18,7 +18,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-1015 CloudBees - Switching timezone tabs' do
+  feature 'AT-50 CloudBees - Switching timezone tabs' do
 
     # Initial locators with Recording
 

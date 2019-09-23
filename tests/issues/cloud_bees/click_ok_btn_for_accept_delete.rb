@@ -18,7 +18,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'TA -2, CloudBees - Deleting new Service Catalog' do
+  feature 'AT-79, CloudBees - Click ok button for accept deleting' do
 
     # Initial locators with Recording
 
@@ -264,11 +264,11 @@ describe 'Preconditions' do
       end
 
       step "User clicks delete button in menu" do
-        catalogs_page.click_delete_catalog
+        catalogs_page.click_delete_catalog :il
       end
 
       step "User clicks ok button in modal" do
-        catalogs_page.click_ok_btn_for_accept_delete :il
+        catalogs_page.click_ok_btn_for_accept_delete
       end
 
       sleep 3
@@ -319,11 +319,11 @@ describe 'Preconditions' do
 
       step "User clicks delete button in menu" do
         sleep 5 # need wait to reproduce the problem, (record should be without this wait)
-        catalogs_page.click_delete_catalog
+        catalogs_page.click_delete_catalog :il
       end
 
       step "User clicks ok button in modal" do
-        catalogs_page.click_ok_btn_for_accept_delete :il
+        catalogs_page.click_ok_btn_for_accept_delete
       end
 
       sleep 3

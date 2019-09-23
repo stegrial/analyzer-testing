@@ -18,7 +18,7 @@ describe 'Preconditions' do
     after(:all) do
       Capybara.current_session.driver.quit
     end
-  feature 'TA-866 EC Flow - selecting pipeline from list' do
+  feature 'AT-39 Cloud Bees - selecting pipeline from list' do
 
     # Initial locators with Recording
 

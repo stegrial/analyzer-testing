@@ -11,8 +11,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800) # reproduce on desktop display
-    #Capybara.page.driver.browser.manage.window.resize_to(1920, 1080) # reproduce on Full HD monitor
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   after(:each) do
@@ -30,7 +29,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'AT-57, AT-66, TA Analyzer returns the wrong element on the page (Cloud Bees - Application list item)' do
+  feature 'AT-77, TA Analyzer returns the wrong element on the page (Cloud Bees - Confirm create application element)' do
 
     # Initial locators with Recording
 
@@ -75,22 +74,6 @@ describe 'Preconditions' do
 
       step "Admin confirm new application" do
         apps_page.confirm_create_new_application
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu
-      end
-
-      step "Admin chooses the Applications section in the Hamburger menu" do
-        global_page.click_applications
-      end
-
-      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        apps_page.find_application_name_field appname
-      end
-
-      step "Admin clicks on new created application" do
-        apps_page.select_app_list_item
       end
 
       sleep 3
@@ -150,30 +133,6 @@ describe 'Preconditions' do
       step "Admin confirm new application" do
         check_element_path :xpath, CloudBeesApps::CONFIRM_NEW_APPLICATION_TA, CloudBeesApps::CONFIRM_NEW_APPLICATION_IL
         apps_page.confirm_create_new_application
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu
-      end
-
-      step "Admin chooses the Applications section in the Hamburger menu" do
-        check_element_path :css, CloudBeesGlobal::APPS_SECTION_TA, CloudBeesGlobal::APPS_SECTION_IL
-        global_page.click_applications
-      end
-
-      step "Admin resize window browser" do
-        Capybara.page.driver.browser.manage.window.maximize
-      end
-
-      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_TA, CloudBeesApps::FIND_APPLICATION_FIELD_IL
-        apps_page.find_application_name_field appname
-      end
-
-      step "Admin clicks on new created application" do
-        check_element_path :css, CloudBeesApps::APPLICATION_LIST_ITEM_TA, CloudBeesApps::APPLICATION_LIST_ITEM_IL
-        apps_page.select_app_list_item
       end
 
       sleep 3
@@ -237,30 +196,6 @@ describe 'Preconditions' do
         apps_page.confirm_create_new_application :ep
       end
 
-      step "Admin clicks on the Hamburger menu button" do
-        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu :ep
-      end
-
-      step "Admin chooses the Applications section in the Hamburger menu" do
-        check_element_path :css, CloudBeesGlobal::APPS_SECTION_EP, CloudBeesGlobal::APPS_SECTION_IL
-        global_page.click_applications :ep
-      end
-
-      # step "Admin resize window browser" do
-      #   Capybara.page.driver.browser.manage.window.maximize
-      # end
-
-      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_EP, CloudBeesApps::FIND_APPLICATION_FIELD_IL
-        apps_page.find_application_name_field :ep, appname
-      end
-
-      step "Admin clicks on new created application" do
-        check_element_path :css, CloudBeesApps::APPLICATION_LIST_ITEM_EP, CloudBeesApps::APPLICATION_LIST_ITEM_IL
-        apps_page.select_app_list_item :ep
-      end
-
       sleep 3
     end
 
@@ -304,23 +239,7 @@ describe 'Preconditions' do
       end
 
       step "Admin confirm new application" do
-        apps_page.confirm_create_new_application :il
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu :il
-      end
-
-      step "Admin chooses the Applications section in the Hamburger menu" do
-        global_page.click_applications :il
-      end
-
-      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        apps_page.find_application_name_field :il, appname
-      end
-
-      step "Admin clicks on new created application" do
-        apps_page.select_app_list_item
+        apps_page.confirm_create_new_application
       end
 
       sleep 3
@@ -366,29 +285,7 @@ describe 'Preconditions' do
       end
 
       step "Admin confirm new application" do
-        apps_page.confirm_create_new_application :il
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu :il
-      end
-
-      step "Admin chooses the Applications section in the Hamburger menu" do
-        global_page.click_applications :il
-      end
-
-      step "Admin resize window browser" do
-        Capybara.page.driver.browser.manage.window.maximize # reproduce on desktop display
-        #Capybara.page.driver.browser.manage.window.resize_to(1440, 800) # reproduce on Full HD monitor
-      end
-
-      step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        apps_page.find_application_name_field :il, appname
-        sleep 3 #to wait for filter to be apply
-      end
-
-      step "Admin clicks on new created application" do
-        apps_page.select_app_list_item
+        apps_page.confirm_create_new_application
       end
 
       sleep 3

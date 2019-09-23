@@ -15,7 +15,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-926 Analyzer returns wrong element in the languages section' do
+  feature 'AT-10, Analyzer returns wrong element in the languages section' do
 
     # Initial locators with Recording
 

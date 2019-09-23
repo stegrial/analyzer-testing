@@ -15,7 +15,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-901 Analyzer returns the wrong element (input) in the Sing In section' do
+  feature 'AT-60, Analyzer returns the wrong element (input) in the Sing In section' do
 
     # Initial locators with Recording
 

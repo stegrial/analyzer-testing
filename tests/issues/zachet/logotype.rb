@@ -17,7 +17,7 @@ describe 'Preconditions' do
   end
 
 
-  feature 'TA-869 Analyzer returns the wrong element (logo) in the Header section' do
+  feature 'AT-43, Analyzer returns the wrong element (logo) in the Header section' do
 
     # Initial locators with Recording
 
