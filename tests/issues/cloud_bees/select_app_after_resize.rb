@@ -30,7 +30,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-1020, TA-1021 TA Analyzer returns the wrong element on the page (Cloud Bees - Application list item)' do
+  feature 'AT-57, AT-66, TA Analyzer returns the wrong element on the page (Cloud Bees - Application list item)' do
 
     # Initial locators with Recording
 

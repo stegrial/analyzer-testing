@@ -18,7 +18,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-1004, TA Analyzer returns the wrong element on the page (Cloud Bees - Select project)' do
+  feature 'AT-6, TA Analyzer returns the wrong element on the page (Cloud Bees - Select project)' do
 
     # Initial locators with Recording
 
