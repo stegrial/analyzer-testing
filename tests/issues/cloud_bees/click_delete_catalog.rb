@@ -18,7 +18,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'TA -1024, CloudBees - Deleting new Service Catalog' do
+  feature 'TA -2, CloudBees - Deleting new Service Catalog' do
 
     # Initial locators with Recording
 
