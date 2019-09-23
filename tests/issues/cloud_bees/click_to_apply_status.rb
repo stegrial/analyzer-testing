@@ -18,7 +18,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'Cloud Bees - Сhanging Run Status on Pipeline Runs page' do
+  feature 'AT-86 Cloud Bees - Сhanging Run Status on Pipeline Runs page' do
 
     # Initial locators with Recording
 
