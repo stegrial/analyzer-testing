@@ -18,7 +18,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'TA -1037, CloudBees - Click ok button for accept deleting' do
+  feature 'AT-79, CloudBees - Click ok button for accept deleting' do
 
     # Initial locators with Recording
 
