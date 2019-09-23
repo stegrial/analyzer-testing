@@ -15,7 +15,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-908 Analyzer returns not found element in the languages section' do
+  feature 'AT-44, Analyzer returns not found element in the languages section' do
 
     # Element Picker from Repository
 

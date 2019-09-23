@@ -17,7 +17,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-1035, CloudBees - Click creat new resource' do
+  feature 'AT-81, CloudBees - Click creat new resource' do
 
     # Initial locators with Recording
 
