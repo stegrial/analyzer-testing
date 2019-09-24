@@ -87,6 +87,7 @@ describe 'Preconditions' do
 
       step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
         apps_page.find_application_name_field appname
+        sleep 3 #to wait for filter to be apply
       end
 
       step "Admin clicks on new created application" do
@@ -163,12 +164,15 @@ describe 'Preconditions' do
       end
 
       step "Admin resize window browser" do
-        Capybara.page.driver.browser.manage.window.maximize
+        Capybara.page.driver.browser.manage.window.maximize # reproduce on desktop display
+        #Capybara.page.driver.browser.manage.window.resize_to(1440, 800) # reproduce on Full HD monitor
+        sleep 3 #to wait for page loaded
       end
 
       step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_TA, CloudBeesApps::FIND_APPLICATION_FIELD_IL
+        check_element_path :css, CloudBeesApps::FIND_APPLICATION_FIELD_TA, CloudBeesApps::FIND_APPLICATION_FIELD_IL
         apps_page.find_application_name_field appname
+        sleep 3 #to wait for filter to be apply
       end
 
       step "Admin clicks on new created application" do
@@ -252,8 +256,9 @@ describe 'Preconditions' do
       # end
 
       step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_EP, CloudBeesApps::FIND_APPLICATION_FIELD_IL
+        check_element_path :css, CloudBeesApps::FIND_APPLICATION_FIELD_EP, CloudBeesApps::FIND_APPLICATION_FIELD_IL
         apps_page.find_application_name_field :ep, appname
+        sleep 3 #to wait for filter to be apply
       end
 
       step "Admin clicks on new created application" do
