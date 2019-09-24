@@ -98,7 +98,7 @@ describe 'Preconditions' do
       end
     end
 
-    scenario 'Recording debug', rec_debug: true do
+    scenario 'Recording debug', record_debug: true do
 
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
