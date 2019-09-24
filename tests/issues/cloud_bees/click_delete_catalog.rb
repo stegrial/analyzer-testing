@@ -14,7 +14,20 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
 
   end
+  after(:each) do
+    step "Remove created catalog", settings('cloud_bees') do |data|
+      page.visit data['catalogs_page']
+      sleep 3
+      catalogs_page.click_all_catalogs :il
+      catalogs_page.click_to_select_created_catalog :il, 'new_name_catalog'
+      catalogs_page.select_created_catalog :il
+      catalogs_page.click_editor_catalog :il
+      catalogs_page.click_catalog_menu :il
+      catalogs_page.click_delete_catalog
+      catalogs_page.click_ok_btn_for_accept_delete :il
 
+    end
+  end
   after(:all) do
     Capybara.current_session.driver.quit
   end
@@ -67,11 +80,6 @@ describe 'Preconditions' do
 
       step "User clicks delete button in menu" do
         catalogs_page.click_delete_catalog
-      end
-
-      # Need to delete created catalog for able to create a new
-      step "User clicks ok button in modal" do
-        catalogs_page.click_ok_btn_for_accept_delete
       end
 
       sleep 3
@@ -136,12 +144,6 @@ describe 'Preconditions' do
         sleep 5 # need wait to reproduce the problem, (record should be without this wait)
         check_element_path :css, CloudBeesCatalogs::DELETE_CATALOG_TA, CloudBeesCatalogs::DELETE_CATALOG_IL
         catalogs_page.click_delete_catalog
-      end
-
-      # Need to delete created catalog for able to create a new
-      step "User clicks ok button in modal" do
-        check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_TA, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
-        catalogs_page.click_ok_btn_for_accept_delete
       end
 
       sleep 3
@@ -210,11 +212,6 @@ describe 'Preconditions' do
         catalogs_page.click_delete_catalog :ep
       end
 
-      step "User clicks ok button in modal" do
-        check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_EP, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
-        catalogs_page.click_ok_btn_for_accept_delete :ep
-      end
-
       sleep 3
     end
 
@@ -267,9 +264,6 @@ describe 'Preconditions' do
         catalogs_page.click_delete_catalog
       end
 
-      step "User clicks ok button in modal" do
-        catalogs_page.click_ok_btn_for_accept_delete :il
-      end
 
       sleep 3
     end
@@ -320,10 +314,6 @@ describe 'Preconditions' do
       step "User clicks delete button in menu" do
         sleep 5 # need wait to reproduce the problem, (record should be without this wait)
         catalogs_page.click_delete_catalog
-      end
-
-      step "User clicks ok button in modal" do
-        catalogs_page.click_ok_btn_for_accept_delete :il
       end
 
       sleep 3

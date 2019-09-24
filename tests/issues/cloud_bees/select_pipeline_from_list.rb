@@ -123,7 +123,7 @@ describe 'Preconditions' do
 
     # Debug
 
-    scenario 'Recording debug', rec_debug: true do
+    scenario 'Recording debug', record_debug: true do
 
       step "User goes to the main page and authorized into it", settings('cloud_bees')['login_page'] do |url|
         page.visit url
