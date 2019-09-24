@@ -2,23 +2,20 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
 required_relative_all "/pages/cloud_bees_pages/*.rb"
-require 'securerandom'
-
 
 global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
 
-# This tests runs when the vpn is ON
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
-
   after(:all) do
     Capybara.current_session.driver.quit
   end
+
   feature 'AT-83 CloudBees - Click hamburger menu ' do
 
     # Initial locators with Recording
@@ -29,7 +26,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field  credentials['username']
         login_page.fill_pass_field  credentials['pass']
         login_page.click_sign_in_button
@@ -38,8 +35,9 @@ describe 'Preconditions' do
       step "Admin clicks on the Hamburger menu button" do
         global_page.click_hamburger_menu
       end
-    end
 
+      sleep 3
+    end
 
     scenario 'Searching IL', il: true do
 
@@ -66,12 +64,13 @@ describe 'Preconditions' do
         check_element_path :css  , CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
         global_page.click_hamburger_menu
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository
 
     scenario 'Searching EP', ep: true do
-
 
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
@@ -96,6 +95,8 @@ describe 'Preconditions' do
         check_element_path :css  , CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
         global_page.click_hamburger_menu :ep
       end
+
+      sleep 3
     end
 
     scenario 'Recording Debug', record_debug: true do
@@ -113,6 +114,8 @@ describe 'Preconditions' do
       step "Admin clicks on the Hamburger menu button" do
         global_page.click_hamburger_menu
       end
+
+      sleep 3
     end
 
     scenario 'Searching Debug', search_debug: true do
@@ -130,6 +133,10 @@ describe 'Preconditions' do
       step "Admin clicks on the Hamburger menu button" do
         global_page.click_hamburger_menu
       end
+
+      sleep 3
     end
+
+
   end
 end
