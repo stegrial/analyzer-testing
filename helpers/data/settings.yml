@@ -101,3 +101,7 @@ booking:
 
 ta:
   website_home: "https://trueautomation.io/"
+
+flipkart:
+  page: "https://www.flipkart.com"
+  dresses_page: "https://www.flipkart.com/women/dresses/pr?sid=2oq,c1r,ha6,xzt,3y0&otracker=categorytree&otracker=nmenu_sub_Women_0_Dresses&otracker=nmenu_sub_Women_0_Dresses&otracker=nmenu_sub_Women_0_Dresses"

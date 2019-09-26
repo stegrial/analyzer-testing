@@ -18,7 +18,7 @@ describe 'Preconditions' do
 
   # Initial locators with Recording
 
-  scenario 'Recording IL', il_run: true do
+  scenario 'Recording IL', il: true do
 
     step "User goes to the page", settings('olx')['page'] do |url|
       page.visit url
@@ -51,7 +51,7 @@ describe 'Preconditions' do
     end
   end
 
-  scenario 'Searching IL', il_run: true do
+  scenario 'Searching IL', il: true do
 
     step "User goes to the page", settings('olx')['page'] do |url|
       page.visit url
