@@ -70,14 +70,17 @@ describe 'Preconditions' do
       end
 
       step "User clicks women link" do
+        check_element_path :xpath, Flipkart::WOMEN_LINK_TA, Flipkart::WOMEN_LINK_EP
         it.click_women_link :ep
       end
 
       step "User clicks on dresses link" do
+        check_element_path :xpath, Flipkart::DRESSES_LINK_TA, Flipkart::DRESSES_LINK_EP
         it.click_dresses_link :ep
       end
 
       step "User clicks ]second dress link" do
+        check_element_path :xpath, Flipkart::SECOND_PRODUCT_LINK_TA, Flipkart::SECOND_PRODUCT_LINK_EP
         it.click_second_dress_link :ep
       end
     end
