@@ -43,6 +43,7 @@ describe 'Preconditions' do
       end
 
       step "Admin presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         users_page.press_create_user_btn
       end
 
@@ -116,6 +117,7 @@ describe 'Preconditions' do
       end
 
       step "Admin presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         within_frame(0) { check_element_path :xpath, CloudBeesUsers::CREATE_USER_BTN_TA, CloudBeesUsers::CREATE_USER_BTN_IL }
         users_page.press_create_user_btn
       end
@@ -202,6 +204,7 @@ describe 'Preconditions' do
       end
 
       step "Admin presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         within_frame(0) { check_element_path :xpath, CloudBeesUsers::CREATE_USER_BTN_EP, CloudBeesUsers::CREATE_USER_BTN_IL }
         users_page.press_create_user_btn :ep
       end
