@@ -6,13 +6,6 @@ required_relative_all "/pages/cloud_bees_pages/*.rb"
 login_page = CloudBeesLogin.new
 catalogs_page = CloudBeesCatalogs.new
 
-# This tests runs when the vpn is ON
-#
-#  TA-1004 - sleeps delivered due to bug
-#
-
-#
-
 describe 'Preconditions' do
 
   before(:all) do
@@ -23,7 +16,7 @@ describe 'Preconditions' do
   after(:each) do
     step "Remove created catalog", settings('cloud_bees') do |data|
       page.visit data['catalogs_page']
-     sleep 3
+      sleep 3
       catalogs_page.click_all_catalogs :il
       catalogs_page.click_to_select_created_catalog :il, 'new_name_catalog'
       catalogs_page.select_created_catalog :il
@@ -37,7 +30,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'CloudBees - Creating new Service Catalog' do
+  feature 'AT-, ' do
 
     # Initial locators with Recording
 
@@ -57,10 +50,8 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        # sleep 8
         catalogs_page.click_to_create_new_catalog
       end
-
 
       step "User clicks to create new button" do
         catalogs_page.click_to_create_new_btn
@@ -75,8 +66,7 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-       # sleep 5
-       catalogs_page.select_proj_from_list
+        catalogs_page.select_proj_from_list
       end
 
       step "User clicks ok button in modal" do
@@ -96,7 +86,7 @@ describe 'Preconditions' do
       end
 
       step "User set name in form", 'new_form_name2' do |value|
-        sleep 3
+        sleep 3 # wait for load of the previous step
         catalogs_page.set_name_in_form2 value
       end
 
@@ -105,42 +95,11 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select cloud bees icon" do
+        sleep 3 # wait for load page
         catalogs_page.click_to_select_cloud_bees_icon
       end
 
-      step "User clicks to select label" do
-        catalogs_page.click_to_select_label
-      end
-
-      step "User clicks to select execute option" do
-        # sleep 5
-        catalogs_page.click_to_select_execute_option
-      end
-
-      step "User clicks on procedure definition" do
-        catalogs_page.click_on_procedure_definition
-      end
-
-      step "User clicks to open procedure project dropdown" do
-        catalogs_page.click_procedure_proj_dropdown
-      end
-
-      step "User clicks on ec example project" do
-        # sleep 5
-        catalogs_page.click_to_select_ec_example_proj
-      end
-
-      step "User clicks to open procedure dropdown" do
-        catalogs_page.click_select_procedure
-      end
-
-      step "User clicks to select approve procedure" do
-        catalogs_page.click_select_approve_procedure
-      end
-
-      step "User clicks ok button in modal" do
-        catalogs_page.click_ok_in_modal_btn :il
-      end
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -164,7 +123,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        # sleep 5
         check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_TA, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog
       end
@@ -185,7 +143,6 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-        # sleep 5
         check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_TA, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list
       end
@@ -211,7 +168,7 @@ describe 'Preconditions' do
       end
 
       step "User set name in form", 'new_form_name2' do |value|
-        # sleep 3
+        sleep 3 # wait for load of the previous step
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_TA, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
         catalogs_page.set_name_in_form2 value
       end
@@ -222,51 +179,12 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select cloud bees icon" do
+        sleep 3 # wait for load page
         check_element_path :xpath, CloudBeesCatalogs::CLOUD_BEES_ICON_TA, CloudBeesCatalogs::CLOUD_BEES_ICON_IL
         catalogs_page.click_to_select_cloud_bees_icon
       end
 
-      step "User clicks to select label" do
-        check_element_path :css, CloudBeesCatalogs::SELECT_BTN_LABEL_TA, CloudBeesCatalogs::SELECT_BTN_LABEL_IL
-        catalogs_page.click_to_select_label
-      end
-
-      step "User clicks to select execute option" do
-        sleep 5
-        check_element_path :css, CloudBeesCatalogs::EXECUTE_OPTION_TA, CloudBeesCatalogs::EXECUTE_OPTION_IL
-        catalogs_page.click_to_select_execute_option
-      end
-
-      step "User clicks on procedure definition" do
-        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_DEFINITION_TA, CloudBeesCatalogs::PROCEDURE_DEFINITION_IL
-        catalogs_page.click_on_procedure_definition
-      end
-
-      step "User clicks to open procedure project dropdown" do
-        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_PROJ_TA, CloudBeesCatalogs::PROCEDURE_PROJ_IL
-        catalogs_page.click_procedure_proj_dropdown
-      end
-
-      step "User clicks on ec example project" do
-        # sleep 5
-        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_TA, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_IL
-        catalogs_page.click_to_select_ec_example_proj
-      end
-
-      step "User clicks to open procedure dropdown" do
-        check_element_path :xpath, CloudBeesCatalogs::SELECT_PROCEDURE_TA, CloudBeesCatalogs::SELECT_PROCEDURE_IL
-        catalogs_page.click_select_procedure
-      end
-
-      step "User clicks to select approve procedure" do
-        check_element_path :css, CloudBeesCatalogs::SELECT_APPROVE_PROCEDURE_TA, CloudBeesCatalogs::SELECT_APPROVE_PROCEDURE_IL
-        catalogs_page.click_select_approve_procedure
-      end
-
-      step "User clicks ok button in modal" do
-        check_element_path :css, CloudBeesCatalogs::OK_IN_MODAL_BTN_TA, CloudBeesCatalogs::OK_IN_MODAL_BTN_IL
-        catalogs_page.click_ok_in_modal_btn
-      end
+     sleep 3
     end
 
     # Element Picker from Repository
@@ -292,7 +210,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        # sleep 5
         check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_EP, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog :ep
       end
@@ -313,7 +230,6 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-        # sleep 5
         check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_EP, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list :ep
       end
@@ -339,7 +255,7 @@ describe 'Preconditions' do
       end
 
       step "User set name in form", 'new_form_name2' do |value|
-        # sleep 3
+        sleep 3 # wait for load of the previous step
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_EP, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
         catalogs_page.set_name_in_form2 :ep, value
       end
@@ -350,51 +266,149 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select cloud bees icon" do
+        sleep 3 # wait for load page
         check_element_path :xpath, CloudBeesCatalogs::CLOUD_BEES_ICON_EP, CloudBeesCatalogs::CLOUD_BEES_ICON_IL
         catalogs_page.click_to_select_cloud_bees_icon :ep
       end
 
-      step "User clicks to select label" do
-        check_element_path :css, CloudBeesCatalogs::SELECT_BTN_LABEL_EP, CloudBeesCatalogs::SELECT_BTN_LABEL_IL
-        catalogs_page.click_to_select_label :ep
+      sleep 3
+    end
+
+    scenario 'Recording debug', record_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
       end
 
-      step "User clicks to select execute option" do
-        # sleep 5
-        check_element_path :css, CloudBeesCatalogs::EXECUTE_OPTION_EP, CloudBeesCatalogs::EXECUTE_OPTION_IL
-        catalogs_page.click_to_select_execute_option :ep
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il, credentials['username']
+        login_page.fill_pass_field :il, credentials['pass']
+        login_page.click_sign_in_button :il
       end
 
-      step "User clicks on procedure definition" do
-        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_DEFINITION_EP, CloudBeesCatalogs::PROCEDURE_DEFINITION_IL
-        catalogs_page.click_on_procedure_definition :ep
+      step "User goes to the page", settings('cloud_bees')['catalogs_page'] do |url|
+        page.visit url
       end
 
-      step "User clicks to open procedure project dropdown" do
-        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_PROJ_EP, CloudBeesCatalogs::PROCEDURE_PROJ_IL
-        catalogs_page.click_procedure_proj_dropdown :ep
+      step "User clicks to create new catalog" do
+        catalogs_page.click_to_create_new_catalog :il
       end
 
-      step "User clicks on ec example project" do
-        # sleep 5
-        check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_EP, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_IL
-        catalogs_page.click_to_select_ec_example_proj :ep
+      step "User clicks to create new button" do
+        catalogs_page.click_to_create_new_btn :il
       end
 
-      step "User clicks to open procedure dropdown" do
-        check_element_path :xpath, CloudBeesCatalogs::SELECT_PROCEDURE_EP, CloudBeesCatalogs::SELECT_PROCEDURE_IL
-        catalogs_page.click_select_procedure :ep
+      step "User set name new catalog",  'new_name_catalog' do |value|
+        catalogs_page.set_catalog_name :il, value
       end
 
-      step "User clicks to select approve procedure" do
-        check_element_path :css, CloudBeesCatalogs::SELECT_APPROVE_PROCEDURE_EP, CloudBeesCatalogs::SELECT_APPROVE_PROCEDURE_IL
-        catalogs_page.click_select_approve_procedure :ep
+      step "User clicks to open project dropdown of new catalog" do
+        catalogs_page.click_to_open_proj_drpodown :il
+      end
+
+      step "User select default project from list" do
+        catalogs_page.select_proj_from_list :il
       end
 
       step "User clicks ok button in modal" do
-        check_element_path :css, CloudBeesCatalogs::OK_IN_MODAL_BTN_EP, CloudBeesCatalogs::OK_IN_MODAL_BTN_IL
-        catalogs_page.click_ok_in_modal_btn :ep
+        catalogs_page.click_ok_in_modal_btn :il
       end
+
+      step "User set name in form", 'new_form_name' do |value|
+        catalogs_page.set_name_in_form :il, value
+      end
+
+      step "User set description in form", 'description' do |value|
+        catalogs_page.set_description_in_form :il, value
+      end
+
+      step "User clicks add another button" do
+        catalogs_page.click_add_another :il
+      end
+
+      step "User set name in form", 'new_form_name2' do |value|
+        sleep 3 # wait for load of the previous step
+        catalogs_page.set_name_in_form2 :il, value
+      end
+
+      step "User clicks define button" do
+        catalogs_page.click_define_btn :il
+      end
+
+      step "User clicks to select cloud bees icon" do
+        sleep 3 # wait for load page
+        catalogs_page.click_to_select_cloud_bees_icon
+      end
+
+      sleep 3
     end
+
+    scenario 'Searching debug', search_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
+      end
+
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il, credentials['username']
+        login_page.fill_pass_field :il, credentials['pass']
+        login_page.click_sign_in_button :il
+      end
+
+      step "User goes to the page", settings('cloud_bees')['catalogs_page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks to create new catalog" do
+        catalogs_page.click_to_create_new_catalog :il
+      end
+
+      step "User clicks to create new button" do
+        catalogs_page.click_to_create_new_btn :il
+      end
+
+      step "User set name new catalog",  'new_name_catalog' do |value|
+        catalogs_page.set_catalog_name :il, value
+      end
+
+      step "User clicks to open project dropdown of new catalog" do
+        catalogs_page.click_to_open_proj_drpodown :il
+      end
+
+      step "User select default project from list" do
+        catalogs_page.select_proj_from_list :il
+      end
+
+      step "User clicks ok button in modal" do
+        catalogs_page.click_ok_in_modal_btn :il
+      end
+
+      step "User set name in form", 'new_form_name' do |value|
+        catalogs_page.set_name_in_form :il, value
+      end
+
+      step "User set description in form", 'description' do |value|
+        catalogs_page.set_description_in_form :il, value
+      end
+
+      step "User clicks add another button" do
+        catalogs_page.click_add_another :il
+      end
+
+      step "User set name in form", 'new_form_name2' do |value|
+        sleep 3 # wait for load of the previous step
+        catalogs_page.set_name_in_form2 :il, value
+      end
+
+      step "User clicks define button" do
+        catalogs_page.click_define_btn :il
+      end
+
+      step "User clicks to select cloud bees icon" do
+        sleep 3 # wait for load page
+        catalogs_page.click_to_select_cloud_bees_icon
+      end
+
+      sleep 3
+    end
+
   end
 end
