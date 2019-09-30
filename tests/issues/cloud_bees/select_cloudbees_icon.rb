@@ -30,7 +30,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'AT-, ' do
+  feature 'AT-99, TA Analyzer returns the wrong element on the page (Cloud Bees - Cloud Bees icon element)' do
 
     # Initial locators with Recording
 
