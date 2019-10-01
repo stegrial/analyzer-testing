@@ -18,7 +18,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Creating and Deleting application' do
+  feature 'Cloud Bees - Change History modal' do
 
     # Initial locators with Recording
 
