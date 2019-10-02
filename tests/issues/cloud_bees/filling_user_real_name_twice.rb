@@ -16,6 +16,7 @@ describe 'Preconditions' do
   end
 
   after(:all) do
+    delete_saved_elements
     Capybara.current_session.driver.quit
   end
 
@@ -108,7 +109,7 @@ describe 'Preconditions' do
       end
 
       2.times do
-        step "User fills the Real Name field", 'My Real Name' do |name|
+        step "User fills the Real Name field twice", 'My Real Name' do |name|
           within_frame(0) { check_element_path :css, CloudBeesNewUser::REAL_NAME_FIELD_TA, CloudBeesNewUser::REAL_NAME_FIELD_IL }
           new_user_page.fill_real_name_field name
         end
@@ -162,7 +163,7 @@ describe 'Preconditions' do
       end
 
       2.times do
-        step "User fills the Real Name field", 'My Real Name' do |name|
+        step "User fills the Real Name field twice", 'My Real Name' do |name|
           within_frame(0) { check_element_path :css, CloudBeesGlobal::REAL_NAME_FIELD_EP, CloudBeesGlobal::REAL_NAME_FIELD_IL }
           new_user_page.fill_real_name_field :ep, name
         end
@@ -254,7 +255,7 @@ describe 'Preconditions' do
         new_user_page.fill_real_name_field :il, name
       end
 
-      step "User fills the Real Name field", 'My Real Name' do |name|
+      step "User fills the Real Name field again", 'My Real Name' do |name|
         new_user_page.fill_real_name_field name
       end
 

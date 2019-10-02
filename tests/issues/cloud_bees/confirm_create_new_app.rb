@@ -26,6 +26,7 @@ describe 'Preconditions' do
   end
 
   after(:all) do
+    delete_saved_elements
     Capybara.current_session.driver.quit
   end
 

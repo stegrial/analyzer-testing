@@ -17,10 +17,11 @@ describe 'Preconditions' do
   end
 
   after(:all) do
+    delete_saved_elements
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-1002, TA Analyzer returns the wrong element when the right element is not present on the page (Cloud Bees - Users Filter)' do
+  feature 'TA-34, TA Analyzer returns the wrong element when the right element is not present on the page (Cloud Bees - Users Filter)' do
 
     # Initial locators with Recording
 
@@ -45,8 +46,11 @@ describe 'Preconditions' do
 
       step "Admin filters the user", settings('cloud_bees') do |user_data|
         sleep 3 # to wait iframe
+
         users_page.fill_user_filter_field user_data['user_username']
         users_page.apply_user_filter
+
+        sleep 3 # to wait for the filter is applied
       end
 
       step "Admin presses the Create Local User button" do
@@ -90,6 +94,8 @@ describe 'Preconditions' do
 
         within_frame(0) { check_element_path :css, CloudBeesUsers::APPLY_USER_FILTER_TA, CloudBeesUsers::APPLY_USER_FILTER_IL }
         users_page.apply_user_filter
+
+        sleep 3 # to wait for the filter is applied
       end
 
       step "Admin presses the Create Local User button" do
@@ -141,6 +147,8 @@ describe 'Preconditions' do
 
         within_frame(0) { check_element_path :css, CloudBeesUsers::APPLY_USER_FILTER_EP, CloudBeesUsers::APPLY_USER_FILTER_IL }
         users_page.apply_user_filter :ep
+
+        sleep 3 # to wait for the filter is applied
       end
 
       step "Admin presses the Create Local User button" do
@@ -179,8 +187,11 @@ describe 'Preconditions' do
 
       step "Admin filters the user", settings('cloud_bees') do |user_data|
         sleep 3 # to wait iframe
+
         users_page.fill_user_filter_field user_data['user_username']
         users_page.apply_user_filter :il
+
+        sleep 3 # to wait for the filter is applied
       end
 
       step "Admin presses the Create Local User button" do
@@ -211,8 +222,11 @@ describe 'Preconditions' do
 
       step "Admin filters the user", settings('cloud_bees') do |user_data|
         sleep 3 # to wait iframe
+
         users_page.fill_user_filter_field :il, user_data['user_username']
         users_page.apply_user_filter :il
+
+        sleep 3 # to wait for the filter is applied
       end
 
       step "Admin presses the Create Local User button" do

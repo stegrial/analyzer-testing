@@ -16,8 +16,10 @@ describe 'Preconditions' do
   end
 
   after(:all) do
+    delete_saved_elements
     Capybara.current_session.driver.quit
   end
+
   feature 'AT-82, CloudBees - clicking on catalog hamburger menu button' do
 
     # Initial locators with Recording

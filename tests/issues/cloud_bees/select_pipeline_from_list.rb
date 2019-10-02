@@ -16,6 +16,7 @@ describe 'Preconditions' do
     end
 
     after(:all) do
+      delete_saved_elements
       Capybara.current_session.driver.quit
     end
   feature 'AT-39 Cloud Bees - selecting pipeline from list' do
@@ -28,7 +29,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field credentials['username']
         login_page.fill_pass_field credentials['pass']
         login_page.click_sign_in_button
@@ -55,7 +56,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field credentials['username']
 
@@ -92,7 +93,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field credentials['username']
 
@@ -123,16 +124,16 @@ describe 'Preconditions' do
 
     # Debug
 
-    scenario 'Recording debug', rec_debug: true do
+    scenario 'Recording debug', record_debug: true do
 
       step "User goes to the main page and authorized into it", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
-        login_page.fill_username_field credentials['username']
-        login_page.fill_pass_field credentials['pass']
-        login_page.click_sign_in_button
+      step "Admin does login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il, credentials['username']
+        login_page.fill_pass_field :il, credentials['pass']
+        login_page.click_sign_in_button :il
       end
 
       step "User clicks on humburg bth" do
@@ -156,11 +157,10 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
-        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field credentials['username']
-        login_page.fill_pass_field credentials['pass']
-        login_page.click_sign_in_button
+      step "Admin does login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il, credentials['username']
+        login_page.fill_pass_field :il, credentials['pass']
+        login_page.click_sign_in_button :il
       end
 
       step "User clicks on humburg bth" do
