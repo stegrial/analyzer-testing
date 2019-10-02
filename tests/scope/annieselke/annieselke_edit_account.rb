@@ -19,7 +19,7 @@ describe 'Preconditions' do
 
   # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page", settings('annieselke')['page'] do |url|
         page.visit url
@@ -71,7 +71,7 @@ describe 'Preconditions' do
 
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('annieselke')['page'] do |url|
         page.visit url
@@ -130,12 +130,11 @@ describe 'Preconditions' do
         check_element_path :xpath, AnnieselkeMobile::SAVE_BTN_TA, AnnieselkeMobile::SAVE_BTN_IL
         it.click_save_btn
       end
-
     end
 
     # Element Picker from Repository
 
-    scenario 'Searching EP', ep_run: true do
+    scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('annieselke')['page'] do |url|
         page.visit url
@@ -195,6 +194,5 @@ describe 'Preconditions' do
       end
       sleep 5
     end
-
   end
 end
