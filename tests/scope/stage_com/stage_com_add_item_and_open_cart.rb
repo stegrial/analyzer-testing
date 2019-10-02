@@ -21,7 +21,7 @@ describe 'Preconditions' do
 
   # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page", settings('stage_com')['page'] do |url|
         page.visit url
@@ -64,7 +64,7 @@ describe 'Preconditions' do
       end
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('stage_com')['page'] do |url|
         page.visit url
@@ -111,13 +111,11 @@ describe 'Preconditions' do
         check_element_path :xpath, Stagecom::MINICART_TA, Stagecom::MINICART_IL
         it.click_minicart
       end
-      sleep 5
-
     end
 
     # Element Picker from Repository
 
-    scenario 'Searching EP', ep_run: true do
+    scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('stage_com')['page'] do |url|
         page.visit url
@@ -164,8 +162,6 @@ describe 'Preconditions' do
         check_element_path :xpath, Stagecom::MINICART_TA, Stagecom::MINICART_IL
         it.click_minicart :ep
       end
-      sleep 5
-
     end
   end
 end
