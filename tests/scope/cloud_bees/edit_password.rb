@@ -54,6 +54,7 @@ describe 'Preconditions' do
       end
 
       step "Admin presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         users_page.press_create_user_btn
       end
 
@@ -72,6 +73,7 @@ describe 'Preconditions' do
       end
 
       step "Admin presses the Edit user button" do
+        sleep 3 # to waiting iframe
         users_page.press_edit_user_btn
       end
 

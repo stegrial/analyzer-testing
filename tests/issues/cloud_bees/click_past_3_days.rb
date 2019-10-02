@@ -18,11 +18,11 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Cloud Bees - Change History modal' do
+  feature 'AT-109 Cloud Bees - Click past 3 days (Change History modal)' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', ilr: true do
+    scenario 'Recording IL', il: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -49,75 +49,53 @@ describe 'Preconditions' do
         change_history_modal.click_dropdown_last_changes
       end
 
-      # step "Admin clicks on Past 24 hours" do
-      #   change_history_modal.click_past_24_hours
-      # end
-      #
-      # step "Admin clicks on dropdown Past 24 hours" do
-      #   change_history_modal.click_dropdown_past_24_hours
-      # end
-      #
-      # step "Admin clicks in dropdown Between" do
-      #   change_history_modal.click_between_btn
-      # end
-      #
-      # step "Admin fills the hours time", '12' do |hours_time|
-      #   change_history_modal.fill_hours_time hours_time
-      # end
-      #
-      # step "Admin fills the minutes time", '00' do |minutes_time|
-      #   change_history_modal.fill_minutes_time minutes_time
-      # end
-      #
-      # step "Admin confirm time, click OK button" do
-      #   change_history_modal.confirm_time
-      # end
-      #
-      # step "Admin fills the hours time", '13' do |hours_time|
-      #   change_history_modal.fill_and_hours_time hours_time
-      # end
-      #
-      # step "Admin fills the minutes time", '00' do |minutes_time|
-      #   change_history_modal.fill_and_minutes_time minutes_time
-      # end
-      #
-      # step "Admin confirm time, click OK button" do
-      #   change_history_modal.and_confirm_time
-      # end
-      #
-      # step "Admin clicks search button" do
-      #   change_history_modal.click_search_btn
-      # end
-      #
-      # step "Admin clicks on dropdown Last changes" do
-      #   change_history_modal.click_last_changes_dropdown
-      # end
-      #
-      # step "Admin select in dropdown Past 3 days" do
-      #   change_history_modal.click_past_3_days
-      # end
-      #
-      # step "Admin clicks on dropdown All" do
-      #   change_history_modal.click_all_dropdown
-      # end
-      #
-      # step "Admin clicks on item All Object" do
-      #   change_history_modal.click_all_object
-      # end
-      #
-      # step "Admin choose on item Application" do
-      #   change_history_modal.click_application
-      # end
-      #
-      # step "Admin choose on item Component" do
-      #   change_history_modal.click_component
-      # end
-      #
-      # step "Admin clicks on search field" do
-      #   change_history_modal.click_on_search_field
-      # end
+      step "Admin clicks on Past 24 hours" do
+        change_history_modal.click_past_24_hours
+      end
 
-      sleep 10
+      step "Admin clicks on dropdown Past 24 hours" do
+        change_history_modal.click_dropdown_past_24_hours
+      end
+
+      step "Admin clicks in dropdown Between" do
+        change_history_modal.click_between_btn
+      end
+
+      step "Admin fills the hours time", '12' do |hours_time|
+        change_history_modal.fill_hours_time hours_time
+      end
+
+      step "Admin fills the minutes time", '00' do |minutes_time|
+        change_history_modal.fill_minutes_time  minutes_time
+      end
+
+      step "Admin confirm time, click OK button" do
+        change_history_modal.confirm_time
+      end
+
+      step "Admin fills the hours time", '13' do |hours_time|
+        change_history_modal.fill_and_hours_time  hours_time
+      end
+
+      step "Admin fills the minutes time", '00' do |minutes_time|
+        change_history_modal.fill_and_minutes_time  minutes_time
+      end
+
+      step "Admin confirm time, click OK button" do
+        change_history_modal.and_confirm_time
+      end
+
+      step "Admin clicks search button" do
+        change_history_modal.click_search_btn
+      end
+
+      step "Admin clicks on dropdown Last changes" do
+        change_history_modal.click_last_changes_dropdown 
+      end
+
+      step "Admin select in dropdown Past 3 days" do
+        change_history_modal.click_past_3_days
+      end
     end
 
     scenario 'Searching IL', il: true do
@@ -215,33 +193,6 @@ describe 'Preconditions' do
         check_element_path :xpath, CloudBeesChangeHistory::PAST_3_DAYS_TA, CloudBeesChangeHistory::PAST_3_DAYS_IL
         change_history_modal.click_past_3_days
       end
-
-      step "Admin clicks on dropdown All" do
-        check_element_path :xpath, CloudBeesChangeHistory::ALL_DROPDOWN_TA, CloudBeesChangeHistory::ALL_DROPDOWN_IL
-        change_history_modal.click_all_dropdown
-      end
-
-      step "Admin clicks on item All Object" do
-        check_element_path :xpath, CloudBeesChangeHistory::ALL_OBJECTS_TA, CloudBeesChangeHistory::ALL_OBJECTS_IL
-        change_history_modal.click_all_object
-      end
-
-      step "Admin choose on item Application" do
-        check_element_path :xpath, CloudBeesChangeHistory::APPLICATION_TA, CloudBeesChangeHistory::APPLICATION_IL
-        change_history_modal.click_application
-      end
-
-      step "Admin choose on item Component" do
-        check_element_path :xpath, CloudBeesChangeHistory::COMPONENT_TA, CloudBeesChangeHistory::COMPONENT_IL
-        change_history_modal.click_component
-      end
-
-      step "Admin clicks on search field" do
-        check_element_path :xpath, CloudBeesChangeHistory::SEARCH_FIELD_TA, CloudBeesChangeHistory::SEARCH_FIELD_IL
-        change_history_modal.click_on_search_field
-      end
-
-      sleep 3
     end
 
     # Element Picker from Repository
@@ -341,34 +292,158 @@ describe 'Preconditions' do
         check_element_path :xpath, CloudBeesChangeHistory::PAST_3_DAYS_EP, CloudBeesChangeHistory::PAST_3_DAYS_IL
         change_history_modal.click_past_3_days :ep
       end
-
-      step "Admin clicks on dropdown All" do
-        check_element_path :xpath, CloudBeesChangeHistory::ALL_DROPDOWN_EP, CloudBeesChangeHistory::ALL_DROPDOWN_IL
-        change_history_modal.click_all_dropdown :ep
-      end
-
-      step "Admin clicks on item All Object" do
-        check_element_path :xpath, CloudBeesChangeHistory::ALL_OBJECTS_EP, CloudBeesChangeHistory::ALL_OBJECTS_IL
-        change_history_modal.click_all_object :ep
-      end
-
-      step "Admin choose on item Application" do
-        check_element_path :xpath, CloudBeesChangeHistory::APPLICATION_EP, CloudBeesChangeHistory::APPLICATION_IL
-        change_history_modal.click_application :ep
-      end
-
-      step "Admin choose on item Component" do
-        check_element_path :xpath, CloudBeesChangeHistory::COMPONENT_EP, CloudBeesChangeHistory::COMPONENT_IL
-        change_history_modal.click_component :ep
-      end
-
-      step "Admin clicks on search field" do
-        check_element_path :xpath, CloudBeesChangeHistory::SEARCH_FIELD_EP, CloudBeesChangeHistory::SEARCH_FIELD_IL
-        change_history_modal.click_on_search_field :ep
-      end
-
-      sleep 3
     end
 
+    scenario 'Recording debug', record_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
+      end
+
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il,credentials['username']
+        login_page.fill_pass_field :il,credentials['pass']
+        login_page.click_sign_in_button :il
+      end
+
+      step "Admin clicks on the Hamburger menu button" do
+        global_page.click_hamburger_menu :il
+      end
+
+      step "Admin chooses the Change History section in the Hamburger menu" do
+        global_page.click_change_history :il
+      end
+
+      step "Admin chooses the second item in table Change History" do
+        change_history_modal.click_second_item_in_table :il
+      end
+
+      step "Admin clicks on dropdown Last Changes" do
+        change_history_modal.click_dropdown_last_changes :il
+      end
+
+      step "Admin clicks on Past 24 hours" do
+        change_history_modal.click_past_24_hours :il
+      end
+
+      step "Admin clicks on dropdown Past 24 hours" do
+        change_history_modal.click_dropdown_past_24_hours :il
+      end
+
+      step "Admin clicks in dropdown Between" do
+        change_history_modal.click_between_btn :il
+      end
+
+      step "Admin fills the hours time", '12' do |hours_time|
+        change_history_modal.fill_hours_time :il,hours_time
+      end
+
+      step "Admin fills the minutes time", '00' do |minutes_time|
+        change_history_modal.fill_minutes_time :il, minutes_time
+      end
+
+      step "Admin confirm time, click OK button" do
+        change_history_modal.confirm_time :il
+      end
+
+      step "Admin fills the hours time", '13' do |hours_time|
+        change_history_modal.fill_and_hours_time :il, hours_time
+      end
+
+      step "Admin fills the minutes time", '00' do |minutes_time|
+        change_history_modal.fill_and_minutes_time :il, minutes_time
+      end
+
+      step "Admin confirm time, click OK button" do
+        change_history_modal.and_confirm_time :il
+      end
+
+      step "Admin clicks search button" do
+        change_history_modal.click_search_btn :il
+      end
+
+      step "Admin clicks on dropdown Last changes" do
+        change_history_modal.click_last_changes_dropdown :il
+      end
+
+      step "Admin select in dropdown Past 3 days" do
+        change_history_modal.click_past_3_days
+      end
+    end
+
+    scenario 'Search debug', search_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
+      end
+
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il,credentials['username']
+        login_page.fill_pass_field :il,credentials['pass']
+        login_page.click_sign_in_button :il
+      end
+
+      step "Admin clicks on the Hamburger menu button" do
+        global_page.click_hamburger_menu :il
+      end
+
+      step "Admin chooses the Change History section in the Hamburger menu" do
+        global_page.click_change_history :il
+      end
+
+      step "Admin chooses the second item in table Change History" do
+        change_history_modal.click_second_item_in_table :il
+      end
+
+      step "Admin clicks on dropdown Last Changes" do
+        change_history_modal.click_dropdown_last_changes :il
+      end
+
+      step "Admin clicks on Past 24 hours" do
+        change_history_modal.click_past_24_hours :il
+      end
+
+      step "Admin clicks on dropdown Past 24 hours" do
+        change_history_modal.click_dropdown_past_24_hours :il
+      end
+
+      step "Admin clicks in dropdown Between" do
+        change_history_modal.click_between_btn :il
+      end
+
+      step "Admin fills the hours time", '12' do |hours_time|
+        change_history_modal.fill_hours_time :il,hours_time
+      end
+
+      step "Admin fills the minutes time", '00' do |minutes_time|
+        change_history_modal.fill_minutes_time :il, minutes_time
+      end
+
+      step "Admin confirm time, click OK button" do
+        change_history_modal.confirm_time :il
+      end
+
+      step "Admin fills the hours time", '13' do |hours_time|
+        change_history_modal.fill_and_hours_time :il, hours_time
+      end
+
+      step "Admin fills the minutes time", '00' do |minutes_time|
+        change_history_modal.fill_and_minutes_time :il, minutes_time
+      end
+
+      step "Admin confirm time, click OK button" do
+        change_history_modal.and_confirm_time :il
+      end
+
+      step "Admin clicks search button" do
+        change_history_modal.click_search_btn :il
+      end
+
+      step "Admin clicks on dropdown Last changes" do
+        change_history_modal.click_last_changes_dropdown :il
+      end
+
+      step "Admin select in dropdown Past 3 days" do
+        change_history_modal.click_past_3_days
+      end
+    end
   end
 end

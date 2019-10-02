@@ -17,7 +17,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'Create new artifact' do
+  feature 'AT-97, TA Analyzer returns the wrong element on the page (Cloud Bees - Publish Artifact Version element)' do
 
     # Initial locators with Recording
 
@@ -65,18 +65,6 @@ describe 'Preconditions' do
         artifact_page.click_publish_artifact_version
       end
 
-      step "Admin fills the Version name field", 'test_version_name' do |ver_name|
-        artifact_page.fill_version_name_field ver_name
-      end
-
-      step "Admin fills the Publish Tags name field", 'test_tag_name' do |tag_name|
-        artifact_page.fill_publish_tag_name_field tag_name
-      end
-
-      step "Admin confirm new Artifact" do
-        artifact_page.click_confirm_artifact
-      end
-
       sleep 3
     end
 
@@ -102,11 +90,12 @@ describe 'Preconditions' do
 
       step "Admin clicks Create Artifact link" do
         sleep 3
-        within_frame(0) { check_element_path :xpath, CloudBeesArtifact::CREATE_ARTIFACT_LINK_TA, CloudBeesArtifact::CREATE_ARTIFACT_LINK_IL }
-        artifact_page.create_new_artifact
+        #within_frame(0) { check_element_path :xpath, CloudBeesArtifact::CREATE_ARTIFACT_LINK_TA, CloudBeesArtifact::CREATE_ARTIFACT_LINK_IL }
+        artifact_page.create_new_artifact :il
       end
 
       step "Admin fills the group id name field", 'test_group_id' do |group_id|
+        sleep 3
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::GROUP_ID_NAME_TA, CloudBeesArtifact::GROUP_ID_NAME_IL }
         artifact_page.fill_group_id_name_field group_id
       end
@@ -134,21 +123,6 @@ describe 'Preconditions' do
       step "Admin clicks Publish Artifact Version" do
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::PUBLISH_ARTIFACT_VERSION_TA, CloudBeesArtifact::PUBLISH_ARTIFACT_VERSION_IL }
         artifact_page.click_publish_artifact_version
-      end
-
-      step "Admin fills the Version name field", 'test_version_name' do |ver_name|
-        within_frame(0) { check_element_path :xpath, CloudBeesArtifact::VERSION_NAME_TA, CloudBeesArtifact::VERSION_NAME_IL }
-        artifact_page.fill_version_name_field ver_name
-      end
-
-      step "Admin fills the Publish Tags name field", 'test_tag_name' do |tag_name|
-        within_frame(0) { check_element_path :xpath, CloudBeesArtifact::PUBLISH_TAGS_NAME_TA, CloudBeesArtifact::PUBLISH_TAGS_NAME_IL }
-        artifact_page.fill_publish_tag_name_field tag_name
-      end
-
-      step "Admin confirm new Artifact" do
-        within_frame(0) { check_element_path :xpath, CloudBeesArtifact::CONFIRM_ARTIFACT_TA, CloudBeesArtifact::CONFIRM_ARTIFACT_IL }
-        artifact_page.click_confirm_artifact
       end
 
       sleep 3
@@ -212,19 +186,98 @@ describe 'Preconditions' do
         artifact_page.click_publish_artifact_version :ep
       end
 
-      step "Admin fills the Version name field", 'test_version_name' do |ver_name|
-        within_frame(0) { check_element_path :xpath, CloudBeesArtifact::VERSION_NAME_EP, CloudBeesArtifact::VERSION_NAME_IL }
-        artifact_page.fill_version_name_field :ep, ver_name
+      sleep 3
+    end
+
+    scenario 'Recording debug', record_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
       end
 
-      step "Admin fills the Publish Tags name field", 'test_tag_name' do |tag_name|
-        within_frame(0) { check_element_path :xpath, CloudBeesArtifact::PUBLISH_TAGS_NAME_EP, CloudBeesArtifact::PUBLISH_TAGS_NAME_IL }
-        artifact_page.fill_publish_tag_name_field :ep, tag_name
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il, credentials['username']
+        login_page.fill_pass_field :il, credentials['pass']
+        login_page.click_sign_in_button :il
       end
 
-      step "Admin confirm new Artifact" do
-        within_frame(0) { check_element_path :xpath, CloudBeesArtifact::CONFIRM_ARTIFACT_EP, CloudBeesArtifact::CONFIRM_ARTIFACT_IL }
-        artifact_page.click_confirm_artifact :ep
+      step "Admin goes to the page", settings('cloud_bees')['artifacts_page'] do |url|
+        page.visit url
+      end
+
+      step "Admin clicks Create Artifact link" do
+        sleep 3
+        artifact_page.create_new_artifact :il
+      end
+
+      step "Admin fills the group id name field", 'test_group_id' do |group_id|
+        artifact_page.fill_group_id_name_field :il, group_id
+      end
+
+      step "Admin fills the artifact key name field", 'test_artifact_key' do |art_key|
+        artifact_page.fill_artifact_key_name_field :il, art_key
+      end
+
+      step "Admin fills the Description field", 'test_description' do |description|
+        artifact_page.fill_description_field :il, description
+      end
+
+      step "Admin fills the Artifact Version Name Template field", 'test_version_name' do |version_name|
+        artifact_page.fill_artifact_version_name_field :il, version_name
+      end
+
+      step "Admin fills the Tags name field", 'test_tag_name' do |tag_name|
+        artifact_page.fill_tags_name_field :il, tag_name
+      end
+
+      step "Admin clicks Publish Artifact Version" do
+        artifact_page.click_publish_artifact_version
+      end
+
+      sleep 3
+    end
+
+    scenario 'Searching debug', search_debug: true do
+      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
+        page.visit url
+      end
+
+      step "Admin do login", settings('cloud_bees') do |credentials|
+        login_page.fill_username_field :il, credentials['username']
+        login_page.fill_pass_field :il, credentials['pass']
+        login_page.click_sign_in_button :il
+      end
+
+      step "Admin goes to the page", settings('cloud_bees')['artifacts_page'] do |url|
+        page.visit url
+      end
+
+      step "Admin clicks Create Artifact link" do
+        sleep 3
+        artifact_page.create_new_artifact :il
+      end
+
+      step "Admin fills the group id name field", 'test_group_id' do |group_id|
+        artifact_page.fill_group_id_name_field :il, group_id
+      end
+
+      step "Admin fills the artifact key name field", 'test_artifact_key' do |art_key|
+        artifact_page.fill_artifact_key_name_field :il, art_key
+      end
+
+      step "Admin fills the Description field", 'test_description' do |description|
+        artifact_page.fill_description_field :il, description
+      end
+
+      step "Admin fills the Artifact Version Name Template field", 'test_version_name' do |version_name|
+        artifact_page.fill_artifact_version_name_field :il, version_name
+      end
+
+      step "Admin fills the Tags name field", 'test_tag_name' do |tag_name|
+        artifact_page.fill_tags_name_field :il, tag_name
+      end
+
+      step "Admin clicks Publish Artifact Version" do
+        artifact_page.click_publish_artifact_version
       end
 
       sleep 3

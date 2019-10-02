@@ -3,10 +3,10 @@ require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
 required_relative_all "/pages/cloud_bees_pages/*.rb"
 
+global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
-pipelines_runs = CloudBeesPipelinesRuns.new
+releases_calendar = CloudBeesReleasesCalendar.new
 
-# This tests runs when the vpn is ON
 describe 'Preconditions' do
 
   before(:all) do
@@ -15,33 +15,32 @@ describe 'Preconditions' do
   end
 
   after(:all) do
-    delete_saved_elements
     Capybara.current_session.driver.quit
   end
 
-  feature 'AT-76 - Cloud Bees - Click to select run status' do
+  feature 'AT-87 CloudBees - Switching timezone tabs' do
 
     # Initial locators with Recording
 
     scenario 'Recording IL', il: true do
-
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field  credentials['username']
-        login_page.fill_pass_field credentials['pass']
+        login_page.fill_pass_field  credentials['pass']
         login_page.click_sign_in_button
       end
 
-      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
-        page.visit url
+      step "Admin clicks on release calendar button" do
+        global_page.click_release_calendar_btn
       end
 
-      step "User clicks to select run status" do
-        pipelines_runs.click_to_run_status
+      step "Admin clicks on timezone dropdown" do
+       releases_calendar.click_to_timezone_dropdown
       end
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -60,86 +59,90 @@ describe 'Preconditions' do
         login_page.click_sign_in_button
       end
 
-      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
-        page.visit url
+      step "Admin clicks on release calendar page" do
+        check_element_path :css, CloudBeesGlobal::RELEASE_CALENDAR_BTN_TA, CloudBeesGlobal::RELEASE_CALENDAR_BTN_IL
+        global_page.click_release_calendar_btn
       end
 
-      step "User clicks to select run status" do
-        check_element_path :xpath, CloudBeesPipelinesRuns::RUN_STATUS_SELECT_TA, CloudBeesPipelinesRuns::RUN_STATUS_SELECT_IL
-        pipelines_runs.click_to_run_status
+      step "Admin clicks on timezone dropdown" do
+        check_element_path :css, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_IL
+        releases_calendar.click_to_timezone_dropdown
       end
+      sleep 3
     end
 
     # Element Picker from Repository
 
     scenario 'Searching EP', ep: true do
-
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
 
       step "Admin do login", settings('cloud_bees') do |credentials|
-        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
+        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field :ep, credentials['username']
 
-        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
+        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_TA, CloudBeesLogin::PASSWORD_FIELD_IL
         login_page.fill_pass_field :ep, credentials['pass']
 
-        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
+        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
         login_page.click_sign_in_button :ep
       end
 
-      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
-        page.visit url
+      step "Admin clicks on release calendar page" do
+        check_element_path :css, CloudBeesGlobal::RELEASE_CALENDAR_BTN_TA, CloudBeesGlobal::RELEASE_CALENDAR_BTN_IL
+        global_page.click_release_calendar_btn :ep
       end
 
-      step "User clicks to select run status" do
-        check_element_path :xpath, CloudBeesPipelinesRuns::RUN_STATUS_SELECT_EP, CloudBeesPipelinesRuns::RUN_STATUS_SELECT_IL
-        pipelines_runs.click_to_run_status :ep
+      step "Admin clicks on timezone dropdown" do
+        check_element_path :css, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_TA, CloudBeesReleasesCalendar::SELECT_USER_TIMEZONE_IL
+        releases_calendar.click_to_timezone_dropdown :ep
       end
+      sleep 3
     end
 
-    scenario 'Recording debug', record_debug: true do
+    # Debug
 
+    scenario 'Recording debug', record_debug: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field :il, credentials['username']
-        login_page.fill_pass_field :il,credentials['pass']
+        login_page.fill_pass_field :il, credentials['pass']
         login_page.click_sign_in_button :il
       end
 
-      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
-        page.visit url
+      step "Admin clicks on release calendar page" do
+        global_page.click_release_calendar_btn :il
       end
 
-      step "User clicks to select run status" do
-        pipelines_runs.click_to_run_status
+      step "Admin clicks on timezone dropdown" do
+        releases_calendar.click_to_timezone_dropdown
       end
+      sleep 3
     end
 
     scenario 'Searching debug', search_debug: true do
-
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field :il, credentials['username']
-        login_page.fill_pass_field :il,credentials['pass']
+        login_page.fill_pass_field :il, credentials['pass']
         login_page.click_sign_in_button :il
       end
 
-      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
-        page.visit url
+      step "Admin clicks on release calendar page" do
+        global_page.click_release_calendar_btn :il
       end
 
-      step "User clicks to select run status" do
-        pipelines_runs.click_to_run_status
+      step "Admin clicks on timezone dropdown" do
+        releases_calendar.click_to_timezone_dropdown
       end
+      sleep 3
     end
-
   end
 end

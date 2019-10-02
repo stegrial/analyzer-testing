@@ -43,10 +43,12 @@ describe 'Preconditions' do
       end
 
       step "Admin presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         users_page.press_create_user_btn
       end
 
       step "Admin fills the User Name field", 'Car' do |name|
+        sleep 3 # to waiting iframe
         new_user_page.fill_user_name_field name
       end
 
@@ -89,7 +91,7 @@ describe 'Preconditions' do
       sleep 3
     end
 
-    scenario 'Searching IL', il: true do
+    scenario 'Searching IL', il1: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -116,11 +118,13 @@ describe 'Preconditions' do
       end
 
       step "Admin presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         within_frame(0) { check_element_path :xpath, CloudBeesUsers::CREATE_USER_BTN_TA, CloudBeesUsers::CREATE_USER_BTN_IL }
         users_page.press_create_user_btn
       end
 
       step "Admin fills the User Name field", 'Car' do |name|
+        sleep 3 # to waiting iframe
         within_frame(0) { check_element_path :css, CloudBeesNewUser::USER_NAME_FIELD_TA, CloudBeesNewUser::USER_NAME_FIELD_IL }
         new_user_page.fill_user_name_field name
       end
@@ -202,6 +206,7 @@ describe 'Preconditions' do
       end
 
       step "Admin presses the Create Local User button" do
+        sleep 3 # to waiting iframe
         within_frame(0) { check_element_path :xpath, CloudBeesUsers::CREATE_USER_BTN_EP, CloudBeesUsers::CREATE_USER_BTN_IL }
         users_page.press_create_user_btn :ep
       end
