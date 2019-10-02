@@ -18,7 +18,7 @@ describe 'Preconditions' do
 
   feature 'Select categories and product' do
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page", settings('revolve')['page'] do |url|
         page.visit url
@@ -39,7 +39,7 @@ describe 'Preconditions' do
       end
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('revolve')['page'] do |url|
         page.visit url
@@ -64,7 +64,7 @@ describe 'Preconditions' do
 
     # Element Picker from Repository
 
-    scenario 'Searching EP', ep_run: true do
+    scenario 'Searching EP', ep: true do
       step "User goes to the page", settings('revolve')['page'] do |url|
         page.visit url
       end
