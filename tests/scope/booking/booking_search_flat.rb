@@ -50,12 +50,12 @@ describe 'Preconditions' do
         page.visit url
       end
       step "User clicks to set place" do
-        check_element_path :xpath, Booking::PLACE_INPUT_TA, Booking::PLACE_INPUT_IL
+        check_element_path :css, Booking::PLACE_INPUT_TA, Booking::PLACE_INPUT_IL
         it.click_place
         sleep 5
       end
       step "User set place in input", "Barselona" do |value|
-        check_element_path :xpath, Booking::SEARCH_PLACE_INPUT_TA, Booking::SEARCH_PLACE_INPUT_IL
+        check_element_path :css, Booking::SEARCH_PLACE_INPUT_TA, Booking::SEARCH_PLACE_INPUT_IL
         it.set_place value
       end
 
@@ -69,7 +69,7 @@ describe 'Preconditions' do
         it.click_to_accept
       end
       step "USer clicks to search " do
-        check_element_path :xpath, Booking::SEARCH_BTN_TA, Booking::SEARCH_BTN_IL
+        check_element_path :css, Booking::SEARCH_BTN_TA, Booking::SEARCH_BTN_IL
         it.click_search_btn
       end
     end
