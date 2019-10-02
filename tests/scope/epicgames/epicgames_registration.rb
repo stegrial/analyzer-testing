@@ -7,7 +7,7 @@ it = Epicgames.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
   after(:all) do
@@ -17,7 +17,7 @@ describe 'Preconditions' do
 
   # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page", settings('epicgames')['page'] do |url|
         page.visit url
@@ -96,7 +96,7 @@ describe 'Preconditions' do
       end
     end
 
-      scenario 'Searching IL', il_run: true do
+      scenario 'Searching IL', il: true do
 
         step "User goes to the page", settings('epicgames')['page'] do |url|
           page.visit url
@@ -192,12 +192,11 @@ describe 'Preconditions' do
         step "User should see error message" do
           expect(page).to have_selector(:xpath, Epicgames::ROBOT_ERROR)
         end
-
       end
 
     # Element Picker from Repository
 
-      scenario 'Searching EP', ep_run: true do
+      scenario 'Searching EP', ep: true do
 
         step "User goes to the page", settings('epicgames')['page'] do |url|
           page.visit url
