@@ -16,8 +16,10 @@ describe 'Preconditions' do
   end
 
   after(:all) do
+    delete_saved_elements
     Capybara.current_session.driver.quit
   end
+
   feature 'AT-86 Cloud Bees - Сhanging Run Status on Pipeline Runs page' do
 
     # Initial locators with Recording

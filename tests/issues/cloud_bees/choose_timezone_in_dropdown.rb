@@ -15,6 +15,7 @@ describe 'Preconditions' do
   end
 
   after(:all) do
+    delete_saved_elements
     Capybara.current_session.driver.quit
   end
 
@@ -27,7 +28,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field  credentials['username']
         login_page.fill_pass_field  credentials['pass']
         login_page.click_sign_in_button
@@ -43,7 +44,7 @@ describe 'Preconditions' do
 
       step "Admin enters a value in the timezone search field", 'Kiev' do |value|
         releases_calendar.set_timezone_search_value :il, value
-        # sleep 2 # need to wait for the filter to be applied
+        sleep 2 # need to wait for the filter to be applied
       end
 
       step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
@@ -58,7 +59,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field credentials['username']
 
@@ -94,7 +95,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field :ep, credentials['username']
 
@@ -130,7 +131,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field :il, credentials['username']
         login_page.fill_pass_field :il, credentials['pass']
         login_page.click_sign_in_button :il
@@ -146,7 +147,7 @@ describe 'Preconditions' do
 
       step "Admin enters a value in the timezone search field", 'Kiev' do |value|
         releases_calendar.set_timezone_search_value :il, value
-        # sleep 2 # need to wait for the filter to be applied
+        sleep 2 # need to wait for the filter to be applied
       end
 
       step "Admin chooses timezone", 'Europe/Kiev' do |timezone|
@@ -161,7 +162,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin does login", settings('cloud_bees') do |credentials|
         login_page.fill_username_field :il, credentials['username']
         login_page.fill_pass_field :il, credentials['pass']
         login_page.click_sign_in_button :il

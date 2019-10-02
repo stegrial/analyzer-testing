@@ -12,7 +12,6 @@ describe 'Preconditions' do
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
-
   end
   after(:each) do
     step "Remove created catalog", settings('cloud_bees') do |data|
@@ -29,8 +28,10 @@ describe 'Preconditions' do
     end
   end
   after(:all) do
+    delete_saved_elements
     Capybara.current_session.driver.quit
   end
+
   feature 'AT-84, CloudBees - click ok in modal btn' do
 
     # Initial locators with Recording
