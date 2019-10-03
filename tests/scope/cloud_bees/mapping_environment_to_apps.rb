@@ -2,27 +2,19 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
 required_relative_all "/pages/cloud_bees_pages/*.rb"
-require 'securerandom'
 
-# This tests runs when the vpn is ON
-#
-#
-#  TA-1004 - sleeps delivered due to bug
-#
-#
 global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
 apps_page = CloudBeesApps.new
 env = CloudBeesEnv.new
 env_editor = CloudBeesEnvEditor.new
 
-# This tests runs when the vpn is ON
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
-
 
   after(:each) do
     step "Remove created user", settings('cloud_bees') do |data|
@@ -44,10 +36,6 @@ describe 'Preconditions' do
     end
   end
 
-
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
   feature 'CloudBees - Mapping Environment to Application ' do
 
     # Initial locators with Recording

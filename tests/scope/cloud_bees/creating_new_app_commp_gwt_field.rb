@@ -2,24 +2,19 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
 required_relative_all "/pages/cloud_bees_pages/*.rb"
-require 'securerandom'
-random_string = SecureRandom.hex
 
 global_page = CloudBeesGlobal.new
 login_page = CloudBeesLogin.new
 apps = CloudBeesApps.new
 apps_editor = CloudBeesAppsEditor.new
 
-# This tests runs when the vpn is ON
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
   feature 'CloudBees - creating new application component - GWT - fields' do
 
     # Initial locators with Recording

@@ -13,10 +13,6 @@ describe 'Preconditions' do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT-102, TA Analyzer returns the wrong element on the page (Cloud Bees - Week tab element)' do
 
     # Initial locators with Recording

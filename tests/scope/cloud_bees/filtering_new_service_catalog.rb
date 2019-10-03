@@ -6,20 +6,11 @@ required_relative_all "/pages/cloud_bees_pages/*.rb"
 login_page = CloudBeesLogin.new
 catalogs_page = CloudBeesCatalogs.new
 
-# This tests runs when the vpn is ON
-#
-
-
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
-
-  end
-
-  after(:all) do
-    Capybara.current_session.driver.quit
   end
 
   feature 'CloudBees - Filtering Service Catalog' do

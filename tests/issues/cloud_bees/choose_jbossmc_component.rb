@@ -24,10 +24,6 @@ describe 'Preconditions' do
     end
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT-89 - choose jbossmc component in creating from Existing Master Component' do
 
     # Initial locators with Recording

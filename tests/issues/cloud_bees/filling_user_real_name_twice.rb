@@ -15,11 +15,6 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  after(:all) do
-    delete_saved_elements
-    Capybara.current_session.driver.quit
-  end
-
   feature 'TA-1001, TA Analyzer returns the wrong input field in the form when the needed input field is already filled' do
 
     # Initial locators with Recording

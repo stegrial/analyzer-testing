@@ -12,11 +12,6 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  after(:all) do
-    delete_saved_elements
-    Capybara.current_session.driver.quit
-  end
-
   feature 'TA-1022, TA Analyzer can not find an element when the element got the value attribute (filling the same field twice)' do
 
     # Initial locators with Recording

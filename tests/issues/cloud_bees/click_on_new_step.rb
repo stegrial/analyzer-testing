@@ -24,10 +24,6 @@ describe 'Preconditions' do
     end
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT-98 click on new step  (Create Component Process with Step type and with further removal)' do
 
     # Initial locators with Recording

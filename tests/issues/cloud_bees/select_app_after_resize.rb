@@ -26,11 +26,6 @@ describe 'Preconditions' do
     end
   end
 
-  after(:all) do
-    delete_saved_elements
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT-57, AT-66, TA Analyzer returns the wrong element on the page (Cloud Bees - Application list item)' do
 
     # Initial locators with Recording

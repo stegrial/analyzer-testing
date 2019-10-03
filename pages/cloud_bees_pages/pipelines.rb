@@ -25,7 +25,7 @@ class CloudBeesPipelines
   SELECT_PROJECT_TA = 'cloud_bees:pipeline:select_project'
   SELECT_PROJECT_EP = 'EP:cloud_bees:pipeline:select_project'
 
-  SELECT_DEFAULT_PROJECT_IL = "//div[text()='1']//following-sibling::div[text()='Default']"
+  SELECT_DEFAULT_PROJECT_IL = "//div[@title='Default' and contains(@class, 'ec-project-select-picker__option')]"
   SELECT_DEFAULT_PROJECT_TA = 'cloud_bees:pipeline:select_default_project'
   SELECT_DEFAULT_PROJECT_EP = 'EP:cloud_bees:pipeline:select_default_project'
 
@@ -233,6 +233,16 @@ class CloudBeesPipelines
     return find(ta(CONFIRM_COMPLETED_TASK_EP)).click if key == :ep
     return find(:xpath, CONFIRM_COMPLETED_TASK_IL).click if key == :il
     find(:xpath, ta(CONFIRM_COMPLETED_TASK_TA, CONFIRM_COMPLETED_TASK_IL)).click
+  end
+
+  def check_no_default_project(key = nil)
+    begin
+      return expect(page).not_to have_selector(ta(SELECT_DEFAULT_PROJECT_EP)) if key == :ep
+      return expect(page).not_to have_selector(:xpath, SELECT_DEFAULT_PROJECT_IL) if key == :il
+      expect(page).not_to have_selector(:xpath, ta(SELECT_DEFAULT_PROJECT_TA, SELECT_DEFAULT_PROJECT_IL))
+    rescue Selenium::WebDriver::Error::NoSuchElementError => e
+      puts e.message
+    end
   end
 
 end

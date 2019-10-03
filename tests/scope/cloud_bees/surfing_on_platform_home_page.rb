@@ -5,14 +5,12 @@ required_relative_all "/pages/cloud_bees_pages/*.rb"
 
 login_page = CloudBeesLogin.new
 platform_page = CloudBeesPlatformHomePage.new
+
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-  end
-
-  after(:all) do
-    Capybara.current_session.driver.quit
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Creating and Deleting application' do
