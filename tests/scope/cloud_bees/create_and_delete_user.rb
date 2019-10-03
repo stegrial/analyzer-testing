@@ -87,7 +87,7 @@ describe 'Preconditions' do
       sleep 3
     end
 
-    scenario 'Searching IL', il1: true do
+    scenario 'Searching IL', il: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
