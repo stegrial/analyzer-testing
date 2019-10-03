@@ -70,7 +70,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks ok button in modal" do
-        catalogs_page.click_ok_in_modal_btn
+        catalogs_page.click_ok_in_modal_btn :il #step is duplicated below
       end
 
       step "User set name in form", 'new_form_name' do |value|
@@ -129,7 +129,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks ok button in modal" do
-        catalogs_page.click_ok_in_modal_btn :il
+        catalogs_page.click_ok_in_modal_btn
       end
     end
 

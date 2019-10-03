@@ -34,7 +34,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select run status" do
-        pipelines_runs.click_to_run_status
+        pipelines_runs.click_to_run_status :il #step is duplicated below
       end
 
       step "User clicks to select successful status" do
@@ -43,7 +43,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on apply button" do
-        pipelines_runs.click_to_apply_status
+        pipelines_runs.click_to_apply_status :il #step is duplicated below
       end
 
       step "User clicks to select run status" do
