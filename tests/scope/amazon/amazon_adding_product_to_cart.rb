@@ -10,7 +10,7 @@ it = Amazon.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
   after(:all) do
@@ -21,7 +21,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page", settings('amazon')['page'] do |url|
         page.visit url
@@ -54,7 +54,7 @@ describe 'Preconditions' do
       end
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('amazon')['page'] do |url|
         page.visit url
@@ -90,13 +90,11 @@ describe 'Preconditions' do
         check_element_path :xpath, Amazon::ADD_TO_CART_TA, Amazon::ADD_TO_CART_IL
         it.click_for_add_to_cart
       end
-
     end
 
     # Element Picker from Repository
 
-    scenario 'Searching EP', ep_run: true do
-
+    scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('amazon')['page'] do |url|
         page.visit url
@@ -125,8 +123,7 @@ describe 'Preconditions' do
       step "User clicks add to cart button" do
         check_element_path :xpath, Amazon::ADD_TO_CART_EP, Amazon::ADD_TO_CART_IL
         it.click_for_add_to_cart :ep
-        end
-
+      end
     end
   end
 end

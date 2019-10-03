@@ -7,7 +7,7 @@ it = Tumblr.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
   after(:all) do
@@ -18,7 +18,7 @@ describe 'Preconditions' do
 
   # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page", settings('tumblr')['page'] do |url|
         page.visit url
@@ -67,7 +67,7 @@ describe 'Preconditions' do
 
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('tumblr')['page'] do |url|
         page.visit url
@@ -127,7 +127,7 @@ describe 'Preconditions' do
 
   # Element Picker from Repository
 
-    scenario 'TA-826 - Searching EP', ep_run: true do
+    scenario 'TA-826 - Searching EP', ep: true do
 
       step "User goes to the page", settings('tumblr')['page'] do |url|
         page.visit url

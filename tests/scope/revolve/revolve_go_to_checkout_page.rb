@@ -18,7 +18,7 @@ describe 'Preconditions' do
 
   feature 'TA-981 Filling checkout page' do
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page" do
         visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
@@ -75,7 +75,7 @@ describe 'Preconditions' do
       end
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page" do
         visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
@@ -140,7 +140,7 @@ describe 'Preconditions' do
 
     end
     # Element Picker from Repository
-    scenario 'Searching EP', ep_run: true do
+    scenario 'Searching EP', ep: true do
 
       step "User goes to the page" do
         visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
