@@ -11,7 +11,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'CloudBees - Deleting new Service Catalog' do
@@ -51,7 +51,7 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-       catalogs_page.select_proj_from_list
+        catalogs_page.select_proj_from_list
       end
 
       step "User clicks ok button in modal" do
@@ -63,7 +63,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks delete button in menu" do
-        sleep 4  # needed to bypass the bug  TA-1024
         catalogs_page.click_delete_catalog
       end
 
@@ -71,6 +70,7 @@ describe 'Preconditions' do
         catalogs_page.click_ok_btn_for_accept_delete
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -80,10 +80,10 @@ describe 'Preconditions' do
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field  credentials['username']
+        login_page.fill_username_field credentials['username']
 
         check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_TA, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field  credentials['pass']
+        login_page.fill_pass_field credentials['pass']
 
         check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
         login_page.click_sign_in_button
@@ -149,7 +149,7 @@ describe 'Preconditions' do
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field :ep,  credentials['username']
+        login_page.fill_username_field :ep, credentials['username']
 
         check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
         login_page.fill_pass_field :ep, credentials['pass']
