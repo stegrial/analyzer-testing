@@ -28,14 +28,12 @@ describe 'Preconditions' do
         login_page.click_sign_in_button
       end
 
-      sleep 5
-
       step "Admin goes to the page", settings('cloud_bees')['platform_home_page'] do |url|
+        sleep 3 # to wait for authorization
         page.visit url
       end
 
       step "Admin clicks on projects link" do
-       sleep 3
        platform_page.click_projects_link
       end
 
@@ -51,16 +49,16 @@ describe 'Preconditions' do
         platform_page.click_cloud_link
       end
 
-      step "Admin clicks on projects link" do
+      step "Admin clicks on artifacts link" do
         platform_page.click_artifacts_link
       end
 
-      step "Admin clicks on projects link" do
+      step "Admin clicks on search link" do
         platform_page.click_search_link
       end
 
-      step "Admin clicks on projects link" do
-        platform_page.click_administration_link
+      step "Admin clicks on administration link" do
+        platform_page.click_administration_link :il # step is duplicated below
       end
 
       step "Admin clicks on second row of run reports" do
@@ -68,12 +66,10 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on parameters  tabs" do
-        # sleep 3
         platform_page.click_to_switch_parameters_in_table
       end
 
       step "Admin clicks on diagnostics tabs" do
-        # sleep 3
         platform_page.click_to_switch_diagnostics_in_table
       end
 
@@ -101,8 +97,6 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
         login_page.click_sign_in_button
       end
-
-      sleep 5
 
       step "Admin goes to the page", settings('cloud_bees')['platform_home_page'] do |url|
         page.visit url

@@ -30,7 +30,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu
+        global_page.click_hamburger_menu :il # step is duplicated below
       end
 
       step "Admin chooses the Pipelines section in the Hamburger menu" do
