@@ -61,7 +61,7 @@ describe 'Preconditions' do
         releases_calendar.click_month_tab_button
       end
 
-
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do

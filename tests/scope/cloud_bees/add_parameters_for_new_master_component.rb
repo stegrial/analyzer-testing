@@ -109,6 +109,7 @@ describe 'Preconditions' do
       end
 
       step "Admin click close Parameters" do
+        sleep 3 # wait for load of the past step
         components_page.click_close_parameters
       end
 

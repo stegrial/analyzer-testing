@@ -34,7 +34,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on multi menu" do
-        pipelines_runs.click_multi_action_menu
+        pipelines_runs.click_multi_action_menu :il # step is duplication below
       end
 
       step "User clicks on properties in menu" do
@@ -46,7 +46,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on multi menu" do
-        pipelines_runs.click_multi_action_menu
+        pipelines_runs.click_multi_action_menu :il # step is duplication below
       end
 
       step "User clicks on access control in menu" do
@@ -66,7 +66,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks on history close icon" do
-       # sleep  5
         pipelines_runs.click_history_close_modal
       end
 
