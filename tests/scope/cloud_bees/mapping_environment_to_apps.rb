@@ -53,7 +53,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on the Hamburger menu button" do
-        global_page.click_hamburger_menu
+        global_page.click_hamburger_menu :il #step is duplicated below
       end
 
       step "Admin chooses the Applications section in the Hamburger menu" do
@@ -157,7 +157,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks close button" do
-        env_editor.click_to_close_to_close_modal
+        env_editor.click_to_close_to_close_modal :il #step is duplicated below
       end
 
       step "Admin clicks map to application link in hierarchy menu" do

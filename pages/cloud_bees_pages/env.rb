@@ -25,7 +25,7 @@ class CloudBeesEnv
   SELECT_PROJECT_TA = 'cloud_bees:env:select_project'
   SELECT_PROJECT_EP = 'EP:cloud_bees:env:select_project'
 
-  SELECT_DEFAULT_PROJECT_IL = "//div[text()='1']//following-sibling::div[@title='Default']"
+  SELECT_DEFAULT_PROJECT_IL = "//div[@title='Default' and contains(@class, 'ec-project-select-picker__option')]"
   SELECT_DEFAULT_PROJECT_TA = 'cloud_bees:env:select_default_project'
   SELECT_DEFAULT_PROJECT_EP = 'EP:cloud_bees:env:select_default_project'
 
