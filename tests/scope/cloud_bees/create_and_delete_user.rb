@@ -15,10 +15,6 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'Creating and Deleting user' do
 
     # Initial locators with Recording

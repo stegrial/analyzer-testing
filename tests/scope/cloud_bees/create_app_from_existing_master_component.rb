@@ -24,10 +24,6 @@ describe 'Preconditions' do
     end
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'Create Application Component from Existing Master Component' do
 
     # Initial locators with Recording

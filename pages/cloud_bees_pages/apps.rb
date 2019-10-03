@@ -25,7 +25,7 @@ class CloudBeesApps
   SELECT_PROJECT_TA = 'cloud_bees:apps:select_project'
   SELECT_PROJECT_EP = 'EP:cloud_bees:apps:select_project'
 
-  SELECT_DEFAULT_PROJECT_IL = "//div[text()='1']//following-sibling::div[@title='Default']"
+  SELECT_DEFAULT_PROJECT_IL = "//div[@title='Default' and contains(@class, 'ec-project-select-picker__option')]"
   SELECT_DEFAULT_PROJECT_TA = 'cloud_bees:apps:select_default_project'
   SELECT_DEFAULT_PROJECT_EP = 'EP:cloud_bees:apps:select_default_project'
 
@@ -85,7 +85,7 @@ class CloudBeesApps
   CONFIRM_DELETE_APPLICATION_TA = 'cloud_bees:apps:confirm_delete_application'
   CONFIRM_DELETE_APPLICATION_EP = 'EP:cloud_bees:apps:confirm_delete_application'
 
-  CREATE_EXISTING_MASTER_COMPONENT_IL = "//span[text()='Create from Existing Master Component']"
+  CREATE_EXISTING_MASTER_COMPONENT_IL = "//div[./span[contains(.,'Existing Master Component')]]"
   CREATE_EXISTING_MASTER_COMPONENT_TA = 'cloud_bees:apps:existing_master_component'
   CREATE_EXISTING_MASTER_COMPONENT_EP = 'EP:cloud_bees:apps:existing_master_component'
 

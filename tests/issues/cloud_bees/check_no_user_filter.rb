@@ -16,11 +16,6 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  after(:all) do
-    delete_saved_elements
-    Capybara.current_session.driver.quit
-  end
-
   feature 'TA-34, TA Analyzer returns the wrong element when the right element is not present on the page (Cloud Bees - Users Filter)' do
 
     # Initial locators with Recording

@@ -11,10 +11,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-  end
-
-  after(:all) do
-    Capybara.current_session.driver.quit
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'CloudBees - Switching timezone tabs' do

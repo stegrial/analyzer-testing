@@ -6,18 +6,13 @@ required_relative_all "/pages/cloud_bees_pages/*.rb"
 login_page = CloudBeesLogin.new
 pipelines_runs = CloudBeesPipelinesRuns.new
 
-# This tests runs when the vpn is ON
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
-
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
   feature 'Cloud Bees - Сhanging projects on Pipeline Runs page' do
 
     # Initial locators with Recording

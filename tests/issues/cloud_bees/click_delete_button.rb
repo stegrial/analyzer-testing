@@ -13,10 +13,6 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT-93, TA Analyzer returns the wrong element on the page (Cloud Bees - Delete element)' do
 
     # Initial locators with Recording

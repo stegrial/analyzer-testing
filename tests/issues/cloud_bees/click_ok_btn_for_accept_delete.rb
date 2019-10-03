@@ -12,12 +12,6 @@ describe 'Preconditions' do
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
-
-  end
-
-  after(:all) do
-    delete_saved_elements
-    Capybara.current_session.driver.quit
   end
 
   feature 'AT-79, CloudBees - Click ok button for accept deleting' do

@@ -26,10 +26,6 @@ describe 'Preconditions' do
     end
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'Editing user password by Admin' do
 
     # Initial locators with Recording

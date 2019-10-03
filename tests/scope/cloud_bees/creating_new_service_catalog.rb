@@ -6,37 +6,27 @@ required_relative_all "/pages/cloud_bees_pages/*.rb"
 login_page = CloudBeesLogin.new
 catalogs_page = CloudBeesCatalogs.new
 
-# This tests runs when the vpn is ON
-#
-#  TA-1004 - sleeps delivered due to bug
-#
-
-#
-
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
-
   end
+
   after(:each) do
     step "Remove created catalog", settings('cloud_bees') do |data|
       page.visit data['catalogs_page']
-     sleep 3
+      sleep 3
       catalogs_page.click_all_catalogs :il
       catalogs_page.click_to_select_created_catalog :il, 'new_name_catalog'
       catalogs_page.select_created_catalog :il
       catalogs_page.click_editor_catalog :il
       catalogs_page.click_catalog_menu :il
-      catalogs_page.click_delete_catalog
+      catalogs_page.click_delete_catalog :il
       catalogs_page.click_ok_btn_for_accept_delete :il
-
     end
   end
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
+
   feature 'CloudBees - Creating new Service Catalog' do
 
     # Initial locators with Recording
@@ -66,7 +56,7 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_btn
       end
 
-      step "User set name new catalog",  'new_name_catalog' do |value|
+      step "User set name new catalog", 'new_name_catalog' do |value|
         catalogs_page.set_catalog_name value
       end
 

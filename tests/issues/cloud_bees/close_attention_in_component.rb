@@ -24,10 +24,6 @@ describe 'Preconditions' do
     end
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT-90 Cloud Bees - Close attention in modal for creating existing master component' do
 
     # Initial locators with Recording

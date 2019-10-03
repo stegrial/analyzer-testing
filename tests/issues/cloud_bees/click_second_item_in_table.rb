@@ -14,10 +14,6 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT- 103 Cloud Bees - Click second item in table (Change History modal)' do
 
     # Initial locators with Recording

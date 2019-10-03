@@ -59,6 +59,11 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include TrueAutomation::DSL
 
+  config.after(:context) do
+    delete_saved_elements unless config.filter.rules[:ep]
+    Capybara.current_session.driver.quit
+  end
+
   Dir[File.join(spec_dir, 'support/**/*.rb')].each {|f|
     base = File.basename(f, '.rb')
     klass = camelize(base)

@@ -13,11 +13,6 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  after(:all) do
-    delete_saved_elements
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT-81, CloudBees - Click creat new resource' do
 
     # Initial locators with Recording

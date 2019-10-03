@@ -14,10 +14,6 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT-88, TA Analyzer returns the wrong element on the page (Cloud Bees - New Application element)' do
 
     # Initial locators with Recording

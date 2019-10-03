@@ -12,11 +12,6 @@ describe 'Preconditions' do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
-  after(:all) do
-    delete_saved_elements
-    Capybara.current_session.driver.quit
-  end
-
   feature 'AT-83 CloudBees - Click hamburger menu ' do
 
     # Initial locators with Recording

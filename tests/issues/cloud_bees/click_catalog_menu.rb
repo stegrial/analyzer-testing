@@ -12,8 +12,8 @@ describe 'Preconditions' do
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
-
   end
+
   after(:each) do
     step "Remove created catalog", settings('cloud_bees') do |data|
       page.visit data['catalogs_page']
@@ -23,15 +23,9 @@ describe 'Preconditions' do
       catalogs_page.select_created_catalog :il
       catalogs_page.click_editor_catalog :il
       catalogs_page.click_catalog_menu :il
-      catalogs_page.click_delete_catalog
+      catalogs_page.click_delete_catalog :il
       catalogs_page.click_ok_btn_for_accept_delete :il
-
     end
-  end
-
-  after(:all) do
-    delete_saved_elements
-    Capybara.current_session.driver.quit
   end
 
   feature 'AT-82, CloudBees - clicking on catalog hamburger menu button' do
