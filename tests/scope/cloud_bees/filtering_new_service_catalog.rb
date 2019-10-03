@@ -33,7 +33,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks dropdown for opening catalog list" do
-        catalogs_page.click_to_open_catalog_list
+        catalogs_page.click_to_open_catalog_list :il # step is duplication below
       end
 
       step "User clicks application in list" do
@@ -41,7 +41,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks dropdown for opening catalog list" do
-        catalogs_page.click_to_open_catalog_list
+        catalogs_page.click_to_open_catalog_list :il # step is duplication below
       end
 
       step "User clicks containers in list" do
@@ -55,6 +55,8 @@ describe 'Preconditions' do
       step "User clicks utility in list" do
         catalogs_page.click_utility_in_catalog_list
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do

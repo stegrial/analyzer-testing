@@ -34,15 +34,15 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select project" do
-        pipelines_runs.click_to_select_proj
+        pipelines_runs.click_to_select_proj :il #step is duplicated below
       end
 
       step "User clicks to select ec-examples project" do
-        pipelines_runs.click_to_select_ec_examples_proj
+        pipelines_runs.click_to_select_ec_examples_proj :il #step is duplicated below
       end
 
       step "User clicks on accept button" do
-        pipelines_runs.click_to_accept_proj
+        pipelines_runs.click_to_accept_proj :il #step is duplicated below
       end
 
       step "User clicks to select project" do

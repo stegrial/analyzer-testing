@@ -33,7 +33,7 @@ class CloudBeesApps
   CONFIRM_NEW_APPLICATION_TA = 'cloud_bees:apps:confirm_new_application'
   CONFIRM_NEW_APPLICATION_EP = 'EP:cloud_bees:apps:confirm_new_application'
 
-  COMPONENT_TIER_IL = "(//div[@class='tier-inner'])[1]"
+  COMPONENT_TIER_IL = "//div[@class='tier at-starting-tier']"
   COMPONENT_TIER_TA = 'cloud_bees:apps:component_tier'
   COMPONENT_TIER_EP = 'EP:cloud_bees:apps:component_tier'
 
