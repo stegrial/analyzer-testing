@@ -1,9 +1,11 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
-require_relative '../../../pages/venus'
+required_relative_all "/pages/venus_pages/*.rb"
 
-it = Venus.new
+sub_category_page = VenusSubCategory.new
+navigation_page = VenusNavigation.new
+login_page = VenusLogin.new
 
 describe 'Preconditions' do
 
@@ -11,11 +13,7 @@ describe 'Preconditions' do
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
-  feature 'TA-698, TA returns the wrong element (Venus - Clicking on the View Detail for second item in the list)' do
+  feature 'AT-59, TA returns the wrong element (Venus - Clicking on the View Detail for second item in the list)' do
 
     # Initial locators with Recording
 
@@ -25,19 +23,19 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Search button" do
-        it.click_search_button
+        navigation_page.click_search_button
       end
 
       step "User enters value to search", 'white' do |value|
-        it.enter_search_value value
+        navigation_page.enter_search_value value
       end
 
       step "User clicks Find button" do
-        it.click_find_button
+        navigation_page.click_find_button
       end
 
       step "User clicks View Detail for second item in the list" do
-        it.click_view_detail_second
+        sub_category_page.click_view_detail_second
       end
 
 
@@ -50,39 +48,39 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Account button" do
-        it.click_account_button :il
+        navigation_page.click_account_button :il
       end
 
       step "User fills the Email field", settings('venus')['email'] do |email|
-        it.fill_email_field :il, email
+        login_page.fill_email_field :il, email
       end
 
       step "User fills the Pass field", settings('venus')['pass'] do |pass|
-        it.fill_pass_field :il, pass
+        login_page.fill_pass_field :il, pass
       end
 
       step "User clicks on the Sign In button" do
-        it.click_sign_in_button :il
+        login_page.click_sign_in_button :il
       end
 
       step "User clicks on the Search button" do
-        check_element_path :xpath, Venus::SEARCH_BUTTON_TA, Venus::SEARCH_BUTTON_IL
-        it.click_search_button
+        check_element_path :xpath, VenusNavigation::SEARCH_BUTTON_TA, VenusNavigation::SEARCH_BUTTON_IL
+        navigation_page.click_search_button
       end
 
       step "User enters value to search", 'white' do |value|
-        check_element_path :xpath, Venus::SEARCH_FIELD_TA, Venus::SEARCH_FIELD_IL
-        it.enter_search_value value
+        check_element_path :xpath, VenusNavigation::SEARCH_FIELD_TA, VenusNavigation::SEARCH_FIELD_IL
+        navigation_page.enter_search_value value
       end
 
       step "User clicks Find button" do
-        check_element_path :xpath, Venus::FIND_BUTTON_TA, Venus::FIND_BUTTON_IL
-        it.click_find_button
+        check_element_path :xpath, VenusNavigation::FIND_BUTTON_TA, VenusNavigation::FIND_BUTTON_IL
+        navigation_page.click_find_button
       end
 
       step "User clicks View Detail for second item in the list" do
-        check_element_path :xpath, Venus::VIEW_DETAIL_SECOND_TA, Venus::VIEW_DETAIL_SECOND_IL
-        it.click_view_detail_second
+        check_element_path :xpath, VenusSubCategory::VIEW_DETAIL_SECOND_TA, VenusSubCategory::VIEW_DETAIL_SECOND_IL
+        sub_category_page.click_view_detail_second
       end
 
 
@@ -97,39 +95,39 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Account button" do
-        it.click_account_button :il
+        navigation_page.click_account_button :il
       end
 
       step "User fills the Email field", settings('venus')['email'] do |email|
-        it.fill_email_field :il, email
+        login_page.fill_email_field :il, email
       end
 
       step "User fills the Pass field", settings('venus')['pass'] do |pass|
-        it.fill_pass_field :il, pass
+        login_page.fill_pass_field :il, pass
       end
 
       step "User clicks on the Sign In button" do
-        it.click_sign_in_button :il
+        login_page.click_sign_in_button :il
       end
 
       step "User clicks on the Search button" do
-        check_element_path :xpath, Venus::SEARCH_BUTTON_EP, Venus::SEARCH_BUTTON_IL
-        it.click_search_button :ep
+        check_element_path :xpath, VenusNavigation::SEARCH_BUTTON_EP, VenusNavigation::SEARCH_BUTTON_IL
+        navigation_page.click_search_button :ep
       end
 
       step "User enters value to search", 'white' do |value| # New issue TA-921
-        check_element_path :xpath, Venus::SEARCH_FIELD_EP, Venus::SEARCH_FIELD_IL
-        it.enter_search_value :ep, value
+        check_element_path :xpath, VenusNavigation::SEARCH_FIELD_EP, VenusNavigation::SEARCH_FIELD_IL
+        navigation_page.enter_search_value :ep, value
       end
 
       step "User clicks Find button" do
-        check_element_path :xpath, Venus::FIND_BUTTON_EP, Venus::FIND_BUTTON_IL
-        it.click_find_button :ep
+        check_element_path :xpath, VenusNavigation::FIND_BUTTON_EP, VenusNavigation::FIND_BUTTON_IL
+        navigation_page.click_find_button :ep
       end
 
       step "User clicks View Detail for second item in the list" do
-        check_element_path :xpath, Venus::VIEW_DETAIL_SECOND_EP, Venus::VIEW_DETAIL_SECOND_IL
-        it.click_view_detail_second :ep
+        check_element_path :xpath, VenusSubCategory::VIEW_DETAIL_SECOND_EP, VenusSubCategory::VIEW_DETAIL_SECOND_IL
+        sub_category_page.click_view_detail_second :ep
       end
 
 
@@ -144,19 +142,19 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Search button" do
-        it.click_search_button :il
+        navigation_page.click_search_button :il
       end
 
       step "User enters value to search", 'white' do |value|
-        it.enter_search_value value
+        navigation_page.enter_search_value value
       end
 =begin can't reproduce: TA-921 (new issue)
       step "User clicks Find button" do
         it.click_find_button :il
-      end
+      navigation_page
 
       step "User clicks View Detail for second item in the list" do
-        it.click_view_detail_second
+        sub_category_page.click_view_detail_second
       end
 =end
       sleep 3
@@ -168,36 +166,36 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Account button" do
-        it.click_account_button :il
+        navigation_page.click_account_button :il
       end
 
       step "User fills the Email field", settings('venus')['email'] do |email|
-        it.fill_email_field :il, email
+        login_page.fill_email_field :il, email
       end
 
       step "User fills the Pass field", settings('venus')['pass'] do |pass|
-        it.fill_pass_field :il, pass
+        login_page.fill_pass_field :il, pass
       end
 
       step "User clicks on the Sign In button" do
-        it.click_sign_in_button :il
+        login_page.click_sign_in_button :il
       end
 
       step "User clicks on the Search button" do
-        it.click_search_button :il
+        navigation_page.click_search_button :il
       end
 
       step "User enters value to search", 'white' do |value|
         # sleep 120
-        it.enter_search_value value
+        navigation_page.enter_search_value value
       end
 =begin can't reproduce: TA-921 (new issue)
       step "User clicks Find button" do
-        it.click_find_button :il
+        navigation_page.click_find_button :il
       end
 
       step "User clicks View Detail for second item in the list" do
-        it.click_view_detail_second
+        sub_category_page.click_view_detail_second
       end
 =end
 
