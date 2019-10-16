@@ -1,8 +1,12 @@
 venus:
   home_page: 'https://venus.com'
   login_page: 'https://www.venus.com/secure/login.aspx'
-  pro_tops_subcategory_page: 'https://www.venus.com/products.aspx?BRANCH=7~63~'
   create_account_page: 'https://www.venus.com/secure/newaccount.aspx'
+  cart_page: 'https://www.venus.com/secure/Checkout.aspx'
+  account_info_page: 'https://www.venus.com/secure/accountinformation.aspx'
+  order_history_page: 'https://www.venus.com/secure/accounthistory.aspx'
+  wish_list_page: 'https://www.venus.com/wishlist.aspx'
+  mail_options_page: 'https://www.venus.com/secure/mailoptions.aspx'
   email: 'denys.shutko@moovweb.com'
   pass: 'asdffdsA1'
   first_name: 'Denys'

@@ -1,9 +1,10 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../pages/united_methods'
-require_relative '../../../pages/venus'
+required_relative_all "/pages/venus_pages/*.rb"
 
-it = Venus.new
+home_page = VenusHome.new
+navigation_page = VenusNavigation.new
 
 describe 'Preconditions' do
 
@@ -11,11 +12,7 @@ describe 'Preconditions' do
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
-  feature 'TA-699, TA returns the wrong element (Venus - Clicking by the third banner on the main page)' do
+  feature 'AT-55, TA returns the wrong element (Venus - Clicking by the third banner on the main page)' do
 
     # Initial locators with Recording
 
@@ -25,12 +22,12 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the third banner" do
-        it.click_third_banner
+        home_page.click_third_banner
         sleep 2 # To see that the page is opened!
       end
 
       step "User clicks on the Venus logo" do
-        it.click_venus_logo
+        navigation_page.click_venus_logo
       end
 
       sleep 3
@@ -42,18 +39,18 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the third banner" do
-        check_element_path :xpath, Venus::THIRD_BANNER_TA, Venus::THIRD_BANNER_IL
-        it.click_third_banner
+        check_element_path :xpath, VenusHome::THIRD_BANNER_TA, VenusHome::THIRD_BANNER_IL
+        home_page.click_third_banner
       end
 
       step "User clicks on the Venus logo" do
-        check_element_path :xpath, Venus::VENUS_LOGO_TA, Venus::VENUS_LOGO_IL
-        it.click_venus_logo
+        check_element_path :xpath, VenusNavigation::VENUS_LOGO_TA, VenusNavigation::VENUS_LOGO_IL
+        navigation_page.click_venus_logo
       end
 
       step "User clicks on the third banner" do
-        check_element_path :xpath, Venus::THIRD_BANNER_TA, Venus::THIRD_BANNER_IL
-        it.click_third_banner
+        check_element_path :xpath, VenusHome::THIRD_BANNER_TA, VenusHome::THIRD_BANNER_IL
+        home_page.click_third_banner
       end
 
       sleep 3
@@ -67,18 +64,18 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the third banner" do
-        check_element_path :xpath, Venus::THIRD_BANNER_EP, Venus::THIRD_BANNER_IL
-        it.click_third_banner :ep
+        check_element_path :xpath, VenusHome::THIRD_BANNER_EP, VenusHome::THIRD_BANNER_IL
+        home_page.click_third_banner :ep
       end
 
       step "User clicks on the Venus logo" do
-        check_element_path :xpath, Venus::VENUS_LOGO_EP, Venus::VENUS_LOGO_IL
-        it.click_venus_logo :ep
+        check_element_path :xpath, VenusNavigation::VENUS_LOGO_EP, VenusNavigation::VENUS_LOGO_IL
+        navigation_page.click_venus_logo :ep
       end
 
       step "User clicks on the third banner" do
-        check_element_path :xpath, Venus::THIRD_BANNER_EP, Venus::THIRD_BANNER_IL
-        it.click_third_banner :ep
+        check_element_path :xpath, VenusHome::THIRD_BANNER_EP, VenusHome::THIRD_BANNER_IL
+        home_page.click_third_banner :ep
       end
 
       sleep 3
@@ -92,11 +89,11 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the third banner" do
-        it.click_third_banner
+        home_page.click_third_banner
       end
 
       step "User clicks on the Venus logo" do
-        it.click_venus_logo :il
+        navigation_page.click_venus_logo :il
       end
 
       sleep 3
@@ -108,15 +105,15 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the third banner" do
-        it.click_third_banner :il
+        home_page.click_third_banner :il
       end
 
       step "User clicks on the Venus logo" do
-        it.click_venus_logo :il
+        navigation_page.click_venus_logo :il
       end
 
       step "User clicks on the third banner" do
-        it.click_third_banner
+        home_page.click_third_banner
       end
 
       sleep 3
