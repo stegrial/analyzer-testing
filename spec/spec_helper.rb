@@ -35,8 +35,9 @@ RSpec.configure do |config|
   $caps_chrome = Selenium::WebDriver::Remote::Capabilities.chrome
   $caps_chrome['goog:chromeOptions'] = {}
   $caps_chrome['goog:chromeOptions']['args'] = ['--disable-notifications']
-
-  # caps_chrome['chromeOptions'] = {'mobileEmulation' => {
+  # $caps_chrome[:timeouts] = {}
+  # $caps_chrome[:timeouts]['implicit'] = 10000
+  # $caps_chrome['chromeOptions'] = {'mobileEmulation' => {
   #     'deviceMetrics' => { 'width' => 360, 'height' => 640, 'pixelRatio' => 3.0 },
   #     'userAgent' => "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
   # }}
@@ -60,7 +61,7 @@ RSpec.configure do |config|
   config.include TrueAutomation::DSL
 
   config.after(:context) do
-    delete_saved_elements unless config.filter.rules[:ep]
+    # delete_saved_elements unless config.filter.rules[:ep]
     Capybara.current_session.driver.quit
   end
 
