@@ -60,7 +60,7 @@ RSpec.configure do |config|
   config.include TrueAutomation::DSL
 
   config.after(:context) do
-    delete_saved_elements unless config.filter.rules[:ep]
+    #delete_saved_elements unless config.filter.rules[:ep]
     Capybara.current_session.driver.quit
   end
 
