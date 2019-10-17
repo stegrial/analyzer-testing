@@ -30,3 +30,7 @@ def delete_saved_elements
     puts response.body
   end
 end
+
+def scroll_to(element)
+  page.execute_script("arguments[0].scrollIntoView();", element)
+end
