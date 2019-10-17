@@ -73,6 +73,7 @@ describe 'Preconditions' do
       end
 
       step "Admin find component name field", "component_test_name" do |find_comp|
+        sleep 1 # need
         components_page.find_component_name_field find_comp
       end
 
