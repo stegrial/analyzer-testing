@@ -8,40 +8,40 @@ class VenusSubCategory
   def product_name(locator, name)
     case locator
     when :il then "//a[.//h2[text()='#{name}']]"
-    when :ta then "venus:product_list:#{name.tr('^A-Za-z0-9_', '')}"
-    when :ep then "EP:venus:product_list:#{name.tr('^A-Za-z0-9_', '')}"
+    when :ta then "venus:sub_category_page:product_list:#{name.tr('^A-Za-z0-9_', '')}"
+    when :ep then "EP:venus:sub_category_page:product_list:#{name.tr('^A-Za-z0-9_', '')}"
     else p 'Locator type is not set'
     end
   end
 
   VIEW_DETAIL_SECOND_IL = "(//span[text()='view detail'])[2]"
-  VIEW_DETAIL_SECOND_TA = 'venus:search_results:view_detail_second'
-  VIEW_DETAIL_SECOND_EP = 'EP:venus:search_results:view_detail_second'
+  VIEW_DETAIL_SECOND_TA = 'venus:sub_category_page::view_detail_second'
+  VIEW_DETAIL_SECOND_EP = 'EP:venus:sub_category_page::view_detail_second'
 
   SIZE_FILTER_IL = "//button[.//span[text()='Filter']]"
-  SIZE_FILTER_TA = 'venus:subcat:size_filter'
-  SIZE_FILTER_EP = 'EP:venus:subcat:size_filter'
+  SIZE_FILTER_TA = 'venus:sub_category_page::size_filter'
+  SIZE_FILTER_EP = 'EP:venus:sub_category_page::size_filter'
 
   def filter_size(locator, size)
     case locator
     when :il then "//label[.//span[text()='#{size}']]"
-    when :ta then "venus:filter_size:#{size.tr('^A-Za-z0-9_', '')}"
-    when :ep then "EP:venus:filter_size:#{size.tr('^A-Za-z0-9_', '')}"
+    when :ta then "venus:sub_category_page:filter_size:#{size.tr('^A-Za-z0-9_', '')}"
+    when :ep then "EP:venus:sub_category_page:filter_size:#{size.tr('^A-Za-z0-9_', '')}"
     else p 'Locator type is not set'
     end
   end
 
   VIEW_RESULTS_BTN_IL = "//button[contains(., 'View Results')]"
-  VIEW_RESULTS_BTN_TA = 'venus:size_filter:view_results_btn'
-  VIEW_RESULTS_BTN_EP = 'EP:venus:size_filter:view_results_btn'
+  VIEW_RESULTS_BTN_TA = 'venus:sub_category_page::view_results_btn'
+  VIEW_RESULTS_BTN_EP = 'EP:venus:sub_category_page::view_results_btn'
 
   SUBCAT_DROPDOWN_IL = "//div[@data-page='Subcategory']//div[@id='select-subcategories']"
-  SUBCAT_DROPDOWN_TA = 'venus:subcat_dropdown'
-  SUBCAT_DROPDOWN_EP = 'EP:venus:subcat_dropdown'
+  SUBCAT_DROPDOWN_TA = 'venus:sub_category_page:subcat_dropdown'
+  SUBCAT_DROPDOWN_EP = 'EP:venus:sub_category_page:subcat_dropdown'
 
   CLOTHING_CAT_DROPDOWN_IL = "//li[text()='Clothing']"
-  CLOTHING_CAT_DROPDOWN_TA = 'venus:subcat_dropdown:clothing_cat'
-  CLOTHING_CAT_DROPDOWN_EP = 'EP:venus:subcat_dropdown:clothing_cat'
+  CLOTHING_CAT_DROPDOWN_TA = 'venus:sub_category_page:clothing_cat'
+  CLOTHING_CAT_DROPDOWN_EP = 'EP:venus:sub_category_page:clothing_cat'
 
 
   def choose_product_by_name(key = nil, name)

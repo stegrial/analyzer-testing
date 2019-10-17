@@ -22,20 +22,24 @@ class VenusNavigation
   SALE_CAT_EP = 'EP:venus:navigation_page:sale_cat'
 
   SEARCH_BUTTON_IL = "//button[@aria-label='Search']"
-  SEARCH_BUTTON_TA = 'venus:search_button'
-  SEARCH_BUTTON_EP = 'EP:venus:search_button'
+  SEARCH_BUTTON_TA = 'venus:navigation_page:search_button'
+  SEARCH_BUTTON_EP = 'EP:venus:navigation_page:search_button'
 
   SEARCH_FIELD_IL = "//input[contains (@placeholder, 'Search')]"
-  SEARCH_FIELD_TA = 'venus:search_page:search_field'
-  SEARCH_FIELD_EP = 'EP:venus:search_page:search_field'
+  SEARCH_FIELD_TA = 'venus:navigation_page:search_field'
+  SEARCH_FIELD_EP = 'EP:venus:navigation_page:search_field'
 
   FIND_BUTTON_IL = "//button[@variant='contained']"
-  FIND_BUTTON_TA = 'venus:search_page:find_button'
-  FIND_BUTTON_EP = 'EP:venus:search_page:find_button'
+  FIND_BUTTON_TA = 'venus:navigation_page:find_button'
+  FIND_BUTTON_EP = 'EP:venus:navigation_page:find_button'
 
   CLOTHING_CAT_IL = "//button[contains(., 'Clothing')]"
-  CLOTHING_CAT_TA = 'venus:clothing_cat'
-  CLOTHING_CAT_EP = 'EP:venus:clothing_cat'
+  CLOTHING_CAT_TA = 'venus:navigation_page:clothing_cat'
+  CLOTHING_CAT_EP = 'EP:venus:navigation_page:clothing_cat'
+
+  CART_BUTTON_IL = "//div[contains(@id, 'cart')]"
+  CART_BUTTON_TA = 'venus:navigation_page:cart_button'
+  CART_BUTTON_EP = 'EP:venus:navigation_page:cart_button'
 
 
   def click_account_button(key = nil)
@@ -84,6 +88,18 @@ class VenusNavigation
     return find(ta(CLOTHING_CAT_EP)).click if key == :ep
     return find(:xpath, CLOTHING_CAT_IL).click if key == :il
     find(:xpath, ta(CLOTHING_CAT_TA, CLOTHING_CAT_IL)).click
+  end
+
+  def find_items_on_cart(key = nil)
+    return find(ta(CART_BUTTON_EP)) if key == :ep
+    return find(:xpath, CART_BUTTON_IL) if key == :il
+    find(:xpath, ta(CART_BUTTON_TA, CART_BUTTON_IL))
+  end
+
+  def click_items_on_cart(key = nil)
+    return find(ta(CART_BUTTON_EP)).click if key == :ep
+    return find(:xpath, CART_BUTTON_IL).click if key == :il
+    find(:xpath, ta(CART_BUTTON_TA, CART_BUTTON_IL)).click
   end
 
 
