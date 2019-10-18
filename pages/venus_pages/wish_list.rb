@@ -6,12 +6,12 @@ class VenusWishList
   include RSpec::Matchers
 
   PRODUCT_SIZE_IL = "//span[contains(@id,'ProductSize')]"
-  PRODUCT_SIZE_TA = "venus:product:product_size"
-  PRODUCT_SIZE_EP = "EP:venus:product:product_size"
+  PRODUCT_SIZE_TA = "venus:wish_list_page:product_size"
+  PRODUCT_SIZE_EP = "EP:venus:wish_list_page:product_size"
 
   REMOVE_WISH_LIST_BTN_IL = "//a[text()='Remove']"
-  REMOVE_WISH_LIST_BTN_TA = "venus:product:remove_wish_list_btn"
-  REMOVE_WISH_LIST_BTN_EP = "EP:venus:product:remove_wish_list_btn"
+  REMOVE_WISH_LIST_BTN_TA = "venus:wish_list_page:remove_wish_list_btn"
+  REMOVE_WISH_LIST_BTN_EP = "EP:venus:wish_list_page:remove_wish_list_btn"
 
 
   def observe_product_size(key = nil)
