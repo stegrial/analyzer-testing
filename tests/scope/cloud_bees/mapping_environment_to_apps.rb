@@ -114,6 +114,7 @@ describe 'Preconditions' do
 
       step "Admin click on the OK button" do
         apps_page.confirm_new_artifact
+        sleep 3 # need to wait for the artifact to be created before the next redirect step
       end
 
       step "Admin goes to the page", settings('cloud_bees')['environments_page'] do |url|
@@ -183,6 +184,8 @@ describe 'Preconditions' do
       step "Admin clicks close button" do
         env_editor.click_to_close_to_close_modal
       end
+
+      sleep 3
     end
 
 
@@ -371,12 +374,13 @@ describe 'Preconditions' do
         check_element_path :css  , CloudBeesEnvEditor::CLOSE_BTN_TA, CloudBeesEnvEditor::CLOSE_BTN_IL
         env_editor.click_to_close_to_close_modal
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository
 
     scenario 'Searching EP', ep: true do
-
 
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
@@ -570,6 +574,10 @@ describe 'Preconditions' do
         check_element_path :css  , CloudBeesEnvEditor::CLOSE_BTN_EP, CloudBeesEnvEditor::CLOSE_BTN_IL
         env_editor.click_to_close_to_close_modal :ep
       end
+
+      sleep 3
     end
+
+
   end
 end

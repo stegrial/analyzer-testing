@@ -50,11 +50,12 @@ describe 'Preconditions' do
         category_page.choose_subcat_by_first_name name
       end
 
-      step "User chooses a product by name in the list", 'color block top' do |name|
+      step "User chooses a product by name in the list", 'ribbed henley top' do |name|
         sub_category_page.choose_product_by_name name
       end
 
       step "User chooses a size in the list", 'L' do |size|
+        scroll_to_element nil
         product_page.choose_list_size size
       end
 

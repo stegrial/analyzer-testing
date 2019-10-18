@@ -34,7 +34,7 @@ describe 'Preconditions' do
       end
 
       step "Admin chooses the Pipelines section in the Hamburger menu" do
-        global_page.click_pipelines
+        global_page.click_pipelines :il # step is duplicated below
       end
 
       step "Admin clicks on the new pipeline button" do
