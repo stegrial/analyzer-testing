@@ -15,12 +15,12 @@ class VenusSubCategory
   end
 
   VIEW_DETAIL_SECOND_IL = "(//span[text()='view detail'])[2]"
-  VIEW_DETAIL_SECOND_TA = 'venus:sub_category_page::view_detail_second'
-  VIEW_DETAIL_SECOND_EP = 'EP:venus:sub_category_page::view_detail_second'
+  VIEW_DETAIL_SECOND_TA = 'venus:sub_category_page:view_detail_second'
+  VIEW_DETAIL_SECOND_EP = 'EP:venus:sub_category_page:view_detail_second'
 
   SIZE_FILTER_IL = "//button[.//span[text()='Filter']]"
-  SIZE_FILTER_TA = 'venus:sub_category_page::size_filter'
-  SIZE_FILTER_EP = 'EP:venus:sub_category_page::size_filter'
+  SIZE_FILTER_TA = 'venus:sub_category_page:size_filter'
+  SIZE_FILTER_EP = 'EP:venus:sub_category_page:size_filter'
 
   def filter_size(locator, size)
     case locator
@@ -32,8 +32,8 @@ class VenusSubCategory
   end
 
   VIEW_RESULTS_BTN_IL = "//button[contains(., 'View Results')]"
-  VIEW_RESULTS_BTN_TA = 'venus:sub_category_page::view_results_btn'
-  VIEW_RESULTS_BTN_EP = 'EP:venus:sub_category_page::view_results_btn'
+  VIEW_RESULTS_BTN_TA = 'venus:sub_category_page:view_results_btn'
+  VIEW_RESULTS_BTN_EP = 'EP:venus:sub_category_page:view_results_btn'
 
   SUBCAT_DROPDOWN_IL = "//div[@data-page='Subcategory']//div[@id='select-subcategories']"
   SUBCAT_DROPDOWN_TA = 'venus:sub_category_page:subcat_dropdown'

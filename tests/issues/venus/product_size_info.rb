@@ -128,6 +128,7 @@ describe 'Preconditions' do
       end
 
       step "User chooses a size in the list", 'M' do |size|
+        scroll_to_element nil
         check_element_path :xpath, product_page.list_size(:ta, size), product_page.list_size(:il, size)
         product_page.choose_list_size size
       end
@@ -209,6 +210,7 @@ describe 'Preconditions' do
       end
 
       step "User chooses a size in the list", 'M' do |size|
+        scroll_to_element nil
         check_element_path :xpath, product_pageit.list_size(:ep, size), product_page.list_size(:il, size)
         product_page.choose_list_size :ep, size
       end
@@ -283,6 +285,7 @@ describe 'Preconditions' do
       end
 =begin can't reproduce: TA-999 (new issue TA-1000)
       step "User chooses a size in the list", 'L' do |size|
+        scroll_to_element nil
         product_page.choose_list_size :il, size
       end
 
@@ -348,6 +351,7 @@ describe 'Preconditions' do
       end
 =begin can't reproduce: TA-999 (new issue TA-1000)
       step "User chooses a size in the list", 'M' do |size|
+        scroll_to_element nil
         product_page.choose_list_size :il, size
       end
 

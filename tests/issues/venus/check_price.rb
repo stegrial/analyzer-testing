@@ -11,7 +11,7 @@ describe 'Preconditions' do
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   end
 
-  feature ', TA returns the wrong element (Venus - Check price on product)' do
+  feature 'AT-114, TA returns the wrong element (Venus - Check price on product)' do
 
     # Initial locators with Recording
 

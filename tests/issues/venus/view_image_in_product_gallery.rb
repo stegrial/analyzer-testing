@@ -11,7 +11,7 @@ describe 'Preconditions' do
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   end
 
-  feature ', TA returns the wrong element (Venus - View image in the gallery)' do
+  feature 'Venus - View image in the gallery' do
 
     # Initial locators with Recording
 
@@ -21,24 +21,24 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User is viewing the main product image" do
-        product_page.find_main_image_on_product
+      step "User is viewing the main product image", '1' do |image|
+        product_page.find_main_image_on_product image
       end
 
       step "User clicks on the second photo in the product gallery", '2' do |image|
         product_page.choose_image image
       end
 
-      step "User is viewing the main product image" do
-        product_page.find_main_image_on_product
+      step "User is viewing the main product image", '2' do |image|
+        product_page.find_main_image_on_product image
       end
 
       step "User clicks on the third photo in the product gallery", '3' do |image|
         product_page.choose_image image
       end
 
-      step "User is viewing the main product image" do
-        product_page.find_main_image_on_product
+      step "User is viewing the main product image", '3' do |image|
+        product_page.find_main_image_on_product image
       end
 
       sleep 3
@@ -50,9 +50,9 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User is viewing the main product image" do
-        check_element_path :xpath, VenusProduct::MAIN_IMAGE_ON_PRODUCT_TA, VenusProduct::MAIN_IMAGE_ON_PRODUCT_IL
-        product_page.find_main_image_on_product
+      step "User is viewing the main product image", '1' do |image|
+        check_element_path :xpath, product_page.main_image(:ta, image), product_page.main_image(:il, image)
+        product_page.find_main_image_on_product image
       end
 
       step "User clicks on the second photo in the product gallery", '2' do |image|
@@ -60,9 +60,9 @@ describe 'Preconditions' do
         product_page.choose_image image
       end
 
-      step "User is viewing the main product image" do
-        check_element_path :xpath, VenusProduct::MAIN_IMAGE_ON_PRODUCT_TA, VenusProduct::MAIN_IMAGE_ON_PRODUCT_IL
-        product_page.find_main_image_on_product
+      step "User is viewing the main product image", '2' do |image|
+        check_element_path :xpath, product_page.main_image(:ta, image), product_page.main_image(:il, image)
+        product_page.find_main_image_on_product image
       end
 
       step "User clicks on the third photo in the product gallery", '3' do |image|
@@ -70,9 +70,9 @@ describe 'Preconditions' do
         product_page.choose_image image
       end
 
-      step "User is viewing the main product image" do
-        check_element_path :xpath, VenusProduct::MAIN_IMAGE_ON_PRODUCT_TA, VenusProduct::MAIN_IMAGE_ON_PRODUCT_IL
-        product_page.find_main_image_on_product
+      step "User is viewing the main product image", '3' do |image|
+        check_element_path :xpath, product_page.main_image(:ta, image), product_page.main_image(:il, image)
+        product_page.find_main_image_on_product image
       end
 
       sleep 3
@@ -86,9 +86,9 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User is viewing the main product image" do
-        check_element_path :xpath, VenusProduct::MAIN_IMAGE_ON_PRODUCT_EP, VenusProduct::MAIN_IMAGE_ON_PRODUCT_IL
-        product_page.find_main_image_on_product :ep
+      step "User is viewing the main product image", '1' do |image|
+        check_element_path :xpath, product_page.main_image(:ep, image), product_page.main_image(:il, image)
+        product_page.find_main_image_on_product :ep, image
       end
 
       step "User clicks on the second photo in the product gallery", '2' do |image|
@@ -96,9 +96,9 @@ describe 'Preconditions' do
         product_page.choose_image :ep, image
       end
 
-      step "User is viewing the main product image" do
-        check_element_path :xpath, VenusProduct::MAIN_IMAGE_ON_PRODUCT_EP, VenusProduct::MAIN_IMAGE_ON_PRODUCT_IL
-        product_page.find_main_image_on_product :ep
+      step "User is viewing the main product image", '2' do |image|
+        check_element_path :xpath, product_page.main_image(:ep, image), product_page.main_image(:il, image)
+        product_page.find_main_image_on_product :ep, image
       end
 
       step "User clicks on the third photo in the product gallery", '3' do |image|
@@ -106,9 +106,9 @@ describe 'Preconditions' do
         product_page.choose_image :ep, image
       end
 
-      step "User is viewing the main product image" do
-        check_element_path :xpath, VenusProduct::MAIN_IMAGE_ON_PRODUCT_EP, VenusProduct::MAIN_IMAGE_ON_PRODUCT_IL
-        product_page.find_main_image_on_product :ep
+      step "User is viewing the main product image", '3' do |image|
+        check_element_path :xpath, product_page.main_image(:ep, image), product_page.main_image(:il, image)
+        product_page.find_main_image_on_product :ep, image
       end
 
       sleep 3
@@ -122,16 +122,24 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User is viewing the main product image" do
-        product_page.find_main_image_on_product :il
+      step "User is viewing the main product image", '1' do |image|
+        product_page.find_main_image_on_product image
       end
 
       step "User clicks on the second photo in the product gallery", '2' do |image|
-        product_page.choose_image :il, image
+        product_page.choose_image image
       end
 
-      step "User is viewing the main product image" do
-        product_page.find_main_image_on_product
+      step "User is viewing the main product image", '2' do |image|
+        product_page.find_main_image_on_product image
+      end
+
+      step "User clicks on the second photo in the product gallery", '3' do |image|
+        product_page.choose_image image
+      end
+
+      step "User is viewing the main product image", '3' do |image|
+        product_page.find_main_image_on_product image
       end
 
       sleep 3
@@ -143,8 +151,16 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User is viewing the main product image" do
-        product_page.find_main_image_on_product
+      step "User is viewing the main product image", '1' do |image|
+        product_page.find_main_image_on_product image
+      end
+
+      step "User clicks on the second photo in the product gallery", '3' do |image|
+        product_page.choose_image image
+      end
+
+      step "User is viewing the main product image", '3' do |image|
+        product_page.find_main_image_on_product image
       end
 
       sleep 3

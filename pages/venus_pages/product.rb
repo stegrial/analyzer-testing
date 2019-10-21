@@ -48,9 +48,14 @@ class VenusProduct
     end
   end
 
-  MAIN_IMAGE_ON_PRODUCT_IL = "//div[@aria-hidden='false']/descendant::img[@alt='product']"
-  MAIN_IMAGE_ON_PRODUCT_TA = 'venus:product_page:main_image_on_product'
-  MAIN_IMAGE_ON_PRODUCT_EP = 'EP:venus:product_page:main_image_on_product'
+  def main_image(locator, image_index)
+    case locator
+    when :il then "//div[@aria-hidden='false']/descendant::img[@alt='product']"
+    when :ta then "venus:product_page:main_image_on_product:#{image_index}"
+    when :ep then "EP:venus:product_page:main_image_on_product:#{image_index}"
+    else p 'Locator type is not set'
+    end
+  end
 
 
   def choose_list_size(key = nil, size)
@@ -95,10 +100,10 @@ class VenusProduct
     find(:xpath, ta(image_gallery(:ta, image), image_gallery(:il, image))).click
   end
 
-  def find_main_image_on_product(key = nil)
-    return find(ta(MAIN_IMAGE_ON_PRODUCT_EP)) if key == :ep
-    return find(:xpath, MAIN_IMAGE_ON_PRODUCT_IL) if key == :il
-    find(:xpath, ta(MAIN_IMAGE_ON_PRODUCT_TA, MAIN_IMAGE_ON_PRODUCT_IL))
+  def find_main_image_on_product(key = nil, image)
+    return find(ta(main_image(:ep, image))) if key == :ep
+    return find(:xpath, main_image(:il, image)) if key == :il
+    find(:xpath, ta(main_image(:ta, image), main_image(:il, image)))
   end
 
 end
