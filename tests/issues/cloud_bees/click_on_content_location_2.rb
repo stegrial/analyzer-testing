@@ -13,23 +13,11 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  after(:each) do
-    step "Remove created component", settings('cloud_bees') do |data|
-      page.visit data['components_page']
-      sleep 3
-      components_page.select_master_component_from_list :il
-      components_page.click_delete_component :il
-      components_page.confirm_delete_component :il
-      sleep 2
-    end
-  end
-
-
-  feature 'AT-93, TA Analyzer returns the wrong element on the page (Cloud Bees - Delete element)' do
+  feature 'AT-115, TA Analyzer returns the wrong element on the page (Cloud Bees - Content location element)' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il1: true do
+    scenario 'Recording IL', il: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -66,37 +54,10 @@ describe 'Preconditions' do
 
       step "Admin confirm new component, click Next button" do
         components_page.confirm_create_new_component
-        # sleep 3 # wait for
       end
 
       step "Admin clicks on the Content location drop-down" do
         components_page.click_on_content_location
-      end
-
-      step "Admin select on the drop-down EC-Artifact" do
-        components_page.select_ec_artifact
-      end
-
-      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
-        components_page.fill_artifact_name_field artname
-      end
-
-      step "Admin click on the OK button" do
-        components_page.confirm_new_artifact
-        sleep 3 # wait for load created component
-      end
-
-      step "Admin find component name field", "component_test_name" do |find_comp|
-        components_page.find_component_name_field find_comp
-        sleep 3 # wait for filter apply
-      end
-
-      step "Admin choose Component" do
-        components_page.select_master_component_from_list
-      end
-
-      step "Admin click delete Component" do
-        components_page.click_delete_component
       end
 
       sleep 3
@@ -150,43 +111,12 @@ describe 'Preconditions' do
       step "Admin confirm new component, click Next button" do
         check_element_path :xpath, CloudBeesComponents::CONFIRM_NEW_COMPONENT_TA, CloudBeesComponents::CONFIRM_NEW_COMPONENT_IL
         components_page.confirm_create_new_component
+        sleep 3 # wait for page is load
       end
 
       step "Admin clicks on the Content location drop-down" do
         check_element_path :xpath, CloudBeesComponents::CONTENT_LOCATION_TA, CloudBeesComponents::CONTENT_LOCATION_IL
         components_page.click_on_content_location
-      end
-
-      step "Admin select on the drop-down EC-Artifact" do
-        check_element_path :xpath, CloudBeesComponents::SELECT_EC_ARTIFACT_TA, CloudBeesComponents::SELECT_EC_ARTIFACT_IL
-        components_page.select_ec_artifact
-      end
-
-      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
-        check_element_path :xpath, CloudBeesComponents::ARTIFACT_NAME_TA, CloudBeesComponents::ARTIFACT_NAME_IL
-        components_page.fill_artifact_name_field artname
-      end
-
-      step "Admin click on the OK button" do
-        check_element_path :xpath, CloudBeesComponents::CONFIRM_NEW_ARTIFACT_TA, CloudBeesComponents::CONFIRM_NEW_ARTIFACT_IL
-        components_page.confirm_new_artifact
-        sleep 3 # wait for load created component
-      end
-
-      step "Admin find component name field", "component_test_name" do |find_comp|
-        check_element_path :xpath, CloudBeesComponents::FIND_COMPONENT_NAME_TA, CloudBeesComponents::FIND_COMPONENT_NAME_IL
-        components_page.find_component_name_field find_comp
-        sleep 3 # wait for filter apply
-      end
-
-      step "Admin choose Component" do
-        check_element_path :css, CloudBeesComponents::MASTER_COMPONENT_LIST_TA, CloudBeesComponents::MASTER_COMPONENT_LIST_IL
-        components_page.select_master_component_from_list
-      end
-
-      step "Admin click delete Component" do
-        check_element_path :xpath, CloudBeesComponents::DELETE_COMPONENT_TA, CloudBeesComponents::DELETE_COMPONENT_IL
-        components_page.click_delete_component
       end
 
       sleep 3
@@ -242,6 +172,7 @@ describe 'Preconditions' do
       step "Admin confirm new component, click Next button" do
         check_element_path :xpath, CloudBeesComponents::CONFIRM_NEW_COMPONENT_EP, CloudBeesComponents::CONFIRM_NEW_COMPONENT_IL
         components_page.confirm_create_new_component :ep
+        sleep 3 # wait for page is load
       end
 
       step "Admin clicks on the Content location drop-down" do
@@ -249,42 +180,11 @@ describe 'Preconditions' do
         components_page.click_on_content_location :ep
       end
 
-      step "Admin select on the drop-down EC-Artifact" do
-        check_element_path :xpath, CloudBeesComponents::SELECT_EC_ARTIFACT_EP, CloudBeesComponents::SELECT_EC_ARTIFACT_IL
-        components_page.select_ec_artifact :ep
-      end
-
-      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
-        check_element_path :xpath, CloudBeesComponents::ARTIFACT_NAME_EP, CloudBeesComponents::ARTIFACT_NAME_IL
-        components_page.fill_artifact_name_field :ep, artname
-      end
-
-      step "Admin click on the OK button" do
-        check_element_path :xpath, CloudBeesComponents::CONFIRM_NEW_ARTIFACT_EP, CloudBeesComponents::CONFIRM_NEW_ARTIFACT_IL
-        components_page.confirm_new_artifact :ep
-        sleep 3 # wait for load created component
-      end
-
-      step "Admin find component name field", "component_test_name" do |find_comp|
-        check_element_path :xpath, CloudBeesComponents::FIND_COMPONENT_NAME_EP, CloudBeesComponents::FIND_COMPONENT_NAME_IL
-        components_page.find_component_name_field :ep, find_comp
-        sleep 3 # wait for filter apply
-      end
-
-      step "Admin choose Component" do
-        check_element_path :css, CloudBeesComponents::MASTER_COMPONENT_LIST_EP, CloudBeesComponents::MASTER_COMPONENT_LIST_IL
-        components_page.select_master_component_from_list
-      end
-
-      step "Admin click delete Component" do
-        check_element_path :xpath, CloudBeesComponents::DELETE_COMPONENT_EP, CloudBeesComponents::DELETE_COMPONENT_IL
-        components_page.click_delete_component :ep
-      end
-
       sleep 3
     end
 
     scenario 'Recording debug', record_debug: true do
+
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -324,39 +224,14 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks on the Content location drop-down" do
-        components_page.click_on_content_location :il
-      end
-
-      step "Admin select on the drop-down EC-Artifact" do
-        components_page.select_ec_artifact :il
-      end
-
-      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
-        components_page.fill_artifact_name_field :il, artname
-      end
-
-      step "Admin click on the OK button" do
-        components_page.confirm_new_artifact :il
-        sleep 3 # wait for load created component
-      end
-
-      step "Admin find component name field", "component_test_name" do |find_comp|
-        components_page.find_component_name_field :il, find_comp
-        sleep 3 # wait for filter apply
-      end
-
-      step "Admin choose Component" do
-        components_page.select_master_component_from_list :il
-      end
-
-      step "Admin click delete Component" do
-        components_page.click_delete_component
+        components_page.click_on_content_location
       end
 
       sleep 3
     end
 
     scenario 'Search debug', search_debug: true do
+
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -393,36 +268,11 @@ describe 'Preconditions' do
 
       step "Admin confirm new component, click Next button" do
         components_page.confirm_create_new_component :il
+        sleep 3 # wait for page is load
       end
 
       step "Admin clicks on the Content location drop-down" do
-        components_page.click_on_content_location :il
-      end
-
-      step "Admin select on the drop-down EC-Artifact" do
-        components_page.select_ec_artifact :il
-      end
-
-      step "Admin fills the artifact name field", "artifact_test_name" do |artname|
-        components_page.fill_artifact_name_field :il, artname
-      end
-
-      step "Admin click on the OK button" do
-        components_page.confirm_new_artifact :il
-        sleep 3 # wait for load created component
-      end
-
-      step "Admin find component name field", "component_test_name" do |find_comp|
-        components_page.find_component_name_field :il, find_comp
-        sleep 3 # wait for filter apply
-      end
-
-      step "Admin choose Component" do
-        components_page.select_master_component_from_list :il
-      end
-
-      step "Admin click delete Component" do
-        components_page.click_delete_component
+        components_page.click_on_content_location
       end
 
       sleep 3
