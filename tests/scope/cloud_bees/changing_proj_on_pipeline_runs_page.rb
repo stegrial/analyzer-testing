@@ -57,6 +57,7 @@ describe 'Preconditions' do
         pipelines_runs.click_to_accept_proj
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -109,7 +110,7 @@ describe 'Preconditions' do
         pipelines_runs.click_to_accept_proj
       end
 
-
+      sleep 3
     end
 
     # Element Picker from Repository

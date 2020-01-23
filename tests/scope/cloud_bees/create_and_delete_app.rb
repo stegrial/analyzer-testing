@@ -65,7 +65,7 @@ describe 'Preconditions' do
         apps_page.click_component_tier
       end
 
-      step "Admin clicks on the Create new  Component" do
+      step "Admin clicks on the Create new Component" do
         apps_page.create_new_component
       end
 
@@ -89,8 +89,9 @@ describe 'Preconditions' do
         apps_page.fill_artifact_name_field artname
       end
 
-      step "Admin click on the OK button" do
+      step "Admin clicks on the OK button" do
         apps_page.confirm_new_artifact
+        sleep 3 # to wait for a new artifact to be created
       end
 
       step "Admin clicks on the Hamburger menu button" do
@@ -181,7 +182,7 @@ describe 'Preconditions' do
         apps_page.click_component_tier
       end
 
-      step "Admin clicks on the Create new  Component" do
+      step "Admin clicks on the Create new Component" do
         check_element_path :xpath, CloudBeesApps::CREATE_NEW_COMPONENT_TA, CloudBeesApps::CREATE_NEW_COMPONENT_IL
         apps_page.create_new_component
       end
@@ -214,6 +215,7 @@ describe 'Preconditions' do
       step "Admin click on the OK button" do
         check_element_path :xpath, CloudBeesApps::CONFIRM_NEW_ARTIFACT_TA, CloudBeesApps::CONFIRM_NEW_ARTIFACT_IL
         apps_page.confirm_new_artifact
+        sleep 3 # to wait for a new artifact to be created
       end
 
       step "Admin clicks on the Hamburger menu button" do
@@ -227,7 +229,7 @@ describe 'Preconditions' do
       end
 
       step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
-        check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_TA, CloudBeesApps::FIND_APPLICATION_FIELD_IL
+        check_element_path :css, CloudBeesApps::FIND_APPLICATION_FIELD_TA, CloudBeesApps::FIND_APPLICATION_FIELD_IL
         apps_page.find_application_name_field appname
       end
 
@@ -345,6 +347,7 @@ describe 'Preconditions' do
       step "Admin click on the OK button" do
         check_element_path :xpath, CloudBeesApps::CONFIRM_NEW_ARTIFACT_EP, CloudBeesApps::CONFIRM_NEW_ARTIFACT_IL
         apps_page.confirm_new_artifact :ep
+        sleep 3 # to wait for a new artifact to be created
       end
 
       step "Admin clicks on the Hamburger menu button" do

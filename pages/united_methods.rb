@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 def check_element_path(locator_type, ta_locator, initial_locator)
-  ta_path = find(ta(ta_locator)).path
+  ta_path = find(ta(ta_locator), visible: false).path
   p ta_path
 
   case locator_type

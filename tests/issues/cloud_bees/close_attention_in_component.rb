@@ -286,7 +286,7 @@ describe 'Preconditions' do
       end
 
       step "Admin fills the application name field", settings('cloud_bees')['app_name'] do |appname|
-        apps_page.fill_application_name_field :il,appname
+        apps_page.fill_application_name_field :il, appname
       end
 
       step "Admin clicks on the Select project drop-down" do

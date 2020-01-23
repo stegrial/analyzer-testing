@@ -314,7 +314,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks delete button in menu" do
-        sleep 5 # need wait to reproduce the problem, (record should be without this wait)
         catalogs_page.click_delete_catalog :il
       end
 

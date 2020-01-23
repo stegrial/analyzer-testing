@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"f26f47207f","applicationID":"15702187","transactionName":"JgoMRhZeWQ1REBlFARYWC10KQhoPURU=","queueTime":1,"applicationTime":16,"agent":""}</script>
+<script>(window.NREUM||(NREUM={})).loader_config={licenseKey:"f26f47207f",applicationID:"15702187"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1153.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<script type="text/javascript">var _rollbarConfig = {"accessToken":"b10b83e8165942e9956d002e491c63e3","captureUncaught":true,"payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"production"}}}};</script>
+<script type="text/javascript">!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){var n=o(1),t=o(4);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.8.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){var n=o(2);function t(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var a=0;function l(r,e){this.options=r,this._rollbarOldOnError=null;var o=a++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var i=o(3),d=function(r,e){return new l(r,e)},s=function(r){return new i(d,r)};function c(r){return t(function(){var e=Array.prototype.slice.call(arguments,0),o={shim:this,method:r,args:e,ts:new Date};window._rollbarShims[this.shimId()].messages.push(o)})}l.prototype.loadFull=function(r,e,o,n,a){var l=!1,i=e.createElement("script"),d=e.getElementsByTagName("script")[0],s=d.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=t(function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{s.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,t,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(t=n.args||[],i=0;i<t.length;++i)if("function"==typeof(l=t[i])){l(e);break}}"function"==typeof a&&a(e)}()}}),s.insertBefore(i,d)},l.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),u=0;u<p.length;++u)l.prototype[p[u]]=c(p[u]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var a=new s(e);return t(function(){e.captureUncaught&&(a._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,a,!0),n.wrapGlobals(r,a,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,a,!0);var t=e.autoInstrument;return!1!==e.enabled&&(void 0===t||!0===t||"object"==typeof t&&t.network)&&r.addEventListener&&(r.addEventListener("load",a.captureLoad.bind(a)),r.addEventListener("DOMContentLoaded",a.captureDomContentLoaded.bind(a))),r[o]=a,a})()}},Rollbar:s}},function(r,e){function o(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var n;if("function"==typeof e._rollbarOldOnError)n=e._rollbarOldOnError;else if(r.onerror){for(n=r.onerror;n._rollbarOldOnError;)n=n._rollbarOldOnError;e._rollbarOldOnError=n}e.handleAnonymousErrors();var t=function(){var o=Array.prototype.slice.call(arguments,0);!function(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null),e.handleUncaughtException.apply(e,n),o&&o.apply(r,n)}(r,e,n,o)};o&&(t._rollbarOldOnError=n),r.onerror=t}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}},wrapGlobals:function(r,e,n){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&o(e,r[a].prototype,n)}}}},function(r,e){function o(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(o.prototype)}o.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=o},function(r,e){r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+  <title>Sign In | Zinc Reading Labs</title>
+  <link rel="preconnect" href="//fast.appcues.com" />
+
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="xxj68d42gI2KBpjHt43gv5/De/4tmRY0+xj/QbZaaJxtAVqB945tIJRsA+P8vztUa5bmvTZcHKBIbNPg/WfxNw==" />
+  <link rel="shortcut icon" type="image/png" href="https://d1c63tznfcg2er.cloudfront.net/assets/zinc-favicon-f4483e6567ef25e68eeef55d0af79ff2.png" />
+  <script type="text/javascript">
+    (function () {
+      window.translation_file_url = '/api/translations/en.json';
+    }());
+  </script>
+      <script src="//fast.appcues.com/53027.js"></script>
+    <link rel="stylesheet" media="all" href="https://d1c63tznfcg2er.cloudfront.net/assets/app-8cf9aae14eb7060619c764ae5eb86cc3.css" />
+    <script src="https://d1c63tznfcg2er.cloudfront.net/assets/common-3f337330659636717bd43f337330659636717bd4.js"></script>
+    <script src="https://d1c63tznfcg2er.cloudfront.net/assets/react_vendor-6e21c4c3b818279b47ab6e21c4c3b818279b47ab.js"></script>
+    <script src="https://d1c63tznfcg2er.cloudfront.net/assets/vendor-b0230e9514997e48a51fb0230e9514997e48a51f.js"></script>
+    <script src="https://d1c63tznfcg2er.cloudfront.net/assets/app-095a49d1335ee081c0f1095a49d1335ee081c0f1.js"></script>
+  <link rel="stylesheet" media="all" href="https://d1c63tznfcg2er.cloudfront.net/assets/application-88e3e9eae06fe4e4c9aeebeeccbfaae0dd825b16b2029383fe93bb08913c11d9.css" />
+  <script src="https://d1c63tznfcg2er.cloudfront.net/assets/application-e490d0900a3a328a302621dead691e41f5195e282e0d97abb75c91681d4df10b.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <base href="/">
+  
+</head>
+<body id="page_body">
+  <div id="tip_container"></div>
+
+<div id="confirmation_dialog" class="modal fade app_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog row">
+    <div class="modal-content col-xs-12">
+      <div id="confirmation_message"></div>
+      <button type="button" class="app_button" id="confirmation_yes_button">Yes</button>
+      <button type="button" class="app_button cancel_button" data-dismiss="modal">No</button>
+    </div>
+  </div>
+</div>
+
+<div id="information_dialog" class="modal fade app_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog row">
+    <div class="modal-content col-xs-12">
+      <div id="information_message"></div>
+      <button type="button" class="app_button cancel_button" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videolLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+      </button></div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container-fluid">
+
+    <div class="row" id="flash-bar">
+      <div id="flash" class="flash_notice" style='display: none;'>
+         <div id="flash_message"></div>
+         <div id="flash_close">
+           <button id="flash_close_button">&times;</button>
+         </div>
+      </div>
+    </div>
+
+</div>
+<div id="react-header" class="hidden-print" data-react='{"status":{"header":true,"show_full_header":false,"show_menu_items":true,"show_help":null},"activetab":{"tab":null},"settings":{"skills_video":"{\"video/mp4\":\"https://d1c63tznfcg2er.cloudfront.net/zinc-learning-labs/video/upload/v1516987161/video-resources/Final_CRE_video_1080p.mp4\",\"video/ogv\":\"https://d1c63tznfcg2er.cloudfront.net/zinc-learning-labs/video/upload/v1516987161/video-resources/Final_CRE_video_1080p.ogv\",\"video/webm\":\"https://d1c63tznfcg2er.cloudfront.net/zinc-learning-labs/video/upload/v1516987161/video-resources/Final_CRE_video_1080p.webm\"}"}}'></div>
+    <script src="https://d1c63tznfcg2er.cloudfront.net/assets/header-a7cdc803504034b7fc30a7cdc803504034b7fc30.js"></script>
+
+  <div class="container-fluid">
+    <div id="page" class="row">
+      <div class="col-xs-12 col-md-offset-1 col-md-10" id="page_content">
+        
+<div id="admin_page_content" class="login_page_content">
+
+  <div class="row" id="admin_form">
+    <div class="col-xs-6 login_left_column">
+      <div class="login_title">Sign in to Zinc Reading Labs</div>
+
+        <div class="text-center">
+          <a id="clever_login_button" href="/users/auth/clever">
+            <img class="sso_login_button" alt="Login with Clever" srcset="https://d1c63tznfcg2er.cloudfront.net/assets/login-with-clever@2x-60e37a150aaa2e5de9c0e8141c8d6240956ec2ad68f21b6b68d8e947bb8cb540.png 2x" src="https://d1c63tznfcg2er.cloudfront.net/assets/login-with-clever-1d5f86b85787bd635fe0b71a5ef0d3550f1a1f15255497330f29754bf17e0ee4.png" />
+</a>        </div>
+        <hr />
+        <div class="text-center">
+          <a id="google_login_button" href="/users/auth/google_classroom">
+            <img class="sso_login_button" alt="Login with Google" srcset="https://d1c63tznfcg2er.cloudfront.net/assets/btn_google_signin_dark_normal_web@2x-dd0f9aec029e53d3af24b2dcdf19cbfbcab46b1f1a6711c6162bd3b192ffcb42.png 2x" src="https://d1c63tznfcg2er.cloudfront.net/assets/btn_google_signin_dark_normal_web@2x-dd0f9aec029e53d3af24b2dcdf19cbfbcab46b1f1a6711c6162bd3b192ffcb42.png" />
+</a>        </div>
+        <hr />
+        <div class="text-center">
+          <a id="classlink_login_button" href="/users/auth/classlink">
+            <img class="sso_login_button" alt="Login with ClassLink" src="https://d1c63tznfcg2er.cloudfront.net/assets/classlink-logo-208cd070a1c0a96b3e40cd8bc64d7cbf6d29aa2401d34a7fce42f5ed418215fd.png" />
+</a>        </div>
+        <hr />
+      <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="gnvj7I2gJQtaY7Dhc5/+TOeqlbfx4QaNO2VIY1iGiNUoYkOcpBjIpkQJK8U4rSWnE/8I9OokDBmIEWTCE7sRfg==" />
+        
+        <div class="admin_form_field">
+          <label for="user_login">Email / Username</label>
+          <br/>
+          <input autofocus="autofocus" type="text" name="user[login]" id="user_login" />
+        </div>
+        <div class="admin_form_field">
+          <label for="user_password">Password</label>
+          <br/>
+          <input autocomplete="off" type="password" name="user[password]" id="user_password" />
+        </div>
+          <div class="admin_form_field">
+            <div class="admin_checkbox">
+              <input name="user[remember_me]" type="hidden" value="0" /><input id="remember_me" type="checkbox" value="1" name="user[remember_me]" />
+              <label for="remember_me"></label>
+            </div>
+            <div class="admin_form_checkbox_text"><label for="user_remember_me">Remember me</label></div>
+          </div>
+        <input type="submit" name="commit" value="Sign in" class="app_button" />
+</form>      <div class="forgot_password_link">
+        <a href="javascript:void(0)" data-toggle="modal" data-target="#forgot_password_modal">Forgot your password?</a>
+      </div>
+
+          </div>
+
+    <div class="col-xs-6 login_right_column">
+      <img class="site_screenshot" src="https://d1c63tznfcg2er.cloudfront.net/assets/login_site_screenshot-19df39d6cb41bce72eda71b2bbc3c454948abb05ae8d9663448512ab4e15a78a.jpg" alt="Login site screenshot" />
+      <div class="registration_section">
+        <div class="registration_prompt">Don't have an account?</div>
+        <a href="/users/sign_up">
+          <button class="app_button" type="button">Register</button>
+</a>      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div id="forgot_password_modal" class="modal fade app_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog row" id="forgot_password_dialog">
+
+  <div class="modal-content col-xs-12">
+    <div class="modal-title">Forgot Your Password?</div>
+    <form id="forgot_password_form" class="new_user" action="/users/password" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+      
+      <div class="admin_form_field">
+        <label for="user_email">Email</label>
+        <br/>
+        <input autofocus="autofocus" type="email" name="user[email]" id="user_email" />
+      </div>
+      <input type="submit" name="commit" value="Send me reset password instructions" class="app_button" />
+      <button type="button" class="app_button cancel_button" data-dismiss="modal">Cancel</button>
+      <img class="loader" style="display: none" src="https://d1c63tznfcg2er.cloudfront.net/assets/loader-89f2124879a8d0c48a42458d32e12cd8fdb3be2774b2b09d07cedce6b491c462.gif" alt="Loader" />
+</form>  </div>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="application_footer hidden-print row">
+  <div class="col-lg-offset-1 col-lg-4 application_footer_message">
+    Copyright 2019 Zinc Learning Labs
+  </div>
+  <div class="col-lg-6 application_footer_links">
+    <div class="row">
+      <a href="/home/terms_of_service">Terms of Service</a>
+      <a href="/home/privacy_policy">Privacy Policy</a>
+      <a href="https://mixpanel.com/frpartner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <script>
+  var init_info = {"settings":{"report_to_analytics":true,"intercom_app_id":"pj0qfqbb","mix_panel_token":"69862fcea2e1860c3ef123df545f02ea","should_attach_intercom":true,"hide_intercom":false},"user":{"signed_in":false,"role":"student"}}
+  var mixPanelInit = function(settings, user) {
+    if (settings.report_to_analytics) {
+      mixpanel.init(settings.mix_panel_token);
+      if (user.signed_in) {
+        mixpanel.register({'user_role': user.role});
+        mixpanel.identify(user.info.id);
+      }
+    } else {
+      mixpanel.track = function(eventName, properties) {
+        return console.log('Tracking ' + eventName, properties);
+      };
+      mixpanel.time_event = function(eventName) {
+        return console.log('Start timed event. Wait until ', eventName);
+      };
+    }
+  };
+
+  var attachIntercom = function(settings, user) {
+    var intercom_settings;
+    intercom_settings = {
+      app_id: settings.intercom_app_id,
+      role: user.role,
+      hide_default_launcher: settings.hide_intercom
+    };
+    if (user.signed_in) {
+      intercom_settings.session_duration = user.info.session_duration;
+      intercom_settings.user_id = user.info.id;
+      if(user.role !== 'student') {
+          intercom_settings.name = user.info.name;
+          intercom_settings.email = user.info.email;
+      }
+      intercom_settings.user_hash = user.info.intercom_hash;
+      intercom_settings.source = user.info.source_provider;
+    }
+    window.Intercom('boot', intercom_settings);
+  };
+
+  var initAppcues = function(user) {
+    if(user.signed_in && window.Appcues) {
+      window.Appcues.page();
+
+      window.Appcues.identify(user.info.id, {
+        role: user.role,
+        first_name: user.info.first_name,
+        rostering_source: user.info.source_provider,
+        created_date: user.info.created_at,
+        confirmed_date: user.info.confirmed_at,
+        latest_sign_in_date: user.info.current_sign_in_at,
+        subscription_type: user.subscription.type,
+        subscription_till: user.subscription.end_date
+      });
+    }
+  }
+</script>
+<script>
+  if(init_info.settings.report_to_analytics) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-89500806-1', 'auto');
+    ga('send', 'pageview');
+  }
+
+  initAppcues(init_info.user)
+</script>
+
+<!-- start Mixpanel -->
+<script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+</script>
+
+<script>
+  mixPanelInit(init_info.settings, init_info.user)
+  if(init_info.settings.should_attach_intercom) {
+    (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/rpok2kni';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+    attachIntercom(init_info.settings, init_info.user)
+  }
+</script>
+
+<script>
+  MetaEvents.registerFrontendEvent("help_accessed", {"distinct_id":null,"event_name":"ll1_help_accessed","external_name":"ll1_help_accessed","properties":{"ip":"185.247.20.10"}});
+MetaEvents.registerFrontendEvent("announcement_read", {"distinct_id":null,"event_name":"ll1_announcement_read","external_name":"ll1_announcement_read","properties":{"ip":"185.247.20.10"}});
+MetaEvents.registerFrontendEvent("announcement_dismissed", {"distinct_id":null,"event_name":"ll1_announcement_dismissed","external_name":"ll1_announcement_dismissed","properties":{"ip":"185.247.20.10"}});
+
+</script>
+
+</body>
+</html>

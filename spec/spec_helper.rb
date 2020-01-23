@@ -35,6 +35,7 @@ RSpec.configure do |config|
   $caps_chrome = Selenium::WebDriver::Remote::Capabilities.chrome
   $caps_chrome['goog:chromeOptions'] = {}
   $caps_chrome['goog:chromeOptions']['args'] = ['--disable-notifications']
+  # $caps_chrome['goog:chromeOptions']['args'] = ['--headless', '--disable-gpu'] # or %w(headless disable-gpu)
   # $caps_chrome[:timeouts] = {}
   # $caps_chrome[:timeouts]['implicit'] = 10000
   # $caps_chrome['chromeOptions'] = {'mobileEmulation' => {
@@ -48,7 +49,7 @@ RSpec.configure do |config|
 
   Capybara.configure do |capybara|
     capybara.run_server = false
-    capybara.default_max_wait_time = 15
+    capybara.default_max_wait_time = 20
 
     capybara.default_driver = :true_automation_driver
   end
@@ -61,7 +62,7 @@ RSpec.configure do |config|
   config.include TrueAutomation::DSL
 
   config.after(:context) do
-    delete_saved_elements unless config.filter.rules[:ep]
+    # delete_saved_elements unless config.filter.rules[:ep]
     Capybara.current_session.driver.quit
   end
 

@@ -69,6 +69,7 @@ describe 'Preconditions' do
         pipelines_runs.click_history_close_modal
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -132,10 +133,11 @@ describe 'Preconditions' do
       end
 
       step "User clicks on history close icon" do
-       sleep 3
        check_element_path :css, CloudBeesPipelinesRuns::HISTORY_CLOSE_MODAL_ICON_TA, CloudBeesPipelinesRuns::HISTORY_CLOSE_MODAL_ICON_IL
         pipelines_runs.click_history_close_modal
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -202,10 +204,11 @@ describe 'Preconditions' do
       end
 
       step "User clicks on history close icon" do
-        sleep 3
         check_element_path :css, CloudBeesPipelinesRuns::HISTORY_CLOSE_MODAL_ICON_EP, CloudBeesPipelinesRuns::HISTORY_CLOSE_MODAL_ICON_IL
         pipelines_runs.click_history_close_modal :ep
       end
+
+      sleep 3
     end
 
   end

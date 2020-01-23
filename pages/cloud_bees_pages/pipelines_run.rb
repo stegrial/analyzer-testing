@@ -37,7 +37,7 @@ class CloudBeesPipelinesRuns
   PROJ_SELECT_TA = "cloud_bees:pipelines_runs:proj_select"
   PROJ_SELECT_EP = "EP:cloud_bees:pipelines_runs:proj_select"
 
-  EC_EXAMPLES_PROJ_IL = "//div[contains(text(),'EC-Examples')]"
+  EC_EXAMPLES_PROJ_IL = "//div[text()='EC-Examples']"
   EC_EXAMPLES_PROJ_TA = "cloud_bees:pipelines_runs:ec_examples_proj"
   EC_EXAMPLES_PROJ_EP = "EP:cloud_bees:pipelines_runs:ec_examples_proj"
 

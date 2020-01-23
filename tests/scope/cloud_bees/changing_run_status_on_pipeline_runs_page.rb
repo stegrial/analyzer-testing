@@ -38,7 +38,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select successful status" do
-        sleep 3
         pipelines_runs.click_to_select_successful_status
       end
 
@@ -51,7 +50,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select error status" do
-        # sleep 3
         pipelines_runs.click_to_select_error_status
       end
 
@@ -102,7 +100,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to unselect  error status" do
-
         check_element_path :css, CloudBeesPipelinesRuns::ERROR_RUN_STATUS_TA, CloudBeesPipelinesRuns::ERROR_RUN_STATUS_IL
         pipelines_runs.click_to_select_error_status
       end

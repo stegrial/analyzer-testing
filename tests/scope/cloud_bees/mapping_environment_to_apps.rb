@@ -18,11 +18,12 @@ describe 'Preconditions' do
 
   after(:each) do
     step "Remove created user", settings('cloud_bees') do |data|
-      page.visit data['environments_page']
+      page.visit data['login_page']
 
       global_page.click_hamburger_menu :il
       global_page.click_applications :il
       apps_page.find_application_name_field :il, 'appName'
+      sleep 3 # need to wait for the filter to be applied
       apps_page.select_app_list_item :il
       apps_page.delete_application :il
       apps_page.confirm_delete_application :il
@@ -30,6 +31,7 @@ describe 'Preconditions' do
       global_page.click_hamburger_menu :il
       global_page.click_environments :il
       env.find_env_name_field :il, 'envName'
+      sleep 3 # need to wait for the filter to be applied
       env.choose_env :il
       env.delete_env :il
       env.confirm_delete_env :il

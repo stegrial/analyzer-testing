@@ -28,7 +28,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', ilr: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -44,7 +44,7 @@ describe 'Preconditions' do
       end
 
       step "Admin chooses the Pipelines section in the Hamburger menu" do
-        global_page.click_pipelines
+        global_page.click_pipelines :il # step is duplication below
       end
 
       step "Admin clicks on the new pipeline button" do
