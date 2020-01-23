@@ -33,7 +33,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Add New Resource dropdown" do
-        sleep 3 # wait for load frame
+        sleep 3 # to wait for iframe to be loaded
         resources_page.click_add_new_resource
       end
 
@@ -42,7 +42,6 @@ describe 'Preconditions' do
       end
 
       step "Admin enters a new resource name", 'NewResourceName' do |name|
-        # sleep 5  # TA-1016
         resources_page.set_resource_name name
       end
 
@@ -77,18 +76,18 @@ describe 'Preconditions' do
       step "Admin set cache tags of new resource input" , '123' do |value|
         resources_page.set_tags_of_resource value
       end
-      # sleep 3
+
       step "Admin clicks ok button" do
         resources_page.click_ok_button
       end
 
-      # sleep 4
       step "Admin set  resource name in quick search", 'NewResourceName' do |value|
         resources_page.click_quick_search value
       end
 
       step "Admin clicks filter button " do
         resources_page.click_filter_button
+        sleep 2 # to wait for the filter to be applied
       end
 
       step "Admin clicks to select checkbox of created resource " do
@@ -102,7 +101,8 @@ describe 'Preconditions' do
       step "Admin clicks ok for delete resource " do
         resources_page.click_ok_to_delete_new_resource
       end
-      sleep 4
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -126,7 +126,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Add New Resource dropdown" do
-        sleep 3 # wait for load frame
+        sleep 3 # to wait for iframe to be loaded
         within_frame(0) { check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_TA, CloudBeesResources::ADD_NEW_RESOURCE_IL }
         resources_page.click_add_new_resource
       end
@@ -136,7 +136,6 @@ describe 'Preconditions' do
       end
 
       step "Admin enters a new resource name", 'NewResourceName' do |name|
-        # sleep 5  # TA-1016
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_TA, CloudBeesResources::RESOURCE_NAME_IL }
         resources_page.set_resource_name name
       end
@@ -206,8 +205,6 @@ describe 'Preconditions' do
         resources_page.click_to_delete_new_resource
       end
 
-      # sleep 2
-
       step "Admin clicks ok for delete resource " do
         within_frame(0) { check_element_path :xpath, CloudBeesResources::ACCEPT_DELETE_RESOURCE_TA, CloudBeesResources::ACCEPT_DELETE_RESOURCE_IL }
         resources_page.click_ok_to_delete_new_resource
@@ -237,7 +234,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Add New Resource dropdown" do
-        sleep 3 # wait for load frame
+        sleep 3 # to wait for iframe to be loaded
         within_frame(0) { check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_EP, CloudBeesResources::ADD_NEW_RESOURCE_IL }
         resources_page.click_add_new_resource :ep
       end
@@ -247,7 +244,6 @@ describe 'Preconditions' do
       end
 
       step "Admin enters a new resource name", 'NewResourceName' do |name|
-        # sleep 5  # TA-1016
         within_frame(0) { check_element_path :xpath, CloudBeesResources::RESOURCE_NAME_EP, CloudBeesResources::RESOURCE_NAME_IL }
         resources_page.set_resource_name :ep, name
       end
@@ -317,7 +313,6 @@ describe 'Preconditions' do
         resources_page.click_to_delete_new_resource :ep
       end
 
-      # sleep 2
       step "Admin clicks ok for delete resource " do
         within_frame(0) { check_element_path :xpath, CloudBeesResources::ACCEPT_DELETE_RESOURCE_EP, CloudBeesResources::ACCEPT_DELETE_RESOURCE_IL }
         resources_page.click_ok_to_delete_new_resource :ep

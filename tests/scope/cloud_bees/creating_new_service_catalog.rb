@@ -47,7 +47,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        # sleep 8
         catalogs_page.click_to_create_new_catalog
       end
 
@@ -65,16 +64,15 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-       # sleep 5
        catalogs_page.select_proj_from_list
       end
 
       step "User clicks ok button in modal" do
-        catalogs_page.click_ok_in_modal_btn :il #step is duplicated below
+        catalogs_page.click_ok_in_modal_btn :il # step is duplicated below
       end
 
-      step "User set name in form", 'new_form_name' do |value|
-        catalogs_page.set_name_in_form value
+      step "User set name in form", 'new_form_name_1' do |value|
+        catalogs_page.set_name_in_form :il, value # step is duplicated below
       end
 
       step "User set description in form", 'description' do |value|
@@ -83,11 +81,11 @@ describe 'Preconditions' do
 
       step "User clicks add another button" do
         catalogs_page.click_add_another
+        sleep 3 # to wait for the catalog item to be added
       end
 
-      step "User set name in form", 'new_form_name2' do |value|
-        sleep 3
-        catalogs_page.set_name_in_form2 value
+      step "User set name in form", 'new_form_name_2' do |value|
+        catalogs_page.set_name_in_form value
       end
 
       step "User clicks define button" do
@@ -103,7 +101,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select execute option" do
-        # sleep 5
         catalogs_page.click_to_select_execute_option
       end
 
@@ -116,7 +113,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks on ec example project" do
-        # sleep 5
         catalogs_page.click_to_select_ec_example_proj
       end
 
@@ -154,7 +150,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        # sleep 5
         check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_TA, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog
       end
@@ -175,7 +170,6 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-        # sleep 5
         check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_TA, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list
       end
@@ -185,7 +179,7 @@ describe 'Preconditions' do
         catalogs_page.click_ok_in_modal_btn
       end
 
-      step "User set name in form", 'new_form_name' do |value|
+      step "User set name in form", 'new_form_name_1' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_TA, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
         catalogs_page.set_name_in_form value
       end
@@ -198,12 +192,12 @@ describe 'Preconditions' do
       step "User clicks add another button" do
         check_element_path :css, CloudBeesCatalogs::ADD_ANOTHER_BTN_TA, CloudBeesCatalogs::ADD_ANOTHER_BTN_IL
         catalogs_page.click_add_another
+        sleep 3 # to wait for the catalog item to be added
       end
 
-      step "User set name in form", 'new_form_name2' do |value|
-        # sleep 3
+      step "User set name in form", 'new_form_name_2' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_TA, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
-        catalogs_page.set_name_in_form2 value
+        catalogs_page.set_name_in_form value
       end
 
       step "User clicks define button" do
@@ -222,7 +216,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select execute option" do
-        sleep 5
         check_element_path :css, CloudBeesCatalogs::EXECUTE_OPTION_TA, CloudBeesCatalogs::EXECUTE_OPTION_IL
         catalogs_page.click_to_select_execute_option
       end
@@ -238,7 +231,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks on ec example project" do
-        # sleep 5
         check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_TA, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_IL
         catalogs_page.click_to_select_ec_example_proj
       end
@@ -282,7 +274,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        # sleep 5
         check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_EP, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog :ep
       end
@@ -303,7 +294,6 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-        # sleep 5
         check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_EP, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list :ep
       end
@@ -313,7 +303,7 @@ describe 'Preconditions' do
         catalogs_page.click_ok_in_modal_btn :ep
       end
 
-      step "User set name in form", 'new_form_name' do |value|
+      step "User set name in form", 'new_form_name_1' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_EP, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
         catalogs_page.set_name_in_form :ep, value
       end
@@ -326,12 +316,12 @@ describe 'Preconditions' do
       step "User clicks add another button" do
         check_element_path :css, CloudBeesCatalogs::ADD_ANOTHER_BTN_EP, CloudBeesCatalogs::ADD_ANOTHER_BTN_IL
         catalogs_page.click_add_another :ep
+        sleep 3 # to wait for the catalog item to be added
       end
 
-      step "User set name in form", 'new_form_name2' do |value|
-        # sleep 3
+      step "User set name in form", 'new_form_name_2' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_EP, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
-        catalogs_page.set_name_in_form2 :ep, value
+        catalogs_page.set_name_in_form :ep, value
       end
 
       step "User clicks define button" do
@@ -350,7 +340,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to select execute option" do
-        # sleep 5
         check_element_path :css, CloudBeesCatalogs::EXECUTE_OPTION_EP, CloudBeesCatalogs::EXECUTE_OPTION_IL
         catalogs_page.click_to_select_execute_option :ep
       end
@@ -366,7 +355,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks on ec example project" do
-        # sleep 5
         check_element_path :xpath, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_EP, CloudBeesCatalogs::PROCEDURE_EC_EXAMPLE_PROJ_IL
         catalogs_page.click_to_select_ec_example_proj :ep
       end

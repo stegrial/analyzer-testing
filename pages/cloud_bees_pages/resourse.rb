@@ -62,7 +62,7 @@ class CloudBeesResources
   FILTER_OK_BTN_TA = "cloud_bees:resource:filter_btn"
   FILTER_OK_BTN_EP = "EP:cloud_bees:resource:filter_btn"
 
-  SELECT_CHECKBOX_IL = "(//input[@type='checkbox'])[4]"
+  SELECT_CHECKBOX_IL = "//thead//input[@type='checkbox']"
   SELECT_CHECKBOX_TA = "cloud_bees:resource:select_checkbox"
   SELECT_CHECKBOX_EP = "EP:cloud_bees:resource:select_checkbox"
 

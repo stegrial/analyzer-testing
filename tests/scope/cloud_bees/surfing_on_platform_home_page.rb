@@ -61,6 +61,10 @@ describe 'Preconditions' do
         platform_page.click_administration_link :il # step is duplicated below
       end
 
+      step "Admin sorts the Event Log" do
+        platform_page.click_sort_link :il # step is duplicated below
+      end
+
       step "Admin clicks on second row of run reports" do
         platform_page.click_to_open_second_row_run_report
       end
@@ -73,13 +77,19 @@ describe 'Preconditions' do
         platform_page.click_to_switch_diagnostics_in_table
       end
 
-      step "Admin clicks on projects link" do
+      step "Admin clicks on administration link" do
         platform_page.click_administration_link
+      end
+
+      step "Admin sorts the Event Log" do
+        platform_page.click_sort_link
       end
 
       step "Admin clicks on second subject row" do
         platform_page.click_to_open_second_subject_row
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -137,6 +147,11 @@ describe 'Preconditions' do
         platform_page.click_administration_link
       end
 
+      step "Admin sorts the Event Log" do
+        check_element_path :xpath, CloudBeesPlatformHomePage::SORT_LINK_TA, CloudBeesPlatformHomePage::SORT_LINK_IL
+        platform_page.click_sort_link
+      end
+
       step "Admin clicks on second row of run reports" do
         check_element_path :xpath, CloudBeesPlatformHomePage::JOB_RUN_REPORTS_SECOND_LINE_TA, CloudBeesPlatformHomePage::JOB_RUN_REPORTS_SECOND_LINE_IL
         platform_page.click_to_open_second_row_run_report
@@ -155,6 +170,11 @@ describe 'Preconditions' do
       step "Admin clicks on administration link" do
         check_element_path :xpath, CloudBeesPlatformHomePage::ADMINISTRATION_LINK_TA, CloudBeesPlatformHomePage::ADMINISTRATION_LINK_IL
         platform_page.click_administration_link
+      end
+
+      step "Admin sorts the Event Log" do
+        check_element_path :xpath, CloudBeesPlatformHomePage::SORT_LINK_TA, CloudBeesPlatformHomePage::SORT_LINK_IL
+        platform_page.click_sort_link
       end
 
       step "Admin clicks on second subject row" do
@@ -225,6 +245,11 @@ describe 'Preconditions' do
         platform_page.click_administration_link :ep
       end
 
+      step "Admin sorts the Event Log" do
+        check_element_path :xpath, CloudBeesPlatformHomePage::SORT_LINK_EP, CloudBeesPlatformHomePage::SORT_LINK_IL
+        platform_page.click_sort_link
+      end
+
       step "Admin clicks on second row of run reports" do
         check_element_path :xpath, CloudBeesPlatformHomePage::JOB_RUN_REPORTS_SECOND_LINE_EP, CloudBeesPlatformHomePage::JOB_RUN_REPORTS_SECOND_LINE_IL
         platform_page.click_to_open_second_row_run_report :ep
@@ -243,6 +268,11 @@ describe 'Preconditions' do
       step "Admin clicks on administration link" do
         check_element_path :xpath, CloudBeesPlatformHomePage::ADMINISTRATION_LINK_EP, CloudBeesPlatformHomePage::ADMINISTRATION_LINK_IL
         platform_page.click_administration_link :ep
+      end
+
+      step "Admin sorts the Event Log" do
+        check_element_path :xpath, CloudBeesPlatformHomePage::SORT_LINK_EP, CloudBeesPlatformHomePage::SORT_LINK_IL
+        platform_page.click_sort_link
       end
 
       step "Admin clicks on second subject row" do

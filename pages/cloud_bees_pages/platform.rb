@@ -49,6 +49,10 @@ class CloudBeesPlatformHomePage
   SUBJECT_SECOND_ROW_TA = "cloud_bees:platform:subject_second_row"
   SUBJECT_SECOND_ROW_EP = "EP:cloud_bees:platform:subject_second_row"
 
+  SORT_LINK_IL = "//a[text()='Time']"
+  SORT_LINK_TA = "cloud_bees:platform:administration:sort_link"
+  SORT_LINK_EP = "EP:cloud_bees:platform:administration:sort_link"
+
   def click_projects_link(key = nil)
     return find(ta(PROJECTS_LINK_EP)).click if key == :ep
     return find(:xpath, PROJECTS_LINK_IL).click if key == :il
@@ -113,6 +117,12 @@ class CloudBeesPlatformHomePage
     return find(ta(SUBJECT_SECOND_ROW_EP)).click if key == :ep
     return find(:css, SUBJECT_SECOND_ROW_IL).click if key == :il
     find(:css, ta(SUBJECT_SECOND_ROW_TA, SUBJECT_SECOND_ROW_IL)).click
+  end
+
+  def click_sort_link(key = nil)
+    return find(ta(SORT_LINK_EP)).click if key == :ep
+    return find(:xpath, SORT_LINK_IL).click if key == :il
+    find(:xpath, ta(SORT_LINK_TA, SORT_LINK_IL)).click
   end
 
 end

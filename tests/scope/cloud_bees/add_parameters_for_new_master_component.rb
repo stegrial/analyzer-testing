@@ -22,7 +22,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin logs in", settings('cloud_bees') do |credentials|
         login_page.fill_username_field credentials['username']
         login_page.fill_pass_field credentials['pass']
         login_page.click_sign_in_button
@@ -70,10 +70,10 @@ describe 'Preconditions' do
 
       step "Admin click on the OK button" do
         components_page.confirm_new_artifact
+        sleep 3 # need to wait for the component with artifact to be created
       end
 
       step "Admin find component name field", "component_test_name" do |find_comp|
-        sleep 1 # need
         components_page.find_component_name_field find_comp
       end
 
@@ -110,7 +110,7 @@ describe 'Preconditions' do
       end
 
       step "Admin click close Parameters" do
-        sleep 3 # wait for load of the past step
+        sleep 3 # need wait for the end of the previous step
         components_page.click_close_parameters
       end
 
@@ -130,7 +130,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin logs in", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field credentials['username']
 
@@ -193,6 +193,7 @@ describe 'Preconditions' do
       step "Admin click on the OK button" do
         check_element_path :xpath, CloudBeesComponents::CONFIRM_NEW_ARTIFACT_TA, CloudBeesComponents::CONFIRM_NEW_ARTIFACT_IL
         components_page.confirm_new_artifact
+        sleep 3 # need to wait for the component with artifact to be created
       end
 
       step "Admin find component name field", "component_test_name" do |find_comp|
@@ -241,6 +242,7 @@ describe 'Preconditions' do
       end
 
       step "Admin click close Parameters" do
+        sleep 3 # need wait for the end of the previous step
         check_element_path :xpath, CloudBeesComponents::CLOSE_PARAMETERS_TA, CloudBeesComponents::CLOSE_PARAMETERS_IL
         components_page.click_close_parameters
       end
@@ -265,7 +267,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin do login", settings('cloud_bees') do |credentials|
+      step "Admin logs in", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
         login_page.fill_username_field :ep, credentials['username']
 
@@ -328,6 +330,7 @@ describe 'Preconditions' do
       step "Admin click on the OK button" do
         check_element_path :xpath, CloudBeesComponents::CONFIRM_NEW_ARTIFACT_EP, CloudBeesComponents::CONFIRM_NEW_ARTIFACT_IL
         components_page.confirm_new_artifact :ep
+        sleep 3 # need to wait for the component with artifact to be created
       end
 
       step "Admin find component name field", "component_test_name" do |find_comp|
@@ -376,6 +379,7 @@ describe 'Preconditions' do
       end
 
       step "Admin click close Parameters" do
+        sleep 3 # need wait for the end of the previous step
         check_element_path :xpath, CloudBeesComponents::CLOSE_PARAMETERS_EP, CloudBeesComponents::CLOSE_PARAMETERS_IL
         components_page.click_close_parameters :ep
       end

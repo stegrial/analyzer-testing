@@ -164,12 +164,6 @@ class CloudBeesCatalogs
     find(:css, ta(CATALOGS_NAME_FORM_TA, CATALOGS_NAME_FORM_IL)).set(value)
   end
 
-  def set_name_in_form2(key = nil, value)
-    return find(ta(CATALOGS_NAME_FORM_EP)).set(value) if key == :ep
-    return find(:css, CATALOGS_NAME_FORM_IL).set(value) if key == :il
-    find(:css, ta(CATALOGS_NAME_FORM_TA, CATALOGS_NAME_FORM_IL)).set(value)
-  end
-
   def set_description_in_form(key = nil, value)
     return find(ta(CATALOGS_DESCRIPTION_FORM_EP)).set(value) if key == :ep
     return find(:css, CATALOGS_DESCRIPTION_FORM_IL).set(value) if key == :il

@@ -116,6 +116,7 @@ describe 'Preconditions' do
         apps_editor.click_warning_ok_btn
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do

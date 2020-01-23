@@ -1,4 +1,6 @@
 require 'net/http'
+require 'fileutils'
+require 'uri'
 
 def step(name, *args)
   begin
@@ -16,7 +18,8 @@ def required_relative_all(path)
 end
 
 def delete_saved_elements
-  base_url = "http://localhost:9515"
+  port_number = URI.parse(Capybara.current_session.driver.options[:url]).port
+  base_url = "http://localhost:#{port_number}"
   url = URI("#{base_url}/clear_elements")
 
   http = Net::HTTP.new(url.host, url.port)
@@ -30,3 +33,10 @@ def delete_saved_elements
     puts response.body
   end
 end
+
+def remove_slashes
+  a = ""
+  puts a.gsub(/\\/, '')
+end
+
+# logs_processing
