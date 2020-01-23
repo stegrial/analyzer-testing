@@ -11,7 +11,7 @@ describe 'Preconditions' do
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {'deviceName' => 'iPhone 5'}
   end
 
-  feature ', TA returns the wrong element (Venus - Logo button)' do
+  feature 'AT-113, TA returns the wrong element (Venus - Logo button)' do
 
     # Initial locators with Recording
 
@@ -32,7 +32,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks on the Account button two times (for different pages)" do
+      step "User clicks on the Logo button" do
         check_element_path :xpath, VenusNavigation::VENUS_LOGO_TA, VenusNavigation::VENUS_LOGO_IL
         navigation_page.click_venus_logo
       end
@@ -47,7 +47,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks on the Account button two times (for different pages)" do
+      step "User clicks on the Logo button" do
         check_element_path :xpath, VenusNavigation::VENUS_LOGO_EP, VenusNavigation::VENUS_LOGO_IL
         navigation_page.click_venus_logo :ep
       end
@@ -74,8 +74,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks on the Account button two times (for different pages)" do
-        check_element_path :xpath, VenusNavigation::VENUS_LOGO_TA, VenusNavigation::VENUS_LOGO_IL
+      step "User clicks on the Logo button" do
         navigation_page.click_venus_logo
       end
 

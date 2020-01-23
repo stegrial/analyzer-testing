@@ -21,7 +21,7 @@ describe 'Preconditions' do
     end
   end
 
-  feature ', TA returns the wrong element (Venus - Check items on the cart)' do
+  feature 'AT-112, TA returns the wrong element (Venus - Check items on the cart)' do
 
     # Initial locators with Recording
 
@@ -43,11 +43,13 @@ describe 'Preconditions' do
       end
 
       step "User chooses a size in the list", '8' do |size|
+        scroll_to_element nil
         product_page.choose_list_size size
       end
 
       step "User opens dropdown to select the quantity of product" do
         product_page.open_qty_dropdown
+        sleep 3 # wait for opens dropdown
       end
 
       step "User selects the quantity of product", '2' do |qty|
@@ -56,6 +58,7 @@ describe 'Preconditions' do
 
       step "User clicks on the Add to bag button" do
         product_page.click_add_to_bag_button
+        sleep 5 # wait for notification to disappear
       end
 
       step "User finds items on the cart" do
@@ -88,6 +91,7 @@ describe 'Preconditions' do
       end
 
       step "User chooses a size in the list", '8' do |size|
+        scroll_to_element nil
         check_element_path :xpath, product_page.list_size(:ta, size), product_page.list_size(:il, size)
         product_page.choose_list_size size
       end
@@ -95,6 +99,7 @@ describe 'Preconditions' do
       step "User opens dropdown to select the quantity of product" do
         check_element_path :xpath, VenusProduct::QTY_DROPDOWN_TA, VenusProduct::QTY_DROPDOWN_IL
         product_page.open_qty_dropdown
+        sleep 3 # wait for opens dropdown
       end
 
       step "User selects the quantity of product", '2' do |qty|
@@ -105,6 +110,7 @@ describe 'Preconditions' do
       step "User clicks on the Add to bag button" do
         check_element_path :xpath, VenusProduct::ADD_TO_BAG_BTN_TA, VenusProduct::ADD_TO_BAG_BTN_IL
         product_page.click_add_to_bag_button
+        sleep 5 # wait for notification to disappear
       end
 
       2.times do
@@ -142,6 +148,7 @@ describe 'Preconditions' do
       end
 
       step "User chooses a size in the list", '8' do |size|
+        scroll_to_element nil
         check_element_path :xpath, product_page.list_size(:ep, size), product_page.list_size(:il, size)
         product_page.choose_list_size :ep, size
       end
@@ -149,6 +156,7 @@ describe 'Preconditions' do
       step "User opens dropdown to select the quantity of product" do
         check_element_path :xpath, VenusProduct::QTY_DROPDOWN_EP, VenusProduct::QTY_DROPDOWN_IL
         product_page.open_qty_dropdown :ep
+        sleep 3 # wait for opens dropdown
       end
 
       step "User selects the quantity of product", '2' do |qty|
@@ -159,6 +167,7 @@ describe 'Preconditions' do
       step "User clicks on the Add to bag button" do
         check_element_path :xpath, VenusProduct::ADD_TO_BAG_BTN_EP, VenusProduct::ADD_TO_BAG_BTN_IL
         product_page.click_add_to_bag_button :ep
+        sleep 5 # wait for notification to disappear
       end
 
       2.times do
@@ -191,11 +200,13 @@ describe 'Preconditions' do
       end
 
       step "User chooses a size in the list", '8' do |size|
+        scroll_to_element nil
         product_page.choose_list_size :il, size
       end
 
       step "User opens dropdown to select the quantity of product" do
         product_page.open_qty_dropdown :il
+        sleep 3 # wait for opens dropdown
       end
 
       step "User selects the quantity of product", '2' do |qty|
@@ -204,6 +215,7 @@ describe 'Preconditions' do
 
       step "User clicks on the Add to bag button" do
         product_page.click_add_to_bag_button :il
+        sleep 5 # wait for notification to disappear
       end
 
       step "User finds items on the cart" do
@@ -231,11 +243,13 @@ describe 'Preconditions' do
       end
 
       step "User chooses a size in the list", '8' do |size|
+        scroll_to_element nil
         product_page.choose_list_size :il, size
       end
 
       step "User opens dropdown to select the quantity of product" do
         product_page.open_qty_dropdown :il
+        sleep 3 # wait for opens dropdown
       end
 
       step "User selects the quantity of product", '2' do |qty|
@@ -244,6 +258,7 @@ describe 'Preconditions' do
 
       step "User clicks on the Add to bag button" do
         product_page.click_add_to_bag_button :il
+        sleep 5 # wait for notification to disappear
       end
 
       2.times do
