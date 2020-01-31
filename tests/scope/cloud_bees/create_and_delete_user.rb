@@ -68,7 +68,7 @@ describe 'Preconditions' do
         new_user_page.confirm_create_new_user
       end
 
-      step "Admin user filter field", 'Car' do |user_username|
+      step "Admin fills the filter field", 'Car' do |user_username|
         users_page.fill_user_filter_field user_username
       end
 
@@ -150,7 +150,7 @@ describe 'Preconditions' do
         new_user_page.confirm_create_new_user
       end
 
-      step "Admin user filter field", 'Car' do |user_username|
+      step "Admin fills the filter field", 'Car' do |user_username|
         within_frame(0) { check_element_path :css, CloudBeesUsers::USER_FILTER_FIELD_TA, CloudBeesUsers::USER_FILTER_FIELD_IL }
         users_page.fill_user_filter_field user_username
       end
@@ -237,7 +237,7 @@ describe 'Preconditions' do
         new_user_page.confirm_create_new_user :ep
       end
 
-      step "Admin user filter field", 'Car' do |user_username|
+      step "Admin fills the filter field", 'Car' do |user_username|
         within_frame(0) { check_element_path :css, CloudBeesUsers::USER_FILTER_FIELD_EP, CloudBeesUsers::USER_FILTER_FIELD_IL }
         users_page.fill_user_filter_field :ep, user_username
       end

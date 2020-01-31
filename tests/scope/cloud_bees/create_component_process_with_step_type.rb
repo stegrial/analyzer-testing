@@ -139,7 +139,7 @@ describe 'Preconditions' do
         apps_page.click_on_new_step
       end
 
-      step "Admin fills the process name field", "step_test_name" do |stepname|
+      step "Admin fills the step name field", "step_test_name" do |stepname|
         apps_page.fill_step_name_field stepname
       end
 
@@ -315,7 +315,7 @@ describe 'Preconditions' do
         apps_page.click_on_new_step
       end
 
-      step "Admin fills the process name field", "step_test_name" do |stepname|
+      step "Admin fills the step name field", "step_test_name" do |stepname|
         check_element_path :xpath, CloudBeesApps::STEP_NAME_TA, CloudBeesApps::STEP_NAME_IL
         apps_page.fill_step_name_field stepname
       end
@@ -501,7 +501,7 @@ describe 'Preconditions' do
         apps_page.click_on_new_step :ep
       end
 
-      step "Admin fills the process name field", "step_test_name" do |stepname|
+      step "Admin fills the step name field", "step_test_name" do |stepname|
         check_element_path :xpath, CloudBeesApps::STEP_NAME_EP, CloudBeesApps::STEP_NAME_IL
         apps_page.fill_step_name_field :ep, stepname
       end
