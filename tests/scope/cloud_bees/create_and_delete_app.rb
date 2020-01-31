@@ -104,6 +104,7 @@ describe 'Preconditions' do
 
       step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
         apps_page.find_application_name_field appname
+        sleep 3 # need wait for the filter will be applied
       end
 
       step "Admin clicks on new created application" do
@@ -231,6 +232,7 @@ describe 'Preconditions' do
       step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
         check_element_path :css, CloudBeesApps::FIND_APPLICATION_FIELD_TA, CloudBeesApps::FIND_APPLICATION_FIELD_IL
         apps_page.find_application_name_field appname
+        sleep 3 # need wait for the filter will be applied
       end
 
       step "Admin clicks on new created application" do
@@ -363,6 +365,7 @@ describe 'Preconditions' do
       step "Admin find application name", settings('cloud_bees')['app_name'] do |appname|
         check_element_path :xpath, CloudBeesApps::FIND_APPLICATION_FIELD_EP, CloudBeesApps::FIND_APPLICATION_FIELD_IL
         apps_page.find_application_name_field :ep, appname
+        sleep 3 # need wait for the filter will be applied
       end
 
       step "Admin clicks on new created application" do
