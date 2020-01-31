@@ -14,7 +14,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  feature 'CloudBees - Deleting new Service Catalog' do
+  feature 'Deleting new Service Catalog' do
 
     # Initial locators with Recording
 
@@ -94,7 +94,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        sleep 5
         check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_TA, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog
       end
@@ -115,7 +114,6 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-        sleep 5
         check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_TA, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list
       end
@@ -139,6 +137,8 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_TA, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
         catalogs_page.click_ok_btn_for_accept_delete
       end
+
+      sleep 3
     end
     # Element Picker from Repository
 
@@ -163,7 +163,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks to create new catalog" do
-        sleep 5
         check_element_path :css, CloudBeesCatalogs::CREATE_NEW_CATALOG_EP, CloudBeesCatalogs::CREATE_NEW_CATALOG_IL
         catalogs_page.click_to_create_new_catalog :ep
       end
@@ -184,7 +183,6 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-        sleep 5
         check_element_path :xpath, CloudBeesCatalogs::DEFAULT_PROJECT_EP, CloudBeesCatalogs::DEFAULT_PROJECT_IL
         catalogs_page.select_proj_from_list :ep
       end
@@ -208,6 +206,8 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_EP, CloudBeesCatalogs::ACCEPT_DELETE_CATALOG_IL
         catalogs_page.click_ok_btn_for_accept_delete :ep
       end
+
+      sleep 3
     end
   end
 end

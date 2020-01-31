@@ -13,7 +13,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  feature 'CloudBees - Creating new resource(TA-1016)' do
+  feature 'Creating new resource' do
 
     # Initial locators with Recording
 
@@ -130,6 +130,7 @@ describe 'Preconditions' do
         within_frame(0) { check_element_path :xpath, CloudBeesResources::ADD_NEW_RESOURCE_TA, CloudBeesResources::ADD_NEW_RESOURCE_IL }
         resources_page.click_add_new_resource
       end
+
       step "Admin clicks create new resource button" do
         within_frame(0) { check_element_path :xpath, CloudBeesResources::CREATE_RESOURCE_BTN_TA, CloudBeesResources::CREATE_RESOURCE_BTN_IL }
         resources_page.click_create_resource_btn

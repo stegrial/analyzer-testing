@@ -27,7 +27,7 @@ describe 'Preconditions' do
     end
   end
 
-  feature 'CloudBees - Creating new Service Catalog' do
+  feature 'Creating new Service Catalog' do
 
     # Initial locators with Recording
 
@@ -84,7 +84,7 @@ describe 'Preconditions' do
         sleep 3 # to wait for the catalog item to be added
       end
 
-      step "User set name in form", 'new_form_name_2' do |value|
+      step "User set name in form_2", 'new_form_name_2' do |value|
         catalogs_page.set_name_in_form value
       end
 
@@ -195,7 +195,7 @@ describe 'Preconditions' do
         sleep 3 # to wait for the catalog item to be added
       end
 
-      step "User set name in form", 'new_form_name_2' do |value|
+      step "User set name in form_2", 'new_form_name_2' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_TA, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
         catalogs_page.set_name_in_form value
       end
@@ -319,7 +319,7 @@ describe 'Preconditions' do
         sleep 3 # to wait for the catalog item to be added
       end
 
-      step "User set name in form", 'new_form_name_2' do |value|
+      step "User set name in form_2", 'new_form_name_2' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FORM_EP, CloudBeesCatalogs::CATALOGS_NAME_FORM_IL
         catalogs_page.set_name_in_form :ep, value
       end

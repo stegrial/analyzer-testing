@@ -15,7 +15,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  feature 'CloudBees - creating new application component - GWT - fields' do
+  feature 'Creating new application component - GWT - fields' do
 
     # Initial locators with Recording
 
@@ -38,11 +38,11 @@ describe 'Preconditions' do
         global_page.click_applications
       end
 
-      step "User clicks on pipeline to select" do
+      step "User clicks on application from list" do
         apps.select_application_from_list
       end
 
-      step "User clicks on add new application" do
+      step "User clicks on add new component" do
         apps_editor.click_add_new_component
       end
 
@@ -136,7 +136,7 @@ describe 'Preconditions' do
         login_page.click_sign_in_button
       end
 
-      step "User clicks on humburg bth" do
+      step "User clicks on hamburger bth" do
         check_element_path :css  , CloudBeesGlobal::HAM_MENU_BTN_TA, CloudBeesGlobal::HAM_MENU_BTN_IL
         global_page.click_hamburger_menu
       end
@@ -146,12 +146,12 @@ describe 'Preconditions' do
         global_page.click_applications
       end
 
-      step "User clicks on pipeline to select" do
+      step "User clicks on application from list" do
         check_element_path :xpath, CloudBeesApps::APPLICATION_FROM_LIST_TA, CloudBeesApps::APPLICATION_FROM_LIST_IL
         apps.select_application_from_list
       end
 
-      step "User clicks on add new application" do
+      step "User clicks on add new component" do
         check_element_path :css, CloudBeesAppsEditor::ADD_NEW_COMPONENT_TA, CloudBeesAppsEditor::ADD_NEW_COMPONENT_IL
         apps_editor.click_add_new_component
       end
@@ -238,7 +238,6 @@ describe 'Preconditions' do
       end
 
       step "User click on ok button for accepting" do
-        # sleep 4
         check_element_path :xpath, CloudBeesAppsEditor::OK_WARNING_TA, CloudBeesAppsEditor::OK_WARNING_IL
         apps_editor.click_warning_ok_btn
       end
@@ -275,12 +274,12 @@ describe 'Preconditions' do
         global_page.click_applications :ep
       end
 
-      step "User clicks on pipeline to select" do
+      step "User clicks on application from list" do
         check_element_path :xpath, CloudBeesApps::APPLICATION_FROM_LIST_EP, CloudBeesApps::APPLICATION_FROM_LIST_IL
         apps.select_application_from_list :ep
       end
 
-      step "User clicks on add new application" do
+      step "User clicks on add new component" do
         check_element_path :css, CloudBeesAppsEditor::ADD_NEW_COMPONENT_EP, CloudBeesAppsEditor::ADD_NEW_COMPONENT_IL
         apps_editor.click_add_new_component :ep
       end
