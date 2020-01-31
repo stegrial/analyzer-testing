@@ -4,6 +4,7 @@ logs/
 mkmf.log
 data_files/
 help-tools/draft.rb
+help-tools/address_converter.rb
 analyzer-testing.iml
 trueautomation.json
 vendor/

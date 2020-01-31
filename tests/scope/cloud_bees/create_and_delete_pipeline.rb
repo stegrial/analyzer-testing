@@ -89,8 +89,9 @@ describe 'Preconditions' do
         global_page.click_pipelines
       end
 
-      step "Admin fills the pipeline name field", settings('cloud_bees')['pipeline_name'] do |pipename|
+      step "Admin filters the pipeline by name", settings('cloud_bees')['pipeline_name'] do |pipename|
         pipelines_page.find_pipeline_name_field pipename
+        sleep 3 # need wait for the filter will be applied
       end
 
       step "Admin clicks on new created pipeline" do
@@ -199,9 +200,10 @@ describe 'Preconditions' do
         global_page.click_pipelines
       end
 
-      step "Admin fills the pipeline name field", settings('cloud_bees')['pipeline_name'] do |pipename|
+      step "Admin filters the pipeline by name", settings('cloud_bees')['pipeline_name'] do |pipename|
         check_element_path :xpath, CloudBeesPipelines::FIND_PIPELINE_FIELD_TA, CloudBeesPipelines::FIND_PIPELINE_FIELD_IL
         pipelines_page.find_pipeline_name_field pipename
+        sleep 3 # need wait for the filter will be applied
       end
 
       step "Admin clicks on new created pipeline" do
@@ -315,9 +317,10 @@ describe 'Preconditions' do
         global_page.click_pipelines :ep
       end
 
-      step "Admin fills the pipeline name field", settings('cloud_bees')['pipeline_name'] do |pipename|
+      step "Admin filters the pipeline by name", settings('cloud_bees')['pipeline_name'] do |pipename|
         check_element_path :xpath, CloudBeesPipelines::FIND_PIPELINE_FIELD_EP, CloudBeesPipelines::FIND_PIPELINE_FIELD_IL
         pipelines_page.find_pipeline_name_field :ep, pipename
+        sleep 3 # need wait for the filter will be applied
       end
 
       step "Admin clicks on new created pipeline" do
