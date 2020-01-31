@@ -75,6 +75,7 @@ describe 'Preconditions' do
 
       step "Admin find component name field", "component_test_name" do |find_comp|
         components_page.find_component_name_field find_comp
+        sleep 3 # need wait for the filter will be applied
       end
 
       step "Admin choose Component" do
@@ -199,6 +200,7 @@ describe 'Preconditions' do
       step "Admin find component name field", "component_test_name" do |find_comp|
         check_element_path :xpath, CloudBeesComponents::FIND_COMPONENT_NAME_TA, CloudBeesComponents::FIND_COMPONENT_NAME_IL
         components_page.find_component_name_field find_comp
+        sleep 3 # need wait for the filter will be applied
       end
 
       step "Admin choose Component" do
@@ -336,6 +338,7 @@ describe 'Preconditions' do
       step "Admin find component name field", "component_test_name" do |find_comp|
         check_element_path :xpath, CloudBeesComponents::FIND_COMPONENT_NAME_EP, CloudBeesComponents::FIND_COMPONENT_NAME_IL
         components_page.find_component_name_field :ep, find_comp
+        sleep 3 # need wait for the filter will be applied
       end
 
       step "Admin choose Component" do

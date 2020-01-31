@@ -96,15 +96,28 @@ class Logs
     move_signature(index - 1) if index > 0
   end
 
+  def rename_log_directories # to rename directories containing data
+    path_array = Dir[@root + '/logs/20200129091902/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }
+    i = 1
+    path_array.each do |path|
+      dir = path.split("/")
+      new_path = dir[0..dir.length-2].join("/")
+      FileUtils.mv path, "#{new_path}/Search-AT-141-#{i}"
+      i += 1
+    end
+  end
+
 end
 
 processing = Logs.new
 
 processing.root
-processing.rm_html_and_analyzer
-processing.rename_undefined
-processing.rm_invalid_tree
-processing.filter
-processing.rm_same_requests
-processing.filter
-processing.move_signature(processing.last_index)
+# processing.rm_html_and_analyzer
+# processing.rename_undefined
+# processing.rm_invalid_tree
+# processing.filter
+# processing.rm_same_requests
+# processing.filter
+# processing.move_signature(processing.last_index)
+
+processing.rename_log_directories
