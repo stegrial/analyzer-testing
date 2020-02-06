@@ -9,15 +9,47 @@ class TheTiebarProductPage
   SECOND_SHIRT_PDP_TA = "thetiebar:header:shirts"
   SECOND_SHIRT_PDP_EP = "EP:thetiebar:header:shirts"
 
-  SIZE_ENABLED_BUTTON_IL = "(//button[not(@disabled)]/span/h5)[3]"
-  SIZE_ENABLED_BUTTON_TA = "thetiebar:PDP:size_btn"
-  SIZE_ENABLED_BUTTON_EP = "EP:thetiebar:PDP:size_btn"
+  SIZE_145_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='14.5']"
+  SIZE_145_TA = "thetiebar:PDP:145_size_btn"
+  SIZE_145_EP = "EP:thetiebar:PDP:145_size_btn"
+
+  SIZE_15_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15']"
+  SIZE_15_TA = "thetiebar:PDP:15_size_btn"
+  SIZE_15_EP = "EP:thetiebar:PDP:15_size_btn"
+
+  SIZE_155_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15.5']"
+  SIZE_155_TA = "thetiebar:PDP:155_size_btn"
+  SIZE_155_EP = "EP:thetiebar:PDP:155_size_btn"
+
+  SIZE_16_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16']"
+  SIZE_16_TA = "thetiebar:PDP:16_size_btn"
+  SIZE_16_EP = "EP:thetiebar:PDP:16_size_btn"
+
+  SIZE_165_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16.5']"
+  SIZE_165_TA = "thetiebar:PDP:165_size_btn"
+  SIZE_165_EP = "EP:thetiebar:PDP:165_size_btn"
+
+  SIZE_17_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17']"
+  SIZE_17_TA = "thetiebar:PDP:17_size_btn"
+  SIZE_17_EP = "EP:thetiebar:PDP:17_size_btn"
+
+  SIZE_175_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17.5']"
+  SIZE_175_TA = "thetiebar:PDP:175_size_btn"
+  SIZE_175_EP = "EP:thetiebar:PDP:175_size_btn"
+
+  SIZE_18_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18']"
+  SIZE_18_TA = "thetiebar:PDP:18_size_btn"
+  SIZE_18_EP = "EP:thetiebar:PDP:18_size_btn"
+
+  SIZE_185_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18.5']"
+  SIZE_185_TA = "thetiebar:PDP:185_size_btn"
+  SIZE_185_EP = "EP:thetiebar:PDP:185_size_btn"
 
   SLEEVE_LENGTH_IL = "(//button[not(@disabled)]/span/h5[contains(text(), '/')])[1]"
   SLEEVE_LENGTH_TA = "thetiebar:PDP:sleeve_length"
   SLEEVE_LENGTH_EP = "EP:thetiebar:PDP:sleeve_length"
 
-  QUANTITY_IL = "//button[contains(@aria-label, 'subtract')]"
+  QUANTITY_IL = "(//button[contains(@aria-label, 'subtract')])[1]"
   QUANTITY_TA = "thetiebar:PDP:quantity"
   QUANTITY_EP = "EP:thetiebar:PDP:quantity"
 
@@ -81,12 +113,6 @@ class TheTiebarProductPage
     return find(ta(FIT_TRIM_EP)).click if key == :ep
     return find(:xpath, FIT_TRIM_IL).click if key == :il
     find(:xpath, ta(FIT_TRIM_TA, FIT_TRIM_IL)).click
-  end
-
-  def click_sleeve_length_btn(key = nil)
-    return find(ta(SLEEVE_LENGTH_EP)).click if key == :ep
-    return find(:xpath, SLEEVE_LENGTH_IL).click if key == :il
-    find(:xpath, ta(SLEEVE_LENGTH_TA, SLEEVE_LENGTH_IL)).click
   end
 
   def click_add_quantity_btn(key = nil)
@@ -153,5 +179,79 @@ class TheTiebarProductPage
     return find(ta(VIEW_72_EP)).click if key == :ep
     return find(:xpath, VIEW_72_IL).click if key == :il
     find(:xpath, ta(VIEW_72_TA, VIEW_72_IL)).click
+  end
+
+  def click_to_select_neck_size
+    if  page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='14.5']")
+      # return find(ta(SIZE_145_EP)).click if key == :ep
+      # return find(:xpath, SIZE_145_IL).click if key == :il
+      # find(:xpath, ta(SIZE_145_TA, SIZE_145_IL)).click
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='14.5']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15']")
+      # return find(ta(SIZE_15_EP)).click if key == :ep
+      # return find(:xpath, SIZE_15_IL).click if key == :il
+      # find(:xpath, ta(SIZE_15_TA, SIZE_15_IL)).click
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15.5']")
+      # return find(ta(SIZE_155_EP)).click if key == :ep
+      # return find(:xpath, SIZE_155_IL).click if key == :il
+      # find(:xpath, ta(SIZE_155_TA, SIZE_155_IL)).click
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15.5']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16']")
+      # return find(ta(SIZE_16_EP)).click if key == :ep
+      # return find(:xpath, SIZE_16_IL).click if key == :il
+      # find(:xpath, ta(SIZE_16_TA, SIZE_16_IL)).click
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16.5']")
+      # return find(ta(SIZE_165_EP)).click if key == :ep
+      # return find(:xpath, SIZE_165_IL).click if key == :il
+      # find(:xpath, ta(SIZE_165_TA, SIZE_165_IL)).click
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16.5']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17']")
+      # return find(ta(SIZE_17_EP)).click if key == :ep
+      # return find(:xpath, SIZE_17_IL).click if key == :il
+      # find(:xpath, ta(SIZE_17_TA, SIZE_17_IL)).click
+      find(:xpath,"//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17.5']")
+      # return find(ta(SIZE_175_EP)).click if key == :ep
+      # return find(:xpath, SIZE_175_IL).click if key == :il
+      # find(:xpath, ta(SIZE_175_TA, SIZE_175_IL)).click
+      find(:xpath,"//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17.5']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18']")
+      # return find(ta(SIZE_18_EP)).click if key == :ep
+      # return find(:xpath, SIZE_18_IL).click if key == :il
+      # find(:xpath, ta(SIZE_18_TA, SIZE_18_IL)).click
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18.5']")
+      # return find(ta(SIZE_185_EP)).click if key == :ep
+      # return find(:xpath, SIZE_185_IL).click if key == :il
+      # find(:xpath, ta(SIZE_185_TA, SIZE_185_IL)).click
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18.5']").click
+    else
+      p "No sizes available"
+    end
+  end
+
+  def click_sleeve_length_btn
+    if  page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='32/33']")
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='32/33']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='34/35']")
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='34/35']").click
+
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='36/37']")
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='36/37']").click
+    else
+      p "No sleeve length sizes available"
+
+    end
   end
 end

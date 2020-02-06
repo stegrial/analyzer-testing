@@ -6,20 +6,20 @@ class TheTiebarRewardsPage
   include RSpec::Matchers
 
   VIEW_MY_REWARDS_IL = "(//div[text()='View My Rewards'])[1]"
-  VIEW_MY_REWARDS_TA = "thetiebar:login_page:view_my_rewards"
-  VIEW_MY_REWARDS_EP = "EP:thetiebar:login_page:view_my_rewards"
+  VIEW_MY_REWARDS_TA = "thetiebar:rewards_page:view_my_rewards"
+  VIEW_MY_REWARDS_EP = "EP:thetiebar:rewards_page:view_my_rewards"
 
   LEARN_MORE_HERE_IL = "(//a[@href='/loyalty-rewards-program'])[1]"
-  LEARN_MORE_HERE_TA = "thetiebar:login_page:learn_more_link"
-  LEARN_MORE_HERE_EP = "EP:thetiebar:login_page:learn_more_link"
+  LEARN_MORE_HERE_TA = "thetiebar:rewards_page:learn_more_link"
+  LEARN_MORE_HERE_EP = "EP:thetiebar:rewards_page:learn_more_link"
 
   FAQ_SECTION_IL =  "(//a[contains(text(), 'For more details, visit the FAQ section')])[1]"
-  FAQ_SECTION_TA = "thetiebar:login_page:faq_section"
-  FAQ_SECTION_EP = "EP:thetiebar:login_page:faq_section"
+  FAQ_SECTION_TA = "thetiebar:rewards_page:faq_section"
+  FAQ_SECTION_EP = "EP:thetiebar:rewards_page:faq_section"
 
   RETURN_TO_THE_TIE_BAR_LINK_IL = "(//*[contains(text(), ' Return to The Tie Bar')])[1]"
-  RETURN_TO_THE_TIE_BAR_LINK_TA = "thetiebar:login_page:return_to_thetiebar"
-  RETURN_TO_THE_TIE_BAR_LINK_EP = "EP:thetiebar:login_page:return_to_thetiebar"
+  RETURN_TO_THE_TIE_BAR_LINK_TA = "thetiebar:rewards_page:return_to_thetiebar"
+  RETURN_TO_THE_TIE_BAR_LINK_EP = "EP:thetiebar:rewards_page:return_to_thetiebar"
 
 
   def click_view_my_rewards(key = nil)

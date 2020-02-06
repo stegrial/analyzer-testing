@@ -77,6 +77,86 @@ class TheTiebarHeader
   SIGN_OUT_LINK_TA = "thetiebar:header:sign_out"
   SIGN_OUT_LINK_EP = "EP:thetiebar:header:sign_out"
 
+  ORDERS_ACCOUNT_MENU_IL = "//li//div[text()='Orders']"
+  ORDERS_ACCOUNT_MENU_TA = "thetiebar:header:orders_acc_menu"
+  ORDERS_ACCOUNT_MENU_EP = "EP:thetiebar:header:orders_acc_menu"
+
+  ADDRESS_BOOK_ACCOUNT_MENU_IL = "//li//div[text()='Address Book']"
+  ADDRESS_BOOK_ACCOUNT_MENU_TA = "thetiebar:header:address_book_acc_menu"
+  ADDRESS_BOOK_ACCOUNT_MENU_EP = "EP:thetiebar:header:address_book_acc_menu"
+
+  PAYMENT_ACCOUNT_MENU_IL = "//li//div[text()='Payment']"
+  PAYMENT_ACCOUNT_MENU_TA = "thetiebar:header:payment_acc_menu"
+  PAYMENT_ACCOUNT_MENU_EP = "EP:thetiebar:header:payment_acc_menu"
+
+  WISH_LIST_ACCOUNT_MENU_IL = "//li//div[text()='Wish List']"
+  WISH_LIST_ACCOUNT_MENU_TA = "thetiebar:header:wish_list_acc_menu"
+  WISH_LIST_ACCOUNT_MENU_EP = "EP:thetiebar:header:wish_list_acc_menu"
+
+  GIFT_CARDS_ACCOUNT_MENU_IL = "//li//div[text()='Gift Cards & Credit']"
+  GIFT_CARDS_ACCOUNT_MENU_TA = "thetiebar:header:gift_cards_credit_acc_menu"
+  GIFT_CARDS_ACCOUNT_MENU_EP = "EP:thetiebar:header:gift_cards_credit_acc_menu"
+
+  PROFILE_ACCOUNT_MENU_IL = "//li//div[text()='Profile']"
+  PROFILE_ACCOUNT_MENU_TA = "thetiebar:header:profile_acc_menu"
+  PROFILE_ACCOUNT_MENU_EP = "EP:thetiebar:header:profile_acc_menu"
+
+  PREFERENCE_ACCOUNT_MENU_IL = "//li//div[text()='Preferences']"
+  PREFERENCE_ACCOUNT_MENU_TA = "thetiebar:header:preferences_acc_menu"
+  PREFERENCE_ACCOUNT_MENU_EP = "EP:thetiebar:header:preferences_acc_menu"
+
+  NEED_HELP_ACCOUNT_MENU_IL = "//li//div[text()='Need Help?']"
+  NEED_HELP_ACCOUNT_MENU_TA = "thetiebar:header:need_help_acc_menu"
+  NEED_HELP_ACCOUNT_MENU_EP = "EP:thetiebar:header:need_help_acc_menu"
+
+  def click_orders_in_acc_menu(key = nil)
+    return find(ta(ORDERS_ACCOUNT_MENU_EP)).click if key == :ep
+    return find(:xpath, ORDERS_ACCOUNT_MENU_IL).click if key == :il
+    find(:xpath, ta(ORDERS_ACCOUNT_MENU_TA, ORDERS_ACCOUNT_MENU_IL)).click
+  end
+
+  def click_address_book_in_acc_menu(key = nil)
+    return find(ta(ADDRESS_BOOK_ACCOUNT_MENU_EP)).click if key == :ep
+    return find(:xpath, ADDRESS_BOOK_ACCOUNT_MENU_IL).click if key == :il
+    find(:xpath, ta(ADDRESS_BOOK_ACCOUNT_MENU_TA, ADDRESS_BOOK_ACCOUNT_MENU_IL)).click
+  end
+
+  def click_payment_in_acc_menu(key = nil)
+    return find(ta(PAYMENT_ACCOUNT_MENU_EP)).click if key == :ep
+    return find(:xpath, PAYMENT_ACCOUNT_MENU_IL).click if key == :il
+    find(:xpath, ta(PAYMENT_ACCOUNT_MENU_TA, PAYMENT_ACCOUNT_MENU_IL)).click
+  end
+
+  def click_wish_list_in_acc_menu(key = nil)
+    return find(ta(WISH_LIST_ACCOUNT_MENU_EP)).click if key == :ep
+    return find(:xpath, WISH_LIST_ACCOUNT_MENU_IL).click if key == :il
+    find(:xpath, ta(WISH_LIST_ACCOUNT_MENU_TA, WISH_LIST_ACCOUNT_MENU_IL)).click
+  end
+
+  def click_gift_cads_in_acc_menu(key = nil)
+    return find(ta(GIFT_CARDS_ACCOUNT_MENU_EP)).click if key == :ep
+    return find(:xpath, GIFT_CARDS_ACCOUNT_MENU_IL).click if key == :il
+    find(:xpath, ta(GIFT_CARDS_ACCOUNT_MENU_TA, GIFT_CARDS_ACCOUNT_MENU_IL)).click
+  end
+
+  def click_profile_in_acc_menu(key = nil)
+    return find(ta(PROFILE_ACCOUNT_MENU_EP)).click if key == :ep
+    return find(:xpath, PROFILE_ACCOUNT_MENU_IL).click if key == :il
+    find(:xpath, ta(PROFILE_ACCOUNT_MENU_TA, PROFILE_ACCOUNT_MENU_IL)).click
+  end
+
+  def click_preference_in_acc_menu(key = nil)
+    return find(ta(PREFERENCE_ACCOUNT_MENU_EP)).click if key == :ep
+    return find(:xpath, PREFERENCE_ACCOUNT_MENU_IL).click if key == :il
+    find(:xpath, ta(PREFERENCE_ACCOUNT_MENU_TA, PREFERENCE_ACCOUNT_MENU_IL)).click
+  end
+
+  def click_need_help_in_acc_menu(key = nil)
+    return find(ta(NEED_HELP_ACCOUNT_MENU_EP)).click if key == :ep
+    return find(:xpath, NEED_HELP_ACCOUNT_MENU_IL).click if key == :il
+    find(:xpath, ta(NEED_HELP_ACCOUNT_MENU_TA, NEED_HELP_ACCOUNT_MENU_IL)).click
+  end
+
   def click_logo(key = nil)
     return find(ta(LOGO_EP)).click if key == :ep
     return find(:xpath, LOGO_IL).click if key == :il
@@ -177,6 +257,12 @@ class TheTiebarHeader
     return find(ta(SEARCH_FIELD_EP)).native.send_keys(:enter) if key == :ep
     return find(:xpath, SEARCH_FIELD_IL).native.send_keys(:enter) if key == :il
     find(:xpath, ta(SEARCH_FIELD_TA, SEARCH_FIELD_IL)).native.send_keys(:enter)
+  end
+
+  def click_cart_icon(key = nil)
+    return find(ta(CART_BTN_EP)).click if key == :ep
+    return find(:xpath, CART_BTN_IL).click if key == :il
+    find(:xpath, ta(CART_BTN_TA, CART_BTN_IL)).click
   end
 
 

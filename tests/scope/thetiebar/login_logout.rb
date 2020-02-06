@@ -39,11 +39,11 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Account button" do
-        login_page.click_account_btn
+        header_page.click_account_btn
       end
 
       step "User clicks on the Sign Out link" do
-        login_page.click_sing_out_link
+        header_page.click_sing_out_link
       end
       sleep 3
     end
