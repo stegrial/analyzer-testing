@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-class TheTiebarFaqSearchResult
+class TheTiebarFaqPage
 
   include TrueAutomation::DSL
   include Capybara::DSL
@@ -41,6 +41,42 @@ class TheTiebarFaqSearchResult
   FAQ_SEARCH_INPUT_IL = "//input[contains(@id, 'query')]"
   FAQ_SEARCH_INPUT_TA = "thetiebar:faq_page:faq_search_input"
   FAQ_SEARCH_INPUT_EP = "EP:thetiebar:faq_page:faq_search_input"
+
+  INTERNATIONAL_SECTION_IL = "//h4[text()='International']"
+  INTERNATIONAL_SECTION_TA = "thetiebar:faq_page:international"
+  INTERNATIONAL_SECTION_EP = "EP:thetiebar:faq_page:international"
+
+  ABOUT_THE_TIEBAR_SECTION_IL = "//h4[text()='About The Tie Bar']"
+  ABOUT_THE_TIEBAR_SECTION_TA = "thetiebar:faq_page:about_the_tiebar"
+  ABOUT_THE_TIEBAR_SECTION_EP = "EP:thetiebar:faq_page:about_the_tiebar"
+
+  SIZING_SECTION_IL = "//h4[text()='Sizing']"
+  SIZING_SECTION_TA = "thetiebar:faq_page:sizing"
+  SIZING_SECTION_EP = "EP:thetiebar:faq_page:sizing"
+
+  PRODUCTS_SECTION_IL = "//h4[text()='Products']"
+  PRODUCTS_SECTION_TA = "thetiebar:faq_page:products"
+  PRODUCTS_SECTION_EP = "EP:thetiebar:faq_page:products"
+
+  STYLING_SECTION_IL = "//h4[text()='Styling']"
+  STYLING_SECTION_TA = "thetiebar:faq_page:styling"
+  STYLING_SECTION_EP = "EP:thetiebar:faq_page:styling"
+
+  BULK_WHOLESALE_SECTION_IL = "//h4[text()='Bulk / Wholesale']"
+  BULK_WHOLESALE_SECTION_TA = "thetiebar:faq_page:bulk_wholesale"
+  BULK_WHOLESALE_SECTION_EP = "EP:thetiebar:faq_page:bulk_wholesale"
+
+  RETURNS_PAYMENTS_SECTION_IL = "//h4[text()='Returns / Payments']"
+  RETURNS_PAYMENTS_SECTION_TA = "thetiebar:faq_page:returns_payment"
+  RETURNS_PAYMENTS_SECTION_EP = "EP:thetiebar:faq_page:returns_payment"
+
+  SHIPPING_SECTION_IL = "//h4[text()='Shipping']"
+  SHIPPING_SECTION_TA = "thetiebar:faq_page:shipping"
+  SHIPPING_SECTION_EP = "EP:thetiebar:faq_page:shipping"
+
+  HOLIDAY_SECTION_IL = "//h4[text()='Holiday']"
+  HOLIDAY_SECTION_TA = "thetiebar:faq_page:holiday"
+  HOLIDAY_SECTION_EP = "EP:thetiebar:faq_page:holiday"
 
 
   def click_view_my_rewards(key = nil)
@@ -90,4 +126,59 @@ class TheTiebarFaqSearchResult
     return find(:xpath, FAQ_SEARCH_INPUT_IL).set(value) if key == :il
     find(:xpath, ta(FAQ_SEARCH_INPUT_TA, FAQ_SEARCH_INPUT_IL)).set(value)
   end
+
+  def click_international_section(key = nil)
+    return find(ta(INTERNATIONAL_SECTION_EP)).click if key == :ep
+    return find(:xpath, INTERNATIONAL_SECTION_IL).click if key == :il
+    find(:xpath, ta(INTERNATIONAL_SECTION_TA, INTERNATIONAL_SECTION_IL)).click
+  end
+
+  def click_about_the_tiebar_section(key = nil)
+    return find(ta(ABOUT_THE_TIEBAR_SECTION_EP)).click if key == :ep
+    return find(:xpath, ABOUT_THE_TIEBAR_SECTION_IL).click if key == :il
+    find(:xpath, ta(ABOUT_THE_TIEBAR_SECTION_TA, ABOUT_THE_TIEBAR_SECTION_IL)).click
+  end
+
+  def click_sizing_section(key = nil)
+    return find(ta(SIZING_SECTION_EP)).click if key == :ep
+    return find(:xpath, SIZING_SECTION_IL).click if key == :il
+    find(:xpath, ta(SIZING_SECTION_TA, SIZING_SECTION_IL)).click
+  end
+
+  def click_products_section(key = nil)
+    return find(ta(PRODUCTS_SECTION_EP)).click if key == :ep
+    return find(:xpath, PRODUCTS_SECTION_IL).click if key == :il
+    find(:xpath, ta(PRODUCTS_SECTION_TA, PRODUCTS_SECTION_IL)).click
+  end
+
+  def click_styling_section(key = nil)
+    return find(ta(STYLING_SECTION_EP)).click if key == :ep
+    return find(:xpath, STYLING_SECTION_IL).click if key == :il
+    find(:xpath, ta(STYLING_SECTION_TA, STYLING_SECTION_IL)).click
+  end
+
+  def click_bulk_wholesale_section(key = nil)
+    return find(ta(BULK_WHOLESALE_SECTION_EP)).click if key == :ep
+    return find(:xpath, BULK_WHOLESALE_SECTION_IL).click if key == :il
+    find(:xpath, ta(BULK_WHOLESALE_SECTION_TA, BULK_WHOLESALE_SECTION_IL)).click
+  end
+
+  def click_returns_payment_section(key = nil)
+    return find(ta(RETURNS_PAYMENTS_SECTION_EP)).click if key == :ep
+    return find(:xpath, RETURNS_PAYMENTS_SECTION_IL).click if key == :il
+    find(:xpath, ta(RETURNS_PAYMENTS_SECTION_TA, RETURNS_PAYMENTS_SECTION_IL)).click
+  end
+
+  def click_shipping_section(key = nil)
+    return find(ta(SHIPPING_SECTION_EP)).click if key == :ep
+    return find(:xpath, SHIPPING_SECTION_IL).click if key == :il
+    find(:xpath, ta(SHIPPING_SECTION_TA, SHIPPING_SECTION_IL)).click
+  end
+
+  def click_holiday_section(key = nil)
+    return find(ta(HOLIDAY_SECTION_EP)).click if key == :ep
+    return find(:xpath, HOLIDAY_SECTION_IL).click if key == :il
+    find(:xpath, ta(HOLIDAY_SECTION_TA, HOLIDAY_SECTION_IL)).click
+  end
+
 end

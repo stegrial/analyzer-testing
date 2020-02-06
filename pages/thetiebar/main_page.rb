@@ -6,24 +6,24 @@ class TheTiebarMainPage
   include RSpec::Matchers
 
   SING_UP_INPUT_IL = "//input[@id='signUpEmail']"
-  SING_UP_INPUT_TA = "thetiebar:body:singup_input"
-  SING_UP_INPUT_EP = "EP:thetiebar:body:singup_input"
+  SING_UP_INPUT_TA = "thetiebar:main_page:singup_input"
+  SING_UP_INPUT_EP = "EP:thetiebar:main_page:singup_input"
 
   JOIN_BTN_IL = "//span[contains(text(), 'Join')]"
-  JOIN_BTN_TA = "thetiebar:body:join_btn"
-  JOIN_BTN_EP = "EP:thetiebar:body:join_btn"
+  JOIN_BTN_TA = "thetiebar:main_page:join_btn"
+  JOIN_BTN_EP = "EP:thetiebar:main_page:join_btn"
 
   CONGRATS_TEXT_IL = "//p[contains(text(), 'on the list, enjoy.')]"
-  CONGRATS_TEXT_TA = "thetiebar:body:congrats_text"
-  CONGRATS_TEXT_EP = "EP:thetiebar:body:congrats_text"
+  CONGRATS_TEXT_TA = "thetiebar:main_page:congrats_text"
+  CONGRATS_TEXT_EP = "EP:thetiebar:main_page:congrats_text"
 
   TERMS_TO_USE_LINK_IL = "//a[contains(text(), 'terms of use')]"
-  TERMS_TO_USE_LINK_TA =  "thetiebar:body:terms_to_use_link"
-  TERMS_TO_USE_LINK_EP = "EP:thetiebar:body:terms_to_use_link"
+  TERMS_TO_USE_LINK_TA =  "thetiebar:main_page:terms_to_use_link"
+  TERMS_TO_USE_LINK_EP = "EP:thetiebar:main_page:terms_to_use_link"
 
   PRIVACY_POLICE_LINK_IL = "//a[contains(text(), 'privacy policy')]"
-  PRIVACY_POLICE_LINK_TA = "thetiebar:body:privacy_police_link"
-  PRIVACY_POLICE_LINK_EP = "EP:thetiebar:body:privacy_police_link"
+  PRIVACY_POLICE_LINK_TA = "thetiebar:main_page:privacy_police_link"
+  PRIVACY_POLICE_LINK_EP = "EP:thetiebar:main_page:privacy_police_link"
 
   def fill_singup_field(key = nil, value)
       return find(ta(SING_UP_INPUT_EP)).set(value) if key == :ep
