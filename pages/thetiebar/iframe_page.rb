@@ -5,6 +5,7 @@ class TheTiebarIframe
   include Capybara::DSL
   include RSpec::Matchers
 
+
   HELP_CHAT_BTN_IL = "//div[contains(text(), 'Chat Us')]"
   HELP_CHAT_BTN_TA = "thetiebar:iframe:help_chat"
   HELP_CHAT_BTN_EP = "EP:thetiebar:iframe:help_chat"
@@ -28,6 +29,7 @@ class TheTiebarIframe
   MINIMAZE_CHAT_IL = "(//button[contains(@class, 'IconButton')])[1]"
   MINIMAZE_CHAT_TA = "thetiebar:iframe:minimaze_chat"
   MINIMAZE_CHAT_EP = "EP:thetiebar:iframe:minimaze_chat"
+
 
   def click_help_chat(key = nil)
     return find(ta(HELP_CHAT_BTN_EP)).click if key == :ep
@@ -74,6 +76,5 @@ class TheTiebarIframe
       find(:xpath, ta(MINIMAZE_CHAT_TA, MINIMAZE_CHAT_IL)).click
     end
   end
-
 
 end

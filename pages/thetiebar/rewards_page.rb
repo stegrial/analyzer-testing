@@ -1,6 +1,7 @@
 require 'spec_helper'
 class TheTiebarRewardsPage
 
+
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
@@ -39,4 +40,5 @@ class TheTiebarRewardsPage
     return find(:xpath, FAQ_SECTION_IL).click if key == :il
     find(:xpath, ta(FAQ_SECTION_EP, FAQ_SECTION_IL)).click
   end
+
 end

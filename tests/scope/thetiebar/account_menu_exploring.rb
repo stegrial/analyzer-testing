@@ -13,7 +13,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  feature 'Account menu (reconsider menu)' do
+  feature 'Account menu (reconsider menu) exploring' do
 
     # Initial locators with Recording
 

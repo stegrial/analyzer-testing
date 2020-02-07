@@ -5,6 +5,7 @@ class TheTiebarMainPage
   include Capybara::DSL
   include RSpec::Matchers
 
+
   SING_UP_INPUT_IL = "//input[@id='signUpEmail']"
   SING_UP_INPUT_TA = "thetiebar:main_page:singup_input"
   SING_UP_INPUT_EP = "EP:thetiebar:main_page:singup_input"
@@ -54,4 +55,5 @@ class TheTiebarMainPage
     return find(:xpath, PRIVACY_POLICE_LINK_IL).click if key == :il
     find(:xpath, ta(PRIVACY_POLICE_LINK_TA, PRIVACY_POLICE_LINK_IL)).click
   end
+
 end

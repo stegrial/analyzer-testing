@@ -13,7 +13,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  feature 'Resive category' do
+  feature 'Revese category' do
 
     # Initial locators with Recording
 
