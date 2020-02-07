@@ -5,6 +5,7 @@ class TheTiebarAccount_page
   include Capybara::DSL
   include RSpec::Matchers
 
+
   MY_ACC_BREADCRUMB_IL = "//a[contains(text(), 'My Account')]"
   MY_ACC_BREADCRUMB_TA = "thetiebar:my_acc_page:my_account"
   MY_ACC_BREADCRUMB_EP = "EP:thetiebar:my_acc_page:my_account"

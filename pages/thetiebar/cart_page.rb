@@ -30,6 +30,7 @@ class TheTiebarCartPage
   REMOVE_LINK_FROM_CART_TA = "thetiebar:cart_page:remove_from_cart_link"
   REMOVE_LINK_FROM_CART_EP = "EP:thetiebar:cart_page:remove_from_cart_link"
 
+
   def click_plus_quantity_icon(key = nil)
     return find(ta(PLUS_QUANTITY_CART_EP)).click if key == :ep
     return find(:xpath, PLUS_QUANTITY_CART_IL).click if key == :il
@@ -65,4 +66,5 @@ class TheTiebarCartPage
     return find(:xpath, REMOVE_LINK_FROM_CART_IL).click if key == :il
     find(:xpath, ta(REMOVE_LINK_FROM_CART_TA, REMOVE_LINK_FROM_CART_IL)).click
   end
+
 end

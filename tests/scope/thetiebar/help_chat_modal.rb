@@ -62,27 +62,27 @@ describe 'Preconditions' do
       end
 
       step "User fill name in chat modal", "testName" do |test_name|
-        check_element_path :xpath, TheTiebarIframe::CHAT_NAME_TA, TheTiebarIframe::CHAT_NAME_IL
+        within_frame(0) { check_element_path :xpath, TheTiebarIframe::CHAT_NAME_TA, TheTiebarIframe::CHAT_NAME_IL }
         header_page.fill_chat_name  test_name
       end
 
       step "User fill email in chat modal", "test@gmail.com" do |email|
-        check_element_path :xpath, TheTiebarIframe::CHAT_EMAIL_TA, TheTiebarIframe::CHAT_EMAIL_IL
+        within_frame(0) { check_element_path :xpath, TheTiebarIframe::CHAT_EMAIL_TA, TheTiebarIframe::CHAT_EMAIL_IL }
         header_page.fill_chat_email  email
       end
 
       step "User fill message in chat modal", "test test test" do |message|
-        check_element_path :xpath, TheTiebarIframe::CHAT_MESSAGE_TA, TheTiebarIframe::CHAT_MESSAGE_IL
+        within_frame(0) { check_element_path :xpath, TheTiebarIframe::CHAT_MESSAGE_TA, TheTiebarIframe::CHAT_MESSAGE_IL }
         header_page.fill_chat_message  message
       end
 
       step "User clicks start button in chat modal" do
-        check_element_path :xpath, TheTiebarIframe::START_CHAT_BTN_TA, TheTiebarIframe::START_CHAT_BTN_IL
+        within_frame(0) { check_element_path :xpath, TheTiebarIframe::START_CHAT_BTN_TA, TheTiebarIframe::START_CHAT_BTN_IL }
         header_page.click_start_chat_btn
       end
 
       step "User click minimaze chat button" do
-        check_element_path :xpath, TheTiebarIframe::MINIMAZE_CHAT_TA, TheTiebarIframe::MINIMAZE_CHAT_IL
+        within_frame(0) { check_element_path :xpath, TheTiebarIframe::MINIMAZE_CHAT_TA, TheTiebarIframe::MINIMAZE_CHAT_IL }
         header_page.click_minimaze_chat
       end
 
@@ -103,27 +103,27 @@ describe 'Preconditions' do
       end
 
       step "User fill name in chat modal", "testName" do |test_name|
-        check_element_path :xpath, TheTiebarIframe::CHAT_NAME_EP, TheTiebarIframe::CHAT_NAME_IL
+        within_frame(0) {  check_element_path :xpath, TheTiebarIframe::CHAT_NAME_EP, TheTiebarIframe::CHAT_NAME_IL }
         header_page.fill_chat_name  :ep, test_name
       end
 
       step "User fill email in chat modal", "test@gmail.com" do |email|
-        check_element_path :xpath, TheTiebarIframe::CHAT_EMAIL_EP, TheTiebarIframe::CHAT_EMAIL_IL
+        within_frame(0) {  check_element_path :xpath, TheTiebarIframe::CHAT_EMAIL_EP, TheTiebarIframe::CHAT_EMAIL_IL }
         header_page.fill_chat_email  :ep, email
       end
 
       step "User fill message in chat modal", "test test test" do |message|
-        check_element_path :xpath, TheTiebarIframe::CHAT_MESSAGE_EP, TheTiebarIframe::CHAT_MESSAGE_IL
+        within_frame(0) {   check_element_path :xpath, TheTiebarIframe::CHAT_MESSAGE_EP, TheTiebarIframe::CHAT_MESSAGE_IL }
         header_page.fill_chat_message :ep, message
       end
 
       step "User clicks start button in chat modal" do
-        check_element_path :xpath, TheTiebarIframe::START_CHAT_BTN_EP, TheTiebarIframe::START_CHAT_BTN_IL
+        within_frame(0) {  check_element_path :xpath, TheTiebarIframe::START_CHAT_BTN_EP, TheTiebarIframe::START_CHAT_BTN_IL }
         header_page.click_start_chat_btn :ep
       end
 
       step "User click minimaze chat button" do
-        check_element_path :xpath, TheTiebarIframe::MINIMAZE_CHAT_EP, TheTiebarIframe::MINIMAZE_CHAT_IL
+        within_frame(0) {  check_element_path :xpath, TheTiebarIframe::MINIMAZE_CHAT_EP, TheTiebarIframe::MINIMAZE_CHAT_IL }
         header_page.click_minimaze_chat :ep
       end
 

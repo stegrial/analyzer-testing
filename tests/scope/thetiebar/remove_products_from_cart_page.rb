@@ -14,7 +14,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  feature 'View Cart  - adding quantity in cart page' do
+  feature 'Remove products from cart page' do
 
     # Initial locators with Recording
 

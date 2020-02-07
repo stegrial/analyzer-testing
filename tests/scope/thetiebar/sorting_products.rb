@@ -12,7 +12,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  feature 'Filtering product page' do
+  feature 'Sorting product page' do
 
     # Initial locators with Recording
 

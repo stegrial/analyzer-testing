@@ -5,6 +5,7 @@ class TheTiebarHeader
   include Capybara::DSL
   include RSpec::Matchers
 
+
   LOGO_IL = "//a[@href='https://www.thetiebar.com/']"
   LOGO_TA = "thetiebar:header:logo"
   LOGO_EP = "EP:thetiebar:header:logo"
@@ -108,6 +109,7 @@ class TheTiebarHeader
   NEED_HELP_ACCOUNT_MENU_IL = "//li//div[text()='Need Help?']"
   NEED_HELP_ACCOUNT_MENU_TA = "thetiebar:header:need_help_acc_menu"
   NEED_HELP_ACCOUNT_MENU_EP = "EP:thetiebar:header:need_help_acc_menu"
+
 
   def click_orders_in_acc_menu(key = nil)
     return find(ta(ORDERS_ACCOUNT_MENU_EP)).click if key == :ep
@@ -264,6 +266,5 @@ class TheTiebarHeader
     return find(:xpath, CART_BTN_IL).click if key == :il
     find(:xpath, ta(CART_BTN_TA, CART_BTN_IL)).click
   end
-
 
 end

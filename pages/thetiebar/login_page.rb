@@ -5,6 +5,7 @@ class TheTiebarLoginPage
   include Capybara::DSL
   include RSpec::Matchers
 
+
   USERNAME_IL = "//input[contains(@id, 'Username')]"
   USERNAME_TA = "thetiebar:login_page:Username"
   USERNAME_EP = "EP:thetiebar:login_page:Username"
@@ -48,6 +49,7 @@ class TheTiebarLoginPage
   CREATE_ACCOUNT_BTN_IL = "//input[contains(@id, 'signupButton')]"
   CREATE_ACCOUNT_BTN_TA = "thetiebar:login_page:create_acc"
   CREATE_ACCOUNT_BTN_EP = "EP:thetiebar:login_page:create_acc"
+
 
   def fill_username_field(key = nil, value)
     return find(ta(USERNAME_EP)).set(value) if key == :ep

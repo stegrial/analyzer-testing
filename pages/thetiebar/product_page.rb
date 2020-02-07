@@ -97,6 +97,26 @@ class TheTiebarProductPage
   VIEW_72_TA = "thetiebar:PDP:72view"
   VIEW_72_EP = "EP:thetiebar:PDP:72view"
 
+  SHIRTS_H1_IL = "//h1[contains(text(),'Dress Shirts')]"
+  SHIRTS_H1_TA = "thetiebar:PDP:shirts_h1"
+  SHIRTS_H1_EP = "EP:thetiebar:PDP:shirts_h1"
+
+  WEDDING_TIES_H1_IL = "//h1[contains(text(),'Wedding Ties')]"
+  WEDDING_TIES_H1_TA = "thetiebar:PDP:wedding_shop_h1"
+  WEDDING_TIES_H1_EP = "EP:thetiebar:PDP:wedding_shop_h1"
+
+  def should_see_wedding_ties__h1(key = nil)
+    return assert_selector(ta(WEDDING_TIES_H1_EP)) if key == :ep
+    return assert_selector(:xpath, WEDDING_TIES_H1_IL) if key == :il
+    assert_selector(:xpath, ta(WEDDING_TIES_H1_TA, WEDDING_TIES_H1_IL))
+  end
+
+  def should_see_shirts_h1(key = nil)
+    return assert_selector(ta(SHIRTS_H1_EP)) if key == :ep
+    return assert_selector(:xpath, SHIRTS_H1_IL) if key == :il
+    assert_selector(:xpath, ta(SHIRTS_H1_TA, SHIRTS_H1_IL))
+  end
+
   def click_second_shirt_on_product(key = nil)
     return find(ta(SECOND_SHIRT_PDP_EP)).click if key == :ep
     return find(:xpath, SECOND_SHIRT_PDP_IL).click if key == :il

@@ -6,6 +6,7 @@ class TheTiebarFaqPage
   include Capybara::DSL
   include RSpec::Matchers
 
+
   VIEW_MY_REWARDS_IL = "(//div[text()='View My Rewards'])[1]"
   VIEW_MY_REWARDS_TA = "thetiebar:faq_page:view_my_rewards"
   VIEW_MY_REWARDS_EP = "EP:thetiebar:faq_page:view_my_rewards"
@@ -179,6 +180,12 @@ class TheTiebarFaqPage
     return find(ta(HOLIDAY_SECTION_EP)).click if key == :ep
     return find(:xpath, HOLIDAY_SECTION_IL).click if key == :il
     find(:xpath, ta(HOLIDAY_SECTION_TA, HOLIDAY_SECTION_IL)).click
+    end
+
+  def click_return_to_the_tiebar(key = nil)
+    return find(ta(RETURN_TO_THE_TIE_BAR_LINK_EP)).click if key == :ep
+    return find(:xpath, RETURN_TO_THE_TIE_BAR_LINK_IL).click if key == :il
+    find(:xpath, ta(RETURN_TO_THE_TIE_BAR_LINK_TA, RETURN_TO_THE_TIE_BAR_LINK_IL)).click
   end
 
 end
