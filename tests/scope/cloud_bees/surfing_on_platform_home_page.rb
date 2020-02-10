@@ -13,7 +13,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  feature 'Creating and Deleting application' do
+  feature 'Surfing on Platform home page' do
 
     # Initial locators with Recording
 
@@ -59,6 +59,7 @@ describe 'Preconditions' do
 
       step "Admin clicks on administration link" do
         platform_page.click_administration_link :il # step is duplicated below
+        sleep 2 # for wait fully load page
       end
 
       step "Admin sorts the Event Log" do
@@ -109,6 +110,7 @@ describe 'Preconditions' do
       end
 
       step "Admin goes to the page", settings('cloud_bees')['platform_home_page'] do |url|
+        sleep 3 # to wait for authorization
         page.visit url
       end
 

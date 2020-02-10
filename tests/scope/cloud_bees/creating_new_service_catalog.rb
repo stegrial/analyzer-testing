@@ -10,7 +10,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   after(:each) do
@@ -50,7 +50,6 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_catalog
       end
 
-
       step "User clicks to create new button" do
         catalogs_page.click_to_create_new_btn
       end
@@ -64,15 +63,15 @@ describe 'Preconditions' do
       end
 
       step "User select default project from list" do
-       catalogs_page.select_proj_from_list
+        catalogs_page.select_proj_from_list
       end
 
       step "User clicks ok button in modal" do
-        catalogs_page.click_ok_in_modal_btn :il # step is duplicated below
+        catalogs_page.click_ok_in_modal_btn
       end
 
       step "User set name in form", 'new_form_name_1' do |value|
-        catalogs_page.set_name_in_form :il, value # step is duplicated below
+        catalogs_page.set_name_in_form value
       end
 
       step "User set description in form", 'description' do |value|
@@ -127,6 +126,8 @@ describe 'Preconditions' do
       step "User clicks ok button in modal" do
         catalogs_page.click_ok_in_modal_btn
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -136,10 +137,10 @@ describe 'Preconditions' do
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field  credentials['username']
+        login_page.fill_username_field credentials['username']
 
         check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_TA, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field  credentials['pass']
+        login_page.fill_pass_field credentials['pass']
 
         check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
         login_page.click_sign_in_button
@@ -159,7 +160,7 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_btn
       end
 
-      step "User set name new catalog",  'new_name_catalog' do |value|
+      step "User set name new catalog", 'new_name_catalog' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FLD_TA, CloudBeesCatalogs::CATALOGS_NAME_FLD_IL
         catalogs_page.set_catalog_name value
       end
@@ -186,7 +187,7 @@ describe 'Preconditions' do
 
       step "User set description in form", 'description' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_TA, CloudBeesCatalogs::CATALOGS_DESCRIPTION_FORM_IL
-        catalogs_page.set_description_in_form  value
+        catalogs_page.set_description_in_form value
       end
 
       step "User clicks add another button" do
@@ -249,6 +250,8 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesCatalogs::OK_IN_MODAL_BTN_TA, CloudBeesCatalogs::OK_IN_MODAL_BTN_IL
         catalogs_page.click_ok_in_modal_btn
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -260,7 +263,7 @@ describe 'Preconditions' do
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field :ep,  credentials['username']
+        login_page.fill_username_field :ep, credentials['username']
 
         check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
         login_page.fill_pass_field :ep, credentials['pass']
@@ -283,7 +286,7 @@ describe 'Preconditions' do
         catalogs_page.click_to_create_new_btn :ep
       end
 
-      step "User set name new catalog",  'new_name_catalog' do |value|
+      step "User set name new catalog", 'new_name_catalog' do |value|
         check_element_path :css, CloudBeesCatalogs::CATALOGS_NAME_FLD_EP, CloudBeesCatalogs::CATALOGS_NAME_FLD_IL
         catalogs_page.set_catalog_name :ep, value
       end
@@ -373,6 +376,8 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesCatalogs::OK_IN_MODAL_BTN_EP, CloudBeesCatalogs::OK_IN_MODAL_BTN_IL
         catalogs_page.click_ok_in_modal_btn :ep
       end
+
+      sleep 3
     end
   end
 end

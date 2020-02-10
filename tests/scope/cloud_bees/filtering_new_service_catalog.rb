@@ -10,10 +10,10 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  feature 'CloudBees - Filtering Service Catalog' do
+  feature 'Filtering Service Catalog' do
 
     # Initial locators with Recording
 
@@ -66,10 +66,10 @@ describe 'Preconditions' do
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_TA, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field  credentials['username']
+        login_page.fill_username_field credentials['username']
 
         check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_TA, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field  credentials['pass']
+        login_page.fill_pass_field credentials['pass']
 
         check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_TA, CloudBeesLogin::SIGN_IN_BTN_IL
         login_page.click_sign_in_button
@@ -109,6 +109,7 @@ describe 'Preconditions' do
         catalogs_page.click_utility_in_catalog_list
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -120,7 +121,7 @@ describe 'Preconditions' do
 
       step "Admin do login", settings('cloud_bees') do |credentials|
         check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field :ep,  credentials['username']
+        login_page.fill_username_field :ep, credentials['username']
 
         check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
         login_page.fill_pass_field :ep, credentials['pass']
@@ -162,6 +163,8 @@ describe 'Preconditions' do
         check_element_path :css, CloudBeesCatalogs::UTILITY_IN_CATALOG_LIST_EP, CloudBeesCatalogs::UTILITY_IN_CATALOG_LIST_IL
         catalogs_page.click_utility_in_catalog_list
       end
+
+      sleep 3
     end
   end
 end

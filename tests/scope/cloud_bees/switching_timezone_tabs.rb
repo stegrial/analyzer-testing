@@ -14,7 +14,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  feature 'CloudBees - Switching timezone tabs' do
+  feature 'Switching timezone tabs' do
 
     # Initial locators with Recording
 
