@@ -38,7 +38,7 @@ describe 'Preconditions' do
     end
   end
 
-  feature 'CloudBees - Mapping Environment to Application ' do
+  feature 'Mapping Environment to Application' do
 
     # Initial locators with Recording
 
@@ -155,7 +155,7 @@ describe 'Preconditions' do
        env_editor.click_to_add_resource
       end
 
-      step "Admin clicks to add resource" do
+      step "Admin select resource from list" do
         env_editor.select_resource_from_list
       end
 
@@ -297,7 +297,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "Admin clicks create plus icon for new env " do
+      step "Admin clicks create plus icon for new env" do
         check_element_path :css  , CloudBeesEnv::CREATE_ENV_PLUS_BTN_TA, CloudBeesEnv::CREATE_ENV_PLUS_BTN_IL
         env.create_new_env
       end
@@ -337,7 +337,7 @@ describe 'Preconditions' do
         env_editor.click_to_add_resource
       end
 
-      step "Admin clicks to add resource" do
+      step "Admin select resource from list" do
         check_element_path :xpath  , CloudBeesEnvEditor::SELECT_RESOURCE_FROM_LIST_TA, CloudBeesEnvEditor::SELECT_RESOURCE_FROM_LIST_IL
         env_editor.select_resource_from_list
       end
@@ -535,7 +535,7 @@ describe 'Preconditions' do
         env_editor.click_to_add_resource :ep
       end
 
-      step "Admin clicks to add resource" do
+      step "Admin select resource from list" do
         check_element_path :xpath  , CloudBeesEnvEditor::SELECT_RESOURCE_FROM_LIST_EP, CloudBeesEnvEditor::SELECT_RESOURCE_FROM_LIST_IL
         env_editor.select_resource_from_list :ep
       end
