@@ -5,6 +5,7 @@ class TheTiebarCanada
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
 
   SHOP_WEDDING_LINK_IL = "//a[@href='/wedding-ties']"
@@ -21,21 +22,27 @@ class TheTiebarCanada
 
 
   def should_see_canada_h1(key = nil)
-    return assert_selector(ta(THE_TIABAR_CANADA_H1_EP)) if key == :ep
-    return assert_selector(:xpath, THE_TIABAR_CANADA_H1_IL) if key == :il
-    assert_selector(:xpath, ta(THE_TIABAR_CANADA_H1_TA, THE_TIABAR_CANADA_H1_IL))
+    post_processing key do
+      return assert_selector(ta(THE_TIABAR_CANADA_H1_EP)) if key == :ep
+      return assert_selector(:xpath, THE_TIABAR_CANADA_H1_IL) if key == :il
+      assert_selector(:xpath, ta(THE_TIABAR_CANADA_H1_TA, THE_TIABAR_CANADA_H1_IL))
+    end
   end
 
   def click_wedding_shop(key = nil)
-    return find(ta(SHOP_WEDDING_LINK_EP)).click if key == :ep
-    return find(:xpath, SHOP_WEDDING_LINK_IL).click if key == :il
-    find(:xpath, ta(SHOP_WEDDING_LINK_TA, SHOP_WEDDING_LINK_IL)).click
+    post_processing key do
+      return find(ta(SHOP_WEDDING_LINK_EP)).click if key == :ep
+      return find(:xpath, SHOP_WEDDING_LINK_IL).click if key == :il
+      find(:xpath, ta(SHOP_WEDDING_LINK_TA, SHOP_WEDDING_LINK_IL)).click
+    end
   end
 
   def click_shirts_shop(key = nil)
-    return find(ta(SHIRTS_SHOP_LINK_EP)).click if key == :ep
-    return find(:xpath, SHIRTS_SHOP_LINK_IL).click if key == :il
-    find(:xpath, ta(SHIRTS_SHOP_LINK_TA, SHIRTS_SHOP_LINK_IL)).click
+    post_processing key do
+      return find(ta(SHIRTS_SHOP_LINK_EP)).click if key == :ep
+      return find(:xpath, SHIRTS_SHOP_LINK_IL).click if key == :il
+      find(:xpath, ta(SHIRTS_SHOP_LINK_TA, SHIRTS_SHOP_LINK_IL)).click
+    end
   end
 
 end

@@ -5,6 +5,7 @@ class TheTiebarLocation
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
 
   BOOK_APPOINTMENT_IL = "//a[contains(@title, 'Boston store')]"
@@ -53,87 +54,110 @@ class TheTiebarLocation
 
 
   def click_book_appointment_boston(key = nil)
-    return find(ta(BOOK_APPOINTMENT_EP)).click if key == :ep
-    return find(:xpath, BOOK_APPOINTMENT_IL).click if key == :il
-    find(:xpath, ta(BOOK_APPOINTMENT_TA, BOOK_APPOINTMENT_IL)).click
+    post_processing key do
+      return find(ta(BOOK_APPOINTMENT_EP)).click if key == :ep
+      return find(:xpath, BOOK_APPOINTMENT_IL).click if key == :il
+      find(:xpath, ta(BOOK_APPOINTMENT_TA, BOOK_APPOINTMENT_IL)).click
+    end
   end
 
   def click_day_appointment(key = nil)
-    within_frame(1) do
-      return find(ta(DAY_APPOINTMENT_EP)).click if key == :ep
-      return find(:xpath, DAY_APPOINTMENT_IL).click if key == :il
-      find(:xpath, ta(DAY_APPOINTMENT_TA, DAY_APPOINTMENT_IL)).click
+    post_processing key do
+      within_frame(1) do
+        return find(ta(DAY_APPOINTMENT_EP)).click if key == :ep
+        return find(:xpath, DAY_APPOINTMENT_IL).click if key == :il
+        find(:xpath, ta(DAY_APPOINTMENT_TA, DAY_APPOINTMENT_IL)).click
+      end
     end
   end
 
   def click_time_appointment(key = nil)
-    within_frame(1) do
-      return find(ta(TIME_APPOINTMENT_EP)).click if key == :ep
-      return find(:xpath, TIME_APPOINTMENT_IL).click if key == :il
-      find(:xpath, ta(TIME_APPOINTMENT_TA, TIME_APPOINTMENT_IL)).click
+    post_processing key do
+      within_frame(1) do
+        return find(ta(TIME_APPOINTMENT_EP)).click if key == :ep
+        return find(:xpath, TIME_APPOINTMENT_IL).click if key == :il
+        find(:xpath, ta(TIME_APPOINTMENT_TA, TIME_APPOINTMENT_IL)).click
+      end
     end
   end
 
   def click_next_btn_appointment(key = nil)
-    within_frame(1) do
-      return find(ta(NEXT_BUTTON_EP)).click if key == :ep
-      return find(:xpath, NEXT_BUTTON_IL).click if key == :il
-      find(:xpath, ta(NEXT_BUTTON_TA, NEXT_BUTTON_IL)).click
+    post_processing key do
+      within_frame(1) do
+        return find(ta(NEXT_BUTTON_EP)).click if key == :ep
+        return find(:xpath, NEXT_BUTTON_IL).click if key == :il
+        find(:xpath, ta(NEXT_BUTTON_TA, NEXT_BUTTON_IL)).click
+      end
     end
   end
+
   def click_book_btn_appointment(key = nil)
-    within_frame(1) do
-      return find(ta(BOOK_BUTTON_EP)).click if key == :ep
-      return find(:xpath, BOOK_BUTTON_IL).click if key == :il
-      find(:xpath, ta(BOOK_BUTTON_TA, BOOK_BUTTON_IL)).click
+    post_processing key do
+      within_frame(1) do
+        return find(ta(BOOK_BUTTON_EP)).click if key == :ep
+        return find(:xpath, BOOK_BUTTON_IL).click if key == :il
+        find(:xpath, ta(BOOK_BUTTON_TA, BOOK_BUTTON_IL)).click
+      end
     end
   end
 
   def fill_first_name(key = nil, value)
-    within_frame(1) do
-      return find(ta(FIRST_NAME_EP)).set(value) if key == :ep
-      return find(:xpath, FIRST_NAME_IL).set(value) if key == :il
-      find(:xpath, ta(FIRST_NAME_TA, FIRST_NAME_IL)).set(value)
+    post_processing key do
+      within_frame(1) do
+        return find(ta(FIRST_NAME_EP)).set(value) if key == :ep
+        return find(:xpath, FIRST_NAME_IL).set(value) if key == :il
+        find(:xpath, ta(FIRST_NAME_TA, FIRST_NAME_IL)).set(value)
+      end
     end
   end
 
   def fill_last_name(key = nil, value)
-    within_frame(1) do
-      return find(ta(LAST_NAME_EP)).set(value) if key == :ep
-      return find(:xpath, LAST_NAME_IL).set(value) if key == :il
-      find(:xpath, ta(LAST_NAME_TA, LAST_NAME_IL)).set(value)
+    post_processing key do
+      within_frame(1) do
+        return find(ta(LAST_NAME_EP)).set(value) if key == :ep
+        return find(:xpath, LAST_NAME_IL).set(value) if key == :il
+        find(:xpath, ta(LAST_NAME_TA, LAST_NAME_IL)).set(value)
+      end
     end
   end
 
   def fill_email(key = nil, value)
-    within_frame(1) do
-      return find(ta(EMAIL_EP)).set(value) if key == :ep
-      return find(:xpath, EMAIL_IL).set(value) if key == :il
-      find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set(value)
+    post_processing key do
+      within_frame(1) do
+        return find(ta(EMAIL_EP)).set(value) if key == :ep
+        return find(:xpath, EMAIL_IL).set(value) if key == :il
+        find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set(value)
+      end
     end
   end
 
   def fill_mobile(key = nil, value)
-    within_frame(1) do
-      return find(ta(MOBILE_PHONE_EP)).set(value) if key == :ep
-      return find(:xpath, MOBILE_PHONE_IL).set(value) if key == :il
-      find(:xpath, ta(MOBILE_PHONE_TA, MOBILE_PHONE_IL)).set(value)
+    post_processing key do
+      within_frame(1) do
+        return find(ta(MOBILE_PHONE_EP)).set(value) if key == :ep
+        return find(:xpath, MOBILE_PHONE_IL).set(value) if key == :il
+        find(:xpath, ta(MOBILE_PHONE_TA, MOBILE_PHONE_IL)).set(value)
+      end
     end
   end
 
   def fill_details(key = nil, value)
-    within_frame(1) do
-      return find(ta(SOME_DETAILS_EP)).set(value) if key == :ep
-      return find(:xpath, SOME_DETAILS_IL).set(value) if key == :il
-      find(:xpath, ta(SOME_DETAILS_TA, SOME_DETAILS_IL)).set(value)
+    post_processing key do
+      within_frame(1) do
+        return find(ta(SOME_DETAILS_EP)).set(value) if key == :ep
+        return find(:xpath, SOME_DETAILS_IL).set(value) if key == :il
+        find(:xpath, ta(SOME_DETAILS_TA, SOME_DETAILS_IL)).set(value)
+      end
     end
   end
 
   def should_see_pending_booking(key = nil)
-    within_frame(1) do
-      return assert_selector(ta(PENDING_BOOK_EP)) if key == :ep
-      return assert_selector(:xpath, PENDING_BOOK_IL) if key == :il
-      assert_selector(:xpath, ta(PENDING_BOOK_TA, PENDING_BOOK_IL))
+    post_processing key do
+      within_frame(1) do
+        return assert_selector(ta(PENDING_BOOK_EP)) if key == :ep
+        return assert_selector(:xpath, PENDING_BOOK_IL) if key == :il
+        assert_selector(:xpath, ta(PENDING_BOOK_TA, PENDING_BOOK_IL))
+      end
     end
   end
 

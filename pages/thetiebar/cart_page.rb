@@ -4,6 +4,7 @@ class TheTiebarCartPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
 
   PLUS_QUANTITY_CART_IL = "(//button[contains(@aria-label, 'subtract')])[1]"
@@ -36,45 +37,59 @@ class TheTiebarCartPage
 
 
   def click_plus_quantity_icon(key = nil)
-    return find(ta(PLUS_QUANTITY_CART_EP)).click if key == :ep
-    return find(:xpath, PLUS_QUANTITY_CART_IL).click if key == :il
-    find(:xpath, ta(PLUS_QUANTITY_CART_TA, PLUS_QUANTITY_CART_IL)).click
+    post_processing key do
+      return find(ta(PLUS_QUANTITY_CART_EP)).click if key == :ep
+      return find(:xpath, PLUS_QUANTITY_CART_IL).click if key == :il
+      find(:xpath, ta(PLUS_QUANTITY_CART_TA, PLUS_QUANTITY_CART_IL)).click
+    end
   end
 
   def click_view_cart_link(key = nil)
-    return find(ta(VIEW_CART_EP)).click if key == :ep
-    return find(:xpath, VIEW_CART_IL).click if key == :il
-    find(:xpath, ta(VIEW_CART_TA, VIEW_CART_IL)).click
+    post_processing key do
+      return find(ta(VIEW_CART_EP)).click if key == :ep
+      return find(:xpath, VIEW_CART_IL).click if key == :il
+      find(:xpath, ta(VIEW_CART_TA, VIEW_CART_IL)).click
+    end
   end
 
   def click_minus_quantity_icon(key = nil)
-    return find(ta(SUBTRACT_QUANTITY_EP)).click if key == :ep
-    return find(:xpath, SUBTRACT_QUANTITY_IL).click if key == :il
-    find(:xpath, ta(SUBTRACT_QUANTITY_TA, SUBTRACT_QUANTITY_IL)).click
+    post_processing key do
+      return find(ta(SUBTRACT_QUANTITY_EP)).click if key == :ep
+      return find(:xpath, SUBTRACT_QUANTITY_IL).click if key == :il
+      find(:xpath, ta(SUBTRACT_QUANTITY_TA, SUBTRACT_QUANTITY_IL)).click
+    end
   end
 
   def click_checkout_now_btn(key = nil)
-    return find(ta(CHECKOUT_NOW_BTN_EP)).click if key == :ep
-    return find(:xpath, CHECKOUT_NOW_BTN_IL).click if key == :il
-    find(:xpath, ta(CHECKOUT_NOW_BTN_TA, CHECKOUT_NOW_BTN_IL)).click
+    post_processing key do
+      return find(ta(CHECKOUT_NOW_BTN_EP)).click if key == :ep
+      return find(:xpath, CHECKOUT_NOW_BTN_IL).click if key == :il
+      find(:xpath, ta(CHECKOUT_NOW_BTN_TA, CHECKOUT_NOW_BTN_IL)).click
+    end
   end
 
   def click_remove_link(key = nil)
-    return find(ta(REMOVE_LINK_EP)).click if key == :ep
-    return find(:xpath, REMOVE_LINK_IL).click if key == :il
-    find(:xpath, ta(REMOVE_LINK_TA, REMOVE_LINK_IL)).click
+    post_processing key do
+      return find(ta(REMOVE_LINK_EP)).click if key == :ep
+      return find(:xpath, REMOVE_LINK_IL).click if key == :il
+      find(:xpath, ta(REMOVE_LINK_TA, REMOVE_LINK_IL)).click
+    end
   end
 
   def click_remove_link_from_cart_page(key = nil)
-    return find(ta(REMOVE_LINK_FROM_CART_EP)).click if key == :ep
-    return find(:xpath, REMOVE_LINK_FROM_CART_IL).click if key == :il
-    find(:xpath, ta(REMOVE_LINK_FROM_CART_TA, REMOVE_LINK_FROM_CART_IL)).click
+    post_processing key do
+      return find(ta(REMOVE_LINK_FROM_CART_EP)).click if key == :ep
+      return find(:xpath, REMOVE_LINK_FROM_CART_IL).click if key == :il
+      find(:xpath, ta(REMOVE_LINK_FROM_CART_TA, REMOVE_LINK_FROM_CART_IL)).click
+    end
   end
 
   def click_checkout_now_btn_modal(key = nil)
-    return find(ta(CHECKOUT_NOW_BTN_MODAL_EP)).click if key == :ep
-    return find(:xpath, CHECKOUT_NOW_BTN_MODAL_IL).click if key == :il
-    find(:xpath, ta(CHECKOUT_NOW_BTN_MODAL_TA, CHECKOUT_NOW_BTN_MODAL_IL)).click
+    post_processing key do
+      return find(ta(CHECKOUT_NOW_BTN_MODAL_EP)).click if key == :ep
+      return find(:xpath, CHECKOUT_NOW_BTN_MODAL_IL).click if key == :il
+      find(:xpath, ta(CHECKOUT_NOW_BTN_MODAL_TA, CHECKOUT_NOW_BTN_MODAL_IL)).click
+    end
   end
 
 end

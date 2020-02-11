@@ -5,6 +5,8 @@ class TheTiebarSubscriptionPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
+
 
   SKINNY_TIES_25_IL = "//input[@id='SCTIE2512']"
   SKINNY_TIES_25_TA = "thetiebar:custom_page:skinny_ties_25"
@@ -43,57 +45,75 @@ class TheTiebarSubscriptionPage
   CLICK_FREE_PLACE_EP = "EP:thetiebar:custom_page:free_place"
 
   def click_skinny_ties_25(key = nil)
-    return find(ta(SKINNY_TIES_25_EP)).click if key == :ep
-    return find(:xpath, SKINNY_TIES_25_IL).click if key == :il
-    find(:xpath, ta(SKINNY_TIES_25_TA, SKINNY_TIES_25_IL)).click
+    post_processing key do
+      return find(ta(SKINNY_TIES_25_EP)).click if key == :ep
+      return find(:xpath, SKINNY_TIES_25_IL).click if key == :il
+      find(:xpath, ta(SKINNY_TIES_25_TA, SKINNY_TIES_25_IL)).click
+    end
   end
 
   def click_neck_ties_325(key = nil)
-    return find(ta(NECK_TIES_325_EP)).click if key == :ep
-    return find(:xpath, NECK_TIES_325_IL).click if key == :il
-    find(:xpath, ta(NECK_TIES_325_TA, NECK_TIES_325_IL)).click
+    post_processing key do
+      return find(ta(NECK_TIES_325_EP)).click if key == :ep
+      return find(:xpath, NECK_TIES_325_IL).click if key == :il
+      find(:xpath, ta(NECK_TIES_325_TA, NECK_TIES_325_IL)).click
+    end
   end
 
   def click_bow_ties_12(key = nil)
-    return find(ta(BOW_TIES_12_EP)).click if key == :ep
-    return find(:xpath, BOW_TIES_12_IL).click if key == :il
-    find(:xpath, ta(BOW_TIES_12_TA, BOW_TIES_12_IL)).click
+    post_processing key do
+      return find(ta(BOW_TIES_12_EP)).click if key == :ep
+      return find(:xpath, BOW_TIES_12_IL).click if key == :il
+      find(:xpath, ta(BOW_TIES_12_TA, BOW_TIES_12_IL)).click
+    end
   end
 
   def click_pairs_socks_12(key = nil)
-    return find(ta(PAIRS_SOCKS_12_EP)).click if key == :ep
-    return find(:xpath, PAIRS_SOCKS_12_IL).click if key == :il
-    find(:xpath, ta(PAIRS_SOCKS_12_TA, PAIRS_SOCKS_12_IL)).click
+    post_processing key do
+      return find(ta(PAIRS_SOCKS_12_EP)).click if key == :ep
+      return find(:xpath, PAIRS_SOCKS_12_IL).click if key == :il
+      find(:xpath, ta(PAIRS_SOCKS_12_TA, PAIRS_SOCKS_12_IL)).click
+    end
   end
 
   def click_add_1(key = nil)
-    return find(ta(ADD_TO_CART1_EP)).click if key == :ep
-    return find(:xpath, ADD_TO_CART1_IL).click if key == :il
-    find(:xpath, ta(ADD_TO_CART1_TA, ADD_TO_CART1_IL)).click
+    post_processing key do
+      return find(ta(ADD_TO_CART1_EP)).click if key == :ep
+      return find(:xpath, ADD_TO_CART1_IL).click if key == :il
+      find(:xpath, ta(ADD_TO_CART1_TA, ADD_TO_CART1_IL)).click
+    end
   end
 
   def click_add_2(key = nil)
-    return find(ta(ADD_TO_CART2_EP)).click if key == :ep
-    return find(:xpath, ADD_TO_CART2_IL).click if key == :il
-    find(:xpath, ta(ADD_TO_CART2_TA, ADD_TO_CART2_IL)).click
+    post_processing key do
+      return find(ta(ADD_TO_CART2_EP)).click if key == :ep
+      return find(:xpath, ADD_TO_CART2_IL).click if key == :il
+      find(:xpath, ta(ADD_TO_CART2_TA, ADD_TO_CART2_IL)).click
+    end
   end
 
   def click_add_3(key = nil)
-    return find(ta(ADD_TO_CART3_EP)).click if key == :ep
-    return find(:xpath, ADD_TO_CART3_IL).click if key == :il
-    find(:xpath, ta(ADD_TO_CART3_TA, ADD_TO_CART3_IL)).click
+    post_processing key do
+      return find(ta(ADD_TO_CART3_EP)).click if key == :ep
+      return find(:xpath, ADD_TO_CART3_IL).click if key == :il
+      find(:xpath, ta(ADD_TO_CART3_TA, ADD_TO_CART3_IL)).click
+    end
   end
 
   def click_add_4(key = nil)
-    return find(ta(ADD_TO_CART4_EP)).click if key == :ep
-    return find(:xpath, ADD_TO_CART4_IL).click if key == :il
-    find(:xpath, ta(ADD_TO_CART4_TA, ADD_TO_CART4_IL)).click
+    post_processing key do
+      return find(ta(ADD_TO_CART4_EP)).click if key == :ep
+      return find(:xpath, ADD_TO_CART4_IL).click if key == :il
+      find(:xpath, ta(ADD_TO_CART4_TA, ADD_TO_CART4_IL)).click
+    end
   end
 
   def click_free_place(key = nil)
-    return find(ta(CLICK_FREE_PLACE_EP)).click if key == :ep
-    return find(:xpath, CLICK_FREE_PLACE_IL).click if key == :il
-    find(:xpath, ta(CLICK_FREE_PLACE_TA, CLICK_FREE_PLACE_IL)).click
+    post_processing key do
+      return find(ta(CLICK_FREE_PLACE_EP)).click if key == :ep
+      return find(:xpath, CLICK_FREE_PLACE_IL).click if key == :il
+      find(:xpath, ta(CLICK_FREE_PLACE_TA, CLICK_FREE_PLACE_IL)).click
+    end
   end
 
 end
