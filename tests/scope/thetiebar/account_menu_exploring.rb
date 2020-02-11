@@ -120,11 +120,11 @@ describe 'Preconditions' do
       end
 
       step "User click the account button" do
-        check_element_path :xpath, TheTiebarLoginPage::SIGNIN_BTN_TA, TheTiebarLoginPage::SIGNIN_BTN_IL
+        check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_TA, TheTiebarHeader::SIGNIN_BTN_IL
         header_page.click_sing_in_btn
       end
 
-      step "User fills the Username field", settings('thetiebar')['username'] do |username|
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_TA, TheTiebarLoginPage::USERNAME_IL
         login_page.fill_username_field username
       end
@@ -239,11 +239,11 @@ describe 'Preconditions' do
       end
 
       step "User click the account button" do
-        check_element_path :xpath, TheTiebarLoginPage::SIGNIN_BTN_EP, TheTiebarLoginPage::SIGNIN_BTN_IL
+        check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_EP, TheTiebarHeader::SIGNIN_BTN_IL
         header_page.click_sing_in_btn  :ep
       end
 
-      step "User fills the Username field", settings('thetiebar')['username'] do |username|
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_EP, TheTiebarLoginPage::USERNAME_IL
         login_page.fill_username_field  :ep, username
       end

@@ -17,7 +17,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', il1: true do
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
       end
@@ -55,11 +55,11 @@ describe 'Preconditions' do
       end
 
       step "User click the account button" do
-        check_element_path :xpath, TheTiebarLoginPage::SIGNIN_BTN_TA, TheTiebarLoginPage::SIGNIN_BTN_IL
+        check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_TA, TheTiebarHeader::SIGNIN_BTN_IL
         header_page.click_sing_in_btn
       end
 
-      step "User fills the Username field", settings('thetiebar')['username'] do |username|
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_TA, TheTiebarLoginPage::USERNAME_IL
         login_page.fill_username_field username
       end
@@ -80,7 +80,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Sign Out link" do
-        check_element_path :xpath, TheTiebarHeader::SIGN_OUT_LINK_IL, TheTiebarHeader::SIGN_OUT_LINK_IL
+        check_element_path :xpath, TheTiebarHeader::SIGN_OUT_LINK_TA, TheTiebarHeader::SIGN_OUT_LINK_IL
         header_page.click_sing_out_link
       end
     end
@@ -93,11 +93,11 @@ describe 'Preconditions' do
       end
 
       step "User click the account button" do
-        check_element_path :xpath, TheTiebarLoginPage::SIGNIN_BTN_EP, TheTiebarLoginPage::SIGNIN_BTN_IL
+        check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_EP, TheTiebarHeader::SIGNIN_BTN_IL
         header_page.click_sing_in_btn :ep
       end
 
-      step "User fills the Username field", settings('thetiebar')['username'] do |username|
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_EP, TheTiebarLoginPage::USERNAME_IL
         login_page.fill_username_field username, :ep
       end
