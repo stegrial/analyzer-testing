@@ -17,7 +17,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il1: true do
+    scenario 'Recording IL', il: true do
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
       end
