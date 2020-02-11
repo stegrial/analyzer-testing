@@ -14,7 +14,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  feature 'Cloud Bees - Change History modal' do
+  feature 'Change History modal' do
 
     # Initial locators with Recording
 
@@ -69,11 +69,11 @@ describe 'Preconditions' do
         change_history_modal.confirm_time
       end
 
-      step "Admin fills the hours time", '13' do |hours_time|
+      step "Admin fills the and hours time", '13' do |hours_time|
         change_history_modal.fill_and_hours_time hours_time
       end
 
-      step "Admin fills the minutes time", '00' do |minutes_time|
+      step "Admin fills the and minutes time", '00' do |minutes_time|
         change_history_modal.fill_and_minutes_time minutes_time
       end
 
@@ -182,12 +182,12 @@ describe 'Preconditions' do
         change_history_modal.confirm_time
       end
 
-      step "Admin fills the hours time", '13' do |hours_time|
+      step "Admin fills the and hours time", '13' do |hours_time|
         check_element_path :xpath, CloudBeesChangeHistory::AND_SET_HOURS_TIME_TA, CloudBeesChangeHistory::AND_SET_HOURS_TIME_IL
         change_history_modal.fill_and_hours_time hours_time
       end
 
-      step "Admin fills the minutes time", '00' do |minutes_time|
+      step "Admin fills the and minutes time", '00' do |minutes_time|
         check_element_path :xpath, CloudBeesChangeHistory::AND_SET_MINUTES_TIME_TA, CloudBeesChangeHistory::AND_SET_MINUTES_TIME_IL
         change_history_modal.fill_and_minutes_time minutes_time
       end
@@ -308,12 +308,12 @@ describe 'Preconditions' do
         change_history_modal.confirm_time :ep
       end
 
-      step "Admin fills the hours time", '13' do |hours_time|
+      step "Admin fills the and hours time", '13' do |hours_time|
         check_element_path :xpath, CloudBeesChangeHistory::AND_SET_HOURS_TIME_EP, CloudBeesChangeHistory::AND_SET_HOURS_TIME_IL
         change_history_modal.fill_and_hours_time :ep, hours_time
       end
 
-      step "Admin fills the minutes time", '00' do |minutes_time|
+      step "Admin fills the end minutes time", '00' do |minutes_time|
         check_element_path :xpath, CloudBeesChangeHistory::AND_SET_MINUTES_TIME_EP, CloudBeesChangeHistory::AND_SET_MINUTES_TIME_IL
         change_history_modal.fill_and_minutes_time :ep, minutes_time
       end
