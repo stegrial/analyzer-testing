@@ -1,4 +1,6 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
+
 random_string = SecureRandom.hex
 class TheTiebarLoginPage
   include TrueAutomation::DSL
