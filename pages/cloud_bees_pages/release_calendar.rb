@@ -1,10 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class CloudBeesReleasesCalendar
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-
+  include ExtendPage
 
   SELECT_USER_TIMEZONE_IL = ".at-select-header-title"
   SELECT_USER_TIMEZONE_TA = "cloud_bees:releases_calendar:timezone_dropdown"
@@ -41,44 +42,58 @@ class CloudBeesReleasesCalendar
 
 
   def click_to_timezone_dropdown(key = nil)
-    return find(ta(SELECT_USER_TIMEZONE_EP)).click if key == :ep
-    return find(:css, SELECT_USER_TIMEZONE_IL).click if key == :il
-    find(:css, ta(SELECT_USER_TIMEZONE_TA, SELECT_USER_TIMEZONE_IL)).click
+    post_processing key do
+      return find(ta(SELECT_USER_TIMEZONE_EP)).click if key == :ep
+      return find(:css, SELECT_USER_TIMEZONE_IL).click if key == :il
+      find(:css, ta(SELECT_USER_TIMEZONE_TA, SELECT_USER_TIMEZONE_IL)).click
+    end
   end
 
   def set_timezone_search_value(key = nil, value)
-    return find(ta(SEARCH_TIMEZONE_DROPDOWN_EP)).set(value) if key == :ep
-    return find(:xpath, SEARCH_TIMEZONE_DROPDOWN_IL).set(value) if key == :il
-    find(:xpath, ta(SEARCH_TIMEZONE_DROPDOWN_TA, SEARCH_TIMEZONE_DROPDOWN_IL)).set(value)
+    post_processing key do
+      return find(ta(SEARCH_TIMEZONE_DROPDOWN_EP)).set(value) if key == :ep
+      return find(:xpath, SEARCH_TIMEZONE_DROPDOWN_IL).set(value) if key == :il
+      find(:xpath, ta(SEARCH_TIMEZONE_DROPDOWN_TA, SEARCH_TIMEZONE_DROPDOWN_IL)).set(value)
+    end
   end
 
   def select_timezone(key = nil, timezone)
-    return find(ta(timezone_name(:ep, timezone))).click if key == :ep
-    return find(:xpath, timezone_name(:il, timezone)).click if key == :il
-    find(:xpath, ta(timezone_name(:ta, timezone), timezone_name(:il, timezone))).click
+    post_processing key do
+      return find(ta(timezone_name(:ep, timezone))).click if key == :ep
+      return find(:xpath, timezone_name(:il, timezone)).click if key == :il
+      find(:xpath, ta(timezone_name(:ta, timezone), timezone_name(:il, timezone))).click
+    end
   end
 
   def click_ok_button(key = nil)
-    return find(ta(OK_BUTTON_MODAL_EP)).click if key == :ep
-    return find(:css, OK_BUTTON_MODAL_IL).click if key == :il
-    find(:css, ta(OK_BUTTON_MODAL_TA, OK_BUTTON_MODAL_IL)).click
+    post_processing key do
+      return find(ta(OK_BUTTON_MODAL_EP)).click if key == :ep
+      return find(:css, OK_BUTTON_MODAL_IL).click if key == :il
+      find(:css, ta(OK_BUTTON_MODAL_TA, OK_BUTTON_MODAL_IL)).click
+    end
   end
 
   def click_week_tab_button(key = nil)
-    return find(ta(WEEK_TAB_EP)).click if key == :ep
-    return find(:css, WEEK_TAB_IL).click if key == :il
-    find(:css, ta(WEEK_TAB_TA, WEEK_TAB_IL)).click
+    post_processing key do
+      return find(ta(WEEK_TAB_EP)).click if key == :ep
+      return find(:css, WEEK_TAB_IL).click if key == :il
+      find(:css, ta(WEEK_TAB_TA, WEEK_TAB_IL)).click
+    end
   end
 
   def click_day_tab_button(key = nil)
-    return find(ta(DAY_TAB_EP)).click if key == :ep
-    return find(:css, DAY_TAB_IL).click if key == :il
-    find(:css, ta(DAY_TAB_TA, DAY_TAB_IL)).click
+    post_processing key do
+      return find(ta(DAY_TAB_EP)).click if key == :ep
+      return find(:css, DAY_TAB_IL).click if key == :il
+      find(:css, ta(DAY_TAB_TA, DAY_TAB_IL)).click
+    end
   end
 
   def click_month_tab_button(key = nil)
-    return find(ta(MONTH_TAB_EP)).click if key == :ep
-    return find(:css, MONTH_TAB_IL).click if key == :il
-    find(:css, ta(MONTH_TAB_TA, MONTH_TAB_IL)).click
+    post_processing key do
+      return find(ta(MONTH_TAB_EP)).click if key == :ep
+      return find(:css, MONTH_TAB_IL).click if key == :il
+      find(:css, ta(MONTH_TAB_TA, MONTH_TAB_IL)).click
+    end
   end
 end

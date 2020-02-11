@@ -1,8 +1,18 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 def check_element_path(locator_type, ta_locator, initial_locator)
   ta_path = find(ta(ta_locator), visible: false).path
-  p ta_path
+
+  dir = __dir__.split("/")
+  root = dir[0..dir.length-2].join("/")
+  current_test = Dir[root + '/logs/*/*'].sort_by { |a| [ a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i ] }.last
+
+  test = DataControl.new(current_test)
+  test.check_request
+  test.result
+
+  puts ta_path
 
   case locator_type
     when :css then initial_path = find(:css, initial_locator).path
@@ -10,7 +20,7 @@ def check_element_path(locator_type, ta_locator, initial_locator)
     when :xpath then initial_path = find(:xpath, initial_locator).path
     else p 'Selector type is not set, must be one of: :css, :id, :xpath'
   end
-  p initial_path
+  puts initial_path
 
   expect(ta_path).to eq initial_path
 end

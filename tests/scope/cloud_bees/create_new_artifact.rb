@@ -33,7 +33,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Create Artifact link" do
-        sleep 3
+        sleep 5 # need wait until iframe is loaded
         artifact_page.create_new_artifact
       end
 
@@ -97,7 +97,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Create Artifact link" do
-        sleep 3
+        sleep 5 # need wait until iframe is loaded
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::CREATE_ARTIFACT_LINK_TA, CloudBeesArtifact::CREATE_ARTIFACT_LINK_IL }
         artifact_page.create_new_artifact
       end
@@ -173,7 +173,7 @@ describe 'Preconditions' do
       end
 
       step "Admin clicks Create Artifact link" do
-        sleep 3
+        sleep 5 # need wait until iframe is loaded
         within_frame(0) { check_element_path :xpath, CloudBeesArtifact::CREATE_ARTIFACT_LINK_EP, CloudBeesArtifact::CREATE_ARTIFACT_LINK_IL }
         artifact_page.create_new_artifact :ep
       end

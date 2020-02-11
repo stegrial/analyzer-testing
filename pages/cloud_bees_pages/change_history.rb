@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class CloudBeesChangeHistory
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   SECOND_ITEM_IN_TABLE_IL = "//div[text()='2.']"
   SECOND_ITEM_IN_TABLE_TA = 'cloud_bees:change_history:second_item'
@@ -83,116 +85,154 @@ class CloudBeesChangeHistory
 
 
   def click_second_item_in_table(key = nil)
-    return find(ta(SECOND_ITEM_IN_TABLE_EP)).click if key == :ep
-    return find(:xpath, SECOND_ITEM_IN_TABLE_IL).click if key == :il
-    find(:xpath, ta(SECOND_ITEM_IN_TABLE_TA, SECOND_ITEM_IN_TABLE_IL)).click
+    post_processing key do
+      return find(ta(SECOND_ITEM_IN_TABLE_EP)).click if key == :ep
+      return find(:xpath, SECOND_ITEM_IN_TABLE_IL).click if key == :il
+      find(:xpath, ta(SECOND_ITEM_IN_TABLE_TA, SECOND_ITEM_IN_TABLE_IL)).click
+    end
   end
 
   def click_dropdown_last_changes(key = nil)
-    return find(ta(DROPDOWN_LAST_CHANGES_EP)).click if key == :ep
-    return find(:xpath, DROPDOWN_LAST_CHANGES_IL).click if key == :il
-    find(:xpath, ta(DROPDOWN_LAST_CHANGES_TA, DROPDOWN_LAST_CHANGES_IL)).click
+    post_processing key do
+      return find(ta(DROPDOWN_LAST_CHANGES_EP)).click if key == :ep
+      return find(:xpath, DROPDOWN_LAST_CHANGES_IL).click if key == :il
+      find(:xpath, ta(DROPDOWN_LAST_CHANGES_TA, DROPDOWN_LAST_CHANGES_IL)).click
+    end
   end
 
   def click_past_24_hours(key = nil)
-    return find(ta(PAST_24_HOURS_EP)).click if key == :ep
-    return find(:xpath, PAST_24_HOURS_IL).click if key == :il
-    find(:xpath, ta(PAST_24_HOURS_TA, PAST_24_HOURS_IL)).click
+    post_processing key do
+      return find(ta(PAST_24_HOURS_EP)).click if key == :ep
+      return find(:xpath, PAST_24_HOURS_IL).click if key == :il
+      find(:xpath, ta(PAST_24_HOURS_TA, PAST_24_HOURS_IL)).click
+    end
   end
 
   def click_dropdown_past_24_hours(key = nil)
-    return find(ta(DROPDOWN_PAST_24_HOURS_EP)).click if key == :ep
-    return find(:xpath, DROPDOWN_PAST_24_HOURS_IL).click if key == :il
-    find(:xpath, ta(DROPDOWN_PAST_24_HOURS_TA, DROPDOWN_PAST_24_HOURS_IL)).click
+    post_processing key do
+      return find(ta(DROPDOWN_PAST_24_HOURS_EP)).click if key == :ep
+      return find(:xpath, DROPDOWN_PAST_24_HOURS_IL).click if key == :il
+      find(:xpath, ta(DROPDOWN_PAST_24_HOURS_TA, DROPDOWN_PAST_24_HOURS_IL)).click
+    end
   end
 
   def click_between_btn(key = nil)
-    return find(ta(BETWEEN_BTN_EP)).click if key == :ep
-    return find(:xpath, BETWEEN_BTN_IL).click if key == :il
-    find(:xpath, ta(BETWEEN_BTN_TA, BETWEEN_BTN_IL)).click
+    post_processing key do
+      return find(ta(BETWEEN_BTN_EP)).click if key == :ep
+      return find(:xpath, BETWEEN_BTN_IL).click if key == :il
+      find(:xpath, ta(BETWEEN_BTN_TA, BETWEEN_BTN_IL)).click
+    end
   end
 
   def fill_hours_time(key = nil, hours_time)
-    return find(ta(SET_HOURS_TIME_EP)).set(hours_time) if key == :ep
-    return find(:xpath, SET_HOURS_TIME_IL).set(hours_time) if key == :il
-    find(:xpath, ta(SET_HOURS_TIME_TA, SET_HOURS_TIME_IL)).set(hours_time)
+    post_processing key do
+      return find(ta(SET_HOURS_TIME_EP)).set(hours_time) if key == :ep
+      return find(:xpath, SET_HOURS_TIME_IL).set(hours_time) if key == :il
+      find(:xpath, ta(SET_HOURS_TIME_TA, SET_HOURS_TIME_IL)).set(hours_time)
+    end
   end
 
   def fill_minutes_time(key = nil, minutes_time)
-    return find(ta(SET_MINUTES_TIME_EP)).set(minutes_time) if key == :ep
-    return find(:xpath, SET_MINUTES_TIME_IL).set(minutes_time) if key == :il
-    find(:xpath, ta(SET_MINUTES_TIME_TA, SET_MINUTES_TIME_IL)).set(minutes_time)
+    post_processing key do
+      return find(ta(SET_MINUTES_TIME_EP)).set(minutes_time) if key == :ep
+      return find(:xpath, SET_MINUTES_TIME_IL).set(minutes_time) if key == :il
+      find(:xpath, ta(SET_MINUTES_TIME_TA, SET_MINUTES_TIME_IL)).set(minutes_time)
+    end
   end
 
   def confirm_time(key = nil)
-    return find(ta(CONFIRM_TIME_EP)).click if key == :ep
-    return find(:xpath, CONFIRM_TIME_IL).click if key == :il
-    find(:xpath, ta(CONFIRM_TIME_TA, CONFIRM_TIME_IL)).click
+    post_processing key do
+      return find(ta(CONFIRM_TIME_EP)).click if key == :ep
+      return find(:xpath, CONFIRM_TIME_IL).click if key == :il
+      find(:xpath, ta(CONFIRM_TIME_TA, CONFIRM_TIME_IL)).click
+    end
   end
 
   def fill_and_hours_time(key = nil, hours_time)
-    return find(ta(AND_SET_HOURS_TIME_EP)).set(hours_time) if key == :ep
-    return find(:xpath, AND_SET_HOURS_TIME_IL).set(hours_time) if key == :il
-    find(:xpath, ta(AND_SET_HOURS_TIME_TA, AND_SET_HOURS_TIME_IL)).set(hours_time)
+    post_processing key do
+      return find(ta(AND_SET_HOURS_TIME_EP)).set(hours_time) if key == :ep
+      return find(:xpath, AND_SET_HOURS_TIME_IL).set(hours_time) if key == :il
+      find(:xpath, ta(AND_SET_HOURS_TIME_TA, AND_SET_HOURS_TIME_IL)).set(hours_time)
+    end
   end
 
   def fill_and_minutes_time(key = nil, minutes_time)
-    return find(ta(AND_SET_MINUTES_TIME_EP)).set(minutes_time) if key == :ep
-    return find(:xpath, AND_SET_MINUTES_TIME_IL).set(minutes_time) if key == :il
-    find(:xpath, ta(AND_SET_MINUTES_TIME_TA, AND_SET_MINUTES_TIME_IL)).set(minutes_time)
+    post_processing key do
+      return find(ta(AND_SET_MINUTES_TIME_EP)).set(minutes_time) if key == :ep
+      return find(:xpath, AND_SET_MINUTES_TIME_IL).set(minutes_time) if key == :il
+      find(:xpath, ta(AND_SET_MINUTES_TIME_TA, AND_SET_MINUTES_TIME_IL)).set(minutes_time)
+    end
   end
 
   def and_confirm_time(key = nil)
-    return find(ta(AND_CONFIRM_TIME_EP)).click if key == :ep
-    return find(:xpath, AND_CONFIRM_TIME_IL).click if key == :il
-    find(:xpath, ta(AND_CONFIRM_TIME_TA, AND_CONFIRM_TIME_IL)).click
+    post_processing key do
+      return find(ta(AND_CONFIRM_TIME_EP)).click if key == :ep
+      return find(:xpath, AND_CONFIRM_TIME_IL).click if key == :il
+      find(:xpath, ta(AND_CONFIRM_TIME_TA, AND_CONFIRM_TIME_IL)).click
+    end
   end
 
   def click_search_btn(key = nil)
-    return find(ta(SEARCH_BTN_EP)).click if key == :ep
-    return find(:xpath, SEARCH_BTN_IL).click if key == :il
-    find(:xpath, ta(SEARCH_BTN_TA, SEARCH_BTN_IL)).click
+    post_processing key do
+      return find(ta(SEARCH_BTN_EP)).click if key == :ep
+      return find(:xpath, SEARCH_BTN_IL).click if key == :il
+      find(:xpath, ta(SEARCH_BTN_TA, SEARCH_BTN_IL)).click
+    end
   end
 
   def click_last_changes_dropdown(key = nil)
-    return find(ta(LAST_CHANGES_DROPDOWN_EP)).click if key == :ep
-    return find(:xpath, LAST_CHANGES_DROPDOWN_IL).click if key == :il
-    find(:xpath, ta(LAST_CHANGES_DROPDOWN_TA, LAST_CHANGES_DROPDOWN_IL)).click
+    post_processing key do
+      return find(ta(LAST_CHANGES_DROPDOWN_EP)).click if key == :ep
+      return find(:xpath, LAST_CHANGES_DROPDOWN_IL).click if key == :il
+      find(:xpath, ta(LAST_CHANGES_DROPDOWN_TA, LAST_CHANGES_DROPDOWN_IL)).click
+    end
   end
 
   def click_past_3_days(key = nil)
-    return find(ta(PAST_3_DAYS_EP)).click if key == :ep
-    return find(:xpath, PAST_3_DAYS_IL).click if key == :il
-    find(:xpath, ta(PAST_3_DAYS_TA, PAST_3_DAYS_IL)).click
+    post_processing key do
+      return find(ta(PAST_3_DAYS_EP)).click if key == :ep
+      return find(:xpath, PAST_3_DAYS_IL).click if key == :il
+      find(:xpath, ta(PAST_3_DAYS_TA, PAST_3_DAYS_IL)).click
+    end
   end
 
   def click_all_dropdown(key = nil)
-    return find(ta(ALL_DROPDOWN_EP)).click if key == :ep
-    return find(:xpath, ALL_DROPDOWN_IL).click if key == :il
-    find(:xpath, ta(ALL_DROPDOWN_TA, ALL_DROPDOWN_IL)).click
+    post_processing key do
+      return find(ta(ALL_DROPDOWN_EP)).click if key == :ep
+      return find(:xpath, ALL_DROPDOWN_IL).click if key == :il
+      find(:xpath, ta(ALL_DROPDOWN_TA, ALL_DROPDOWN_IL)).click
+    end
   end
 
   def click_all_object(key = nil)
-    return find(ta(ALL_OBJECTS_EP)).click if key == :ep
-    return find(:xpath, ALL_OBJECTS_IL).click if key == :il
-    find(:xpath, ta(ALL_OBJECTS_TA, ALL_OBJECTS_IL)).click
+    post_processing key do
+      return find(ta(ALL_OBJECTS_EP)).click if key == :ep
+      return find(:xpath, ALL_OBJECTS_IL).click if key == :il
+      find(:xpath, ta(ALL_OBJECTS_TA, ALL_OBJECTS_IL)).click
+    end
   end
 
   def click_application(key = nil)
-    return find(ta(APPLICATION_EP)).click if key == :ep
-    return find(:xpath, APPLICATION_IL).click if key == :il
-    find(:xpath, ta(APPLICATION_TA, APPLICATION_IL)).click
+    post_processing key do
+      return find(ta(APPLICATION_EP)).click if key == :ep
+      return find(:xpath, APPLICATION_IL).click if key == :il
+      find(:xpath, ta(APPLICATION_TA, APPLICATION_IL)).click
+    end
   end
 
   def click_component(key = nil)
-    return find(ta(COMPONENT_EP)).click if key == :ep
-    return find(:xpath, COMPONENT_IL).click if key == :il
-    find(:xpath, ta(COMPONENT_TA, COMPONENT_IL)).click
+    post_processing key do
+      return find(ta(COMPONENT_EP)).click if key == :ep
+      return find(:xpath, COMPONENT_IL).click if key == :il
+      find(:xpath, ta(COMPONENT_TA, COMPONENT_IL)).click
+    end
   end
 
   def click_on_search_field(key = nil)
-    return find(ta(SEARCH_FIELD_EP)).click if key == :ep
-    return find(:xpath, SEARCH_FIELD_IL).click if key == :il
-    find(:xpath, ta(SEARCH_FIELD_TA, SEARCH_FIELD_IL)).click
+    post_processing key do
+      return find(ta(SEARCH_FIELD_EP)).click if key == :ep
+      return find(:xpath, SEARCH_FIELD_IL).click if key == :il
+      find(:xpath, ta(SEARCH_FIELD_TA, SEARCH_FIELD_IL)).click
+    end
   end
 end

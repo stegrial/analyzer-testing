@@ -1,10 +1,11 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 class Epicgames
-
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   LOGO_IL = "a.shieldLogo"
   LOGO_TA = "epicgames:logo"
@@ -77,110 +78,146 @@ class Epicgames
   ROBOT_ERROR = "//label[text()='You must complete the captcha.']"
 
   def click_logo(key = nil)
-    return find(ta(LOGO_EP)).click if key ==:ep
-    return find(:css, LOGO_IL).click if key ==:il
-    find(:css, ta(LOGO_TA, LOGO_IL)).click
+    post_processing key do
+      return find(ta(LOGO_EP)).click if key ==:ep
+      return find(:css, LOGO_IL).click if key ==:il
+      find(:css, ta(LOGO_TA, LOGO_IL)).click
+    end
   end
 
   def click_shop_link(key = nil)
-    return find(ta(SHOP_LINK_IN_HEADER_EP)).click if key ==:ep
-    return find(:css, SHOP_LINK_IN_HEADER_IL).click if key ==:il
-    find(:css, ta(SHOP_LINK_IN_HEADER_TA, SHOP_LINK_IN_HEADER_IL)).click
+    post_processing key do
+      return find(ta(SHOP_LINK_IN_HEADER_EP)).click if key ==:ep
+      return find(:css, SHOP_LINK_IN_HEADER_IL).click if key ==:il
+      find(:css, ta(SHOP_LINK_IN_HEADER_TA, SHOP_LINK_IN_HEADER_IL)).click
+    end
   end
 
   def click_news_link(key = nil)
-    return find(ta(NEWS_IN_HEADER_EP)).click if key ==:ep
-    return find(:css, NEWS_IN_HEADER_IL).click if key ==:il
-    find(:css, ta(NEWS_IN_HEADER_TA, NEWS_IN_HEADER_IL)).click
+    post_processing key do
+      return find(ta(NEWS_IN_HEADER_EP)).click if key ==:ep
+      return find(:css, NEWS_IN_HEADER_IL).click if key ==:il
+      find(:css, ta(NEWS_IN_HEADER_TA, NEWS_IN_HEADER_IL)).click
+    end
   end
 
   def click_help_link(key = nil)
-    return find(ta(HELP_IN_HEADER_EP)).click if key ==:ep
-    return find(:css, HELP_IN_HEADER_IL).click if key ==:il
-    find(:css, ta(HELP_IN_HEADER_TA, HELP_IN_HEADER_IL)).click
+    post_processing key do
+      return find(ta(HELP_IN_HEADER_EP)).click if key ==:ep
+      return find(:css, HELP_IN_HEADER_IL).click if key ==:il
+      find(:css, ta(HELP_IN_HEADER_TA, HELP_IN_HEADER_IL)).click
+    end
   end
 
   def click_unreal_engine_link(key = nil)
-    return find(ta(UNREAL_ENGINE_IN_HEADER_EP)).click if key ==:ep
-    return find(:css, UNREAL_ENGINE_IN_HEADER_IL).click if key ==:il
-    find(:css, ta(UNREAL_ENGINE_IN_HEADER_TA, UNREAL_ENGINE_IN_HEADER_IL)).click
+    post_processing key do
+      return find(ta(UNREAL_ENGINE_IN_HEADER_EP)).click if key ==:ep
+      return find(:css, UNREAL_ENGINE_IN_HEADER_IL).click if key ==:il
+      find(:css, ta(UNREAL_ENGINE_IN_HEADER_TA, UNREAL_ENGINE_IN_HEADER_IL)).click
+    end
   end
 
   def click_slider_right_link_arrow(key = nil)
-    return find(ta(SLIDER_RIGHT_ARROW_EP)).click if key ==:ep
-    return find(:xpath, SLIDER_RIGHT_ARROW_IL).click if key ==:il
-    find(:xpath, ta(SLIDER_RIGHT_ARROW_TA, SLIDER_RIGHT_ARROW_IL)).click
+    post_processing key do
+      return find(ta(SLIDER_RIGHT_ARROW_EP)).click if key ==:ep
+      return find(:xpath, SLIDER_RIGHT_ARROW_IL).click if key ==:il
+      find(:xpath, ta(SLIDER_RIGHT_ARROW_TA, SLIDER_RIGHT_ARROW_IL)).click
+    end
   end
 
   def click_latest_news(key = nil)
-    return find(ta(LATEST_NEWS_EP)).click if key ==:ep
-    return find(:css, LATEST_NEWS_IL).click if key ==:il
-    find(:css, ta(LATEST_NEWS_TA, LATEST_NEWS_IL)).click
+    post_processing key do
+      return find(ta(LATEST_NEWS_EP)).click if key ==:ep
+      return find(:css, LATEST_NEWS_IL).click if key ==:il
+      find(:css, ta(LATEST_NEWS_TA, LATEST_NEWS_IL)).click
+    end
   end
 
   def click_sign_in(key = nil)
-    return find(ta(SIGN_IN_EP)).click if key ==:ep
-    return find(:xpath, SIGN_IN_IL).click if key ==:il
-    find(:xpath, ta(SIGN_IN_TA, SIGN_IN_IL)).click
+    post_processing key do
+      return find(ta(SIGN_IN_EP)).click if key ==:ep
+      return find(:xpath, SIGN_IN_IL).click if key ==:il
+      find(:xpath, ta(SIGN_IN_TA, SIGN_IN_IL)).click
+    end
   end
 
   def click_sign_up(key = nil)
-    return find(ta(SIGN_UP_EP)).click if key ==:ep
-    return find(:css, SIGN_UP_IL).click if key ==:il
-    find(:css, ta(SIGN_UP_TA, SIGN_UP_IL)).click
+    post_processing key do
+      return find(ta(SIGN_UP_EP)).click if key ==:ep
+      return find(:css, SIGN_UP_IL).click if key ==:il
+      find(:css, ta(SIGN_UP_TA, SIGN_UP_IL)).click
+    end
   end
 
   def set_first_name(key = nil, firstName)
-    return find(ta(FIRST_NAME_EP)).set(firstName) if key ==:ep
-    return find(:css, FIRST_NAME_IL).set(firstName) if key ==:il
-    find(:css, ta(FIRST_NAME_TA, FIRST_NAME_IL)).set(firstName)
+    post_processing key do
+      return find(ta(FIRST_NAME_EP)).set(firstName) if key ==:ep
+      return find(:css, FIRST_NAME_IL).set(firstName) if key ==:il
+      find(:css, ta(FIRST_NAME_TA, FIRST_NAME_IL)).set(firstName)
+    end
   end
 
   def set_last_name(key = nil, lastName)
-    return find(ta(LAST_NAME_EP)).set(lastName) if key ==:ep
-    return find(:css, LAST_NAME_IL).set(lastName) if key ==:il
-    find(:css, ta(LAST_NAME_TA, LAST_NAME_IL)).set(lastName)
+    post_processing key do
+      return find(ta(LAST_NAME_EP)).set(lastName) if key ==:ep
+      return find(:css, LAST_NAME_IL).set(lastName) if key ==:il
+      find(:css, ta(LAST_NAME_TA, LAST_NAME_IL)).set(lastName)
+    end
   end
 
   def set_display_name(key = nil, displayName)
-    return find(ta(DISPLAY_NAME_EP)).set(displayName) if key ==:ep
-    return find(:css, DISPLAY_NAME_IL).set(displayName) if key ==:il
-    find(:css, ta(DISPLAY_NAME_TA, DISPLAY_NAME_IL)).set(displayName)
+    post_processing key do
+      return find(ta(DISPLAY_NAME_EP)).set(displayName) if key ==:ep
+      return find(:css, DISPLAY_NAME_IL).set(displayName) if key ==:il
+      find(:css, ta(DISPLAY_NAME_TA, DISPLAY_NAME_IL)).set(displayName)
+    end
   end
 
   def set_email(key = nil, email)
-    return find(ta(EMAIL_EP)).set(email) if key ==:ep
-    return find(:css, EMAIL_IL).set(email) if key ==:il
-    find(:css, ta(EMAIL_TA, EMAIL_IL)).set(email)
+    post_processing key do
+      return find(ta(EMAIL_EP)).set(email) if key ==:ep
+      return find(:css, EMAIL_IL).set(email) if key ==:il
+      find(:css, ta(EMAIL_TA, EMAIL_IL)).set(email)
+    end
   end
 
   def set_password(key = nil, pass)
-    return find(ta(PASSWORD_EP)).set(pass) if key ==:ep
-    return find(:css, PASSWORD_IL).set(pass) if key ==:il
-    find(:css, ta(PASSWORD_TA, PASSWORD_IL)).set(pass)
+    post_processing key do
+      return find(ta(PASSWORD_EP)).set(pass) if key ==:ep
+      return find(:css, PASSWORD_IL).set(pass) if key ==:il
+      find(:css, ta(PASSWORD_TA, PASSWORD_IL)).set(pass)
+    end
   end
 
   def click_email_subscribe(key = nil)
-    return find(ta(EMAIL_SUBSCRIBE_EP)).click if key ==:ep
-    return find(:css, EMAIL_SUBSCRIBE_IL).click if key ==:il
-    find(:css, ta(EMAIL_SUBSCRIBE_TA, EMAIL_SUBSCRIBE_IL)).click
+    post_processing key do
+      return find(ta(EMAIL_SUBSCRIBE_EP)).click if key ==:ep
+      return find(:css, EMAIL_SUBSCRIBE_IL).click if key ==:il
+      find(:css, ta(EMAIL_SUBSCRIBE_TA, EMAIL_SUBSCRIBE_IL)).click
+    end
   end
 
   def click_terms_agree(key = nil)
-    return find(ta(TERMS_AGREE_EP)).click if key ==:ep
-    return find(:css, TERMS_AGREE_IL).click if key ==:il
-    find(:css, ta(TERMS_AGREE_TA, TERMS_AGREE_IL)).click
+    post_processing key do
+      return find(ta(TERMS_AGREE_EP)).click if key ==:ep
+      return find(:css, TERMS_AGREE_IL).click if key ==:il
+      find(:css, ta(TERMS_AGREE_TA, TERMS_AGREE_IL)).click
+    end
   end
 
   def click_register_acc(key = nil)
-    return find(ta(REGISTER_NEW_ACC_EP)).click if key ==:ep
-    return find(:css, REGISTER_NEW_ACC_IL).click if key ==:il
-    find(:css, ta(REGISTER_NEW_ACC_TA, REGISTER_NEW_ACC_IL)).click
+    post_processing key do
+      return find(ta(REGISTER_NEW_ACC_EP)).click if key ==:ep
+      return find(:css, REGISTER_NEW_ACC_IL).click if key ==:il
+      find(:css, ta(REGISTER_NEW_ACC_TA, REGISTER_NEW_ACC_IL)).click
+    end
   end
 
   def click_not_a_robot(key = nil)
-    return find(ta(NOT_ROBOT_EP)).click if key ==:ep
-    return find(:css, NOT_ROBOT_IL).click if key ==:il
-    find(:css, ta(NOT_ROBOT_TA, NOT_ROBOT_IL)).click
+    post_processing key do
+      return find(ta(NOT_ROBOT_EP)).click if key ==:ep
+      return find(:css, NOT_ROBOT_IL).click if key ==:il
+      find(:css, ta(NOT_ROBOT_TA, NOT_ROBOT_IL)).click
+    end
   end
 end

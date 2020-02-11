@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 class SandboxTests
-
   SECOND_HEADING_IL = "//div[@id='div-01']//h4"
   SECOND_HEADING_TA = 'sandbox:h4:test_1'
 
@@ -14,9 +13,10 @@ class SandboxTests
   end
 
   def record_h2_video(key = nil)
-    return find(:xpath, H2_VIDEO_IL) if key == :il
-    find(:xpath, ta(H2_VIDEO_TA, H2_VIDEO_IL))
+    post_processing key do
+      return find(:xpath, H2_VIDEO_IL) if key == :il
+      find(:xpath, ta(H2_VIDEO_TA, H2_VIDEO_IL))
+    end
   end
-
 
 end

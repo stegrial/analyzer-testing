@@ -1,10 +1,11 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 class Stagecom
-
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   HUMBURGER_MENU_IL = "//a[@on='tap:moov_menu.toggle']"
   # HUMBURGER_MENU_IL = "//button[@aria-label='Menu']"
@@ -65,15 +66,19 @@ class Stagecom
 
 
   def click_humburger_menu(key = nil)
-    return find(:xpath, ta(HUMBURGER_MENU_EP)).click if key == :ep
-    return find(:xpath, HUMBURGER_MENU_IL).click if key == :il
-    find(:xpath, ta(HUMBURGER_MENU_TA, HUMBURGER_MENU_IL)).click
+    post_processing key do
+      return find(:xpath, ta(HUMBURGER_MENU_EP)).click if key == :ep
+      return find(:xpath, HUMBURGER_MENU_IL).click if key == :il
+      find(:xpath, ta(HUMBURGER_MENU_TA, HUMBURGER_MENU_IL)).click
+    end
   end
 
   def click_signin_link(key = nil)
-    return find(:xpath, ta(SIGNIN_LINK_EP)).click if key == :ep
-    return find(:xpath, SIGNIN_LINK_IL).click if key == :il
-    find(:xpath, ta(SIGNIN_LINK_TA, SIGNIN_LINK_IL)).click
+    post_processing key do
+      return find(:xpath, ta(SIGNIN_LINK_EP)).click if key == :ep
+      return find(:xpath, SIGNIN_LINK_IL).click if key == :il
+      find(:xpath, ta(SIGNIN_LINK_TA, SIGNIN_LINK_IL)).click
+    end
   end
 
   def click_account_email(email, key = nil)
@@ -89,63 +94,83 @@ class Stagecom
   end
 
   def click_signin_btn(key = nil)
-    return find(:xpath, ta(SIGNIN_BTN_EP)).click if key == :ep
-    return find(:xpath, SIGNIN_BTN_IL).click if key == :il
-    find(:xpath, ta(SIGNIN_BTN_TA, SIGNIN_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(SIGNIN_BTN_EP)).click if key == :ep
+      return find(:xpath, SIGNIN_BTN_IL).click if key == :il
+      find(:xpath, ta(SIGNIN_BTN_TA, SIGNIN_BTN_IL)).click
+    end
   end
 
   def click_logo(key = nil)
-    return find(:xpath, ta(LOGO_EP)).click if key == :ep
-    return find(:xpath, LOGO_IL).click if key == :il
-    find(:xpath, ta(LOGO_TA, LOGO_IL)).click
+    post_processing key do
+      return find(:xpath, ta(LOGO_EP)).click if key == :ep
+      return find(:xpath, LOGO_IL).click if key == :il
+      find(:xpath, ta(LOGO_TA, LOGO_IL)).click
+    end
   end
 
   def click_minicart(key = nil)
-    return find(:xpath, ta(MINICART_EP)).click if key == :ep
-    return find(:xpath, MINICART_IL).click if key == :il
-    find(:xpath, ta(MINICART_TA, MINICART_IL)).click
+    post_processing key do
+      return find(:xpath, ta(MINICART_EP)).click if key == :ep
+      return find(:xpath, MINICART_IL).click if key == :il
+      find(:xpath, ta(MINICART_TA, MINICART_IL)).click
+    end
   end
 
   def click_category_kids(key = nil)
-    return find(:xpath, ta(CATEGORY_KIDS_EP)).click if key == :ep
-    return find(:xpath, CATEGORY_KIDS_IL).click if key == :il
-    find(:xpath, ta(CATEGORY_KIDS_TA, CATEGORY_KIDS_IL)).click
+    post_processing key do
+      return find(:xpath, ta(CATEGORY_KIDS_EP)).click if key == :ep
+      return find(:xpath, CATEGORY_KIDS_IL).click if key == :il
+      find(:xpath, ta(CATEGORY_KIDS_TA, CATEGORY_KIDS_IL)).click
+    end
   end
 
   def click_subcategory_baby(key = nil)
-    return find(:xpath, ta(SUBCATEGORY_BABY_EP)).click if key == :ep
-    return find(:xpath, SUBCATEGORY_BABY_IL).click if key == :il
-    find(:xpath, ta(SUBCATEGORY_BABY_TA, SUBCATEGORY_BABY_IL)).click
+    post_processing key do
+      return find(:xpath, ta(SUBCATEGORY_BABY_EP)).click if key == :ep
+      return find(:xpath, SUBCATEGORY_BABY_IL).click if key == :il
+      find(:xpath, ta(SUBCATEGORY_BABY_TA, SUBCATEGORY_BABY_IL)).click
+    end
   end
 
   def click_subcategory_babygirl(key = nil)
-    return find(:xpath, ta(SUBCATEGORY_BABYGIRL_EP)).click if key == :ep
-    return find(:xpath, SUBCATEGORY_BABYGIRL_IL).click if key == :il
-    find(:xpath, ta(SUBCATEGORY_BABYGIRL_TA, SUBCATEGORY_BABYGIRL_IL)).click
+    post_processing key do
+      return find(:xpath, ta(SUBCATEGORY_BABYGIRL_EP)).click if key == :ep
+      return find(:xpath, SUBCATEGORY_BABYGIRL_IL).click if key == :il
+      find(:xpath, ta(SUBCATEGORY_BABYGIRL_TA, SUBCATEGORY_BABYGIRL_IL)).click
+    end
   end
 
   def click_girl_dress(key = nil)
-    return find(:xpath, ta(GIRL_DRESS_EP)).click if key == :ep
-    return find(:xpath, GIRL_DRESS_IL).click if key == :il
-    find(:xpath, ta(GIRL_DRESS_TA, GIRL_DRESS_IL)).click
+    post_processing key do
+      return find(:xpath, ta(GIRL_DRESS_EP)).click if key == :ep
+      return find(:xpath, GIRL_DRESS_IL).click if key == :il
+      find(:xpath, ta(GIRL_DRESS_TA, GIRL_DRESS_IL)).click
+    end
   end
 
   def click_pink_dress(key = nil)
-    return find(:xpath, ta(PINK_DRESS_EP)).click if key == :ep
-    return find(:xpath, PINK_DRESS_IL).click if key == :il
-    find(:xpath, ta(PINK_DRESS_TA, PINK_DRESS_IL)).click
+    post_processing key do
+      return find(:xpath, ta(PINK_DRESS_EP)).click if key == :ep
+      return find(:xpath, PINK_DRESS_IL).click if key == :il
+      find(:xpath, ta(PINK_DRESS_TA, PINK_DRESS_IL)).click
+    end
   end
 
   def click_baby_size(key = nil)
-    return find(:xpath, ta(BABY_SIZE_EP)).click if key == :ep
-    return find(:xpath, BABY_SIZE_IL).click if key == :il
-    find(:xpath, ta(BABY_SIZE_TA, BABY_SIZE_IL)).click
+    post_processing key do
+      return find(:xpath, ta(BABY_SIZE_EP)).click if key == :ep
+      return find(:xpath, BABY_SIZE_IL).click if key == :il
+      find(:xpath, ta(BABY_SIZE_TA, BABY_SIZE_IL)).click
+    end
   end
 
   def click_add_to_cart(key = nil)
-    return find(:xpath, ta(ADD_TO_CART_EP)).click if key == :ep
-    return find(:xpath, ADD_TO_CART_IL).click if key == :il
-    find(:xpath, ta(ADD_TO_CART_TA, ADD_TO_CART_IL)).click
+    post_processing key do
+      return find(:xpath, ta(ADD_TO_CART_EP)).click if key == :ep
+      return find(:xpath, ADD_TO_CART_IL).click if key == :il
+      find(:xpath, ta(ADD_TO_CART_TA, ADD_TO_CART_IL)).click
+    end
   end
 
   def close_modal

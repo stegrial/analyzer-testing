@@ -1,11 +1,11 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 class FacebookMobile
-
-
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   EMAIL_IL = "//input[@name='email']"
   EMAIL_TA = "facebook_mobile:email"
@@ -47,40 +47,52 @@ class FacebookMobile
   CONFIRM_DELETE_TA = "facebook_mobile:accept_delete"
   CONFIRM_DELETE_EP = "EP:facebook_mobile:accept_delete"
 
-  def set_email(login, key = nil)
-    return find(:xpath, ta(EMAIL_EP)).set(login) if key ==:ep
-    return find(:xpath, EMAIL_IL).set(login) if key ==:il
-    find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set(login)
+  def set_email(key = nil, login)
+    post_processing key do
+      return find(:xpath, ta(EMAIL_EP)).set(login) if key ==:ep
+      return find(:xpath, EMAIL_IL).set(login) if key ==:il
+      find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set(login)
+    end
   end
 
-  def set_pass (pass, key = nil)
-    return find(:xpath, ta(PASS_EP)).set(pass) if key ==:ep
-    return find(:xpath, PASS_IL).set(pass) if key ==:il
-    find(:xpath, ta(PASS_TA, PASS_IL)).set(pass)
+  def set_pass(key = nil, pass)
+    post_processing key do
+      return find(:xpath, ta(PASS_EP)).set(pass) if key ==:ep
+      return find(:xpath, PASS_IL).set(pass) if key ==:il
+      find(:xpath, ta(PASS_TA, PASS_IL)).set(pass)
+    end
   end
 
   def click_login_btn(key = nil)
-    return find(:xpath, ta(LOGIN_BTN_EP)).click if key ==:ep
-    return find(:xpath, LOGIN_BTN_IL).click if key ==:il
-    find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(LOGIN_BTN_EP)).click if key ==:ep
+      return find(:xpath, LOGIN_BTN_IL).click if key ==:il
+      find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click
+    end
   end
 
   def click_ok_btn(key = nil)
-    return find(:xpath, ta(OK_BTN_EP)).click if key ==:ep
-    return find(:xpath, OK_BTN_IL).click if key ==:il
-    find(:xpath, ta(OK_BTN_TA, OK_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(OK_BTN_EP)).click if key ==:ep
+      return find(:xpath, OK_BTN_IL).click if key ==:il
+      find(:xpath, ta(OK_BTN_TA, OK_BTN_IL)).click
+    end
   end
 
   def click_new_post(key = nil)
-    return find(:xpath, ta(NEW_POST_EP)).click if key ==:ep
-    return find(:xpath, NEW_POST_IL).click if key ==:il
-    find(:xpath, ta(NEW_POST_TA, NEW_POST_IL)).click
+    post_processing key do
+      return find(:xpath, ta(NEW_POST_EP)).click if key ==:ep
+      return find(:xpath, NEW_POST_IL).click if key ==:il
+      find(:xpath, ta(NEW_POST_TA, NEW_POST_IL)).click
+    end
   end
 
   def add_text_in_post(key = nil)
-    return find(:xpath, ta(SET_TEXT_EP)).set('text') if key ==:ep
-    return find(:xpath, SET_TEXT_IL).set('text') if key ==:il
-    find(:xpath, ta(SET_TEXT_TA, SET_TEXT_IL)).set('text')
+    post_processing key do
+      return find(:xpath, ta(SET_TEXT_EP)).set('text') if key ==:ep
+      return find(:xpath, SET_TEXT_IL).set('text') if key ==:il
+      find(:xpath, ta(SET_TEXT_TA, SET_TEXT_IL)).set('text')
+    end
   end
 
   def expect_publishing
@@ -92,29 +104,36 @@ class FacebookMobile
   end
 
   def click_post_btn(key = nil)
-    return find(:xpath, ta(POST_BTN_EP)).click if key ==:ep
-    return find(:xpath, POST_BTN_IL).click if key ==:il
-    find(:xpath, ta(POST_BTN_TA, POST_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(POST_BTN_EP)).click if key ==:ep
+      return find(:xpath, POST_BTN_IL).click if key ==:il
+      find(:xpath, ta(POST_BTN_TA, POST_BTN_IL)).click
+    end
   end
 
   def click_multi_menu(key = nil)
-    return find(:xpath, ta(MULTI_MENU_BTN_EP)).click if key ==:ep
-    return find(:xpath, MULTI_MENU_BTN_IL).click if key ==:il
-    find(:xpath, ta(MULTI_MENU_BTN_TA, MULTI_MENU_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(MULTI_MENU_BTN_EP)).click if key ==:ep
+      return find(:xpath, MULTI_MENU_BTN_IL).click if key ==:il
+      find(:xpath, ta(MULTI_MENU_BTN_TA, MULTI_MENU_BTN_IL)).click
+    end
   end
 
   def deleting_post(key = nil)
-    return find(:xpath, ta(DELETE_POST_EP)).click if key ==:ep
-    return find(:xpath, DELETE_POST_IL).click if key ==:il
-    find(:xpath, ta(DELETE_POST_TA, DELETE_POST_IL)).click
-    sleep 4
-
+    post_processing key do
+      return find(:xpath, ta(DELETE_POST_EP)).click if key ==:ep
+      return find(:xpath, DELETE_POST_IL).click if key ==:il
+      find(:xpath, ta(DELETE_POST_TA, DELETE_POST_IL)).click
+      sleep 4
+    end
   end
 
   def confirm_delete(key = nil)
-    return find(:xpath, ta(CONFIRM_DELETE_EP)).click if key ==:ep
-    return find(:xpath, CONFIRM_DELETE_IL).click if key ==:il
-    find(:xpath, ta(CONFIRM_DELETE_TA, CONFIRM_DELETE_IL)).click
+    post_processing key do
+      return find(:xpath, ta(CONFIRM_DELETE_EP)).click if key ==:ep
+      return find(:xpath, CONFIRM_DELETE_IL).click if key ==:il
+      find(:xpath, ta(CONFIRM_DELETE_TA, CONFIRM_DELETE_IL)).click
+    end
   end
 
 end

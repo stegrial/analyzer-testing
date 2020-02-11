@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class CloudBeesPipelinesRuns
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   FIRST_MULTI_MENU_IL = "(//span[contains(@class,'at-multi-actions-btn')])[1]"
   FIRST_MULTI_MENU_TA = "cloud_bees:pipelines_runs:first_multi_action_menu"
@@ -21,11 +23,13 @@ class CloudBeesPipelinesRuns
   CHANGE_HISTORY_MULTI_MENU_TA = "cloud_bees:pipelines_runs:change_history_multi_menu"
   CHANGE_HISTORY_MULTI_MENU_EP = "EP:cloud_bees:pipelines_runs:change_history_multi_menu"
 
-  CLOSE_MODAL_PROPERTIES_ICON_IL = ".at-button-close-modal"
+  # SVG CLOSE_MODAL_PROPERTIES_ICON_IL = ".at-button-close-modal"
+  CLOSE_MODAL_PROPERTIES_ICON_IL = ".ec-react-wizard__breadcrumbs span"
   CLOSE_MODAL_PROPERTIES_ICON_TA = "cloud_bees:pipelines_runs:close_modal_property"
   CLOSE_MODAL_PROPERTIES_ICON_EP = "EP:cloud_bees:pipelines_runs:close_modal_property"
 
-  CLOSE_MODAL_ACCESS_ICON_IL = ".at-button-close-modal"
+  # SVG CLOSE_MODAL_ACCESS_ICON_IL = ".at-button-close-modal"
+  CLOSE_MODAL_ACCESS_ICON_IL = ".ec-react-wizard__breadcrumbs span"
   CLOSE_MODAL_ACCESS_ICON_TA = "cloud_bees:pipelines_runs:close_modal_access"
   CLOSE_MODAL_ACCESS_ICON_EP = "EP:cloud_bees:pipelines_runs:close_modal_access"
 
@@ -62,86 +66,114 @@ class CloudBeesPipelinesRuns
   APPLY_RUN_STATUS_EP = "EP:cloud_bees:pipelines_runs:apply_run_status"
 
   def click_to_select_proj(key = nil)
-    return find(ta(PROJ_SELECT_EP)).click if key == :ep
-    return find(:xpath, PROJ_SELECT_IL).click if key == :il
-    find(:xpath, ta(PROJ_SELECT_TA, PROJ_SELECT_IL)).click
+    post_processing key do
+      return find(ta(PROJ_SELECT_EP)).click if key == :ep
+      return find(:xpath, PROJ_SELECT_IL).click if key == :il
+      find(:xpath, ta(PROJ_SELECT_TA, PROJ_SELECT_IL)).click
+    end
   end
 
   def click_to_select_ec_examples_proj(key = nil)
-    return find(ta(EC_EXAMPLES_PROJ_EP)).click if key == :ep
-    return find(:xpath, EC_EXAMPLES_PROJ_IL).click if key == :il
-    find(:xpath, ta(EC_EXAMPLES_PROJ_TA, EC_EXAMPLES_PROJ_IL)).click
+    post_processing key do
+      return find(ta(EC_EXAMPLES_PROJ_EP)).click if key == :ep
+      return find(:xpath, EC_EXAMPLES_PROJ_IL).click if key == :il
+      find(:xpath, ta(EC_EXAMPLES_PROJ_TA, EC_EXAMPLES_PROJ_IL)).click
+    end
   end
 
   def click_to_accept_proj(key = nil)
-    return find(ta(ACCEPT_DROPDOWN_SELECTION_EP)).click if key == :ep
-    return find(:css, ACCEPT_DROPDOWN_SELECTION_IL).click if key == :il
-    find(:css, ta(ACCEPT_DROPDOWN_SELECTION_TA, ACCEPT_DROPDOWN_SELECTION_IL)).click
+    post_processing key do
+      return find(ta(ACCEPT_DROPDOWN_SELECTION_EP)).click if key == :ep
+      return find(:css, ACCEPT_DROPDOWN_SELECTION_IL).click if key == :il
+      find(:css, ta(ACCEPT_DROPDOWN_SELECTION_TA, ACCEPT_DROPDOWN_SELECTION_IL)).click
+    end
   end
 
   def click_to_run_status(key = nil)
-    return find(ta(RUN_STATUS_SELECT_EP)).click if key == :ep
-    return find(:xpath, RUN_STATUS_SELECT_IL).click if key == :il
-    find(:xpath, ta(RUN_STATUS_SELECT_TA, RUN_STATUS_SELECT_IL)).click
+    post_processing key do
+      return find(ta(RUN_STATUS_SELECT_EP)).click if key == :ep
+      return find(:xpath, RUN_STATUS_SELECT_IL).click if key == :il
+      find(:xpath, ta(RUN_STATUS_SELECT_TA, RUN_STATUS_SELECT_IL)).click
+    end
   end
 
   def click_to_select_successful_status(key = nil)
-    return find(ta(SUCCESSFUL_RUN_STATUS_EP)).click if key == :ep
-    return find(:css, SUCCESSFUL_RUN_STATUS_IL).click if key == :il
-    find(:css, ta(SUCCESSFUL_RUN_STATUS_TA, SUCCESSFUL_RUN_STATUS_IL)).click
+    post_processing key do
+      return find(ta(SUCCESSFUL_RUN_STATUS_EP)).click if key == :ep
+      return find(:css, SUCCESSFUL_RUN_STATUS_IL).click if key == :il
+      find(:css, ta(SUCCESSFUL_RUN_STATUS_TA, SUCCESSFUL_RUN_STATUS_IL)).click
+    end
   end
 
   def click_to_select_error_status(key = nil)
-    return find(ta(ERROR_RUN_STATUS_EP)).click if key == :ep
-    return find(:css, ERROR_RUN_STATUS_IL).click if key == :il
-    find(:css, ta(ERROR_RUN_STATUS_TA, ERROR_RUN_STATUS_IL)).click
+    post_processing key do
+      return find(ta(ERROR_RUN_STATUS_EP)).click if key == :ep
+      return find(:css, ERROR_RUN_STATUS_IL).click if key == :il
+      find(:css, ta(ERROR_RUN_STATUS_TA, ERROR_RUN_STATUS_IL)).click
+    end
   end
 
   def click_to_apply_status(key = nil)
-    return find(ta(APPLY_RUN_STATUS_EP)).click if key == :ep
-    return find(:css, APPLY_RUN_STATUS_IL).click if key == :il
-    find(:css, ta(APPLY_RUN_STATUS_TA, APPLY_RUN_STATUS_IL)).click
+    post_processing key do
+      return find(ta(APPLY_RUN_STATUS_EP)).click if key == :ep
+      return find(:css, APPLY_RUN_STATUS_IL).click if key == :il
+      find(:css, ta(APPLY_RUN_STATUS_TA, APPLY_RUN_STATUS_IL)).click
+    end
   end
 
   def click_multi_action_menu(key = nil)
-    return find(ta(FIRST_MULTI_MENU_EP)).click if key == :ep
-    return find(:xpath, FIRST_MULTI_MENU_IL).click if key == :il
-    find(:xpath, ta(FIRST_MULTI_MENU_TA, FIRST_MULTI_MENU_IL)).click
+    post_processing key do
+      return find(ta(FIRST_MULTI_MENU_EP)).click if key == :ep
+      return find(:xpath, FIRST_MULTI_MENU_IL).click if key == :il
+      find(:xpath, ta(FIRST_MULTI_MENU_TA, FIRST_MULTI_MENU_IL)).click
+    end
   end
 
   def click_properties_multi_menu(key = nil)
-    return find(ta(PROPERTIES_MULTI_MENU_EP)).click if key == :ep
-    return find(:xpath, PROPERTIES_MULTI_MENU_IL).click if key == :il
-    find(:xpath, ta(PROPERTIES_MULTI_MENU_TA, PROPERTIES_MULTI_MENU_IL)).click
+    post_processing key do
+      return find(ta(PROPERTIES_MULTI_MENU_EP)).click if key == :ep
+      return find(:xpath, PROPERTIES_MULTI_MENU_IL).click if key == :il
+      find(:xpath, ta(PROPERTIES_MULTI_MENU_TA, PROPERTIES_MULTI_MENU_IL)).click
+    end
   end
 
   def click_access_control_multi_menu(key = nil)
-    return find(ta(ACCESS_CONTROL_MULTI_MENU_EP)).click if key == :ep
-    return find(:xpath, ACCESS_CONTROL_MULTI_MENU_IL).click if key == :il
-    find(:xpath, ta(ACCESS_CONTROL_MULTI_MENU_TA, ACCESS_CONTROL_MULTI_MENU_IL)).click
+    post_processing key do
+      return find(ta(ACCESS_CONTROL_MULTI_MENU_EP)).click if key == :ep
+      return find(:xpath, ACCESS_CONTROL_MULTI_MENU_IL).click if key == :il
+      find(:xpath, ta(ACCESS_CONTROL_MULTI_MENU_TA, ACCESS_CONTROL_MULTI_MENU_IL)).click
+    end
   end
 
   def click_change_history_multi_menu(key = nil)
-    return find(ta(CHANGE_HISTORY_MULTI_MENU_EP)).click if key == :ep
-    return find(:xpath, CHANGE_HISTORY_MULTI_MENU_IL).click if key == :il
-    find(:xpath, ta(CHANGE_HISTORY_MULTI_MENU_TA, CHANGE_HISTORY_MULTI_MENU_IL)).click
+    post_processing key do
+      return find(ta(CHANGE_HISTORY_MULTI_MENU_EP)).click if key == :ep
+      return find(:xpath, CHANGE_HISTORY_MULTI_MENU_IL).click if key == :il
+      find(:xpath, ta(CHANGE_HISTORY_MULTI_MENU_TA, CHANGE_HISTORY_MULTI_MENU_IL)).click
+    end
   end
 
   def click_close_modal_properties(key = nil)
-    return find(ta(CLOSE_MODAL_PROPERTIES_ICON_EP)).click if key == :ep
-    return find(:css, CLOSE_MODAL_PROPERTIES_ICON_IL).click if key == :il
-    find(:css, ta(CLOSE_MODAL_PROPERTIES_ICON_TA, CLOSE_MODAL_PROPERTIES_ICON_IL)).click
+    post_processing key do
+      return find(ta(CLOSE_MODAL_PROPERTIES_ICON_EP)).click if key == :ep
+      return find(:css, CLOSE_MODAL_PROPERTIES_ICON_IL).click if key == :il
+      find(:css, ta(CLOSE_MODAL_PROPERTIES_ICON_TA, CLOSE_MODAL_PROPERTIES_ICON_IL)).click
+    end
   end
 
   def click_close_modal_access(key = nil)
-    return find(ta(CLOSE_MODAL_ACCESS_ICON_EP)).click if key == :ep
-    return find(:css, CLOSE_MODAL_ACCESS_ICON_IL).click if key == :il
-    find(:css, ta(CLOSE_MODAL_ACCESS_ICON_TA, CLOSE_MODAL_ACCESS_ICON_IL)).click
+    post_processing key do
+      return find(ta(CLOSE_MODAL_ACCESS_ICON_EP)).click if key == :ep
+      return find(:css, CLOSE_MODAL_ACCESS_ICON_IL).click if key == :il
+      find(:css, ta(CLOSE_MODAL_ACCESS_ICON_TA, CLOSE_MODAL_ACCESS_ICON_IL)).click
+    end
   end
 
   def click_history_close_modal(key = nil)
-    return find(ta( HISTORY_CLOSE_MODAL_ICON_EP)).click if key == :ep
-    return find(:css,  HISTORY_CLOSE_MODAL_ICON_IL).click if key == :il
-    find(:css, ta( HISTORY_CLOSE_MODAL_ICON_TA,  HISTORY_CLOSE_MODAL_ICON_IL)).click
+    post_processing key do
+      return find(ta( HISTORY_CLOSE_MODAL_ICON_EP)).click if key == :ep
+      return find(:css,  HISTORY_CLOSE_MODAL_ICON_IL).click if key == :il
+      find(:css, ta( HISTORY_CLOSE_MODAL_ICON_TA,  HISTORY_CLOSE_MODAL_ICON_IL)).click
+    end
   end
 end

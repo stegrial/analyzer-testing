@@ -1,11 +1,13 @@
 require 'spec_helper'
 require 'securerandom'
+require_relative '../../helpers/special_methods'
 random_string = SecureRandom.hex
 
 class CloudBeesAppsEditor
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   ADD_NEW_COMPONENT_IL = "span.at-add-comp-to-tier-btn"
   ADD_NEW_COMPONENT_TA = "cloud_bees:apps_editor:add_new_component"
@@ -81,111 +83,147 @@ class CloudBeesAppsEditor
 
 
   def click_add_new_component(key = nil)
-    return find(ta(ADD_NEW_COMPONENT_EP)).click if key == :ep
-    return find(:css, ADD_NEW_COMPONENT_IL).click if key == :il
-    find(:css, ta(ADD_NEW_COMPONENT_TA, ADD_NEW_COMPONENT_IL)).click
+    post_processing key do
+      return find(ta(ADD_NEW_COMPONENT_EP)).click if key == :ep
+      return find(:css, ADD_NEW_COMPONENT_IL).click if key == :il
+      find(:css, ta(ADD_NEW_COMPONENT_TA, ADD_NEW_COMPONENT_IL)).click
+    end
   end
 
   def click_component_btn(key = nil)
-    return find(ta(ADD_COMPONENT_BTN_EP)).click if key == :ep
-    return find(:css, ADD_COMPONENT_BTN_IL).click if key == :il
-    find(:css, ta(ADD_COMPONENT_BTN_TA, ADD_COMPONENT_BTN_IL)).click
+    post_processing key do
+      return find(ta(ADD_COMPONENT_BTN_EP)).click if key == :ep
+      return find(:css, ADD_COMPONENT_BTN_IL).click if key == :il
+      find(:css, ta(ADD_COMPONENT_BTN_TA, ADD_COMPONENT_BTN_IL)).click
+    end
   end
 
   def click_for_create_new_app_component(key = nil)
-    return find(ta(CREATE_NEW_APP_COMPONENT_EP)).click if key == :ep
-    return find(:css, CREATE_NEW_APP_COMPONENT_IL).click if key == :il
-    find(:css, ta(CREATE_NEW_APP_COMPONENT_TA, CREATE_NEW_APP_COMPONENT_IL)).click
+    post_processing key do
+      return find(ta(CREATE_NEW_APP_COMPONENT_EP)).click if key == :ep
+      return find(:css, CREATE_NEW_APP_COMPONENT_IL).click if key == :il
+      find(:css, ta(CREATE_NEW_APP_COMPONENT_TA, CREATE_NEW_APP_COMPONENT_IL)).click
+    end
   end
 
   def set_new_name(key = nil, value)
-    return find(ta(NEW_COMPONENT_NAME_EP)).set(value + SecureRandom.hex(5)) if key == :ep
-    return find(:css, NEW_COMPONENT_NAME_IL).set(value + SecureRandom.hex(5)) if key == :il
-    find(:css, ta(NEW_COMPONENT_NAME_TA, NEW_COMPONENT_NAME_IL)).set(value + SecureRandom.hex(5))
+    post_processing key do
+      return find(ta(NEW_COMPONENT_NAME_EP)).set(value + SecureRandom.hex(5)) if key == :ep
+      return find(:css, NEW_COMPONENT_NAME_IL).set(value + SecureRandom.hex(5)) if key == :il
+      find(:css, ta(NEW_COMPONENT_NAME_TA, NEW_COMPONENT_NAME_IL)).set(value + SecureRandom.hex(5))
+    end
   end
 
   def set_description(key = nil, value)
-    return find(ta(COMPONENT_DESCRIPTION_EP)).set(value + SecureRandom.hex(10)) if key == :ep
-    return find(:css, COMPONENT_DESCRIPTION_IL).set(value + SecureRandom.hex(10)) if key == :il
-    find(:css, ta(COMPONENT_DESCRIPTION_TA, COMPONENT_DESCRIPTION_IL)).set(value + SecureRandom.hex(10))
+    post_processing key do
+      return find(ta(COMPONENT_DESCRIPTION_EP)).set(value + SecureRandom.hex(10)) if key == :ep
+      return find(:css, COMPONENT_DESCRIPTION_IL).set(value + SecureRandom.hex(10)) if key == :il
+      find(:css, ta(COMPONENT_DESCRIPTION_TA, COMPONENT_DESCRIPTION_IL)).set(value + SecureRandom.hex(10))
+    end
   end
 
   def click_component_dropdown(key = nil)
-    return find(ta(COMPONENT_DROPDOWN_EP)).click if key == :ep
-    return find(:css, COMPONENT_DROPDOWN_IL).click if key == :il
-    find(:css, ta(COMPONENT_DROPDOWN_TA, COMPONENT_DROPDOWN_IL)).click
+    post_processing key do
+      return find(ta(COMPONENT_DROPDOWN_EP)).click if key == :ep
+      return find(:css, COMPONENT_DROPDOWN_IL).click if key == :il
+      find(:css, ta(COMPONENT_DROPDOWN_TA, COMPONENT_DROPDOWN_IL)).click
+    end
   end
 
   def click_artifactory(key = nil)
-    return find(ta(EC_ARTIFACTORY_EP)).click if key == :ep
-    return find(:xpath, EC_ARTIFACTORY_IL).click if key == :il
-    find(:xpath, ta(EC_ARTIFACTORY_TA, EC_ARTIFACTORY_IL)).click
+    post_processing key do
+      return find(ta(EC_ARTIFACTORY_EP)).click if key == :ep
+      return find(:xpath, EC_ARTIFACTORY_IL).click if key == :il
+      find(:xpath, ta(EC_ARTIFACTORY_TA, EC_ARTIFACTORY_IL)).click
+    end
   end
 
   def set_configuration(key = nil, value)
-    return find(ta(CONFIGURATION_EP)).set(value) if key == :ep
-    return find(:xpath, CONFIGURATION_IL).set(value) if key == :il
-    find(:xpath, ta(CONFIGURATION_TA, CONFIGURATION_IL)).set(value)
+    post_processing key do
+      return find(ta(CONFIGURATION_EP)).set(value) if key == :ep
+      return find(:xpath, CONFIGURATION_IL).set(value) if key == :il
+      find(:xpath, ta(CONFIGURATION_TA, CONFIGURATION_IL)).set(value)
+    end
   end
 
   def set_repository_key(key = nil,value)
-    return find(ta(REPOSITORY_KEY_EP)).set(value) if key == :ep
-    return find(:xpath, REPOSITORY_KEY_IL).set(value) if key == :il
-    find(:xpath, ta(REPOSITORY_KEY_TA, REPOSITORY_KEY_IL)).set(value)
+    post_processing key do
+      return find(ta(REPOSITORY_KEY_EP)).set(value) if key == :ep
+      return find(:xpath, REPOSITORY_KEY_IL).set(value) if key == :il
+      find(:xpath, ta(REPOSITORY_KEY_TA, REPOSITORY_KEY_IL)).set(value)
+    end
   end
 
   def set_organization_path(key = nil, value)
-    return find(ta(ORGANIZATION_PATH_EP)).set(value) if key == :ep
-    return find(:xpath, ORGANIZATION_PATH_IL).set(value) if key == :il
-    find(:xpath, ta(ORGANIZATION_PATH_TA, ORGANIZATION_PATH_IL)).set(value)
+    post_processing key do
+      return find(ta(ORGANIZATION_PATH_EP)).set(value) if key == :ep
+      return find(:xpath, ORGANIZATION_PATH_IL).set(value) if key == :il
+      find(:xpath, ta(ORGANIZATION_PATH_TA, ORGANIZATION_PATH_IL)).set(value)
+    end
   end
 
   def set_artifact(key = nil, value)
-    return find(ta(ARTIFACT_EP)).set(value) if key == :ep
-    return find(:xpath, ARTIFACT_IL).set(value) if key == :il
-    find(:xpath, ta(ARTIFACT_TA, ARTIFACT_IL)).set(value)
+    post_processing key do
+      return find(ta(ARTIFACT_EP)).set(value) if key == :ep
+      return find(:xpath, ARTIFACT_IL).set(value) if key == :il
+      find(:xpath, ta(ARTIFACT_TA, ARTIFACT_IL)).set(value)
+    end
   end
 
   def set_version(key = nil, value)
-    return find(ta(VERSION_EP)).set(value) if key == :ep
-    return find(:xpath, VERSION_IL).set(value) if key == :il
-    find(:xpath, ta(VERSION_TA, VERSION_IL)).set(value)
+    post_processing key do
+      return find(ta(VERSION_EP)).set(value) if key == :ep
+      return find(:xpath, VERSION_IL).set(value) if key == :il
+      find(:xpath, ta(VERSION_TA, VERSION_IL)).set(value)
+    end
   end
 
   def set_extention(key = nil, value)
-    return find(ta(EXTENSION_EP)).set(value) if key == :ep
-    return find(:xpath, EXTENSION_IL).set(value) if key == :il
-    find(:xpath, ta(EXTENSION_TA, EXTENSION_IL)).set(value)
+    post_processing key do
+      return find(ta(EXTENSION_EP)).set(value) if key == :ep
+      return find(:xpath, EXTENSION_IL).set(value) if key == :il
+      find(:xpath, ta(EXTENSION_TA, EXTENSION_IL)).set(value)
+    end
   end
 
   def click_warning_ok_btn(key = nil)
-    return find(ta(OK_WARNING_EP)).click if key == :ep
-    return find(:xpath, OK_WARNING_IL).click if key == :il
-    find(:xpath, ta(OK_WARNING_TA, OK_WARNING_IL)).click
+    post_processing key do
+      return find(ta(OK_WARNING_EP)).click if key == :ep
+      return find(:xpath, OK_WARNING_IL).click if key == :il
+      find(:xpath, ta(OK_WARNING_TA, OK_WARNING_IL)).click
+    end
   end
 
   def click_ok_in_modal_btn(key = nil)
-    return find(ta(OK_IN_MODAL_EP)).click if key == :ep
-    return find(:css, OK_IN_MODAL_IL).click if key == :il
-    find(:css, ta(OK_IN_MODAL_TA, OK_IN_MODAL_IL)).click
+    post_processing key do
+      return find(ta(OK_IN_MODAL_EP)).click if key == :ep
+      return find(:css, OK_IN_MODAL_IL).click if key == :il
+      find(:css, ta(OK_IN_MODAL_TA, OK_IN_MODAL_IL)).click
+    end
   end
 
   def click_next_btn(key = nil)
-    return find(ta(NEXT_BTN_EP)).click if key == :ep
-    return find(:xpath, NEXT_BTN_IL).click if key == :il
-    find(:xpath, ta(NEXT_BTN_TA, NEXT_BTN_IL)).click
+    post_processing key do
+      return find(ta(NEXT_BTN_EP)).click if key == :ep
+      return find(:xpath, NEXT_BTN_IL).click if key == :il
+      find(:xpath, ta(NEXT_BTN_TA, NEXT_BTN_IL)).click
+    end
   end
 
   def click_multi_menu(key = nil)
-    return find(ta(MULTI_MENU_BTN_EP)).click if key == :ep
-    return find(:css, MULTI_MENU_BTN_IL).click if key == :il
-    find(:css, ta(MULTI_MENU_BTN_TA, MULTI_MENU_BTN_IL)).click
+    post_processing key do
+      return find(ta(MULTI_MENU_BTN_EP)).click if key == :ep
+      return find(:css, MULTI_MENU_BTN_IL).click if key == :il
+      find(:css, ta(MULTI_MENU_BTN_TA, MULTI_MENU_BTN_IL)).click
+    end
   end
 
   def click_delete(key = nil)
-    return find(ta(DELETE_EP)).click if key == :ep
-    return find(:css, DELETE_IL).click if key == :il
-    find(:css, ta(DELETE_TA, DELETE_IL)).click
+    post_processing key do
+      return find(ta(DELETE_EP)).click if key == :ep
+      return find(:css, DELETE_IL).click if key == :il
+      find(:css, ta(DELETE_TA, DELETE_IL)).click
+    end
   end
 
 

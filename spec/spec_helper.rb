@@ -61,6 +61,10 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include TrueAutomation::DSL
 
+  # config.before(:each) do
+  #   $last_dir = 0
+  # end
+
   config.after(:context) do
     # delete_saved_elements unless config.filter.rules[:ep]
     Capybara.current_session.driver.quit

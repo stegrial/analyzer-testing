@@ -1,10 +1,11 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 class AnnieselkeMobile
-
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   LOGIN_BTN_IL = "(//a[text()='Login'])[1]"
   LOGIN_BTN_TA = "annieselke_mobile:login_btn"
@@ -44,51 +45,67 @@ class AnnieselkeMobile
   SAVE_BTN_EP = "EP:annieselke_mobile:save_btn"
 
   def login_btn(key = nil)
-    return find(:xpath, ta(LOGIN_BTN_EP)).click if  key ==:ep
-    return find(:xpath, LOGIN_BTN_IL).click if  key ==:il
-    find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(LOGIN_BTN_EP)).click if  key ==:ep
+      return find(:xpath, LOGIN_BTN_IL).click if  key ==:il
+      find(:xpath, ta(LOGIN_BTN_TA, LOGIN_BTN_IL)).click
+    end
   end
 
   def set_email(key = nil)
-    return find(:xpath, ta(EMAIL_EP)).set("julia.arapova@softesis.com") if key ==:ep
-    return find(:xpath, EMAIL_IL).set("julia.arapova@softesis.com") if key ==:il
-    find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set("julia.arapova@softesis.com")
+    post_processing key do
+      return find(:xpath, ta(EMAIL_EP)).set("julia.arapova@softesis.com") if key ==:ep
+      return find(:xpath, EMAIL_IL).set("julia.arapova@softesis.com") if key ==:il
+      find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set("julia.arapova@softesis.com")
+    end
   end
 
   def set_pass(key = nil)
-    return find(:xpath, ta(PASS_EP)).set("1234tesT") if key ==:ep
-    return find(:xpath, PASS_IL).set("1234tesT") if key ==:il
-    find(:xpath, ta(PASS_TA, PASS_IL)).set("1234tesT")
+    post_processing key do
+      return find(:xpath, ta(PASS_EP)).set("1234tesT") if key ==:ep
+      return find(:xpath, PASS_IL).set("1234tesT") if key ==:il
+      find(:xpath, ta(PASS_TA, PASS_IL)).set("1234tesT")
+    end
   end
 
   def click_login_btn(key = nil)
-    return find(:xpath, ta(LOGIN_EP)).click if key ==:ep
-    return find(:xpath, LOGIN_IL).click if key ==:il
-    find(:xpath, ta(LOGIN_TA, LOGIN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(LOGIN_EP)).click if key ==:ep
+      return find(:xpath, LOGIN_IL).click if key ==:il
+      find(:xpath, ta(LOGIN_TA, LOGIN_IL)).click
+    end
   end
 
   def click_hamburger_menu(key = nil)
-    return find(:xpath, ta(HAMBURGER_MENU_EP)).click if key == :ep
-    return find(:xpath, HAMBURGER_MENU_IL).click if key == :il
-    find(:xpath, ta(HAMBURGER_MENU_TA, HAMBURGER_MENU_IL)).click
+    post_processing key do
+      return find(:xpath, ta(HAMBURGER_MENU_EP)).click if key == :ep
+      return find(:xpath, HAMBURGER_MENU_IL).click if key == :il
+      find(:xpath, ta(HAMBURGER_MENU_TA, HAMBURGER_MENU_IL)).click
+    end
   end
 
   def click_my_acc_btn(key = nil)
-    return find(:xpath, ta(MY_ACCOUNT_EP)).click if key ==:ep
-    return find(:xpath, MY_ACCOUNT_IL).click if key ==:il
-    find(:xpath, ta(MY_ACCOUNT_TA, MY_ACCOUNT_IL)).click
+    post_processing key do
+      return find(:xpath, ta(MY_ACCOUNT_EP)).click if key ==:ep
+      return find(:xpath, MY_ACCOUNT_IL).click if key ==:il
+      find(:xpath, ta(MY_ACCOUNT_TA, MY_ACCOUNT_IL)).click
+    end
   end
 
   def click_personal_info_btn(key = nil)
-    return find(:xpath, ta(PERSONAL_DETEILS_EP)).click if key ==:ep
-    return find(:xpath, PERSONAL_DETEILS_IL).click if key ==:il
-    find(:xpath, ta(PERSONAL_DETEILS_TA, PERSONAL_DETEILS_IL)).click
+    post_processing key do
+      return find(:xpath, ta(PERSONAL_DETEILS_EP)).click if key ==:ep
+      return find(:xpath, PERSONAL_DETEILS_IL).click if key ==:il
+      find(:xpath, ta(PERSONAL_DETEILS_TA, PERSONAL_DETEILS_IL)).click
+    end
   end
 
   def select_gender(key = nil, gender)
-    return find(:xpath, ta(GENDER_EP)).select(gender) if key ==:ep
-    return find(:xpath, GENDER_IL).select(gender) if key ==:il
-    find(:xpath, ta(GENDER_TA, GENDER_IL)).select(gender)
+    post_processing key do
+      return find(:xpath, ta(GENDER_EP)).select(gender) if key ==:ep
+      return find(:xpath, GENDER_IL).select(gender) if key ==:il
+      find(:xpath, ta(GENDER_TA, GENDER_IL)).select(gender)
+    end
   end
   GENDER__SELECT_IL = "profile.title"
   GENDER__SELECT_TA = "annieselke_mobile:gender_select"
@@ -103,9 +120,11 @@ class AnnieselkeMobile
   OPTION__MS_EP = "EP:annieselke_mobile:gender_ms"
 
   def click_save_btn(key = nil)
-    return find(:xpath, ta(SAVE_BTN_EP)).click if key ==:ep
-    return find(:xpath, SAVE_BTN_IL).click if key ==:il
-    find(:xpath, ta(SAVE_BTN_TA, SAVE_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(SAVE_BTN_EP)).click if key ==:ep
+      return find(:xpath, SAVE_BTN_IL).click if key ==:il
+      find(:xpath, ta(SAVE_BTN_TA, SAVE_BTN_IL)).click
+    end
   end
 
   def close_modal

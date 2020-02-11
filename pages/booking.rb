@@ -1,10 +1,11 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 class Booking
-
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   PLACE_INPUT_IL = "input#input_destination"
   PLACE_INPUT_TA = "booking:place_input"
@@ -35,39 +36,51 @@ class Booking
   ACCEPT_EP = "EP:booking:accept"
 
   def click_place(key = nil)
-    return find(ta(PLACE_INPUT_EP)).click if key ==:ep
-    return find(:css, PLACE_INPUT_IL).click if key ==:il
-    find(:css, ta(PLACE_INPUT_TA, PLACE_INPUT_IL)).click
+    post_processing key do
+      return find(ta(PLACE_INPUT_EP)).click if key ==:ep
+      return find(:css, PLACE_INPUT_IL).click if key ==:il
+      find(:css, ta(PLACE_INPUT_TA, PLACE_INPUT_IL)).click
+    end
   end
 
   def set_place(key = nil,value)
-    return find(ta(SEARCH_PLACE_INPUT_EP)).set(value) if key ==:ep
-    return find(:css, SEARCH_PLACE_INPUT_IL).set(value) if key ==:il
-    find(:css, ta(SEARCH_PLACE_INPUT_TA, SEARCH_PLACE_INPUT_IL)).set(value)
+    post_processing key do
+      return find(ta(SEARCH_PLACE_INPUT_EP)).set(value) if key ==:ep
+      return find(:css, SEARCH_PLACE_INPUT_IL).set(value) if key ==:il
+      find(:css, ta(SEARCH_PLACE_INPUT_TA, SEARCH_PLACE_INPUT_IL)).set(value)
+    end
   end
 
   def click_to_select_city(key = nil)
-    return find(ta(SELECT_CITY_EP)).click if key ==:ep
-    return find(:xpath, SELECT_CITY_IL).click if key ==:il
-    find(:xpath, ta(SELECT_CITY_TA, SELECT_CITY_IL)).click
+    post_processing key do
+      return find(ta(SELECT_CITY_EP)).click if key ==:ep
+      return find(:xpath, SELECT_CITY_IL).click if key ==:il
+      find(:xpath, ta(SELECT_CITY_TA, SELECT_CITY_IL)).click
+    end
   end
 
   def click_to_select_departure_data(key = nil)
-    return find(ta(FIRST_DATA_EP)).click() if key ==:ep
-    return find(:css, FIRST_DATA_IL).click() if key ==:il
-    find(:css, ta(FIRST_DATA_TA, FIRST_DATA_IL)).click()
+    post_processing key do
+      return find(ta(FIRST_DATA_EP)).click() if key ==:ep
+      return find(:css, FIRST_DATA_IL).click() if key ==:il
+      find(:css, ta(FIRST_DATA_TA, FIRST_DATA_IL)).click()
+    end
   end
 
   def click_to_accept(key = nil)
-    return find(ta(ACCEPT_EP)).click() if key ==:ep
-    return find(:xpath, ACCEPT_IL).click() if key ==:il
-    find(:xpath, ta(ACCEPT_TA, ACCEPT_IL)).click()
+    post_processing key do
+      return find(ta(ACCEPT_EP)).click() if key ==:ep
+      return find(:xpath, ACCEPT_IL).click() if key ==:il
+      find(:xpath, ta(ACCEPT_TA, ACCEPT_IL)).click()
+    end
   end
 
   def click_search_btn(key = nil)
-    return find(ta(SEARCH_BTN_EP)).click() if key ==:ep
-    return find(:css, SEARCH_BTN_IL).click() if key ==:il
-    find(:css, ta(SEARCH_BTN_TA, SEARCH_BTN_IL)).click()
+    post_processing key do
+      return find(ta(SEARCH_BTN_EP)).click() if key ==:ep
+      return find(:css, SEARCH_BTN_IL).click() if key ==:il
+      find(:css, ta(SEARCH_BTN_TA, SEARCH_BTN_IL)).click()
+    end
   end
 
 end
