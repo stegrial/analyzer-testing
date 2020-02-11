@@ -30,6 +30,10 @@ class TheTiebarCartPage
   REMOVE_LINK_FROM_CART_TA = "thetiebar:cart_page:remove_from_cart_link"
   REMOVE_LINK_FROM_CART_EP = "EP:thetiebar:cart_page:remove_from_cart_link"
 
+  CHECKOUT_NOW_BTN_MODAL_IL = "//button[@data-th='checkout-link']"
+  CHECKOUT_NOW_BTN_MODAL_TA = "thetiebar:cart_page:checkout_now_btn_in_modal"
+  CHECKOUT_NOW_BTN_MODAL_EP = "EP:thetiebar:cart_page:checkout_now_btn_in_modal"
+
 
   def click_plus_quantity_icon(key = nil)
     return find(ta(PLUS_QUANTITY_CART_EP)).click if key == :ep
@@ -65,6 +69,12 @@ class TheTiebarCartPage
     return find(ta(REMOVE_LINK_FROM_CART_EP)).click if key == :ep
     return find(:xpath, REMOVE_LINK_FROM_CART_IL).click if key == :il
     find(:xpath, ta(REMOVE_LINK_FROM_CART_TA, REMOVE_LINK_FROM_CART_IL)).click
+  end
+
+  def click_checkout_now_btn_modal(key = nil)
+    return find(ta(CHECKOUT_NOW_BTN_MODAL_EP)).click if key == :ep
+    return find(:xpath, CHECKOUT_NOW_BTN_MODAL_IL).click if key == :il
+    find(:xpath, ta(CHECKOUT_NOW_BTN_MODAL_TA, CHECKOUT_NOW_BTN_MODAL_IL)).click
   end
 
 end

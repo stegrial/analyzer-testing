@@ -9,6 +9,10 @@ class TheTiebarProductPage
   SECOND_SHIRT_PDP_TA = "thetiebar:header:shirts"
   SECOND_SHIRT_PDP_EP = "EP:thetiebar:header:shirts"
 
+  SECOND_SOCKS_PDP_IL = "(//img[contains(@alt, 'socks')])[2]"
+  SECOND_SOCKS_PDP_TA = "thetiebar:header:socks"
+  SECOND_SOCKS_PDP_EP = "EP:thetiebar:header:socks"
+
   SIZE_145_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='14.5']"
   SIZE_145_TA = "thetiebar:PDP:145_size_btn"
   SIZE_145_EP = "EP:thetiebar:PDP:145_size_btn"
@@ -273,5 +277,11 @@ class TheTiebarProductPage
       p "No sleeve length sizes available"
 
     end
+  end
+
+  def click_second_socks(key = nil)
+    return find(ta(SECOND_SOCKS_PDP_EP)).click if key == :ep
+    return find(:xpath, SECOND_SOCKS_PDP_IL).click if key == :il
+    find(:xpath, ta(SECOND_SOCKS_PDP_TA, SECOND_SOCKS_PDP_IL)).click
   end
 end

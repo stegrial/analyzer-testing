@@ -30,7 +30,7 @@ class TheTiebarHeader
   REWARDS_LINK_TA = "thetiebar:header:rewards_program"
   REWARDS_LINK_EP = "EP:thetiebar:header:rewards_program"
 
-  SHIRTS_CATEGORY_IL = "//span[contains(text(), 'Shirts')]"
+  SHIRTS_CATEGORY_IL = "(//span[contains(text(), 'Shirts')])[1]"
   SHIRTS_CATEGORY_TA = "thetiebar:header:subcategory:Shirts"
   SHIRTS_CATEGORY_EP = "EP:thetiebar:header:subcategory:Shirts"
 
