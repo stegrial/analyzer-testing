@@ -1,4 +1,5 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class TheTiebarPromoPage
 

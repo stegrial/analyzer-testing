@@ -1,4 +1,6 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
+
 
 class TheTiebarFooterPage
   include TrueAutomation::DSL
