@@ -1,10 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class CloudBeesResources
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-
+  include ExtendPage
 
   ADD_NEW_RESOURCE_IL = "//table[@title='Add']"
   ADD_NEW_RESOURCE_TA = "cloud_bees:resource:add_new_resource"
@@ -75,138 +76,172 @@ class CloudBeesResources
   ACCEPT_DELETE_RESOURCE_EP = "EP:cloud_bees:resource:accept_delete_new_resource"
 
   def click_add_new_resource(key = nil)
-    within_frame(0) do
-      return find(ta(ADD_NEW_RESOURCE_EP)).click if key == :ep
-      return find(:xpath, ADD_NEW_RESOURCE_IL).click if key == :il
-      find(:xpath, ta(ADD_NEW_RESOURCE_TA, ADD_NEW_RESOURCE_IL)).click
+    post_processing key do
+      within_frame(0) do
+        return find(ta(ADD_NEW_RESOURCE_EP)).click if key == :ep
+        return find(:xpath, ADD_NEW_RESOURCE_IL).click if key == :il
+        find(:xpath, ta(ADD_NEW_RESOURCE_TA, ADD_NEW_RESOURCE_IL)).click
+      end
     end
   end
 
   def click_create_resource_btn(key = nil)
-    within_frame(0) do
-      return find(ta(CREATE_RESOURCE_BTN_EP)).click if key == :ep
-      return find(:xpath, CREATE_RESOURCE_BTN_IL).click if key == :il
-      find(:xpath, ta(CREATE_RESOURCE_BTN_TA, CREATE_RESOURCE_BTN_IL)).click
+    post_processing key do
+      within_frame(0) do
+        return find(ta(CREATE_RESOURCE_BTN_EP)).click if key == :ep
+        return find(:xpath, CREATE_RESOURCE_BTN_IL).click if key == :il
+        find(:xpath, ta(CREATE_RESOURCE_BTN_TA, CREATE_RESOURCE_BTN_IL)).click
+      end
     end
   end
 
   def set_resource_name(key = nil, name)
-    within_frame(0) do
-      return find(ta(RESOURCE_NAME_EP)).set(name) if key == :ep
-      return find(:xpath, RESOURCE_NAME_IL).set(name) if key == :il
-      find(:xpath, ta(RESOURCE_NAME_TA, RESOURCE_NAME_IL)).set(name)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_NAME_EP)).set(name) if key == :ep
+        return find(:xpath, RESOURCE_NAME_IL).set(name) if key == :il
+        find(:xpath, ta(RESOURCE_NAME_TA, RESOURCE_NAME_IL)).set(name)
+      end
     end
   end
 
   def set_description_of_resource(key = nil, value)
-    within_frame(0) do
-      return find(ta(RESOURCE_DESCRIPTION_EP)).set(value) if key == :ep
-      return find(:xpath, RESOURCE_DESCRIPTION_IL).set(value) if key == :il
-      find(:xpath, ta(RESOURCE_DESCRIPTION_TA, RESOURCE_DESCRIPTION_IL)).set(value)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_DESCRIPTION_EP)).set(value) if key == :ep
+        return find(:xpath, RESOURCE_DESCRIPTION_IL).set(value) if key == :il
+        find(:xpath, ta(RESOURCE_DESCRIPTION_TA, RESOURCE_DESCRIPTION_IL)).set(value)
+      end
     end
   end
 
   def set_host_of_resource(key = nil, value)
-    within_frame(0) do
-      return find(ta(RESOURCE_HOST_NAME_EP)).set(value) if key == :ep
-      return find(:xpath, RESOURCE_HOST_NAME_IL).set(value) if key == :il
-      find(:xpath, ta(RESOURCE_HOST_NAME_TA, RESOURCE_HOST_NAME_IL)).set(value)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_HOST_NAME_EP)).set(value) if key == :ep
+        return find(:xpath, RESOURCE_HOST_NAME_IL).set(value) if key == :il
+        find(:xpath, ta(RESOURCE_HOST_NAME_TA, RESOURCE_HOST_NAME_IL)).set(value)
+      end
     end
   end
 
   def set_port_of_resource(key = nil, value)
-    within_frame(0) do
-      return find(ta(RESOURCE_PORT_EP)).set(value) if key == :ep
-      return find(:xpath, RESOURCE_PORT_IL).set(value) if key == :il
-      find(:xpath, ta(RESOURCE_PORT_TA, RESOURCE_PORT_IL)).set(value)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_PORT_EP)).set(value) if key == :ep
+        return find(:xpath, RESOURCE_PORT_IL).set(value) if key == :il
+        find(:xpath, ta(RESOURCE_PORT_TA, RESOURCE_PORT_IL)).set(value)
+      end
     end
   end
 
   def set_pools_of_resource(key = nil, value)
-    within_frame(0) do
-      return find(ta(RESOURCE_POOLS_EP)).set(value) if key == :ep
-      return find(:xpath, RESOURCE_POOLS_IL).set(value) if key == :il
-      find(:xpath, ta(RESOURCE_POOLS_TA, RESOURCE_POOLS_IL)).set(value)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_POOLS_EP)).set(value) if key == :ep
+        return find(:xpath, RESOURCE_POOLS_IL).set(value) if key == :il
+        find(:xpath, ta(RESOURCE_POOLS_TA, RESOURCE_POOLS_IL)).set(value)
+      end
     end
   end
 
   def set_shell_of_resource(key = nil, value)
-    within_frame(0) do
-      return find(ta(RESOURCE_SHELL_EP)).set(value) if key == :ep
-      return find(:xpath, RESOURCE_SHELL_IL).set(value) if key == :il
-      find(:xpath, ta(RESOURCE_SHELL_TA, RESOURCE_SHELL_IL)).set(value)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_SHELL_EP)).set(value) if key == :ep
+        return find(:xpath, RESOURCE_SHELL_IL).set(value) if key == :il
+        find(:xpath, ta(RESOURCE_SHELL_TA, RESOURCE_SHELL_IL)).set(value)
+      end
     end
   end
 
   def set_step_limit_of_resource(key = nil, value)
-    within_frame(0) do
-      return find(ta(RESOURCE_STEP_LIMIT_EP)).set(value) if key == :ep
-      return find(:xpath, RESOURCE_STEP_LIMIT_IL).set(value) if key == :il
-      find(:xpath, ta(RESOURCE_STEP_LIMIT_TA, RESOURCE_STEP_LIMIT_IL)).set(value)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_STEP_LIMIT_EP)).set(value) if key == :ep
+        return find(:xpath, RESOURCE_STEP_LIMIT_IL).set(value) if key == :il
+        find(:xpath, ta(RESOURCE_STEP_LIMIT_TA, RESOURCE_STEP_LIMIT_IL)).set(value)
+      end
     end
   end
 
   def set_cache_directory_of_resource(key = nil, value)
-    within_frame(0) do
-      return find(ta(RESOURCE_CACHE_DIRECTORY_EP)).set(value) if key == :ep
-      return find(:xpath, RESOURCE_CACHE_DIRECTORY_IL).set(value) if key == :il
-      find(:xpath, ta(RESOURCE_CACHE_DIRECTORY_TA, RESOURCE_CACHE_DIRECTORY_IL)).set(value)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_CACHE_DIRECTORY_EP)).set(value) if key == :ep
+        return find(:xpath, RESOURCE_CACHE_DIRECTORY_IL).set(value) if key == :il
+        find(:xpath, ta(RESOURCE_CACHE_DIRECTORY_TA, RESOURCE_CACHE_DIRECTORY_IL)).set(value)
+      end
     end
   end
 
   def set_tags_of_resource(key = nil, value)
-    within_frame(0) do
-      return find(ta(RESOURCE_TAGS_EP)).set(value) if key == :ep
-      return find(:xpath, RESOURCE_TAGS_IL).set(value) if key == :il
-      find(:xpath, ta(RESOURCE_TAGS_TA, RESOURCE_TAGS_IL)).set(value)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_TAGS_EP)).set(value) if key == :ep
+        return find(:xpath, RESOURCE_TAGS_IL).set(value) if key == :il
+        find(:xpath, ta(RESOURCE_TAGS_TA, RESOURCE_TAGS_IL)).set(value)
+      end
     end
   end
 
   def click_ok_button(key = nil)
-    within_frame(0) do
-      return find(ta(RESOURCE_OK_BTN_EP)).click if key == :ep
-      return find(:css, RESOURCE_OK_BTN_IL).click if key == :il
-      find(:css, ta(RESOURCE_OK_BTN_TA, RESOURCE_OK_BTN_IL)).click
+    post_processing key do
+      within_frame(0) do
+        return find(ta(RESOURCE_OK_BTN_EP)).click if key == :ep
+        return find(:css, RESOURCE_OK_BTN_IL).click if key == :il
+        find(:css, ta(RESOURCE_OK_BTN_TA, RESOURCE_OK_BTN_IL)).click
+      end
     end
   end
 
   def click_quick_search(key = nil, value)
-    within_frame(0) do
-      return find(ta(QUICK_SEARCH_INPUT_EP)).set(value) if key == :ep
-      return find(:xpath, QUICK_SEARCH_INPUT_IL).set(value) if key == :il
-      find(:xpath, ta(QUICK_SEARCH_INPUT_TA, QUICK_SEARCH_INPUT_IL)).set(value)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(QUICK_SEARCH_INPUT_EP)).set(value) if key == :ep
+        return find(:xpath, QUICK_SEARCH_INPUT_IL).set(value) if key == :il
+        find(:xpath, ta(QUICK_SEARCH_INPUT_TA, QUICK_SEARCH_INPUT_IL)).set(value)
+      end
     end
   end
 
   def click_filter_button(key = nil)
-    within_frame(0) do
-      return find(ta(FILTER_OK_BTN_EP)).click if key == :ep
-      return find(:css, FILTER_OK_BTN_IL).click if key == :il
-      find(:css, ta(FILTER_OK_BTN_TA, FILTER_OK_BTN_IL)).click
+    post_processing key do
+      within_frame(0) do
+        return find(ta(FILTER_OK_BTN_EP)).click if key == :ep
+        return find(:css, FILTER_OK_BTN_IL).click if key == :il
+        find(:css, ta(FILTER_OK_BTN_TA, FILTER_OK_BTN_IL)).click
+      end
     end
   end
 
   def click_to_select_checkbox(key = nil)
-    within_frame(0) do
-      return find(ta(SELECT_CHECKBOX_EP)).click if key == :ep
-      return find(:xpath, SELECT_CHECKBOX_IL).click if key == :il
-      find(:xpath, ta(SELECT_CHECKBOX_TA, SELECT_CHECKBOX_IL)).click
+    post_processing key do
+      within_frame(0) do
+        return find(ta(SELECT_CHECKBOX_EP)).click if key == :ep
+        return find(:xpath, SELECT_CHECKBOX_IL).click if key == :il
+        find(:xpath, ta(SELECT_CHECKBOX_TA, SELECT_CHECKBOX_IL)).click
+      end
     end
   end
 
   def click_to_delete_new_resource(key = nil)
-    within_frame(0) do
-      return find(ta(DELETE_NEW_RESOURCE_EP)).click if key == :ep
-      return find(:xpath, DELETE_NEW_RESOURCE_IL).click if key == :il
-      find(:xpath, ta(DELETE_NEW_RESOURCE_TA, DELETE_NEW_RESOURCE_IL)).click
+    post_processing key do
+      within_frame(0) do
+        return find(ta(DELETE_NEW_RESOURCE_EP)).click if key == :ep
+        return find(:xpath, DELETE_NEW_RESOURCE_IL).click if key == :il
+        find(:xpath, ta(DELETE_NEW_RESOURCE_TA, DELETE_NEW_RESOURCE_IL)).click
+      end
     end
   end
 
   def click_ok_to_delete_new_resource(key = nil)
-    within_frame(0) do
-      return find(ta(ACCEPT_DELETE_RESOURCE_EP)).click if key == :ep
-      return find(:xpath, ACCEPT_DELETE_RESOURCE_IL).click if key == :il
-      find(:xpath, ta(ACCEPT_DELETE_RESOURCE_TA, ACCEPT_DELETE_RESOURCE_IL)).click
+    post_processing key do
+      within_frame(0) do
+        return find(ta(ACCEPT_DELETE_RESOURCE_EP)).click if key == :ep
+        return find(:xpath, ACCEPT_DELETE_RESOURCE_IL).click if key == :il
+        find(:xpath, ta(ACCEPT_DELETE_RESOURCE_TA, ACCEPT_DELETE_RESOURCE_IL)).click
+      end
     end
   end
 

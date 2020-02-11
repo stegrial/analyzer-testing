@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class CloudBeesEditUser
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   ADMIN_PASS_FIELD_IL = '[id=sessionPassword]'
   ADMIN_PASS_FIELD_TA = 'cloud_bees:edit_user:admin_password_fld'
@@ -22,34 +24,42 @@ class CloudBeesEditUser
   UPDATE_USER_DATA_BTN_EP = 'EP:cloud_bees:edit_user:update_user_data_btn'
 
   def fill_admin_password_field(key = nil, name)
-    within_frame(0) do
-      return find(ta(ADMIN_PASS_FIELD_EP)).set(name) if key == :ep
-      return find(:css, ADMIN_PASS_FIELD_IL).set(name) if key == :il
-      find(:css, ta(ADMIN_PASS_FIELD_TA, ADMIN_PASS_FIELD_IL)).set(name)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(ADMIN_PASS_FIELD_EP)).set(name) if key == :ep
+        return find(:css, ADMIN_PASS_FIELD_IL).set(name) if key == :il
+        find(:css, ta(ADMIN_PASS_FIELD_TA, ADMIN_PASS_FIELD_IL)).set(name)
+      end
     end
   end
 
   def fill_new_user_password(key = nil, name)
-    within_frame(0) do
-      return find(ta(USER_PASS_FIELD_EP)).set(name) if key == :ep
-      return find(:css, USER_PASS_FIELD_IL).set(name) if key == :il
-      find(:css, ta(USER_PASS_FIELD_TA, USER_PASS_FIELD_IL)).set(name)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(USER_PASS_FIELD_EP)).set(name) if key == :ep
+        return find(:css, USER_PASS_FIELD_IL).set(name) if key == :il
+        find(:css, ta(USER_PASS_FIELD_TA, USER_PASS_FIELD_IL)).set(name)
+      end
     end
   end
 
   def fill_new_user_repassword(key = nil, name)
-    within_frame(0) do
-      return find(ta(USER_REPASS_FIELD_EP)).set(name) if key == :ep
-      return find(:css, USER_REPASS_FIELD_IL).set(name) if key == :il
-      find(:css, ta(USER_REPASS_FIELD_TA, USER_REPASS_FIELD_IL)).set(name)
+    post_processing key do
+      within_frame(0) do
+        return find(ta(USER_REPASS_FIELD_EP)).set(name) if key == :ep
+        return find(:css, USER_REPASS_FIELD_IL).set(name) if key == :il
+        find(:css, ta(USER_REPASS_FIELD_TA, USER_REPASS_FIELD_IL)).set(name)
+      end
     end
   end
 
   def update_user_data(key = nil)
-    within_frame(0) do
-      return find(ta(UPDATE_USER_DATA_BTN_EP)).click if key == :ep
-      return find(:css, UPDATE_USER_DATA_BTN_IL).click if key == :il
-      find(:css, ta(UPDATE_USER_DATA_BTN_TA, UPDATE_USER_DATA_BTN_IL)).click
+    post_processing key do
+      within_frame(0) do
+        return find(ta(UPDATE_USER_DATA_BTN_EP)).click if key == :ep
+        return find(:css, UPDATE_USER_DATA_BTN_IL).click if key == :il
+        find(:css, ta(UPDATE_USER_DATA_BTN_TA, UPDATE_USER_DATA_BTN_IL)).click
+      end
     end
   end
 

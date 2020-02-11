@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 class Revolve
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
 
   NEW_NAVMENU_IL = "//a[text()='New']"
@@ -164,111 +166,147 @@ class Revolve
 
 
   def click_new_in_top_navmenu(key = nil)
-    return find(ta(NEW_NAVMENU_EP)).click if key == :ep
-    return find(:xpath, NEW_NAVMENU_IL).click if key == :il
-    find(:xpath, ta(NEW_NAVMENU_TA, NEW_NAVMENU_IL)).click
+    post_processing key do
+      return find(ta(NEW_NAVMENU_EP)).click if key == :ep
+      return find(:xpath, NEW_NAVMENU_IL).click if key == :il
+      find(:xpath, ta(NEW_NAVMENU_TA, NEW_NAVMENU_IL)).click
+    end
   end
 
   def click_filter_btn(key = nil)
-    return find(ta(FILTER_BTN_EP)).click if key == :ep
-    return find(:xpath, FILTER_BTN_IL).click if key == :il
-    find(:xpath, ta(FILTER_BTN_TA, FILTER_BTN_IL)).click
+    post_processing key do
+      return find(ta(FILTER_BTN_EP)).click if key == :ep
+      return find(:xpath, FILTER_BTN_IL).click if key == :il
+      find(:xpath, ta(FILTER_BTN_TA, FILTER_BTN_IL)).click
+    end
   end
 
-  def click_to_expand_price_list(key= nil)
-    return find(ta(PRICE_EP)).click if key == :ep
-    return find(:xpath, PRICE_IL).click if key == :il
-    find(:xpath, ta(PRICE_TA, PRICE_IL)).click
+  def click_to_expand_price_list(key = nil)
+    post_processing key do
+      return find(ta(PRICE_EP)).click if key == :ep
+      return find(:xpath, PRICE_IL).click if key == :il
+      find(:xpath, ta(PRICE_TA, PRICE_IL)).click
+    end
   end
 
-  def checkbox_for_price(key= nil)
-    return find(ta(CHECKBOX_FOR_PRICE_EP)).click if key == :ep
-    return find(:xpath, CHECKBOX_FOR_PRICE_IL).click if key == :il
-    find(:xpath, ta(CHECKBOX_FOR_PRICE_TA, CHECKBOX_FOR_PRICE_IL)).click
+  def checkbox_for_price(key = nil)
+    post_processing key do
+      return find(ta(CHECKBOX_FOR_PRICE_EP)).click if key == :ep
+      return find(:xpath, CHECKBOX_FOR_PRICE_IL).click if key == :il
+      find(:xpath, ta(CHECKBOX_FOR_PRICE_TA, CHECKBOX_FOR_PRICE_IL)).click
+    end
   end
 
   def click_view_results_btn(key = nil)
-    return find(ta(VIEW_RESULTS_BTN_EP)).click if key == :ep
-    return find(:xpath, VIEW_RESULTS_BTN_IL).click if key == :il
-    find(:xpath, ta(VIEW_RESULTS_BTN_TA, VIEW_RESULTS_BTN_IL)).click
+    post_processing key do
+      return find(ta(VIEW_RESULTS_BTN_EP)).click if key == :ep
+      return find(:xpath, VIEW_RESULTS_BTN_IL).click if key == :il
+      find(:xpath, ta(VIEW_RESULTS_BTN_TA, VIEW_RESULTS_BTN_IL)).click
+    end
   end
 
   def click_categories_in_top_navmenu(key = nil)
-    return find(ta(CATEGORIES_NAVMENU_EP)).click if key == :ep
-    return find(:xpath, CATEGORIES_NAVMENU_IL).click if key == :il
-    find(:xpath, ta(CATEGORIES_NAVMENU_TA, CATEGORIES_NAVMENU_IL)).click
+    post_processing key do
+      return find(ta(CATEGORIES_NAVMENU_EP)).click if key == :ep
+      return find(:xpath, CATEGORIES_NAVMENU_IL).click if key == :il
+      find(:xpath, ta(CATEGORIES_NAVMENU_TA, CATEGORIES_NAVMENU_IL)).click
+    end
   end
 
   def click_dresses_categories(key = nil)
-    return find(ta(DRESSES_CATEGORY_EP)).click if key == :ep
-    return find(:xpath, DRESSES_CATEGORY_IL).click if key == :il
-    find(:xpath, ta(DRESSES_CATEGORY_TA, DRESSES_CATEGORY_IL)).click
+    post_processing key do
+      return find(ta(DRESSES_CATEGORY_EP)).click if key == :ep
+      return find(:xpath, DRESSES_CATEGORY_IL).click if key == :il
+      find(:xpath, ta(DRESSES_CATEGORY_TA, DRESSES_CATEGORY_IL)).click
+    end
   end
 
   def click_product_item4(key = nil)
-    return find(ta(PRODUCT_ITEM_EP)).click if key == :ep
-    return find(:xpath, PRODUCT_ITEM_IL).click if key == :il
-    find(:xpath, ta(PRODUCT_ITEM_TA, PRODUCT_ITEM_IL)).click
+    post_processing key do
+      return find(ta(PRODUCT_ITEM_EP)).click if key == :ep
+      return find(:xpath, PRODUCT_ITEM_IL).click if key == :il
+      find(:xpath, ta(PRODUCT_ITEM_TA, PRODUCT_ITEM_IL)).click
+    end
   end
 
   def click_account_button(key = nil)
-    return find(:xpath, ta(ACCOUNT_BUTTON_EP)).click if key == :ep
-    return find(:xpath, ACCOUNT_BUTTON_IL).click if key == :il
-    find(:xpath, ta(ACCOUNT_BUTTON_TA, ACCOUNT_BUTTON_IL)).click
+    post_processing key do
+      return find(:xpath, ta(ACCOUNT_BUTTON_EP)).click if key == :ep
+      return find(:xpath, ACCOUNT_BUTTON_IL).click if key == :il
+      find(:xpath, ta(ACCOUNT_BUTTON_TA, ACCOUNT_BUTTON_IL)).click
+    end
   end
 
   def fill_email_field(key = nil, email)
-    return find(:css, ta(EMAIL_FIELD_EP)).set(email) if key == :ep
-    return find(:css, EMAIL_FIELD_IL).set(email) if key == :il
-    find(:css, ta(EMAIL_FIELD_TA, EMAIL_FIELD_IL)).set(email)
+    post_processing key do
+      return find(:css, ta(EMAIL_FIELD_EP)).set(email) if key == :ep
+      return find(:css, EMAIL_FIELD_IL).set(email) if key == :il
+      find(:css, ta(EMAIL_FIELD_TA, EMAIL_FIELD_IL)).set(email)
+    end
   end
 
   def fill_pass_field(key = nil, pass)
-    return find(:css, ta(PASS_FIELD_EP)).set(pass) if key == :ep
-    return find(:css, PASS_FIELD_IL).set(pass) if key == :il
-    find(:css, ta(PASS_FIELD_TA, PASS_FIELD_IL)).set(pass)
+    post_processing key do
+      return find(:css, ta(PASS_FIELD_EP)).set(pass) if key == :ep
+      return find(:css, PASS_FIELD_IL).set(pass) if key == :il
+      find(:css, ta(PASS_FIELD_TA, PASS_FIELD_IL)).set(pass)
+    end
   end
 
   def click_sign_in_button(key = nil)
-    return find(:xpath, ta(SIGN_IN_BTN_EP)).click if key == :ep
-    return find(:xpath, SIGN_IN_BTN_IL).click if key == :il
-    find(:xpath, ta(SIGN_IN_BTN_TA, SIGN_IN_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(SIGN_IN_BTN_EP)).click if key == :ep
+      return find(:xpath, SIGN_IN_BTN_IL).click if key == :il
+      find(:xpath, ta(SIGN_IN_BTN_TA, SIGN_IN_BTN_IL)).click
+    end
   end
 
   def click_hamburger_menu(key = nil)
-    return find(ta(HAMBURGER_MENU_EP)).click if key == :ep
-    return find(:xpath, HAMBURGER_MENU_IL).click if key == :il
-    find(:xpath, ta(HAMBURGER_MENU_TA, HAMBURGER_MENU_IL)).click
+    post_processing key do
+      return find(ta(HAMBURGER_MENU_EP)).click if key == :ep
+      return find(:xpath, HAMBURGER_MENU_IL).click if key == :il
+      find(:xpath, ta(HAMBURGER_MENU_TA, HAMBURGER_MENU_IL)).click
+    end
   end
 
   def click_hot_list_banner(key = nil)
-    return find(:xpath, ta(HOT_LIST_BANNER_EP)).click if key == :ep
-    return find(:xpath, HOT_LIST_BANNER_IL).click if key == :il
-    find(:xpath, ta(HOT_LIST_BANNER_TA, HOT_LIST_BANNER_IL)).click
+    post_processing key do
+      return find(:xpath, ta(HOT_LIST_BANNER_EP)).click if key == :ep
+      return find(:xpath, HOT_LIST_BANNER_IL).click if key == :il
+      find(:xpath, ta(HOT_LIST_BANNER_TA, HOT_LIST_BANNER_IL)).click
+    end
   end
 
   def click_revolve_logo(key = nil)
-    return find(:xpath, ta(REVOLVE_LOGO_EP)).click if key == :ep
-    return find(:xpath, REVOLVE_LOGO_IL).click if key == :il
-    find(:xpath, ta(REVOLVE_LOGO_TA, REVOLVE_LOGO_IL)).click
+    post_processing key do
+      return find(:xpath, ta(REVOLVE_LOGO_EP)).click if key == :ep
+      return find(:xpath, REVOLVE_LOGO_IL).click if key == :il
+      find(:xpath, ta(REVOLVE_LOGO_TA, REVOLVE_LOGO_IL)).click
+    end
   end
 
   def click_to_select_size(key = nil)
+    post_processing key do
       return find(:xpath, ta(SIZE_BUTTON_S_EP)).click if key == :ep
       return find(:xpath, SIZE_BUTTON_S_IL).click if key == :il
       find(:xpath, ta(SIZE_BUTTON_S_TA, SIZE_BUTTON_S_IL)).click
+    end
   end
 
-  def click_jewelry_product_img(key=nil)
-    return find(:xpath, ta(PRODUCT_IMG_EP)).click if key == :ep
-    return find(:xpath, PRODUCT_IMG_IL).click if key == :il
-    find(:xpath, ta(PRODUCT_IMG_TA, PRODUCT_IMG_IL)).click
+  def click_jewelry_product_img(key = nil)
+    post_processing key do
+      return find(:xpath, ta(PRODUCT_IMG_EP)).click if key == :ep
+      return find(:xpath, PRODUCT_IMG_IL).click if key == :il
+      find(:xpath, ta(PRODUCT_IMG_TA, PRODUCT_IMG_IL)).click
+    end
   end
 
-  def click_view_bag(key=nil)
-    return find(:xpath, ta(VIEW_BAG_EP)).click if key == :ep
-    return find(:xpath, VIEW_BAG_IL).click if key == :il
-    find(:xpath, ta(VIEW_BAG_TA, VIEW_BAG_IL)).click
+  def click_view_bag(key = nil)
+    post_processing key do
+      return find(:xpath, ta(VIEW_BAG_EP)).click if key == :ep
+      return find(:xpath, VIEW_BAG_IL).click if key == :il
+      find(:xpath, ta(VIEW_BAG_TA, VIEW_BAG_IL)).click
+    end
   end
 
   def click_checkout_page(key=nil)
@@ -356,9 +394,11 @@ class Revolve
   end
 
   def click_search_btn(key = nil)
-    return find(ta(SEARCH_BTN_EP)).click if key == :ep
-    return find(:xpath, SEARCH_BTN_IL).click if key == :il
-    find(:xpath, ta(SEARCH_BTN_TA, SEARCH_BTN_IL)).click
+    post_processing key do
+      return find(ta(SEARCH_BTN_EP)).click if key == :ep
+      return find(:xpath, SEARCH_BTN_IL).click if key == :il
+      find(:xpath, ta(SEARCH_BTN_TA, SEARCH_BTN_IL)).click
+    end
   end
 
   def set_search_data(key=nil, data)
@@ -368,27 +408,35 @@ class Revolve
   end
 
   def click_second_search_result(key = nil)
-    return find(ta(SEARCH_RESULT_EP)).click if key == :ep
-    return find(:xpath, SEARCH_RESULT_IL).click if key == :il
-    find(:xpath, ta(SEARCH_RESULT_TA, SEARCH_RESULT_IL)).click
+    post_processing key do
+      return find(ta(SEARCH_RESULT_EP)).click if key == :ep
+      return find(:xpath, SEARCH_RESULT_IL).click if key == :il
+      find(:xpath, ta(SEARCH_RESULT_TA, SEARCH_RESULT_IL)).click
+    end
   end
 
   def click_language(key = nil)
-  return find(ta(LANGUAGE_DROPDOWN_EP)).click if key == :ep
-    return find(:xpath, LANGUAGE_DROPDOWN_IL).click if key == :il
-    find(:xpath, ta(LANGUAGE_DROPDOWN_TA, LANGUAGE_DROPDOWN_IL)).click
+  post_processing key do
+      return find(ta(LANGUAGE_DROPDOWN_EP)).click if key == :ep
+      return find(:xpath, LANGUAGE_DROPDOWN_IL).click if key == :il
+      find(:xpath, ta(LANGUAGE_DROPDOWN_TA, LANGUAGE_DROPDOWN_IL)).click
+    end
   end
 
   def click_italiano_language(key = nil)
-    return find(ta(ITALIANO_LG_EP)).click if key == :ep
-    return find(:xpath, ITALIANO_LG_IL).click if key == :il
-    find(:xpath, ta(ITALIANO_LG_TA, ITALIANO_LG_IL)).click
+    post_processing key do
+      return find(ta(ITALIANO_LG_EP)).click if key == :ep
+      return find(:xpath, ITALIANO_LG_IL).click if key == :il
+      find(:xpath, ta(ITALIANO_LG_TA, ITALIANO_LG_IL)).click
+    end
   end
 
   def click_english_language(key = nil)
-    return find(ta(ENGLISH_LG_EP)).click if key == :ep
-    return find(:xpath, ENGLISH_LG_IL).click if key == :il
-    find(:xpath, ta(ENGLISH_LG_TA, ENGLISH_LG_IL)).click
+    post_processing key do
+      return find(ta(ENGLISH_LG_EP)).click if key == :ep
+      return find(:xpath, ENGLISH_LG_IL).click if key == :il
+      find(:xpath, ta(ENGLISH_LG_TA, ENGLISH_LG_IL)).click
+    end
   end
 
 end

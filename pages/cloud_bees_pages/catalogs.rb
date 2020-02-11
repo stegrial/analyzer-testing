@@ -1,11 +1,14 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class CloudBeesCatalogs
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
-  CREATE_NEW_CATALOG_IL = ".at-button-create-new"
+  # SVG CREATE_NEW_CATALOG_IL = ".at-button-create-new"
+  CREATE_NEW_CATALOG_IL = ".right-container span"
   CREATE_NEW_CATALOG_TA = "cloud_bees:catalogs_page:create_new_catalog"
   CREATE_NEW_CATALOG_EP = "EP:cloud_bees:catalogs_page:create_new_catalog"
 
@@ -37,7 +40,8 @@ class CloudBeesCatalogs
   CATALOGS_DESCRIPTION_FORM_TA = "cloud_bees:catalogs_page:catalogs_description_form"
   CATALOGS_DESCRIPTION_FORM_EP = "EP:cloud_bees:catalogs_page:catalogs_description_form"
 
-  ADD_ANOTHER_BTN_IL = ".at-button-add"
+  # SVG ADD_ANOTHER_BTN_IL = ".at-button-add"
+  ADD_ANOTHER_BTN_IL = ".save-and-add"
   ADD_ANOTHER_BTN_TA = "cloud_bees:catalogs_page:add_another"
   ADD_ANOTHER_BTN_EP = "EP:cloud_bees:catalogs_page:add_another"
 
@@ -123,178 +127,236 @@ class CloudBeesCatalogs
 
 
   def click_to_create_new_catalog(key = nil)
-    return find(ta(CREATE_NEW_CATALOG_EP)).click if key == :ep
-    return find(:css, CREATE_NEW_CATALOG_IL).click if key == :il
-    find(:css, ta(CREATE_NEW_CATALOG_TA, CREATE_NEW_CATALOG_IL)).click
+    post_processing key do
+      return find(ta(CREATE_NEW_CATALOG_EP)).click if key == :ep
+      return find(:css, CREATE_NEW_CATALOG_IL).click if key == :il
+      find(:css, ta(CREATE_NEW_CATALOG_TA, CREATE_NEW_CATALOG_IL)).click
+    end
   end
 
   def click_to_create_new_btn(key = nil)
-    return find(ta(CREATE_NEW_BUTTON_EP)).click if key == :ep
-    return find(:css, CREATE_NEW_BUTTON_IL).click if key == :il
-    find(:css, ta(CREATE_NEW_BUTTON_TA, CREATE_NEW_BUTTON_IL)).click
+    post_processing key do
+      return find(ta(CREATE_NEW_BUTTON_EP)).click if key == :ep
+      return find(:css, CREATE_NEW_BUTTON_IL).click if key == :il
+      find(:css, ta(CREATE_NEW_BUTTON_TA, CREATE_NEW_BUTTON_IL)).click
+    end
   end
 
   def set_catalog_name(key = nil, value)
-    return find(ta(CATALOGS_NAME_FLD_EP)).set(value) if key == :ep
-    return find(:css, CATALOGS_NAME_FLD_IL).set(value) if key == :il
-    find(:css, ta(CATALOGS_NAME_FLD_TA, CATALOGS_NAME_FLD_IL)).set(value)
+    post_processing key do
+      return find(ta(CATALOGS_NAME_FLD_EP)).set(value) if key == :ep
+      return find(:css, CATALOGS_NAME_FLD_IL).set(value) if key == :il
+      find(:css, ta(CATALOGS_NAME_FLD_TA, CATALOGS_NAME_FLD_IL)).set(value)
+    end
   end
 
   def click_to_open_proj_drpodown(key = nil)
-    return find(ta(PROJECT_DROPDOWN_EP)).click if key == :ep
-    return find(:css, PROJECT_DROPDOWN_IL).click if key == :il
-    find(:css, ta(PROJECT_DROPDOWN_TA, PROJECT_DROPDOWN_IL)).click
+    post_processing key do
+      return find(ta(PROJECT_DROPDOWN_EP)).click if key == :ep
+      return find(:css, PROJECT_DROPDOWN_IL).click if key == :il
+      find(:css, ta(PROJECT_DROPDOWN_TA, PROJECT_DROPDOWN_IL)).click
+    end
   end
 
   def select_proj_from_list(key = nil)
-    return find(ta(DEFAULT_PROJECT_EP)).click if key == :ep
-    return find(:xpath, DEFAULT_PROJECT_IL).click if key == :il
-    find(:xpath, ta(DEFAULT_PROJECT_TA, DEFAULT_PROJECT_IL)).click
+    post_processing key do
+      return find(ta(DEFAULT_PROJECT_EP)).click if key == :ep
+      return find(:xpath, DEFAULT_PROJECT_IL).click if key == :il
+      find(:xpath, ta(DEFAULT_PROJECT_TA, DEFAULT_PROJECT_IL)).click
+    end
   end
 
   def click_ok_in_modal_btn(key = nil)
-    return find(ta(OK_IN_MODAL_BTN_EP)).click if key == :ep
-    return find(:css, OK_IN_MODAL_BTN_IL).click if key == :il
-    find(:css, ta(OK_IN_MODAL_BTN_TA, OK_IN_MODAL_BTN_IL)).click
+    post_processing key do
+      return find(ta(OK_IN_MODAL_BTN_EP)).click if key == :ep
+      return find(:css, OK_IN_MODAL_BTN_IL).click if key == :il
+      find(:css, ta(OK_IN_MODAL_BTN_TA, OK_IN_MODAL_BTN_IL)).click
+    end
   end
 
   def set_name_in_form(key = nil, value)
-    return find(ta(CATALOGS_NAME_FORM_EP)).set(value) if key == :ep
-    return find(:css, CATALOGS_NAME_FORM_IL).set(value) if key == :il
-    find(:css, ta(CATALOGS_NAME_FORM_TA, CATALOGS_NAME_FORM_IL)).set(value)
+    post_processing key do
+      return find(ta(CATALOGS_NAME_FORM_EP)).set(value) if key == :ep
+      return find(:css, CATALOGS_NAME_FORM_IL).set(value) if key == :il
+      find(:css, ta(CATALOGS_NAME_FORM_TA, CATALOGS_NAME_FORM_IL)).set(value)
+    end
   end
 
   def set_description_in_form(key = nil, value)
-    return find(ta(CATALOGS_DESCRIPTION_FORM_EP)).set(value) if key == :ep
-    return find(:css, CATALOGS_DESCRIPTION_FORM_IL).set(value) if key == :il
-    find(:css, ta(CATALOGS_DESCRIPTION_FORM_TA, CATALOGS_DESCRIPTION_FORM_IL)).set(value)
+    post_processing key do
+      return find(ta(CATALOGS_DESCRIPTION_FORM_EP)).set(value) if key == :ep
+      return find(:css, CATALOGS_DESCRIPTION_FORM_IL).set(value) if key == :il
+      find(:css, ta(CATALOGS_DESCRIPTION_FORM_TA, CATALOGS_DESCRIPTION_FORM_IL)).set(value)
+    end
   end
 
   def click_add_another(key = nil)
-    return find(ta(ADD_ANOTHER_BTN_EP)).click if key == :ep
-    return find(:css, ADD_ANOTHER_BTN_IL).click if key == :il
-    find(:css, ta(ADD_ANOTHER_BTN_TA, ADD_ANOTHER_BTN_IL)).click
+    post_processing key do
+      return find(ta(ADD_ANOTHER_BTN_EP)).click if key == :ep
+      return find(:css, ADD_ANOTHER_BTN_IL).click if key == :il
+      find(:css, ta(ADD_ANOTHER_BTN_TA, ADD_ANOTHER_BTN_IL)).click
+    end
   end
 
   def click_define_btn(key = nil)
-    return find(ta(DEFINE_BTN_EP)).click if key == :ep
-    return find(:css, DEFINE_BTN_IL).click if key == :il
-    find(:css, ta(DEFINE_BTN_TA, DEFINE_BTN_IL)).click
+    post_processing key do
+      return find(ta(DEFINE_BTN_EP)).click if key == :ep
+      return find(:css, DEFINE_BTN_IL).click if key == :il
+      find(:css, ta(DEFINE_BTN_TA, DEFINE_BTN_IL)).click
+    end
   end
 
   def click_to_select_cloud_bees_icon(key = nil)
-    return find(ta(CLOUD_BEES_ICON_EP)).click if key == :ep
-    return find(:xpath, CLOUD_BEES_ICON_IL).click if key == :il
-    find(:xpath, ta(CLOUD_BEES_ICON_TA, CLOUD_BEES_ICON_IL)).click
+    post_processing key do
+      return find(ta(CLOUD_BEES_ICON_EP)).click if key == :ep
+      return find(:xpath, CLOUD_BEES_ICON_IL).click if key == :il
+      find(:xpath, ta(CLOUD_BEES_ICON_TA, CLOUD_BEES_ICON_IL)).click
+    end
   end
 
   def click_to_select_label(key = nil)
-    return find(ta(SELECT_BTN_LABEL_EP)).click if key == :ep
-    return find(:css, SELECT_BTN_LABEL_IL).click if key == :il
-    find(:css, ta(SELECT_BTN_LABEL_TA, SELECT_BTN_LABEL_IL)).click
+    post_processing key do
+      return find(ta(SELECT_BTN_LABEL_EP)).click if key == :ep
+      return find(:css, SELECT_BTN_LABEL_IL).click if key == :il
+      find(:css, ta(SELECT_BTN_LABEL_TA, SELECT_BTN_LABEL_IL)).click
+    end
   end
 
   def click_to_select_execute_option(key = nil)
-    return find(ta(EXECUTE_OPTION_EP)).click if key == :ep
-    return find(:css, EXECUTE_OPTION_IL).click if key == :il
-    find(:css, ta(EXECUTE_OPTION_TA, EXECUTE_OPTION_IL)).click
+    post_processing key do
+      return find(ta(EXECUTE_OPTION_EP)).click if key == :ep
+      return find(:css, EXECUTE_OPTION_IL).click if key == :il
+      find(:css, ta(EXECUTE_OPTION_TA, EXECUTE_OPTION_IL)).click
+    end
   end
 
   def click_on_procedure_definition (key = nil)
-    return find(ta(PROCEDURE_DEFINITION_EP)).click if key == :ep
-    return find(:xpath, PROCEDURE_DEFINITION_IL).click if key == :il
-    find(:xpath, ta(PROCEDURE_DEFINITION_TA, PROCEDURE_DEFINITION_IL)).click
+    post_processing key do
+      return find(ta(PROCEDURE_DEFINITION_EP)).click if key == :ep
+      return find(:xpath, PROCEDURE_DEFINITION_IL).click if key == :il
+      find(:xpath, ta(PROCEDURE_DEFINITION_TA, PROCEDURE_DEFINITION_IL)).click
+    end
   end
 
   def click_procedure_proj_dropdown(key = nil)
-    return find(ta(PROCEDURE_PROJ_EP)).click if key == :ep
-    return find(:xpath, PROCEDURE_PROJ_IL).click if key == :il
-    find(:xpath, ta(PROCEDURE_PROJ_TA, PROCEDURE_PROJ_IL)).click
+    post_processing key do
+      return find(ta(PROCEDURE_PROJ_EP)).click if key == :ep
+      return find(:xpath, PROCEDURE_PROJ_IL).click if key == :il
+      find(:xpath, ta(PROCEDURE_PROJ_TA, PROCEDURE_PROJ_IL)).click
+    end
   end
 
   def click_to_select_ec_example_proj(key = nil)
-    return find(ta(PROCEDURE_EC_EXAMPLE_PROJ_EP)).click if key == :ep
-    return find(:xpath, PROCEDURE_EC_EXAMPLE_PROJ_IL).click if key == :il
-    find(:xpath, ta(PROCEDURE_EC_EXAMPLE_PROJ_TA, PROCEDURE_EC_EXAMPLE_PROJ_IL)).click
+    post_processing key do
+      return find(ta(PROCEDURE_EC_EXAMPLE_PROJ_EP)).click if key == :ep
+      return find(:xpath, PROCEDURE_EC_EXAMPLE_PROJ_IL).click if key == :il
+      find(:xpath, ta(PROCEDURE_EC_EXAMPLE_PROJ_TA, PROCEDURE_EC_EXAMPLE_PROJ_IL)).click
+    end
   end
 
   def click_select_procedure(key = nil)
-    return find(ta(SELECT_PROCEDURE_EP)).click if key == :ep
-    return find(:xpath, SELECT_PROCEDURE_IL).click if key == :il
-    find(:xpath, ta(SELECT_PROCEDURE_TA, SELECT_PROCEDURE_IL)).click
+    post_processing key do
+      return find(ta(SELECT_PROCEDURE_EP)).click if key == :ep
+      return find(:xpath, SELECT_PROCEDURE_IL).click if key == :il
+      find(:xpath, ta(SELECT_PROCEDURE_TA, SELECT_PROCEDURE_IL)).click
+    end
   end
 
   def click_select_approve_procedure(key = nil)
-    return find(ta(SELECT_APPROVE_PROCEDURE_EP)).click if key == :ep
-    return find(:css, SELECT_APPROVE_PROCEDURE_IL).click if key == :il
-    find(:css, ta(SELECT_APPROVE_PROCEDURE_TA, SELECT_APPROVE_PROCEDURE_IL)).click
+    post_processing key do
+      return find(ta(SELECT_APPROVE_PROCEDURE_EP)).click if key == :ep
+      return find(:css, SELECT_APPROVE_PROCEDURE_IL).click if key == :il
+      find(:css, ta(SELECT_APPROVE_PROCEDURE_TA, SELECT_APPROVE_PROCEDURE_IL)).click
+    end
   end
 
   def click_all_catalogs(key = nil)
-    return find(ta(ALL_CATALOGS_EP)).click if key == :ep
-    return find(:css, ALL_CATALOGS_IL).click if key == :il
-    find(:css, ta(ALL_CATALOGS_TA, ALL_CATALOGS_IL)).click
+    post_processing key do
+      return find(ta(ALL_CATALOGS_EP)).click if key == :ep
+      return find(:css, ALL_CATALOGS_IL).click if key == :il
+      find(:css, ta(ALL_CATALOGS_TA, ALL_CATALOGS_IL)).click
+    end
   end
 
   def click_to_select_created_catalog(key = nil, catalogName)
-    return find(ta(CREATED_CATALOG_EP)).set(catalogName) if key == :ep
-    return find(:css, CREATED_CATALOG_IL).set(catalogName) if key == :il
-    find(:css, ta(CREATED_CATALOG_TA, CREATED_CATALOG_IL)).set(catalogName)
+    post_processing key do
+      return find(ta(CREATED_CATALOG_EP)).set(catalogName) if key == :ep
+      return find(:css, CREATED_CATALOG_IL).set(catalogName) if key == :il
+      find(:css, ta(CREATED_CATALOG_TA, CREATED_CATALOG_IL)).set(catalogName)
+    end
   end
 
   def select_created_catalog(key = nil)
-    return find(ta(SELECT_CATALOG_EP)).click if key == :ep
-    return find(:css, SELECT_CATALOG_IL).click if key == :il
-    find(:css, ta(SELECT_CATALOG_TA, SELECT_CATALOG_IL)).click
+    post_processing key do
+      return find(ta(SELECT_CATALOG_EP)).click if key == :ep
+      return find(:css, SELECT_CATALOG_IL).click if key == :il
+      find(:css, ta(SELECT_CATALOG_TA, SELECT_CATALOG_IL)).click
+    end
   end
 
 
   def click_editor_catalog(key = nil)
-    return find(ta(CATALOG_EDITOR_EP)).click if key == :ep
-    return find(:xpath, CATALOG_EDITOR_IL).click if key == :il
-    find(:xpath, ta(CATALOG_EDITOR_TA, CATALOG_EDITOR_IL)).click
+    post_processing key do
+      return find(ta(CATALOG_EDITOR_EP)).click if key == :ep
+      return find(:xpath, CATALOG_EDITOR_IL).click if key == :il
+      find(:xpath, ta(CATALOG_EDITOR_TA, CATALOG_EDITOR_IL)).click
+    end
   end
 
   def click_catalog_menu(key = nil)
-    return find(ta(CATALOG_HAMBURGER_MENU_EP)).click if key == :ep
-    return find(:css, CATALOG_HAMBURGER_MENU_IL).click if key == :il
-    find(:css, ta(CATALOG_HAMBURGER_MENU_TA, CATALOG_HAMBURGER_MENU_IL)).click
+    post_processing key do
+      return find(ta(CATALOG_HAMBURGER_MENU_EP)).click if key == :ep
+      return find(:css, CATALOG_HAMBURGER_MENU_IL).click if key == :il
+      find(:css, ta(CATALOG_HAMBURGER_MENU_TA, CATALOG_HAMBURGER_MENU_IL)).click
+    end
   end
 
   def click_delete_catalog(key = nil)
-    return find(ta(DELETE_CATALOG_EP)).click if key == :ep
-    return find(:css, DELETE_CATALOG_IL).click if key == :il
-    find(:css, ta(DELETE_CATALOG_TA, DELETE_CATALOG_IL)).click
+    post_processing key do
+      return find(ta(DELETE_CATALOG_EP)).click if key == :ep
+      return find(:css, DELETE_CATALOG_IL).click if key == :il
+      find(:css, ta(DELETE_CATALOG_TA, DELETE_CATALOG_IL)).click
+    end
   end
 
   def click_ok_btn_for_accept_delete(key = nil)
-    return find(ta(ACCEPT_DELETE_CATALOG_EP)).click if key == :ep
-    return find(:css, ACCEPT_DELETE_CATALOG_IL).click if key == :il
-    find(:css, ta(ACCEPT_DELETE_CATALOG_TA, ACCEPT_DELETE_CATALOG_IL)).click
+    post_processing key do
+      return find(ta(ACCEPT_DELETE_CATALOG_EP)).click if key == :ep
+      return find(:css, ACCEPT_DELETE_CATALOG_IL).click if key == :il
+      find(:css, ta(ACCEPT_DELETE_CATALOG_TA, ACCEPT_DELETE_CATALOG_IL)).click
+    end
   end
 
   def click_to_open_catalog_list(key = nil)
-    return find(ta(CATALOGS_LIST_EP)).click if key == :ep
-    return find(:css, CATALOGS_LIST_IL).click if key == :il
-    find(:css, ta(CATALOGS_LIST_TA, CATALOGS_LIST_IL)).click
+    post_processing key do
+      return find(ta(CATALOGS_LIST_EP)).click if key == :ep
+      return find(:css, CATALOGS_LIST_IL).click if key == :il
+      find(:css, ta(CATALOGS_LIST_TA, CATALOGS_LIST_IL)).click
+    end
   end
 
   def click_apps_in_catalog_list(key = nil)
-    return find(ta(APPS_IN_CATALOG_LIST_EP)).click if key == :ep
-    return find(:css, APPS_IN_CATALOG_LIST_IL).click if key == :il
-    find(:css, ta(APPS_IN_CATALOG_LIST_TA, APPS_IN_CATALOG_LIST_IL)).click
+    post_processing key do
+      return find(ta(APPS_IN_CATALOG_LIST_EP)).click if key == :ep
+      return find(:css, APPS_IN_CATALOG_LIST_IL).click if key == :il
+      find(:css, ta(APPS_IN_CATALOG_LIST_TA, APPS_IN_CATALOG_LIST_IL)).click
+    end
   end
 
   def click_containers_in_catalog_list(key = nil)
-    return find(ta(CONTAINERS_IN_CATALOG_LIST_EP)).click if key == :ep
-    return find(:css, CONTAINERS_IN_CATALOG_LIST_IL).click if key == :il
-    find(:css, ta(CONTAINERS_IN_CATALOG_LIST_TA, CONTAINERS_IN_CATALOG_LIST_IL)).click
+    post_processing key do
+      return find(ta(CONTAINERS_IN_CATALOG_LIST_EP)).click if key == :ep
+      return find(:css, CONTAINERS_IN_CATALOG_LIST_IL).click if key == :il
+      find(:css, ta(CONTAINERS_IN_CATALOG_LIST_TA, CONTAINERS_IN_CATALOG_LIST_IL)).click
+    end
   end
 
   def click_utility_in_catalog_list(key = nil)
-    return find(ta(UTILITY_IN_CATALOG_LIST_EP)).click if key == :ep
-    return find(:css, UTILITY_IN_CATALOG_LIST_IL).click if key == :il
-    find(:css, ta(UTILITY_IN_CATALOG_LIST_TA, UTILITY_IN_CATALOG_LIST_IL)).click
+    post_processing key do
+      return find(ta(UTILITY_IN_CATALOG_LIST_EP)).click if key == :ep
+      return find(:css, UTILITY_IN_CATALOG_LIST_IL).click if key == :il
+      find(:css, ta(UTILITY_IN_CATALOG_LIST_TA, UTILITY_IN_CATALOG_LIST_IL)).click
+    end
   end
   
 end

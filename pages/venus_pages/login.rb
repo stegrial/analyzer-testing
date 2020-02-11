@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class VenusLogin
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   EMAIL_FIELD_IL = 'ctl00_Body1_loginemail'
   EMAIL_FIELD_TA = 'venus:login_page:email_field'
@@ -23,27 +25,35 @@ class VenusLogin
 
 
   def fill_email_field(key = nil, email)
-    return find(:id, ta(EMAIL_FIELD_EP)).set(email) if key == :ep
-    return find(:id, EMAIL_FIELD_IL).set(email) if key == :il
-    find(:id, ta(EMAIL_FIELD_TA, EMAIL_FIELD_IL)).set(email)
+    post_processing key do
+      return find(:id, ta(EMAIL_FIELD_EP)).set(email) if key == :ep
+      return find(:id, EMAIL_FIELD_IL).set(email) if key == :il
+      find(:id, ta(EMAIL_FIELD_TA, EMAIL_FIELD_IL)).set(email)
+    end
   end
 
   def fill_pass_field(key = nil, pass)
-    return find(:id, ta(PASS_FIELD_EP)).set(pass) if key == :ep
-    return find(:id, PASS_FIELD_IL).set(pass) if key == :il
-    find(:id, ta(PASS_FIELD_TA, PASS_FIELD_IL)).set(pass)
+    post_processing key do
+      return find(:id, ta(PASS_FIELD_EP)).set(pass) if key == :ep
+      return find(:id, PASS_FIELD_IL).set(pass) if key == :il
+      find(:id, ta(PASS_FIELD_TA, PASS_FIELD_IL)).set(pass)
+    end
   end
 
   def click_sign_in_button(key = nil)
-    return find(:id, ta(SIGN_IN_BTN_EP)).click if key == :ep
-    return find(:id, SIGN_IN_BTN_IL).click if key == :il
-    find(:id, ta(SIGN_IN_BTN_TA, SIGN_IN_BTN_IL)).click
+    post_processing key do
+      return find(:id, ta(SIGN_IN_BTN_EP)).click if key == :ep
+      return find(:id, SIGN_IN_BTN_IL).click if key == :il
+      find(:id, ta(SIGN_IN_BTN_TA, SIGN_IN_BTN_IL)).click
+    end
   end
 
   def click_create_account_btn(key = nil)
-    return find(ta(CREATE_ACCOUNT_BTN_EP)).click if key == :ep
-    return find(:xpath, CREATE_ACCOUNT_BTN_IL).click if key == :il
-    find(:xpath, ta(CREATE_ACCOUNT_BTN_TA, CREATE_ACCOUNT_BTN_IL)).click
+    post_processing key do
+      return find(ta(CREATE_ACCOUNT_BTN_EP)).click if key == :ep
+      return find(:xpath, CREATE_ACCOUNT_BTN_IL).click if key == :il
+      find(:xpath, ta(CREATE_ACCOUNT_BTN_TA, CREATE_ACCOUNT_BTN_IL)).click
+    end
   end
 
 end

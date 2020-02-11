@@ -107,6 +107,11 @@ class Logs
     end
   end
 
+  def remove_slashes
+    a = ""
+    puts a.gsub(/\\/, '')
+  end
+
 end
 
 processing = Logs.new

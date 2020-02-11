@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class CloudBeesApps
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   APPLICATION_FROM_LIST_IL = "//a[@title='app_with_artifacts_gwt_field(scope)']"
   APPLICATION_FROM_LIST_TA = "cloud_bees:apps:application_from_list"
@@ -183,261 +185,347 @@ class CloudBeesApps
 
 
   def select_application_from_list(key = nil)
-    return find(ta(APPLICATION_FROM_LIST_EP)).click if key == :ep
-    return find(:xpath, APPLICATION_FROM_LIST_IL).click if key == :il
-    find(:xpath, ta(APPLICATION_FROM_LIST_TA, APPLICATION_FROM_LIST_IL)).click
+    post_processing key do
+      return find(ta(APPLICATION_FROM_LIST_EP)).click if key == :ep
+      return find(:xpath, APPLICATION_FROM_LIST_IL).click if key == :il
+      find(:xpath, ta(APPLICATION_FROM_LIST_TA, APPLICATION_FROM_LIST_IL)).click
+    end
   end
 
   def click_new_application(key = nil)
-    return find(ta(NEW_APPLICATION_BTN_EP)).click if key == :ep
-    return find(:xpath, NEW_APPLICATION_BTN_IL).click if key == :il
-    find(:xpath, ta(NEW_APPLICATION_BTN_TA, NEW_APPLICATION_BTN_IL)).click
+    post_processing key do
+      return find(ta(NEW_APPLICATION_BTN_EP)).click if key == :ep
+      return find(:xpath, NEW_APPLICATION_BTN_IL).click if key == :il
+      find(:xpath, ta(NEW_APPLICATION_BTN_TA, NEW_APPLICATION_BTN_IL)).click
+    end
   end
 
   def create_new_application(key = nil)
-    return find(ta(CREATE_NEW_APPLICATION_EP)).click if key == :ep
-    return find(:xpath, CREATE_NEW_APPLICATION_IL).click if key == :il
-    find(:xpath, ta(CREATE_NEW_APPLICATION_TA, CREATE_NEW_APPLICATION_IL)).click
+    post_processing key do
+      return find(ta(CREATE_NEW_APPLICATION_EP)).click if key == :ep
+      return find(:xpath, CREATE_NEW_APPLICATION_IL).click if key == :il
+      find(:xpath, ta(CREATE_NEW_APPLICATION_TA, CREATE_NEW_APPLICATION_IL)).click
+    end
   end
 
   def fill_application_name_field(key = nil, appname)
-    return find(ta(APPLICATION_NAME_EP)).set(appname) if key == :ep
-    return find(:xpath, APPLICATION_NAME_IL).set(appname) if key == :il
-    find(:xpath, ta(APPLICATION_NAME_TA, APPLICATION_NAME_IL)).set(appname)
+    post_processing key do
+      return find(ta(APPLICATION_NAME_EP)).set(appname) if key == :ep
+      return find(:xpath, APPLICATION_NAME_IL).set(appname) if key == :il
+      find(:xpath, ta(APPLICATION_NAME_TA, APPLICATION_NAME_IL)).set(appname)
+    end
   end
 
   def click_on_select_project(key = nil)
-    return find(ta(SELECT_PROJECT_EP)).click if key == :ep
-    return find(:xpath, SELECT_PROJECT_IL).click if key == :il
-    find(:xpath, ta(SELECT_PROJECT_TA, SELECT_PROJECT_IL)).click
+    post_processing key do
+      return find(ta(SELECT_PROJECT_EP)).click if key == :ep
+      return find(:xpath, SELECT_PROJECT_IL).click if key == :il
+      find(:xpath, ta(SELECT_PROJECT_TA, SELECT_PROJECT_IL)).click
+    end
   end
 
   def select_default_project(key = nil)
-    return find(ta(SELECT_DEFAULT_PROJECT_EP)).click if key == :ep
-    return find(:xpath, SELECT_DEFAULT_PROJECT_IL).click if key == :il
-    find(:xpath, ta(SELECT_DEFAULT_PROJECT_TA, SELECT_DEFAULT_PROJECT_IL)).click
+    post_processing key do
+      return find(ta(SELECT_DEFAULT_PROJECT_EP)).click if key == :ep
+      return find(:xpath, SELECT_DEFAULT_PROJECT_IL).click if key == :il
+      find(:xpath, ta(SELECT_DEFAULT_PROJECT_TA, SELECT_DEFAULT_PROJECT_IL)).click
+    end
   end
 
   def confirm_create_new_application(key = nil)
-    return find(ta(CONFIRM_NEW_APPLICATION_EP)).click if key == :ep
-    return find(:xpath, CONFIRM_NEW_APPLICATION_IL).click if key == :il
-    find(:xpath, ta(CONFIRM_NEW_APPLICATION_TA, CONFIRM_NEW_APPLICATION_IL)).click
+    post_processing key do
+      return find(ta(CONFIRM_NEW_APPLICATION_EP)).click if key == :ep
+      return find(:xpath, CONFIRM_NEW_APPLICATION_IL).click if key == :il
+      find(:xpath, ta(CONFIRM_NEW_APPLICATION_TA, CONFIRM_NEW_APPLICATION_IL)).click
+    end
   end
 
   def click_component_tier(key = nil)
-    return find(ta(COMPONENT_TIER_EP)).click if key == :ep
-    return find(:xpath, COMPONENT_TIER_IL).click if key == :il
-    find(:xpath, ta(COMPONENT_TIER_TA, COMPONENT_TIER_IL)).click
+    post_processing key do
+      return find(ta(COMPONENT_TIER_EP)).click if key == :ep
+      return find(:xpath, COMPONENT_TIER_IL).click if key == :il
+      find(:xpath, ta(COMPONENT_TIER_TA, COMPONENT_TIER_IL)).click
+    end
   end
 
   def create_new_component(key = nil)
-    return find(ta(CREATE_NEW_COMPONENT_EP)).click if key == :ep
-    return find(:xpath, CREATE_NEW_COMPONENT_IL).click if key == :il
-    find(:xpath, ta(CREATE_NEW_COMPONENT_TA, CREATE_NEW_COMPONENT_IL)).click
+    post_processing key do
+      return find(ta(CREATE_NEW_COMPONENT_EP)).click if key == :ep
+      return find(:xpath, CREATE_NEW_COMPONENT_IL).click if key == :il
+      find(:xpath, ta(CREATE_NEW_COMPONENT_TA, CREATE_NEW_COMPONENT_IL)).click
+    end
   end
 
   def fill_component_name_field(key = nil, compname)
-    return find(ta(COMPONENT_NAME_EP)).set(compname) if key == :ep
-    return find(:xpath, COMPONENT_NAME_IL).set(compname) if key == :il
-    find(:xpath, ta(COMPONENT_NAME_TA, COMPONENT_NAME_IL)).set(compname)
+    post_processing key do
+      return find(ta(COMPONENT_NAME_EP)).set(compname) if key == :ep
+      return find(:xpath, COMPONENT_NAME_IL).set(compname) if key == :il
+      find(:xpath, ta(COMPONENT_NAME_TA, COMPONENT_NAME_IL)).set(compname)
+    end
   end
 
   def click_component_next(key = nil)
-    return find(ta(COMPONENT_NEXT_EP)).click if key == :ep
-    return find(:xpath, COMPONENT_NEXT_IL).click if key == :il
-    find(:xpath, ta(COMPONENT_NEXT_TA, COMPONENT_NEXT_IL)).click
+    post_processing key do
+      return find(ta(COMPONENT_NEXT_EP)).click if key == :ep
+      return find(:xpath, COMPONENT_NEXT_IL).click if key == :il
+      find(:xpath, ta(COMPONENT_NEXT_TA, COMPONENT_NEXT_IL)).click
+    end
   end
 
   def click_on_content_location(key = nil)
-    return find(ta(CONTENT_LOCATION_EP)).click if key == :ep
-    return find(:xpath, CONTENT_LOCATION_IL).click if key == :il
-    find(:xpath, ta(CONTENT_LOCATION_TA, CONTENT_LOCATION_IL)).click
+    post_processing key do
+      return find(ta(CONTENT_LOCATION_EP)).click if key == :ep
+      return find(:xpath, CONTENT_LOCATION_IL).click if key == :il
+      find(:xpath, ta(CONTENT_LOCATION_TA, CONTENT_LOCATION_IL)).click
+    end
   end
 
   def select_ec_artifact(key = nil)
-    return find(ta(SELECT_EC_ARTIFACT_EP)).click if key == :ep
-    return find(:xpath, SELECT_EC_ARTIFACT_IL).click if key == :il
-    find(:xpath, ta(SELECT_EC_ARTIFACT_TA, SELECT_EC_ARTIFACT_IL)).click
+    post_processing key do
+      return find(ta(SELECT_EC_ARTIFACT_EP)).click if key == :ep
+      return find(:xpath, SELECT_EC_ARTIFACT_IL).click if key == :il
+      find(:xpath, ta(SELECT_EC_ARTIFACT_TA, SELECT_EC_ARTIFACT_IL)).click
+    end
   end
 
   def fill_artifact_name_field(key = nil, artname)
-    return find(ta(ARTIFACT_NAME_EP)).set(artname) if key == :ep
-    return find(:xpath, ARTIFACT_NAME_IL).set(artname) if key == :il
-    find(:xpath, ta(ARTIFACT_NAME_TA, ARTIFACT_NAME_IL)).set(artname)
+    post_processing key do
+      return find(ta(ARTIFACT_NAME_EP)).set(artname) if key == :ep
+      return find(:xpath, ARTIFACT_NAME_IL).set(artname) if key == :il
+      find(:xpath, ta(ARTIFACT_NAME_TA, ARTIFACT_NAME_IL)).set(artname)
+    end
   end
 
   def confirm_new_artifact(key = nil)
-    return find(ta(CONFIRM_NEW_ARTIFACT_EP)).click if key == :ep
-    return find(:xpath, CONFIRM_NEW_ARTIFACT_IL).click if key == :il
-    find(:xpath, ta(CONFIRM_NEW_ARTIFACT_TA, CONFIRM_NEW_ARTIFACT_IL)).click
+    post_processing key do
+      return find(ta(CONFIRM_NEW_ARTIFACT_EP)).click if key == :ep
+      return find(:xpath, CONFIRM_NEW_ARTIFACT_IL).click if key == :il
+      find(:xpath, ta(CONFIRM_NEW_ARTIFACT_TA, CONFIRM_NEW_ARTIFACT_IL)).click
+    end
   end
 
   def find_application_name_field(key = nil, appname)
-    return find(ta(FIND_APPLICATION_FIELD_EP)).set(appname) if key == :ep
-    return find(:css, FIND_APPLICATION_FIELD_IL).set(appname) if key == :il
-    find(:css, ta(FIND_APPLICATION_FIELD_TA, FIND_APPLICATION_FIELD_IL)).set(appname)
+    post_processing key do
+      return find(ta(FIND_APPLICATION_FIELD_EP)).set(appname) if key == :ep
+      return find(:css, FIND_APPLICATION_FIELD_IL).set(appname) if key == :il
+      find(:css, ta(FIND_APPLICATION_FIELD_TA, FIND_APPLICATION_FIELD_IL)).set(appname)
+    end
   end
 
   def select_app_list_item(key = nil)
-    return find(ta(APPLICATION_LIST_ITEM_EP)).click if key == :ep
-    return find(:css, APPLICATION_LIST_ITEM_IL).click if key == :il
-    find(:css, ta(APPLICATION_LIST_ITEM_TA, APPLICATION_LIST_ITEM_IL)).click
+    post_processing key do
+      return find(ta(APPLICATION_LIST_ITEM_EP)).click if key == :ep
+      return find(:css, APPLICATION_LIST_ITEM_IL).click if key == :il
+      find(:css, ta(APPLICATION_LIST_ITEM_TA, APPLICATION_LIST_ITEM_IL)).click
+    end
   end
 
   def delete_application(key = nil)
-    return find(ta(DELETE_APPLICATION_EP)).click if key == :ep
-    return find(:xpath, DELETE_APPLICATION_IL).click if key == :il
-    find(:xpath, ta(DELETE_APPLICATION_TA, DELETE_APPLICATION_IL)).click
+    post_processing key do
+      return find(ta(DELETE_APPLICATION_EP)).click if key == :ep
+      return find(:xpath, DELETE_APPLICATION_IL).click if key == :il
+      find(:xpath, ta(DELETE_APPLICATION_TA, DELETE_APPLICATION_IL)).click
+    end
   end
 
   def confirm_delete_application(key = nil)
-    return find(ta(CONFIRM_DELETE_APPLICATION_EP)).click if key == :ep
-    return find(:xpath, CONFIRM_DELETE_APPLICATION_IL).click if key == :il
-    find(:xpath, ta(CONFIRM_DELETE_APPLICATION_TA, CONFIRM_DELETE_APPLICATION_IL)).click
+    post_processing key do
+      return find(ta(CONFIRM_DELETE_APPLICATION_EP)).click if key == :ep
+      return find(:xpath, CONFIRM_DELETE_APPLICATION_IL).click if key == :il
+      find(:xpath, ta(CONFIRM_DELETE_APPLICATION_TA, CONFIRM_DELETE_APPLICATION_IL)).click
+    end
   end
 
   def create_existing_master_component(key = nil)
-    return find(ta(CREATE_EXISTING_MASTER_COMPONENT_EP)).click if key == :ep
-    return find(:xpath, CREATE_EXISTING_MASTER_COMPONENT_IL).click if key == :il
-    find(:xpath, ta(CREATE_EXISTING_MASTER_COMPONENT_TA, CREATE_EXISTING_MASTER_COMPONENT_IL)).click
+    post_processing key do
+      return find(ta(CREATE_EXISTING_MASTER_COMPONENT_EP)).click if key == :ep
+      return find(:xpath, CREATE_EXISTING_MASTER_COMPONENT_IL).click if key == :il
+      find(:xpath, ta(CREATE_EXISTING_MASTER_COMPONENT_TA, CREATE_EXISTING_MASTER_COMPONENT_IL)).click
+    end
   end
 
   def choose_jbossmc_component(key = nil)
-    return find(ta(COMPONENT_JBOSSMC_EP)).click if key == :ep
-    return find(:xpath, COMPONENT_JBOSSMC_IL).click if key == :il
-    find(:xpath, ta(COMPONENT_JBOSSMC_TA, COMPONENT_JBOSSMC_IL)).click
+    post_processing key do
+      return find(ta(COMPONENT_JBOSSMC_EP)).click if key == :ep
+      return find(:xpath, COMPONENT_JBOSSMC_IL).click if key == :il
+      find(:xpath, ta(COMPONENT_JBOSSMC_TA, COMPONENT_JBOSSMC_IL)).click
+    end
   end
 
   def click_on_checkbox_near_jbossmc(key = nil)
-    return find(ta(CHECKBOX_NEAR_JBOSSMC_EP)).click if key == :ep
-    return find(:xpath, CHECKBOX_NEAR_JBOSSMC_IL).click if key == :il
-    find(:xpath, ta(CHECKBOX_NEAR_JBOSSMC_TA, CHECKBOX_NEAR_JBOSSMC_IL)).click
+    post_processing key do
+      return find(ta(CHECKBOX_NEAR_JBOSSMC_EP)).click if key == :ep
+      return find(:xpath, CHECKBOX_NEAR_JBOSSMC_IL).click if key == :il
+      find(:xpath, ta(CHECKBOX_NEAR_JBOSSMC_TA, CHECKBOX_NEAR_JBOSSMC_IL)).click
+    end
   end
 
   def close_attention_in_component(key = nil)
-    return find(ta(CLOSE_ATTENTION_IN_COMPONENT_EP)).click if key == :ep
-    return find(:xpath, CLOSE_ATTENTION_IN_COMPONENT_IL).click if key == :il
-    find(:xpath, ta(CLOSE_ATTENTION_IN_COMPONENT_TA, CLOSE_ATTENTION_IN_COMPONENT_IL)).click
+    post_processing key do
+      return find(ta(CLOSE_ATTENTION_IN_COMPONENT_EP)).click if key == :ep
+      return find(:xpath, CLOSE_ATTENTION_IN_COMPONENT_IL).click if key == :il
+      find(:xpath, ta(CLOSE_ATTENTION_IN_COMPONENT_TA, CLOSE_ATTENTION_IN_COMPONENT_IL)).click
+    end
   end
 
   def component_existing_master_next(key = nil)
-    return find(ta(COMPONENT_EXISTING_MASTER_NEXT_EP)).click if key == :ep
-    return find(:xpath, COMPONENT_EXISTING_MASTER_NEXT_IL).click if key == :il
-    find(:xpath, ta(COMPONENT_EXISTING_MASTER_NEXT_TA, COMPONENT_EXISTING_MASTER_NEXT_IL)).click
+    post_processing key do
+      return find(ta(COMPONENT_EXISTING_MASTER_NEXT_EP)).click if key == :ep
+      return find(:xpath, COMPONENT_EXISTING_MASTER_NEXT_IL).click if key == :il
+      find(:xpath, ta(COMPONENT_EXISTING_MASTER_NEXT_TA, COMPONENT_EXISTING_MASTER_NEXT_IL)).click
+    end
   end
 
   def click_component_ok(key = nil)
-    return find(ta(COMPONENT_OK_BTN_EP)).click if key == :ep
-    return find(:xpath, COMPONENT_OK_BTN_IL).click if key == :il
-    find(:xpath, ta(COMPONENT_OK_BTN_TA, COMPONENT_OK_BTN_IL)).click
+    post_processing key do
+      return find(ta(COMPONENT_OK_BTN_EP)).click if key == :ep
+      return find(:xpath, COMPONENT_OK_BTN_IL).click if key == :il
+      find(:xpath, ta(COMPONENT_OK_BTN_TA, COMPONENT_OK_BTN_IL)).click
+    end
   end
 
   def click_on_dropdown_in_tier(key = nil)
-    return find(ta(DROPDOWN_IN_TIER_EP)).click if key == :ep
-    return find(:xpath, DROPDOWN_IN_TIER_IL).click if key == :il
-    find(:xpath, ta(DROPDOWN_IN_TIER_TA, DROPDOWN_IN_TIER_IL)).click
+    post_processing key do
+      return find(ta(DROPDOWN_IN_TIER_EP)).click if key == :ep
+      return find(:xpath, DROPDOWN_IN_TIER_IL).click if key == :il
+      find(:xpath, ta(DROPDOWN_IN_TIER_TA, DROPDOWN_IN_TIER_IL)).click
+    end
   end
 
   def click_on_new_component_processes(key = nil)
-    return find(ta(NEW_COMPONENT_PROCESSES_EP)).click if key == :ep
-    return find(:css, NEW_COMPONENT_PROCESSES_IL).click if key == :il
-    find(:css, ta(NEW_COMPONENT_PROCESSES_TA, NEW_COMPONENT_PROCESSES_IL)).click
+    post_processing key do
+      return find(ta(NEW_COMPONENT_PROCESSES_EP)).click if key == :ep
+      return find(:css, NEW_COMPONENT_PROCESSES_IL).click if key == :il
+      find(:css, ta(NEW_COMPONENT_PROCESSES_TA, NEW_COMPONENT_PROCESSES_IL)).click
+    end
   end
 
   def create_new_component_processes(key = nil)
-    return find(ta(CREATE_NEW_COMPONENT_PROCESSES_EP)).click if key == :ep
-    return find(:xpath, CREATE_NEW_COMPONENT_PROCESSES_IL).click if key == :il
-    find(:xpath, ta(CREATE_NEW_COMPONENT_PROCESSES_TA, CREATE_NEW_COMPONENT_PROCESSES_IL)).click
+    post_processing key do
+      return find(ta(CREATE_NEW_COMPONENT_PROCESSES_EP)).click if key == :ep
+      return find(:xpath, CREATE_NEW_COMPONENT_PROCESSES_IL).click if key == :il
+      find(:xpath, ta(CREATE_NEW_COMPONENT_PROCESSES_TA, CREATE_NEW_COMPONENT_PROCESSES_IL)).click
+    end
   end
 
   def fill_process_name_field(key = nil, processname)
-    return find(ta(PROCESS_NAME_EP)).set(processname) if key == :ep
-    return find(:xpath, PROCESS_NAME_IL).set(processname) if key == :il
-    find(:xpath, ta(PROCESS_NAME_TA, PROCESS_NAME_IL)).set(processname)
+    post_processing key do
+      return find(ta(PROCESS_NAME_EP)).set(processname) if key == :ep
+      return find(:xpath, PROCESS_NAME_IL).set(processname) if key == :il
+      find(:xpath, ta(PROCESS_NAME_TA, PROCESS_NAME_IL)).set(processname)
+    end
   end
 
   def click_on_dropdown_deploy_undeploy(key = nil)
-    return find(ta(DROPDOWN_DEPLOY_UNDEPLOY_EP)).click if key == :ep
-    return find(:xpath, DROPDOWN_DEPLOY_UNDEPLOY_IL).click if key == :il
-    find(:xpath, ta(DROPDOWN_DEPLOY_UNDEPLOY_TA, DROPDOWN_DEPLOY_UNDEPLOY_IL)).click
+    post_processing key do
+      return find(ta(DROPDOWN_DEPLOY_UNDEPLOY_EP)).click if key == :ep
+      return find(:xpath, DROPDOWN_DEPLOY_UNDEPLOY_IL).click if key == :il
+      find(:xpath, ta(DROPDOWN_DEPLOY_UNDEPLOY_TA, DROPDOWN_DEPLOY_UNDEPLOY_IL)).click
+    end
   end
 
   def click_on_dropdown_undeploy(key = nil)
-    return find(ta(DROPDOWN_UNDEPLOY_EP)).click if key == :ep
-    return find(:xpath, DROPDOWN_UNDEPLOY_IL).click if key == :il
-    find(:xpath, ta(DROPDOWN_UNDEPLOY_TA, DROPDOWN_UNDEPLOY_IL)).click
+    post_processing key do
+      return find(ta(DROPDOWN_UNDEPLOY_EP)).click if key == :ep
+      return find(:xpath, DROPDOWN_UNDEPLOY_IL).click if key == :il
+      find(:xpath, ta(DROPDOWN_UNDEPLOY_TA, DROPDOWN_UNDEPLOY_IL)).click
+    end
   end
 
   def click_on_dropdown_select_workspace(key = nil)
-    return find(ta(DROPDOWN_SELECT_WORKSPACE_EP)).click if key == :ep
-    return find(:xpath, DROPDOWN_SELECT_WORKSPACE_IL).click if key == :il
-    find(:xpath, ta(DROPDOWN_SELECT_WORKSPACE_TA, DROPDOWN_SELECT_WORKSPACE_IL)).click
+    post_processing key do
+      return find(ta(DROPDOWN_SELECT_WORKSPACE_EP)).click if key == :ep
+      return find(:xpath, DROPDOWN_SELECT_WORKSPACE_IL).click if key == :il
+      find(:xpath, ta(DROPDOWN_SELECT_WORKSPACE_TA, DROPDOWN_SELECT_WORKSPACE_IL)).click
+    end
   end
 
   def click_default_dropdown_select_workspace(key = nil)
-    return find(ta(DEFAULT_DROPDOWN_SELECT_WORKSPACE_EP)).click if key == :ep
-    return find(:xpath, DEFAULT_DROPDOWN_SELECT_WORKSPACE_IL).click if key == :il
-    find(:xpath, ta(DEFAULT_DROPDOWN_SELECT_WORKSPACE_TA, DEFAULT_DROPDOWN_SELECT_WORKSPACE_IL)).click
+    post_processing key do
+      return find(ta(DEFAULT_DROPDOWN_SELECT_WORKSPACE_EP)).click if key == :ep
+      return find(:xpath, DEFAULT_DROPDOWN_SELECT_WORKSPACE_IL).click if key == :il
+      find(:xpath, ta(DEFAULT_DROPDOWN_SELECT_WORKSPACE_TA, DEFAULT_DROPDOWN_SELECT_WORKSPACE_IL)).click
+    end
   end
 
   def confirm_new_component_process(key = nil)
-    return find(ta(CONFIRM_NEW_COMPONENT_PROCESS_EP)).click if key == :ep
-    return find(:xpath, CONFIRM_NEW_COMPONENT_PROCESS_IL).click if key == :il
-    find(:xpath, ta(CONFIRM_NEW_COMPONENT_PROCESS_TA, CONFIRM_NEW_COMPONENT_PROCESS_IL)).click
+    post_processing key do
+      return find(ta(CONFIRM_NEW_COMPONENT_PROCESS_EP)).click if key == :ep
+      return find(:xpath, CONFIRM_NEW_COMPONENT_PROCESS_IL).click if key == :il
+      find(:xpath, ta(CONFIRM_NEW_COMPONENT_PROCESS_TA, CONFIRM_NEW_COMPONENT_PROCESS_IL)).click
+    end
   end
 
   def click_on_new_step(key = nil)
-    return find(ta(NEW_STEP_EP)).click if key == :ep
-    return find(:xpath, NEW_STEP_IL).click if key == :il
-    find(:xpath, ta(NEW_STEP_TA, NEW_STEP_IL)).click
+    post_processing key do
+      return find(ta(NEW_STEP_EP)).click if key == :ep
+      return find(:xpath, NEW_STEP_IL).click if key == :il
+      find(:xpath, ta(NEW_STEP_TA, NEW_STEP_IL)).click
+    end
   end
 
   def fill_step_name_field(key = nil, stepname)
-    return find(ta(STEP_NAME_EP)).set(stepname) if key == :ep
-    return find(:xpath, STEP_NAME_IL).set(stepname) if key == :il
-    find(:xpath, ta(STEP_NAME_TA, STEP_NAME_IL)).set(stepname)
+    post_processing key do
+      return find(ta(STEP_NAME_EP)).set(stepname) if key == :ep
+      return find(:xpath, STEP_NAME_IL).set(stepname) if key == :il
+      find(:xpath, ta(STEP_NAME_TA, STEP_NAME_IL)).set(stepname)
+    end
   end
 
   def click_on_next_step(key = nil)
-    return find(ta(STEP_NEXT_EP)).click if key == :ep
-    return find(:xpath, STEP_NEXT_IL).click if key == :il
-    find(:xpath, ta(STEP_NEXT_TA, STEP_NEXT_IL)).click
+    post_processing key do
+      return find(ta(STEP_NEXT_EP)).click if key == :ep
+      return find(:xpath, STEP_NEXT_IL).click if key == :il
+      find(:xpath, ta(STEP_NEXT_TA, STEP_NEXT_IL)).click
+    end
   end
 
   def click_on_command_step_type(key = nil)
-    return find(ta(STEP_TYPE_COMMAND_EP)).click if key == :ep
-    return find(:xpath, STEP_TYPE_COMMAND_IL).click if key == :il
-    find(:xpath, ta(STEP_TYPE_COMMAND_TA, STEP_TYPE_COMMAND_IL)).click
+    post_processing key do
+      return find(ta(STEP_TYPE_COMMAND_EP)).click if key == :ep
+      return find(:xpath, STEP_TYPE_COMMAND_IL).click if key == :il
+      find(:xpath, ta(STEP_TYPE_COMMAND_TA, STEP_TYPE_COMMAND_IL)).click
+    end
   end
 
   def fill_command_name_field(key = nil, commandname)
-    return find(ta(COMMAND_TEXTAREA_EP)).set(commandname) if key == :ep
-    return find(:xpath, COMMAND_TEXTAREA_IL).set(commandname) if key == :il
-    find(:xpath, ta(COMMAND_TEXTAREA_TA, COMMAND_TEXTAREA_IL)).set(commandname)
+    post_processing key do
+      return find(ta(COMMAND_TEXTAREA_EP)).set(commandname) if key == :ep
+      return find(:xpath, COMMAND_TEXTAREA_IL).set(commandname) if key == :il
+      find(:xpath, ta(COMMAND_TEXTAREA_TA, COMMAND_TEXTAREA_IL)).set(commandname)
+    end
   end
 
   def confirm_define_step(key = nil)
-    return find(ta(CONFIRM_DEFINE_STEP_EP)).click if key == :ep
-    return find(:xpath, CONFIRM_DEFINE_STEP_IL).click if key == :il
-    find(:xpath, ta(CONFIRM_DEFINE_STEP_TA, CONFIRM_DEFINE_STEP_IL)).click
+    post_processing key do
+      return find(ta(CONFIRM_DEFINE_STEP_EP)).click if key == :ep
+      return find(:xpath, CONFIRM_DEFINE_STEP_IL).click if key == :il
+      find(:xpath, ta(CONFIRM_DEFINE_STEP_TA, CONFIRM_DEFINE_STEP_IL)).click
+    end
   end
 
   def click_on_humburger_component_step(key = nil)
-    return find(ta(HUMBURGER_OF_COMPONENT_STEP_EP)).click if key == :ep
-    return find(:css, HUMBURGER_OF_COMPONENT_STEP_IL).click if key == :il
-    find(:css, ta(HUMBURGER_OF_COMPONENT_STEP_TA, HUMBURGER_OF_COMPONENT_STEP_IL)).click
+    post_processing key do
+      return find(ta(HUMBURGER_OF_COMPONENT_STEP_EP)).click if key == :ep
+      return find(:css, HUMBURGER_OF_COMPONENT_STEP_IL).click if key == :il
+      find(:css, ta(HUMBURGER_OF_COMPONENT_STEP_TA, HUMBURGER_OF_COMPONENT_STEP_IL)).click
+    end
   end
 
   def delete_component_step(key = nil)
-    return find(ta(DELETE_COMPONENT_STEP_EP)).click if key == :ep
-    return find(:xpath, DELETE_COMPONENT_STEP_IL).click if key == :il
-    find(:xpath, ta(DELETE_COMPONENT_STEP_TA, DELETE_COMPONENT_STEP_IL)).click
+    post_processing key do
+      return find(ta(DELETE_COMPONENT_STEP_EP)).click if key == :ep
+      return find(:xpath, DELETE_COMPONENT_STEP_IL).click if key == :il
+      find(:xpath, ta(DELETE_COMPONENT_STEP_TA, DELETE_COMPONENT_STEP_IL)).click
+    end
   end
 
   def confirm_delete_component_step(key = nil)
-    return find(ta(CONFIRM_DELETE_COMPONENT_STEP_EP)).click if key == :ep
-    return find(:xpath, CONFIRM_DELETE_COMPONENT_STEP_IL).click if key == :il
-    find(:xpath, ta(CONFIRM_DELETE_COMPONENT_STEP_TA, CONFIRM_DELETE_COMPONENT_STEP_IL)).click
+    post_processing key do
+      return find(ta(CONFIRM_DELETE_COMPONENT_STEP_EP)).click if key == :ep
+      return find(:xpath, CONFIRM_DELETE_COMPONENT_STEP_IL).click if key == :il
+      find(:xpath, ta(CONFIRM_DELETE_COMPONENT_STEP_TA, CONFIRM_DELETE_COMPONENT_STEP_IL)).click
+    end
   end
 
 end

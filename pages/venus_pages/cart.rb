@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class VenusCart
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   REMOVE_ADD_TO_BAG_BTN_IL = "//input[@value='Remove']"
   REMOVE_ADD_TO_BAG_BTN_TA = "venus:cart_page:remove_add_to_bag_btn"
@@ -11,9 +13,11 @@ class VenusCart
 
 
   def click_remove_item_from_bag(key = nil)
-    return find(ta(REMOVE_ADD_TO_BAG_BTN_EP)).click if key == :ep
-    return find(:xpath, REMOVE_ADD_TO_BAG_BTN_IL).click if key == :il
-    find(:xpath, ta(REMOVE_ADD_TO_BAG_BTN_TA, REMOVE_ADD_TO_BAG_BTN_IL)).click
+    post_processing key do
+      return find(ta(REMOVE_ADD_TO_BAG_BTN_EP)).click if key == :ep
+      return find(:xpath, REMOVE_ADD_TO_BAG_BTN_IL).click if key == :il
+      find(:xpath, ta(REMOVE_ADD_TO_BAG_BTN_TA, REMOVE_ADD_TO_BAG_BTN_IL)).click
+    end
   end
 
 end

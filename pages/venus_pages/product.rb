@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class VenusProduct
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   def list_size(locator, size)
     case locator
@@ -59,51 +61,67 @@ class VenusProduct
 
 
   def choose_list_size(key = nil, size)
-    return find(ta(list_size(:ep, size))).click if key == :ep
-    return find(:xpath, list_size(:il, size)).click if key == :il
-    find(:xpath, ta(list_size(:ta, size), list_size(:il, size))).click
+    post_processing key do
+      return find(ta(list_size(:ep, size))).click if key == :ep
+      return find(:xpath, list_size(:il, size)).click if key == :il
+      find(:xpath, ta(list_size(:ta, size), list_size(:il, size))).click
+    end
   end
 
   def open_qty_dropdown(key = nil)
-    return find(ta(QTY_DROPDOWN_EP)).click if key == :ep
-    return find(:xpath, QTY_DROPDOWN_IL).click if key == :il
-    find(:xpath, ta(QTY_DROPDOWN_TA, QTY_DROPDOWN_IL)).click
+    post_processing key do
+      return find(ta(QTY_DROPDOWN_EP)).click if key == :ep
+      return find(:xpath, QTY_DROPDOWN_IL).click if key == :il
+      find(:xpath, ta(QTY_DROPDOWN_TA, QTY_DROPDOWN_IL)).click
+    end
   end
 
   def select_quantity(key = nil, qty)
-    return find(ta(quantity(:ep, qty))).click if key == :ep
-    return find(:xpath, quantity(:il, qty)).click if key == :il
-    find(:xpath, ta(quantity(:ta, qty), quantity(:il, qty))).click
+    post_processing key do
+      return find(ta(quantity(:ep, qty))).click if key == :ep
+      return find(:xpath, quantity(:il, qty)).click if key == :il
+      find(:xpath, ta(quantity(:ta, qty), quantity(:il, qty))).click
+    end
   end
 
   def click_wish_list_button(key = nil)
-    return find(ta(WISH_LIST_BTN_EP)).click if key == :ep
-    return find(:xpath, WISH_LIST_BTN_IL).click if key == :il
-    find(:xpath, ta(WISH_LIST_BTN_TA, WISH_LIST_BTN_IL)).click
+    post_processing key do
+      return find(ta(WISH_LIST_BTN_EP)).click if key == :ep
+      return find(:xpath, WISH_LIST_BTN_IL).click if key == :il
+      find(:xpath, ta(WISH_LIST_BTN_TA, WISH_LIST_BTN_IL)).click
+    end
   end
 
   def click_add_to_bag_button(key = nil)
-    return find(ta(ADD_TO_BAG_BTN_EP)).click if key == :ep
-    return find(:xpath, ADD_TO_BAG_BTN_IL).click if key == :il
-    find(:xpath, ta(ADD_TO_BAG_BTN_TA, ADD_TO_BAG_BTN_IL)).click
+    post_processing key do
+      return find(ta(ADD_TO_BAG_BTN_EP)).click if key == :ep
+      return find(:xpath, ADD_TO_BAG_BTN_IL).click if key == :il
+      find(:xpath, ta(ADD_TO_BAG_BTN_TA, ADD_TO_BAG_BTN_IL)).click
+    end
   end
 
   def find_price_on_product(key = nil)
-    return find(ta(PRICE_ON_PRODUCT_EP)) if key == :ep
-    return find(:xpath, PRICE_ON_PRODUCT_IL) if key == :il
-    find(:xpath, ta(PRICE_ON_PRODUCT_TA, PRICE_ON_PRODUCT_IL))
+    post_processing key do
+      return find(ta(PRICE_ON_PRODUCT_EP)) if key == :ep
+      return find(:xpath, PRICE_ON_PRODUCT_IL) if key == :il
+      find(:xpath, ta(PRICE_ON_PRODUCT_TA, PRICE_ON_PRODUCT_IL))
+    end
   end
 
   def choose_image(key = nil, image)
-    return find(ta(image_gallery(:ep, image))).click if key == :ep
-    return find(:xpath, image_gallery(:il, image)).click if key == :il
-    find(:xpath, ta(image_gallery(:ta, image), image_gallery(:il, image))).click
+    post_processing key do
+      return find(ta(image_gallery(:ep, image))).click if key == :ep
+      return find(:xpath, image_gallery(:il, image)).click if key == :il
+      find(:xpath, ta(image_gallery(:ta, image), image_gallery(:il, image))).click
+    end
   end
 
   def find_main_image_on_product(key = nil, image)
-    return find(ta(main_image(:ep, image))) if key == :ep
-    return find(:xpath, main_image(:il, image)) if key == :il
-    find(:xpath, ta(main_image(:ta, image), main_image(:il, image)))
+    post_processing key do
+      return find(ta(main_image(:ep, image))) if key == :ep
+      return find(:xpath, main_image(:il, image)) if key == :il
+      find(:xpath, ta(main_image(:ta, image), main_image(:il, image)))
+    end
   end
 
 end

@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class VenusCategory
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   CAT_DROPDOWN_IL = "//div[@data-page='Category']//div[@id='select-subcategories']"
   CAT_DROPDOWN_TA = 'venus:category_page:cat_dropdown'
@@ -20,15 +22,19 @@ class VenusCategory
 
 
   def open_cat_dropdown(key = nil)
-    return find(ta(CAT_DROPDOWN_EP)).click if key == :ep
-    return find(:xpath, CAT_DROPDOWN_IL).click if key == :il
-    find(:xpath, ta(CAT_DROPDOWN_TA, CAT_DROPDOWN_IL)).click
+    post_processing key do
+      return find(ta(CAT_DROPDOWN_EP)).click if key == :ep
+      return find(:xpath, CAT_DROPDOWN_IL).click if key == :il
+      find(:xpath, ta(CAT_DROPDOWN_TA, CAT_DROPDOWN_IL)).click
+    end
   end
 
   def choose_subcat_by_first_name(key = nil, name)
-    return find(ta(subcat_name(:ep, name))).click if key == :ep
-    return find(:xpath, subcat_name(:il, name)).click if key == :il
-    find(:xpath, ta(subcat_name(:ta, name), subcat_name(:il, name))).click
+    post_processing key do
+      return find(ta(subcat_name(:ep, name))).click if key == :ep
+      return find(:xpath, subcat_name(:il, name)).click if key == :il
+      find(:xpath, ta(subcat_name(:ta, name), subcat_name(:il, name))).click
+    end
   end
 
 

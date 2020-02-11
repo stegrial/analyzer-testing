@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
 
 class VenusHome
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   THIRD_BANNER_IL = "(//a[@title='Shop Now'])[3]"
   THIRD_BANNER_TA = 'venus:home_page:third_banner'
@@ -11,9 +13,11 @@ class VenusHome
 
 
   def click_third_banner(key = nil)
-    return find(:xpath, ta(THIRD_BANNER_EP)).click if key == :ep
-    return find(:xpath, THIRD_BANNER_IL).click if key == :il
-    find(:xpath, ta(THIRD_BANNER_TA, THIRD_BANNER_IL)).click
+    post_processing key do
+      return find(:xpath, ta(THIRD_BANNER_EP)).click if key == :ep
+      return find(:xpath, THIRD_BANNER_IL).click if key == :il
+      find(:xpath, ta(THIRD_BANNER_TA, THIRD_BANNER_IL)).click
+    end
   end
 
 end

@@ -1,10 +1,11 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 class Amazon
-
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   MAIN_SEARCH_IL = "//input[@id='twotabsearchtextbox']"
   MAIN_SEARCH_TA = "amazon:search_input"
@@ -48,63 +49,83 @@ class Amazon
   PRODUCT_EP = "EP:amazon:product_from_category"
 
   def hover_departments(key = nil)
-    return find(:xpath, ta(DEPARTMENS_LINK_EP)).hover if key ==:ep
-    return find(:css, DEPARTMENS_LINK_IL).hover if key ==:il
-    find(:css, ta(DEPARTMENS_LINK_TA, DEPARTMENS_LINK_IL)).hover
+    post_processing key do
+      return find(:xpath, ta(DEPARTMENS_LINK_EP)).hover if key ==:ep
+      return find(:css, DEPARTMENS_LINK_IL).hover if key ==:il
+      find(:css, ta(DEPARTMENS_LINK_TA, DEPARTMENS_LINK_IL)).hover
+    end
   end
 
   def click_baby_link(key = nil)
-    return find(:xpath, ta(BABY_LINK_EP)).click if key ==:ep
-    return find(:xpath, BABY_LINK_IL).click if key ==:il
-    find(:xpath, ta(BABY_LINK_TA, BABY_LINK_IL)).click
+    post_processing key do
+      return find(:xpath, ta(BABY_LINK_EP)).click if key ==:ep
+      return find(:xpath, BABY_LINK_IL).click if key ==:il
+      find(:xpath, ta(BABY_LINK_TA, BABY_LINK_IL)).click
+    end
   end
 
   def click_nursery(key = nil)
-    return find(:xpath, ta(NURSERY_IMG_EP)).click if key ==:ep
-    return find(:xpath, NURSERY_IMG_IL).click if key ==:il
-    find(:xpath, ta(NURSERY_IMG_TA, NURSERY_IMG_IL)).click
+    post_processing key do
+      return find(:xpath, ta(NURSERY_IMG_EP)).click if key ==:ep
+      return find(:xpath, NURSERY_IMG_IL).click if key ==:il
+      find(:xpath, ta(NURSERY_IMG_TA, NURSERY_IMG_IL)).click
+    end
   end
 
   def click_product(key = nil)
-    return find(:xpath, ta(PRODUCTY_EP)).click if key ==:ep
-    return find(:xpath, PRODUCT_IL).click if key ==:il
-    find(:xpath, ta(PRODUCT_TA, PRODUCT_IL)).click
+    post_processing key do
+      return find(:xpath, ta(PRODUCTY_EP)).click if key ==:ep
+      return find(:xpath, PRODUCT_IL).click if key ==:il
+      find(:xpath, ta(PRODUCT_TA, PRODUCT_IL)).click
+    end
   end
 
   def set_data_in_search(key = nil, data)
-    return find(:xpath, ta(MAIN_SEARCH_EP)).set(data) if key ==:ep
-    return find(:xpath, MAIN_SEARCH_IL).set(data) if key ==:il
-    find(:xpath, ta(MAIN_SEARCH_TA, MAIN_SEARCH_IL)).set(data)
+    post_processing key do
+      return find(:xpath, ta(MAIN_SEARCH_EP)).set(data) if key ==:ep
+      return find(:xpath, MAIN_SEARCH_IL).set(data) if key ==:il
+      find(:xpath, ta(MAIN_SEARCH_TA, MAIN_SEARCH_IL)).set(data)
+    end
   end
 
   def click_search_btn(key = nil)
-    return find(:xpath, ta(SEARCH_BTN_EP)).click if key ==:ep
-    return find(:xpath, SEARCH_BTN_IL).click if key ==:il
-    find(:xpath, ta(SEARCH_BTN_TA, SEARCH_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(SEARCH_BTN_EP)).click if key ==:ep
+      return find(:xpath, SEARCH_BTN_IL).click if key ==:il
+      find(:xpath, ta(SEARCH_BTN_TA, SEARCH_BTN_IL)).click
+    end
   end
 
   def click_product_from_search_result(key = nil)
-    return find(:xpath, ta(PRODUCT_FROM_SEARCH_EP)).click if key ==:ep
-    return find(:xpath, PRODUCT_FROM_SEARCH_IL).click if key ==:il
-    find(:xpath, ta(PRODUCT_FROM_SEARCH_TA, PRODUCT_FROM_SEARCH_IL)).click
+    post_processing key do
+      return find(:xpath, ta(PRODUCT_FROM_SEARCH_EP)).click if key ==:ep
+      return find(:xpath, PRODUCT_FROM_SEARCH_IL).click if key ==:il
+      find(:xpath, ta(PRODUCT_FROM_SEARCH_TA, PRODUCT_FROM_SEARCH_IL)).click
+    end
   end
 
   def click_to_select_size_btn(key = nil)
+    post_processing key do
       return find(:xpath, ta(SIZE_LIST_EP)).click if key ==:ep
       return find(:xpath, SIZE_LIST_IL).click if key ==:il
       find(:xpath, ta(SIZE_LIST_TA, SIZE_LIST_IL)).click
+    end
   end
 
   def click_to_select_size(key = nil)
-    return find(:xpath, ta(SIZE_EP)).click if key ==:ep
-    return find(:xpath, SIZE_IL).click if key ==:il
-    find(:xpath, ta(SIZE_TA, SIZE_IL)).click
+    post_processing key do
+      return find(:xpath, ta(SIZE_EP)).click if key ==:ep
+      return find(:xpath, SIZE_IL).click if key ==:il
+      find(:xpath, ta(SIZE_TA, SIZE_IL)).click
+    end
   end
 
   def click_for_add_to_cart(key = nil)
-    return find(:xpath, ta(ADD_TO_CART_EP)).click if key ==:ep
-    return find(:xpath, ADD_TO_CART_IL).click if key ==:il
-    find(:xpath, ta(ADD_TO_CART_TA, ADD_TO_CART_IL)).click
+    post_processing key do
+      return find(:xpath, ta(ADD_TO_CART_EP)).click if key ==:ep
+      return find(:xpath, ADD_TO_CART_IL).click if key ==:il
+      find(:xpath, ta(ADD_TO_CART_TA, ADD_TO_CART_IL)).click
+    end
   end
 
 end

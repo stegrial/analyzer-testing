@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 class Olx
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   ANIMAL_CATEGORY_IL = "(//a[@data-id='35'])[1]"
   ANIMAL_CATEGORY_TA = "olx:animal_category"
@@ -50,62 +52,82 @@ class Olx
   EXAMPLE_RESULT_EP = "EP:olx:some_result"
 
   def click_animal_category(key = nil)
-    return find(:xpath, ta(ANIMAL_CATEGORY_EP)).click if key == :ep
-    return find(:xpath, ANIMAL_CATEGORY_IL).click if key == :il
-    find(:xpath, ta(ANIMAL_CATEGORY_TA, ANIMAL_CATEGORY_IL)).click
+    post_processing key do
+      return find(:xpath, ta(ANIMAL_CATEGORY_EP)).click if key == :ep
+      return find(:xpath, ANIMAL_CATEGORY_IL).click if key == :il
+      find(:xpath, ta(ANIMAL_CATEGORY_TA, ANIMAL_CATEGORY_IL)).click
+    end
   end
 
   def click_free_animal_matting(key = nil)
-    return find(:xpath, ta(FREE_ANIMAL_MATING_EP)).click if key == :ep
-    return find(:xpath, FREE_ANIMAL_MATING_IL).click if key == :il
-    find(:xpath, ta(FREE_ANIMAL_MATING_TA, FREE_ANIMAL_MATING_IL)).click
+    post_processing key do
+      return find(:xpath, ta(FREE_ANIMAL_MATING_EP)).click if key == :ep
+      return find(:xpath, FREE_ANIMAL_MATING_IL).click if key == :il
+      find(:xpath, ta(FREE_ANIMAL_MATING_TA, FREE_ANIMAL_MATING_IL)).click
+    end
   end
 
   def click_gallery_view(key = nil)
-    return find(:xpath, ta(GALLERY_VIEW_EP)).click if key == :ep
-    return find(:xpath, GALLERY_VIEW_IL).click if key == :il
-    find(:xpath, ta(GALLERY_VIEW_TA, GALLERY_VIEW_IL)).click
+    post_processing key do
+      return find(:xpath, ta(GALLERY_VIEW_EP)).click if key == :ep
+      return find(:xpath, GALLERY_VIEW_IL).click if key == :il
+      find(:xpath, ta(GALLERY_VIEW_TA, GALLERY_VIEW_IL)).click
+    end
   end
 
   def click_to_select_product(key = nil)
-    return find(:xpath, ta(PRODUCT_EP)).click if key == :ep
-    return find(:xpath, PRODUCT_IL).click if key == :il
-    find(:xpath, ta(PRODUCT_TA, PRODUCT_IL)).click
+    post_processing key do
+      return find(:xpath, ta(PRODUCT_EP)).click if key == :ep
+      return find(:xpath, PRODUCT_IL).click if key == :il
+      find(:xpath, ta(PRODUCT_TA, PRODUCT_IL)).click
+    end
   end
 
   def click_my_acc_btn(key = nil)
-    return find(:xpath, ta(MY_ACCOUNT_EP)).click if key == :ep
-    return find(:xpath, MY_ACCOUNT_IL).click if key == :il
-    find(:xpath, ta(MY_ACCOUNT_TA, MY_ACCOUNT_IL)).click
+    post_processing key do
+      return find(:xpath, ta(MY_ACCOUNT_EP)).click if key == :ep
+      return find(:xpath, MY_ACCOUNT_IL).click if key == :il
+      find(:xpath, ta(MY_ACCOUNT_TA, MY_ACCOUNT_IL)).click
+    end
   end
 
   def click_register_tab(key = nil)
-    return find(:xpath, ta(REGISTER_TAB_EP)).click if key == :ep
-    return find(:css, REGISTER_TAB_IL).click if key == :il
-    find(:css, ta(REGISTER_TAB_TA, REGISTER_TAB_IL)).click
+    post_processing key do
+      return find(:xpath, ta(REGISTER_TAB_EP)).click if key == :ep
+      return find(:css, REGISTER_TAB_IL).click if key == :il
+      find(:css, ta(REGISTER_TAB_TA, REGISTER_TAB_IL)).click
+    end
   end
 
   def set_search_input(key = nil, searchTExt)
-    return find(:xpath, ta(SEARCH_INPUT_EP)).set(searchTExt) if key == :ep
-    return find(:css, SEARCH_INPUT_IL).set(searchTExt) if key == :il
-    find(:css, ta(SEARCH_INPUT_TA, SEARCH_INPUT_IL)).set(searchTExt)
+    post_processing key do
+      return find(:xpath, ta(SEARCH_INPUT_EP)).set(searchTExt) if key == :ep
+      return find(:css, SEARCH_INPUT_IL).set(searchTExt) if key == :il
+      find(:css, ta(SEARCH_INPUT_TA, SEARCH_INPUT_IL)).set(searchTExt)
+    end
   end
 
   def click_to_clear_search(key = nil)
-    return find(:xpath, ta(CLEAR_SEARCH_BTN_EP)).click if key == :ep
-    return find(:xpath, CLEAR_SEARCH_BTN_IL).click if key == :il
-    find(:xpath, ta(CLEAR_SEARCH_BTN_TA, CLEAR_SEARCH_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(CLEAR_SEARCH_BTN_EP)).click if key == :ep
+      return find(:xpath, CLEAR_SEARCH_BTN_IL).click if key == :il
+      find(:xpath, ta(CLEAR_SEARCH_BTN_TA, CLEAR_SEARCH_BTN_IL)).click
+    end
   end
 
   def click_to_clear_region(key = nil)
-    return find(:xpath, ta(CLEAR_REGION_BTN_EP)).click if key == :ep
-    return find(:xpath, CLEAR_REGION_BTN_IL).click if key == :il
-    find(:xpath, ta(CLEAR_REGION_BTN_TA, CLEAR_REGION_BTN_IL)).click
+    post_processing key do
+      return find(:xpath, ta(CLEAR_REGION_BTN_EP)).click if key == :ep
+      return find(:xpath, CLEAR_REGION_BTN_IL).click if key == :il
+      find(:xpath, ta(CLEAR_REGION_BTN_TA, CLEAR_REGION_BTN_IL)).click
+    end
   end
 
   def click_to_select_some_result(key = nil)
-    return find(:xpath, ta(EXAMPLE_RESULT_EP)).click if key == :ep
-    return find(:xpath, EXAMPLE_RESULT_IL).click if key == :il
-    find(:xpath, ta(EXAMPLE_RESULT_TA, EXAMPLE_RESULT_IL)).click
+    post_processing key do
+      return find(:xpath, ta(EXAMPLE_RESULT_EP)).click if key == :ep
+      return find(:xpath, EXAMPLE_RESULT_IL).click if key == :il
+      find(:xpath, ta(EXAMPLE_RESULT_TA, EXAMPLE_RESULT_IL)).click
+    end
   end
 end

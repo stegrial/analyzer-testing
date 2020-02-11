@@ -1,9 +1,11 @@
 require 'spec_helper'
+require_relative '../helpers/special_methods'
 
 class HowToGetMoney
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
   FIRST_LOAN_IL = "//a[text()='Займ до 15000 грн на свою карту']"
   FIRST_LOAN_TA = 'how_to_get_money:first_loan'
@@ -21,9 +23,11 @@ class HowToGetMoney
   # end
 
   def click_first_loan_link(key = nil)
-    return find(ta(FIRST_LOAN_EP)).click if key == :ep
-    return find(:xpath, FIRST_LOAN_IL).click if key == :il
-    find(:xpath, ta(FIRST_LOAN_TA, FIRST_LOAN_IL)).click
+    post_processing key do
+      return find(ta(FIRST_LOAN_EP)).click if key == :ep
+      return find(:xpath, FIRST_LOAN_IL).click if key == :il
+      find(:xpath, ta(FIRST_LOAN_TA, FIRST_LOAN_IL)).click
+    end
   end
 
   # def click_element(link_name, ep = false)
