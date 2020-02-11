@@ -4,6 +4,7 @@ class TheTiebarFooterPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
 
   CONTACT_IL = "(//span[text()='Contact'])[2]"
@@ -84,118 +85,156 @@ class TheTiebarFooterPage
 
 
   def click_contact(key = nil)
-    return find(ta(CONTACT_EP)).click if key == :ep
-    return find(:xpath, CONTACT_IL).click if key == :il
-    find(:xpath, ta(CONTACT_TA, CONTACT_IL)).click
+    post_processing key do
+      return find(ta(CONTACT_EP)).click if key == :ep
+      return find(:xpath, CONTACT_IL).click if key == :il
+      find(:xpath, ta(CONTACT_TA, CONTACT_IL)).click
+    end
   end
 
   def click_shipping(key = nil)
-    return find(ta(SHIPPING_EP)).click if key == :ep
-    return find(:xpath, SHIPPING_IL).click if key == :il
-    find(:xpath, ta(SHIPPING_TA, SHIPPING_IL)).click
+    post_processing key do
+      return find(ta(SHIPPING_EP)).click if key == :ep
+      return find(:xpath, SHIPPING_IL).click if key == :il
+      find(:xpath, ta(SHIPPING_TA, SHIPPING_IL)).click
+    end
   end
 
   def click_returns(key = nil)
-    return find(ta(RETURNS_EP)).click if key == :ep
-    return find(:xpath, RETURNS_IL).click if key == :il
-    find(:xpath, ta(RETURNS_TA, RETURNS_IL)).click
+    post_processing key do
+      return find(ta(RETURNS_EP)).click if key == :ep
+      return find(:xpath, RETURNS_IL).click if key == :il
+      find(:xpath, ta(RETURNS_TA, RETURNS_IL)).click
+    end
   end
 
   def click_track_my_orders(key = nil)
-    return find(ta(TRACK_MY_ORDER_EP)).click if key == :ep
-    return find(:xpath, TRACK_MY_ORDER_IL).click if key == :il
-    find(:xpath, ta(TRACK_MY_ORDER_TA, TRACK_MY_ORDER_IL)).click
+    post_processing key do
+      return find(ta(TRACK_MY_ORDER_EP)).click if key == :ep
+      return find(:xpath, TRACK_MY_ORDER_IL).click if key == :il
+      find(:xpath, ta(TRACK_MY_ORDER_TA, TRACK_MY_ORDER_IL)).click
+    end
   end
 
   def click_about_us(key = nil)
-    return find(ta(ABOUT_US_EP)).click if key == :ep
-    return find(:xpath, ABOUT_US_IL).click if key == :il
-    find(:xpath, ta(ABOUT_US_TA, ABOUT_US_IL)).click
+    post_processing key do
+      return find(ta(ABOUT_US_EP)).click if key == :ep
+      return find(:xpath, ABOUT_US_IL).click if key == :il
+      find(:xpath, ta(ABOUT_US_TA, ABOUT_US_IL)).click
+    end
   end
 
   def click_about_our_stores(key = nil)
-    return find(ta(ABOUT_OUR_STORES_EP)).click if key == :ep
-    return find(:xpath, ABOUT_OUR_STORES_IL).click if key == :il
-    find(:xpath, ta(ABOUT_OUR_STORES_TA, ABOUT_OUR_STORES_IL)).click
+    post_processing key do
+      return find(ta(ABOUT_OUR_STORES_EP)).click if key == :ep
+      return find(:xpath, ABOUT_OUR_STORES_IL).click if key == :il
+      find(:xpath, ta(ABOUT_OUR_STORES_TA, ABOUT_OUR_STORES_IL)).click
+    end
   end
 
   def click_faq(key = nil)
-    return find(ta(FAQ_EP)).click if key == :ep
-    return find(:xpath, FAQ_IL).click if key == :il
-    find(:xpath, ta(FAQ_TA, FAQ_IL)).click
+    post_processing key do
+      return find(ta(FAQ_EP)).click if key == :ep
+      return find(:xpath, FAQ_IL).click if key == :il
+      find(:xpath, ta(FAQ_TA, FAQ_IL)).click
+    end
   end
 
   def click_careers(key = nil)
-    return find(ta(CAREERS_EP)).click if key == :ep
-    return find(:xpath, CAREERS_IL).click if key == :il
-    find(:xpath, ta(CAREERS_TA, CAREERS_IL)).click
+    post_processing key do
+      return find(ta(CAREERS_EP)).click if key == :ep
+      return find(:xpath, CAREERS_IL).click if key == :il
+      find(:xpath, ta(CAREERS_TA, CAREERS_IL)).click
+    end
   end
 
   def click_canada(key = nil)
-    return find(ta(CANADA_EP)).click if key == :ep
-    return find(:xpath, CANADA_IL).click if key == :il
-    find(:xpath, ta(CANADA_TA, CANADA_IL)).click
+    post_processing key do
+      return find(ta(CANADA_EP)).click if key == :ep
+      return find(:xpath, CANADA_IL).click if key == :il
+      find(:xpath, ta(CANADA_TA, CANADA_IL)).click
+    end
   end
 
   def click_promotions(key = nil)
-    return find(ta(PROMOTIONS_EP)).click if key == :ep
-    return find(:xpath, PROMOTIONS_IL).click if key == :il
-    find(:xpath, ta(PROMOTIONS_TA, PROMOTIONS_IL)).click
+    post_processing key do
+      return find(ta(PROMOTIONS_EP)).click if key == :ep
+      return find(:xpath, PROMOTIONS_IL).click if key == :il
+      find(:xpath, ta(PROMOTIONS_TA, PROMOTIONS_IL)).click
+    end
   end
 
   def click_holiday_ties(key = nil)
-    return find(ta(HOLIDAY_TIES_EP)).click if key == :ep
-    return find(:xpath, HOLIDAY_TIES_IL).click if key == :il
-    find(:xpath, ta(HOLIDAY_TIES_TA, HOLIDAY_TIES_IL)).click
+    post_processing key do
+      return find(ta(HOLIDAY_TIES_EP)).click if key == :ep
+      return find(:xpath, HOLIDAY_TIES_IL).click if key == :il
+      find(:xpath, ta(HOLIDAY_TIES_TA, HOLIDAY_TIES_IL)).click
+    end
   end
 
 
   def should_see_contact_h1(key = nil)
-    return assert_selector(ta(CONTACT_US_H1_EP)) if key == :ep
-    return assert_selector(:xpath, CONTACT_US_H1_IL) if key == :il
-    assert_selector(:xpath, ta(CONTACT_US_H1_TA, CONTACT_US_H1_IL))
+    post_processing key do
+      return assert_selector(ta(CONTACT_US_H1_EP)) if key == :ep
+      return assert_selector(:xpath, CONTACT_US_H1_IL) if key == :il
+      assert_selector(:xpath, ta(CONTACT_US_H1_TA, CONTACT_US_H1_IL))
+    end
   end
 
   def should_see_shipping_h1(key = nil)
-    return assert_selector(ta(SHIPPING_H1_EP)) if key == :ep
-    return assert_selector(:xpath, SHIPPING_H1_IL) if key == :il
-    assert_selector(:xpath, ta(SHIPPING_H1_TA, SHIPPING_H1_IL))
+    post_processing key do
+      return assert_selector(ta(SHIPPING_H1_EP)) if key == :ep
+      return assert_selector(:xpath, SHIPPING_H1_IL) if key == :il
+      assert_selector(:xpath, ta(SHIPPING_H1_TA, SHIPPING_H1_IL))
+    end
   end
 
   def should_see_returns_h1(key = nil)
-    return assert_selector(ta(RETURNS_H1_EP)) if key == :ep
-    return assert_selector(:xpath, RETURNS_H1_IL) if key == :il
-    assert_selector(:xpath, ta(RETURNS_H1_TA, RETURNS_H1_IL))
+    post_processing key do
+      return assert_selector(ta(RETURNS_H1_EP)) if key == :ep
+      return assert_selector(:xpath, RETURNS_H1_IL) if key == :il
+      assert_selector(:xpath, ta(RETURNS_H1_TA, RETURNS_H1_IL))
+    end
   end
 
   def should_see_track_my_order_h1(key = nil)
-    return assert_selector(ta(TRACK_MY_ORDER_H1_EP)) if key == :ep
-    return assert_selector(:xpath, TRACK_MY_ORDER_H1_IL) if key == :il
-    assert_selector(:xpath, ta(TRACK_MY_ORDER_H1_TA, TRACK_MY_ORDER_H1_IL))
+    post_processing key do
+      return assert_selector(ta(TRACK_MY_ORDER_H1_EP)) if key == :ep
+      return assert_selector(:xpath, TRACK_MY_ORDER_H1_IL) if key == :il
+      assert_selector(:xpath, ta(TRACK_MY_ORDER_H1_TA, TRACK_MY_ORDER_H1_IL))
+    end
   end
 
   def should_see_about_us_h1(key = nil)
-    return assert_selector(ta(ABOUT_US_H1_EP)) if key == :ep
-    return assert_selector(:xpath, ABOUT_US_H1_IL) if key == :il
-    assert_selector(:xpath, ta(ABOUT_US_H1_TA, ABOUT_US_H1_IL))
+    post_processing key do
+      return assert_selector(ta(ABOUT_US_H1_EP)) if key == :ep
+      return assert_selector(:xpath, ABOUT_US_H1_IL) if key == :il
+      assert_selector(:xpath, ta(ABOUT_US_H1_TA, ABOUT_US_H1_IL))
+    end
   end
 
   def should_see_faq_h1(key = nil)
-    return assert_selector(ta(FAQ_H1_EP)) if key == :ep
-    return assert_selector(:xpath, FAQ_H1_IL) if key == :il
-    assert_selector(:xpath, ta(FAQ_H1_TA, FAQ_H1_IL))
+    post_processing key do
+      return assert_selector(ta(FAQ_H1_EP)) if key == :ep
+      return assert_selector(:xpath, FAQ_H1_IL) if key == :il
+      assert_selector(:xpath, ta(FAQ_H1_TA, FAQ_H1_IL))
+    end
   end
 
   def should_see_current_posittions_h1(key = nil)
-    return assert_selector(ta(CURRENT_OPEN_POSITIONS_H1_EP)) if key == :ep
-    return assert_selector(:xpath, CURRENT_OPEN_POSITIONS_H1_IL) if key == :il
-    assert_selector(:xpath, ta(CURRENT_OPEN_POSITIONS_H1_TA, CURRENT_OPEN_POSITIONS_H1_IL))
+    post_processing key do
+      return assert_selector(ta(CURRENT_OPEN_POSITIONS_H1_EP)) if key == :ep
+      return assert_selector(:xpath, CURRENT_OPEN_POSITIONS_H1_IL) if key == :il
+      assert_selector(:xpath, ta(CURRENT_OPEN_POSITIONS_H1_TA, CURRENT_OPEN_POSITIONS_H1_IL))
+    end
   end
 
   def should_see_promotions_h1(key = nil)
-    return assert_selector(ta(PROMOTIONS_H1_EP)) if key == :ep
-    return assert_selector(:xpath, PROMOTIONS_H1_IL) if key == :il
-    assert_selector(:xpath, ta(PROMOTIONS_H1_TA, PROMOTIONS_H1_IL))
+    post_processing key do
+      return assert_selector(ta(PROMOTIONS_H1_EP)) if key == :ep
+      return assert_selector(:xpath, PROMOTIONS_H1_IL) if key == :il
+      assert_selector(:xpath, ta(PROMOTIONS_H1_TA, PROMOTIONS_H1_IL))
+    end
   end
 
 end

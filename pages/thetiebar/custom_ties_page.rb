@@ -5,6 +5,8 @@ class TheTiebarCusromPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
+
 
   FIRST_NAME_IL = "(//input[@id='FirstName'])[1]"
   FIRST_NAME_TA = "thetiebar:custom_page:first_name"
@@ -55,75 +57,99 @@ class TheTiebarCusromPage
   SUBMIT_EP = "EP:thetiebar:custom_page:ties3"
 
   def fill_first_name_field(key = nil, value)
-    return find(ta(FIRST_NAME_EP)).set(value) if key == :ep
-    return find(:xpath, FIRST_NAME_IL).set(value) if key == :il
-    find(:xpath, ta(FIRST_NAME_TA, FIRST_NAME_IL)).set(value)
+    post_processing key do
+      return find(ta(FIRST_NAME_EP)).set(value) if key == :ep
+      return find(:xpath, FIRST_NAME_IL).set(value) if key == :il
+      find(:xpath, ta(FIRST_NAME_TA, FIRST_NAME_IL)).set(value)
+    end
   end
 
   def fill_last_name_field(key = nil, value)
-    return find(ta(LAST_NAME_EP)).set(value) if key == :ep
-    return find(:xpath, LAST_NAME_IL).set(value) if key == :il
-    find(:xpath, ta(LAST_NAME_TA, LAST_NAME_IL)).set(value)
+    post_processing key do
+      return find(ta(LAST_NAME_EP)).set(value) if key == :ep
+      return find(:xpath, LAST_NAME_IL).set(value) if key == :il
+      find(:xpath, ta(LAST_NAME_TA, LAST_NAME_IL)).set(value)
+    end
   end
 
   def fill_address_field(key = nil, value)
-    return find(ta(ADDRESS_EP)).set(value) if key == :ep
-    return find(:xpath, ADDRESS_IL).set(value) if key == :il
-    find(:xpath, ta(ADDRESS_TA, ADDRESS_IL)).set(value)
+    post_processing key do
+      return find(ta(ADDRESS_EP)).set(value) if key == :ep
+      return find(:xpath, ADDRESS_IL).set(value) if key == :il
+      find(:xpath, ta(ADDRESS_TA, ADDRESS_IL)).set(value)
+    end
   end
 
   def fill_email_field(key = nil, value)
-    return find(ta(EMAIL_EP)).set(value) if key == :ep
-    return find(:xpath, EMAIL_IL).set(value) if key == :il
-    find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set(value)
+    post_processing key do
+      return find(ta(EMAIL_EP)).set(value) if key == :ep
+      return find(:xpath, EMAIL_IL).set(value) if key == :il
+      find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set(value)
+    end
   end
 
   def fill_city_field(key = nil, value)
-    return find(ta(CITY_EP)).set(value) if key == :ep
-    return find(:xpath, CITY_IL).set(value) if key == :il
-    find(:xpath, ta(CITY_TA, CITY_IL)).set(value)
+    post_processing key do
+      return find(ta(CITY_EP)).set(value) if key == :ep
+      return find(:xpath, CITY_IL).set(value) if key == :il
+      find(:xpath, ta(CITY_TA, CITY_IL)).set(value)
+    end
   end
 
   def fill_state_field(key = nil, value)
-    return find(ta(STATE_EP)).select(value) if key == :ep
-    return find(:xpath, STATE_IL).select(value) if key == :il
-    find(:xpath, ta(STATE_TA, STATE_IL)).select(value)
+    post_processing key do
+      return find(ta(STATE_EP)).select(value) if key == :ep
+      return find(:xpath, STATE_IL).select(value) if key == :il
+      find(:xpath, ta(STATE_TA, STATE_IL)).select(value)
+    end
   end
 
   def fill_zip_code_field(key = nil, value)
-    return find(ta(ZIP_CODE_EP)).set(value) if key == :ep
-    return find(:xpath, ZIP_CODE_IL).set(value) if key == :il
-    find(:xpath, ta(ZIP_CODE_TA, ZIP_CODE_IL)).set(value)
+    post_processing key do
+      return find(ta(ZIP_CODE_EP)).set(value) if key == :ep
+      return find(:xpath, ZIP_CODE_IL).set(value) if key == :il
+      find(:xpath, ta(ZIP_CODE_TA, ZIP_CODE_IL)).set(value)
+    end
   end
 
   def fill_phone_number_field(key = nil, value)
-    return find(ta(PHONE_NUMBER_EP)).set(value) if key == :ep
-    return find(:xpath, PHONE_NUMBER_IL).set(value) if key == :il
-    find(:xpath, ta(PHONE_NUMBER_TA, PHONE_NUMBER_IL)).set(value)
+    post_processing key do
+      return find(ta(PHONE_NUMBER_EP)).set(value) if key == :ep
+      return find(:xpath, PHONE_NUMBER_IL).set(value) if key == :il
+      find(:xpath, ta(PHONE_NUMBER_TA, PHONE_NUMBER_IL)).set(value)
+    end
   end
 
   def select_bow_ties_1_radiobtn(key = nil)
-    return find(ta(BOW_TIES_1_EP)).click if key == :ep
-    return find(:xpath, BOW_TIES_1_IL).click if key == :il
-    find(:xpath, ta(BOW_TIES_1_TA, BOW_TIES_1_IL)).click
+    post_processing key do
+      return find(ta(BOW_TIES_1_EP)).click if key == :ep
+      return find(:xpath, BOW_TIES_1_IL).click if key == :il
+      find(:xpath, ta(BOW_TIES_1_TA, BOW_TIES_1_IL)).click
+    end
   end
 
   def select_scarves_2_radiobtn(key = nil)
-    return find(ta(SCARVES_2_EP)).click if key == :ep
-    return find(:xpath, SCARVES_2_IL).click if key == :il
-    find(:xpath, ta(SCARVES_2_TA, SCARVES_2_IL)).click
+    post_processing key do
+      return find(ta(SCARVES_2_EP)).click if key == :ep
+      return find(:xpath, SCARVES_2_IL).click if key == :il
+      find(:xpath, ta(SCARVES_2_TA, SCARVES_2_IL)).click
+    end
   end
 
   def select_ties_3_radiobtn(key = nil)
-    return find(ta(TIES_3_EP)).click if key == :ep
-    return find(:xpath, TIES_3_IL).click if key == :il
-    find(:xpath, ta(TIES_3_TA, TIES_3_IL)).click
+    post_processing key do
+      return find(ta(TIES_3_EP)).click if key == :ep
+      return find(:xpath, TIES_3_IL).click if key == :il
+      find(:xpath, ta(TIES_3_TA, TIES_3_IL)).click
+    end
   end
 
   def click_submit_btn(key = nil)
-    return find(ta(SUBMIT_EP)).click if key == :ep
-    return find(:xpath, SUBMIT_IL).click if key == :il
-    find(:xpath, ta(SUBMIT_TA, SUBMIT_IL)).click
+    post_processing key do
+      return find(ta(SUBMIT_EP)).click if key == :ep
+      return find(:xpath, SUBMIT_IL).click if key == :il
+      find(:xpath, ta(SUBMIT_TA, SUBMIT_IL)).click
+    end
   end
 
 end
