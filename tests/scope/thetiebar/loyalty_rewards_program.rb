@@ -61,7 +61,7 @@ describe 'Preconditions' do
       end
 
       step "User click the account button" do
-        check_element_path :xpath, TheTiebarLoginPage::SIGNIN_BTN_TA, TheTiebarLoginPage::SIGNIN_BTN_IL
+        check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_TA, TheTiebarHeader::SIGNIN_BTN_IL
         header_page.click_sing_in_btn :il
       end
 
@@ -104,7 +104,7 @@ describe 'Preconditions' do
       end
 
       step "User click the account button" do
-        check_element_path :xpath, TheTiebarLoginPage::SIGNIN_BTN_EP, TheTiebarLoginPage::SIGNIN_BTN_IL
+        check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_EP, TheTiebarHeader::SIGNIN_BTN_IL
         header_page.click_sing_in_btn :ep
       end
 
