@@ -36,6 +36,7 @@ describe 'Preconditions' do
 
       step "User clicks on the Sign In button" do
         login_page.click_sing_in
+        sleep 3
       end
 
       step "User clicks on the Account button" do
@@ -45,7 +46,6 @@ describe 'Preconditions' do
       step "User clicks on the Sign Out link" do
         header_page.click_sing_out_link
       end
-      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -72,6 +72,7 @@ describe 'Preconditions' do
       step "User clicks on the Sign In button" do
         check_element_path :xpath, TheTiebarLoginPage::SIGN_IN_TA, TheTiebarLoginPage::SIGN_IN_IL
         login_page.click_sing_in
+        sleep 3
       end
 
       step "User clicks on the Account button" do
@@ -110,6 +111,7 @@ describe 'Preconditions' do
       step "User clicks on the Sign In button" do
         check_element_path :xpath, TheTiebarLoginPage::SIGN_IN_EP, TheTiebarLoginPage::SIGN_IN_IL
         login_page.click_sing_in :ep
+        sleep 3
       end
 
       step "User clicks on the Account button" do
