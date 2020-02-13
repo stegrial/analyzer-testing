@@ -25,7 +25,7 @@ class TheTiebarHeader
   SIGNIN_BTN_TA = "thetiebar:header:signin_btn"
   SIGNIN_BTN_EP = "EP:thetiebar:header:signin_btn"
 
-  ACCOUNT_BTN_IL = "//span[contains(text(), 'Account')]"
+  ACCOUNT_BTN_IL = "//button[contains(@aria-label, 'Account')][1]"
   ACCOUNT_BTN_TA = "thetiebar:header:account_btn"
   ACCOUNT_BTN_EP = "EP:thetiebar:header:account_btn"
 
