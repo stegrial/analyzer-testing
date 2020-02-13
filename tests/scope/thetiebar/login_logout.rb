@@ -35,7 +35,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Sign In button" do
-        login_page.click_sing_in
+        login_page.click_sing_in :il
         sleep 3
       end
 
@@ -44,6 +44,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Sign Out link" do
+        sleep 3
         header_page.click_sing_out_link
       end
     end
@@ -57,6 +58,7 @@ describe 'Preconditions' do
       step "User click the account button" do
         check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_TA, TheTiebarHeader::SIGNIN_BTN_IL
         header_page.click_sing_in_btn
+        sleep 3
       end
 
       step "User fills the Username field", settings('thetiebar')['email'] do |username|
@@ -66,7 +68,7 @@ describe 'Preconditions' do
 
       step "User fills the Password field", settings('thetiebar')['password'] do |pass|
         check_element_path :xpath, TheTiebarLoginPage::LOGIN_PASS_TA, TheTiebarLoginPage::LOGIN_PASS_IL
-        login_page.fill_login_password pass
+        login_page.fill_login_password  pass
       end
 
       step "User clicks on the Sign In button" do
@@ -96,6 +98,7 @@ describe 'Preconditions' do
       step "User click the account button" do
         check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_EP, TheTiebarHeader::SIGNIN_BTN_IL
         header_page.click_sing_in_btn :ep
+        sleep 3
       end
 
       step "User fills the Username field", settings('thetiebar')['email'] do |username|
