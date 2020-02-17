@@ -98,7 +98,7 @@ class TheTiebarAccount_page
   CANCEL_DELETE_BTN_EP = "EP:thetiebar:preferences_page:cancel_delete_acc_btn"
 
   CLOSE_DELETE_MODAL_ICON_IL = "(//img[contains(@alt, 'close icon')])[1]"
-  CLOSE_DELETE_MODAL_ICON_TA = "thetiebar:preferences_page:close_modal_icon_"
+  CLOSE_DELETE_MODAL_ICON_TA = "thetiebar:preferences_page:close_modal_icon"
   CLOSE_DELETE_MODAL_ICON_EP = "EP:thetiebar:preferences_page:close_modal_icon"
 
 

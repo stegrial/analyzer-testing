@@ -17,7 +17,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il1: true do
+    scenario 'Recording IL', il: true do
       step "User goes to the page", settings('thetiebar')['preference_page'] do |url|
         page.visit url
       end
@@ -39,11 +39,11 @@ describe 'Preconditions' do
         account_page.click_delete_account_btn
       end
 
-      step "User clicks other newsletter" do
+      step "User clicks cancel delete button" do
         account_page.click_cancel_delete_btn
       end
 
-      step "User clicks twice catalog togler" do
+      step "User clicks delete acc button" do
         account_page.click_delete_account_btn
       end
 
@@ -80,17 +80,18 @@ describe 'Preconditions' do
         account_page.click_delete_account_btn
       end
 
-      step "User clicks other newsletter" do
+      step "User clicks cancel delete button" do
+        sleep 3
         check_element_path :xpath, TheTiebarAccount_page::CANCEL_DELETE_BTN_TA, TheTiebarAccount_page::CANCEL_DELETE_BTN_IL
         account_page.click_cancel_delete_btn
       end
 
-      step "User clicks twice catalog togler" do
+      step "User clicks delete button" do
         check_element_path :xpath, TheTiebarAccount_page::DELETE_ACCOUNT_BTN_TA, TheTiebarAccount_page::DELETE_ACCOUNT_BTN_IL
         account_page.click_delete_account_btn
       end
 
-      step "User clicks other catalog dropdown" do
+      step "User clicks close modal button" do
         check_element_path :xpath, TheTiebarAccount_page::CLOSE_DELETE_MODAL_ICON_TA, TheTiebarAccount_page::CLOSE_DELETE_MODAL_ICON_IL
         account_page.click_close_delete_modal_icon
       end
