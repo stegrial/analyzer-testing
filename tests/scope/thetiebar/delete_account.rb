@@ -17,7 +17,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', il1: true do
       step "User goes to the page", settings('thetiebar')['preference_page'] do |url|
         page.visit url
       end
@@ -55,11 +55,11 @@ describe 'Preconditions' do
 
     scenario 'Searching IL', il: true do
 
-      step "User goes to the page", settings('thetiebar')['my_account_page'] do |url|
+      step "User goes to the page", settings('thetiebar')['preference_page'] do |url|
         page.visit url
       end
 
-      step "User fills the Username field", settings('thetiebar')['username'] do |username|
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_TA, TheTiebarLoginPage::USERNAME_IL
         login_page.fill_username_field username
       end
@@ -100,11 +100,11 @@ describe 'Preconditions' do
     # Element Picker from Repository
     scenario 'Searching EP', ep: true do
 
-      step "User goes to the page", settings('thetiebar')['my_account_page'] do |url|
+      step "User goes to the page", settings('thetiebar')['preference_page'] do |url|
         page.visit url
       end
 
-      step "User fills the Username field", settings('thetiebar')['username'] do |username|
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_EP, TheTiebarLoginPage::USERNAME_IL
         login_page.fill_username_field :ep, username
       end
