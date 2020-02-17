@@ -111,7 +111,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User fills the Username field", settings('thetiebar')['username'] do |username|
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_TA, TheTiebarLoginPage::USERNAME_IL
         login_page.fill_username_field username
       end
@@ -220,7 +220,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User fills the Username field", settings('thetiebar')['username'] do |username|
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_EP, TheTiebarLoginPage::USERNAME_IL
         login_page.fill_username_field :ep, username
       end
