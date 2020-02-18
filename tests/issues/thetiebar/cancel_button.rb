@@ -13,7 +13,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  feature 'AT-158 Cancel Button' do
+  feature 'AT-165 Cancel Button' do
 
     # Initial locators with Recording
 
@@ -113,6 +113,62 @@ describe 'Preconditions' do
         account_page.click_cancel_delete_btn :ep
       end
 
+    end
+
+    scenario 'Recording debug', record_debug: true do
+      step "User goes to the page", settings('thetiebar')['preference_page'] do |url|
+        page.visit url
+      end
+
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
+        login_page.fill_username_field :il, username
+      end
+
+      step "User fills the Password field", settings('thetiebar')['password'] do |pass|
+        login_page.fill_login_password :il, pass
+      end
+
+      step "User clicks on the Sign In button" do
+        login_page.click_sing_in :il
+        sleep 3
+      end
+
+      step "User clicks delete account button" do
+        account_page.click_delete_account_btn :il
+      end
+
+      step "User clicks cancel delete button" do
+        sleep 3
+        account_page.click_cancel_delete_btn
+      end
+    end
+
+    scenario 'Searching debug', search_debug: true do
+      step "User goes to the page", settings('thetiebar')['preference_page'] do |url|
+        page.visit url
+      end
+
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
+        login_page.fill_username_field :il, username
+      end
+
+      step "User fills the Password field", settings('thetiebar')['password'] do |pass|
+        login_page.fill_login_password :il, pass
+      end
+
+      step "User clicks on the Sign In button" do
+        login_page.click_sing_in :il
+        sleep 3
+      end
+
+      step "User clicks delete account button" do
+        account_page.click_delete_account_btn :il
+      end
+
+      step "User clicks cancel delete button" do
+        sleep 3
+        account_page.click_cancel_delete_btn
+      end
     end
   end
 end
