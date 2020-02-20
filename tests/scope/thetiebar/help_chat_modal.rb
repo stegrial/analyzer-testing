@@ -22,36 +22,35 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User fills search query field" do
-        iframe_page.click_help_chat :il
-        sleep 3
+      step "User click help chat" do
+        iframe_page.click_help_chat
       end
 
       step "User fill name in chat modal", "testName" do |test_name|
         sleep 4
-        iframe_page.fill_chat_name :il, test_name
+        iframe_page.fill_chat_name test_name
       end
 
       step "User fill email in chat modal", "test@gmail.com" do |email|
-        iframe_page.fill_chat_email  :il, email
+        iframe_page.fill_chat_email  email
       end
 
       step "User fill message in chat modal", "test test test" do |message|
-        iframe_page.fill_chat_message :il, message
+        iframe_page.fill_chat_message  message
       end
 
       step "User clicks start button in chat modal" do
-        iframe_page.click_start_chat_btn :il
+        iframe_page.click_start_chat_btn
       end
 
       step "User click minimaze chat button" do
-        iframe_page.click_minimaze_chat :il
+        iframe_page.click_minimaze_chat
       end
 
       sleep 3
     end
 
-    scenario 'Searching IL', il1: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
