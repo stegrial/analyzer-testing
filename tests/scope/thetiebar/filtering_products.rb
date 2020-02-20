@@ -79,7 +79,7 @@ describe 'Preconditions' do
 
     end
 
-    Element Picker from Repository
+    # Element Picker from Repository
     scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('thetiebar')['pants_page'] do |url|

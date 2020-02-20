@@ -93,7 +93,7 @@ describe 'Preconditions' do
       end
     end
 
-    Element Picker
+    # Element Picker
 
     scenario 'Searching EP', ep: true do
 

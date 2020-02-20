@@ -5,7 +5,7 @@ required_relative_all "/pages/thetiebar/*.rb"
 
 footer_page = TheTiebarFooterPage.new
 faq_page = TheTiebarFaqPage.new
-about_us_page = TheTiebarLoginPage.new
+about_us_page = TheTiebarAboutUs.new
 canada_page = TheTiebarCanada.new
 
 describe 'Preconditions' do

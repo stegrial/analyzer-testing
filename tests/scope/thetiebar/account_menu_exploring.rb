@@ -24,7 +24,7 @@ describe 'Preconditions' do
 
       step "User click the account button" do
        step 3
-        header_page.click_sing_in_btn :il
+        header_page.click_sing_in_btn
       end
 
       step "User fills the Username field", settings('thetiebar')['email'] do |email|
@@ -41,11 +41,11 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Account button" do
-        header_page.click_account_btn
+        header_page.click_account_btn :il
       end
 
       step "User clicks orders link  in Account menu" do
-        header_page.click_orders_in_acc_menu
+        header_page.click_orders_in_acc_menu :il
         sleep 3 # wait for finish slow page rebuild
       end
 
@@ -54,7 +54,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks address book link in Account menu" do
-        header_page.click_address_book_in_acc_menu
+        header_page.click_address_book_in_acc_menu :il
         sleep 3 # wait for finish slow page rebuild
       end
 
@@ -63,7 +63,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks payment link in Account menu" do
-        header_page.click_payment_in_acc_menu
+        header_page.click_payment_in_acc_menu :il
         sleep 3 # wait for finish slow page rebuild
       end
 
@@ -72,7 +72,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks wish list link in Account menu" do
-        header_page.click_wish_list_in_acc_menu
+        header_page.click_wish_list_in_acc_menu :il
         sleep 3 # wait for finish slow page rebuild
       end
 
@@ -81,7 +81,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks gift cards link in Account menu" do
-        header_page.click_gift_cads_in_acc_menu
+        header_page.click_gift_cads_in_acc_menu :il
         sleep 3 # wait for finish slow page rebuild
       end
 
@@ -90,7 +90,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks profile link in Account menu" do
-        header_page.click_profile_in_acc_menu
+        header_page.click_profile_in_acc_menu :il
         sleep 3 # wait for finish slow page rebuild
       end
 
@@ -99,7 +99,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks preference link in Account menu" do
-        header_page.click_preference_in_acc_menu
+        header_page.click_preference_in_acc_menu :il
         sleep 3 # wait for finish slow page rebuild
       end
 
@@ -108,7 +108,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks need help link in Account menu" do
-        header_page.click_need_help_in_acc_menu
+        header_page.click_need_help_in_acc_menu :il
         sleep 3 # wait for finish slow page rebuild
       end
 
@@ -117,12 +117,12 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Sign Out link" do
-        header_page.click_sing_out_link
+        header_page.click_sing_out_link :il
       end
       sleep 3
     end
 
-    scenario 'Searching IL', il: true do
+    scenario 'Searching IL', il1: true do
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url

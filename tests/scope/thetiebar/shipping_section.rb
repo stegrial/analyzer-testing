@@ -68,10 +68,12 @@ describe 'Preconditions' do
 
         step "User fill country field", "United States" do |usa|
         checkout_page.fill_country_field usa
+          sleep 2
       end
 
       step "User fill address field", "Av" do |street|
         checkout_page.fill_address_field street
+        sleep 2
       end
 
       step "User fill select address from dropdown field" do
@@ -94,12 +96,12 @@ describe 'Preconditions' do
         checkout_page.fill_credit_card_field mastercard
       end
 
-      step "User fill credit card field", settings('thetiebar')['exp_data_month'] do |mastercard|
-        checkout_page.fill_exp_month_field mastercard
+      step "User fill credit card field", settings('thetiebar')['exp_data_month'] do |exp_data_month|
+        checkout_page.fill_exp_month_field exp_data_month
       end
 
-      step "User fill credit card field", settings('thetiebar')['exp_data_year'] do |mastercard|
-        checkout_page.fill_exp_year_field mastercard
+      step "User fill credit card field", settings('thetiebar')['exp_data_year'] do |exp_data_year|
+        checkout_page.fill_exp_year_field exp_data_year
       end
 
       step "User fill cvv field", "1111" do |billing|
@@ -212,14 +214,14 @@ describe 'Preconditions' do
         checkout_page.fill_credit_card_field mastercard
       end
 
-      step "User fill credit card field", settings('thetiebar')['exp_data_month'] do |mastercard|
+      step "User fill credit card field", settings('thetiebar')['exp_data_month'] do |exp_data_month|
         check_element_path :xpath, TheTiebarCheckoutPage::EXP_MONTH_TA, TheTiebarCheckoutPage::EXP_MONTH_IL
-        checkout_page.fill_exp_month_field mastercard
+        checkout_page.fill_exp_month_field exp_data_month
       end
 
-      step "User fill credit card field", settings('thetiebar')['exp_data_year'] do |mastercard|
+      step "User fill credit card field", settings('thetiebar')['exp_data_year'] do |exp_data_year|
         check_element_path :xpath, TheTiebarCheckoutPage::EXP_YEAR_TA, TheTiebarCheckoutPage::EXP_YEAR_IL
-        checkout_page.fill_exp_year_field mastercard
+        checkout_page.fill_exp_year_field exp_data_year
       end
 
       step "User fill cvv field", "1111" do |billing|
@@ -338,14 +340,14 @@ describe 'Preconditions' do
         checkout_page.fill_credit_card_field :ep, mastercard
       end
 
-      step "User fill credit card field", settings('thetiebar')['exp_data_month'] do |mastercard|
+      step "User fill credit card field", settings('thetiebar')['exp_data_month'] do |exp_data_month|
         check_element_path :xpath, TheTiebarCheckoutPage::EXP_MONTH_EP, TheTiebarCheckoutPage::EXP_MONTH_IL
-        checkout_page.fill_exp_month_field :ep, mastercard
+        checkout_page.fill_exp_month_field :ep, exp_data_month
       end
 
-      step "User fill credit card field", settings('thetiebar')['exp_data_year'] do |mastercard|
+      step "User fill credit card field", settings('thetiebar')['exp_data_year'] do |exp_data_year|
         check_element_path :xpath, TheTiebarCheckoutPage::EXP_YEAR_EP, TheTiebarCheckoutPage::EXP_YEAR_IL
-        checkout_page.fill_exp_year_field :ep, mastercard
+        checkout_page.fill_exp_year_field :ep, exp_data_year
       end
 
       step "User fill cvv field", "1111" do |billing|

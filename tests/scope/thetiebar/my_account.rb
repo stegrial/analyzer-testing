@@ -51,20 +51,12 @@ describe 'Preconditions' do
         account_page.click_my_acc_breadcrumb
       end
 
-      step "User clicks change password button" do
-        account_page.click_change_password_btn
-      end
-
-      step "User clicks close button" do
-        account_page.click_close_password_modal_btn
-      end
-
       step "User clicks orders button" do
         account_page.click_orders_btn
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb :il
+        account_page.click_my_acc_breadcrumb
       end
 
       step "User clicks address book button" do
@@ -72,7 +64,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb :il
+        account_page.click_my_acc_breadcrumb
       end
 
       step "User clicks payment button" do
@@ -80,7 +72,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb :il
+        account_page.click_my_acc_breadcrumb
       end
 
       step "User clicks wishlist button" do
@@ -88,7 +80,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb :il
+        account_page.click_my_acc_breadcrumb
       end
 
       step "User clicks gift cards button" do
@@ -96,7 +88,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb :il
+        account_page.click_my_acc_breadcrumb
       end
 
       step "User clicks sing out link" do
@@ -145,16 +137,6 @@ describe 'Preconditions' do
       step "User clicks my account button breadcrumb" do
         check_element_path :xpath, TheTiebarAccount_page::MY_ACC_BREADCRUMB_TA, TheTiebarAccount_page::MY_ACC_BREADCRUMB_IL
         account_page.click_my_acc_breadcrumb
-      end
-
-      step "User clicks change password button" do
-        check_element_path :xpath, TheTiebarAccount_page::CHANGE_PASSWORD_TA, TheTiebarAccount_page::CHANGE_PASSWORD_IL
-        account_page.click_change_password_btn
-      end
-
-      step "User clicks close button" do
-        check_element_path :xpath, TheTiebarAccount_page::CLOSE_PASSWORD_MODAL_TA, TheTiebarAccount_page::CLOSE_PASSWORD_MODAL_IL
-        account_page.click_close_password_modal_btn
       end
 
       step "User clicks orders button" do
@@ -254,16 +236,6 @@ describe 'Preconditions' do
       step "User clicks my account button breadcrumb" do
         check_element_path :xpath, TheTiebarAccount_page::MY_ACC_BREADCRUMB_EP, TheTiebarAccount_page::MY_ACC_BREADCRUMB_IL
         account_page.click_my_acc_breadcrumb :ep
-      end
-
-      step "User clicks change password button" do
-        check_element_path :xpath, TheTiebarAccount_page::CHANGE_PASSWORD_EP, TheTiebarAccount_page::CHANGE_PASSWORD_IL
-        account_page.click_change_password_btn :ep
-      end
-
-      step "User clicks close button" do
-        check_element_path :xpath, TheTiebarAccount_page::CLOSE_PASSWORD_MODAL_EP, TheTiebarAccount_page::CLOSE_PASSWORD_MODAL_IL
-        account_page.click_close_password_modal_btn :ep
       end
 
       step "User clicks orders button" do

@@ -13,7 +13,7 @@ class TheTiebarPromoPage
   SHOP_NEW_ARRIVALS_BTN_TA = "thetiebar:promo_page:shop_new_arrivals_btn"
   SHOP_NEW_ARRIVALS_BTN_EP = "EP:thetiebar:promo_page:shop_new_arrivals_btn"
 
-  WHATS_NEW_H1_IL = "//h1[contains(text(),'What/'s New')]"
+  WHATS_NEW_H1_IL = "//h1[contains(text(),'Ties, Socks, Pocket Squares & More')]"
   WHATS_NEW_H1_TA = "thetiebar:whats_new_page:whats_new"
   WHATS_NEW_H1_EP = "EP:thetiebar:whats_new_page:whats_new"
 

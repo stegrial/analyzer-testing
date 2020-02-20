@@ -112,7 +112,7 @@ class TheTiebarProductPage
   WEDDING_TIES_H1_TA = "thetiebar:PDP:wedding_shop_h1"
   WEDDING_TIES_H1_EP = "EP:thetiebar:PDP:wedding_shop_h1"
 
-  def should_see_wedding_ties__h1(key = nil)
+  def should_see_wedding_ties_h1(key = nil)
     post_processing key do
       return assert_selector(ta(WEDDING_TIES_H1_EP)) if key == :ep
       return assert_selector(:xpath, WEDDING_TIES_H1_IL) if key == :il
