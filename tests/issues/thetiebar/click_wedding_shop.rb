@@ -4,8 +4,6 @@ require_relative '../../../pages/united_methods'
 required_relative_all "/pages/thetiebar/*.rb"
 
 canada_page = TheTiebarCanada.new
-pdp = TheTiebarProductPage.new
-footer_page = TheTiebarFooterPage.new
 
 describe 'Preconditions' do
 
@@ -14,7 +12,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  feature 'Canada Page  - click wedding shop' do
+  feature 'AT-166 Canada Page  - click wedding shop' do
 
     # Initial locators with Recording
 
@@ -28,6 +26,7 @@ describe 'Preconditions' do
         canada_page.click_wedding_shop
         sleep 5
       end
+      
     end
 
     scenario 'Searching IL', il: true do
