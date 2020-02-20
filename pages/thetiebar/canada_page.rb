@@ -9,8 +9,7 @@ class TheTiebarCanada
   include RSpec::Matchers
   include ExtendPage
 
-
-  SHOP_WEDDING_LINK_IL = "//a[@href='/wedding-ties']"
+  SHOP_WEDDING_LINK_IL = "//div[@id='canada-content']//a[@href='/wedding-ties']"
   SHOP_WEDDING_LINK_TA = "thetiebar:canada_page:wedding_shop"
   SHOP_WEDDING_LINK_EP = "EP:thetiebar:canada_page:wedding_shop"
 
