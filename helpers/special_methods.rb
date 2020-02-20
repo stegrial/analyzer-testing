@@ -111,7 +111,7 @@ class DataControl
       return puts "NOT FOUND" if @found_elements == 0
       return puts "UNDEFINED" if @found_elements > 1
     ensure
-      expect(@address).to eq @element_address if @found_elements == 0 || @found_elements == 1
+      expect(@element_address).to eq @address if @found_elements == 0 || @found_elements == 1
     end
   end
 end
