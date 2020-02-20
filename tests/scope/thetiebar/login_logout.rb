@@ -35,7 +35,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Sign In button" do
-        login_page.click_sing_in :il
+        login_page.click_sing_in
         sleep 3
       end
 

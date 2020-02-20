@@ -29,15 +29,15 @@ class TheTiebarAccount_page
   CHANGE_PASSWORD_TA = "thetiebar:my_acc_page:change_password"
   CHANGE_PASSWORD_EP = "EP:thetiebar:my_acc_page:change_password"
 
-  CLOSE_PASSWORD_MODAL_IL = "//img[contains(@alt, 'close icon')]"
+  CLOSE_PASSWORD_MODAL_IL = "//span[contains(@class, 'modal-close-text')]"
   CLOSE_PASSWORD_MODAL_TA = "thetiebar:my_acc_page:close_password_modal"
   CLOSE_PASSWORD_MODAL_EP = "EP:thetiebar:my_acc_page:close_password_modal"
 
-  ORDERS_IL = "//img[contains(@alt, 'My Orders')]"
+  ORDERS_IL = "//a[contains(@href, '/Customer/Orders')]/div"
   ORDERS_TA = "thetiebar:my_acc_page:orders"
   ORDERS_EP = "EP:thetiebar:my_acc_page:orders"
 
-  PAYMENT_IL = "//img[contains(@alt, 'Payment')]"
+  PAYMENT_IL = "//a[contains(@href, '/customer/billing')]/div"
   PAYMENT_TA = "thetiebar:my_acc_page:payment"
   PAYMENT_EP = "EP:thetiebar:my_acc_page:payment"
 
@@ -77,7 +77,7 @@ class TheTiebarAccount_page
   SAVE_CHANGES_BTN_TA = "thetiebar:preferences_page:save_changes_btn"
   SAVE_CHANGES_BTN_EP = "EP:thetiebar:preferences_page:save_changes_btn"
 
-  CLOSE_SAVE_CHANGES_MODAL_IL = "//span[contains(@class, 'modal-close-text')]"
+  CLOSE_SAVE_CHANGES_MODAL_IL = "//img[contains(@alt, 'close icon')]"
   CLOSE_SAVE_CHANGES_MODAL_TA = "thetiebar:preferences_page:close_save_changes_modal"
   CLOSE_SAVE_CHANGES_MODAL_EP = "EP:thetiebar:preferences_page:close_save_changes_modal"
 

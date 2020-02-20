@@ -41,7 +41,7 @@ class TheTiebarCheckoutPage
   ADDRESS_FIELD_TA = "thetiebar:checkout_page:address"
   ADDRESS_FIELD_EP = "EP:thetiebar:checkout_page:address"
 
-  SELECT_ADDRESS_IL = "(//div[contains(@class, 'cb-item')])[4]"
+  SELECT_ADDRESS_IL = "(//div[contains(@class, 'cb-item')])[1]"
   SELECT_ADDRESS_TA = "thetiebar:checkout_page:select_address"
   SELECT_ADDRESS_EP = "EP:thetiebar:checkout_page:select_address"
 

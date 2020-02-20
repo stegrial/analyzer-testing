@@ -9,7 +9,7 @@ class TheTiebarIframe
   include ExtendPage
 
 
-  HELP_CHAT_BTN_IL = "//div[contains(text(), 'Chat Us')]"
+  HELP_CHAT_BTN_IL = "//div[contains(@title, 'Chat Us')]"
   HELP_CHAT_BTN_TA = "thetiebar:iframe:help_chat"
   HELP_CHAT_BTN_EP = "EP:thetiebar:iframe:help_chat"
 
