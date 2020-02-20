@@ -21,7 +21,7 @@ class TheTiebarHeader
   CART_BTN_TA = "thetiebar:header:cart_btn"
   CART_BTN_EP = "EP:thetiebar:header:cart_btn"
 
-  SIGNIN_BTN_IL = "//span[contains(text(), 'Sign In')]"
+  SIGNIN_BTN_IL = "//div/span[text()='Sign In']"
   SIGNIN_BTN_TA = "thetiebar:header:signin_btn"
   SIGNIN_BTN_EP = "EP:thetiebar:header:signin_btn"
 
