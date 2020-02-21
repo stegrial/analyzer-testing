@@ -30,7 +30,7 @@ class TheTiebarFaqPage
   WHAT_SIZE_NECKTIES_TA = "thetiebar:faq_page:size_neckties"
   WHAT_SIZE_NECKTIES_EP = "EP:thetiebar:faq_page:size_neckties"
 
-  TIE_BAR_BREADCRUMBS_IL = "//ol[@class='breadcrumbs']/li[@title='The Tie Bar']"
+  TIE_BAR_BREADCRUMBS_IL = "(//a[text()='The Tie Bar'])[1]"
   TIE_BAR_BREADCRUMBS_TA = "thetiebar:faq_page:breadcrumb_tiebar"
   TIE_BAR_BREADCRUMBS_EP = "EP:thetiebar:faq_page:breadcrumb_tiebar"
 
