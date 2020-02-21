@@ -59,37 +59,37 @@ describe 'Preconditions' do
       end
 
       step "User fill FAQ search input", 'size' do |search_query|
-        check_element_path :xpath, faq_search_result_page::FAQ_SEARCH_INPUT_TA, faq_search_result_page::FAQ_SEARCH_INPUT_IL
-        faq_page.fill_faq_search_input  :il, search_query
+        check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_INPUT_TA, TheTiebarFaqPage::FAQ_SEARCH_INPUT_IL
+        faq_page.fill_faq_search_input  search_query
       end
 
       step "User  clicks to select search query" do
-        check_element_path :xpath, faq_search_result_page::WHAT_SIZE_NECKTIES_TA, faq_search_result_page::WHAT_SIZE_NECKTIES_IL
+        check_element_path :xpath, TheTiebarFaqPage::WHAT_SIZE_NECKTIES_TA, TheTiebarFaqPage::WHAT_SIZE_NECKTIES_IL
         faq_page.click_size_neckties
       end
 
       step "User breadcrumb tiebar" do
-        check_element_path :xpath, faq_search_result_page::TIE_BAR_BREADCRUMBS_TA, faq_search_result_page::TIE_BAR_BREADCRUMBS_IL
+        check_element_path :xpath, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_TA, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_IL
         faq_page.click_breadcrumb_tiebar
       end
 
       step "User fill FAQ search input", 'size' do |search_query|
-        check_element_path :xpath, faq_search_result_page::FAQ_SEARCH_INPUT_TA, faq_search_result_page::FAQ_SEARCH_INPUT_IL
+        check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_INPUT_TA, TheTiebarFaqPage::FAQ_SEARCH_INPUT_IL
         faq_page.fill_faq_search_input  search_query
       end
 
       step "User clicks search button" do
-        check_element_path :xpath, faq_search_result_page::FAQ_SEARCH_BTN_TA, faq_search_result_page::FAQ_SEARCH_BTN_IL
+        check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_BTN_TA, TheTiebarFaqPage::FAQ_SEARCH_BTN_IL
         faq_page.click_faq_search_btn
       end
 
       step "User clicks second query of knowledge base(clicks 'What size are your neckties?')" do
-        check_element_path :xpath, faq_search_result_page::KNOWLEDGE_BASE_NECKTIES_TA, faq_search_result_page::KNOWLEDGE_BASE_NECKTIES_IL
+        check_element_path :xpath, TheTiebarFaqPage::KNOWLEDGE_BASE_NECKTIES_TA, TheTiebarFaqPage::KNOWLEDGE_BASE_NECKTIES_IL
         faq_page.click_knowledge_base_neckties
       end
 
       step "User breadcrumb tiebar" do
-        check_element_path :xpath, faq_search_result_page::TIE_BAR_BREADCRUMBS_TA, faq_search_result_page::TIE_BAR_BREADCRUMBS_IL
+        check_element_path :xpath, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_TA, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_IL
         faq_page.click_breadcrumb_tiebar
       end
 
@@ -103,37 +103,37 @@ describe 'Preconditions' do
       end
 
       step "User fill FAQ search input", 'size' do |search_query|
-        check_element_path :xpath, faq_search_result_page::FAQ_SEARCH_INPUT_EP, faq_search_result_page::FAQ_SEARCH_INPUT_IL
+        check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_INPUT_EP, TheTiebarFaqPage::FAQ_SEARCH_INPUT_IL
         faq_page.fill_faq_search_input  :ep, search_query
       end
 
       step "User  clicks to select search query" do
-        check_element_path :xpath, faq_search_result_page::WHAT_SIZE_NECKTIES_EP, faq_search_result_page::WHAT_SIZE_NECKTIES_IL
+        check_element_path :xpath, TheTiebarFaqPage::WHAT_SIZE_NECKTIES_EP, TheTiebarFaqPage::WHAT_SIZE_NECKTIES_IL
         faq_page.click_size_neckties :ep
       end
 
       step "User breadcrumb tiebar" do
-        check_element_path :xpath, faq_search_result_page::TIE_BAR_BREADCRUMBS_EP, faq_search_result_page::TIE_BAR_BREADCRUMBS_IL
+        check_element_path :xpath, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_EP, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_IL
         faq_page.click_breadcrumb_tiebar :ep
       end
 
       step "User fill FAQ search input", 'size' do |search_query|
-        check_element_path :xpath, faq_search_result_page::FAQ_SEARCH_INPUT_EP, faq_search_result_page::FAQ_SEARCH_INPUT_IL
+        check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_INPUT_EP, TheTiebarFaqPage::FAQ_SEARCH_INPUT_IL
         faq_page.fill_faq_search_input  :ep, search_query
       end
 
       step "User clicks search button" do
-        check_element_path :xpath, faq_search_result_page::FAQ_SEARCH_BTN_EP, faq_search_result_page::FAQ_SEARCH_BTN_IL
+        check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_BTN_EP, faq_search_result_page::FAQ_SEARCH_BTN_IL
         faq_page.click_faq_search_btn :ep
       end
 
       step "User clicks second query of knowledge base(clicks 'What size are your neckties?')" do
-        check_element_path :xpath, faq_search_result_page::KNOWLEDGE_BASE_NECKTIES_EP, faq_search_result_page::KNOWLEDGE_BASE_NECKTIES_IL
+        check_element_path :xpath, TheTiebarFaqPage::KNOWLEDGE_BASE_NECKTIES_EP, TheTiebarFaqPage::KNOWLEDGE_BASE_NECKTIES_IL
         faq_page.click_knowledge_base_neckties :ep
       end
 
       step "User breadcrumb tiebar" do
-        check_element_path :xpath, faq_search_result_page::TIE_BAR_BREADCRUMBS_EP, faq_search_result_page::TIE_BAR_BREADCRUMBS_IL
+        check_element_path :xpath, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_EP, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_IL
         faq_page.click_breadcrumb_tiebar :ep
       end
     end
