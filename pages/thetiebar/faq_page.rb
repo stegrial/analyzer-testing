@@ -22,7 +22,7 @@ class TheTiebarFaqPage
   FAQ_SECTION_TA = "thetiebar:faq_page:faq_section"
   FAQ_SECTION_EP = "EP:thetiebar:faq_page:faq_section"
 
-  RETURN_TO_THE_TIE_BAR_LINK_IL = "(//*[contains(text(), ' Return to The Tie Bar')])[1]"
+  RETURN_TO_THE_TIE_BAR_LINK_IL = "(//a[@href='https://thetiebar.com'])[1]"
   RETURN_TO_THE_TIE_BAR_LINK_TA = "thetiebar:faq_page:return_to_thetiebar"
   RETURN_TO_THE_TIE_BAR_LINK_EP = "EP:thetiebar:faq_page:return_to_thetiebar"
 
