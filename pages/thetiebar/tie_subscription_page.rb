@@ -41,7 +41,7 @@ class TheTiebarSubscriptionPage
   ADD_TO_CART4_TA = "thetiebar:custom_page:add4"
   ADD_TO_CART4_EP = "EP:thetiebar:custom_page:add4"
 
-  CLICK_FREE_PLACE_IL = "//div[contains(@class,'mw-header397')]"
+  CLICK_FREE_PLACE_IL = "//body"
   CLICK_FREE_PLACE_TA = "thetiebar:custom_page:free_place"
   CLICK_FREE_PLACE_EP = "EP:thetiebar:custom_page:free_place"
 
