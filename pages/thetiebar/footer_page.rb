@@ -49,7 +49,7 @@ class TheTiebarFooterPage
   PROMOTIONS_TA = "thetiebar:footer_page:need_help_section:promotions"
   PROMOTIONS_EP = "EP:thetiebar:footer_page:need_help_section:promotions"
 
-  HOLIDAY_TIES_IL = "(//a[contains(@href,'holiday-ties')])[2]"
+  HOLIDAY_TIES_IL = "(//a[@href='https://www.thetiebar.com/pages/holiday-ties'])[2]"
   HOLIDAY_TIES_TA = "thetiebar:footer_page:Holiday_ties"
   HOLIDAY_TIES_EP = "EP:thetiebar:footer_page:Holiday_ties"
 
