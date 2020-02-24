@@ -55,8 +55,8 @@ class TheTiebarCusromPage
   TIES_3_EP = "EP:thetiebar:custom_page:ties3"
 
   SUBMIT_IL =  "(//input[@id='Submit'])[1]"
-  SUBMIT_TA = "thetiebar:custom_page:ties3"
-  SUBMIT_EP = "EP:thetiebar:custom_page:ties3"
+  SUBMIT_TA = "thetiebar:custom_page:Submit"
+  SUBMIT_EP = "EP:thetiebar:custom_page:Submit"
 
   def fill_first_name_field(key = nil, value)
     post_processing key do

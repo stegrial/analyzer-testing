@@ -42,8 +42,8 @@ class TheTiebarFooterPage
   CAREERS_EP = "EP:thetiebar:footer_page:need_help_section:Careers"
 
   CANADA_IL = "(//span[text()='Canada'])[2]"
-  CANADA_TA = "thetiebar:footer_page:need_help_section:Careers"
-  CANADA_EP = "EP:thetiebar:footer_page:need_help_section:Careers"
+  CANADA_TA = "thetiebar:footer_page:need_help_section:Canada"
+  CANADA_EP = "EP:thetiebar:footer_page:need_help_section:Canada"
 
   PROMOTIONS_IL = "(//span[text()='Promotions'])[2]"
   PROMOTIONS_TA = "thetiebar:footer_page:need_help_section:promotions"
@@ -73,7 +73,7 @@ class TheTiebarFooterPage
   ABOUT_US_H1_TA = "thetiebar:about_page:about_tiebar_h1"
   ABOUT_US_H1_EP = "EP:thetiebar:about_page:about_tiebar_h1"
 
-  FAQ_H1_IL = "//h1[contains(text(),'FAQ')]"
+  FAQ_H1_IL = "(//h1[contains(text(),'FAQ')])[1]"
   FAQ_H1_TA = "thetiebar:faq_page:FAQ_h1"
   FAQ_H1_EP = "EP:thetiebar:faq_page:FAQ_h1"
 
