@@ -77,7 +77,7 @@ class TheTiebarAccount_page
   SAVE_CHANGES_BTN_TA = "thetiebar:preferences_page:save_changes_btn"
   SAVE_CHANGES_BTN_EP = "EP:thetiebar:preferences_page:save_changes_btn"
 
-  CLOSE_SAVE_CHANGES_MODAL_IL = "//img[contains(@alt, 'close icon')]"
+  CLOSE_SAVE_CHANGES_MODAL_IL = "//span[contains(@class, 'modal-close-text')]"
   CLOSE_SAVE_CHANGES_MODAL_TA = "thetiebar:preferences_page:close_save_changes_modal"
   CLOSE_SAVE_CHANGES_MODAL_EP = "EP:thetiebar:preferences_page:close_save_changes_modal"
 

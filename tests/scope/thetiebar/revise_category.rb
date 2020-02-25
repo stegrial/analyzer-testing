@@ -99,7 +99,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks the tiebars category" do
-        check_element_path :xpath, TheTiebarHeader::TIEBARS_CATEGORY_TA, TheTiebarHeader::SKINNYTIES_CATEGORY_IL
+        check_element_path :xpath, TheTiebarHeader::TIEBARS_CATEGORY_TA, TheTiebarHeader::TIEBARS_CATEGORY_IL
         header_page.click_tiebars_category
       end
 
@@ -114,7 +114,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks the accessories category" do
-        check_element_path :xpath, TheTiebarHeader::ACCOUNT_BTN_TA, TheTiebarHeader::ACCOUNT_BTN_IL
+        check_element_path :xpath, TheTiebarHeader::ACCESSORIES_CATEGORY_TA, TheTiebarHeader::ACCESSORIES_CATEGORY_IL
         header_page.click_accessories_category
       end
 
@@ -163,7 +163,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks the tiebars category" do
-        check_element_path :xpath, TheTiebarHeader::TIEBARS_CATEGORY_EP, TheTiebarHeader::SKINNYTIES_CATEGORY_IL
+        check_element_path :xpath, TheTiebarHeader::TIEBARS_CATEGORY_EP, TheTiebarHeader::TIEBARS_CATEGORY_IL
         header_page.click_tiebars_category :ep
       end
 
@@ -178,7 +178,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks the accessories category" do
-        check_element_path :xpath, TheTiebarHeader::ACCOUNT_BTN_EP, TheTiebarHeader::ACCOUNT_BTN_IL
+        check_element_path :xpath, TheTiebarHeader::ACCESSORIES_CATEGORY_EP, TheTiebarHeader::ACCESSORIES_CATEGORY_IL
         header_page.click_accessories_category :ep
       end
 
