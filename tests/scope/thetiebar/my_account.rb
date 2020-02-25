@@ -43,7 +43,7 @@ describe 'Preconditions' do
         account_page.click_close_edit_btn
       end
 
-      step "User clicks close edit button" do
+      step "User clicks preferences button" do
         account_page.click_preferences_btn
       end
 
@@ -129,7 +129,7 @@ describe 'Preconditions' do
         account_page.click_close_edit_btn
       end
 
-      step "User clicks close edit button" do
+      step "User clicks preferences button" do
         check_element_path :xpath, TheTiebarAccount_page::PREFERENCES_TA, TheTiebarAccount_page::PREFERENCES_IL
         account_page.click_preferences_btn
       end
@@ -228,7 +228,7 @@ describe 'Preconditions' do
         account_page.click_close_edit_btn :ep
       end
 
-      step "User clicks close edit button" do
+      step "User clicks preferences button" do
         check_element_path :xpath, TheTiebarAccount_page::PREFERENCES_EP, TheTiebarAccount_page::PREFERENCES_IL
         account_page.click_preferences_btn :ep
       end
