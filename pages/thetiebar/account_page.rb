@@ -17,7 +17,7 @@ class TheTiebarAccount_page
   EDIT_PROFILE_TA = "thetiebar:my_acc_page:edit_profile"
   EDIT_PROFILE_EP = "EP:thetiebar:my_acc_page:edit_profile"
 
-  CLOSE_EDIT_BTN_IL = "//img[contains(@alt, 'Close Section Icon')]"
+  CLOSE_EDIT_BTN_IL = "//img[contains(@class, 'modal-close')]"
   CLOSE_EDIT_BTN_TA = "thetiebar:my_acc_page:close_edit_profile"
   CLOSE_EDIT_BTN_EP = "EP:thetiebar:my_acc_page:close_edit_profile"
 
@@ -37,7 +37,7 @@ class TheTiebarAccount_page
   ORDERS_TA = "thetiebar:my_acc_page:orders"
   ORDERS_EP = "EP:thetiebar:my_acc_page:orders"
 
-  PAYMENT_IL = "//a[contains(@href, '/customer/billing')]/div"
+  PAYMENT_IL = "(//img[contains(@alt, 'Payment')])[1]"
   PAYMENT_TA = "thetiebar:my_acc_page:payment"
   PAYMENT_EP = "EP:thetiebar:my_acc_page:payment"
 

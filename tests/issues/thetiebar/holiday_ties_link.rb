@@ -13,7 +13,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  feature 'Holidays ties link' do
+  feature 'AT-169 Holidays ties link' do
 
     # Initial locators with Recording
 
