@@ -14,7 +14,7 @@ class TheTiebarLocation
   BOOK_APPOINTMENT_TA = "thetiebar:location_page:book_appointment_in_Boston"
   BOOK_APPOINTMENT_EP = "EP:thetiebar:location_page:book_appointment_in_Boston"
 
-  DAY_APPOINTMENT_IL = "(//a[contains(@class, 'ui-state-default')])[5]"
+  DAY_APPOINTMENT_IL = "(//a[contains(@class, 'ui-state-default')])[1]"
   DAY_APPOINTMENT_TA = "thetiebar:location_page:day_appointment"
   DAY_APPOINTMENT_EP = "EP:thetiebar:location_page:day_appointment"
 
