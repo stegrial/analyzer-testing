@@ -10,12 +10,12 @@ class TheTiebarCheckoutPage
 
 
   GUEST_CHECKOUT_IL = "(//button[contains(@id, 'Guest')])[1]"
-  GUEST_CHECKOUT_TA = "thetiebar:checkout_page:Guest"
-  GUEST_CHECKOUT_EP = "EP:thetiebar:checkout_page:Guest"
+  GUEST_CHECKOUT_TA = "thetiebar:checkout_page:guest_checkout"
+  GUEST_CHECKOUT_EP = "EP:thetiebar:checkout_page:guest_checkout"
 
   GUEST_EMAIL_IL = "(//input[contains(@id, 'emailFieldGuest')])[1]"
-  GUEST_EMAIL_TA = "thetiebar:checkout_page:Guest"
-  GUEST_EMAIL_EP =  "EP:thetiebar:checkout_page:Guest"
+  GUEST_EMAIL_TA = "thetiebar:checkout_page:guest_mail"
+  GUEST_EMAIL_EP =  "EP:thetiebar:checkout_page:guest_mail"
 
   CONTINUE_AS_GUEST_IL = "(//button[contains(@id, 'emailButton')])[1]"
   CONTINUE_AS_GUEST_TA = "thetiebar:checkout_page:continue_as_guest"

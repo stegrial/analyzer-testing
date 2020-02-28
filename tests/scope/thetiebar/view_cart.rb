@@ -19,33 +19,20 @@ describe 'Preconditions' do
     # Initial locators with Recording
 
     scenario 'Recording IL', il: true do
-      step "User goes to the page", settings('thetiebar')['shirts_page'] do |url|
+      step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
       end
-
-      step "User clicks the second shirt on product" do
-        product_page.click_second_shirt_on_product
+      step "User clicks the shirts category" do
+        sleep 3
+        header_page.click_socks_category
       end
 
-      step "User clicks the trim  button" do
-        product_page.click_fit_trim_btn
-      end
-
-      step "User clicks the size button" do
-        product_page.click_to_select_neck_size
-      end
-
-      step "User clicks the sleeve_length button" do
-        product_page.click_sleeve_length_btn
-      end
-
-      step "User clicks the + button to add quantity" do
-        product_page.click_add_quantity_btn
+      step "User clicks the second socks on product page" do
+        product_page.click_second_socks
       end
 
       step "User clicks the add to cart button" do
         product_page.click_add_to_cart_btn
-        sleep 4
       end
 
 
@@ -77,34 +64,27 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks the second shirt on product" do
-        check_element_path :xpath, TheTiebarProductPage::SECOND_SHIRT_PDP_TA, TheTiebarProductPage::SECOND_SHIRT_PDP_IL
-        product_page.click_second_shirt_on_product
+      step "User clicks the shirts category" do
+        sleep 3
+        check_element_path :xpath, TheTiebarHeader::SOCKS_CATEGORY_TA, TheTiebarHeader::SOCKS_CATEGORY_IL
+        header_page.click_socks_category
       end
 
-      step "User clicks the trim  button" do
-        check_element_path :xpath, TheTiebarProductPage::FIT_TRIM_TA, TheTiebarProductPage::FIT_TRIM_IL
-        product_page.click_fit_trim_btn
-      end
-
-      step "User clicks the size button" do
-        product_page.click_to_select_neck_size
-      end
-
-      step "User clicks the sleeve_length button" do
-        product_page.click_sleeve_length_btn
-      end
-
-      step "User clicks the + button to add quantity" do
-        check_element_path :xpath, TheTiebarProductPage::QUANTITY_TA, TheTiebarProductPage::QUANTITY_IL
-        product_page.click_add_quantity_btn
+      step "User clicks the second socks on product page" do
+        check_element_path :xpath, TheTiebarProductPage::SECOND_SOCKS_PDP_TA, TheTiebarProductPage::SECOND_SOCKS_PDP_IL
+        product_page.click_second_socks
       end
 
       step "User clicks the add to cart button" do
         check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_TA, TheTiebarProductPage::ADD_TO_CART_IL
         product_page.click_add_to_cart_btn
-        sleep 4
       end
+
+      step "User clicks the checkout now button" do
+        check_element_path :xpath, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_TA, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_IL
+        cart_page.click_checkout_now_btn_modal
+      end
+
 
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
@@ -140,33 +120,25 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks the second shirt on product" do
-        check_element_path :xpath, TheTiebarProductPage::SECOND_SHIRT_PDP_EP, TheTiebarProductPage::SECOND_SHIRT_PDP_IL
-        product_page.click_second_shirt_on_product :ep
+      step "User clicks the shirts category" do
+        sleep 3
+        check_element_path :xpath, TheTiebarHeader::SOCKS_CATEGORY_EP, TheTiebarHeader::SOCKS_CATEGORY_IL
+        header_page.click_socks_category :ep
       end
 
-      step "User clicks the trim  button" do
-        check_element_path :xpath, TheTiebarProductPage::FIT_TRIM_EP, TheTiebarProductPage::FIT_TRIM_IL
-        product_page.click_fit_trim_btn :ep
-      end
-
-      step "User clicks the size button" do
-        product_page.click_to_select_neck_size
-      end
-
-      step "User clicks the sleeve_length button" do
-        product_page.click_sleeve_length_btn
-      end
-
-      step "User clicks the + button to add quantity" do
-        check_element_path :xpath, TheTiebarProductPage::QUANTITY_EP, TheTiebarProductPage::QUANTITY_IL
-        product_page.click_add_quantity_btn :ep
+      step "User clicks the second socks on product page" do
+        check_element_path :xpath, TheTiebarProductPage::SECOND_SOCKS_PDP_EP, TheTiebarProductPage::SECOND_SOCKS_PDP_IL
+        product_page.click_second_socks :ep
       end
 
       step "User clicks the add to cart button" do
         check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_EP, TheTiebarProductPage::ADD_TO_CART_IL
         product_page.click_add_to_cart_btn :ep
-        sleep 4
+      end
+
+      step "User clicks the checkout now button" do
+        check_element_path :xpath, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_EP, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_IL
+        cart_page.click_checkout_now_btn_modal :ep
       end
 
 
