@@ -35,7 +35,6 @@ describe 'Preconditions' do
         product_page.click_add_to_cart_btn
       end
 
-
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
       end
@@ -79,13 +78,6 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_TA, TheTiebarProductPage::ADD_TO_CART_IL
         product_page.click_add_to_cart_btn
       end
-
-      step "User clicks the checkout now button" do
-        check_element_path :xpath, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_TA, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_IL
-        cart_page.click_checkout_now_btn_modal
-      end
-
-
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
@@ -135,12 +127,6 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_EP, TheTiebarProductPage::ADD_TO_CART_IL
         product_page.click_add_to_cart_btn :ep
       end
-
-      step "User clicks the checkout now button" do
-        check_element_path :xpath, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_EP, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_IL
-        cart_page.click_checkout_now_btn_modal :ep
-      end
-
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
