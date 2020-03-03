@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 
 class TheTiebarCanada
@@ -7,7 +7,7 @@ class TheTiebarCanada
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   SHOP_WEDDING_LINK_IL = "//div[@id='canada-content']//a[@href='/wedding-ties']"
   SHOP_WEDDING_LINK_TA = "thetiebar:canada_page:wedding_shop"

@@ -1,12 +1,12 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 
 class TheTiebarMainPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
 
   SING_UP_INPUT_IL = "//input[@id='signUpEmail']"

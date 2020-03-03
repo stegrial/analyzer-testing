@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 
 class TheTiebarHolidaysPage
@@ -7,7 +7,7 @@ class TheTiebarHolidaysPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
 
   BOYS_CHRISTMAS_TIES_IL = "//img[contains(@alt, 'Boys Christmas Ties and bow ties')]"

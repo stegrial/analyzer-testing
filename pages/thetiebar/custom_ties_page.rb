@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 
 class TheTiebarCusromPage
@@ -7,7 +7,7 @@ class TheTiebarCusromPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
 
   FIRST_NAME_IL = "(//input[@id='FirstName'])[1]"

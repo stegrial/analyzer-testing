@@ -1,12 +1,12 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 
 class TheTiebarHeader
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
 
   LOGO_IL = "//a[@href='https://www.thetiebar.com/']"

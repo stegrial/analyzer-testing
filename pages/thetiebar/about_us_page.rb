@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 
 class TheTiebarAboutUs
@@ -7,7 +7,7 @@ class TheTiebarAboutUs
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   NEXT_IMG_SLIDER_IL = "//*[contains(@class, 'main-carousel-next')]"
   NEXT_IMG_SLIDER_TA = "thetiebar:about_us:next_btn"
