@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class Favorit
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   SING_IN_BUTTON_IL = "//button[@class='but-blue-1 loginpagecl']"
   SING_IN_BUTTON_TA = "favorit:sign_in_button"

@@ -1,7 +1,9 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../pages/united_methods'
+require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/thetiebar/*.rb"
+
+include ElementSearchValidation
 
 about_us_page = TheTiebarAboutUs.new
 
@@ -16,15 +18,22 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
-      step "User goes to the page", settings('thetiebar')['about_us_page'] do |url|
-        page.visit url
-      end
+    scenario 'Recording IL', ilr: true do
+      # step "User goes to the page", settings('thetiebar')['about_us_page'] do |url|
+      #   page.visit url
+      # end
 
       step "User click the next slider button" do
-        about_us_page.click_next_slider
-      end
+        visit 'https://www.thetiebar.com/canada'
+        # sleep 5
+        # puts find(:xpath, ta('test_1', "//a[text()='Shop Wedding']")).path
+        puts find(:xpath, ta('test_1', "//a[@href='/wedding-ties']")).path
+        # find(:xpath, ta('test_1', "//a[@href='/wedding-ties']")).click
 
+        # find(:xpath, "//a[@href='/wedding-ties']").click
+        # about_us_page.click_next_slider
+      end
+if false
       step "User clicks on previous slider button" do
         about_us_page.click_previous_slider
       end
@@ -44,6 +53,7 @@ describe 'Preconditions' do
       step "User check ABOUT OUR TIE BAR STORES" do
         about_us_page.should_see_about_our_stores_h1
       end
+  end
     end
 
     scenario 'Searching IL', il: true do

@@ -1,13 +1,13 @@
 require 'spec_helper'
 require 'securerandom'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 random_string = SecureRandom.hex
 
 class CloudBeesAppsEditor
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   ADD_NEW_COMPONENT_IL = "span.at-add-comp-to-tier-btn"
   ADD_NEW_COMPONENT_TA = "cloud_bees:apps_editor:add_new_component"

@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class SportLife
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   RUSSIAN_LANG_IL = "//a[contains(.,'рус')]"
   RUSSIAN_LANG_TA = "sport_life:rus_lang"

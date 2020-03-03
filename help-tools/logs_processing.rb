@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'uri'
 
 class Logs
 
@@ -117,12 +116,12 @@ end
 processing = Logs.new
 
 processing.root
-# processing.rm_html_and_analyzer
-# processing.rename_undefined
-# processing.rm_invalid_tree
-# processing.filter
-# processing.rm_same_requests
-# processing.filter
-# processing.move_signature(processing.last_index)
+processing.rm_html_and_analyzer
+processing.rename_undefined
+processing.rm_invalid_tree
+processing.filter
+processing.rm_same_requests
+processing.filter
+processing.move_signature(processing.last_index)
 
-processing.rename_log_directories
+# processing.rename_log_directories

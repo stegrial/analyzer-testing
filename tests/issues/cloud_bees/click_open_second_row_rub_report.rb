@@ -1,7 +1,9 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../pages/united_methods'
+require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/cloud_bees_pages/*.rb"
+
+include ElementSearchValidation
 
 login_page = CloudBeesLogin.new
 platform_page = CloudBeesPlatformHomePage.new

@@ -35,6 +35,8 @@ RSpec.configure do |config|
   $caps_chrome = Selenium::WebDriver::Remote::Capabilities.chrome
   $caps_chrome['goog:chromeOptions'] = {}
   $caps_chrome['goog:chromeOptions']['args'] = ['--disable-notifications']
+  $caps_chrome['goog:chromeOptions']['args'] = ['--ignore-ssl-errors=yes']
+  $caps_chrome['goog:chromeOptions']['args'] = ['--ignore-certificate-errors']
   # $caps_chrome['goog:chromeOptions']['args'] = ['--headless', '--disable-gpu'] # or %w(headless disable-gpu)
   # $caps_chrome[:timeouts] = {}
   # $caps_chrome[:timeouts]['implicit'] = 10000
@@ -61,9 +63,9 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include TrueAutomation::DSL
 
-  # config.before(:each) do
-  #   $last_dir = 0
-  # end
+  config.before(:context) do
+    $last_dir = 0 # need for checking requests
+  end
 
   config.after(:context) do
     # delete_saved_elements unless config.filter.rules[:ep]

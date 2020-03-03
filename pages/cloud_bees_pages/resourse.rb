@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class CloudBeesResources
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   ADD_NEW_RESOURCE_IL = "//table[@title='Add']"
   ADD_NEW_RESOURCE_TA = "cloud_bees:resource:add_new_resource"

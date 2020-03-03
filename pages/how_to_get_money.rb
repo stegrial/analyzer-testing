@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class HowToGetMoney
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   FIRST_LOAN_IL = "//a[text()='Займ до 15000 грн на свою карту']"
   FIRST_LOAN_TA = 'how_to_get_money:first_loan'

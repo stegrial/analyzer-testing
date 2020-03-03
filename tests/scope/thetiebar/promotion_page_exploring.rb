@@ -1,7 +1,9 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../pages/united_methods'
+require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/thetiebar/*.rb"
+
+include ElementSearchValidation
 
 footer_page = TheTiebarFooterPage.new
 promo_page = TheTiebarPromoPage.new

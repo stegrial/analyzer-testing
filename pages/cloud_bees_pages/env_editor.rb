@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class CloudBeesEnvEditor
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   RESOURCE_TIER_IL = "(//div[@class='tier-inner'])[1]"
   RESOURCE_TIER_TA = 'cloud_bees:env_editor:resource_tier'

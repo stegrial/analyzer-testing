@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class Stagecom
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   HUMBURGER_MENU_IL = "//a[@on='tap:moov_menu.toggle']"
   # HUMBURGER_MENU_IL = "//button[@aria-label='Menu']"
