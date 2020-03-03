@@ -7,7 +7,7 @@ include ElementSearchValidation
 
 footer_page = TheTiebarFooterPage.new
 faq_page = TheTiebarFaqPage.new
-about_us_page = TheTiebarLoginPage.new
+about_us_page = TheTiebarAboutUs.new
 canada_page = TheTiebarCanada.new
 
 describe 'Preconditions' do
@@ -110,7 +110,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Track My Order link" do
-        check_element_path :xpath, TheTiebarFooterPage::TRACK_MY_ORDER_TA, TheTiebarFooterPage::TRACK_MY_ORDER_H1_IL
+        check_element_path :xpath, TheTiebarFooterPage::TRACK_MY_ORDER_TA, TheTiebarFooterPage::TRACK_MY_ORDER_IL
         footer_page.click_track_my_orders
         check_element_path :xpath, TheTiebarFooterPage::TRACK_MY_ORDER_H1_TA, TheTiebarFooterPage::TRACK_MY_ORDER_H1_IL
         footer_page.should_see_track_my_order_h1

@@ -1,10 +1,14 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
+
 class TheTiebarRewardsPage
 
 
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
+
 
   VIEW_MY_REWARDS_IL = "(//div[text()='View My Rewards'])[1]"
   VIEW_MY_REWARDS_TA = "thetiebar:rewards_page:view_my_rewards"
@@ -24,21 +28,27 @@ class TheTiebarRewardsPage
 
 
   def click_view_my_rewards(key = nil)
-    return find(ta(VIEW_MY_REWARDS_EP)).click if key == :ep
-    return find(:xpath, VIEW_MY_REWARDS_IL).click if key == :il
-    find(:xpath, ta(VIEW_MY_REWARDS_TA, VIEW_MY_REWARDS_IL)).click
+    post_processing key do
+      return find(ta(VIEW_MY_REWARDS_EP)).click if key == :ep
+      return find(:xpath, VIEW_MY_REWARDS_IL).click if key == :il
+      find(:xpath, ta(VIEW_MY_REWARDS_TA, VIEW_MY_REWARDS_IL)).click
+    end
   end
 
   def click_learn_more_link(key = nil)
-    return find(ta(LEARN_MORE_HERE_EP)).click if key == :ep
-    return find(:xpath, LEARN_MORE_HERE_IL).click if key == :il
-    find(:xpath, ta(LEARN_MORE_HERE_TA, LEARN_MORE_HERE_IL)).click
+    post_processing key do
+      return find(ta(LEARN_MORE_HERE_EP)).click if key == :ep
+      return find(:xpath, LEARN_MORE_HERE_IL).click if key == :il
+      find(:xpath, ta(LEARN_MORE_HERE_TA, LEARN_MORE_HERE_IL)).click
+    end
   end
 
   def click_faq_section_link(key = nil)
-    return find(ta(FAQ_SECTION_EP)).click if key == :ep
-    return find(:xpath, FAQ_SECTION_IL).click if key == :il
-    find(:xpath, ta(FAQ_SECTION_EP, FAQ_SECTION_IL)).click
+    post_processing key do
+      return find(ta(FAQ_SECTION_EP)).click if key == :ep
+      return find(:xpath, FAQ_SECTION_IL).click if key == :il
+      find(:xpath, ta(FAQ_SECTION_EP, FAQ_SECTION_IL)).click
+      end
   end
 
 end

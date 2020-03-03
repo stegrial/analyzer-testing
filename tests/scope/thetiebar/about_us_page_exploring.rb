@@ -43,7 +43,7 @@ if false
       end
 
       step "User clicks on previous history button" do
-        about_us_page.click_previous_slider
+        about_us_page.click_previous_history_slider
       end
 
       step "User clicks find store  button" do
@@ -58,7 +58,7 @@ if false
 
     scenario 'Searching IL', il: true do
 
-      step "User goes to the page", settings('thetiebar')['main_page'] do |url|
+      step "User goes to the page", settings('thetiebar')['about_us_page'] do |url|
         page.visit url
       end
 
@@ -79,7 +79,7 @@ if false
 
       step "User clicks on previous history button" do
         check_element_path :xpath, TheTiebarAboutUs::PREVIOUS_HISTORY_SLIDER_TA, TheTiebarAboutUs::PREVIOUS_HISTORY_SLIDER_IL
-        about_us_page.click_previous_slider
+        about_us_page.click_previous_history_slider
       end
 
       step "User clicks find store  button" do
@@ -96,7 +96,7 @@ if false
     # Element Picker from Repository
     scenario 'Searching EP', ep: true do
 
-      step "User goes to the page", settings('thetiebar')['main_page'] do |url|
+      step "User goes to the page", settings('thetiebar')['about_us_page'] do |url|
         page.visit url
       end
 
@@ -117,7 +117,7 @@ if false
 
       step "User clicks on previous history button" do
         check_element_path :xpath, TheTiebarAboutUs::PREVIOUS_HISTORY_SLIDER_EP, TheTiebarAboutUs::PREVIOUS_HISTORY_SLIDER_IL
-        about_us_page.click_previous_slider :ep
+        about_us_page.click_previous_history_slider :ep
       end
 
       step "User clicks find store  button" do

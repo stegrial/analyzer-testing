@@ -90,12 +90,13 @@ describe 'Preconditions' do
       end
 
       step "User check congrats text" do
-        check_element_path :xpath, TheTiebarMainPage::CLOSE_CONGRAT_MODAL_TA, TheTiebarMainPage::CONGRATS_TEXT_IL
+        sleep 5
+        check_element_path :xpath, TheTiebarMainPage::CONGRATS_TEXT_TA, TheTiebarMainPage::CONGRATS_TEXT_IL
         main_page.check_congrats_text
       end
     end
 
-    Element Picker
+    # Element Picker
 
     scenario 'Searching EP', ep: true do
 
@@ -134,7 +135,7 @@ describe 'Preconditions' do
       end
 
       step "User check congrats text" do
-        check_element_path :xpath, TheTiebarMainPage::CLOSE_CONGRAT_MODAL_EP, TheTiebarMainPage::CONGRATS_TEXT_IL
+        check_element_path :xpath, TheTiebarMainPage::CONGRATS_TEXT_УЗ, TheTiebarMainPage::CONGRATS_TEXT_IL
         main_page.check_congrats_text :ep
       end
     end

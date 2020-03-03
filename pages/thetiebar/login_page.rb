@@ -1,9 +1,12 @@
 require 'spec_helper'
+require_relative '../../helpers/special_methods'
+
 random_string = SecureRandom.hex
 class TheTiebarLoginPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
+  include ExtendPage
 
 
   USERNAME_IL = "//input[contains(@id, 'Username')]"
@@ -52,69 +55,91 @@ class TheTiebarLoginPage
 
 
   def fill_username_field(key = nil, value)
-    return find(ta(USERNAME_EP)).set(value) if key == :ep
-    return find(:xpath, USERNAME_IL).set(value) if key == :il
-    find(:xpath, ta(USERNAME_TA, USERNAME_IL)).set(value)
+    post_processing key do
+      return find(ta(USERNAME_EP)).set(value) if key == :ep
+      return find(:xpath, USERNAME_IL).set(value) if key == :il
+      find(:xpath, ta(USERNAME_TA, USERNAME_IL)).set(value)
+    end
   end
 
   def fill_login_password(key = nil, value)
-    return find(ta(LOGIN_PASS_EP)).set(value) if key == :ep
-    return find(:xpath, LOGIN_PASS_IL).set(value) if key == :il
-    find(:xpath, ta(LOGIN_PASS_TA, LOGIN_PASS_IL)).set(value)
+    post_processing key do
+      return find(ta(LOGIN_PASS_EP)).set(value) if key == :ep
+      return find(:xpath, LOGIN_PASS_IL).set(value) if key == :il
+      find(:xpath, ta(LOGIN_PASS_TA, LOGIN_PASS_IL)).set(value)
+    end
   end
 
   def click_sing_in(key = nil)
-    return find(ta(SIGN_IN_EP)).click if key == :ep
-    return find(:xpath, SIGN_IN_IL).click if key == :il
-    find(:xpath, ta(SIGN_IN_TA, SIGN_IN_IL)).click
+    post_processing key do
+      return find(ta(SIGN_IN_EP)).click if key == :ep
+      return find(:xpath, SIGN_IN_IL).click if key == :il
+      find(:xpath, ta(SIGN_IN_TA, SIGN_IN_IL)).click
+    end
   end
 
   def click_create_acc_tab(key = nil)
-    return find(ta(CREATE_ACCOUNT_TAB_EP)).click if key == :ep
-    return find(:xpath, CREATE_ACCOUNT_TAB_IL).click if key == :il
-    find(:xpath, ta(CREATE_ACCOUNT_TAB_TA, CREATE_ACCOUNT_TAB_IL)).click
+    post_processing key do
+      return find(ta(CREATE_ACCOUNT_TAB_EP)).click if key == :ep
+      return find(:xpath, CREATE_ACCOUNT_TAB_IL).click if key == :il
+      find(:xpath, ta(CREATE_ACCOUNT_TAB_TA, CREATE_ACCOUNT_TAB_IL)).click
+    end
   end
 
   def fill_first_name(key = nil, value)
-    return find(ta(FIRST_NAME_EP)).set(value + SecureRandom.hex(3)) if key == :ep
-    return find(:xpath, FIRST_NAME_IL).set(value + SecureRandom.hex(3)) if key == :il
-    find(:xpath, ta(FIRST_NAME_TA, FIRST_NAME_IL)).set(value + SecureRandom.hex(3))
+    post_processing key do
+      return find(ta(FIRST_NAME_EP)).set(value + SecureRandom.hex(3)) if key == :ep
+      return find(:xpath, FIRST_NAME_IL).set(value + SecureRandom.hex(3)) if key == :il
+      find(:xpath, ta(FIRST_NAME_TA, FIRST_NAME_IL)).set(value + SecureRandom.hex(3))
+    end
   end
 
   def fill_last_name(key = nil, value)
-    return find(ta(LAST_NAME_EP)).set(value) if key == :ep
-    return find(:xpath, LAST_NAME_IL).set(value) if key == :il
-    find(:xpath, ta(LAST_NAME_TA, LAST_NAME_IL)).set(value)
+    post_processing key do
+      return find(ta(LAST_NAME_EP)).set(value) if key == :ep
+      return find(:xpath, LAST_NAME_IL).set(value) if key == :il
+      find(:xpath, ta(LAST_NAME_TA, LAST_NAME_IL)).set(value)
+    end
   end
 
   def fill_email(key = nil, value)
-    return find(ta(EMAIL_EP)).set(SecureRandom.hex(3) + value) if key == :ep
-    return find(:xpath, EMAIL_IL).set(SecureRandom.hex(3) + value) if key == :il
-    find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set(SecureRandom.hex(3) + value)
+    post_processing key do
+      return find(ta(EMAIL_EP)).set(SecureRandom.hex(3) + value) if key == :ep
+      return find(:xpath, EMAIL_IL).set(SecureRandom.hex(3) + value) if key == :il
+      find(:xpath, ta(EMAIL_TA, EMAIL_IL)).set(SecureRandom.hex(3) + value)
+    end
   end
 
   def fill_password(key = nil, value)
-    return find(ta(PASSWORD_EP)).set(value) if key == :ep
-    return find(:xpath, PASSWORD_IL).set(value) if key == :il
-    find(:xpath, ta(PASSWORD_TA, PASSWORD_IL)).set(value)
+    post_processing key do
+      return find(ta(PASSWORD_EP)).set(value) if key == :ep
+      return find(:xpath, PASSWORD_IL).set(value) if key == :il
+      find(:xpath, ta(PASSWORD_TA, PASSWORD_IL)).set(value)
+    end
   end
 
   def fill_confirm_password(key = nil, value)
-    return find(ta(CONFIRM_PASSWORD_EP)).set(value) if key == :ep
-    return find(:xpath, CONFIRM_PASSWORD_IL).set(value) if key == :il
-    find(:xpath, ta(CONFIRM_PASSWORD_TA, CONFIRM_PASSWORD_IL)).set(value)
+    post_processing key do
+      return find(ta(CONFIRM_PASSWORD_EP)).set(value) if key == :ep
+      return find(:xpath, CONFIRM_PASSWORD_IL).set(value) if key == :il
+      find(:xpath, ta(CONFIRM_PASSWORD_TA, CONFIRM_PASSWORD_IL)).set(value)
+    end
   end
 
   def click_uncheck_checkbox(key = nil)
-    return find(ta(OPTION_INPUT_EP)).click if key == :ep
-    return find(:xpath, OPTION_INPUT_IL).click if key == :il
-    find(:xpath, ta(OPTION_INPUT_TA, OPTION_INPUT_IL)).click
+    post_processing key do
+      return find(ta(OPTION_INPUT_EP)).click if key == :ep
+      return find(:xpath, OPTION_INPUT_IL).click if key == :il
+      find(:xpath, ta(OPTION_INPUT_TA, OPTION_INPUT_IL)).click
+    end
   end
 
   def click_create_acc_btn(key = nil)
-    return find(ta(CREATE_ACCOUNT_BTN_EP)).click if key == :ep
-    return find(:xpath, CREATE_ACCOUNT_BTN_IL).click if key == :il
-    find(:xpath, ta(CREATE_ACCOUNT_BTN_TA, CREATE_ACCOUNT_BTN_IL)).click
+    post_processing key do
+      return find(ta(CREATE_ACCOUNT_BTN_EP)).click if key == :ep
+      return find(:xpath, CREATE_ACCOUNT_BTN_IL).click if key == :il
+      find(:xpath, ta(CREATE_ACCOUNT_BTN_TA, CREATE_ACCOUNT_BTN_IL)).click
+    end
   end
 
 end

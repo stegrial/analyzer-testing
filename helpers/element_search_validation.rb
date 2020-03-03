@@ -59,11 +59,11 @@ module ElementSearchValidation
 
   # <<< DataControl testing >>>
 
-  dir = project_root + "/logs/" + ARGV[0]
-
-  test = DataControl.new(dir)
-  test.check_process
-  test.result
+  # dir = project_root + "/logs/" + ARGV[0]
+  #
+  # test = DataControl.new(dir)
+  # test.check_process
+  # test.result
 
   # <<< Requests definition: >>>
 

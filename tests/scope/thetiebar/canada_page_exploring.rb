@@ -5,7 +5,6 @@ required_relative_all "/pages/thetiebar/*.rb"
 
 include ElementSearchValidation
 
-locations_page = TheTiebarLocation.new
 canada_page = TheTiebarCanada.new
 pdp = TheTiebarProductPage.new
 footer_page = TheTiebarFooterPage.new
@@ -28,7 +27,7 @@ describe 'Preconditions' do
 
       step "User clicks on wedding shop link and redirected on wedding ties page" do
         canada_page.click_wedding_shop
-        pdp.should_see_wedding_ties__h1
+        pdp.should_see_wedding_ties_h1
       end
 
       step "User clicks on the Canada link in footer and redirected on Canada ties page" do
@@ -52,7 +51,7 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarCanada::SHOP_WEDDING_LINK_TA, TheTiebarCanada::SHOP_WEDDING_LINK_IL
         canada_page.click_wedding_shop
         check_element_path :xpath, TheTiebarProductPage::WEDDING_TIES_H1_TA, TheTiebarProductPage::WEDDING_TIES_H1_IL
-        pdp.should_see_wedding_ties__h1
+        pdp.should_see_wedding_ties_h1
       end
 
       step "User clicks on the Canada link in footer and redirected on Canada ties page" do
@@ -82,7 +81,7 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarCanada::SHOP_WEDDING_LINK_EP, TheTiebarCanada::SHOP_WEDDING_LINK_IL
         canada_page.click_wedding_shop :ep
         check_element_path :xpath, TheTiebarProductPage::WEDDING_TIES_H1_EP, TheTiebarProductPage::WEDDING_TIES_H1_IL
-        pdp.should_see_wedding_ties__h1 :ep
+        pdp.should_see_wedding_ties_h1 :ep
       end
 
       step "User clicks on the Canada link in footer and redirected on Canada ties page" do

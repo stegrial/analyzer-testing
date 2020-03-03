@@ -29,6 +29,10 @@ describe 'Preconditions' do
         product_page.click_second_shirt_on_product :il
       end
 
+      step "User clicks the trim  button" do
+        product_page.click_fit_trim_btn
+      end
+
       step "User clicks the size button" do
         product_page.click_to_select_neck_size
       end
@@ -71,6 +75,11 @@ describe 'Preconditions' do
       step "User clicks the second shirt on product" do
         check_element_path :xpath, TheTiebarProductPage::SECOND_SHIRT_PDP_TA, TheTiebarProductPage::SECOND_SHIRT_PDP_IL
         product_page.click_second_shirt_on_product :il
+      end
+
+      step "User clicks the trim  button" do
+        check_element_path :xpath, TheTiebarProductPage::FIT_TRIM_TA, TheTiebarProductPage::FIT_TRIM_IL
+        product_page.click_fit_trim_btn
       end
 
       step "User clicks the size button" do
@@ -120,7 +129,12 @@ describe 'Preconditions' do
 
       step "User clicks the second shirt on product" do
         check_element_path :xpath, TheTiebarProductPage::SECOND_SHIRT_PDP_EP, TheTiebarProductPage::SECOND_SHIRT_PDP_IL
-        product_page.click_second_shirt_on_product :il
+        product_page.click_second_shirt_on_product :ep
+      end
+
+      step "User clicks the trim  button" do
+        check_element_path :xpath, TheTiebarProductPage::FIT_TRIM_EP, TheTiebarProductPage::FIT_TRIM_IL
+        product_page.click_fit_trim_btn :ep
       end
 
       step "User clicks the size button" do
@@ -133,12 +147,12 @@ describe 'Preconditions' do
 
       step "User clicks the + button to add quantity" do
         check_element_path :xpath, TheTiebarProductPage::QUANTITY_EP, TheTiebarProductPage::QUANTITY_IL
-        product_page.click_add_quantity_btn :il
+        product_page.click_add_quantity_btn :ep
       end
 
       step "User clicks the add to cart button" do
         check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_EP, TheTiebarProductPage::ADD_TO_CART_IL
-        product_page.click_add_to_cart_btn :il
+        product_page.click_add_to_cart_btn :ep
         sleep 4
       end
 

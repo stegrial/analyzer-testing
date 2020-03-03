@@ -1,9 +1,7 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
+require_relative '../../../pages/united_methods'
 required_relative_all "/pages/thetiebar/*.rb"
-
-include ElementSearchValidation
 
 login_page = TheTiebarLoginPage.new
 account_page = TheTiebarAccount_page.new
@@ -15,7 +13,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440,800)
   end
 
-  feature 'Delete account' do
+  feature 'AT-165 Cancel Button' do
 
     # Initial locators with Recording
 
@@ -25,32 +23,24 @@ describe 'Preconditions' do
       end
 
       step "User fills the Username field", settings('thetiebar')['email'] do |email|
-        login_page.fill_username_field email
+        login_page.fill_username_field :il, email
       end
 
       step "User fills the Password field", settings('thetiebar')['password'] do |pass|
-        login_page.fill_login_password pass
+        login_page.fill_login_password :il, pass
       end
 
       step "User clicks on the Sign In button" do
-        login_page.click_sing_in
+        login_page.click_sing_in :il
         sleep 3
       end
 
       step "User clicks delete account button" do
-        account_page.click_delete_account_btn
+        account_page.click_delete_account_btn :il
       end
 
       step "User clicks cancel delete button" do
         account_page.click_cancel_delete_btn
-      end
-
-      step "User clicks delete acc button" do
-        account_page.click_delete_account_btn
-      end
-
-      step "User clicks other catalog dropdown" do
-        account_page.click_close_delete_modal_icon
       end
 
     end
@@ -63,39 +53,29 @@ describe 'Preconditions' do
 
       step "User fills the Username field", settings('thetiebar')['email'] do |username|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_TA, TheTiebarLoginPage::USERNAME_IL
-        login_page.fill_username_field username
+        login_page.fill_username_field :il, username
       end
 
       step "User fills the Password field", settings('thetiebar')['password'] do |pass|
         check_element_path :xpath, TheTiebarLoginPage::LOGIN_PASS_TA, TheTiebarLoginPage::LOGIN_PASS_IL
-        login_page.fill_login_password pass
+        login_page.fill_login_password :il, pass
       end
 
       step "User clicks on the Sign In button" do
         check_element_path :xpath, TheTiebarLoginPage::SIGN_IN_TA, TheTiebarLoginPage::SIGN_IN_IL
-        login_page.click_sing_in
+        login_page.click_sing_in :il
         sleep 3
       end
 
       step "User clicks delete account button" do
         check_element_path :xpath, TheTiebarAccount_page::DELETE_ACCOUNT_BTN_TA, TheTiebarAccount_page::DELETE_ACCOUNT_BTN_IL
-        account_page.click_delete_account_btn
+        account_page.click_delete_account_btn :il
       end
 
       step "User clicks cancel delete button" do
         sleep 3
         check_element_path :xpath, TheTiebarAccount_page::CANCEL_DELETE_BTN_TA, TheTiebarAccount_page::CANCEL_DELETE_BTN_IL
         account_page.click_cancel_delete_btn
-      end
-
-      step "User clicks delete button" do
-        check_element_path :xpath, TheTiebarAccount_page::DELETE_ACCOUNT_BTN_TA, TheTiebarAccount_page::DELETE_ACCOUNT_BTN_IL
-        account_page.click_delete_account_btn
-      end
-
-      step "User clicks close modal button" do
-        check_element_path :xpath, TheTiebarAccount_page::CLOSE_DELETE_MODAL_ICON_TA, TheTiebarAccount_page::CLOSE_DELETE_MODAL_ICON_IL
-        account_page.click_close_delete_modal_icon
       end
 
     end
@@ -133,16 +113,62 @@ describe 'Preconditions' do
         account_page.click_cancel_delete_btn :ep
       end
 
-      step "User clicks twice catalog togler" do
-        check_element_path :xpath, TheTiebarAccount_page::DELETE_ACCOUNT_BTN_EP, TheTiebarAccount_page::DELETE_ACCOUNT_BTN_IL
-        account_page.click_delete_account_btn :ep
+    end
+
+    scenario 'Recording debug', record_debug: true do
+      step "User goes to the page", settings('thetiebar')['preference_page'] do |url|
+        page.visit url
       end
 
-      step "User clicks other catalog dropdown" do
-        check_element_path :xpath, TheTiebarAccount_page::CLOSE_DELETE_MODAL_ICON_EP, TheTiebarAccount_page::CLOSE_DELETE_MODAL_ICON_IL
-        account_page.click_close_delete_modal_icon :ep
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
+        login_page.fill_username_field :il, username
       end
 
+      step "User fills the Password field", settings('thetiebar')['password'] do |pass|
+        login_page.fill_login_password :il, pass
+      end
+
+      step "User clicks on the Sign In button" do
+        login_page.click_sing_in :il
+        sleep 3
+      end
+
+      step "User clicks delete account button" do
+        account_page.click_delete_account_btn :il
+      end
+
+      step "User clicks cancel delete button" do
+        sleep 3
+        account_page.click_cancel_delete_btn
+      end
+    end
+
+    scenario 'Searching debug', search_debug: true do
+      step "User goes to the page", settings('thetiebar')['preference_page'] do |url|
+        page.visit url
+      end
+
+      step "User fills the Username field", settings('thetiebar')['email'] do |username|
+        login_page.fill_username_field :il, username
+      end
+
+      step "User fills the Password field", settings('thetiebar')['password'] do |pass|
+        login_page.fill_login_password :il, pass
+      end
+
+      step "User clicks on the Sign In button" do
+        login_page.click_sing_in :il
+        sleep 3
+      end
+
+      step "User clicks delete account button" do
+        account_page.click_delete_account_btn :il
+      end
+
+      step "User clicks cancel delete button" do
+        sleep 3
+        account_page.click_cancel_delete_btn
+      end
     end
   end
 end
