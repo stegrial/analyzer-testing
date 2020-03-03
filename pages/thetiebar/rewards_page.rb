@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class TheTiebarRewardsPage
 
@@ -7,7 +7,7 @@ class TheTiebarRewardsPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
 
   VIEW_MY_REWARDS_IL = "(//div[text()='View My Rewards'])[1]"
