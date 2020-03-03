@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class CloudBeesChangeHistory
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   SECOND_ITEM_IN_TABLE_IL = "//div[text()='2.']"
   SECOND_ITEM_IN_TABLE_TA = 'cloud_bees:change_history:second_item'

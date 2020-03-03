@@ -1,7 +1,9 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../pages/united_methods'
+require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/cloud_bees_pages/*.rb"
+
+include ElementSearchValidation
 
 login_page = CloudBeesLogin.new
 components_page = CloudBeesComponents.new
@@ -17,7 +19,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', ilr: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -126,7 +128,7 @@ describe 'Preconditions' do
       sleep 3
     end
 
-    scenario 'Searching IL', il: true do
+    scenario 'Searching IL', ils: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end

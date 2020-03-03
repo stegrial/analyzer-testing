@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class VenusCart
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   REMOVE_ADD_TO_BAG_BTN_IL = "//input[@value='Remove']"
   REMOVE_ADD_TO_BAG_BTN_TA = "venus:cart_page:remove_add_to_bag_btn"

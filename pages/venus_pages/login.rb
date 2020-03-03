@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class VenusLogin
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   EMAIL_FIELD_IL = 'ctl00_Body1_loginemail'
   EMAIL_FIELD_TA = 'venus:login_page:email_field'

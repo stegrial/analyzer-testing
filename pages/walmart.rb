@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class Walmart
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   HUMBURGER_BTN_IL = "//button[@aria-label='Menu']"
   HUMBURGER_BTN_TA = "walmart:hamburger_btn"

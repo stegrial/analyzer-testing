@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class Flipkart
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   WOMEN_LINK_IL = "(//span[@class='_1QZ6fC _3Lgyp8'])[4]"
   WOMEN_LINK_TA = "flip_kart:women"

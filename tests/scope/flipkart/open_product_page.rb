@@ -1,7 +1,9 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../pages/united_methods'
+require_relative '../../../helpers/element_search_validation'
 require_relative '../../../pages/flipkart_desctop'
+
+include ElementSearchValidation
 
 it = Flipkart.new
 describe 'Preconditions' do

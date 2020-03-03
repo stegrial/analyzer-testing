@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class VenusHome
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   THIRD_BANNER_IL = "(//a[@title='Shop Now'])[3]"
   THIRD_BANNER_TA = 'venus:home_page:third_banner'

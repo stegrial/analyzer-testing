@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class CloudBeesReleasesCalendar
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   SELECT_USER_TIMEZONE_IL = ".at-select-header-title"
   SELECT_USER_TIMEZONE_TA = "cloud_bees:releases_calendar:timezone_dropdown"

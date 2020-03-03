@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class Amazon
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   MAIN_SEARCH_IL = "//input[@id='twotabsearchtextbox']"
   MAIN_SEARCH_TA = "amazon:search_input"

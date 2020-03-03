@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class CloudBeesCatalogs
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   # SVG CREATE_NEW_CATALOG_IL = ".at-button-create-new"
   CREATE_NEW_CATALOG_IL = ".right-container span"

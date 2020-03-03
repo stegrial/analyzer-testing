@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class TimeZones
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   RUSSIAN_LANG_IL = "//div/*[text()='ru']"
   RUSSIAN_LANG_TA = "24timezones:ru_lang"

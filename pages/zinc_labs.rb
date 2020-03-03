@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class ZincLabs
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   SIGN_IN_GOOGLE_IL = "//div[@class='text-center' and .//img[@alt='Login with ClassLink']]"
   SIGN_IN_GOOGLE_TA = "zinc_labs:sig_in_page:sign_in_google"

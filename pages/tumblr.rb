@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../helpers/special_methods'
+require_relative 'page_extension'
 
 class Tumblr
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   SIGN_UP_BTN_IL = "(//button/span[@class='signup_get_started_btn active'])[1]"
   SIGN_UP_BTN_TA = "tumblr:signup_btn"

@@ -1,7 +1,9 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../pages/united_methods'
+require_relative '../../../helpers/element_search_validation'
 require_relative '../../../pages/revolve'
+
+include ElementSearchValidation
 
 it = Revolve.new
 

@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class VenusCreateAccount
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   FIRST_NAME_FIELD_IL = 'ctl00_Body1_firstname'
   FIRST_NAME_FIELD_TA = 'venus:create_account_page:first_name_field'

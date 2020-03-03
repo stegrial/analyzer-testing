@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class TAWebsite
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   HOME_LOGIN_BTN_IL = "//div[./span[text()='Login']]"
   HOME_LOGIN_BTN_TA = 'ta:website:home:login_btn'

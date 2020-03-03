@@ -1,11 +1,11 @@
 require 'spec_helper'
-require_relative '../../helpers/special_methods'
+require_relative '../page_extension'
 
 class VenusWishList
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
-  include ExtendPage
+  include PageExtension
 
   PRODUCT_SIZE_IL = "//span[contains(@id,'ProductSize')]"
   PRODUCT_SIZE_TA = "venus:wish_list_page:product_size"
