@@ -69,7 +69,7 @@ module ElementSearchValidation
 
   def check_requests
     current_test = Dir[project_root + '/logs/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.last
-    responses = Dir[current_test + '/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.filter { |a| a.scan(/\d+/)[-1].to_i > $last_dir }
+    responses = Dir[current_test + '/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.select { |a| a.scan(/\d+/)[-1].to_i > $last_dir }
     $last_dir = responses.last.scan(/\d+/)[-1].to_i
     responses.each do |dir|
       begin
