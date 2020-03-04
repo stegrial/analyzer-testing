@@ -66,7 +66,7 @@ describe 'Preconditions' do
 
     end
 
-    scenario 'Searching IL', il1: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('thetiebar')['shirts_page'] do |url|
         page.visit url
