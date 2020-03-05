@@ -89,7 +89,7 @@ class PlanetBlue
 
   def check_collection_item_attributes(key = nil, name, title, price, color)
     post_processing key do
-      return find(:xpath, collection_item_link key, name)
+      find(:xpath, collection_item_link(key, name))
       expect(collection_item_title key, name).to have_attributes('')
     end
 
