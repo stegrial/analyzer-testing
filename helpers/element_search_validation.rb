@@ -17,12 +17,14 @@ module ElementSearchValidation
 
     def search(page = @data, address = '0', condition)
       tag = page['tag'] == @signature['tag']
-      id = page.dig('attributes', 'id') == @signature['id']
-      class_attr = condition.include?('class') ? page.dig('attributes', 'class') == @signature['class'] : true
+      # id = page.dig('attributes', 'id') == @signature['id']
+      # class_attr = condition.include?('class') ? page.dig('attributes', 'class') == @signature['class'] : true
       value = page.dig('attributes', 'value') == @signature['attrs']['value']
       text_value = condition.include?('text_value') ? (page['children'].find { |el| el['node_type'] == 'Text' } || {}).dig('value') == @signature['text_value'] : true
+      css = page.dig('css') == @signature.dig('css')
 
-      if tag && id && class_attr && value && text_value
+      # if tag && id && class_attr && value && text_value
+      if tag && css && value && text_value
         puts "Found #{address}, element address #{@element_address}"
         @found_elements += 1
         @address = address
@@ -32,9 +34,11 @@ module ElementSearchValidation
 
     def check_process
       begin
-        search(@data, '0', %w(class text_value))
-        search(@data, '0', %w(class)) if @found_elements == 0
-        search(@data, '0', %w(text_value)) if @found_elements == 0
+        search(@data, '0', %w(text_value))
+        # search(@data, '0', %w(class text_value))
+        # search(@data, '0', %w(class)) if @found_elements == 0
+        # search(@data, '0', %w(text_value)) if @found_elements == 0
+        search(@data, '0', %w(nothing)) if @found_elements == 0
       rescue StandardError => e
         puts e
         puts element
@@ -69,7 +73,7 @@ module ElementSearchValidation
 
   def check_requests
     current_test = Dir[project_root + '/logs/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.last
-    responses = Dir[current_test + '/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.filter { |a| a.scan(/\d+/)[-1].to_i > $last_dir }
+    responses = Dir[current_test + '/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.select { |a| a.scan(/\d+/)[-1].to_i > $last_dir }
     $last_dir = responses.last.scan(/\d+/)[-1].to_i
     responses.each do |dir|
       begin
