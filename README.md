@@ -120,7 +120,7 @@ git clone https://github.com/stegrial/analyzer-testing.git
 * Run test:
 
 ```
-rspec <path-to-your-test> tag=<tag>
+rspec <path-to-your-test> --tag=<tag>
 ```
 
 Tags you can use:
