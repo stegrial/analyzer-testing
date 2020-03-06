@@ -62,6 +62,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on return to the tiebar link in top" do
+        sleep 2
         faq_page.click_return_to_the_tiebar
       end
 
@@ -138,6 +139,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on return to the tiebar link in top" do
+        sleep 2
         check_element_path :xpath, TheTiebarFaqPage::RETURN_TO_THE_TIE_BAR_LINK_TA, TheTiebarFaqPage::RETURN_TO_THE_TIE_BAR_LINK_IL
         faq_page.click_return_to_the_tiebar
       end
@@ -222,6 +224,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on return to the tiebar link in top" do
+        sleep 2
         check_element_path :xpath, TheTiebarFaqPage::RETURN_TO_THE_TIE_BAR_LINK_EP, TheTiebarFaqPage::RETURN_TO_THE_TIE_BAR_LINK_IL
         faq_page.click_return_to_the_tiebar :ep
       end
