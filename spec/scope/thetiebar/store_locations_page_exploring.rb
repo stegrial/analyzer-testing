@@ -23,7 +23,8 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clickbook appointment link" do
+      step "User click book appointment link" do
+        sleep 2
         locations_page.click_book_appointment_boston
       end
 
@@ -74,8 +75,9 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clickbook appointment link" do
-        within_frame(1) { check_element_path :xpath, TheTiebarLocation::BOOK_APPOINTMENT_TA, TheTiebarLocation::BOOK_APPOINTMENT_IL }
+      step "User click book appointment link" do
+        sleep 5
+        check_element_path :xpath, TheTiebarLocation::BOOK_APPOINTMENT_TA, TheTiebarLocation::BOOK_APPOINTMENT_IL
         locations_page.click_book_appointment_boston
       end
 
@@ -138,8 +140,8 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clickbook appointment link" do
-        within_frame(1) { check_element_path :xpath, TheTiebarLocation::BOOK_APPOINTMENT_EP, TheTiebarLocation::BOOK_APPOINTMENT_IL }
+      step "User click book appointment link" do
+         check_element_path :xpath, TheTiebarLocation::BOOK_APPOINTMENT_EP, TheTiebarLocation::BOOK_APPOINTMENT_IL
         locations_page.click_book_appointment_boston :ep
       end
 
