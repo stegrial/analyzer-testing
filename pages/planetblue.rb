@@ -9,7 +9,7 @@ class PlanetBlue
   include PageExtension
 
   def ta_name(name)
-    name.tr('0-9_ ', '').tr('|', '').tr('A-Z', 'a-z')
+    name.tr('0-9_|: ', '').tr('A-Z', 'a-z')
   end
 
   def locator_by_type(locator, initial_locator, ta_locator)
@@ -20,10 +20,10 @@ class PlanetBlue
     end
   end
 
-  def find_element_path(key, format, initialLocator, taLocator)
+  def find_element_path(key, format, ta_locator, initial_locator)
     post_processing key do
-      return find(format, initialLocator) if key == :il
-      find(format, ta(taLocator, initialLocator))
+      return find(format, initial_locator, visible: :visible) if key == :il
+      find(format, ta(ta_locator, initial_locator), visible: :visible)
     end
   end
 
@@ -38,7 +38,7 @@ class PlanetBlue
 
   def category_dropdown(locator, name)
     locator_by_type locator,
-                    "//button/span/span[text()='#{name}']",
+                    "//div[@style='align-items: center; flex-direction: row;']//button//span[text()='#{name}']",
                     "planetblue:category_dropdown:#{ta_name(name)}"
   end
 
@@ -78,33 +78,24 @@ class PlanetBlue
   end
 
 
-  def click_menu_category(key = nil, name)
-    post_processing key do
-      return find(:xpath, menu_category(:il, name)).click if key == :il
-      find(:xpath, ta(menu_category(:ta, name), menu_category(:il, name))).click
-    end
+  def click_menu_button(key = nil)
+    find_element_path(key, :css, MAIN_MENU_BUTTON_TA, MAIN_MENU_BUTTON_IL).click
   end
 
-  def click_menu_button(key = nil)
-    post_processing key do
-      return find(:css, MAIN_MENU_BUTTON_IL).click if key == :il
-      find(:css, ta(MAIN_MENU_BUTTON_TA, MAIN_MENU_BUTTON_IL)).click
-    end
+  def click_menu_category(key = nil, name)
+    find_element_path(key, :xpath, menu_category(:ta, name), menu_category(:il, name)).click
   end
 
   def find_category_dropdown(key = nil, name)
-    post_processing key do
-      return find(:xpath, category_dropdown(:il, name)) if key == :il
-      find(:xpath, ta(category_dropdown(:ta, name), category_dropdown(:il, name)))
-    end
+    find_element_path(key, :xpath, category_dropdown(:ta, name), category_dropdown(:il, name))
   end
 
   def check_collection_item(key = nil, name, color)
-        find_element_path(key, :xpath, collection_item_link(:il, name), collection_item_link(:ta, name))
-        find_element_path(key, :xpath, collection_item_title(:il, name), collection_item_title(:ta, name))
-        find_element_path(key, :xpath, collection_item_image(:il, name), collection_item_image(:ta, name))
-        find_element_path(key, :xpath, collection_item_price(:il, name), collection_item_price(:ta, name))
-        find_element_path(key, :xpath, collection_item_color(:il, name, color), collection_item_color(:ta, name, color))
+        find_element_path(key, :xpath, collection_item_link(:ta, name), collection_item_link(:il, name))
+        find_element_path(key, :xpath, collection_item_title(:ta, name), collection_item_title(:il, name))
+        find_element_path(key, :xpath, collection_item_image(:ta, name), collection_item_image(:il, name))
+        find_element_path(key, :xpath, collection_item_price(:ta, name), collection_item_price(:il, name))
+        find_element_path(key, :xpath, collection_item_color(:ta, name, color), collection_item_color(:il, name, color))
   end
 
 end

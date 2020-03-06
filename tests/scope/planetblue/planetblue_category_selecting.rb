@@ -20,7 +20,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', record: true do
 
       step "User goes to the page", settings('planetblue')['page'] do |url|
         page.visit url
@@ -53,7 +53,7 @@ describe 'Preconditions' do
 
     end
 
-    scenario 'Searching IL', il: true do
+    scenario 'Searching IL', search: true do
 
       step "User goes to the page", settings('planetblue')['page'] do |url|
         page.visit url
@@ -88,11 +88,11 @@ describe 'Preconditions' do
 
       step "User checks Collection Items", 'RUTH TUNIC | New', 'Bright Rose' do |name, color|
 
-        check_element_path(:xpath, it.collection_item_link(:il, name), it.collection_item_link(:ta, name))
-        check_element_path(:xpath, it.collection_item_title(:il, name), it.collection_item_title(:ta, name))
-        check_element_path(:xpath, it.collection_item_image(:il, name), it.collection_item_image(:ta, name))
-        check_element_path(:xpath, it.collection_item_price(:il, name), it.collection_item_price(:ta, name))
-        check_element_path(:xpath, it.collection_item_color(:il, name, color), it.collection_item_color(:ta, name, color))
+        check_element_path(:xpath, it.collection_item_link(:ta, name), it.collection_item_link(:il, name))
+        check_element_path(:xpath, it.collection_item_title(:ta, name), it.collection_item_title(:li, name))
+        check_element_path(:xpath, it.collection_item_image(:ta, name), it.collection_item_image(:li, name))
+        check_element_path(:xpath, it.collection_item_price(:ta, name), it.collection_item_price(:li, name))
+        check_element_path(:xpath, it.collection_item_color(:ta, name, color), it.collection_item_color(:li, name, color))
 
         it.check_collection_item name, color
       end
