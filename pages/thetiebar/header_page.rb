@@ -58,8 +58,8 @@ class TheTiebarHeader
   TIEBARS_CATEGORY_EP = "EP:thetiebar:header:subcategory:pants"
 
   SOCKS_CATEGORY_IL = "(//span[contains(text(), 'Socks')])[1]"
-  SOCKS_CATEGORY_TA = "thetiebar:header:subcategory:Socks"
-  SOCKS_CATEGORY_EP = "EP:thetiebar:header:subcategory:Socks"
+  SOCKS_CATEGORY_TA = "thetiebar:header:subcategory:subcategorySocks"
+  SOCKS_CATEGORY_EP = "EP:thetiebar:header:subcategory:subcategorySocks"
 
   POCKET_SQUARES_CATEGORY_IL = "(//span[contains(text(), 'Pocket Squares')])[1]"
   POCKET_SQUARES_CATEGORY_TA = "thetiebar:header:subcategory:Pocket_Squares"
