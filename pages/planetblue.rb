@@ -8,8 +8,8 @@ class PlanetBlue
   include RSpec::Matchers
   include PageExtension
 
-  MAIN_MENU_BUTTON_IL = "[aria-label='Menu']"
-  MAIN_MENU_BUTTON_TA = "planetblue:menu_button"
+  MENU_BUTTON_IL = "[aria-label='Menu']"
+  MENU_BUTTON_TA = "planetblue:menu_button"
 
   SEARCH_BUTTON_IL = "button[aria-label='Search']"
   SEARCH_BUTTON_TA = "planetblue:search_button"
@@ -27,6 +27,12 @@ class PlanetBlue
     locator_by key,
                "//div[@role='button']/div[text()='#{name}']",
                "planetblue:menu_button:#{ta_name(name)}"
+  end
+
+  def menu_item(key, name)
+    locator_by key,
+               "//a[contains(@href, '/pages/') and text()='#{name}']",
+               "planetblue:menu_item:#{ta_name(name)}"
   end
 
   def category_dropdown(key, name)
@@ -76,25 +82,41 @@ class PlanetBlue
                "planetblue:collection_item:#{ta_name(name)}:color"
   end
 
-  def total_items(key = nil, number)
+  def total_items(key, number)
     locator_by key,
                "//div[@style='align-items: center; flex-direction: row;']/span[contains(text(), '#{number}') and contains(text(), 'total items')]",
                "planetblue:total_items"
   end
 
+  def page_header(key, title)
+    locator_by key, "//div[@class='page-header__title' and text()='#{title}']",
+               "planetblue:page_header_title:#{title}"
+  end
+
+  def find_store_item_details(key, title)
+    locator_by key,
+               "//div[@class='store-card']//h5[text()='#{title}']",
+               "planetblue:find_a_store_item:#{ta_name(title)}"
+  end
+
+
   def click_menu_button(key = nil)
-    find_element_path(key, :css, MAIN_MENU_BUTTON_TA, MAIN_MENU_BUTTON_IL).click
+    find_element_path(key, :css, MENU_BUTTON_TA, MENU_BUTTON_IL).click
   end
 
   def click_menu_category(key = nil, name)
     find_element_path(key, :xpath, menu_category(:ta, name), menu_category(:il, name)).click
   end
 
+  def click_menu_item(key = nil, name)
+    find_element_path(key, :xpath, menu_item(:ta, name), menu_item(:il, name)).click
+  end
+
   def find_category_dropdown(key = nil, name)
     find_element_path(key, :xpath, category_dropdown(:ta, name), category_dropdown(:il, name))
   end
 
-  def find_collection_item_parts(key = nil, name, color)
+  def find_collection_item_details(key = nil, name, color)
         find_element_path(key, :xpath, collection_item_link(:ta, name), collection_item_link(:il, name))
         find_element_path(key, :xpath, collection_item_title(:ta, name), collection_item_title(:il, name))
         find_element_path(key, :xpath, collection_item_image(:ta, name), collection_item_image(:il, name))
