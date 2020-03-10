@@ -29,7 +29,7 @@ describe 'Preconditions' do
         planetblue.click_menu_button
       end
 
-      step "User clicks on Menu Item", 'Find a Store' do |value|
+      step "User clicks on Menu Item", 'Find a store' do |value|
         planetblue.click_menu_item value
       end
 
@@ -37,11 +37,11 @@ describe 'Preconditions' do
         planetblue.page_header :il, title
       end
 
-      step "User fills Search Field", 'Planet Blue | Newport Beach' do |title|
+      step "User checks Store item", 'Planet Blue | Newport Beach' do |title|
         planetblue.find_store_item_details :il, title
       end
 
-      step "User fills Search Field", 'Planet Blue | Dallas' do |title|
+      step "User checks Store item", 'Planet Blue | Dallas' do |title|
         planetblue.find_store_item_details :il, title
       end
 
@@ -59,7 +59,7 @@ describe 'Preconditions' do
         planetblue.click_menu_button :ta
       end
 
-      step "User clicks on Menu Item", 'Find a Store' do |value|
+      step "User clicks on Menu Item", 'Find a store' do |value|
         check_element_path :xpath, planetblue.menu_item(:ta, value), planetblue.menu_item(:il, value)
         planetblue.click_menu_item :ta, value
       end
@@ -69,13 +69,13 @@ describe 'Preconditions' do
         planetblue.page_header :ta, title
       end
 
-      step "User fills Search Field", 'Planet Blue | Newport Beach' do |title|
+      step "User checks Store item", 'Planet Blue | Newport Beach' do |title|
         check_element_path :xpath, planetblue.find_store_item_details(:ta, title),
                            planetblue.find_store_item_details(:il, title)
         planetblue.find_store_item_details :ta, title
       end
 
-      step "User fills Search Field", 'Planet Blue | Dallas' do |title|
+      step "User checks Store item", 'Planet Blue | Dallas' do |title|
         check_element_path :xpath, planetblue.find_store_item_details(:ta, title),
                            planetblue.find_store_item_details(:il, title)
         planetblue.find_store_item_details :ta, title
