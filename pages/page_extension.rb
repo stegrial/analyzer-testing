@@ -14,7 +14,7 @@ module PageExtension
   end
 
   def ta_name(name)
-    name.tr('0-9_|: ', '').tr('A-Z', 'a-z')
+    name.tr('^A-Za-z0-9_', '')
   end
 
   def locator_by_type(locator, initial_locator, ta_locator)
