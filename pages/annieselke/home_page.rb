@@ -82,4 +82,5 @@ class Home_Page
   def click_on_instagram_icon(key = nil)
     find_element_path(key, :xpath, SOCIAL_NETWORKS_TA[:instagram], SOCIAL_NETWORKS_IL[:instagram]).click
   end
+
 end

@@ -52,7 +52,6 @@ stage_com:
   email: "julia.arapova@softesis.com"
   pass: "1234tesT"
 
-
 cloud_bees:
   login_page: 'https://ectest.trueautomation.io/flow'
   catalogs_page: "https://ectest.trueautomation.io/flow/#catalogs"

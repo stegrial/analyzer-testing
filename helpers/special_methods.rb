@@ -60,4 +60,5 @@ def move_between_tabs
     page.driver.browser.close
     page.driver.browser.switch_to.window(window.first)
   end
+
 end
