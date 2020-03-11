@@ -25,32 +25,27 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Fresh American Style blog" do
-        scroll_to_element nil
+        home_page.close_cupon_banner
         home_page.click_blog_link
       end
 
       step "User clicks on Social networks icons" do
-        scroll_to_element nil
         home_page.close_cupon_banner
         home_page.click_on_facebook_icon
 
         move_between_tabs
-        scroll_to_element nil
         home_page.close_cupon_banner
         home_page.click_on_twitter_icon
 
         move_between_tabs
-        scroll_to_element nil
         home_page.close_cupon_banner
         home_page.click_on_pinterest_icon
 
         move_between_tabs
-        scroll_to_element nil
         home_page.close_cupon_banner
         home_page.click_on_youtube_icon
 
         move_between_tabs
-        scroll_to_element nil
         home_page.close_cupon_banner
         home_page.click_on_instagram_icon
       end
