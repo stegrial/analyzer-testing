@@ -5,7 +5,7 @@ required_relative_all "/pages/planetblue/*.rb"
 
 include ElementSearchValidation
 
-planetblue = PlanetBlue.new
+designers = Designers.new
 menu = Menu.new
 describe 'Preconditions' do
 
@@ -18,7 +18,7 @@ describe 'Preconditions' do
   end
 
 
-  feature 'Planet Blue - Find Product' do
+  feature 'Planet Blue - Find a Product by Designers' do
 
     scenario 'Recording Locators', record: true do
 
@@ -26,22 +26,26 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks Search Button" do
-        menu.click_search_button
+      step "User clicks Navigation Bar Link", 'Designers' do |value|
+        designers.click_navbar_link value
       end
 
-      step "User fills Search Field", 'RUTH TUNIC | New' do |value|
-        menu.fill_search_field value
+      step "User checks page Header", 'Designers' do |title|
+        designers.find_page_header :il, title
       end
 
-      step "User clicks Search Suggestions item", 'ruth tunic new' do |value|
-        menu.click_search_item value
+      step "User checks Designers List Item", '#', 'Y' do |value1, value2|
+        designers.find_designers_list_section :il, value1
+        designers.find_designers_list_section :il, value2
       end
 
-      step "User checks found items", 'RUTH TUNIC | New' do |value|
-        planetblue.total_items :il, 2
-        planetblue.find_collection_item value, link: 'ruth-tunic?'
-        planetblue.find_collection_item value, link: 'ruth-tunic-1?'
+      step "User clicks Designer Item", '27 MILES MALIBU' do |value|
+        designers.click_designers_list_item value
+      end
+
+      step "User checks Collection Item",
+           'ESSIE CREWNECK SWEATER | New', 'essie-crewneck-sweater?' do |name, link|
+        designers.find_collection_item name, link: link
       end
 
     end
@@ -73,15 +77,15 @@ describe 'Preconditions' do
 
       step "User checks found items",
            'RUTH TUNIC | New', 'ruth-runic?', 'ruth-runic-1?', 2 do |name, link1, link2, number|
-        check_element_path(:xpath, planetblue.total_items(:ta, number),
-                           planetblue.total_items(:il, number))
-        check_element_path(:xpath, planetblue.collection_item_by_link(:ta, name, link1),
-                           planetblue.collection_item_by_link(:il, name, link1))
-        check_element_path(:xpath, planetblue.collection_item_by_link(:ta, name, link2),
-                           planetblue.collection_item_by_link(:il, name, link2))
-        planetblue.total_items :ta, number
-        planetblue.find_collection_item :ta, name, link: link1
-        planetblue.find_collection_item :ta, name, link: link2
+        check_element_path(:xpath, menu.total_items(:ta, number),
+                           menu.total_items(:il, number))
+        check_element_path(:xpath, menu.collection_item_by_link(:ta, name, link1),
+                           menu.collection_item_by_link(:il, name, link1))
+        check_element_path(:xpath, menu.collection_item_by_link(:ta, name, link2),
+                           menu.collection_item_by_link(:il, name, link2))
+        menu.total_items :ta, number
+        designers.find_collection_item :ta, name, link: link1
+        designers.find_collection_item :ta, name, link: link2
       end
 
     end

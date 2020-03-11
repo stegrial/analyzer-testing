@@ -1,11 +1,12 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 require_relative '../../../helpers/element_search_validation'
-require_relative '../../../pages/planetblue'
+required_relative_all "/pages/planetblue/*.rb"
 
 include ElementSearchValidation
 
 planetblue = PlanetBlue.new
+menu = Menu.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -26,19 +27,19 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Menu button" do
-        planetblue.click_menu_button
+        menu.click_menu_button
       end
 
       step "User clicks on Menu Category", 'Clothing' do |value|
-        planetblue.click_menu_category value
+        menu.click_menu_category value
       end
 
       step "User clicks on Menu Category", 'Tops' do |value|
-        planetblue.click_menu_category value
+        menu.click_menu_category value
       end
 
       step "User clicks on Menu Category", 'Basics' do |value|
-        planetblue.click_menu_category value
+        menu.click_menu_category value
       end
 
       step "User checks Category Dropdowns", 'REFINE', 'Sort' do |value1, value2|
@@ -60,26 +61,26 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Menu button" do
-        check_element_path :css, planetblue.MENU_BUTTON_TA, planetblue.MENU_BUTTON_IL
-        planetblue.click_menu_button :ta
+        check_element_path :css, PlanetBlue::MENU_BUTTON_TA, PlanetBlue::MENU_BUTTON_IL
+        menu.click_menu_button :ta
       end
 
       step "User clicks on Menu Category", 'Clothing' do |value|
-        check_element_path :xpath, planetblue.menu_category(:ta, value),
-                           planetblue.menu_category(:il, value)
-        planetblue.click_menu_category :ta, value
+        check_element_path :xpath, menu.menu_category(:ta, value),
+                           menu.menu_category(:il, value)
+        menu.click_menu_category :ta, value
       end
 
       step "User clicks on Menu Category", 'Tops' do |value|
-        check_element_path :xpath, planetblue.menu_category(:ta, value),
-                           planetblue.menu_category(:il, value)
-        planetblue.click_menu_category :ta, value
+        check_element_path :xpath, menu.menu_category(:ta, value),
+                           menu.menu_category(:il, value)
+        menu.click_menu_category :ta, value
       end
 
       step "User clicks on Menu Category", 'Basics' do |value|
-        check_element_path :xpath, planetblue.menu_category(:ta, value),
-                           planetblue.menu_category(:il, value)
-        planetblue.click_menu_category :ta, value
+        check_element_path :xpath, menu.menu_category(:ta, value),
+                           menu.menu_category(:il, value)
+        menu.click_menu_category :ta, value
       end
 
       step "User checks Category Dropdowns", 'REFINE', 'Sort' do |value1, value2|

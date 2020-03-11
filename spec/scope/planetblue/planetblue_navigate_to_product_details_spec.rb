@@ -6,7 +6,7 @@ required_relative_all "/pages/planetblue/*.rb"
 include ElementSearchValidation
 
 planetblue = PlanetBlue.new
-menu = Menu.new
+product_details = ProductDetails.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -18,7 +18,7 @@ describe 'Preconditions' do
   end
 
 
-  feature 'Planet Blue - Find Product' do
+  feature 'Planet Blue - Find a Product by Designers' do
 
     scenario 'Recording Locators', record: true do
 
@@ -26,22 +26,25 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks Search Button" do
-        menu.click_search_button
+      step "User clicks Navigation Bar Link", 'Designers' do |value|
+        planetblue.click_navbar_link value
       end
 
-      step "User fills Search Field", 'RUTH TUNIC | New' do |value|
-        menu.fill_search_field value
+      step "User checks page Header", 'Designers' do |title|
+        planetblue.find_page_header :il, title
       end
 
-      step "User clicks Search Suggestions item", 'ruth tunic new' do |value|
-        menu.click_search_item value
+      step "User checks Designers List Item", '#', 'Z' do |value1, value2|
+        planetblue.find_designer_list_item value1
+        planetblue.find_designer_list_item value2
       end
 
-      step "User checks found items", 'RUTH TUNIC | New' do |value|
-        planetblue.total_items :il, 2
-        planetblue.find_collection_item value, link: 'ruth-tunic?'
-        planetblue.find_collection_item value, link: 'ruth-tunic-1?'
+      step "User clicks Designer Item Link", '24 MILES MALIBU' do |value|
+        planetblue.click_designer_item_link value
+      end
+
+      step "User checks Collection Item", 'ESSIE CREWNECK SWEATER | New', 'Cloud' do |name, color|
+        planetblue.find_collection_item_details name, color
       end
 
     end
@@ -54,21 +57,21 @@ describe 'Preconditions' do
       end
 
       step "User clicks Search Button" do
-        check_element_path(:xpath, menu.click_search_button(:ta),
-                           menu.click_search_button(:il))
-        menu.click_search_button
+        check_element_path(:xpath, planetblue.click_search_button(:ta),
+                           planetblue.click_search_button(:il))
+        planetblue.click_search_button
       end
 
       step "User fills Search Field", 'RUTH TUNIC | New' do |value|
-        check_element_path(:xpath, menu.fill_search_field(:ta, value),
-                           menu.fill_search_field(:il, value))
-        menu.fill_search_field value
+        check_element_path(:xpath, planetblue.fill_search_field(:ta, value),
+                           planetblue.fill_search_field(:il, value))
+        planetblue.fill_search_field value
       end
 
       step "User clicks Search Suggestions item", 'ruth tunic new' do |value|
-        check_element_path(:xpath, menu.click_search_item(:ta, value),
-                           menu.click_search_item(:il, value))
-        menu.click_search_item :ta, value
+        check_element_path(:xpath, planetblue.click_search_item(:ta, value),
+                           planetblue.click_search_item(:il, value))
+        planetblue.click_search_item :ta, value
       end
 
       step "User checks found items",
