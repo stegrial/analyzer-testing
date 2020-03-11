@@ -10,18 +10,18 @@ it = HowToGetMoney.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
   after(:all) do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month section' do
+  feature 'AT-54 Analyzer returns the wrong element (link) in the Offer of month section' do
 
   # Initial locators with Recording
 
-  scenario 'Recording IL', il_run: true do
+  scenario 'Recording IL', il: true do
     step "User goes to the page", settings('how_to_get_money')['page'] do |url|
       page.visit url
     end
@@ -34,7 +34,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  scenario 'Searching IL', il_run: true do
+  scenario 'Searching IL', il: true do
     step "User resizes browser window to maximum" do
       Capybara.current_session.driver.browser.manage.window.maximize
     end
@@ -52,7 +52,7 @@ describe 'Preconditions' do
 
   # Element Picker from Repository
 
-  scenario 'Searching EP', ep_run: true do
+  scenario 'Searching EP', ep: true do
     step "User resizes browser window to maximum" do
       Capybara.current_session.driver.browser.manage.window.maximize
     end

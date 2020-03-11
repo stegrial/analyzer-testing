@@ -47,6 +47,10 @@ favorit:
 
 annieselke:
   page: 'https://annieselke.com'
+  email: 'msitnikova@softesis.com'
+  pass: 'test1234'
+  fisrt_name: 'Maryna'
+  last_name: 'Sitnikova'
 
 stage_com:
   page: "https://www.stage.com/"
@@ -146,3 +150,8 @@ thetiebar:
   exp_data_month: "12"
   exp_data_year: "20"
   cvc_cvv: "123"
+
+aliexpress:
+  main_page: "https://ru.aliexpress.com/"
+
+
