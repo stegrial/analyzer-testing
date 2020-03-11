@@ -133,6 +133,10 @@ class PlanetBlue
     find_element_path(key, :xpath, total_items(:ta, number), total_items(:il, number))
   end
 
+  def find_page_header(key = nil, title)
+    find_element_path key, :xpath, page_header(:ta, title), page_header(:il, title)
+  end
+
   def click_search_button(key = nil)
     find_element_path(key, :css, SEARCH_BUTTON_TA, SEARCH_BUTTON_IL).click
   end

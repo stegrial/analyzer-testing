@@ -34,7 +34,7 @@ describe 'Preconditions' do
       end
 
       step "User checks page Header", 'Find A Store' do |title|
-        planetblue.page_header :il, title
+        planetblue.find_page_header :il, title
       end
 
       step "User checks Store item", 'Planet Blue | Newport Beach' do |title|
@@ -66,9 +66,9 @@ describe 'Preconditions' do
       end
 
       step "User checks page Header", 'Find A Store' do |title|
-        check_element_path :xpath, planetblue.page_header(:ta, title),
-                           planetblue.page_header(:il, title)
-        planetblue.page_header :ta, title
+        check_element_path :xpath, planetblue.find_page_header(:ta, title),
+                           planetblue.find_page_header(:il, title)
+        planetblue.find_page_header :ta, title
       end
 
       step "User checks Store item", 'Planet Blue | Newport Beach' do |title|
