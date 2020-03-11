@@ -13,11 +13,17 @@ class Home_Page
   SEARCH_FIELD_IL = "//input[@id='search']"
   SEARCH_FIELD_TA = "annieselke:home_page:search_input"
 
-  LOGIN_BTN_IL = "//a[@href='/login']"
-  LOGIN_DTN_TA = "annieselke:home_page:login_link"
+  LOGIN_LINK_IL = "//a[@href='/login']"
+  LOGIN_LINK_TA = "annieselke:home_page:login_link"
 
   BLOG_LINK_IL = "//a[@href='https://blog.annieselke.com/']"
   BLOG_LINK_TA  = "annieselke:home_page:blog_link"
+
+  EMAIL_SUBSCRIPTION_IL = "//input[@id='newsletter.email']"
+  EMAIL_SUBSCRIPTION_TA = "annieselke:home_page:email_subscription"
+
+  EMAIL_SUBSCRIPTION_BTN_IL = "//input[@id='newsletter-submit']"
+  EMAIL_SUBSCRIPTION_BTN_TA = "annieselke:home_page:email_subscription_btn"
 
   CART_BTN_IL = "//a[@href='https://annieselke.com/cart']"
   CART_BTN_TA = "annieselke:home_page:cart_btn"
@@ -60,7 +66,7 @@ class Home_Page
   end
 
   def click_login_link(key = nil)
-    find_element_path(key, :xpath, LOGIN_BTN_TA, LOGIN_BTN_IL).click
+    find_element_path(key, :xpath, LOGIN_LINK_TA, LOGIN_LINK_IL).click
   end
 
   def click_on_facebook_icon(key = nil)
@@ -83,4 +89,11 @@ class Home_Page
     find_element_path(key, :xpath, SOCIAL_NETWORKS_TA[:instagram], SOCIAL_NETWORKS_IL[:instagram]).click
   end
 
+  def fill_email_subscription_name(key = nil, value)
+    find_element_path(key, :xpath, EMAIL_SUBSCRIPTION_TA, EMAIL_SUBSCRIPTION_IL).set(value)
+  end
+
+  def click_email_subscription_btn(key = nil)
+    find_element_path(key, :xpath, EMAIL_SUBSCRIPTION_BTN_TA, EMAIL_SUBSCRIPTION_BTN_IL).click
+  end
 end
