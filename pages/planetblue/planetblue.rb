@@ -8,43 +8,43 @@ class PlanetBlue
   include RSpec::Matchers
   include PageExtension
 
+  def _collection_item(name, link = nil)
+    return "//li//a[@aria-label='#{name}']//ancestor::li" if link == nil
+    "//li//a[contains(@href, '#{link}')]//ancestor::li"
+  end
+
   def category_dropdown(key, name)
     locator_by key, "//div[@style='align-items: center; flex-direction: row;']//span[text()='#{name}']",
                "planetblue:category_dropdown:#{ta_name(name)}"
   end
 
-  def collection_item(name, link = nil)
-    return "//li//a[@aria-label='#{name}']//ancestor::li" if link == nil
-    "//li//a[contains(@href, '#{link}')]//ancestor::li"
-  end
-
   def collection_item_by_link(key, name, link)
-    locator_by key, "(#{collection_item name, link}//a[@data-th='product-link'])[1]",
+    locator_by key, "(#{_collection_item name, link}//a[@data-th='product-link'])[1]",
                "planetblue:collection_item:#{ta_name(name)}_by_link_#{ta_name(link)}"
   end
 
   def collection_item_link(key, name)
-    locator_by key, "#{collection_item name}//ancestor::div[@style='align-items: stretch; flex-direction: column;']",
+    locator_by key, "#{_collection_item name}//ancestor::div[@style='align-items: stretch; flex-direction: column;']",
                "planetblue:collection_item:#{ta_name(name)}:link"
   end
 
   def collection_item_title(key, name)
-    locator_by key, "#{collection_item name}//div[text()='#{name}']",
+    locator_by key, "#{_collection_item name}//div[text()='#{name}']",
                "planetblue:collection_item:#{ta_name(name)}:title"
   end
 
   def collection_item_image(key, name)
-    locator_by key, "#{collection_item name}//img[@alt='#{name}']",
+    locator_by key, "#{_collection_item name}//img[@alt='#{name}']",
                "planetblue:collection_item:#{ta_name(name)}:image"
   end
 
   def collection_item_price(key, name)
-    locator_by key, "#{collection_item name}//span[contains(text(), '$')]",
+    locator_by key, "#{_collection_item name}//span[contains(text(), '$')]",
                "planetblue:collection_item:#{ta_name(name)}:price"
   end
 
   def collection_item_color(key, name, color)
-    locator_by key, "#{collection_item name}//div[contains(@amp-bind, 'color.selected.id')]//img[@alt='#{color}']",
+    locator_by key, "#{_collection_item name}//div[contains(@amp-bind, 'color.selected.id')]//img[@alt='#{color}']",
                "planetblue:collection_item:#{ta_name(name)}:color"
   end
 
@@ -55,12 +55,17 @@ class PlanetBlue
 
   def page_header(key, title)
     locator_by key, "//h1[@class='page-header__title' and text()='#{title}']",
-               "planetblue:page_header_title:#{title}"
+               "planetblue:page_header_title:#{ta_name(title)}"
   end
 
   def navbar_link(key, title)
     locator_by key, "//span[contains(text(), '#{title}')]/ancestor::a",
                "planetblue:navbar:link:#{ta_name(title)}"
+  end
+
+  def breadcrumb(key, name, with_link: false)
+    with_link ? el = "//form/div/div/span/a[text()='#{name}']" : el = "//form/div/div/span/span[text()='#{name}']"
+    locator_by key, el,"planetblue:breadcrumbs:#{ta_name(name)}"
   end
 
   # Actions
@@ -82,6 +87,10 @@ class PlanetBlue
                       collection_item_by_link(:il, name, link))
   end
 
+  def click_collection_item(key = nil, name, link:)
+    find_collection_item(key, name, link).click
+  end
+
   def find_total_items(key = nil, number)
     find_element_path(key, :xpath, total_items(:ta, number), total_items(:il, number))
   end
@@ -92,6 +101,11 @@ class PlanetBlue
 
   def click_navbar_link(key = nil, value)
     find_element_path(key, :xpath, navbar_link(:ta, value), navbar_link(:il, value)).click
+  end
+
+  def find_breadcrumb(key = nil, value, with_link)
+    find_element_path(key, :xpath, breadcrumb(:ta, value, with_link),
+                      breadcrumb(:il, value, with_link))
   end
 
 end
