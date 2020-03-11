@@ -42,6 +42,10 @@ favorit:
 
 annieselke:
   page: 'https://annieselke.com'
+  email: 'msitnikova@softesis.com'
+  pass: 'test1234'
+  fisrt_name: 'Maryna'
+  last_name: 'Sitnikova'
 
 stage_com:
   page: "https://www.stage.com/"
