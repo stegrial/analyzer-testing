@@ -43,10 +43,21 @@ def scroll_to_element(locator_type = nil, distance_or_locator)
     element = find(locator_type, distance_or_locator, visible: false)
     page.execute_script("arguments[0].scrollIntoView();", element)
   else
-    counter = (1..100).to_a << 0
+    counter = (1..100).to_a
     counter.each do |i|
       page.execute_script("window.scrollTo(0,document.body.scrollHeight*#{i.to_f/100});")
       sleep 0.01
     end
+  end
+end
+
+#method is needed when user needs to move to first window and close existing one
+def move_between_tabs
+  window = page.driver.browser.window_handles
+
+  if window.size > 1
+    page.driver.browser.switch_to.window(window.last)
+    page.driver.browser.close
+    page.driver.browser.switch_to.window(window.first)
   end
 end
