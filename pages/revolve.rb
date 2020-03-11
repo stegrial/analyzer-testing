@@ -44,7 +44,7 @@ class Revolve
   HAMBURGER_MENU_TA = "revolve:hamburger_menu"
   HAMBURGER_MENU_EP = "EP:revolve:hamburger_menu"
 
-  ACCOUNT_BUTTON_IL = "(//a[text()='Hey, Sign in / Sign Up'])[1]"
+  ACCOUNT_BUTTON_IL = "(//*[contains(text(), 'Hey, ')])[1]"
   ACCOUNT_BUTTON_TA = "revolve:account_button"
   ACCOUNT_BUTTON_EP = "EP:revolve:account_button"
 
