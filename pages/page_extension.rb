@@ -31,4 +31,5 @@ module PageExtension
       find(format, ta(ta_locator, initial_locator), visible: :visible)
     end
   end
+
 end
