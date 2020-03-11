@@ -43,7 +43,7 @@ def scroll_to_element(locator_type = nil, distance_or_locator)
     element = find(locator_type, distance_or_locator, visible: false)
     page.execute_script("arguments[0].scrollIntoView();", element)
   else
-    counter = (1..100).to_a
+    counter = (1..100).to_a << 0
     counter.each do |i|
       page.execute_script("window.scrollTo(0,document.body.scrollHeight*#{i.to_f/100});")
       sleep 0.01
