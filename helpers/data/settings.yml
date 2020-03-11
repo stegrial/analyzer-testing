@@ -12,6 +12,9 @@ venus:
   first_name: 'Denys'
   last_name: 'Shutko'
 
+planetblue:
+  page: "https://shopplanetblue.com/"
+
 how_to_get_money:
   page: 'https://maanimo.com/helpful/142606-kak-zarabotat-dengi-v-ukraine'
 
@@ -145,3 +148,8 @@ thetiebar:
   exp_data_month: "12"
   exp_data_year: "20"
   cvc_cvv: "123"
+
+aliexpress:
+  main_page: "https://ru.aliexpress.com/"
+
+

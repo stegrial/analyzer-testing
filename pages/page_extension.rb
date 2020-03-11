@@ -14,7 +14,7 @@ module PageExtension
   end
 
   def ta_name(name)
-    name.tr('0-9_|: ', '').tr('A-Z', 'a-z')
+    name.tr('^A-Za-z0-9_', '')
   end
 
   def locator_by(key, initial_locator, ta_locator)
@@ -25,10 +25,11 @@ module PageExtension
     end
   end
 
-  def find_element_path(key, format, ta_locator, initial_locator)
+  def find_element_path(key, locator_type, ta_locator, initial_locator)
     post_processing key do
-      return find(format, initial_locator, visible: :visible) if key == :il
-      find(format, ta(ta_locator, initial_locator), visible: :visible)
+      return find(locator_type, initial_locator, visible: :visible) if key == :il
+      find(locator_type, ta(ta_locator, initial_locator), visible: :visible)
     end
   end
+
 end
