@@ -15,7 +15,7 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'TA-911 Element not found when the Dom tree is changed (the Login link)' do
+  feature 'AT-48 Element not found when the Dom tree is changed (the Login link)' do
 
   # Initial locators with Recording
 

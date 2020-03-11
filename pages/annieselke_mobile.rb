@@ -15,7 +15,7 @@ class AnnieselkeMobile
   EMAIL_TA = "annieselke_mobile:email"
   EMAIL_EP = "EP:annieselke_mobile:email"
 
-  PASS_IL = "//input[@id='j_password']"
+  PASS_IL = "(//input[@id='j_password'])[1]"
   PASS_TA = "annieselke_mobile:pass"
   PASS_EP = "EP:annieselke_mobile:pass"
 

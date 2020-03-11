@@ -141,3 +141,8 @@ thetiebar:
   exp_data_month: "12"
   exp_data_year: "20"
   cvc_cvv: "123"
+
+aliexpress:
+  main_page: "https://ru.aliexpress.com/"
+
+

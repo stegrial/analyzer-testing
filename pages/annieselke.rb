@@ -116,7 +116,7 @@ class Annieselke
   end
 
   def close_modal
-    if page.has_xpath?("//iframe[@title='Sign up for 15% Off!']")
+    if page.has_xpath?("//iframe[contains(@title,'15%')]")
       within_frame(1) do
         find(:xpath, "//button[@title='Close Dialog']").click
       end
