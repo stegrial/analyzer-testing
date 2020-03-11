@@ -50,3 +50,15 @@ def scroll_to_element(locator_type = nil, distance_or_locator)
     end
   end
 end
+
+#method is needed when user needs to move to first window and close existing one
+def move_between_tabs
+  window = page.driver.browser.window_handles
+
+  if window.size > 1
+    page.driver.browser.switch_to.window(window.last)
+    page.driver.browser.close
+    page.driver.browser.switch_to.window(window.first)
+  end
+
+end
