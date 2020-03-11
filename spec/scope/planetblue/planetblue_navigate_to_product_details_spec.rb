@@ -48,9 +48,27 @@ describe 'Preconditions' do
         product_details.find_product_image name
       end
 
-      step "User checks product image", 'GLOWY GET' do |color|
-        product_details.find_product_image color
-      end
+      # TODO check title
+      # TODO check radiobuttons by numbers
+      # TODO check like button
+      # TODO check designer
+      # TODO check id
+      # TODO check price
+      # TODO check payment details
+      # TODO check Learn more link in payment details
+      # TODO check Review Stars
+      # TODO check Reviews Number
+      # TODO check Select Color Text
+      # TODO check Select Color Image
+      # TODO check Size Guide
+      # TODO check Size Text
+      # TODO check Sizes Items
+      # TODO check 'Add to bag' button
+      # TODO check Share buttons
+      # TODO check details and review links
+      # TODO check details text
+      # TODO check items in section: You may also like
+      # TODO check items in section: complete the look
 
     end
 
@@ -67,30 +85,7 @@ describe 'Preconditions' do
         product_details.click_search_button
       end
 
-      step "User fills Search Field", 'RUTH TUNIC | New' do |value|
-        check_element_path(:xpath, product_details.fill_search_field(:ta, value),
-                           product_details.fill_search_field(:il, value))
-        product_details.fill_search_field value
-      end
-
-      step "User clicks Search Suggestions item", 'ruth tunic new' do |value|
-        check_element_path(:xpath, product_details.click_search_item(:ta, value),
-                           product_details.click_search_item(:il, value))
-        product_details.click_search_item :ta, value
-      end
-
-      step "User checks found items",
-           'RUTH TUNIC | New', 'ruth-runic?', 'ruth-runic-1?', 2 do |name, link1, link2, number|
-        check_element_path(:xpath, product_details.total_items(:ta, number),
-                           product_details.total_items(:il, number))
-        check_element_path(:xpath, product_details.collection_item_by_link(:ta, name, link1),
-                           product_details.collection_item_by_link(:il, name, link1))
-        check_element_path(:xpath, product_details.collection_item_by_link(:ta, name, link2),
-                           product_details.collection_item_by_link(:il, name, link2))
-        product_details.total_items :ta, number
-        product_details.find_collection_item :ta, name, link: link1
-        product_details.find_collection_item :ta, name, link: link2
-      end
+      # TODO complete
 
     end
 
