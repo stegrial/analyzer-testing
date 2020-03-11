@@ -35,6 +35,7 @@ describe 'Preconditions' do
 
       step "User clicks on search button " do
         it.click_search_btn
+        sleep 3
       end
 
       step "User clicks on the desired search result" do
@@ -43,7 +44,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the appropriate button to click size btn" do
-        sleep 5
+        # sleep 5
         it.click_to_select_size_btn
       end
 
@@ -56,7 +57,7 @@ describe 'Preconditions' do
       end
     end
 
-    scenario 'Searching IL', il: true do
+    scenario 'Searching IL', il1: true do
 
       step "User goes to the page", settings('amazon')['page'] do |url|
         page.visit url

@@ -21,7 +21,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page", settings('24timezones')['page1'] do |url|
         page.visit url
@@ -35,7 +35,7 @@ describe 'Preconditions' do
     end
 
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('24timezones')['page'] do |url|
         page.visit url
@@ -55,7 +55,7 @@ describe 'Preconditions' do
     # 1. Go to the site page: https://24timezones.com/karta-mira
     # 2. Record the element using Picker: "//div/*[text()='ru']"
 
-    scenario 'Searching EP', ep_run: true do
+    scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('24timezones')['page'] do |url|
         page.visit url

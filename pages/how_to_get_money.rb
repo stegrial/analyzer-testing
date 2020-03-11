@@ -7,7 +7,7 @@ class HowToGetMoney
   include RSpec::Matchers
   include PageExtension
 
-  FIRST_LOAN_IL = "//a[text()='Займ до 15000 грн на свою карту']"
+  FIRST_LOAN_IL = "(//a[@rel='sponsored nofollow'])[1]"
   FIRST_LOAN_TA = 'how_to_get_money:first_loan'
   FIRST_LOAN_EP = 'EP:how_to_get_money:first_loan'
 
