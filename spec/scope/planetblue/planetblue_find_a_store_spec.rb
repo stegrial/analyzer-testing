@@ -60,12 +60,14 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Menu Item", 'Find a store' do |value|
-        check_element_path :xpath, planetblue.menu_item(:ta, value), planetblue.menu_item(:il, value)
+        check_element_path :xpath, planetblue.menu_item(:ta, value),
+                           planetblue.menu_item(:il, value)
         planetblue.click_menu_item :ta, value
       end
 
       step "User checks page Header", 'Find A Store' do |title|
-        check_element_path :xpath, planetblue.page_header(:ta, title), planetblue.page_header(:il, title)
+        check_element_path :xpath, planetblue.page_header(:ta, title),
+                           planetblue.page_header(:il, title)
         planetblue.page_header :ta, title
       end
 

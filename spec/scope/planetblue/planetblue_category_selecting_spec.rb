@@ -60,38 +60,48 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Menu button" do
-        check_element_path :css, PlanetBlue::MENU_BUTTON_TA, PlanetBlue::MENU_BUTTON_IL
+        check_element_path :css, planetblue.MENU_BUTTON_TA, planetblue.MENU_BUTTON_IL
         planetblue.click_menu_button :ta
       end
 
       step "User clicks on Menu Category", 'Clothing' do |value|
-        check_element_path :xpath, planetblue.menu_category(:ta, value), planetblue.menu_category(:il, value)
+        check_element_path :xpath, planetblue.menu_category(:ta, value),
+                           planetblue.menu_category(:il, value)
         planetblue.click_menu_category :ta, value
       end
 
       step "User clicks on Menu Category", 'Tops' do |value|
-        check_element_path :xpath, planetblue.menu_category(:ta, value), planetblue.menu_category(:il, value)
+        check_element_path :xpath, planetblue.menu_category(:ta, value),
+                           planetblue.menu_category(:il, value)
         planetblue.click_menu_category :ta, value
       end
 
       step "User clicks on Menu Category", 'Basics' do |value|
-        check_element_path :xpath, planetblue.menu_category(:ta, value), planetblue.menu_category(:il, value)
+        check_element_path :xpath, planetblue.menu_category(:ta, value),
+                           planetblue.menu_category(:il, value)
         planetblue.click_menu_category :ta, value
       end
 
       step "User checks Category Dropdowns", 'REFINE', 'Sort' do |value1, value2|
-        check_element_path :xpath, planetblue.category_dropdown(:ta, value1), planetblue.category_dropdown(:il, value1)
-        check_element_path :xpath, planetblue.category_dropdown(:ta, value2), planetblue.category_dropdown(:il, value2)
+        check_element_path :xpath, planetblue.category_dropdown(:ta, value1),
+                           planetblue.category_dropdown(:il, value1)
+        check_element_path :xpath, planetblue.category_dropdown(:ta, value2),
+                           planetblue.category_dropdown(:il, value2)
         planetblue.find_category_dropdown :ta, value1
         planetblue.find_category_dropdown :ta, value2
       end
 
       step "User checks Collection Items", 'RUTH TUNIC | New', 'Bright Rose' do |name, color|
-        check_element_path(:xpath, planetblue.collection_item_link(:ta, name), planetblue.collection_item_link(:il, name))
-        check_element_path(:xpath, planetblue.collection_item_title(:ta, name), planetblue.collection_item_title(:li, name))
-        check_element_path(:xpath, planetblue.collection_item_image(:ta, name), planetblue.collection_item_image(:li, name))
-        check_element_path(:xpath, planetblue.collection_item_price(:ta, name), planetblue.collection_item_price(:li, name))
-        check_element_path(:xpath, planetblue.collection_item_color(:ta, name, color), planetblue.collection_item_color(:li, name, color))
+        check_element_path(:xpath, planetblue.collection_item_link(:ta, name),
+                           planetblue.collection_item_link(:il, name))
+        check_element_path(:xpath, planetblue.collection_item_title(:ta, name),
+                           planetblue.collection_item_title(:li, name))
+        check_element_path(:xpath, planetblue.collection_item_image(:ta, name),
+                           planetblue.collection_item_image(:li, name))
+        check_element_path(:xpath, planetblue.collection_item_price(:ta, name),
+                           planetblue.collection_item_price(:li, name))
+        check_element_path(:xpath, planetblue.collection_item_color(:ta, name, color),
+                           planetblue.collection_item_color(:li, name, color))
         planetblue.find_collection_item_details :ta, name, color
       end
 
