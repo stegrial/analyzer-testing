@@ -35,12 +35,12 @@ describe 'Preconditions' do
       end
 
       step "User clicks Collection Item", 'THE JESSIE MIDI', 'the-jessie-midi-2?' do |name, link|
-        planetblue.click_collection_item name, link: link
+        planetblue.click_collection_item :il, name, link
       end
 
       step "User checks Breadcrumbs", 'Home', 'THE JESSIE MIDI' do |breadcrumb1, breadcrumb2|
-        product_details.find_breadcrumb breadcrumb1, with_link: true
-        product_details.find_breadcrumb breadcrumb2, with_link: false
+        product_details.find_breadcrumb :il, breadcrumb1, with_link: true
+        product_details.find_breadcrumb :il, breadcrumb2, with_link: false
       end
 
       step "User checks product image", 'THE JESSIE MIDI' do |name|
@@ -96,37 +96,39 @@ describe 'Preconditions' do
         product_details.find_sizes_guide_link
       end
 
-      step "User checks product sizes items", [ '', '', '' ] do |sizes|
-        product_details.find_size_item sizes
+      step "User checks product sizes items", %w(XS S M L) do |sizes|
+        sizes.each { |size|
+          product_details.find_size_item size
+        }
       end
 
       step "User checks 'Add to bag' button" do
         product_details.find_add_to_bag_button
       end
 
-      step "User checks Social Share buttons", [ '', '', '' ] do |social_sharing_buttons|
+      step "User checks Social Share buttons", %w(facebook twitter pinterest) do |social_sharing_buttons|
         social_sharing_buttons.each { |button|
           product_details.find_social_share_button button
         }
       end
 
       step "User checks product details and review tabs" do
-        product_details.product_section_tab 'Details'
-        product_details.product_section_tab 'Review'
+        product_details.find_product_details_tab 'Details'
+        product_details.find_product_details_tab 'Review'
       end
 
-      step "User checks product details text", '...' do |text|
-        product_details.find_product_content text
+      step "User checks product details content" do
+        product_details.find_product_details_content
       end
 
-      step "User checks section 'You may also like'", 'THE JESSIE MIDI', 'BAYLEE DRESS' do |name1, name2|
-        product_details.find_also_like_item name1
-        product_details.find_also_like_item name2
+      step "User checks section 'You may also like'" do
+        product_details.find_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI', '$219.00'
+        product_details.find_bottom_section_item 'You May Also Like', 'BAYLEE DRESS', '$198.00'
       end
 
       step "User checks section 'Complete the look'"  do
-        product_details.find_complete_the_look_item 'BELL JUMPER', '$134.00'
-        product_details.find_complete_the_look_item 'BELL JUMPER', '$143.00'
+        product_details.find_bottom_section_item 'Complete the Look', 'BELL JUMPER', '$134.00'
+        product_details.find_bottom_section_item 'Complete the Look', 'BELL JUMPER', '$143.00'
       end
 
     end

@@ -54,7 +54,7 @@ class PlanetBlue
   end
 
   def page_header(key, title)
-    locator_by key, "//h1[@class='page-header__title' and text()='#{title}']",
+    locator_by key, "//h1[text()='#{title}']",
                "planetblue:page_header_title:#{ta_name(title)}"
   end
 
@@ -64,7 +64,7 @@ class PlanetBlue
   end
 
   def breadcrumb(key, name, with_link: false)
-    with_link ? el = "//form/div/div/span/a[text()='#{name}']" : el = "//form/div/div/span/span[text()='#{name}']"
+    with_link ? el = "//form//a[@class='jss79 jss490' and text()='#{name}']" : el = "//form//span[@class='jss489 jss490' and text()='#{name}']"
     locator_by key, el,"planetblue:breadcrumbs:#{ta_name(name)}"
   end
 
@@ -82,12 +82,12 @@ class PlanetBlue
         find_element_path(key, :xpath, collection_item_color(:ta, name, color), collection_item_color(:il, name, color))
   end
 
-  def find_collection_item(key = nil, name, link:)
+  def find_collection_item(key = nil, name, link)
     find_element_path(key, :xpath, collection_item_by_link(:ta, name, link),
                       collection_item_by_link(:il, name, link))
   end
 
-  def click_collection_item(key = nil, name, link:)
+  def click_collection_item(key = nil, name, link)
     find_collection_item(key, name, link).click
   end
 

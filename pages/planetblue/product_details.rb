@@ -98,78 +98,64 @@ class ProductDetails < PlanetBlue
     find_element_path key, :css, REVIEWS_NUMBER_TA, REVIEWS_NUMBER_IL
   end
 
-  def product_content(key, text)
-    locator_by key, "//span[text()='#{text}']",
-               "planetblue:product_details:text_content"
+  PRODUCT_DETAILS_CONTENT_TA = "planetblue:product_details:product_details_content"
+  PRODUCT_DETAILS_CONTENT_IL= "div[role='tabpanel'] > div > span > span"
+
+  def find_product_details_content(key = nil)
+    find_element_path key, :css, PRODUCT_DETAILS_CONTENT_TA, PRODUCT_DETAILS_CONTENT_IL
   end
 
-  def find_product_content(text)
-    find_element_path key, :xpath, product_radiobutton(:ta, name, number),
-                      product_radiobutton(:il, name, number)
-  end
-
-  SIZES_GUIDE_LINK_TA = ""
-  SIZES_GUIDE_LINK_IL = ""
+  SIZES_GUIDE_LINK_TA = "planetblue:product_details:size_guide_link"
+  SIZES_GUIDE_LINK_IL = "//a/button/span[text()='Size Guide']"
 
   def find_sizes_guide_link(key = nil)
     find_element_path key, :xpath, SIZES_GUIDE_LINK_TA, SIZES_GUIDE_LINK_IL
   end
 
   def size_item(key, size)
-    locator_by key, "",
-               ""
+    locator_by key, "[amp-bind*='#{size}']",
+               "planetblue:product_details:size_item:#{size}"
   end
 
   def find_size_item(size)
-    find_element_path key, :xpath, product_radiobutton(:ta, name, number),
-                      product_radiobutton(:il, name, number)
+    find_element_path key, :css, size_item(:ta, size), size_item(:il, size)
   end
 
-  ADD_TO_BAG_BUTTON_TA = ""
-  ADD_TO_BAG_BUTTON_IL = ""
+  ADD_TO_BAG_BUTTON_TA = "planetblue:product_details:add_to_cart_button"
+  ADD_TO_BAG_BUTTON_IL = "button[data-th='add-to-cart']"
 
   def find_add_to_bag_button(key = nil)
     find_element_path key, :xpath, ADD_TO_BAG_BUTTON_TA, ADD_TO_BAG_BUTTON_IL
   end
 
   def social_share_button(key, name)
-    locator_by key, "",
-               ""
+    locator_by key, "a[name='#{name}']",
+               "planetblue:product_details:social_share_button:#{ta_name(name)}"
   end
 
-  def find_social_share_button(button)
-    find_element_path key, :xpath, product_radiobutton(:ta, name, number),
-                      product_radiobutton(:il, name, number)
+  def find_social_share_button(key = nil, name)
+    find_element_path key, :xpath, social_share_button(:ta, name),
+                      social_share_button(:il, name)
   end
 
-  def product_section_tab(key, name)
-    locator_by key, "",
-               ""
+  def product_details_tab(key, name)
+    locator_by key, "//div[@role='tablist']//span[text()='#{name}']",
+               "planetblue:product_details:product_details_tab:#{ta_name(name)}"
   end
 
-  def find_product_section_tab(name)
-    find_element_path key, :xpath, product_radiobutton(:ta, name, number),
-                      product_radiobutton(:il, name, number)
+  def find_product_details_tab(key = nil, name)
+    find_element_path key, :xpath, product_details_tab(:ta, name),
+                      product_details_tab(:il, name)
   end
 
-  def section_tab(key, name)
-    locator_by key, "",
-               ""
+  def bottom_section_item(key, section, name, price)
+    locator_by key, "//h2[text()='#{section}']//ancestor::div[@class='jss376']//h4[text()='#{name}']//following-sibling::h6[text()='#{price}']",
+               "planetblue:product_details:bottom_section_item:#{ta_name(section)}:#{ta_name(name)}_#{ta_name(price)}"
   end
 
-  def find_also_like_item(name)
-    find_element_path key, :xpath, product_radiobutton(:ta, name, number),
-                      product_radiobutton(:il, name, number)
-  end
-
-  def complete_the_look_item(key, name, price)
-    locator_by key, "",
-               ""
-  end
-
-  def find_complete_the_look_item(name, price)
-    find_element_path key, :xpath, product_radiobutton(:ta, name, number),
-                      product_radiobutton(:il, name, number)
+  def find_bottom_section_item(key = nil, section, name, price)
+    find_element_path key, :xpath, bottom_section_item(:ta, section, name, price),
+                      bottom_section_item(:il, section, name, price)
   end
 
 end
