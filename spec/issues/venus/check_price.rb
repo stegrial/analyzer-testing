@@ -82,7 +82,6 @@ describe 'Preconditions' do
       end
 
       step "User checks price on product" do
-        check_element_path :xpath, VenusProduct::PRICE_ON_PRODUCT_TA, VenusProduct::PRICE_ON_PRODUCT_IL
         product_page.find_price_on_product
       end
 

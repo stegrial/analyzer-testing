@@ -122,6 +122,63 @@ describe 'Preconditions' do
       sleep 3
     end
 
+    scenario 'Recording debug', record_debug: true do
+      # step "User goes to the page", settings('venus')['home_page'] do |url|
+    step "User goes to the page", settings('venus')['clothing_page'] do |url|
+        page.visit url
+      end
+      #
+      #
+      # step "User clicks on the Clothing category" do
+      #   navigation_page.click_clothing_cat :il
+      # end
+      #
+      # step "User opens dropdown in the Clothing category" do
+      #   category_page.open_cat_dropdown :il
+      # end
 
+      # step "User chooses the subcategory in the dropdown", 'Clothing', 'Tops' do |*name|
+      #   category_page.choose_subcat_by_first_name :il,name
+      # end
+
+      step "User opens dropdown in the Tops subcategory" do
+        sub_category_page.open_subcat_dropdown :il
+      end
+
+      step "User chooses the Clothing category in the dropdown" do
+        sub_category_page.choose_clothing_cat
+      end
+
+      sleep 3
+    end
+
+    scenario 'Searching debug', search_debug: true do
+      step "User goes to the page", settings('venus')['home_page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the Clothing category" do
+        navigation_page.click_clothing_cat :il
+      end
+
+      2.times do
+        step "User opens dropdown in the Clothing category" do
+          sleep 5
+          category_page.open_cat_dropdown :il
+        end
+
+        step "User chooses the subcategory in the dropdown", 'Clothing', 'Tops' do |*name|
+          category_page.choose_subcat_by_first_name :il,name
+        end
+
+        step "User opens dropdown in the Tops subcategory" do
+          sub_category_page.open_subcat_dropdown :il
+        end
+
+        step "User chooses the Clothing category in the dropdown" do
+          sub_category_page.choose_clothing_cat
+        end
+      end
+    end
   end
 end

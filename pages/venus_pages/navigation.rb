@@ -11,7 +11,6 @@ class VenusNavigation
   ACCOUNT_BUTTON_TA = 'venus:navigation_page:account_button'
   ACCOUNT_BUTTON_EP = 'EP:venus:navigation_page:account_button'
 
-  # ORDER_HISTORY_IL = "(//li[@role='menuitem' and ./a[text()='Order History']])[2]"
   ORDER_HISTORY_IL = "(//a[text()='Order History'])[3]"
   ORDER_HISTORY_TA = 'venus:navigation_page:account_menu:order_history'
   ORDER_HISTORY_EP = 'EP:venus:navigation_page:account_menu:order_history'

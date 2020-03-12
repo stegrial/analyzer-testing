@@ -11,6 +11,7 @@ venus:
   pass: 'asdffdsA1'
   first_name: 'Denys'
   last_name: 'Shutko'
+  clothing_page: 'https://www.venus.com/products.aspx?BRANCH=7~63~'
 
 how_to_get_money:
   page: 'https://maanimo.com/helpful/142606-kak-zarabotat-dengi-v-ukraine'
