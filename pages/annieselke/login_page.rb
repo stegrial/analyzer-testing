@@ -7,7 +7,6 @@ class Login_Page
   include RSpec::Matchers
   include PageExtension
 
-
   EMAIL_FIELD_IL = "//input[@class='text']"
   EMAIL_FIELD_TA = "annieselke:login_page:email_input"
   
@@ -19,6 +18,9 @@ class Login_Page
 
   FORGOTTEN_PASS_LINK_IL = "//a[@class='password-forgotten']"
   FORGOTTEN_PASS_LINK_TA ="annieselke:login_page:forgotten_pass_link"
+
+  CREATE_NEW_ACCOUNT_ARROW_IL = "//span[text()='Create an Account']"
+  CREATE_NEW_ACCOUNT_ARROW_TA = "annieselke:login_page:create_new_account_arrow"
 
   def fill_email_input(key = nil, value)
     find_element_path(key, :xpath, EMAIL_FIELD_TA, EMAIL_FIELD_IL).set(value)
@@ -33,6 +35,10 @@ class Login_Page
   end
 
   def click_forgot_pass_link(key=nil)
+    find_element_path(key, :xpath, FORGOTTEN_PASS_LINK_TA, FORGOTTEN_PASS_LINK_IL).click
+  end
+
+  def click_create_new_account_arrow
     find_element_path(key, :xpath, FORGOTTEN_PASS_LINK_TA, FORGOTTEN_PASS_LINK_IL).click
   end
 end

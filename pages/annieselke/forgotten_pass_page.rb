@@ -1,7 +1,6 @@
 require 'spec_helper'
 require_relative '../page_extension'
 
-
 class Forgotten_Pass_Page
   include TrueAutomation::DSL
   include Capybara::DSL
