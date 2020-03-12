@@ -34,7 +34,7 @@ describe 'Preconditions' do
       end
 
       sleep 3
-      Capybara.current_session.driver.quit
+      # Capybara.current_session.driver.quit
     end
 
 
@@ -78,7 +78,7 @@ describe 'Preconditions' do
 
     # Debug
 
-    scenario 'Recording debug', rec_debug: true do
+    scenario 'Recording debug', record_debug: true do
 
       step "User goes to the page", settings('zachet')['page'] do |url|
         page.visit url
