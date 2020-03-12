@@ -64,7 +64,7 @@ class PlanetBlue
   end
 
   def breadcrumb(key, name, with_link: false)
-    with_link ? el = "//form//a[@class='jss79 jss490' and text()='#{name}']" : el = "//form//span[@class='jss489 jss490' and text()='#{name}']"
+    with_link ? el = "//form//a[text()='#{name}']" : el = "//form//span[text()='#{name}']"
     locator_by key, el,"planetblue:breadcrumbs:#{ta_name(name)}"
   end
 

@@ -12,21 +12,26 @@ class ProductDetails < PlanetBlue
                "planetblue:product_details:#{ta_name(name)}:image"
   end
 
+  def find_product_image(key = nil, name)
+    find_element_path(key, :xpath, product_image(:ta, name), product_image(:il, name))
+  end
+
   def product_image_scale_button(key, name)
     locator_by key, "#{_product_image_container(name)}/div/div/div[4]/*",
                "planetblue:product_details:#{ta_name(name)}:image_scale_button"
   end
 
-  def find_product_image(key = nil, name)
-    find_element_path(key, :xpath, product_image(:ta, name), product_image(:il, name))
+  def find_product_scale_image(key = nil, name)
+    find_element_path(key, :xpath, product_image_scale_button(:ta, name),
+                      product_image_scale_button(:il, name))
   end
 
   def product_title(key, name)
-    locator_by key, "//h2[text()='#{name}']",
+    locator_by key, "//h4[text()='#{name}']",
                "planetblue:product_details:#{ta_name(name)}:title"
   end
 
-  def find_product_title(name)
+  def find_product_title(key = nil, name)
     find_element_path(key, :xpath, product_title(:ta, name), product_title(:il, name))
   end
 
@@ -35,13 +40,13 @@ class ProductDetails < PlanetBlue
                "planetblue:product_details:#{ta_name(name)}:radiobutton:#{number}"
   end
 
-  def find_product_radiobutton(name, number)
+  def find_product_radiobutton(key = nil, name, number)
     find_element_path key, :xpath, product_image_radiobutton(:ta, name, number),
                       product_image_radiobutton(:il, name, number)
   end
 
   WHISHLIST_BUTTON_TA = "planetblue:product_details:like_button"
-  WHISHLIST_BUTTON_IL = "[aria-label='Wishlist'] svg"
+  WHISHLIST_BUTTON_IL = "[aria-label='Wishlist']"
 
   def find_wishlist_button(key = nil)
     find_element_path key, :css, WHISHLIST_BUTTON_TA, WHISHLIST_BUTTON_IL
@@ -87,7 +92,7 @@ class ProductDetails < PlanetBlue
                "planetblue:product_details:review_star:#{ta_name(number)}"
   end
 
-  def find_review_stars(number)
+  def find_review_stars(key = nil, number)
     find_element_path key, :css, review_stars(:ta, number), review_stars(:il, number)
   end
 
@@ -117,7 +122,7 @@ class ProductDetails < PlanetBlue
                "planetblue:product_details:size_item:#{size}"
   end
 
-  def find_size_item(size)
+  def find_size_item(key = nil, size)
     find_element_path key, :css, size_item(:ta, size), size_item(:il, size)
   end
 
