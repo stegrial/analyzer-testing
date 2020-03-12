@@ -25,8 +25,11 @@ class Home_Page
   EMAIL_SUBSCRIPTION_BTN_IL = "//input[@id='newsletter-submit']"
   EMAIL_SUBSCRIPTION_BTN_TA = "annieselke:home_page:email_subscription_btn"
 
-  CART_BTN_IL = "//a[@href='https://annieselke.com/cart']"
-  CART_BTN_TA = "annieselke:home_page:cart_btn"
+  CART_LINK_IL = "//a[@href='https://annieselke.com/cart']"
+  CART_LINK_TA = "annieselke:home_page:cart_link"
+
+  VIEW_CART_IL = "//div[@class='mini-cart-links']//a[@class='button primary']"
+  VIEW_CART_TA = "annieselke:home_page:view_cart_btn"
 
   SOCIAL_NETWORKS_IL = {facebook: "//a[@href = 'https://www.facebook.com/annieselke/']",
                         twitter: "//a[@href = 'https://twitter.com/annieselkeco/']", pinterest: "//a[@href = 'https://www.pinterest.com/AnnieSelke/']",
@@ -95,5 +98,18 @@ class Home_Page
 
   def click_email_subscription_btn(key = nil)
     find_element_path(key, :xpath, EMAIL_SUBSCRIPTION_BTN_TA, EMAIL_SUBSCRIPTION_BTN_IL).click
+  end
+
+  def move_to_cart_link(key = nil)
+    find_element_path(key, :xpath, CART_LINK_TA, CART_LINK_IL).hover
+  end
+
+  def click_view_cart_btn(key = nil)
+    find_element_path(key, :xpath, VIEW_CART_TA, VIEW_CART_IL).click
+    page.go_back
+  end
+
+  def click_cart_link(key = nil)
+    find_element_path(key, :xpath, CART_LINK_TA, CART_LINK_IL).click
   end
 end

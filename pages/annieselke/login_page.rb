@@ -17,6 +17,9 @@ class Login_Page
   LOGIN_BTN_IL = "//button[@class='primary actionSet']"
   LOGIN_BTN_TA = "annieselke:login_page:pass_input"
 
+  FORGOTTEN_PASS_LINK_IL = "//a[@class='password-forgotten']"
+  FORGOTTEN_PASS_LINK_TA ="annieselke:login_page:forgotten_pass_link"
+
   def fill_email_input(key = nil, value)
     find_element_path(key, :xpath, EMAIL_FIELD_TA, EMAIL_FIELD_IL).set(value)
   end
@@ -27,5 +30,9 @@ class Login_Page
 
   def click_login_btn(key = nil)
     find_element_path(key, :xpath, LOGIN_BTN_TA, LOGIN_BTN_IL).click
+  end
+
+  def click_forgot_pass_link(key=nil)
+    find_element_path(key, :xpath, FORGOTTEN_PASS_LINK_TA, FORGOTTEN_PASS_LINK_IL).click
   end
 end
