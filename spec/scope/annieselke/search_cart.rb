@@ -46,9 +46,23 @@ describe 'Preconditions' do
     #     home_page.close_banner
     #   end
     #
-    #   step "Search items" do |value|
+    #   step "Search items"  do |value|
     #     check_element_path :xpath, Home_Page::SEARCH_FIELD_TA, Home_Page::SEARCH_FIELD_IL
     #     home_page.fill_search_input(value)
+    #   end
+    #   step "Check cart"  do
+    #     check_element_path :xpath, Home_Page::CART_LINK_TA, Home_Page::CART_LINK_IL
+    #     home_page.move_to_cart_link
+    #   end
+    #
+    #   step "Click View Cart"  do
+    #     check_element_path :xpath, Home_Page::VIEW_CART_TA, Home_Page::VIEW_CART_IL
+    #     home_page.click_view_cart_btn
+    #   end
+    #
+    #   step "Click to cart link"  do
+    #     check_element_path :xpath, Home_Page::CART_LINK_TA, Home_Page::CART_LINK_IL
+    #     home_page.click_cart_link
     #   end
     # end
   end
