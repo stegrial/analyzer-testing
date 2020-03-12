@@ -7,13 +7,14 @@ class VenusNavigation
   include RSpec::Matchers
   include PageExtension
 
-  ACCOUNT_BUTTON_IL = "(//button[@aria-label='Account'])[1]"
+  ACCOUNT_BUTTON_IL = "(//button[@aria-label='Account'])[2]"
   ACCOUNT_BUTTON_TA = 'venus:navigation_page:account_button'
   ACCOUNT_BUTTON_EP = 'EP:venus:navigation_page:account_button'
 
-  MAIL_OPTIONS_IL = "(//li[@role='menuitem' and ./a[text()='Mail Options']])[2]"
-  MAIL_OPTIONS_TA = 'venus:navigation_page:account_menu:mail_options'
-  MAIL_OPTIONS_EP = 'EP:venus:navigation_page:account_menu:mail_options'
+  # ORDER_HISTORY_IL = "(//li[@role='menuitem' and ./a[text()='Order History']])[2]"
+  ORDER_HISTORY_IL = "(//a[text()='Order History'])[3]"
+  ORDER_HISTORY_TA = 'venus:navigation_page:account_menu:order_history'
+  ORDER_HISTORY_EP = 'EP:venus:navigation_page:account_menu:order_history'
 
   VENUS_LOGO_IL = "//a[./span[text()='Venus']]"
   VENUS_LOGO_TA = 'venus:navigation_page:logo'
@@ -52,11 +53,11 @@ class VenusNavigation
     end
   end
 
-  def click_mail_options(key = nil)
+  def click_order_history_options(key = nil)
     post_processing key do
-      return find(:xpath, ta(MAIL_OPTIONS_EP)).click if key == :ep
-      return find(:xpath, MAIL_OPTIONS_IL).click if key == :il
-      find(:xpath, ta(MAIL_OPTIONS_TA, MAIL_OPTIONS_IL)).click
+      return find(:xpath, ta(ORDER_HISTORY_EP)).click if key == :ep
+      return find(:xpath, ORDER_HISTORY_IL).click if key == :il
+      find(:xpath, ta(ORDER_HISTORY_TA, ORDER_HISTORY_IL)).click
     end
   end
 

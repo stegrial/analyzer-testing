@@ -44,8 +44,8 @@ describe 'Preconditions' do
         navigation_page.click_account_button
       end
 
-      step "User clicks on the Mail Options in the Account menu" do
-        navigation_page.click_mail_options
+      step "User clicks on the Order History in the Account menu" do
+        navigation_page.click_order_history_options
       end
 
       sleep 3
@@ -83,9 +83,9 @@ describe 'Preconditions' do
           navigation_page.click_account_button
         end
 
-        step "User clicks on the Mail Options in the Account menu" do
-          check_element_path :xpath, VenusNavigation::MAIL_OPTIONS_TA, VenusNavigation::MAIL_OPTIONS_IL
-          navigation_page.click_mail_options
+        step "User clicks on the Order History in the Account menu" do
+          check_element_path :xpath, VenusNavigation::ORDER_HISTORY_TA, VenusNavigation::ORDER_HISTORY_IL
+          navigation_page.click_order_history_options
           sleep 3 # to wait for the page is loaded, account menu can not be opened if the page is not loaded
         end
       end
@@ -127,9 +127,9 @@ describe 'Preconditions' do
           navigation_page.click_account_button :ep
         end
 
-        step "User clicks on the Mail Options in the Account menu" do
-          check_element_path :xpath, VenusNavigation::MAIL_OPTIONS_TA, VenusNavigation::MAIL_OPTIONS_IL
-          navigation_page.click_mail_options :ep
+        step "User clicks on the Order History in the Account menu" do
+          check_element_path :xpath, VenusNavigation::ORDER_HISTORY_EP, VenusNavigation::ORDER_HISTORY_IL
+          navigation_page.click_order_history_options :ep
           sleep 3 # to wait for the page is loaded, account menu can not be opened if the page is not loaded
         end
       end
@@ -165,8 +165,8 @@ describe 'Preconditions' do
         navigation_page.click_account_button :il
       end
 
-      step "User clicks on the Mail Options in the Account menu" do
-        navigation_page.click_mail_options
+      step "User clicks on the Order History in the Account menu" do
+        navigation_page.click_order_history_options
       end
 
       sleep 3
@@ -198,8 +198,8 @@ describe 'Preconditions' do
         navigation_page.click_account_button :il
       end
 
-      step "User clicks on the Mail Options in the Account menu" do
-        navigation_page.click_mail_options :il
+      step "User clicks on the Order History in the Account menu" do
+        navigation_page.click_order_history_options :il
         sleep 3 # to wait for the page is loaded, account menu can not be opened if the page is not loaded
       end
 
@@ -207,8 +207,8 @@ describe 'Preconditions' do
         navigation_page.click_account_button :il
       end
 
-      step "User clicks on the Mail Options in the Account menu" do
-        navigation_page.click_mail_options
+      step "User clicks on the Order History in the Account menu" do
+        navigation_page.click_order_history_options
       end
 
 

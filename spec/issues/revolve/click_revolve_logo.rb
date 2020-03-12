@@ -21,8 +21,8 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
+    scenario 'Recording IL', il: true do
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
       sleep 5
@@ -36,8 +36,8 @@ describe 'Preconditions' do
 
     end
 
-    scenario 'Searching IL', il_run: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
+    scenario 'Searching IL', il: true do
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
 
@@ -55,8 +55,8 @@ describe 'Preconditions' do
     end
     # Element Picker from Repository
 
-    scenario 'Searching EP', ep_run: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
+    scenario 'Searching EP', ep: true do
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
 
@@ -76,7 +76,7 @@ describe 'Preconditions' do
     # Debug
 
     scenario 'Recording debug', rec_debug: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
 
@@ -92,7 +92,7 @@ describe 'Preconditions' do
     end
 
     scenario 'Searching debug', search_debug: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
 

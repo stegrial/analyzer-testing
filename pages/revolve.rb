@@ -80,7 +80,7 @@ class Revolve
   BUY_BTN_TA = "revolve:buy_btn"
   BUY_BTN_EP = "EP:revolve:buy_btn"
 
-  PRODUCT_IMG_IL = "(//img[@alt='product'])[4]"
+  PRODUCT_IMG_IL = "(//img[@alt='product'])[2]"
   PRODUCT_IMG_TA = "revolve:jewelry_product_img"
   PRODUCT_IMG_EP = "EP:revolve:jewelry_product_img"
 
@@ -88,11 +88,11 @@ class Revolve
   ADD_TO_BAG_TA = "revolve:add_to_bag"
   ADD_TO_BAG_EP = "EP:revolve:add_to_bag"
 
-  VIEW_BAG_IL = "//a[text()='View Bag / Checkout']"
+  VIEW_BAG_IL = "//button[@data-th='view-cart']"
   VIEW_BAG_TA = "revolve:view_cart_bag"
   VIEW_BAG_EP = "EP:revolve:view_cart_bag"
 
-  CHECKOUT_BTN_IL = "(//span[text()='Proceed to checkout'])[1]"
+  CHECKOUT_BTN_IL = "(//a[text()='Proceed to checkout'])[1]"
   CHECKOUT_BTN_TA = "revolve:checkout_page"
   CHECKOUT_BTN_EP = "EP:revolve:checkout_page"
 
@@ -309,83 +309,106 @@ class Revolve
     end
   end
 
-  def click_checkout_page(key=nil)
-    return find(:xpath, ta(CHECKOUT_BTN_EP)).click if key == :ep
-    return find(:xpath, CHECKOUT_BTN_IL).click if key == :il
-    find(:xpath, ta(CHECKOUT_BTN_TA, CHECKOUT_BTN_IL)).click
+  def click_checkout_page(key = nil)
+    post_processing key do
+      return find(:xpath, ta(CHECKOUT_BTN_EP)).click if key == :ep
+      return find(:xpath, CHECKOUT_BTN_IL).click if key == :il
+      find(:xpath, ta(CHECKOUT_BTN_TA, CHECKOUT_BTN_IL)).click
+      end
   end
 
-  def click_add_to_bag(key=nil)
-    return find(:xpath, ta(ADD_TO_BAG_EP)).click if key == :ep
-    return find(:xpath, ADD_TO_BAG_IL).click if key == :il
-    find(:xpath, ta(ADD_TO_BAG_TA, ADD_TO_BAG_IL)).click
+  def click_add_to_bag(key = nil)
+    post_processing key do
+      return find(:xpath, ta(ADD_TO_BAG_EP)).click if key == :ep
+      return find(:xpath, ADD_TO_BAG_IL).click if key == :il
+      find(:xpath, ta(ADD_TO_BAG_TA, ADD_TO_BAG_IL)).click
+      end
   end
 
-  def select_country(key=nil)
+  def select_country(key = nil)
     select "US", :from => "shipping_country"
   end
 
-  def set_name(key=nil, name)
-    return find(:css, ta(FULL_NAME_EP)).set(name) if key == :ep
-    return find(:css, FULL_NAME_IL).set(name) if key == :il
-    find(:css, ta(FULL_NAME_TA, FULL_NAME_IL)).set(name)
-  end
-
-  def set_address(key=nil, adress)
-    return find(:css, ta(ADDRESS_EP)).set(adress) if key == :ep
-    return find(:css, ADDRESS_IL).set(adress) if key == :il
-    find(:css, ta(ADDRESS_TA, ADDRESS_IL)).set(adress)
-  end
-
-  def set_deep_address(key=nil, adress2)
-    return find(:css, ta(DEEP_ADDRESS_EPADDRESS_EP)).set(adress2) if key == :ep
-    return find(:css, DEEP_ADDRESS_IL).set(adress2) if key == :il
-    find(:css, ta(DEEP_ADDRESS_TA, DEEP_ADDRESS_IL)).set(adress2)
-  end
-
-  def set_zip_code(key=nil, zip)
-    return find(:css, ta(ZIP_CODE_EP)).set(zip) if key == :ep
-    return find(:css, ZIP_CODE_IL).set(zip) if key == :il
-    find(:css, ta(ZIP_CODE_TA, ZIP_CODE_IL)).set(zip)
-  end
-
-  def set_phone(key=nil, phone)
-    return find(:css, ta(PHONE_EP)).set(phone) if key == :ep
-    return find(:css, PHONE_IL).set(phone) if key == :il
-    find(:css, ta(PHONE_TA, PHONE_IL)).set(phone)
-  end
-  def set_order_email(key=nil, email)
-    return find(:css, ta(ORDER_EMAIL_EP)).set(email) if key == :ep
-    return find(:css, ORDER_EMAIL_IL).set(email) if key == :il
-    find(:css, ta(ORDER_EMAIL_TA, ORDER_EMAIL_IL)).set(email)
-  end
-
-  def click_continue_save_btn(key=nil)
-    return find(:xpath, ta(SAVE_CONTINUE_BTN_EP)).click if key == :ep
-    return find(:xpath, SAVE_CONTINUE_BTN_IL).click if key == :il
-    find(:xpath, ta(SAVE_CONTINUE_BTN_TA, SAVE_CONTINUE_BTN_IL)).click
-  end
-
-  def click_proceed_to_checkout1
-    if page.has_xpath?("(//span[text()='Proceed to checkout'])[1]")
-      find(:xpath, "(//span[text()='Proceed to checkout'])[1]").click
-      p "span"
-    else
-      find(:xpath, "(//a[text()='Proceed To Checkout'])[1]").click
-      p "a"
+  def set_name(key = nil, name)
+    post_processing key do
+      return find(:css, ta(FULL_NAME_EP)).set(name) if key == :ep
+      return find(:css, FULL_NAME_IL).set(name) if key == :il
+      find(:css, ta(FULL_NAME_TA, FULL_NAME_IL)).set(name)
     end
   end
 
-  def click_sort_by(key=nil)
-    return find(:xpath, ta(SORT_BTN_EP)).click if key == :ep
-    return find(:xpath, SORT_BTN_IL).click if key == :il
-    find(:xpath, ta(SORT_BTN_TA, SORT_BTN_IL)).click
+  def set_address(key = nil, adress)
+    post_processing key do
+      return find(:css, ta(ADDRESS_EP)).set(adress) if key == :ep
+      return find(:css, ADDRESS_IL).set(adress) if key == :il
+      find(:css, ta(ADDRESS_TA, ADDRESS_IL)).set(adress)
+    end
   end
 
- def click_sort_by_price(key=nil)
-    return find(:xpath, ta(SORT_BY_PRICE_EP)).click if key == :ep
-    return find(:xpath, SORT_BY_PRICE_IL).click if key == :il
-    find(:xpath, ta(SORT_BY_PRICE_TA, SORT_BY_PRICE_IL)).click
+  def set_deep_address(key = nil, adress2)
+    post_processing key do
+      return find(:css, ta(DEEP_ADDRESS_EPADDRESS_EP)).set(adress2) if key == :ep
+      return find(:css, DEEP_ADDRESS_IL).set(adress2) if key == :il
+      find(:css, ta(DEEP_ADDRESS_TA, DEEP_ADDRESS_IL)).set(adress2)
+    end
+  end
+
+  def set_zip_code(key = nil, zip)
+    post_processing key do
+      return find(:css, ta(ZIP_CODE_EP)).set(zip) if key == :ep
+      return find(:css, ZIP_CODE_IL).set(zip) if key == :il
+      find(:css, ta(ZIP_CODE_TA, ZIP_CODE_IL)).set(zip)
+    end
+  end
+
+  def set_phone(key = nil, phone)
+    post_processing key do
+      return find(:css, ta(PHONE_EP)).set(phone) if key == :ep
+      return find(:css, PHONE_IL).set(phone) if key == :il
+      find(:css, ta(PHONE_TA, PHONE_IL)).set(phone)
+      end
+  end
+
+  def set_order_email(key = nil, email)
+    post_processing key do
+      return find(:css, ta(ORDER_EMAIL_EP)).set(email) if key == :ep
+      return find(:css, ORDER_EMAIL_IL).set(email) if key == :il
+      find(:css, ta(ORDER_EMAIL_TA, ORDER_EMAIL_IL)).set(email)
+    end
+  end
+
+  def click_continue_save_btn(key = nil)
+    post_processing key do
+      return find(:xpath, ta(SAVE_CONTINUE_BTN_EP)).click if key == :ep
+      return find(:xpath, SAVE_CONTINUE_BTN_IL).click if key == :il
+      find(:xpath, ta(SAVE_CONTINUE_BTN_TA, SAVE_CONTINUE_BTN_IL)).click
+      end
+    end
+
+  def click_proceed_to_checkout1
+    if page.has_xpath?("(//a[text()='Proceed to checkout'])[1]")
+      find(:xpath, "(//a[text()='Proceed to checkout'])[1]").click
+      p "a"
+    else
+      find(:xpath, "(//span[text()='Proceed To Checkout'])[1]").click
+      p "span"
+    end
+  end
+
+  def click_sort_by(key = nil)
+    post_processing key do
+      return find(:xpath, ta(SORT_BTN_EP)).click if key == :ep
+      return find(:xpath, SORT_BTN_IL).click if key == :il
+      find(:xpath, ta(SORT_BTN_TA, SORT_BTN_IL)).click
+    end
+  end
+
+ def click_sort_by_price(key = nil)
+   post_processing key do
+     return find(:xpath, ta(SORT_BY_PRICE_EP)).click if key == :ep
+     return find(:xpath, SORT_BY_PRICE_IL).click if key == :il
+     find(:xpath, ta(SORT_BY_PRICE_TA, SORT_BY_PRICE_IL)).click
+   end
  end
 
   def check_sorting
@@ -401,10 +424,12 @@ class Revolve
     end
   end
 
-  def set_search_data(key=nil, data)
-    return find(ta(DATA_INPUT_EP)).set(data) if key == :ep
-    return find(:xpath, DATA_INPUT_IL).set(data) if key == :il
-    find(:xpath, ta(DATA_INPUT_TA, DATA_INPUT_IL)).set(data)
+  def set_search_data(key = nil, data)
+    post_processing key do
+      return find(ta(DATA_INPUT_EP)).set(data) if key == :ep
+      return find(:xpath, DATA_INPUT_IL).set(data) if key == :il
+      find(:xpath, ta(DATA_INPUT_TA, DATA_INPUT_IL)).set(data)
+      end
   end
 
   def click_second_search_result(key = nil)
