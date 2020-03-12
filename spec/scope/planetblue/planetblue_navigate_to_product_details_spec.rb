@@ -7,7 +7,6 @@ include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 product_details = ProductDetails.new
-menu = Menu.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -48,27 +47,87 @@ describe 'Preconditions' do
         product_details.find_product_image name
       end
 
-      # TODO check title
-      # TODO check radiobuttons by numbers
-      # TODO check like button
-      # TODO check designer
-      # TODO check id
-      # TODO check price
-      # TODO check payment details
-      # TODO check Learn more link in payment details
-      # TODO check Review Stars
-      # TODO check Reviews Number
-      # TODO check Select Color Text
-      # TODO check Select Color Image
-      # TODO check Size Guide
-      # TODO check Size Text
-      # TODO check Sizes Items
-      # TODO check 'Add to bag' button
-      # TODO check Share buttons
-      # TODO check details and review links
-      # TODO check details text
-      # TODO check items in section: You may also like
-      # TODO check items in section: complete the look
+      # todo
+      step "User checks product title", 'THE JESSIE MIDI' do |name|
+        product_details.find_product_title name
+      end
+
+      step "User checks product radiobuttons", number do |name|
+        (1..5).each { |num|
+          product_details.find_product_radiobutton name, num
+        }
+      end
+
+      step "User checks product 'Like' Button" do
+        product_details.find_wishlist_button
+      end
+
+      step "User checks product designer" do
+        product_details.find_product_designer
+      end
+
+      step "User checks product ID" do
+        product_details.find_product_id
+      end
+
+      step "User checks product price" do
+        product_details.find_product_price
+      end
+
+      step "User checks product payment details" do
+        product_details.find_payment_details
+      end
+
+      step "User checks 'Learn more' link" do
+        product_details.find_learn_more_link
+      end
+
+      step "User checks product review stars",5 do |number|
+        (1..number).each { |num|
+          product_details.find_review_stars num
+        }
+      end
+
+      step "User checks product payment details" do
+        product_details.find_reviews_number
+      end
+
+      step "User checks product sizes guide link" do
+        product_details.find_sizes_guide_link
+      end
+
+      step "User checks product sizes items", [ '', '', '' ] do |sizes|
+        product_details.find_size_item sizes
+      end
+
+      step "User checks 'Add to bag' button" do
+        product_details.find_add_to_bag_button
+      end
+
+      step "User checks Social Share buttons", [ '', '', '' ] do |social_sharing_buttons|
+        social_sharing_buttons.each { |button|
+          product_details.find_social_share_button button
+        }
+      end
+
+      step "User checks product details and review tabs" do
+        product_details.product_section_tab 'Details'
+        product_details.product_section_tab 'Review'
+      end
+
+      step "User checks product details text", '...' do |text|
+        product_details.find_product_content text
+      end
+
+      step "User checks section 'You may also like'", 'THE JESSIE MIDI', 'BAYLEE DRESS' do |name1, name2|
+        product_details.find_also_like_item name1
+        product_details.find_also_like_item name2
+      end
+
+      step "User checks section 'Complete the look'"  do
+        product_details.find_complete_the_look_item 'BELL JUMPER', '$134.00'
+        product_details.find_complete_the_look_item 'BELL JUMPER', '$143.00'
+      end
 
     end
 
@@ -79,11 +138,6 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks Search Button" do
-        check_element_path(:xpath, product_details.click_search_button(:ta),
-                           product_details.click_search_button(:il))
-        product_details.click_search_button
-      end
 
       # TODO complete
 

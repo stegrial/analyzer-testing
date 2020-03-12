@@ -102,7 +102,7 @@ describe 'Preconditions' do
         check_element_path(:xpath, planetblue.collection_item_price(:ta, name),
                            planetblue.collection_item_price(:li, name))
         check_element_path(:xpath, planetblue.collection_item_color(:ta, name, color),
-                           planetblue.collection_item_color(:li, name, color))
+                           planetblue.find_collection_item(:li, name, color).locator)
         planetblue.find_collection_item_details :ta, name, color
       end
 

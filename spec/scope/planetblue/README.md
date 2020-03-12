@@ -1,3 +1,21 @@
+# Run Tests
+
+* Run all elements recording scenarios:
+
+```
+rspec spec/scope/planetblue/*.rb --tag=record
+```
+
+* Run only one test with elements recording scenario:
+
+```
+rspec spec/scope/planetblue/planetblue_find_product_spec.rb --tag=record
+```
+
+* Run only one test with elements searching scenario by TrueAutomation locators:
+
+```
+TODO:
 - purchase product if logged in
 - only start a purchase product if logged in (check a cart/bag on the top)
 - login
