@@ -56,4 +56,11 @@ class Menu
     find_element_path(key, :xpath, search_item(:ta, name), search_item(:il, name)).click
   end
 
+  MENU_USER_BUTTON_TA = "planetblue:menu:user_button"
+  MENU_USER_BUTTON_IL = "a[href*='/account/login']"
+
+  def click_user_button(key = nil)
+    find_element_path(key, :css, MENU_USER_BUTTON_TA, MENU_USER_BUTTON_IL).click
+  end
+
 end
