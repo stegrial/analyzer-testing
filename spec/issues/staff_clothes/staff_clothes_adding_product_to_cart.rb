@@ -21,7 +21,7 @@ describe 'Preconditions' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page", settings('staff')['page'] do |url|
         page.visit url
@@ -65,7 +65,7 @@ describe 'Preconditions' do
 
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('staff')['page'] do |url|
         page.visit url
@@ -171,5 +171,92 @@ describe 'Preconditions' do
       end
     end
 
+    scenario 'Record debug', record_debug: true do
+
+      step "User goes to the page", settings('staff')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on hamburger menu button" do
+        it.click_humburg_menu :il
+      end
+
+      step "User clicks for selecting Mans category" do
+        it.click_men_category :il
+      end
+
+      step "User click on Polo and T-shirt" do
+        it.click_polo_tshirts :il
+      end
+
+      step "User clicks for selecting staff" do
+        it.click_to_choose_polo :il
+      end
+
+      step "User clicks for size selecting" do
+        it.click_to_choose_size :il
+      end
+
+      step "User clicks for adding to cart" do
+        it.click_to_add_to_cart :il
+      end
+
+      step "User clicks for changing order in cart" do
+        it. click_to_change_cart :il
+      end
+
+      step "User clicks for delete from cart" do
+        it.click_to_delete_order :il
+      end
+
+      step "User clicks for changing order in carfort" do
+        it.click_to_update_cart
+      end
+
+    end
+
+    scenario 'Search debug', search_debug: true do
+
+      step "User goes to the page", settings('staff')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on hamburger menu button" do
+        it.click_humburg_menu :il
+      end
+
+      step "User clicks for selecting Mans category" do
+        it.click_men_category :il
+      end
+
+      step "User click on Polo and T-shirt" do
+        it.click_polo_tshirts :il
+      end
+
+      step "User clicks for selecting staff" do
+        it.click_to_choose_polo :il
+      end
+
+      step "User clicks for size selecting" do
+        it.click_to_choose_size :il
+      end
+
+      step "User clicks for adding to cart" do
+        it.click_to_add_to_cart :il
+      end
+
+      step "User clicks for changing order in cart" do
+        it. click_to_change_cart :il
+      end
+
+      step "User clicks for delete from cart" do
+        it.click_to_delete_order :il
+      end
+
+      step "User clicks for changing order in carfort" do
+        it.click_to_update_cart
+      end
+
+    end
   end
 end

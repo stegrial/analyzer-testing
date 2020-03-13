@@ -104,6 +104,7 @@ tumblr:
 
 revolve:
   page: "https://revolve-pwa.moovweb.cloud/"
+  moov_pwa: "https://moov-revolve-pwa.moovweb.cloud/mobile/"
   email: "julia.arapova@softesis.com"
   pass: "1234tesT"
 

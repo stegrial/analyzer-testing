@@ -20,10 +20,10 @@ describe 'Preconditions' do
 
   feature 'TA-981 Filling checkout page' do
 
-    scenario 'Recording IL', il_run: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page" do
-        visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
+        visit 'https://moov-revolve-pwa.moovweb.cloud/mobile/jewelry-accessories/br/946fac/?navsrc=hp_nav'
       end
 
       step "User clicks on jewelry product img" do
@@ -62,10 +62,10 @@ describe 'Preconditions' do
 
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page" do
-        visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
+        visit 'https://moov-revolve-pwa.moovweb.cloud/mobile/jewelry-accessories/br/946fac/?navsrc=hp_nav'
       end
 
       step "User clicks on jewelry product img" do
@@ -112,7 +112,7 @@ describe 'Preconditions' do
     scenario 'Recording debug', rec_debug: true do
 
       step "User goes to the page" do
-        visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
+        visit 'https://moov-revolve-pwa.moovweb.cloud/mobile/jewelry-accessories/br/946fac/?navsrc=hp_nav'
       end
 
       step "User clicks on jewelry product img" do
@@ -152,7 +152,7 @@ describe 'Preconditions' do
     scenario 'Searching debug', search_debug: true do
 
       step "User goes to the page" do
-        visit 'https://revolve-pwa.moovweb.cloud/mobile/s?s=c&c=Jewelry%20%26%20Accessories&sc=&d=Womens&fw=false'
+        visit 'https://moov-revolve-pwa.moovweb.cloud/mobile/jewelry-accessories/br/946fac/?navsrc=hp_nav'
       end
 
       step "User clicks on jewelry product img" do
