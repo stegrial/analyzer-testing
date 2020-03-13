@@ -12,6 +12,9 @@ venus:
   first_name: 'Denys'
   last_name: 'Shutko'
 
+planetblue:
+  page: "https://shopplanetblue.com/"
+
 how_to_get_money:
   page: 'https://maanimo.com/helpful/142606-kak-zarabotat-dengi-v-ukraine'
 
@@ -42,6 +45,10 @@ favorit:
 
 annieselke:
   page: 'https://annieselke.com'
+  email: 'msitnikova@softesis.com'
+  pass: 'test1234'
+  fisrt_name: 'Maryna'
+  last_name: 'Sitnikova'
 
 stage_com:
   page: "https://www.stage.com/"
