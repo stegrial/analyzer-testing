@@ -1,7 +1,12 @@
 require 'spec_helper'
 require_relative '../page_extension'
 
-class ProductDetails < PlanetBlue
+class ProductDetails
+
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
+  include PageExtension
 
   def _product_image_container(name)
     "//span[text()='#{name}']//ancestor::form//div[@style='flex-direction: column;']"
@@ -46,9 +51,12 @@ class ProductDetails < PlanetBlue
   end
 
   PRODUCT_DESIGNER_TA = "planetblue:product_details:designer"
-  PRODUCT_DESIGNER_IL = "//*[@style='min-height:125px']/div/div[2]/p"
+  # PRODUCT_DESIGNER_IL = "//div[@data-page='Product']/form//div[@style='min-height:125px']"
+  PRODUCT_DESIGNER_IL = "//*[@id='maincontent']/div/div/form/div/div[2]/div[2]/div[1]"
+  # PRODUCT_DESIGNER_IL = "//*[@style='min-height:125px']/div/div[2]/p"
 
   def find_product_designer(key = nil)
+    # execute_script "window.scrollBy(0,200)"
     find_element_path key, :xpath, PRODUCT_DESIGNER_TA, PRODUCT_DESIGNER_IL
   end
 

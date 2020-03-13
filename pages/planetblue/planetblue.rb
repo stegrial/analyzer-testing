@@ -96,7 +96,7 @@ class PlanetBlue
     find_element_path(key, :xpath, navbar_link(:ta, value), navbar_link(:il, value)).click
   end
 
-  def breadcrumb(key, name, with_link: false)
+  def breadcrumb(key, name, with_link)
     with_link ? el = "//form//a[text()='#{name}']" : el = "//form//span[text()='#{name}']"
     locator_by key, el,"planetblue:breadcrumbs:#{ta_name(name)}"
   end

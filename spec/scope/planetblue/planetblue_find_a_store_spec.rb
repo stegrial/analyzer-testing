@@ -5,6 +5,7 @@ required_relative_all "/pages/planetblue/*.rb"
 
 include ElementSearchValidation
 
+planetblue = PlanetBlue.new
 find_a_store = FindAStore.new
 menu = Menu.new
 describe 'Preconditions' do
@@ -17,7 +18,6 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-
   feature 'Planet Blue - Find a Store' do
 
     scenario 'Recording Locators', record: true do
@@ -27,15 +27,15 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Menu button" do
-        menu.click_menu_button
+        menu.click_menu_button :il
       end
 
       step "User clicks on Menu Item", 'Find a store' do |value|
-        menu.click_menu_item value
+        menu.click_menu_item :il, value
       end
 
       step "User checks page Header", 'Find A Store' do |title|
-        find_a_store.find_page_header :il, title
+        planetblue.find_page_header :il, title
       end
 
       step "User checks Store item", 'Planet Blue | Newport Beach' do |title|

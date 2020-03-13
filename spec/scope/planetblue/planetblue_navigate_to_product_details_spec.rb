@@ -39,8 +39,8 @@ describe 'Preconditions' do
       end
 
       step "User checks Breadcrumbs", 'Home', 'THE JESSIE MIDI' do |breadcrumb1, breadcrumb2|
-        product_details.find_breadcrumb :il, breadcrumb1, with_link: true
-        product_details.find_breadcrumb :il, breadcrumb2, with_link: false
+        planetblue.find_breadcrumb :il, breadcrumb1, true
+        planetblue.find_breadcrumb :il, breadcrumb2, false
       end
 
       step "User checks product image", 'THE JESSIE MIDI' do |name|

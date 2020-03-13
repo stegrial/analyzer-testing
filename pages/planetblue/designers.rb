@@ -1,7 +1,12 @@
 require 'spec_helper'
 require_relative '../page_extension'
 
-class Designers < PlanetBlue
+class Designers
+
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
+  include PageExtension
 
   def designers_list_section(key, name)
     locator_by key, "//ul[@class='designers-list']//h3[text()='#{name}']",

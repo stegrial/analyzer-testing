@@ -1,7 +1,12 @@
 require 'spec_helper'
 require_relative '../page_extension'
 
-class FindAStore < PlanetBlue
+class FindAStore
+
+  include TrueAutomation::DSL
+  include Capybara::DSL
+  include RSpec::Matchers
+  include PageExtension
 
   def store_item_details(key, title)
     locator_by key,
