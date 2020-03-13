@@ -21,11 +21,14 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
+      end
+
+      step "Close banners" do
         home_page.close_banner
+        home_page.close_cupon_banner
       end
 
       step "User clicks on Fresh American Style blog" do
-        home_page.close_cupon_banner
         home_page.click_blog_link
       end
 
@@ -52,46 +55,46 @@ describe 'Preconditions' do
     end
 
 
-    # scenario 'Searching IL', search: true do
-    #   step "User goes to the page", settings('annieselke')['page'] do |url|
-    #     home_page.visit url
-    #     home_page.close_banner
-    #   end
-    #
-    #   step "User clicks on Social networks icons" do
-    #     home_page.close_cupon_banner
-    #
-    #     scroll_to_element nil
-    #     check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:facebook], Home_Page::SOCIAL_NETWORKS_IL[:facebook]
-    #     home_page.click_on_facebook_icon
-    #
-    #     move_between_tabs
-    #     scroll_to_element nil
-    #     check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:twitter], Home_Page::SOCIAL_NETWORKS_IL[:twitter]
-    #     home_page.click_on_twitter_icon
-    #
-    #     move_between_tabs
-    #     scroll_to_element nil
-    #     check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:pinterest], Home_Page::SOCIAL_NETWORKS_IL[:pinterest]
-    #     home_page.click_on_pinterest_icon
-    #
-    #     move_between_tabs
-    #     scroll_to_element nil
-    #     check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:youtube], Home_Page::SOCIAL_NETWORKS_IL[:youtube]
-    #     home_page.click_on_youtube_icon
-    #
-    #     move_between_tabs
-    #     scroll_to_element nil
-    #     check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:instagram], Home_Page::SOCIAL_NETWORKS_IL[:instagram]
-    #     home_page.click_on_instagram_icon
-    #   end
-    #
-    #   step "User clicks on Fresh American Style blog" do
-    #     scroll_to_element nil
-    #     check_element_path :xpath, Home_Page::BLOG_LINK_TA, Home_Page::BLOG_LINK_IL
-    #     home_page.click_blog_link
-    #   end
-    # end
-  end
+    scenario 'Searching IL', search: true do
+      step "User goes to the page", settings('annieselke')['page'] do |url|
+        home_page.visit url
+      end
 
+      step "Close banners" do
+        home_page.close_banner
+        home_page.close_cupon_banner
+      end
+
+      step "User clicks on Fresh American Style blog" do
+        check_element_path :xpath, Home_Page::BLOG_LINK_TA, Home_Page::BLOG_LINK_IL
+        home_page.click_blog_link
+      end
+
+      step "User clicks on Social networks icons" do
+        home_page.close_cupon_banner
+        check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:facebook], Home_Page::SOCIAL_NETWORKS_IL[:facebook]
+        home_page.click_on_facebook_icon
+
+        move_between_tabs
+        home_page.close_cupon_banner
+        check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:twitter], Home_Page::SOCIAL_NETWORKS_IL[:twitter]
+        home_page.click_on_twitter_icon
+
+        move_between_tabs
+        home_page.close_cupon_banner
+        check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:pinterest], Home_Page::SOCIAL_NETWORKS_IL[:pinterest]
+        home_page.click_on_pinterest_icon
+
+        move_between_tabs
+        home_page.close_cupon_banner
+        check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:youtube], Home_Page::SOCIAL_NETWORKS_IL[:youtube]
+        home_page.click_on_youtube_icon
+
+        move_between_tabs
+        home_page.close_cupon_banner
+        check_element_path :xpath, Home_Page::SOCIAL_NETWORKS_TA[:instagram], Home_Page::SOCIAL_NETWORKS_IL[:instagram]
+        home_page.click_on_instagram_icon
+      end
+    end
+  end
 end
