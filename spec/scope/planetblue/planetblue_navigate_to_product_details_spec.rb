@@ -58,10 +58,6 @@ describe 'Preconditions' do
         }
       end
 
-      step "User checks product 'Whishlist' Button" do
-        product_details.find_wishlist_button :il
-      end
-
       step "User checks product designer" do
         product_details.find_product_designer :il
       end

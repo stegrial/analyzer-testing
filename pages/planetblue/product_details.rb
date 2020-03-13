@@ -45,43 +45,36 @@ class ProductDetails < PlanetBlue
                       product_image_radiobutton(:il, name, number)
   end
 
-  WHISHLIST_BUTTON_TA = "planetblue:product_details:like_button"
-  WHISHLIST_BUTTON_IL = "[aria-label='Wishlist']"
-
-  def find_wishlist_button(key = nil)
-    find_element_path key, :css, WHISHLIST_BUTTON_TA, WHISHLIST_BUTTON_IL
-  end
-
-  PRODUCT_DESIGNER_TA = "[class='jss754 jss748'] p"
-  PRODUCT_DESIGNER_IL = "planetblue:product_details:designer"
+  PRODUCT_DESIGNER_TA = "planetblue:product_details:designer"
+  PRODUCT_DESIGNER_IL = "//*[@style='min-height:125px']/div/div[2]/p"
 
   def find_product_designer(key = nil)
-    find_element_path key, :css, PRODUCT_DESIGNER_TA, PRODUCT_DESIGNER_IL
+    find_element_path key, :xpath, PRODUCT_DESIGNER_TA, PRODUCT_DESIGNER_IL
   end
 
   PRODUCT_ID_TA = "planetblue:product_details:product_id"
-  PRODUCT_ID_IL = "[class='jss754 jss748'] p[class='jss267 jss750 jss275']"
+  PRODUCT_ID_IL = "[style='min-height:125px'] > div > *:nth-child(3) > p"
 
   def find_product_id(key = nil)
     find_element_path key, :css, PRODUCT_ID_TA, PRODUCT_ID_IL
   end
 
   PRODUCT_PRICE_TA = "planetblue:product_details:product_price"
-  PRODUCT_PRICE_IL = "[class='jss754'] span[class='jss267 jss751 jss275']"
+  PRODUCT_PRICE_IL = "[style='min-height:125px'] > div > *:nth-child(4) > span"
 
   def find_product_price(key = nil)
     find_element_path key, :xpath, PRODUCT_PRICE_TA, PRODUCT_PRICE_IL
   end
 
   PAYMENT_DETAILS_TA = "planetblue:product_details:payment_details"
-  PAYMENT_DETAILS_IL = "[class='jss755'] > *[data-id]"
+  PAYMENT_DETAILS_IL = "[style='min-height:125px'] *[data-id]"
 
   def find_payment_details(key = nil)
     find_element_path key, :css, PAYMENT_DETAILS_TA, PAYMENT_DETAILS_IL
   end
 
   LEARN_MORE_LINK_TA = "planetblue:product_details:payment_details"
-  LEARN_MORE_LINK_IL = "[class='jss755'] > a"
+  LEARN_MORE_LINK_IL = "[style='min-height:125px'] *[data-id] > a"
 
   def find_learn_more_link(key = nil)
     find_element_path key, :css, LEARN_MORE_LINK_TA, LEARN_MORE_LINK_IL

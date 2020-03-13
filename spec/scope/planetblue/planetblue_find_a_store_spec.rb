@@ -79,8 +79,8 @@ describe 'Preconditions' do
       end
 
       step "User checks Store item", 'Planet Blue | Dallas' do |title|
-        check_element_path :xpath, find_a_store.find_store_item_details(:ta, title),
-                           find_a_store.find_store_item_details(:il, title)
+        check_element_path :xpath, find_a_store.store_item_details(:ta, title),
+                           find_a_store.store_item_details(:il, title)
         find_a_store.find_store_item_details :ta, title
       end
 
