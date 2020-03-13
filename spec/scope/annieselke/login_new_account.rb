@@ -15,7 +15,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  feature 'Search items on home page' do
+  feature 'Login to new account ' do
 
     # Initial locators with Recording
 
@@ -57,6 +57,7 @@ describe 'Preconditions' do
 
       step "User confirms pass", settings('annieselke')['email'] do |pass|
         login_page.confirm_pass(pass)
+        login_page.close_banner
       end
 
       step "User clicks Register  button"   do
