@@ -27,28 +27,28 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Menu button" do
-        menu.click_menu_button :il
+        menu.click_menu_button
       end
 
       step "User clicks on Menu Category", 'Clothing' do |value|
-        menu.click_menu_category :il, value
+        menu.click_menu_category value
       end
 
       step "User clicks on Menu Category", 'Tops' do |value|
-        menu.click_menu_category :il, value
+        menu.click_menu_category value
       end
 
       step "User clicks on Menu Category", 'Basics' do |value|
-        menu.click_menu_category :il, value
+        menu.click_menu_category value
       end
 
       step "User checks Category Dropdowns", 'REFINE', 'Sort' do |value1, value2|
-        planetblue.find_category_dropdown :il, value1
-        planetblue.find_category_dropdown :il, value2
+        planetblue.find_category_dropdown value1
+        planetblue.find_category_dropdown value2
       end
 
       step "User checks Collection Items", 'RUTH TUNIC | New', 'Bright Rose' do |name, color|
-        planetblue.find_collection_item_details :il, name, color
+        planetblue.find_collection_item_details name, color
       end
 
     end

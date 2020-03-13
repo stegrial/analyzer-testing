@@ -14,7 +14,7 @@ class FindAStore
                "planetblue:find_a_store:list_item:#{ta_name(title)}"
   end
 
-  def find_store_item_details(key, title)
+  def find_store_item_details(key = nil, title)
     find_element_path key, :xpath, store_item_details(:ta, title), store_item_details(:il, title)
   end
 

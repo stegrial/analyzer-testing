@@ -27,21 +27,21 @@ describe 'Preconditions' do
       end
 
       step "User clicks Search Button" do
-        menu.click_search_button :il
+        menu.click_search_button
       end
 
       step "User fills Search Field", 'RUTH TUNIC | New' do |value|
-        menu.fill_search_field :il, value
+        menu.fill_search_field value
       end
 
       step "User clicks Search Suggestions item", 'ruth tunic new' do |value|
-        menu.click_search_item :il, value
+        menu.click_search_item value
       end
 
       step "User checks found items", 'RUTH TUNIC | New' do |value|
-        planetblue.total_items :il, 2
-        planetblue.find_collection_item :il, value, 'ruth-tunic?'
-        planetblue.find_collection_item :il, value, 'ruth-tunic-1?'
+        planetblue.total_items 2
+        planetblue.find_collection_item value, 'ruth-tunic?'
+        planetblue.find_collection_item value, 'ruth-tunic-1?'
       end
 
     end

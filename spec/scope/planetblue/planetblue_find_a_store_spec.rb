@@ -27,23 +27,23 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Menu button" do
-        menu.click_menu_button :il
+        menu.click_menu_button
       end
 
       step "User clicks on Menu Item", 'Find a store' do |value|
-        menu.click_menu_item :il, value
+        menu.click_menu_item value
       end
 
       step "User checks page Header", 'Find A Store' do |title|
-        planetblue.find_page_header :il, title
+        planetblue.find_page_header title
       end
 
       step "User checks Store item", 'Planet Blue | Newport Beach' do |title|
-        find_a_store.find_store_item_details :il, title
+        find_a_store.find_store_item_details title
       end
 
       step "User checks Store item", 'Planet Blue | Dallas' do |title|
-        find_a_store.find_store_item_details :il, title
+        find_a_store.find_store_item_details title
       end
 
     end

@@ -69,7 +69,7 @@ class PlanetBlue
     find_collection_item(key, name, link).click
   end
 
-  def total_items(key, number)
+  def total_items(key = nil, number)
     locator_by key, "//div[@style='align-items: center; flex-direction: row;']/span[contains(text(), '#{number}') and contains(text(), 'total items')]",
                "planetblue:total_items"
   end

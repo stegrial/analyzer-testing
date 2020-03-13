@@ -12,6 +12,12 @@ rspec spec/scope/planetblue/*.rb --tag=record
 rspec spec/scope/planetblue/planetblue_find_product_spec.rb --tag=record
 ```
 
+* Run only one test with elements search scenario:
+
+```
+rspec spec/scope/planetblue/planetblue_find_product_spec.rb --tag=search
+```
+
 * Run only one test with elements searching scenario by TrueAutomation locators:
 
 ```

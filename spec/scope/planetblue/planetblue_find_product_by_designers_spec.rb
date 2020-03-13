@@ -31,12 +31,12 @@ describe 'Preconditions' do
       end
 
       step "User checks page Header", 'Designers' do |title|
-        designers.find_page_header :il, title
+        designers.find_page_header title
       end
 
       step "User checks Designers List Item", '#', 'Y' do |value1, value2|
-        designers.find_designers_list_section :il, value1
-        designers.find_designers_list_section :il, value2
+        designers.find_designers_list_section value1
+        designers.find_designers_list_section value2
       end
 
       step "User clicks Designer Item", '27 MILES MALIBU' do |value|
@@ -45,7 +45,7 @@ describe 'Preconditions' do
 
       step "User checks Collection Item",
            'ESSIE CREWNECK SWEATER | New', 'essie-crewneck-sweater?' do |name, link|
-        designers.find_collection_item name, link: link
+        designers.find_collection_item name, link
       end
 
     end
