@@ -13,10 +13,6 @@ describe 'Preconditions' do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
-
   feature 'Youtube - search video' do
 
     scenario 'Recording IL', record: true do
@@ -31,13 +27,10 @@ describe 'Preconditions' do
 
       step "User clicks on search button " do
         it.click_search_btn
-        sleep 3
       end
 
       step "User clicks on the desired search result" do
-        sleep 5
         it.click_on_video_from_search_result
-        sleep 5
       end
     end  	
 
