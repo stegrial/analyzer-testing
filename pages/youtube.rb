@@ -16,8 +16,8 @@ class Youtube
   YOUTUBE_BUTTON_SEARCH_EP = "EP:youtube:search_btn"
 
   VIDEO_FROM_SEARCH_IL = "(//ytd-video-renderer)[1]/div[@id='dismissable']/ytd-thumbnail/a[@id='thumbnail']"
-  VIDEO_FROM_SEARCH_TA = "youtube"
-  VIDEO_FROM_SEARCH_EP = "EP:youtube"
+  VIDEO_FROM_SEARCH_TA = "youtube:first_video"
+  VIDEO_FROM_SEARCH_EP = "EP:youtube:first_video"
 
   def set_data_in_search(key = nil, data)
     post_processing key do
