@@ -56,28 +56,5 @@ describe 'Preconditions' do
       end
     end  
 
-
-    scenario 'Searching EP', ep: true do
-
-      step "User goes to the page", settings('youtube')['page'] do |url|
-        page.visit url
-      end
-
-      step "User inputs into the search ", "bogiem rhapsody" do |data|
-      	check_element_path :xpath, Youtube::YOUTUBE_SEARCH_EP, Youtube::YOUTUBE_SEARCH_IL
-        it.set_data_in_search(:ep, data)
-      end
-
-      step "User clicks on search button " do
-        check_element_path :xpath, Youtube::YOUTUBE_BUTTON_SEARCH_EP, Youtube::YOUTUBE_BUTTON_SEARCH_IL
-        it.click_search_btn :ep
-      end
-
-      step "User clicks on the desired search result" do
-      	check_element_path :xpath, Youtube::VIDEO_FROM_SEARCH_EP, Youtube::VIDEO_FROM_SEARCH_IL
-        it.click_on_video_from_search_result 
-      end
-    end  
-
   end
 end
