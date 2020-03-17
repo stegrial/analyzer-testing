@@ -31,7 +31,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks holiday ties link in footer" do
-        footer_page.click_holiday_ties
+        footer_page.click_holiday_ties :il
       end
 
       step "User clicks thanksgiving ties icon redirected on page" do
@@ -40,7 +40,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks holiday ties link in footer" do
-        footer_page.click_holiday_ties
+        footer_page.click_holiday_ties :il
       end
 
       step "User clicks boys easter ties icon redirected on page" do
@@ -49,6 +49,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks holiday ties link in footer" do
+        sleep 3 #wait wor lazy loading
         footer_page.click_holiday_ties
       end
 

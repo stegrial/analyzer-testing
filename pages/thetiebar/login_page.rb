@@ -21,7 +21,7 @@ class TheTiebarLoginPage
   SIGN_IN_TA = "thetiebar:login_page:signIn"
   SIGN_IN_EP = "EP:thetiebar:login_page:signIn"
 
-  CREATE_ACCOUNT_TAB_IL = "//span[contains(text(), 'Create an Account')]"
+  CREATE_ACCOUNT_TAB_IL = "//a[contains(text(), 'Create an Account')]"
   CREATE_ACCOUNT_TAB_TA = "thetiebar:login_page:create_acc_tab"
   CREATE_ACCOUNT_TAB_EP = "EP:thetiebar:login_page:create_acc_tab"
 

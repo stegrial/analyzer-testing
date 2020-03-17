@@ -29,7 +29,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks for redirecting on main pag" do
-        header_page.click_logo
+        header_page.click_logo :il
       end
 
       step "User clicks terms to use link" do

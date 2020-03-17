@@ -46,7 +46,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks twice catalog togler" do
-        account_page.click_print_catalog_togler
+        account_page.click_print_catalog_togler :il
         account_page.click_print_catalog_togler
       end
 
@@ -106,7 +106,7 @@ describe 'Preconditions' do
 
       step "User clicks twice catalog togler" do
         check_element_path :xpath, TheTiebarAccount_page::SUBSCRIBE_PRINT_CATALOG_TA, TheTiebarAccount_page::SUBSCRIBE_PRINT_CATALOG_IL
-        account_page.click_print_catalog_togler
+        account_page.click_print_catalog_togler :il
         account_page.click_print_catalog_togler
       end
 

@@ -36,10 +36,6 @@ describe 'Preconditions' do
         header_page.click_neckties_category
       end
 
-      step "User clicks on the skinnyties category" do
-        header_page.click_skinnyties_category
-      end
-
       step "User clicks on the bowties category" do
         header_page.click_bowties_category
       end
@@ -63,10 +59,6 @@ describe 'Preconditions' do
       step "User clicks the wedding category" do
         header_page.click_wedding_category
       end
-
-      step "User clicks the gifts category" do
-        header_page.click_gifts_category
-      end
     end
 
     scenario 'Searching IL', il: true do
@@ -88,11 +80,6 @@ describe 'Preconditions' do
       step "User clicks the neckties category" do
         check_element_path :xpath, TheTiebarHeader::NECKTIES_CATEGORY_TA, TheTiebarHeader::NECKTIES_CATEGORY_IL
         header_page.click_neckties_category
-      end
-
-      step "User clicks the skinnyties category" do
-        check_element_path :xpath, TheTiebarHeader::SKINNYTIES_CATEGORY_TA, TheTiebarHeader::SKINNYTIES_CATEGORY_IL
-        header_page.click_skinnyties_category
       end
 
       step "User clicks the bowties category" do
@@ -125,11 +112,6 @@ describe 'Preconditions' do
         header_page.click_wedding_category
       end
 
-      step "User clicks the gifts category" do
-        check_element_path :xpath, TheTiebarHeader::GIFTS_CATEGORY_TA, TheTiebarHeader::GIFTS_CATEGORY_IL
-        header_page.click_gifts_category
-      end
-
     end
 
     # Element Picker from Repository
@@ -152,11 +134,6 @@ describe 'Preconditions' do
       step "User clicks the neckties category" do
         check_element_path :xpath, TheTiebarHeader::NECKTIES_CATEGORY_EP, TheTiebarHeader::NECKTIES_CATEGORY_IL
         header_page.click_neckties_category :ep
-      end
-
-      step "User clicks the skinnyties category" do
-        check_element_path :xpath, TheTiebarHeader::SKINNYTIES_CATEGORY_EP, TheTiebarHeader::SKINNYTIES_CATEGORY_IL
-        header_page.click_skinnyties_category :ep
       end
 
       step "User clicks the bowties category" do
@@ -189,10 +166,6 @@ describe 'Preconditions' do
         header_page.click_wedding_category :ep
       end
 
-      step "User clicks the gifts category" do
-        check_element_path :xpath, TheTiebarHeader::GIFTS_CATEGORY_EP, TheTiebarHeader::GIFTS_CATEGORY_IL
-        header_page.click_gifts_category :ep
-      end
 
     end
   end
