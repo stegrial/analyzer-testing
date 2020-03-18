@@ -23,7 +23,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks Navigation Bar Link", 'Clothing' do |value|
-        sleep 3
         planetblue.click_navbar_link value
       end
 

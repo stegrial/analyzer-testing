@@ -131,7 +131,18 @@ class ProductDetails
   ADD_TO_BAG_BUTTON_IL = "button[data-th='add-to-cart']"
 
   def find_add_to_bag_button(key = nil)
-    find_element_path key, :xpath, ADD_TO_BAG_BUTTON_TA, ADD_TO_BAG_BUTTON_IL
+    find_element_path key, :css, ADD_TO_BAG_BUTTON_TA, ADD_TO_BAG_BUTTON_IL
+  end
+
+  def click_add_to_bag_button(key = nil)
+    find_add_to_bag_button(key).click
+  end
+
+  CHECKOUT_BUTTON_TA = "planetblue:product_details:checkout_button"
+  CHECKOUT_BUTTON_IL = "button[data-th='add-to-cart']"
+
+  def click_checkout_button(key = nil)
+    find_element_path(key, :xpath, CHECKOUT_BUTTON_TA, CHECKOUT_BUTTON_IL).click
   end
 
   def social_share_button(key, name)
