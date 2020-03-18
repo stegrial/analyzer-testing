@@ -39,9 +39,14 @@ class Home_Page
                         twitter: "annieselke:home_page:social_networks:twitter", pinterest: "annieselke:home_page:social_networks:pinterest",
                         youtube: "annieselke:home_page:social_networks:youtube", instagram: "annieselke:home_page:social_networks:instagram"}
 
-  COMPANIES_IL = {annieselke: "", pinecoinhill: "", dashandalbert: "", outlet: "", ideasandInspirations: ""}
-  PRODUCT_GROUPS = {bugs: "", bedding: "", furniture: "", decorandpillows: "", bath: "", windows: "", apparel: "", pet: "", collections: "",
-                    gifts: "", sale: ""}
+  SEE_DETAILS_LINK_IL = "//a[text()=' SEE DETAILS ▸']"
+  SEE_DETAILS_LINK_TA = "annieselke:home_page:see_details_link"
+
+  def search_categories(key, name)
+    locator_by key,
+               "//a[@title='#{name}']",
+               "annieselke:home_page:categories:#{ta_name(name)}"
+  end
 
   def close_banner
     within_frame(1) do
@@ -112,4 +117,13 @@ class Home_Page
   def click_cart_link(key = nil)
     find_element_path(key, :xpath, CART_LINK_TA, CART_LINK_IL).click
   end
+
+  def click_companies(key=nil, name)
+    find_element_path(key, :xpath, search_categories(:ta, name), search_categories(:il, name)).click
+  end
+
+  def click_see_details_link(key = nil)
+    find_element_path(key, :xpath, SEE_DETAILS_LINK_TA, SEE_DETAILS_LINK_IL).click
+  end
+
 end
