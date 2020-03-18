@@ -133,7 +133,6 @@ describe 'Preconditions' do
 
     scenario 'Searching EP', ep_run: true do
 
-
     step "User goes to the page", settings('annieselke')['page'] do |url|
         page.visit url
       end

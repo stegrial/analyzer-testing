@@ -10,7 +10,7 @@ it = SandboxTests.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
   after(:all) do
@@ -21,7 +21,7 @@ describe 'Preconditions' do
 
   # Initial locators with Recording
 
-  scenario 'Recording IL', il_run: true do
+  scenario 'Recording IL', il: true do
     step "User goes to the page", settings('sandbox')['page_h4'] do |url|
       page.visit url
     end
@@ -32,7 +32,7 @@ describe 'Preconditions' do
     sleep 3
   end
 
-  scenario 'Searching IL', il_run: true do
+  scenario 'Searching IL', il: true do
     step "User goes to the page", settings('sandbox')['page_h4_test_1'] do |url|
       page.visit url
     end

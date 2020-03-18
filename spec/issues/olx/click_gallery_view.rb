@@ -15,11 +15,12 @@ describe 'Preconditions' do
   after(:all) do
     Capybara.current_session.driver.quit
   end
-  feature 'TA-970 OLX - category selecting' do
+
+  feature 'AT-22 OLX - category selecting' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il_run1: true do
+    scenario 'Recording IL', il: true do
 
       step "User goes to the page", settings('olx')['page'] do |url|
         page.visit url
@@ -34,13 +35,12 @@ describe 'Preconditions' do
       end
 
       step "User clicks on gallary view button" do
-        sleep 300
-        # it.click_gallery_view
+        it.click_gallery_view
       end
 
     end
 
-    scenario 'Searching IL', il_run: true do
+    scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('olx')['page'] do |url|
         page.visit url
@@ -65,7 +65,7 @@ describe 'Preconditions' do
 
     # Element Picker from Repository
 
-    scenario 'Searching EP', ep_run: true do
+    scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('olx')['page'] do |url|
         page.visit url
@@ -133,7 +133,8 @@ describe 'Preconditions' do
       step "User clicks on gallary view button" do
         it.click_gallery_view
       end
-sleep 5
+
+      sleep 5
     end
   end
 end

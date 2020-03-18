@@ -70,7 +70,7 @@ describe 'Preconditions' do
         sign_in_page.click_sign_in_google
       end
 
-      sleep 30
+      sleep 3
     end
 
     scenario 'Searching debug', search_debug: true do

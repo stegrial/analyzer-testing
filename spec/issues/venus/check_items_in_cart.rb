@@ -18,8 +18,8 @@ describe 'Preconditions' do
 
   after(:each) do
     step "Remove added item from bag", settings('venus') do |data|
-      page.visit data['cart_page']
-      cart_page.click_remove_item_from_bag :il
+      # page.visit data['cart_page']
+      # cart_page.click_remove_item_from_bag :il
     end
   end
 
