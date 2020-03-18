@@ -59,3 +59,4 @@ class Press_Page
     find_element_path(key, :xpath, ADD_TO_CARD_TA, ADD_TO_CARD_IL)
   end
 end
+
