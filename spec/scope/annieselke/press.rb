@@ -15,7 +15,7 @@ describe 'Preconditions' do
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
-  feature 'Search items on home page' do
+  feature 'Select Press details on home page' do
 
     # Initial locators with Recording
 
