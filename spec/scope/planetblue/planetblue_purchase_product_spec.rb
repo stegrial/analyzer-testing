@@ -14,38 +14,15 @@ describe 'Preconditions' do
   end
 
 
-  feature 'Planet Blue - Category Selecting' do
+  feature 'Planet Blue - Purchase Product' do
 
     scenario 'Recording Locators', record: true do
 
       step "User goes to the page", settings('planetblue')['page'] do |url|
-        page.visit url
+        page.visit url # https://shopplanetblue.com/products/the-jessie-midi-2?variant=31773312122964
       end
 
-      step "User clicks on Menu button" do
-        menu.click_menu_button
-      end
-
-      step "User clicks on Menu Category", 'Clothing' do |value|
-        menu.click_menu_category value
-      end
-
-      step "User clicks on Menu Category", 'Tops' do |value|
-        menu.click_menu_category value
-      end
-
-      step "User clicks on Menu Category", 'Basics' do |value|
-        menu.click_menu_category value
-      end
-
-      step "User checks Category Dropdowns", 'REFINE', 'Sort' do |value1, value2|
-        planetblue.find_category_dropdown value1
-        planetblue.find_category_dropdown value2
-      end
-
-      step "User checks Collection Items", 'RUTH TUNIC | New', 'Bright Rose' do |name, color|
-        planetblue.find_collection_item_details name, color
-      end
+      #
 
     end
 

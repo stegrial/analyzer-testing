@@ -14,9 +14,6 @@ describe 'Preconditions' do
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
-  after(:all) do
-    Capybara.current_session.driver.quit
-  end
 
   feature 'Planet Blue - Find a Store' do
 
