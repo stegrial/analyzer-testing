@@ -84,11 +84,5 @@ describe 'Preconditions' do
 
     end
 
-
-    scenario 'Searching Locators', search: true do
-
-
-    end
-
   end
 end

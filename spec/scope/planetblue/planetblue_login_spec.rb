@@ -37,6 +37,7 @@ describe 'Preconditions' do
       step "User fills EMAIL, PASSWORD Fields and clicks 'Login' Button",
            settings('planetblue')['email'],
            settings('planetblue')['pass'] do |email, password|
+        page.execute_script "window.scrollBy(0,400)"
         login.fill_email_field email
         login.fill_password_field password
         login.click_sign_in_button
