@@ -248,7 +248,7 @@ class TheTiebarProductPage
     elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='15']")
       find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='15']").click
 
-    elsif page.has_xpath?("///button[not(contains(@tabindex, '-1'))]//h6[text()='15.5']")
+    elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='15.5']")
       find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='15.5']").click
 
     elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='16']")
