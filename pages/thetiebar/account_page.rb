@@ -65,7 +65,8 @@ class TheTiebarAccount_page
   NEWSLETTER_REASON_TA = "thetiebar:preferences_page:other_newsletter"
   NEWSLETTER_REASON_EP = "EP:thetiebar:preferences_page:other_newsletter"
 
-  SUBSCRIBE_PRINT_CATALOG_IL = "(//span[contains(@class, 'mbsc-switch-track')])[2]"
+  # SUBSCRIBE_PRINT_CATALOG_IL = "(//span[contains(@class, 'mbsc-switch-track')])[2]"
+  SUBSCRIBE_PRINT_CATALOG_IL = "(//span[contains(@class, 'mbsc-slider-handle-cont')])[2]"
   SUBSCRIBE_PRINT_CATALOG_TA = "thetiebar:preferences_page:print_catalog"
   SUBSCRIBE_PRINT_CATALOG_EP = "EP:thetiebar:preferences_page:print_catalog"
 

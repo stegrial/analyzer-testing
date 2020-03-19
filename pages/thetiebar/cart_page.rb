@@ -21,7 +21,7 @@ class TheTiebarCartPage
   SUBTRACT_QUANTITY_TA = "thetiebar:cart_page:subtract_quantity_minus"
   SUBTRACT_QUANTITY_EP = "EP:thetiebar:cart_page:subtract_quantity_minus"
 
-  CHECKOUT_NOW_BTN_IL = "(//button[@title='Checkout Now'])[1]"
+  CHECKOUT_NOW_BTN_IL = "(//button[@title='Proceed To Checkout'])[1]"
   CHECKOUT_NOW_BTN_TA = "thetiebar:cart_page:checkout_now_btn"
   CHECKOUT_NOW_BTN_EP = "EP:thetiebar:cart_page:checkout_now_btn"
 
@@ -29,7 +29,7 @@ class TheTiebarCartPage
   REMOVE_LINK_TA = "thetiebar:cart_page:remove_link"
   REMOVE_LINK_EP = "EP:thetiebar:cart_page:remove_link"
 
-  REMOVE_LINK_FROM_CART_IL = "(//a[contains(@value, 'Remove from cart')])[1]"
+  REMOVE_LINK_FROM_CART_IL = "(//a[contains(@value, 'Remove from cart')])[1]/span[@class='tdu']"
   REMOVE_LINK_FROM_CART_TA = "thetiebar:cart_page:remove_from_cart_link"
   REMOVE_LINK_FROM_CART_EP = "EP:thetiebar:cart_page:remove_from_cart_link"
 

@@ -24,6 +24,7 @@ describe 'Preconditions' do
       end
 
       step "User click the next slider button" do
+        sleep 3
         about_us_page.click_next_slider
       end
 

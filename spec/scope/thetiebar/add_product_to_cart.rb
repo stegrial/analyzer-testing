@@ -27,16 +27,16 @@ describe 'Preconditions' do
         product_page.click_second_shirt_on_product
       end
 
+      step "User clicks the trim  button" do
+        product_page.click_fit_trim_btn
+      end
+
       step "User clicks the size button" do
         product_page.click_to_select_neck_size
       end
 
       step "User clicks the sleeve_length button" do
         product_page.click_sleeve_length_btn
-      end
-
-      step "User clicks the + button to add quantity" do
-        product_page.click_add_quantity_btn
       end
 
       step "User clicks the add to cart button" do
@@ -55,17 +55,17 @@ describe 'Preconditions' do
         product_page.click_second_shirt_on_product
       end
 
+      step "User clicks the trim  button" do
+        check_element_path :xpath, TheTiebarProductPage::FIT_TRIM_TA, TheTiebarProductPage::FIT_TRIM_IL
+        product_page.click_fit_trim_btn
+      end
+
       step "User clicks the size button" do
         product_page.click_to_select_neck_size
       end
 
       step "User clicks the sleeve_length button" do
         product_page.click_sleeve_length_btn
-      end
-
-      step "User clicks the + button to add quantity" do
-        check_element_path :xpath, TheTiebarProductPage::QUANTITY_TA, TheTiebarProductPage::QUANTITY_IL
-        product_page.click_add_quantity_btn
       end
 
       step "User clicks the add to cart button" do
@@ -86,17 +86,17 @@ describe 'Preconditions' do
         product_page.click_second_shirt_on_product
       end
 
+      step "User clicks the trim  button" do
+        check_element_path :xpath, TheTiebarProductPage::FIT_TRIM_TA, TheTiebarProductPage::FIT_TRIM_IL
+        product_page.click_fit_trim_btn
+      end
+
       step "User clicks the size button" do
         product_page.click_to_select_neck_size
       end
 
       step "User clicks the sleeve_length button" do
         product_page.click_sleeve_length_btn
-      end
-
-      step "User clicks the + button to add quantity" do
-        check_element_path :xpath, TheTiebarProductPage::QUANTITY_EP, TheTiebarProductPage::QUANTITY_IL
-        product_page.click_add_quantity_btn
       end
 
       step "User clicks the add to cart button" do

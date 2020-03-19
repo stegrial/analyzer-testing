@@ -13,7 +13,7 @@ class TheTiebarHeader
   LOGO_TA = "thetiebar:header:logo"
   LOGO_EP = "EP:thetiebar:header:logo"
 
-  SEARCH_FIELD_IL = "//input[contains(@aria-label, 'Desktop Search')]"
+  SEARCH_FIELD_IL = "//input[contains(@placeholder, 'Search')]"
   SEARCH_FIELD_TA = "thetiebar:header:search_field"
   SEARCH_FIELD_EP = "EP:thetiebar:header:search_field"
 

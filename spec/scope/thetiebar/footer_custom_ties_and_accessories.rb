@@ -1,6 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../pages/united_methods'
+require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/thetiebar/*.rb"
 
 custom_page = TheTiebarCusromPage.new
@@ -66,6 +66,7 @@ describe 'Preconditions' do
       end
 
       step "User click submit button" do
+       sleep 3
         custom_page.click_submit_btn
       end
 

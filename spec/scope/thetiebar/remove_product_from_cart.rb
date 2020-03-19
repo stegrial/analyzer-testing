@@ -26,11 +26,11 @@ describe 'Preconditions' do
       end
 
       step "User clicks the second shirt on product" do
-        product_page.click_second_shirt_on_product :il
+        product_page.click_second_shirt_on_product
       end
 
       step "User clicks the trim  button" do
-        product_page.click_fit_trim_btn :il
+        product_page.click_fit_trim_btn
       end
 
       step "User clicks the size button" do
@@ -41,15 +41,10 @@ describe 'Preconditions' do
         product_page.click_sleeve_length_btn
       end
 
-      step "User clicks the + button to add quantity" do
-        product_page.click_add_quantity_btn :il
-      end
-
       step "User clicks the add to cart button" do
-        product_page.click_add_to_cart_btn :il
+        product_page.click_add_to_cart_btn
         sleep 4
       end
-
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
@@ -73,13 +68,13 @@ describe 'Preconditions' do
       end
 
       step "User clicks the second shirt on product" do
-        # check_element_path :xpath, TheTiebarProductPage::SECOND_SHIRT_PDP_TA, TheTiebarProductPage::SECOND_SHIRT_PDP_IL
-        product_page.click_second_shirt_on_product :il
+        check_element_path :xpath, TheTiebarProductPage::SECOND_SHIRT_PDP_TA, TheTiebarProductPage::SECOND_SHIRT_PDP_IL
+        product_page.click_second_shirt_on_product
       end
 
       step "User clicks the trim  button" do
-        # check_element_path :xpath, TheTiebarProductPage::FIT_TRIM_TA, TheTiebarProductPage::FIT_TRIM_IL
-        product_page.click_fit_trim_btn :il
+        check_element_path :xpath, TheTiebarProductPage::FIT_TRIM_TA, TheTiebarProductPage::FIT_TRIM_IL
+        product_page.click_fit_trim_btn
       end
 
       step "User clicks the size button" do
@@ -90,14 +85,9 @@ describe 'Preconditions' do
         product_page.click_sleeve_length_btn
       end
 
-      step "User clicks the + button to add quantity" do
-        # check_element_path :xpath, TheTiebarProductPage::QUANTITY_TA, TheTiebarProductPage::QUANTITY_IL
-        product_page.click_add_quantity_btn :il
-      end
-
       step "User clicks the add to cart button" do
-        # check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_TA, TheTiebarProductPage::ADD_TO_CART_IL
-        product_page.click_add_to_cart_btn :il
+        check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_TA, TheTiebarProductPage::ADD_TO_CART_IL
+        product_page.click_add_to_cart_btn
         sleep 4
       end
 
@@ -143,11 +133,6 @@ describe 'Preconditions' do
 
       step "User clicks the sleeve_length button" do
         product_page.click_sleeve_length_btn
-      end
-
-      step "User clicks the + button to add quantity" do
-        check_element_path :xpath, TheTiebarProductPage::QUANTITY_EP, TheTiebarProductPage::QUANTITY_IL
-        product_page.click_add_quantity_btn :ep
       end
 
       step "User clicks the add to cart button" do
