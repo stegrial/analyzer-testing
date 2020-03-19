@@ -52,21 +52,23 @@ class OrderDetails
   end
 
   def order_field(key, name)
-    locator_by key, "//input[@placeholder='#{name}']",
-               "planetblue:order_details:order_field:#{ta_name(name)}:field}"
+    locator_by key, ".main__content form.edit_checkout [placeholder='#{name}']",
+               "planetblue:order_details:order_field:#{ta_name(name)}:field"
   end
 
   def find_order_field(key = nil, name)
-    find_element_path key, :xpath, order_field(:ta, name), order_field(:il, name)
+    # find(:css, '#checkout_shipping_address_first_name')
+    find_element_path key, :css, order_field(:ta, name), order_field(:il, name)
   end
 
   def order_alert_field(key, name)
+    find(:css, '#checkout_shipping_address_first_name')
     locator_by key, "//input[@placeholder='#{name}']//following::p[contains(@class, 'field__message--error')]",
-               "planetblue:order_details:order_field:#{ta_name(name)}:alert}"
+               "planetblue:order_details:order_field:#{ta_name(name)}:alert"
   end
 
   def find_order_alert_field(key = nil, name)
-    find_element_path key, :xpath, order_field(:ta, name), order_field(:il, name)
+    find_element_path key, :xpath, order_alert_field(:ta, name), order_alert_field(:il, name)
   end
 
   CONTINUE_BUTTON_TA = "planetblue:order_details:continue_button"

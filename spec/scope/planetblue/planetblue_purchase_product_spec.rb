@@ -57,9 +57,6 @@ describe 'Preconditions' do
             "Address",
             "Apartment, suite, etc. (optional)",
             "City",
-            "Country/Region",
-            "State",
-            "ZIP Code",
             "Phone (optional)"
         ].each { |name|
           order_details.find_order_field name
@@ -67,15 +64,14 @@ describe 'Preconditions' do
       end
 
       step "User clicks Continue button" do
-        order_details.find_payment_news_checkbox
+        order_details.click_continue_button
       end
 
       step "User checks Alerts for required Order Fields" do
         [
             "Last name",
             "Address",
-            "City",
-            "ZIP Code",
+            "City"
         ].each { |name|
           order_details.find_order_alert_field name
         }
