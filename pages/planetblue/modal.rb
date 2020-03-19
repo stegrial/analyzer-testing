@@ -19,9 +19,7 @@ class Modal
   CLOSE_POLICIES_BUTTON_TA = "planetblue:modal:close_policies_button"
 
   def click_close_policies_button(key = nil)
-    if find(:xpath, CLOSE_POLICIES_BUTTON_IL).visible?
       find_element_path(key, :xpath, CLOSE_POLICIES_BUTTON_TA, CLOSE_POLICIES_BUTTON_IL).click
-    end
   end
 
 end

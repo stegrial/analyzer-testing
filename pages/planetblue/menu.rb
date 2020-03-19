@@ -8,7 +8,7 @@ class Menu
   include RSpec::Matchers
   include PageExtension
 
-  MENU_BUTTON_IL = "a[title='Toggle menu']"
+  MENU_BUTTON_IL = "[aria-label='Menu']"
   MENU_BUTTON_TA = "planetblue:menu:menu_button"
 
   def click_menu_button(key = nil)

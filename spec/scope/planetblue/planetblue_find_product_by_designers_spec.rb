@@ -5,6 +5,7 @@ required_relative_all "/pages/planetblue/*.rb"
 
 include ElementSearchValidation
 
+planetblue = PlanetBlue.new
 designers = Designers.new
 menu = Menu.new
 describe 'Preconditions' do
@@ -23,11 +24,11 @@ describe 'Preconditions' do
       end
 
       step "User clicks Navigation Bar Link", 'Designers' do |value|
-        designers.click_navbar_link value
+        planetblue.click_navbar_link value
       end
 
       step "User checks page Header", 'Designers' do |title|
-        designers.find_page_header title
+        planetblue.find_page_header title
       end
 
       step "User checks Designers List Item", '#', 'Y' do |value1, value2|
@@ -41,25 +42,8 @@ describe 'Preconditions' do
 
       step "User checks Collection Item",
            'ESSIE CREWNECK SWEATER | New', 'essie-crewneck-sweater?' do |name, link|
-        designers.find_collection_item name, link
+        planetblue.find_collection_item name, link
       end
-
-    end
-
-
-    scenario 'Searching Locators', search: true do
-
-      step "User goes to the page", settings('planetblue')['page'] do |url|
-        page.visit url
-      end
-
-      step "User clicks Navigation Bar Link", 'Designers' do |value|
-        check_element_path(:xpath, menu.click_search_button(:ta),
-                           menu.click_search_button(:il))
-        designers.click_navbar_link value
-      end
-
-      # TODO complete
 
     end
 

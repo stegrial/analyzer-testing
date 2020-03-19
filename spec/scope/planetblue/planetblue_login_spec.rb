@@ -24,20 +24,16 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User closes Policies Modal" do
-        modal.click_close_policies_button
-      end
-
       step "User clicks Menu Button" do
         menu.click_menu_button
       end
 
-      step "User closes Discount Modal if required" do
-        modal.click_close_discount_button
-      end
-
       step "User clicks User Account Button" do
         menu.click_user_button
+      end
+
+      step "User closes Policies Modal" do
+        modal.click_close_policies_button
       end
 
       step "User fills EMAIL, PASSWORD Fields and clicks 'Login' Button",

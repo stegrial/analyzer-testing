@@ -23,7 +23,7 @@ class Login
   end
 
   SIGN_IN_BUTTON_TA = "planetblue:login:sign_in_button"
-  SIGN_IN_BUTTON_IL = "button[type='submit']"
+  SIGN_IN_BUTTON_IL = "[type='submit']"
 
   def click_sign_in_button(key = nil)
     find_element_path(key, :css, SIGN_IN_BUTTON_TA, SIGN_IN_BUTTON_IL).click

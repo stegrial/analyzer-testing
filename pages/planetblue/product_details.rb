@@ -51,8 +51,6 @@ class ProductDetails
   end
 
   PRODUCT_DESIGNER_TA = "planetblue:product_details:designer"
-  # PRODUCT_DESIGNER_IL = "//div[@data-page='Product']/form//div[@style='min-height:125px']"
-  # PRODUCT_DESIGNER_IL = "//*[@id='maincontent']/div/div/form/div/div[2]/div[2]/div[1]"
   PRODUCT_DESIGNER_IL = "//*[@style='min-height: 125px;']/div/div[2]/p"
 
   def find_product_designer(key = nil)
@@ -61,7 +59,6 @@ class ProductDetails
 
   PRODUCT_ID_TA = "planetblue:product_details:product_id"
   PRODUCT_ID_IL = "[style='min-height: 125px;'] > div > *:nth-child(3) > p"
-  # PRODUCT_ID_IL = "#maincontent > div > div:nth-child(3) > form > div > div.jss448 > div.jss450 > div:nth-child(1) > div > div:nth-child(3) > p"
 
   def find_product_id(key = nil)
     find_element_path key, :css, PRODUCT_ID_TA, PRODUCT_ID_IL
@@ -123,10 +120,10 @@ class ProductDetails
   end
 
   CHECKOUT_BUTTON_TA = "planetblue:product_details:checkout_button"
-  CHECKOUT_BUTTON_IL = "button[data-th='add-to-cart']"
+  CHECKOUT_BUTTON_IL = "a[href*='checkout']"
 
   def click_checkout_button(key = nil)
-    find_element_path(key, :xpath, CHECKOUT_BUTTON_TA, CHECKOUT_BUTTON_IL).click
+    find_element_path(key, :css, CHECKOUT_BUTTON_TA, CHECKOUT_BUTTON_IL).click
   end
 
   def social_share_button(key, name)
