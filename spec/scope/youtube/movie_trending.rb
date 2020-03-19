@@ -21,7 +21,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks on trending", settings('youtube')['page'] do |url|
+      step "User clicks on trending" do
         youtube.click_trending
       end
 
@@ -40,7 +40,7 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks on trending", settings('youtube')['page'] do |url|
+      step "User clicks on trending" do
         check_element_path :xpath, Youtube::TRENDING_LINK_TA, Youtube::TRENDING_LINK_IL
         youtube.click_trending
       end
