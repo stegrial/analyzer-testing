@@ -52,63 +52,47 @@ class ProductDetails
 
   PRODUCT_DESIGNER_TA = "planetblue:product_details:designer"
   # PRODUCT_DESIGNER_IL = "//div[@data-page='Product']/form//div[@style='min-height:125px']"
-  PRODUCT_DESIGNER_IL = "//*[@id='maincontent']/div/div/form/div/div[2]/div[2]/div[1]"
-  # PRODUCT_DESIGNER_IL = "//*[@style='min-height:125px']/div/div[2]/p"
+  # PRODUCT_DESIGNER_IL = "//*[@id='maincontent']/div/div/form/div/div[2]/div[2]/div[1]"
+  PRODUCT_DESIGNER_IL = "//*[@style='min-height: 125px;']/div/div[2]/p"
 
   def find_product_designer(key = nil)
-    # execute_script "window.scrollBy(0,200)"
     find_element_path key, :xpath, PRODUCT_DESIGNER_TA, PRODUCT_DESIGNER_IL
   end
 
   PRODUCT_ID_TA = "planetblue:product_details:product_id"
-  PRODUCT_ID_IL = "[style='min-height:125px'] > div > *:nth-child(3) > p"
+  PRODUCT_ID_IL = "[style='min-height: 125px;'] > div > *:nth-child(3) > p"
+  # PRODUCT_ID_IL = "#maincontent > div > div:nth-child(3) > form > div > div.jss448 > div.jss450 > div:nth-child(1) > div > div:nth-child(3) > p"
 
   def find_product_id(key = nil)
     find_element_path key, :css, PRODUCT_ID_TA, PRODUCT_ID_IL
   end
 
   PRODUCT_PRICE_TA = "planetblue:product_details:product_price"
-  PRODUCT_PRICE_IL = "[style='min-height:125px'] > div > *:nth-child(4) > span"
+  PRODUCT_PRICE_IL = "#maincontent [style='min-height: 125px;'] > div > *:nth-child(4) > span"
 
   def find_product_price(key = nil)
-    find_element_path key, :xpath, PRODUCT_PRICE_TA, PRODUCT_PRICE_IL
+    find_element_path key, :css, PRODUCT_PRICE_TA, PRODUCT_PRICE_IL
   end
 
   PAYMENT_DETAILS_TA = "planetblue:product_details:payment_details"
-  PAYMENT_DETAILS_IL = "[style='min-height:125px'] *[data-id]"
+  PAYMENT_DETAILS_IL = "[style='min-height: 125px;'] *[data-id]"
 
   def find_payment_details(key = nil)
     find_element_path key, :css, PAYMENT_DETAILS_TA, PAYMENT_DETAILS_IL
   end
 
   LEARN_MORE_LINK_TA = "planetblue:product_details:payment_details"
-  LEARN_MORE_LINK_IL = "[style='min-height:125px'] *[data-id] > a"
+  LEARN_MORE_LINK_IL = "[style='min-height: 125px;'] *[data-id] > a"
 
   def find_learn_more_link(key = nil)
     find_element_path key, :css, LEARN_MORE_LINK_TA, LEARN_MORE_LINK_IL
   end
 
-  def review_stars(key, number)
-    locator_by key, "div.yotpo-bottomline.pull-left.star-clickable > span > span:nth-child(#{number})",
-               "planetblue:product_details:review_star:#{ta_name(number)}"
-  end
-
-  def find_review_stars(key = nil, number)
-    find_element_path key, :css, review_stars(:ta, number), review_stars(:il, number)
-  end
-
   REVIEWS_NUMBER_TA = "planetblue:product_details:reviews_number"
-  REVIEWS_NUMBER_IL = "a[class='text-m']"
+  REVIEWS_NUMBER_IL = "a.text-m"
 
   def find_reviews_number(key = nil)
     find_element_path key, :css, REVIEWS_NUMBER_TA, REVIEWS_NUMBER_IL
-  end
-
-  PRODUCT_DETAILS_CONTENT_TA = "planetblue:product_details:product_details_content"
-  PRODUCT_DETAILS_CONTENT_IL= "div[role='tabpanel'] > div > span > span"
-
-  def find_product_details_content(key = nil)
-    find_element_path key, :css, PRODUCT_DETAILS_CONTENT_TA, PRODUCT_DETAILS_CONTENT_IL
   end
 
   SIZES_GUIDE_LINK_TA = "planetblue:product_details:size_guide_link"
@@ -151,22 +135,12 @@ class ProductDetails
   end
 
   def find_social_share_button(key = nil, name)
-    find_element_path key, :xpath, social_share_button(:ta, name),
+    find_element_path key, :css, social_share_button(:ta, name),
                       social_share_button(:il, name)
   end
 
-  def product_details_tab(key, name)
-    locator_by key, "//div[@role='tablist']//span[text()='#{name}']",
-               "planetblue:product_details:product_details_tab:#{ta_name(name)}"
-  end
-
-  def find_product_details_tab(key = nil, name)
-    find_element_path key, :xpath, product_details_tab(:ta, name),
-                      product_details_tab(:il, name)
-  end
-
   def bottom_section_item(key, section, name, price)
-    locator_by key, "//h2[text()='#{section}']//ancestor::div[@class='jss376']//h4[text()='#{name}']//following-sibling::h6[text()='#{price}']",
+    locator_by key, "//h2[text()='#{section}']/../..//h4[text()='#{name}']//following-sibling::h6[text()='#{price}']",
                "planetblue:product_details:bottom_section_item:#{ta_name(section)}:#{ta_name(name)}_#{ta_name(price)}"
   end
 

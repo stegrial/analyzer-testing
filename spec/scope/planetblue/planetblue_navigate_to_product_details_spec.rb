@@ -74,12 +74,6 @@ describe 'Preconditions' do
         product_details.find_learn_more_link
       end
 
-      step "User checks product review stars",5 do |number|
-        (1..number).each { |num|
-          product_details.find_review_stars num
-        }
-      end
-
       step "User checks product payment details" do
         product_details.find_reviews_number
       end
@@ -102,15 +96,6 @@ describe 'Preconditions' do
         social_sharing_buttons.each { |button|
           product_details.find_social_share_button button
         }
-      end
-
-      step "User checks product details and review tabs" do
-        product_details.find_product_details_tab 'Details'
-        product_details.find_product_details_tab 'Review'
-      end
-
-      step "User checks product details content" do
-        product_details.find_product_details_content
       end
 
       step "User checks section 'You may also like'" do
