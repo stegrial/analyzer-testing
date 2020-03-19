@@ -52,7 +52,7 @@ describe 'Preconditions' do
 
       step "User checks Order Fields" do
         [
-            # "First name (optional)",
+            "First name (optional)",
             "Last name",
             "Address",
             "Apartment, suite, etc. (optional)",
@@ -62,7 +62,6 @@ describe 'Preconditions' do
             "ZIP Code",
             "Phone (optional)"
         ].each { |name|
-          page.execute_script "window.scrollBy(0,200)"
           order_details.find_order_field name
         }
       end
