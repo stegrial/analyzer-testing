@@ -115,15 +115,15 @@ describe 'Preconditions' do
         designer_page.click_sign_up
       end
 
-      # step "User selects country" , "CA"  do |value|
-      #   account_request_page.move_to_tab
-      #   check_element_path :xpath, Account_Request_Page::COUNTRY_SELECT_TA, Account_Request_Page::COUNTRY_SELECT_IL
-      #   account_request_page.click_dropdown_arrow_country
-      #
-      #   check_element_path :xpath, Account_Request_Page.search_country_item(:ta, value), Account_Request_Page.search_country_item(:il, value)
-      #   account_request_page.select_dropdown_country value
-      #   home_page.close_banner
-      # end
+      step "User selects country" , "CA"  do |value|
+        account_request_page.move_to_tab
+        check_element_path :xpath, Account_Request_Page::COUNTRY_SELECT_TA, Account_Request_Page::COUNTRY_SELECT_IL
+        account_request_page.click_dropdown_arrow_country
+
+        check_element_path :xpath, Account_Request_Page.search_country_item(:ta, value), Account_Request_Page.search_country_item(:il, value)
+        account_request_page.select_dropdown_country value
+        home_page.close_banner
+      end
 
       step "User selects title" , "ms"  do |value|
         account_request_page.move_to_tab
