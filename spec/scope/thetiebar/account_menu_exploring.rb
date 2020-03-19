@@ -130,23 +130,23 @@ describe 'Preconditions' do
       end
 
       step "User click the account button" do
-        # check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_TA, TheTiebarHeader::SIGNIN_BTN_IL
-        header_page.click_sing_in_btn :il
+        check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_TA, TheTiebarHeader::SIGNIN_BTN_IL
+        header_page.click_sing_in_btn
       end
 
       step "User fills the Username field", settings('thetiebar')['email'] do |email|
-        # check_element_path :xpath, TheTiebarLoginPage::USERNAME_TA, TheTiebarLoginPage::USERNAME_IL
-        login_page.fill_username_field :il, email
+        check_element_path :xpath, TheTiebarLoginPage::USERNAME_TA, TheTiebarLoginPage::USERNAME_IL
+        login_page.fill_username_field  email
       end
 
       step "User fills the Password field", settings('thetiebar')['password'] do |pass|
-        # check_element_path :xpath, TheTiebarLoginPage::LOGIN_PASS_TA, TheTiebarLoginPage::LOGIN_PASS_IL
-        login_page.fill_login_password :il, pass
+        check_element_path :xpath, TheTiebarLoginPage::LOGIN_PASS_TA, TheTiebarLoginPage::LOGIN_PASS_IL
+        login_page.fill_login_password  pass
       end
 
       step "User clicks on the Sign In button" do
-        # check_element_path :xpath, TheTiebarLoginPage::SIGN_IN_TA, TheTiebarLoginPage::SIGN_IN_IL
-        login_page.click_sing_in :il
+        check_element_path :xpath, TheTiebarLoginPage::SIGN_IN_TA, TheTiebarLoginPage::SIGN_IN_IL
+        login_page.click_sing_in
         sleep 3 # wait for finish slow page rebuild
       end
 
@@ -241,7 +241,7 @@ describe 'Preconditions' do
 
       step "User clicks on the Account button" do
         check_element_path :xpath, TheTiebarHeader::ACCOUNT_BTN_TA, TheTiebarHeader::ACCOUNT_BTN_IL
-        header_page.click_account_btn :il
+        header_page.click_account_btn
       end
 
       step "User clicks on the Sign Out link" do
