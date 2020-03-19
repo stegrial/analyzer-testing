@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative '../page_extension'
 
-class Designer_Page
+class DesignerPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers

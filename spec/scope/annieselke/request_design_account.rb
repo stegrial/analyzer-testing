@@ -6,8 +6,8 @@ required_relative_all "/pages/annieselke/*.rb"
 include ElementSearchValidation
 
 home_page = Home_Page.new
-designer_page = Designer_Page.new
-account_request_page = Account_Request_Page.new
+designer_page = DesignerPage.new
+account_request_page = AccountRequestPage.new
 
 describe 'Preconditions' do
 
