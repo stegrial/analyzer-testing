@@ -27,8 +27,8 @@ module PageExtension
 
   def find_element_path(key, locator_type, ta_locator, initial_locator)
     post_processing key do
-      return find(locator_type, initial_locator, visible: :visible) if key == :il
-      find(locator_type, ta(ta_locator, initial_locator), visible: :visible)
+      return find(locator_type, initial_locator) if key == :il
+      find(locator_type, ta(ta_locator, initial_locator))
     end
   end
 

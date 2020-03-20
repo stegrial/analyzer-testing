@@ -5,9 +5,8 @@ required_relative_all "/pages/planetblue/*.rb"
 
 include ElementSearchValidation
 
-planetblue = PlanetBlue.new
-find_a_store = FindAStore.new
 menu = Menu.new
+login = Login.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -15,7 +14,7 @@ describe 'Preconditions' do
   end
 
 
-  feature 'Planet Blue - Find a Store' do
+  feature 'Planet Blue - Login' do
 
     scenario 'Recording Locators', record: true do
 
@@ -23,24 +22,25 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      step "User clicks on Menu button" do
+      step "User clicks Menu Button" do
         menu.click_menu_button
       end
 
-      step "User clicks on Menu Item", 'Find a store' do |value|
-        menu.click_menu_item value
+      step "User clicks User Account Button" do
+        menu.click_user_button
       end
 
-      step "User checks page Header", 'Find A Store' do |title|
-        planetblue.find_page_header title
-      end
+      # step "User closes Policies Modal" do
+      #   modal.click_close_policies_button
+      # end
 
-      step "User checks Store item", 'Planet Blue | Newport Beach' do |title|
-        find_a_store.find_store_item_details title
-      end
-
-      step "User checks Store item", 'Planet Blue | Dallas' do |title|
-        find_a_store.find_store_item_details title
+      step "User fills EMAIL, PASSWORD Fields and clicks 'Login' Button",
+           settings('planetblue')['email'],
+           settings('planetblue')['pass'] do |email, password|
+        page.execute_script "window.scrollBy(0,400)"
+        login.fill_email_field email
+        login.fill_password_field password
+        login.click_sign_in_button
       end
 
     end
