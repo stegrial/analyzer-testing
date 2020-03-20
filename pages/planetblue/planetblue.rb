@@ -17,6 +17,65 @@ class PlanetBlue
     find_element_path(key, :xpath, category_dropdown(:ta, name), category_dropdown(:il, name))
   end
 
+  def sort_dropdown_value(key, value)
+    locator_by key, "//span[text()='#{value}']/parent::button",
+               "planetblue:category_dropdown:sort_value:#{ta_name(value)}"
+  end
+
+  def find_sort_dropdown_value(key = nil, value)
+    find_element_path(key, :xpath, sort_dropdown_value(:ta, value), sort_dropdown_value(:il, value))
+  end
+
+  def select_from_sort_dropdown(key = nil, value)
+    find_category_dropdown(key, 'Sort').click
+    find_sort_dropdown_value(key, value).click
+  end
+
+  def refine_category_block(key, value)
+    locator_by key, "//h6[text()='#{value}']/parent::*/parent::*/parent::*",
+               "planetblue:category_dropdown:refine_category_block:#{value}"
+  end
+
+  def find_refine_category_block(key = nil, value)
+    find_element_path(key, :xpath, refine_category_block(:ta, value), refine_category_block(:il, value))
+  end
+
+  def refine_dropdown_checkbox(key, refine_category, value)
+    locator_by key,
+               "//*[text()='#{refine_category}']/parent::*/parent::*/parent::*//span[text()='#{value}']",
+               # "//*[text()='#{refine_category}']/parent::*/parent::*/parent::*//span[text()='#{value}']//ancestor::label//input[@type='checkbox']",
+               "planetblue:category_dropdown:refine_dropdown_value:#{refine_category}:#{ta_name(value)}"
+  end
+
+  def find_refine_dropdown_checkbox(key = nil, section, value)
+    find_element_path(key, :xpath, refine_dropdown_checkbox(:ta, section, value),
+                      refine_dropdown_checkbox(:il, section, value))
+  end
+
+  CLOSE_DROPDOWN_BUTTON_TA = "planetblue:category_dropdown:close_button"
+  CLOSE_DROPDOWN_BUTTON_IL = "[role] button svg"
+
+  def find_close_dropdown_button(key = nil)
+    find_element_path key, :css, CLOSE_DROPDOWN_BUTTON_TA, CLOSE_DROPDOWN_BUTTON_IL
+  end
+
+  APPLY_BUTTON_TA = "planetblue:category_dropdown:apply_button"
+  APPLY_BUTTON_IL = "//span[text()='Apply']/parent::button"
+
+  def find_apply_dropdown_button(key = nil)
+    find_element_path key, :xpath, APPLY_BUTTON_TA, APPLY_BUTTON_IL
+  end
+
+  def select_from_refine_dropdown(key = nil, section, values)
+    find_category_dropdown(key, 'REFINE').click
+    find_refine_category_block(key, section).click
+    values.each do |value|
+      find_refine_dropdown_checkbox(key, section, value).click
+    end
+    find_close_dropdown_button(key)
+    find_apply_dropdown_button(key).click
+  end
+
   def _collection_item(name, link = nil)
     return "//li//a[@aria-label='#{name}']//ancestor::li" if link == nil
     "//li//a[contains(@href, '#{link}')]//ancestor::li"
