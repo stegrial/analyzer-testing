@@ -43,7 +43,6 @@ class PlanetBlue
   def refine_dropdown_checkbox(key, refine_category, value)
     locator_by key,
                "//*[text()='#{refine_category}']/parent::*/parent::*/parent::*//span[text()='#{value}']",
-               # "//*[text()='#{refine_category}']/parent::*/parent::*/parent::*//span[text()='#{value}']//ancestor::label//input[@type='checkbox']",
                "planetblue:category_dropdown:refine_dropdown_value:#{refine_category}:#{ta_name(value)}"
   end
 
