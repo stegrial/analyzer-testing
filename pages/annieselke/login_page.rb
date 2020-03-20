@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative '../page_extension'
 
-class Login_Page
+class LoginPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers

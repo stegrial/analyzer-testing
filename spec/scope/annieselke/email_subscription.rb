@@ -5,7 +5,7 @@ required_relative_all "/pages/annieselke/*.rb"
 
 include ElementSearchValidation
 
-home_page = Home_Page.new
+home_page = HomePage.new
 
 describe 'Preconditions' do
 
