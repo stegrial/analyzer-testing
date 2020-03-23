@@ -29,7 +29,6 @@ TODO:
 - scroll Festival Fever section until reach the 'load more' button
 - scroll blue life brand bottoms down and scroll up using up button
 - add item to whishlist and check whishlist
-- visit contact us page
 - visit accessibility statement page
 - change shipping country and currency
 - leave review and check reviews
