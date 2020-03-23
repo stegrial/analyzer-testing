@@ -23,7 +23,6 @@ rspec spec/scope/planetblue/planetblue_find_product_spec.rb --tag=search
 ```
 TODO:
 - purchase product if logged in
-- only start a purchase product if logged in (check a cart/bag on the top)
 - login. done
 - find products with sale label (and check discount price)
 - sort products
