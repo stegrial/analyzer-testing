@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative '../page_extension'
 
-class Press_Page
+class PressPage
   include TrueAutomation::DSL
   include Capybara::DSL
   include RSpec::Matchers
