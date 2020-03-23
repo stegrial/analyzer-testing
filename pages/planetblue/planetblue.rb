@@ -137,7 +137,7 @@ class PlanetBlue
   end
 
   def page_header(key, title)
-    locator_by key, "//h1[text()='#{title}']",
+    locator_by key, "//h1[text()='#{title}']|//h3[text()='#{title}']",
                "planetblue:page_header_title:#{ta_name(title)}"
   end
 

@@ -23,10 +23,7 @@ rspec spec/scope/planetblue/planetblue_find_product_spec.rb --tag=search
 ```
 TODO:
 - purchase product if logged in
-- login. done
 - find products with sale label (and check discount price)
-- sort products
-- filter products
 - navigate to new products using link on main page
 - find accessories details
 - scroll Festival Fever section until reach the 'load more' button
