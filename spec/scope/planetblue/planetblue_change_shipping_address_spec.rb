@@ -22,10 +22,6 @@ describe 'Preconditions' do
         page.visit url
       end
 
-      # step "User closes Policies Modal" do
-      #   modal.click_close_policies_button
-      # end
-
       step "User clicks Shipping dropdown" do
         shipping.click_shipping_dropdown
       end

@@ -127,6 +127,13 @@ class PlanetBlue
     find_collection_item(key, name, link).click
   end
 
+  BACK_TO_TOP_BUTTON_TA = "blueplanet:back_to_top_button"
+  BACK_TO_TOP_BUTTON_IL = "button[title='back to top']"
+
+  def click_back_to_top_button(key = nil)
+    find_element_path(key, :css, BACK_TO_TOP_BUTTON_TA, BACK_TO_TOP_BUTTON_IL).click
+  end
+
   def total_items(key = nil, number)
     locator_by key, "//div[@style='align-items: center; flex-direction: row;']/span[contains(text(), '#{number}') and contains(text(), 'total items')]",
                "planetblue:total_items"
@@ -137,7 +144,7 @@ class PlanetBlue
   end
 
   def page_header(key, title)
-    locator_by key, "//h1[text()='#{title}']|//h3[text()='#{title}']",
+    locator_by key, "//h1[text()=\"#{title}\"]|//h3[text()=\"#{title}\"]",
                "planetblue:page_header_title:#{ta_name(title)}"
   end
 
