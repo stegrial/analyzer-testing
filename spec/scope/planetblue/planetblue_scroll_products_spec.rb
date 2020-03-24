@@ -49,13 +49,10 @@ describe 'Preconditions' do
       end
 
       step "User scroll down to the bottom of the page" do
-        page.execute_script "window.scrollBy(0,5000)"
-        sleep 1
-        page.execute_script "window.scrollBy(0,5000)"
-        sleep 1
-        page.execute_script "window.scrollBy(0,5000)"
-        sleep 1
-        page.execute_script "window.scrollBy(0,5000)"
+        5000.each { |pixels|
+          sleep 1
+          page.execute_script "window.scrollBy(0,#{pixels})"
+        }
       end
 
       step "User click 'Load More' button" do

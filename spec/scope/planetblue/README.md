@@ -18,10 +18,14 @@ rspec spec/scope/planetblue/planetblue_find_product_spec.rb --tag=record
 rspec spec/scope/planetblue/planetblue_find_product_spec.rb --tag=search
 ```
 
-* Run only one test with elements searching scenario by TrueAutomation locators:
+---
+```
+TODO fixes:
+- check comments to PR
+```
 
 ```
-TODO:
+TODO tests:
 - purchase product if logged in
 - find products with sale label (and check discount price)
 - navigate to new products using link on main page
