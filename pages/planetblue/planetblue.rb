@@ -134,6 +134,21 @@ class PlanetBlue
     find_element_path(key, :css, BACK_TO_TOP_BUTTON_TA, BACK_TO_TOP_BUTTON_IL).click
   end
 
+  LOAD_MORE_BUTTON_TA = "blueplanet:load_more_button"
+  LOAD_MORE_BUTTON_IL = "//*[text()='LOAD MORE']"
+
+  def click_load_more_button(key = nil)
+    find_element_path(key, :xpath, LOAD_MORE_BUTTON_TA, LOAD_MORE_BUTTON_IL).click
+  end
+
+  def find_social_link(key = nil, name)
+    locator_by key, "a[name='#{name}']", "planetblue:social_link:#{ta_name(name)}"
+  end
+
+  def click_social_link(key = nil, name)
+    find_element_path(key, :css, find_social_link(:ta, name), find_social_link(:il, name)).click
+  end
+
   def total_items(key = nil, number)
     locator_by key, "//div[@style='align-items: center; flex-direction: row;']/span[contains(text(), '#{number}') and contains(text(), 'total items')]",
                "planetblue:total_items"
