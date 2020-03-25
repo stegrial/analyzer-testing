@@ -21,7 +21,8 @@ rspec spec/scope/planetblue/planetblue_find_product_spec.rb --tag=search
 ---
 ```
 TODO fixes:
-- check comments to PR
+- finish careers test
+- add search scenarios
 ```
 
 ```
