@@ -22,14 +22,18 @@ describe 'Preconditions' do
       step "User goes to the page", settings('planetblue')['page'] + 'pages/careers' do |url|
         page.visit url
       end
-      #
-      # step "User " do
-      #   planetblue. # page-hero-page-careers
-      # end
-      #
-      # step "User checks Store item", 'Planet Blue | Dallas' do |title|
-      #   find_a_store.find_store_item_details title
-      # end
+
+      step "User checks Careers Header" do
+        planetblue.find_careers_header
+      end
+
+      step "User checks Career item", 'Ala Moana Store', 'Assistant Store Manager' do |store, name|
+        find_a_store.find_career_item store, name
+      end
+
+      step "User checks Career item", 'Venice Store', 'Keyholder' do |store, name|
+        find_a_store.find_career_item store, name
+      end
 
     end
 

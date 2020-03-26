@@ -38,4 +38,4 @@ TODO tests:
 - leave review and check reviews
 - visit students discounts
 - visit all customer care links in a footer
-- visit all support links in the a footer
+- check header and footer
