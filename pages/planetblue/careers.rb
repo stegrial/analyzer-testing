@@ -11,7 +11,7 @@ class Careers
   CAREERS_HEADER_TA = "planetblue:careers:header"
   CAREERS_HEADER_IL = ".page-hero-page-careers"
 
-  def find_careers_header(key)
+  def find_careers_header(key = nil)
     locator_by key, CAREERS_HEADER_TA, CAREERS_HEADER_IL
   end
 
@@ -21,7 +21,7 @@ class Careers
   end
 
   def find_career_item(key = nil, store, name)
-    find_element_path key, :xpath, career_item(:ta, store, name), career_item(:il, storem, name)
+    find_element_path key, :xpath, career_item(:ta, store, name), career_item(:il, store, name)
   end
 
 end

@@ -5,9 +5,7 @@ required_relative_all "/pages/planetblue/*.rb"
 
 include ElementSearchValidation
 
-planetblue = PlanetBlue.new
-find_a_store = FindAStore.new
-menu = Menu.new
+careers = Careers.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -24,15 +22,15 @@ describe 'Preconditions' do
       end
 
       step "User checks Careers Header" do
-        planetblue.find_careers_header
+        careers.find_careers_header
       end
 
       step "User checks Career item", 'Ala Moana Store', 'Assistant Store Manager' do |store, name|
-        find_a_store.find_career_item store, name
+        careers.find_career_item store, name
       end
 
       step "User checks Career item", 'Venice Store', 'Keyholder' do |store, name|
-        find_a_store.find_career_item store, name
+        careers.find_career_item store, name
       end
 
     end
