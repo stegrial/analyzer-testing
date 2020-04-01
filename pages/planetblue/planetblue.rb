@@ -8,6 +8,18 @@ class PlanetBlue
   include RSpec::Matchers
   include PageExtension
 
+  CLOSE_DROPDOWN_BUTTON_TA = "planetblue:category_dropdown:close_button"
+  CLOSE_DROPDOWN_BUTTON_IL = "[role] button svg"
+
+  APPLY_BUTTON_TA = "planetblue:category_dropdown:apply_button"
+  APPLY_BUTTON_IL = "//span[text()='Apply']/parent::button"
+
+  BACK_TO_TOP_BUTTON_TA = "blueplanet:back_to_top_button"
+  BACK_TO_TOP_BUTTON_IL = "button[title='back to top']"
+
+  LOAD_MORE_BUTTON_TA = "blueplanet:load_more_button"
+  LOAD_MORE_BUTTON_IL = "//*[text()='LOAD MORE']"
+
   def category_dropdown(key, name)
     locator_by key, "//div[@style='align-items: center; flex-direction: row;']//span[text()='#{name}']",
                "planetblue:category_dropdown:#{ta_name(name)}"
@@ -51,15 +63,9 @@ class PlanetBlue
                       refine_dropdown_checkbox(:il, section, value))
   end
 
-  CLOSE_DROPDOWN_BUTTON_TA = "planetblue:category_dropdown:close_button"
-  CLOSE_DROPDOWN_BUTTON_IL = "[role] button svg"
-
   def find_close_dropdown_button(key = nil)
     find_element_path key, :css, CLOSE_DROPDOWN_BUTTON_TA, CLOSE_DROPDOWN_BUTTON_IL
   end
-
-  APPLY_BUTTON_TA = "planetblue:category_dropdown:apply_button"
-  APPLY_BUTTON_IL = "//span[text()='Apply']/parent::button"
 
   def find_apply_dropdown_button(key = nil)
     find_element_path key, :xpath, APPLY_BUTTON_TA, APPLY_BUTTON_IL
@@ -127,6 +133,22 @@ class PlanetBlue
     find_collection_item(key, name, link).click
   end
 
+  def click_back_to_top_button(key = nil)
+    find_element_path(key, :css, BACK_TO_TOP_BUTTON_TA, BACK_TO_TOP_BUTTON_IL).click
+  end
+
+  def click_load_more_button(key = nil)
+    find_element_path(key, :xpath, LOAD_MORE_BUTTON_TA, LOAD_MORE_BUTTON_IL).click
+  end
+
+  def find_social_link(key = nil, name)
+    locator_by key, "a[name='#{name}']", "planetblue:social_link:#{ta_name(name)}"
+  end
+
+  def click_social_link(key = nil, name)
+    find_element_path(key, :css, find_social_link(:ta, name), find_social_link(:il, name)).click
+  end
+
   def total_items(key = nil, number)
     locator_by key, "//div[@style='align-items: center; flex-direction: row;']/span[contains(text(), '#{number}') and contains(text(), 'total items')]",
                "planetblue:total_items"
@@ -137,7 +159,7 @@ class PlanetBlue
   end
 
   def page_header(key, title)
-    locator_by key, "//h1[text()='#{title}']",
+    locator_by key, "//h1[text()=\"#{title}\"]|//h3[text()=\"#{title}\"]",
                "planetblue:page_header_title:#{ta_name(title)}"
   end
 

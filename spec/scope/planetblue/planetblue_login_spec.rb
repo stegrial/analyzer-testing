@@ -30,10 +30,6 @@ describe 'Preconditions' do
         menu.click_user_button
       end
 
-      # step "User closes Policies Modal" do
-      #   modal.click_close_policies_button
-      # end
-
       step "User fills EMAIL, PASSWORD Fields and clicks 'Login' Button",
            settings('planetblue')['email'],
            settings('planetblue')['pass'] do |email, password|
