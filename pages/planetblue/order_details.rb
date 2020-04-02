@@ -61,7 +61,6 @@ class OrderDetails
   end
 
   def find_order_field(key = nil, name)
-    # find(:css, '#checkout_shipping_address_first_name')
     find_element_path key, :css, order_field(:ta, name), order_field(:il, name)
   end
 

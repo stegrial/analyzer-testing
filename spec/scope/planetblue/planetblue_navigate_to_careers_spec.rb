@@ -35,5 +35,29 @@ describe 'Preconditions' do
 
     end
 
+    scenario 'Searching Locators', search: true do
+
+      step "User goes to the page", settings('planetblue')['page'] + 'pages/careers' do |url|
+        page.visit url
+      end
+
+      step "User checks Careers Header" do
+        check_element_path :xpath, careers.CAREERS_HEADER_TA, careers.CAREERS_HEADER_IL
+        careers.find_careers_header :ta
+      end
+
+      step "User checks Career item", 'Ala Moana Store', 'Assistant Store Manager' do |store, name|
+        check_element_path :xpath, careers.CAREERS_HEADER_TA, careers.CAREERS_HEADER_IL
+        careers.find_career_item :ta, store, name
+      end
+
+      step "User checks Career item", 'Venice Store', 'Keyholder' do |store, name|
+        check_element_path :xpath, careers.career_item(:ta, store, name),
+                           careers.career_item(:il, store, name)
+        careers.find_career_item :ta, store, name
+      end
+
+    end
+
   end
 end
