@@ -41,5 +41,38 @@ describe 'Preconditions' do
 
     end
 
+    scenario 'Searching Locators', search: true do
+
+      step "User goes to the page", settings('planetblue')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks Menu Button" do
+        check_element_path :css, menu.MENU_BUTTON_TA, menu.MENU_BUTTON_IL
+        menu.click_menu_button :ta
+      end
+
+      step "User clicks User Account Button" do
+        check_element_path :css, menu.MENU_USER_BUTTON_TA, menu.MENU_USER_BUTTON_IL
+        menu.click_user_button :ta
+      end
+
+      step "User fills EMAIL, PASSWORD Fields and clicks 'Login' Button",
+           settings('planetblue')['email'],
+           settings('planetblue')['pass'] do |email, password|
+
+        page.execute_script "window.scrollBy(0,400)"
+
+        check_element_path :css, login.EMAIL_FIELD_TA, login.EMAIL_FIELD_IL
+        check_element_path :css, login.PASSWORD_FIELD_TA, login.PASSWORD_FIELD_IL
+        check_element_path :css, login.SIGN_IN_BUTTON_TA, login.SIGN_IN_BUTTON_IL
+
+        login.fill_email_field :ta, email
+        login.fill_password_field :ta, password
+        login.click_sign_in_button :ta
+      end
+
+    end
+
   end
 end

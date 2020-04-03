@@ -141,12 +141,16 @@ class PlanetBlue
     find_element_path(key, :xpath, LOAD_MORE_BUTTON_TA, LOAD_MORE_BUTTON_IL).click
   end
 
-  def find_social_link(key = nil, name)
+  def social_link(key = nil, name)
     locator_by key, "a[name='#{name}']", "planetblue:social_link:#{ta_name(name)}"
   end
 
+  def find_social_link(key = nil, name)
+    find_element_path(key, :css, find_social_link(:ta, name), find_social_link(:il, name))
+  end
+
   def click_social_link(key = nil, name)
-    find_element_path(key, :css, find_social_link(:ta, name), find_social_link(:il, name)).click
+    find_social_link(key, name).click
   end
 
   def total_items(key = nil, number)

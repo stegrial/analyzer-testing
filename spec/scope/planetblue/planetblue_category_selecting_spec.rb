@@ -49,7 +49,7 @@ describe 'Preconditions' do
 
     end
     
-    scenario 'Searching Locators', record: true do
+    scenario 'Searching Locators', search: true do
 
       step "User goes to the page", settings('planetblue')['page'] do |url|
         page.visit url
