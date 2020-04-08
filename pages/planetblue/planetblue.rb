@@ -190,4 +190,14 @@ class PlanetBlue
                       breadcrumb(:il, value, with_link))
   end
 
+  def content_card_button(key, name)
+    locator_by key, "//div[@class='content-card__title' and text()='#{name}']",
+               "planetblue:content_card_button:#{ta_name(name)}"
+  end
+
+  def click_content_card_button(key = nil, name)
+    find_element_path(key, :xpath, content_card_button(:il, name),
+                      content_card_button(:ta, name)).click
+  end
+
 end
