@@ -7,6 +7,7 @@ include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 product_details = ProductDetails.new
+login = Login.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -23,6 +24,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks content card button" do
+        page.execute_script "window.scrollBy(0,1000)"
         planetblue.click_content_card_button 'Dresses'
       end
 
@@ -31,7 +33,12 @@ describe 'Preconditions' do
       end
 
       step "User clicks Whishlist button" do
+        page.execute_script "window.scrollBy(0,500)"
         product_details.click_whishlist_button
+      end
+
+      step "User clicks Log In link" do
+        product_details.click_alert_dialog_login_link
       end
 
       step "User fills EMAIL, PASSWORD Fields and clicks 'Sign In' Button",
@@ -40,9 +47,9 @@ describe 'Preconditions' do
 
         page.execute_script "window.scrollBy(0,400)"
 
-        login.fill_email_field :ta, email
-        login.fill_password_field :ta, password
-        login.click_sign_in_button :ta
+        login.fill_email_field email
+        login.fill_password_field password
+        login.click_sign_in_button
       end
 
       step "User goes to the Product Details page",
@@ -55,7 +62,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Menu Item", 'Whishlist' do |value|
-        menu.click_menu_item :ta, value
+        menu.click_menu_item value
       end
 
     end

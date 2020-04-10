@@ -85,7 +85,7 @@ class ProductDetails
   end
 
   def click_whishlist_button(key = nil)
-    find_element_path(key, :xpath, WHISHLIST_BUTTON_TA, WHISHLIST_BUTTON_IL).click
+    find_element_path(key, :css, WHISHLIST_BUTTON_TA, WHISHLIST_BUTTON_IL).click
   end
 
   def find_product_id(key = nil)
