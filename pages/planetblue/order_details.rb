@@ -8,6 +8,8 @@ class OrderDetails
   include RSpec::Matchers
   include PageExtension
 
+  ORDER_HEADER_TITLE_TA = "planetblue:order_details:header"
+  ORDER_HEADER_TITLE_IL = ".account-menu__title"
 
   TOGGLE_ORDER_BUTTON_TA = "planetblue:order_details:toggle_order_button"
   TOGGLE_ORDER_BUTTON_IL = "button.order-summary-toggle"
@@ -76,6 +78,10 @@ class OrderDetails
 
   def click_continue_button(key = nil)
     find_element_path(key, :css, CONTINUE_BUTTON_TA, CONTINUE_BUTTON_IL).click
+  end
+
+  def find_order_header(key = nil)
+    find_element_path(key, :css, ORDER_HEADER_TITLE_TA, ORDER_HEADER_TITLE_IL).click
   end
 
 end
