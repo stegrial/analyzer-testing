@@ -68,7 +68,7 @@ RSpec.configure do |config|
   end
 
   config.after(:context) do
-    delete_saved_elements unless config.filter.rules[:ep]
+    # delete_saved_elements unless config.filter.rules[:ep]
     Capybara.current_session.driver.quit
   end
 
