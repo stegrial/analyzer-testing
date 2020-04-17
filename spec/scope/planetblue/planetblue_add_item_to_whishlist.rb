@@ -9,6 +9,7 @@ planetblue = PlanetBlue.new
 product_details = ProductDetails.new
 login = Login.new
 order_details = OrderDetails.new
+modal = Modal.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -54,6 +55,8 @@ describe 'Preconditions' do
         order_details.find_order_header :il
       end
 
+      # todo: replace by full path to this title like in the beggining
+      # todo: start from clicking by a.header-logo
       step "User goes to the Product Details page",
            settings('planetblue')['page'] + '/products/zafari-play-dress-exclusive?variant=31980430590036' do |url|
         page.visit url
@@ -61,11 +64,34 @@ describe 'Preconditions' do
 
       step "User clicks Whishlist button" do
         page.execute_script "window.scrollBy(0,500)"
+        modal.click_close_policies_button :il
+        product_details.find_product_title :il, 'ZAFARI PLAY DRESS | New'
         product_details.click_whishlist_button :il
       end
 
-      step "User clicks on Menu Item", 'Whishlist' do |value|
+      step "User selects from Menu", 'Whishlist' do |value|
+        menu.click_menu_button :il
         menu.click_menu_item :il, value
+      end
+
+      step "User checks link input field" do
+        # input.giftreggie-permalink.form-control
+      end
+
+      step "User checks Copy Link button" do
+        #
+      end
+
+      step "User checks Product Card" do
+        # #product-card-2764098
+      end
+
+      step "User clicks Remove Card button" do
+        # .wishlist__remove-button\
+      end
+
+      step "User clicks Back link" do
+        # .wishlist__back-button
       end
 
     end
