@@ -10,6 +10,8 @@ product_details = ProductDetails.new
 login = Login.new
 order_details = OrderDetails.new
 modal = Modal.new
+wishlist = Whishlist.new
+
 describe 'Preconditions' do
 
   before(:all) do
@@ -30,7 +32,7 @@ describe 'Preconditions' do
         planetblue.click_content_card_button 'Dresses'
       end
 
-      step "User clicks Collection Item", 'ZAFARI PLAY DRESS | New', 'zafari-play-dress-exclusive?' do |name, link|
+      step "User clicks Collection Item", 'LOVERS WISH DRESS | New', 'lovers-wish-dress?' do |name, link|
         planetblue.click_collection_item :il, name, link
       end
 
@@ -55,17 +57,17 @@ describe 'Preconditions' do
         order_details.find_order_header :il
       end
 
-      # todo: replace by full path to this title like in the beggining
-      # todo: start from clicking by a.header-logo
-      step "User goes to the Product Details page",
-           settings('planetblue')['page'] + '/products/zafari-play-dress-exclusive?variant=31980430590036' do |url|
-        page.visit url
+      step "User goes to the Product Details page" do
+        planetblue.click_header_logo :il
+        planetblue.click_content_card_button :il, 'Dresses'
+        planetblue.click_collection_item :il, 'LOVERS WISH DRESS | New', 'lovers-wish-dress?'
       end
 
+      # todo: move through the main menu
       step "User clicks Whishlist button" do
         page.execute_script "window.scrollBy(0,500)"
         modal.click_close_policies_button :il
-        product_details.find_product_title :il, 'ZAFARI PLAY DRESS | New'
+        product_details.find_product_title :il, 'LOVERS WISH DRESS | New'
         product_details.click_whishlist_button :il
       end
 
@@ -74,24 +76,24 @@ describe 'Preconditions' do
         menu.click_menu_item :il, value
       end
 
-      step "User checks link input field" do
-        # input.giftreggie-permalink.form-control
+      step "User checks input field with link" do
+        wishlist.find_input_field_with_link :il
       end
 
       step "User checks Copy Link button" do
-        #
+        wishlist.find_copy_link_button :il
       end
 
-      step "User checks Product Card" do
-        # #product-card-2764098
+      step "User checks Product Card", 2764098 do |card_id|
+        wishlist.find_product_card :il, card_id
       end
 
       step "User clicks Remove Card button" do
-        # .wishlist__remove-button\
+        wishlist.click_whishlist_remove_button :il
       end
 
       step "User clicks Back link" do
-        # .wishlist__back-button
+        wishlist.click_whishlist_back_button :il
       end
 
     end

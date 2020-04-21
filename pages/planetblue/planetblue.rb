@@ -20,6 +20,9 @@ class PlanetBlue
   LOAD_MORE_BUTTON_TA = "blueplanet:load_more_button"
   LOAD_MORE_BUTTON_IL = "//*[text()='LOAD MORE']"
 
+  HEADER_LOGO_TA = "planetblue:header_logo"
+  HEADER_LOGO_IL = "a.header-logo"
+
   def category_dropdown(key, name)
     locator_by key, "//div[@style='align-items: center; flex-direction: row;']//span[text()='#{name}']",
                "planetblue:category_dropdown:#{ta_name(name)}"
@@ -195,9 +198,16 @@ class PlanetBlue
                "planetblue:content_card_button:#{ta_name(name)}"
   end
 
+  def find_content_card_button(key = nil, name)
+    find_element_path(key, :xpath, content_card_button(:ta, name), content_card_button(:il, name))
+  end
+
   def click_content_card_button(key = nil, name)
-    find_element_path(key, :xpath, content_card_button(:ta, name),
-                      content_card_button(:il, name)).click
+    find_content_card_button(key, name).click
+  end
+
+  def click_header_logo(key = nil)
+    find_element_path(key, :css, HEADER_LOGO_TA, HEADER_LOGO_IL).click
   end
 
 end

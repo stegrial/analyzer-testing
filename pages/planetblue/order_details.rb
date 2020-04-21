@@ -26,6 +26,9 @@ class OrderDetails
   CONTINUE_BUTTON_TA = "planetblue:order_details:continue_button"
   CONTINUE_BUTTON_IL = "#continue_button"
 
+  INPUT_FIELD_WITH_LINK_TA = "planetblue:order_details:input_field_with_link"
+  INPUT_FIELD_WITH_LINK_IL = "input.giftreggie-permalink.form-control"
+
   def payment_button(key, payment_type)
     case payment_type
       when 'Google Pay' then selector = "[data-testid='GooglePay-button']"
