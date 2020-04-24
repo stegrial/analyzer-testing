@@ -44,7 +44,7 @@ class Logs
         style['href'] ? href = style['href'] : href = style['src']
 
 
-        unless href.start_with? 'data:text/css' || 'data:image/png'
+        unless href.start_with?('data:text/css') || href.start_with?('data:image/png')
           unless href.start_with? 'http'
             if href.start_with? '/'
               href = current_url.scheme + '://' + current_url.host + href
@@ -95,6 +95,16 @@ class Logs
       else
         FileUtils.rm_rf(path)
         puts path + ' REMOVED, analyzer request found'
+      end
+    end
+  end
+
+  def rm_analyzer
+    logs_root.each do |path|
+      probability = path + '/probability.txt'
+      if File.exist?(probability)
+        FileUtils.rm_rf(path)
+        puts "\n" + "\e[33mREMOVED - analyzer request found: \e[0m" + path
       end
     end
   end
@@ -220,18 +230,19 @@ end
 
 processing = Logs.new
 processing.logs_root
-# processing.rm_invalid_tree
-#
-# processing.filter
-# processing.rm_same_requests
-#
-# processing.rename_undefined
-#
-# processing.modify_html
-# processing.create_signature_sources
+processing.rm_invalid_tree
+processing.rm_analyzer
+
+processing.filter
+processing.rm_same_requests
+
+processing.rename_undefined
+
+processing.modify_html
+processing.create_signature_sources
 
 processing.filter
 processing.move_signature_address(processing.last_index)
 
-# processing.rm_json_data
+processing.rm_json_data
 
