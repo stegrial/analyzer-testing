@@ -102,6 +102,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on the Account button" do
+        sleep 3
         navigation_page.click_account_button
       end
 
@@ -115,6 +116,7 @@ describe 'Preconditions' do
 
       1.times do
         step "User clicks on the Account button" do
+         sleep 3
           navigation_page.click_account_button
         end
       end

@@ -125,19 +125,19 @@ describe 'Preconditions' do
       end
 
       step "User is viewing the main product image", '1' do |image|
-        product_page.find_main_image_on_product image
+        product_page.find_main_image_on_product :il,image
       end
 
       step "User clicks on the second photo in the product gallery", '2' do |image|
-        product_page.choose_image image
+        product_page.choose_image :il,image
       end
 
       step "User is viewing the main product image", '2' do |image|
-        product_page.find_main_image_on_product image
+        product_page.find_main_image_on_product :il,image
       end
 
       step "User clicks on the second photo in the product gallery", '3' do |image|
-        product_page.choose_image image
+        product_page.choose_image :il,image
       end
 
       step "User is viewing the main product image", '3' do |image|
@@ -154,11 +154,11 @@ describe 'Preconditions' do
       end
 
       step "User is viewing the main product image", '1' do |image|
-        product_page.find_main_image_on_product image
+        product_page.find_main_image_on_product :il,image
       end
 
       step "User clicks on the second photo in the product gallery", '3' do |image|
-        product_page.choose_image image
+        product_page.choose_image :il,image
       end
 
       step "User is viewing the main product image", '3' do |image|

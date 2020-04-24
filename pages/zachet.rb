@@ -7,7 +7,7 @@ class Zachet
   include RSpec::Matchers
   include PageExtension
 
-  ZACHET_LOGO_IL = "//div[@class='logo top-menu']"
+  ZACHET_LOGO_IL = "//div[@class='logo']"
   ZACHET_LOGO_TA = "zachet:logotype"
   ZACHET_LOGO_EP = "EP:zachet:logotype"
 

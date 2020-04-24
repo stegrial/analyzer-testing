@@ -4,7 +4,7 @@ You must have installed Ruby actual version
 
 ## Environment Setup
 
-### If you use Mac OS
+### If you use Mac/Linux OS
 
 #### DEV
 

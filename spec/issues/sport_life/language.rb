@@ -42,6 +42,24 @@ describe 'Preconditions' do
 
     # Debug
 
+    scenario 'Record debug', record_debug: true do
+
+      step "User goes to the page", settings('sportlife')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the ukraine language" do
+        it.click_ukraine_lang :il
+      end
+
+
+      step "User clicks on the russian language" do
+        it.click_russian_lang
+      end
+
+      sleep 3
+    end
+
     scenario 'Searching debug', search_debug: true do
 
       step "User goes to the page", settings('sportlife')['page'] do |url|
@@ -54,7 +72,7 @@ describe 'Preconditions' do
 
 
       step "User clicks on the russian language" do
-        it.click_russian_lang :ep
+        it.click_russian_lang
       end
 
       sleep 3

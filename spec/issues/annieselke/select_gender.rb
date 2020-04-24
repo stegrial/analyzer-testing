@@ -17,7 +17,7 @@ describe 'Preconditions' do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-927 Annie Selke - gender issue' do
+  feature 'AT-11 Annie Selke - gender issue' do
 
     # Initial locators with Recording
 
@@ -132,7 +132,6 @@ describe 'Preconditions' do
     # Element Picker from Repository
 
     scenario 'Searching EP', ep_run: true do
-
 
     step "User goes to the page", settings('annieselke')['page'] do |url|
         page.visit url
@@ -274,7 +273,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks on My Account link" do
-        it.click_my_acc_btn
+        it.click_my_acc_btn :il
       end
 
       sleep 3

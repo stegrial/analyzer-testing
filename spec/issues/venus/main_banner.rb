@@ -85,7 +85,7 @@ describe 'Preconditions' do
 
     # Debug
 
-    scenario 'Recording debug', rec_debug: true do
+    scenario 'Recording debug', record_debug: true do
       step "User goes to the page", settings('venus')['home_page'] do |url|
         page.visit url
       end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../pages/united_methods'
+require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/thetiebar/*.rb"
 
 product_page = TheTiebarProductPage.new
@@ -27,19 +27,19 @@ describe 'Preconditions' do
 
       step "User clicks the shirts category" do
         sleep 3
-        header_page.click_socks_category :il
+        header_page.click_socks_category
       end
 
       step "User clicks the second socks on product page" do
-        product_page.click_second_socks :il
+        product_page.click_second_socks
       end
 
       step "User clicks the add to cart button" do
-        product_page.click_add_to_cart_btn :il
+        product_page.click_add_to_cart_btn
       end
 
       step "User clicks the checkout now button" do
-        cart_page.click_checkout_now_btn_modal :il
+        cart_page.click_checkout_now_btn_modal
       end
 
       step "User click guest checkout" do
@@ -84,11 +84,11 @@ describe 'Preconditions' do
         checkout_page.click_continue_to_pay_btn
       end
 
-      step "User click use entered address in modal  " do
+      step "User click use entered address in modal" do
         checkout_page.click_use_entered_address
       end
 
-      step "User click continue button  " do
+      step "User click continue button" do
         checkout_page.click_continue_btn
       end
 
@@ -131,22 +131,22 @@ describe 'Preconditions' do
       step "User clicks the shirts category" do
         sleep 3
         check_element_path :xpath, TheTiebarHeader::SOCKS_CATEGORY_TA, TheTiebarHeader::SOCKS_CATEGORY_IL
-        header_page.click_socks_category :il
+        header_page.click_socks_category
       end
 
       step "User clicks the second socks on product page" do
         check_element_path :xpath, TheTiebarProductPage::SECOND_SOCKS_PDP_TA, TheTiebarProductPage::SECOND_SOCKS_PDP_IL
-        product_page.click_second_socks :il
+        product_page.click_second_socks
       end
 
       step "User clicks the add to cart button" do
         check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_TA, TheTiebarProductPage::ADD_TO_CART_IL
-        product_page.click_add_to_cart_btn :il
+        product_page.click_add_to_cart_btn
       end
 
       step "User clicks the checkout now button" do
         check_element_path :xpath, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_TA, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_IL
-        cart_page.click_checkout_now_btn_modal :il
+        cart_page.click_checkout_now_btn_modal
       end
 
       step "User click guest checkout" do

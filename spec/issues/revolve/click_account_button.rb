@@ -22,7 +22,7 @@ describe 'Preconditions' do
     # Initial locators with Recording
 
     scenario 'Recording IL', il_run: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
 
@@ -61,7 +61,7 @@ describe 'Preconditions' do
     end
 
     scenario 'Searching IL', il_run: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
 
@@ -83,7 +83,7 @@ describe 'Preconditions' do
     # Element Picker from Repository
 
     scenario 'Searching EP', ep_run: true do
-      step "User goes to the page", settings('revolve')['home_page'] do |url|
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
 
@@ -106,12 +106,12 @@ describe 'Preconditions' do
     # Debug
 
     scenario 'Recording debug', rec_debug: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
 
       step "User clicks on hamburger menu button" do
-        it.click_hamburger_menu
+        it.click_hamburger_menu :il
       end
 
       step "User clicks on the Account button" do
@@ -129,6 +129,10 @@ describe 'Preconditions' do
       step "User clicks on the Sign In button" do
         it.click_sign_in_button :il
       end
+      step "User clicks on hamburger menu button" do
+        sleep 3
+        it.click_hamburger_menu :il
+      end
 
       step "User clicks on the Account button" do
         it.click_account_button
@@ -138,7 +142,7 @@ describe 'Preconditions' do
     end
 
     scenario 'Searching debug', search_debug: true do
-      step "User goes to the page", settings('revolve')['page'] do |url|
+      step "User goes to the page", settings('revolve')['moov_pwa'] do |url|
         page.visit url
       end
 

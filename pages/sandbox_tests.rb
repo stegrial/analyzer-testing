@@ -8,9 +8,11 @@ class SandboxTests
   H2_VIDEO_TA = 'sandbox:html5:articleVideo:h2'
 
   def record_heading_4(key = nil)
-    return find(:xpath, SECOND_HEADING_IL) if key == :il
-    find(:xpath, ta(SECOND_HEADING_TA, SECOND_HEADING_IL))
-  end
+    post_processing key do
+      return find(:xpath, SECOND_HEADING_IL) if key == :il
+      find(:xpath, ta(SECOND_HEADING_TA, SECOND_HEADING_IL))
+      end
+    end
 
   def record_h2_video(key = nil)
     post_processing key do
@@ -18,5 +20,7 @@ class SandboxTests
       find(:xpath, ta(H2_VIDEO_TA, H2_VIDEO_IL))
     end
   end
+
+
 
 end

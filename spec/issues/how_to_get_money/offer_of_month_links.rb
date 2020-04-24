@@ -10,95 +10,89 @@ it = HowToGetMoney.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['chromeOptions'].delete('mobileEmulation')
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
   end
 
   after(:all) do
     Capybara.current_session.driver.quit
   end
 
-  feature 'TA-905 Analyzer returns the wrong element (link) in the Offer of month section' do
+  feature 'AT-54 Analyzer returns the wrong element (link) in the Offer of month section' do
 
-  # Initial locators with Recording
+    # Initial locators with Recording
 
-  scenario 'Recording IL', il_run: true do
-    step "User goes to the page", settings('how_to_get_money')['page'] do |url|
-      page.visit url
+    scenario 'Recording IL', il: true do
+      step "User goes to the page", settings('how_to_get_money')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the link - First loan" do
+        it.click_first_loan_link
+      end
+      sleep 3
     end
 
-    step "User clicks on the link - First loan" do
-      it.click_first_loan_link
-    end
+    scenario 'Searching IL', il: true do
+      step "User resizes browser window to maximum" do
+        Capybara.current_session.driver.browser.manage.window.maximize
+      end
 
-    sleep 3
-    Capybara.current_session.driver.quit
-  end
+      step "User goes to the page", settings('how_to_get_money')['page'] do |url|
+        page.visit url
+      end
 
-  scenario 'Searching IL', il_run: true do
-    step "User resizes browser window to maximum" do
-      Capybara.current_session.driver.browser.manage.window.maximize
+      step "User clicks on the link - First loan" do
+        check_element_path :xpath, HowToGetMoney::FIRST_LOAN_TA, HowToGetMoney::FIRST_LOAN_IL
+        it.click_first_loan_link
+      end
+      sleep 3
     end
-
-    step "User goes to the page", settings('how_to_get_money')['page'] do |url|
-      page.visit url
-    end
-
-    step "User clicks on the link - First loan" do
-      check_element_path :xpath, HowToGetMoney::FIRST_LOAN_TA, HowToGetMoney::FIRST_LOAN_IL
-      it.click_first_loan_link
-    end
-    sleep 3
-  end
 
   # Element Picker from Repository
 
-  scenario 'Searching EP', ep_run: true do
-    step "User resizes browser window to maximum" do
-      Capybara.current_session.driver.browser.manage.window.maximize
-    end
+    scenario 'Searching EP', ep: true do
+      step "User resizes browser window to maximum" do
+        Capybara.current_session.driver.browser.manage.window.maximize
+      end
 
-    step "User goes to the page", settings('how_to_get_money')['page'] do |url|
-      page.visit url
-    end
+      step "User goes to the page", settings('how_to_get_money')['page'] do |url|
+        page.visit url
+      end
 
-    step "User clicks on the link - First loan" do
-      check_element_path :xpath, HowToGetMoney::FIRST_LOAN_EP, HowToGetMoney::FIRST_LOAN_IL
-      it.click_first_loan_link :ep
+      step "User clicks on the link - First loan" do
+        check_element_path :xpath, HowToGetMoney::FIRST_LOAN_EP, HowToGetMoney::FIRST_LOAN_IL
+        it.click_first_loan_link :ep
+      end
+      sleep 3
     end
-    sleep 3
-  end
 
   # Debug
 
-  scenario 'Recording debug', rec_debug: true do
-    step "User goes to the page", settings('how_to_get_money')['page'] do |url|
-      page.visit url
+    scenario 'Recording debug', rec_debug: true do
+      step "User goes to the page", settings('how_to_get_money')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the link - First loan" do
+        it.click_first_loan_link
+      end
+
+      sleep 3
     end
 
-    step "User clicks on the link - First loan" do
-      it.click_first_loan_link
-    end
+    scenario 'Searching debug', search_debug: true do
+      step "User resizes browser window to maximum" do
+        Capybara.current_session.driver.browser.manage.window.maximize
+      end
 
-    sleep 3
-    Capybara.current_session.driver.quit
+      step "User goes to the page", settings('how_to_get_money')['page'] do |url|
+        page.visit url
+      end
+
+      step "User clicks on the link - First loan" do
+        it.click_first_loan_link
+      end
+      sleep 3
+    end
   end
-
-  scenario 'Searching debug', search_debug: true do
-    step "User resizes browser window to maximum" do
-      Capybara.current_session.driver.browser.manage.window.maximize
-    end
-
-    step "User goes to the page", settings('how_to_get_money')['page'] do |url|
-      page.visit url
-    end
-
-    step "User clicks on the link - First loan" do
-      it.click_first_loan_link
-    end
-    sleep 3
-  end
-
-
-end
-
 end

@@ -60,11 +60,12 @@ class TheTiebarProductPage
   QUANTITY_TA = "thetiebar:PDP:quantity"
   QUANTITY_EP = "EP:thetiebar:PDP:quantity"
 
-  ADD_TO_CART_IL = "(//button[contains(@data-th, 'add-to-cart')])[1]"
+  ADD_TO_CART_IL = "(//h4[contains(text(), 'Add to Cart')])[1]"
+  # ADD_TO_CART_IL = "(//button[contains(@data-th, 'add-to-cart')])[1]"
   ADD_TO_CART_TA = "thetiebar:PDP:add_to_cart"
   ADD_TO_CART_EP = "EP:thetiebar:PDP:add_to_cart"
 
-  FIT_TRIM_IL = "//h5[text()='Trim']"
+  FIT_TRIM_IL = "//h6[text()='Trim']"
   FIT_TRIM_TA = "thetiebar:PDP:fit_trim"
   FIT_TRIM_EP = "EP:thetiebar:PDP:fit_trim"
 
@@ -76,7 +77,7 @@ class TheTiebarProductPage
   BLUE_COLOR_TA = "thetiebar:PDP:blue_color"
   BLUE_COLOR_EP = "EP:thetiebar:PDP:blue_color"
 
-  SLIM_FIT_IL = "//div[contains(text(), 'Slim')]"
+  SLIM_FIT_IL = "//p[contains(text(), 'slim')]"
   SLIM_FIT_TA = "thetiebar:PDP:slim_fit"
   SLIM_FIT_EP = "EP:thetiebar:PDP:slim_fit"
 
@@ -241,46 +242,46 @@ class TheTiebarProductPage
   end
 
   def click_to_select_neck_size
-    if  page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='14.5']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='14.5']").click
+    if  page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='14.5']")
+      find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='14.5']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15']").click
+    elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='15']")
+      find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='15']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15.5']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='15.5']").click
+    elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='15.5']")
+      find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='15.5']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16']").click
+    elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='16']")
+      find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='16']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16.5']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='16.5']").click
+    elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='16.5']")
+      find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='16.5']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17']")
-      find(:xpath,"//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17']").click
+    elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='17']")
+      find(:xpath,"//button[not(contains(@tabindex, '-1'))]//h6[text()='17.7']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17.5']")
-      find(:xpath,"//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='17.5']").click
+    elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='17.5']")
+      find(:xpath,"//button[not(contains(@tabindex, '-1'))]//h6[text()='17']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18']").click
+    elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='18']")
+      find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='17']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18.5']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='18.5']").click
+    elsif page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='18.5']")
+      find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='17']").click
     else
       p "No sizes available"
     end
   end
 
   def click_sleeve_length_btn
-    if  page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='32/33']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='32/33']").click
+    if  page.has_xpath?("//button[not(contains(@tabindex, '-1'))]//h6[text()='32/33']")
+      find(:xpath, "//button[not(contains(@tabindex, '-1'))]//h6[text()='32/33']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='34/35']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='34/35']").click
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h6[text()='34/35']")
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h6[text()='34/35']").click
 
-    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='36/37']")
-      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='36/37']").click
+    elsif page.has_xpath?("//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h6[text()='36/37']")
+      find(:xpath, "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h6[text()='36/37']").click
     else
       p "No sleeve length sizes available"
 
