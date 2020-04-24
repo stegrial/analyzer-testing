@@ -30,10 +30,12 @@ module ElementSearchValidation
         @address = address
       end
       page['children'].select { |el| el['node_type'] == 'Element' }.each_with_index { |el, index| search(el, address + '.' + index.to_s, condition) }
+      # puts page.dig('css') if address == '0.1.10.1.0.0.0.2.0.0.1.0.0.2.2.1'
     end
 
     def check_process
       begin
+        # puts @signature.dig('css').sort.to_h
         search(@data, '0', %w(text_value))
         # search(@data, '0', %w(class text_value))
         # search(@data, '0', %w(class)) if @found_elements == 0
