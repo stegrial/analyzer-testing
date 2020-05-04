@@ -64,20 +64,24 @@ module ElementSearchValidation
   end
 
   # <<< DataControl testing >>>
-
   # dir = project_root + "/logs/" + ARGV[0]
   #
   # test = DataControl.new(dir)
   # test.check_process
   # test.result
 
-  # <<< Requests definition: >>>
-
-  def check_requests
+  # <<< Request definition: >>>
+  def define_new_request
     current_test = Dir[project_root + '/logs/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.last
-    responses = Dir[current_test + '/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.select { |a| a.scan(/\d+/)[-1].to_i > $last_dir }
-    $last_dir = responses.last.scan(/\d+/)[-1].to_i
-    responses.each do |dir|
+    Dir[current_test + '/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.select { |a| a.scan(/\d+/)[-1].to_i > $last_dir }
+  end
+
+  def save_last_request
+    $last_dir = define_new_request.last.scan(/\d+/)[-1].to_i
+  end
+
+  def check_new_request
+    define_new_request.each do |dir|
       begin
         if File.exist?(dir + '/signature.json')
           instance = DataControl.new(dir)
@@ -90,9 +94,25 @@ module ElementSearchValidation
     end
   end
 
+  def define_last_request
+    Dir[project_root + '/logs/*/*'].sort_by { |a| [ a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i ] }.last
+  end
+
+  def check_last_request
+    begin
+      if File.exist?(define_last_request + '/signature.json')
+        instance = DataControl.new(define_last_request)
+        instance.check_process
+        instance.result
+      end
+    rescue StandardError => ex
+      puts ex
+    end
+  end
+
+
   def check_element_path(locator_type, ta_locator, initial_locator)
-    ta_path = find(ta(ta_locator), visible: false).path
-    check_requests
+    ta_path = find(ta(ta_locator), visible: false) { processing }.path
     puts ta_path
 
     case locator_type

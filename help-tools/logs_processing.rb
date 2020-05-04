@@ -8,7 +8,7 @@ require 'uri'
 class Logs
 
   def initialize
-    @filter_array
+    @filter_array = []
   end
 
   def logs_root
@@ -30,27 +30,33 @@ class Logs
       # head = new_page.search('head').first
       # current_url = URI.parse(page.current_url)
 
-      current_url = 'https://ectest.trueautomation.io/flow/#login'
-      current_url = URI.parse(current_url)
-
+      current_url = File.read(path + '/current_url.txt')
+      current_url_parsed = URI.parse(current_url.chomp)
       FileUtils.mkdir path + '/data_files'
 
       styles = new_page.search('link', 'script', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
       # puts styles
 
       styles.each do |style|
-        # href = style['href'] if style['href']
-        # href = style['src'] if style['src']
-        style['href'] ? href = style['href'] : href = style['src']
-
+        href = style['href'] ? style['href'] : style['src']
 
         unless href.start_with?('data:text/css') || href.start_with?('data:image/png')
           unless href.start_with? 'http'
             if href.start_with? '/'
-              href = current_url.scheme + '://' + current_url.host + href
+              href = current_url_parsed.scheme + '://' + current_url_parsed.host + href
+            elsif href.start_with? '..'
+              css_array = href.split('/')
+              i = css_array.count { |url_part| url_part == '..' }
+              i.times { css_array.shift }
+
+              url_array = current_url.split('/')
+              (i + 1).times { url_array.pop }
+
+              url_array = url_array.concat(css_array)
+              href = url_array.join('/')
             else
-              href = '/' + href unless current_url.path[-1] == '/'
-              href = current_url.scheme + '://' + current_url.host + current_url.path + href
+              href = '/' + href unless current_url_parsed.path[-1] == '/'
+              href = current_url_parsed.scheme + '://' + current_url_parsed.host + current_url_parsed.path + href
             end
           end
 
@@ -76,7 +82,6 @@ class Logs
             # head << '<style>' + style_code + '</style>'
             style['href'] = 'data_files/' + file_name if style['href']
             style['src'] = 'data_files/' + file_name if style['src']
-            puts style
           end
         end
       end
@@ -128,9 +133,9 @@ class Logs
     end
   end
 
-  def rm_json_data
+  def rm_excess_data
     logs_root.each do |path|
-      data = %w(/data.json /signature.json)
+      data = %w(/data.json /signature.json /current_url.txt)
       data.each do |file|
         FileUtils.rm(path + file) if File.exist?(path + file)
       end
@@ -148,23 +153,30 @@ class Logs
     end
   end
 
-  def filter
-    filter = {}
-    path_array = logs_root.sort_by { |a| [ a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i ] }
-    path_array.each do |path|
-      filter[path] = Dir[File.join(path, '*')].count { |file| File.file?(file) }
-    end
+  # def filter
+  #   filter = {}
+  #   path_array = logs_root.sort_by { |a| [ a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i ] }
+  #   path_array.each do |path|
+  #     filter[path] = Dir[File.join(path, '*')].count { |file| File.file?(file) }
+  #   end
+  #
+  #   filter_array = []
+  #   filter.each { |pair| filter_array << pair }
+  #   @filter_array = filter_array
+  # end
 
-    filter_array = []
-    filter.each { |pair| filter_array << pair }
-    @filter_array = filter_array
+  def filter_array
+    @filter_array = logs_root.
+      sort_by { |a| [ a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i ] }.
+      map { |path| [path, Dir[File.join(path, '*')].count { |file| File.file?(file) }] }
+    self
   end
 
   def rm_same_requests
     array_to_remove = []
     @filter_array.each_with_index do |value, index|
-      if value[1] == 3 && @filter_array[index + 1][1] == 3 # to leave only last request
-      # if value[1] == 3 && @filter_array[index - 1][1] == 3 && @filter_array[index + 1][1] == 3 # to leave first and last requests
+      if value[1] == 4 && @filter_array[index + 1][1] == 4 # to leave only last request
+      # if value[1] == 4 && @filter_array[index - 1][1] == 4 && @filter_array[index + 1][1] == 4 # to leave first and last requests
         array_to_remove << value[0]
       end
     end
@@ -192,7 +204,7 @@ class Logs
     @filter_array.length - 1
   end
 
-  def move_signature(index)
+  def move_signature(index = last_index)
     signature = @filter_array[index][0] + '/signature.json'
     if @filter_array[index - 1][1] == 3
       FileUtils.cp(signature, @filter_array[index - 1][0])
@@ -200,10 +212,9 @@ class Logs
     move_signature(index - 1) if index > 0
   end
 
-  def move_signature_address(index)
+  def move_signature_address(index = last_index)
     signature_address = @filter_array[index][0] + '/signature_address.txt'
-    puts signature_address
-    if @filter_array[index - 1][1] == 5
+    if @filter_array[index - 1][1] == 6
       puts @filter_array[index - 1][0] + '/signature_address.txt'
       FileUtils.cp(signature_address, @filter_array[index - 1][0] + '/signature_address.txt')
     end
@@ -229,20 +240,16 @@ class Logs
 end
 
 processing = Logs.new
-processing.logs_root
 processing.rm_invalid_tree
 processing.rm_analyzer
 
-processing.filter
-processing.rm_same_requests
+processing.filter_array.rm_same_requests
 
 processing.rename_undefined
 
 processing.modify_html
 processing.create_signature_sources
 
-processing.filter
-processing.move_signature_address(processing.last_index)
+processing.filter_array.move_signature_address
 
-processing.rm_json_data
-
+processing.rm_excess_data
