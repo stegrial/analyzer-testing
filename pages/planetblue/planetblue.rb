@@ -127,13 +127,27 @@ class PlanetBlue
                "planetblue:collection_item:#{ta_name(name)}_by_link_#{ta_name(link)}"
   end
 
+  def collection_item_by_num(key, number)
+    locator_by key, "(//*[@style='align-items:stretch;flex-direction:column']//img)[#{number}]",
+               "planetblue:collection_item:number_#{number}"
+  end
+
   def find_collection_item(key = nil, name, link)
     find_element_path(key, :xpath, collection_item_by_link(:ta, name, link),
                       collection_item_by_link(:il, name, link))
   end
 
+  def find_collection_item_by_num(key = nil, number)
+    find_element_path(key, :xpath, collection_item_by_num(:ta, number),
+                      collection_item_by_num(:il, number))
+  end
+
   def click_collection_item(key = nil, name, link)
     find_collection_item(key, name, link).click
+  end
+
+  def click_collection_item_by_num(key = nil, number)
+    find_collection_item_by_num(key, number).click
   end
 
   def click_back_to_top_button(key = nil)

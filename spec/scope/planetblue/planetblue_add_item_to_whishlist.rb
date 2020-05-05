@@ -6,6 +6,7 @@ required_relative_all "/pages/planetblue/*.rb"
 include ElementSearchValidation
 
 planetblue = PlanetBlue.new
+menu = Menu.new
 product_details = ProductDetails.new
 login = Login.new
 order_details = OrderDetails.new
@@ -23,17 +24,12 @@ describe 'Preconditions' do
 
     scenario 'Recording Locators', record: true do
 
-      step "User goes to the page", settings('planetblue')['page'] do |url|
+      step "User goes to the page", settings('planetblue')['page'] + 'collections/boho-dresses' do |url|
         page.visit url
       end
 
-      step "User clicks content card button" do
-        page.execute_script "window.scrollBy(0,500)"
-        planetblue.click_content_card_button 'Dresses'
-      end
-
-      step "User clicks Collection Item", 'LOVERS WISH DRESS | New', 'lovers-wish-dress?' do |name, link|
-        planetblue.click_collection_item :il, name, link
+      step "User clicks Collection Item" do
+        planetblue.click_collection_item_by_num :il, 1
       end
 
       step "User clicks Whishlist button" do
@@ -57,23 +53,17 @@ describe 'Preconditions' do
         order_details.find_order_header :il
       end
 
-      step "User goes to the Product Details page" do
-        planetblue.click_header_logo :il
-        planetblue.click_content_card_button :il, 'Dresses'
-        planetblue.click_collection_item :il, 'LOVERS WISH DRESS | New', 'lovers-wish-dress?'
+      step "User goes to the page", settings('planetblue')['page'] + 'collections/boho-dresses' do |url|
+        page.visit url
       end
 
-      # todo: move through the main menu
+      step "User goes to the Product Details page" do
+        planetblue.click_collection_item_by_num :il, 1
+      end
+
       step "User clicks Whishlist button" do
         page.execute_script "window.scrollBy(0,500)"
-        modal.click_close_policies_button :il
-        product_details.find_product_title :il, 'LOVERS WISH DRESS | New'
         product_details.click_whishlist_button :il
-      end
-
-      step "User selects from Menu", 'Whishlist' do |value|
-        menu.click_menu_button :il
-        menu.click_menu_item :il, value
       end
 
       step "User checks input field with link" do
@@ -84,12 +74,12 @@ describe 'Preconditions' do
         wishlist.find_copy_link_button :il
       end
 
-      step "User checks Product Card", 2764098 do |card_id|
-        wishlist.find_product_card :il, card_id
+      step "User checks Product Card" do
+        wishlist.find_product_card :il, 1
       end
 
       step "User clicks Remove Card button" do
-        wishlist.click_whishlist_remove_button :il
+        wishlist.click_whishlist_remove_button :il, 1
       end
 
       step "User clicks Back link" do

@@ -17,20 +17,20 @@ class Whishlist
   WISHLIST_BACK_BUTTON_TA = "planetblue:whishlist:back_button"
   WISHLIST_BACK_BUTTON_IL = ".wishlist__back-button"
 
-  def find_input_field_with_link(i)
+  def find_input_field_with_link(key)
     find_element_path(key, :css, INPUT_FIELD_WITH_LINK_TA, INPUT_FIELD_WITH_LINK_IL)
   end
 
-  def product_card(key, card_id)
-    locator_by key, "planetblue:product_card:#{card_id}:container", "#product-card-#{card_id}"
+  def product_card(key, number)
+    locator_by key, "planetblue:product_card:#{number}:container", "//*[contains(@class, 'product-card'][#{number}]')]"
   end
 
-  def whishlist_remove_button(key, card_id)
-    locator_by key, "planetblue:product_card:#{card_id}:remove_button", "#product-card-#{card_id} .wishlist__remove-button"
+  def whishlist_remove_button(key, number)
+    locator_by key, "planetblue:product_card:#{number}:remove_button", "//*[contains(@class, 'product-card'][#{number}]')]" + "//*[contains(@class, 'wishlist__remove-button']"
   end
 
-  def find_product_card(key = nil, card_id)
-    find_element_path(key, :css, product_card(:ta, card_id), product_card(:il, card_id))
+  def find_product_card(key = nil, number)
+    find_element_path(key, :xpath, product_card(:ta, number), product_card(:il, number))
   end
 
   def click_whishlist_remove_button(key = nil, card_id)
