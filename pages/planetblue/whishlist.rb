@@ -17,7 +17,7 @@ class Whishlist
   WISHLIST_BACK_BUTTON_TA = "planetblue:whishlist:back_button"
   WISHLIST_BACK_BUTTON_IL = ".wishlist__back-button"
 
-  def find_input_field_with_link(key)
+  def find_input_field_with_link(key = nil)
     find_element_path(key, :css, INPUT_FIELD_WITH_LINK_TA, INPUT_FIELD_WITH_LINK_IL)
   end
 
@@ -42,7 +42,7 @@ class Whishlist
   end
 
   def click_whishlist_back_button(key = nil)
-    find_element_path(key, :css, COPY_LINK_BUTTON_TA, COPY_LINK_BUTTON_IL).click
+    find_element_path(key, :css, WISHLIST_BACK_BUTTON_TA, WISHLIST_BACK_BUTTON_IL).click
   end
 
 end
