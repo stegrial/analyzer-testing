@@ -17,8 +17,6 @@ describe 'Preconditions' do
 
   feature 'Surfing on Platform home page' do
 
-    # Initial locators with Recording
-
     scenario 'Test - Recording', record: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
@@ -186,105 +184,8 @@ describe 'Preconditions' do
         platform_page.click_to_open_second_subject_row
       end
 
-
       sleep 3
     end
 
-    # Element Picker from Repository
-
-    scenario 'Searching EP', ep: true do
-      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
-        page.visit url
-      end
-
-      step "Admin do login", settings('cloud_bees') do |credentials|
-        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field :ep, credentials['username']
-
-        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field :ep, credentials['pass']
-
-        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
-        login_page.click_sign_in_button :ep
-      end
-
-      sleep 5
-
-      step "Admin goes to the page", settings('cloud_bees')['platform_home_page'] do |url|
-        page.visit url
-      end
-
-      step "Admin clicks on projects link" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::PROJECTS_LINK_EP, CloudBeesPlatformHomePage::PROJECTS_LINK_IL
-        platform_page.click_projects_link :ep
-      end
-
-      step "Admin clicks on jobs link" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::JOBS_LINK_EP, CloudBeesPlatformHomePage::JOBS_LINK_IL
-        platform_page.click_jobs_link :ep
-      end
-
-      step "Admin clicks on workflow link" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::WORKFLOWS_LINK_EP, CloudBeesPlatformHomePage::WORKFLOWS_LINK_IL
-        platform_page.click_workflows_link :ep
-      end
-
-      step "Admin clicks on cloud link" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::CLOUD_LINK_EP, CloudBeesPlatformHomePage::CLOUD_LINK_IL
-        platform_page.click_cloud_link :ep
-      end
-
-      step "Admin clicks on artifacts link" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::ARTIFACTS_LINK_EP, CloudBeesPlatformHomePage::ARTIFACTS_LINK_IL
-        platform_page.click_artifacts_link :ep
-      end
-
-      step "Admin clicks on search link" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::SEARCH_LINK_EP, CloudBeesPlatformHomePage::SEARCH_LINK_IL
-        platform_page.click_search_link :ep
-      end
-
-      step "Admin clicks on administration link" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::ADMINISTRATION_LINK_EP, CloudBeesPlatformHomePage::ADMINISTRATION_LINK_IL
-        platform_page.click_administration_link :ep
-      end
-
-      step "Admin sorts the Event Log" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::SORT_LINK_EP, CloudBeesPlatformHomePage::SORT_LINK_IL
-        platform_page.click_sort_link
-      end
-
-      step "Admin clicks on second row of run reports" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::JOB_RUN_REPORTS_SECOND_LINE_EP, CloudBeesPlatformHomePage::JOB_RUN_REPORTS_SECOND_LINE_IL
-        platform_page.click_to_open_second_row_run_report :ep
-      end
-
-      step "Admin clicks on parameters  tabs" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::PARAMETERS_EP, CloudBeesPlatformHomePage::PARAMETERS_IL
-        platform_page.click_to_switch_parameters_in_table :ep
-      end
-
-      step "Admin clicks on diagnostics tabs" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::DIAGNOSTICS_EP, CloudBeesPlatformHomePage::DIAGNOSTICS_IL
-        platform_page.click_to_switch_diagnostics_in_table :ep
-      end
-
-      step "Admin clicks on administration link" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::ADMINISTRATION_LINK_EP, CloudBeesPlatformHomePage::ADMINISTRATION_LINK_IL
-        platform_page.click_administration_link :ep
-      end
-
-      step "Admin sorts the Event Log" do
-        check_element_path :xpath, CloudBeesPlatformHomePage::SORT_LINK_EP, CloudBeesPlatformHomePage::SORT_LINK_IL
-        platform_page.click_sort_link
-      end
-
-      step "Admin clicks on second subject row" do
-        check_element_path :css, CloudBeesPlatformHomePage::SUBJECT_SECOND_ROW_EP, CloudBeesPlatformHomePage::SUBJECT_SECOND_ROW_IL
-        platform_page.click_to_open_second_subject_row :ep
-      end
-
-      sleep 3
-    end
   end
 end

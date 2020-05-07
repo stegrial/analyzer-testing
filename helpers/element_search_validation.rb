@@ -1,6 +1,6 @@
 require 'capybara/rspec'
 require 'json'
-require_relative '../helpers/special_methods'
+require_relative './special_methods'
 
 module ElementSearchValidation
   class DataControl
@@ -107,6 +107,8 @@ module ElementSearchValidation
       end
     rescue StandardError => ex
       puts ex
+    ensure
+      return 'oh'
     end
   end
 

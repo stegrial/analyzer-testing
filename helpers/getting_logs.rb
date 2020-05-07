@@ -1,5 +1,5 @@
 require 'capybara/rspec'
-require_relative '../helpers/element_search_validation'
+require_relative './element_search_validation'
 
 class GetCurrentUrl
   include Capybara::DSL

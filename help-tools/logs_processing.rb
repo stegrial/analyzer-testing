@@ -34,7 +34,7 @@ class Logs
       current_url_parsed = URI.parse(current_url.chomp)
       FileUtils.mkdir path + '/data_files'
 
-      styles = new_page.search('link', 'script', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
+      styles = new_page.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
       # puts styles
 
       styles.each do |style|
@@ -133,6 +133,16 @@ class Logs
     end
   end
 
+  def rm_no_current_url
+    logs_root.each do |path|
+      data = path + '/current_url.txt'
+      unless File.exist?(data)
+        FileUtils.rm_rf(path)
+        puts "\n" + "\e[33mREMOVED - current url is missing: \e[0m" + path
+      end
+    end
+  end
+
   def rm_excess_data
     logs_root.each do |path|
       data = %w(/data.json /signature.json /current_url.txt)
@@ -175,8 +185,8 @@ class Logs
   def rm_same_requests
     array_to_remove = []
     @filter_array.each_with_index do |value, index|
-      if value[1] == 4 && @filter_array[index + 1][1] == 4 # to leave only last request
-      # if value[1] == 4 && @filter_array[index - 1][1] == 4 && @filter_array[index + 1][1] == 4 # to leave first and last requests
+      # if value[1] == 4 && @filter_array[index + 1][1] == 4 # to leave only last request
+      if value[1] == 4 && @filter_array[index - 1][1] == 4 && @filter_array[index + 1][1] == 4 # to leave first and last requests
         array_to_remove << value[0]
       end
     end
@@ -240,16 +250,17 @@ class Logs
 end
 
 processing = Logs.new
-processing.rm_invalid_tree
-processing.rm_analyzer
+# processing.rm_invalid_tree
+# processing.rm_analyzer
+processing.rm_no_current_url
 
-processing.filter_array.rm_same_requests
+# processing.filter_array.rm_same_requests
 
-processing.rename_undefined
+# processing.rename_undefined
 
-processing.modify_html
-processing.create_signature_sources
-
-processing.filter_array.move_signature_address
-
-processing.rm_excess_data
+# processing.modify_html
+# processing.create_signature_sources
+#
+# processing.filter_array.move_signature_address
+#
+# processing.rm_excess_data
