@@ -84,8 +84,8 @@ describe 'Preconditions' do
            settings('planetblue')['pass'] do |email, password|
         menu.click_user_button :ta
         page.execute_script "window.scrollBy(0,400)"
-        login.fill_email_field email
-        login.fill_password_field password
+        login.fill_email_field :ta, email
+        login.fill_password_field :ta, password
         login.click_sign_in_button :ta
       end
 
