@@ -35,6 +35,9 @@ class ProductDetails
   CHECKOUT_BUTTON_TA = "planetblue:product_details:checkout_button"
   CHECKOUT_BUTTON_IL = "a[href*='checkout']"
 
+  WHISHLIST_BUTTON_TA = "planetblue:whishlist_button"
+  WHISHLIST_BUTTON_IL = "button[aria-label='Wishlist']"
+
   def _product_image_container(name)
     "//span[text()='#{name}']//ancestor::form//div[@style='flex-direction: column;']"
   end
@@ -79,6 +82,14 @@ class ProductDetails
 
   def find_product_designer(key = nil)
     find_element_path key, :xpath, PRODUCT_DESIGNER_TA, PRODUCT_DESIGNER_IL
+  end
+
+  def find_whishlist_button(key = nil)
+    find_element_path(key, :css, WHISHLIST_BUTTON_TA, WHISHLIST_BUTTON_IL)
+  end
+
+  def click_whishlist_button(key = nil)
+    find_whishlist_button(key).click
   end
 
   def find_product_id(key = nil)
@@ -144,6 +155,15 @@ class ProductDetails
   def find_bottom_section_item(key = nil, section, name, price)
     find_element_path key, :xpath, bottom_section_item(:ta, section, name, price),
                       bottom_section_item(:il, section, name, price)
+  end
+
+  def alert_dialog_login_link(key)
+    locator_by key, "//a[@href='/account/login' and text()='log in']",
+               "planetblue:product_details:alert_dialog_login_link"
+  end
+
+  def click_alert_dialog_login_link(key = nil)
+    find_element_path(key, :xpath, alert_dialog_login_link(:ta), alert_dialog_login_link(:il)).click
   end
 
 end

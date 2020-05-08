@@ -20,6 +20,9 @@ class PlanetBlue
   LOAD_MORE_BUTTON_TA = "blueplanet:load_more_button"
   LOAD_MORE_BUTTON_IL = "//*[text()='LOAD MORE']"
 
+  HEADER_LOGO_TA = "planetblue:header_logo"
+  HEADER_LOGO_IL = "a.header-logo"
+
   def category_dropdown(key, name)
     locator_by key, "//div[@style='align-items: center; flex-direction: row;']//span[text()='#{name}']",
                "planetblue:category_dropdown:#{ta_name(name)}"
@@ -124,13 +127,27 @@ class PlanetBlue
                "planetblue:collection_item:#{ta_name(name)}_by_link_#{ta_name(link)}"
   end
 
+  def collection_item_by_num(key, number)
+    locator_by key, "(//*[@style='align-items:stretch;flex-direction:column']//img)[#{number}]",
+               "planetblue:collection_item:number_#{number}"
+  end
+
   def find_collection_item(key = nil, name, link)
     find_element_path(key, :xpath, collection_item_by_link(:ta, name, link),
                       collection_item_by_link(:il, name, link))
   end
 
+  def find_collection_item_by_num(key = nil, number)
+    find_element_path(key, :xpath, collection_item_by_num(:ta, number),
+                      collection_item_by_num(:il, number))
+  end
+
   def click_collection_item(key = nil, name, link)
     find_collection_item(key, name, link).click
+  end
+
+  def click_collection_item_by_num(key = nil, number)
+    find_collection_item_by_num(key, number).click
   end
 
   def click_back_to_top_button(key = nil)
@@ -188,6 +205,23 @@ class PlanetBlue
   def find_breadcrumb(key = nil, value, with_link)
     find_element_path(key, :xpath, breadcrumb(:ta, value, with_link),
                       breadcrumb(:il, value, with_link))
+  end
+
+  def content_card_button(key, name)
+    locator_by key, "//h3[@class='content-card__title' and text()='#{name}']",
+               "planetblue:content_card_button:#{ta_name(name)}"
+  end
+
+  def find_content_card_button(key = nil, name)
+    find_element_path(key, :xpath, content_card_button(:ta, name), content_card_button(:il, name))
+  end
+
+  def click_content_card_button(key = nil, name)
+    find_content_card_button(key, name).click
+  end
+
+  def click_header_logo(key = nil)
+    find_element_path(key, :css, HEADER_LOGO_TA, HEADER_LOGO_IL).click
   end
 
 end

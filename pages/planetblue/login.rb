@@ -9,13 +9,13 @@ class Login
   include PageExtension
 
   EMAIL_FIELD_TA = "planetblue:login:email_field"
-  EMAIL_FIELD_IL = "input[type='email']"
+  EMAIL_FIELD_IL = "#customer_login input[type='email']"
 
   PASSWORD_FIELD_TA = "planetblue:login:password_field"
-  PASSWORD_FIELD_IL = "input[type='password']"
+  PASSWORD_FIELD_IL = "#customer_login input[type='password']"
 
   SIGN_IN_BUTTON_TA = "planetblue:login:sign_in_button"
-  SIGN_IN_BUTTON_IL = "[type='submit']"
+  SIGN_IN_BUTTON_IL = "#customer_login [type='submit']"
 
   def fill_email_field(key = nil, value)
     find_element_path(key, :css, EMAIL_FIELD_TA, EMAIL_FIELD_IL).fill_in with: value

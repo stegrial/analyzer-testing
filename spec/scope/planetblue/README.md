@@ -31,8 +31,6 @@ TODO tests:
 - find products with sale label (and check discount price)
 - navigate to new products using link on main page
 - find accessories details
-- scroll Festival Fever section until reach the 'load more' button
-- add item to whishlist and check whishlist
 - visit accessibility statement page
 - change shipping country and currency
 - leave review and check reviews
