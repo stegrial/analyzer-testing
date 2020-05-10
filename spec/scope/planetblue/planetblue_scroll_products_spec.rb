@@ -6,8 +6,7 @@ required_relative_all "/pages/planetblue/*.rb"
 include ElementSearchValidation
 
 planetblue = PlanetBlue.new
-designers = Designers.new
-menu = Menu.new
+modal = Modal.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -31,13 +30,14 @@ describe 'Preconditions' do
         planetblue.find_page_header title
       end
 
-      step "User checks Collection Items and scroll down", 'NIGHT AFTER NIGHT DENIM | New', 'night-after-night-denim?' do |name, link|
-        planetblue.find_collection_item name, link
+      step "User checks Collection Items and scroll down" do
+        modal.click_close_discount_button_if_exists
+        planetblue.find_collection_item_by_num 1
         page.execute_script "window.scrollBy(0,1000)"
       end
 
-      step "User checks Collection Items", 'HARVEY CROP DENIM JACKET | New', 'harvey-crop-denim-jacket' do |name, link|
-        planetblue.find_collection_item name, link
+      step "User checks Collection Items" do
+        planetblue.find_collection_item_by_num 7
       end
 
       step "User clicks 'Back to top' button" do
@@ -83,19 +83,18 @@ describe 'Preconditions' do
         planetblue.find_page_header :ta, title
       end
 
-      step "User checks Collection Items and scroll down",
-           'NIGHT AFTER NIGHT DENIM | New', 'night-after-night-denim?' do |name, link|
-        check_element_path :xpath, planetblue.collection_item_by_link(:ta, name, link),
-                           planetblue.collection_item_by_link(:il, name, link)
-        planetblue.find_collection_item :ta, name, link
+      step "User checks Collection Items and scroll down" do
+        modal.click_close_discount_button_if_exists
+        check_element_path :xpath, planetblue.collection_item_by_num(:ta, 1),
+                           planetblue.collection_item_by_num(:il, 1)
+        planetblue.find_collection_item_by_num :ta, 1
         page.execute_script "window.scrollBy(0,1000)"
       end
 
-      step "User checks Collection Items",
-           'HARVEY CROP DENIM JACKET | New', 'harvey-crop-denim-jacket' do |name, link|
-        check_element_path :xpath, planetblue.collection_item_by_link(:ta, name, link),
-                           planetblue.collection_item_by_link(:il, name, link)
-        planetblue.find_collection_item :ta, name, link
+      step "User checks Collection Items" do
+        check_element_path :xpath, planetblue.collection_item_by_num(:ta, 7),
+                           planetblue.collection_item_by_num(:il, 7)
+        planetblue.find_collection_item_by_num :ta, 7
       end
 
       step "User clicks 'Back to top' button" do
