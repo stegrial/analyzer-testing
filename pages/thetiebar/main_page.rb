@@ -29,6 +29,11 @@ class TheTiebarMainPage
   PRIVACY_POLICE_LINK_TA = "thetiebar:main_page:privacy_police_link"
   PRIVACY_POLICE_LINK_EP = "EP:thetiebar:main_page:privacy_police_link"
 
+  COOKIES_CLOSE_BUTTON_IL = "//button[@aria-label='close']"
+  COOKIES_CLOSE_BUTTON_TA = "thetiebar:main_page:cookies_close_btn"
+  COOKIES_CLOSE_BUTTON_EP = "EP:thetiebar:main_page:cookies_close_btn"
+
+
   def fill_singup_field(key = nil, value)
     post_processing key do
       return find(ta(SING_UP_INPUT_EP)).set(value) if key == :ep
@@ -66,6 +71,14 @@ class TheTiebarMainPage
       return find(ta(PRIVACY_POLICE_LINK_EP)).click if key == :ep
       return find(:xpath, PRIVACY_POLICE_LINK_IL).click if key == :il
       find(:xpath, ta(PRIVACY_POLICE_LINK_TA, PRIVACY_POLICE_LINK_IL)).click
+    end
+  end
+
+  def click_close_coolies_btn(key = nil)
+    post_processing key do
+      return find(ta(COOKIES_CLOSE_BUTTON_EP)).click if key == :ep
+      return find(:xpath, COOKIES_CLOSE_BUTTON_IL).click if key == :il
+      find(:xpath, ta(COOKIES_CLOSE_BUTTON_TA, COOKIES_CLOSE_BUTTON_IL)).click
     end
   end
 

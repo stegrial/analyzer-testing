@@ -13,7 +13,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Promotions page exploring' do
@@ -38,6 +38,7 @@ describe 'Preconditions' do
         promo_page.should_see_whats_new_h1
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -63,6 +64,7 @@ describe 'Preconditions' do
         promo_page.should_see_whats_new_h1
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository

@@ -12,14 +12,14 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Revese category' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', il1: true do
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
       end
@@ -59,6 +59,8 @@ describe 'Preconditions' do
       step "User clicks the wedding category" do
         header_page.click_wedding_category
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -112,6 +114,7 @@ describe 'Preconditions' do
         header_page.click_wedding_category
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository

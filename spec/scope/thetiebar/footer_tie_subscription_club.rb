@@ -3,13 +3,15 @@ require_relative '../../../helpers/special_methods'
 require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/thetiebar/*.rb"
 
+include ElementSearchValidation
+
 subscription_page = TheTiebarSubscriptionPage.new
 
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Footer: CUSTOM TIES AND ACCESSORIES' do
@@ -31,7 +33,8 @@ describe 'Preconditions' do
       end
 
       step "User click free place to close cart modal" do
-        subscription_page.click_free_place
+        sleep 2 # wait for page load
+        subscription_page.click_free_place :il # step is duplicated below
       end
 
       step "User  select neck ties 3.25'' radio button" do
@@ -43,7 +46,8 @@ describe 'Preconditions' do
       end
 
       step "User click free place to close cart modal" do
-        subscription_page.click_free_place
+        sleep 2 # wait for page load
+        subscription_page.click_free_place :il # step is duplicated below
       end
 
       step "User  select bow ties 12 radio button" do
@@ -55,7 +59,8 @@ describe 'Preconditions' do
       end
 
       step "User click free place to close cart modal" do
-        subscription_page.click_free_place
+        sleep 2 # wait for page load
+        subscription_page.click_free_place :il # step is duplicated below
       end
 
       step "User  select pairs socks 12 radio button" do
@@ -70,6 +75,7 @@ describe 'Preconditions' do
         subscription_page.click_free_place
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -89,6 +95,7 @@ describe 'Preconditions' do
       end
 
       step "User click free place to close cart modal" do
+        sleep 2 # wait for page load
         check_element_path :xpath, TheTiebarSubscriptionPage::CLICK_FREE_PLACE_TA, TheTiebarSubscriptionPage::CLICK_FREE_PLACE_IL
         subscription_page.click_free_place
       end
@@ -104,6 +111,7 @@ describe 'Preconditions' do
       end
 
       step "User click free place to close cart modal" do
+        sleep 2 # wait for page load
         check_element_path :xpath, TheTiebarSubscriptionPage::CLICK_FREE_PLACE_TA, TheTiebarSubscriptionPage::CLICK_FREE_PLACE_IL
         subscription_page.click_free_place
       end
@@ -119,6 +127,7 @@ describe 'Preconditions' do
       end
 
       step "User click free place to close cart modal" do
+        sleep 2 # wait for page load
         check_element_path :xpath, TheTiebarSubscriptionPage::CLICK_FREE_PLACE_TA, TheTiebarSubscriptionPage::CLICK_FREE_PLACE_IL
         subscription_page.click_free_place
       end
@@ -138,6 +147,7 @@ describe 'Preconditions' do
         subscription_page.click_free_place
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository

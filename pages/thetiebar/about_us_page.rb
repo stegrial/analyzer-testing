@@ -33,6 +33,10 @@ class TheTiebarAboutUs
   ABOUT_OUR_STORES_H1_TA = "thetiebar:returns_page:about_our_stores_h1"
   ABOUT_OUR_STORES_H1_EP = "EP:thetiebar:returns_page:about_our_stores_h1"
 
+  COOKIES_CLOSE_DIV_IL = "//div[contains(@class, 'cookie-x')]"
+  COOKIES_CLOSE_DIV_TA = "thetiebar:main_page:cookies_close_div"
+  COOKIES_CLOSE_DIV_EP = "EP:thetiebar:main_page:cookies_close_div"
+
 
   def click_next_slider(key = nil)
     post_processing key do
@@ -79,6 +83,14 @@ class TheTiebarAboutUs
       return assert_selector(ta(ABOUT_OUR_STORES_H1_EP)) if key == :ep
       return assert_selector(:xpath, ABOUT_OUR_STORES_H1_IL) if key == :il
       assert_selector(:xpath, ta(ABOUT_OUR_STORES_H1_TA, ABOUT_OUR_STORES_H1_IL))
+    end
+  end
+
+  def click_close_coolies_div(key = nil)
+    post_processing key do
+      return find(ta(COOKIES_CLOSE_DIV_EP)).click if key == :ep
+      return find(:xpath, COOKIES_CLOSE_DIV_IL).click if key == :il
+      find(:xpath, ta(COOKIES_CLOSE_DIV_TA, COOKIES_CLOSE_DIV_IL)).click
     end
   end
 

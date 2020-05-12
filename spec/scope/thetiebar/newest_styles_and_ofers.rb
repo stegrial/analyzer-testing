@@ -7,11 +7,12 @@ include ElementSearchValidation
 
 main_page = TheTiebarMainPage.new
 header_page = TheTiebarHeader.new
+
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Newest styles and offers' do
@@ -29,7 +30,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks for redirecting on main pag" do
-        header_page.click_logo :il
+        header_page.click_logo :il # step is duplicated below
       end
 
       step "User clicks terms to use link" do
@@ -52,6 +53,7 @@ describe 'Preconditions' do
         main_page.check_congrats_text
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -90,10 +92,11 @@ describe 'Preconditions' do
       end
 
       step "User check congrats text" do
-        sleep 5
         check_element_path :xpath, TheTiebarMainPage::CONGRATS_TEXT_TA, TheTiebarMainPage::CONGRATS_TEXT_IL
         main_page.check_congrats_text
       end
+
+      sleep 3
     end
 
     # Element Picker

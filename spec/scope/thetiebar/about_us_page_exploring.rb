@@ -11,7 +11,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'About Us page exploring' do
@@ -23,8 +23,11 @@ describe 'Preconditions' do
         page.visit url
       end
 
+      step "User click the close cookies div" do
+        about_us_page.click_close_coolies_div
+      end
+
       step "User click the next slider button" do
-        sleep 3
         about_us_page.click_next_slider
       end
 
@@ -48,12 +51,18 @@ describe 'Preconditions' do
         about_us_page.should_see_about_our_stores_h1
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('thetiebar')['about_us_page'] do |url|
         page.visit url
+      end
+
+      step "User click the close cookies div" do
+        check_element_path :xpath, TheTiebarAboutUs::COOKIES_CLOSE_DIV_TA, TheTiebarAboutUs::COOKIES_CLOSE_DIV_IL
+        about_us_page.click_close_coolies_div
       end
 
       step "User click the next slider button" do
@@ -85,6 +94,8 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarAboutUs::ABOUT_OUR_STORES_H1_TA, TheTiebarAboutUs::ABOUT_OUR_STORES_H1_IL
         about_us_page.should_see_about_our_stores_h1
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository

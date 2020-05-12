@@ -12,7 +12,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Account menu' do
@@ -38,79 +38,71 @@ describe 'Preconditions' do
 
       step "User clicks on the Sign In button" do
         login_page.click_sing_in
-        sleep 3 # wait for finish slow page rebuild
+        sleep 2 # wait for page load
       end
 
       step "User clicks on the Account button" do
-        header_page.click_account_btn
+        header_page.click_account_btn :il # step is duplicated below
       end
 
       step "User clicks orders link  in Account menu" do
         header_page.click_orders_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
-        header_page.click_account_btn
+        header_page.click_account_btn :il # step is duplicated below
       end
 
       step "User clicks address book link in Account menu" do
         header_page.click_address_book_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
-        header_page.click_account_btn
+        header_page.click_account_btn :il # step is duplicated below
       end
 
       step "User clicks payment link in Account menu" do
         header_page.click_payment_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
-        header_page.click_account_btn
+        header_page.click_account_btn :il # step is duplicated below
       end
 
       step "User clicks wish list link in Account menu" do
         header_page.click_wish_list_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
-        header_page.click_account_btn
+        header_page.click_account_btn :il # step is duplicated below
       end
 
       step "User clicks gift cards link in Account menu" do
         header_page.click_gift_cads_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
-        header_page.click_account_btn
+        header_page.click_account_btn :il # step is duplicated below
       end
 
       step "User clicks profile link in Account menu" do
         header_page.click_profile_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
-        header_page.click_account_btn
+        header_page.click_account_btn :il # step is duplicated below
       end
 
       step "User clicks preference link in Account menu" do
         header_page.click_preference_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
-        header_page.click_account_btn
+        header_page.click_account_btn :il # step is duplicated below
       end
 
       step "User clicks need help link in Account menu" do
         header_page.click_need_help_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
@@ -120,6 +112,7 @@ describe 'Preconditions' do
       step "User clicks on the Sign Out link" do
         header_page.click_sing_out_link
       end
+
       sleep 3
     end
 
@@ -136,18 +129,18 @@ describe 'Preconditions' do
 
       step "User fills the Username field", settings('thetiebar')['email'] do |email|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_TA, TheTiebarLoginPage::USERNAME_IL
-        login_page.fill_username_field  email
+        login_page.fill_username_field email
       end
 
       step "User fills the Password field", settings('thetiebar')['password'] do |pass|
         check_element_path :xpath, TheTiebarLoginPage::LOGIN_PASS_TA, TheTiebarLoginPage::LOGIN_PASS_IL
-        login_page.fill_login_password  pass
+        login_page.fill_login_password pass
       end
 
       step "User clicks on the Sign In button" do
         check_element_path :xpath, TheTiebarLoginPage::SIGN_IN_TA, TheTiebarLoginPage::SIGN_IN_IL
         login_page.click_sing_in
-        sleep 3 # wait for finish slow page rebuild
+        sleep 2 # wait for page load
       end
 
       step "User clicks on the Account button" do
@@ -158,8 +151,6 @@ describe 'Preconditions' do
       step "User clicks orders link  in Account menu" do
         check_element_path :xpath, TheTiebarHeader::ORDERS_ACCOUNT_MENU_TA, TheTiebarHeader::ORDERS_ACCOUNT_MENU_IL
         header_page.click_orders_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
-
       end
 
       step "User clicks on the Account button" do
@@ -170,7 +161,6 @@ describe 'Preconditions' do
       step "User clicks address book link in Account menu" do
         check_element_path :xpath, TheTiebarHeader::ADDRESS_BOOK_ACCOUNT_MENU_TA, TheTiebarHeader::ADDRESS_BOOK_ACCOUNT_MENU_IL
         header_page.click_address_book_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
@@ -181,7 +171,6 @@ describe 'Preconditions' do
       step "User clicks payment link in Account menu" do
         check_element_path :xpath, TheTiebarHeader::PAYMENT_ACCOUNT_MENU_TA, TheTiebarHeader::PAYMENT_ACCOUNT_MENU_IL
         header_page.click_payment_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
@@ -192,7 +181,6 @@ describe 'Preconditions' do
       step "User clicks wish list link in Account menu" do
         check_element_path :xpath, TheTiebarHeader::WISH_LIST_ACCOUNT_MENU_TA, TheTiebarHeader::WISH_LIST_ACCOUNT_MENU_IL
         header_page.click_wish_list_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
@@ -203,7 +191,6 @@ describe 'Preconditions' do
       step "User clicks gift cards link in Account menu" do
         check_element_path :xpath, TheTiebarHeader::GIFT_CARDS_ACCOUNT_MENU_TA, TheTiebarHeader::GIFT_CARDS_ACCOUNT_MENU_IL
         header_page.click_gift_cads_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
@@ -214,7 +201,6 @@ describe 'Preconditions' do
       step "User clicks profile link in Account menu" do
         check_element_path :xpath, TheTiebarHeader::PROFILE_ACCOUNT_MENU_TA, TheTiebarHeader::PROFILE_ACCOUNT_MENU_IL
         header_page.click_profile_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
@@ -225,7 +211,6 @@ describe 'Preconditions' do
       step "User clicks preference link in Account menu" do
         check_element_path :xpath, TheTiebarHeader::PREFERENCE_ACCOUNT_MENU_TA, TheTiebarHeader::PREFERENCE_ACCOUNT_MENU_IL
         header_page.click_preference_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
@@ -236,7 +221,6 @@ describe 'Preconditions' do
       step "User clicks need help link in Account menu" do
         check_element_path :xpath, TheTiebarHeader::NEED_HELP_ACCOUNT_MENU_TA, TheTiebarHeader::NEED_HELP_ACCOUNT_MENU_IL
         header_page.click_need_help_in_acc_menu
-        sleep 3 # wait for finish slow page rebuild
       end
 
       step "User clicks on the Account button" do
@@ -248,6 +232,8 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarHeader::SIGN_OUT_LINK_TA, TheTiebarHeader::SIGN_OUT_LINK_IL
         header_page.click_sing_out_link
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -259,17 +245,17 @@ describe 'Preconditions' do
 
       step "User click the account button" do
         check_element_path :xpath, TheTiebarHeader::SIGNIN_BTN_EP, TheTiebarHeader::SIGNIN_BTN_IL
-        header_page.click_sing_in_btn  :ep
+        header_page.click_sing_in_btn :ep
       end
 
       step "User fills the Username field", settings('thetiebar')['email'] do |email|
         check_element_path :xpath, TheTiebarLoginPage::USERNAME_EP, TheTiebarLoginPage::USERNAME_IL
-        login_page.fill_username_field  :ep, email
+        login_page.fill_username_field :ep, email
       end
 
       step "User fills the Password field", settings('thetiebar')['password'] do |pass|
         check_element_path :xpath, TheTiebarLoginPage::LOGIN_PASS_EP, TheTiebarLoginPage::LOGIN_PASS_IL
-        login_page.fill_login_password  :ep, pass
+        login_page.fill_login_password :ep, pass
       end
 
       step "User clicks on the Sign In button" do
@@ -362,7 +348,7 @@ describe 'Preconditions' do
 
       step "User clicks need help link in Account menu" do
         check_element_path :xpath, TheTiebarHeader::NEED_HELP_ACCOUNT_MENU_EP, TheTiebarHeader::NEED_HELP_ACCOUNT_MENU_IL
-        header_page.click_need_help_in_acc_menu  :ep
+        header_page.click_need_help_in_acc_menu :ep
         sleep 3 # wait for finish slow page rebuild
       end
 

@@ -12,7 +12,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'My Account Page' do
@@ -34,7 +34,7 @@ describe 'Preconditions' do
 
       step "User clicks on the Sign In button" do
         login_page.click_sing_in
-        sleep 3
+        sleep 2 # wait for page load
       end
 
       step "User clicks edit profile button" do
@@ -50,7 +50,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb
+        account_page.click_my_acc_breadcrumb :il # step is duplicated below
       end
 
       step "User clicks orders button" do
@@ -58,7 +58,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb
+        account_page.click_my_acc_breadcrumb :il # step is duplicated below
       end
 
       step "User clicks address book button" do
@@ -66,7 +66,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb
+        account_page.click_my_acc_breadcrumb :il # step is duplicated below
       end
 
       step "User clicks payment button" do
@@ -74,7 +74,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb
+        account_page.click_my_acc_breadcrumb :il # step is duplicated below
       end
 
       step "User clicks wishlist button" do
@@ -82,7 +82,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks my account button breadcrumb" do
-        account_page.click_my_acc_breadcrumb
+        account_page.click_my_acc_breadcrumb :il # step is duplicated below
       end
 
       step "User clicks gift cards button" do
@@ -97,6 +97,7 @@ describe 'Preconditions' do
         account_page.click_sing_out_link
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -118,7 +119,7 @@ describe 'Preconditions' do
       step "User clicks on the Sign In button" do
         check_element_path :xpath, TheTiebarLoginPage::SIGN_IN_TA, TheTiebarLoginPage::SIGN_IN_IL
         login_page.click_sing_in
-        sleep 3
+        sleep 2 # wait for page load
       end
 
       step "User clicks edit profile button" do
@@ -195,6 +196,8 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarAccount_page::SIGN_OUT_LINK_TA, TheTiebarAccount_page::SIGN_OUT_LINK_IL
         account_page.click_sing_out_link
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -211,7 +214,7 @@ describe 'Preconditions' do
 
       step "User fills the Password field", settings('thetiebar')['password'] do |pass|
         check_element_path :xpath, TheTiebarLoginPage::LOGIN_PASS_EP, TheTiebarLoginPage::LOGIN_PASS_IL
-        login_page.fill_login_password :ep,pass
+        login_page.fill_login_password :ep, pass
       end
 
       step "User clicks on the Sign In button" do
