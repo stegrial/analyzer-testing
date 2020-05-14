@@ -9,11 +9,11 @@ class TheTiebarPromoPage
   include PageExtension
 
 
-  SHOP_NEW_ARRIVALS_BTN_IL = "//a[@id='promo-btn']"
+  SHOP_NEW_ARRIVALS_BTN_IL = "(//a[contains(@href, '/whats-new')])[2]"
   SHOP_NEW_ARRIVALS_BTN_TA = "thetiebar:promo_page:shop_new_arrivals_btn"
   SHOP_NEW_ARRIVALS_BTN_EP = "EP:thetiebar:promo_page:shop_new_arrivals_btn"
 
-  WHATS_NEW_H1_IL = "//h1[contains(text(),'Ties, Socks, Pocket Squares & More')]"
+  WHATS_NEW_H1_IL = "(//h1[text()='New Arrivals'])[2]"
   WHATS_NEW_H1_TA = "thetiebar:whats_new_page:whats_new"
   WHATS_NEW_H1_EP = "EP:thetiebar:whats_new_page:whats_new"
 

@@ -11,14 +11,14 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Sorting product page' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', il1: true do
       step "User goes to the page", settings('thetiebar')['skinnyties_page'] do |url|
         page.visit url
       end
@@ -40,8 +40,6 @@ describe 'Preconditions' do
       end
 
       sleep 3
-
-
     end
 
     scenario 'Searching IL', il: true do
@@ -70,6 +68,7 @@ describe 'Preconditions' do
         product_page.click_view72
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository

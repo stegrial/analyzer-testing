@@ -12,7 +12,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Holidays page exploring' do
@@ -31,7 +31,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks holiday ties link in footer" do
-        footer_page.click_holiday_ties :il
+        footer_page.click_holiday_ties :il # step is duplicated below
       end
 
       step "User clicks thanksgiving ties icon redirected on page" do
@@ -40,7 +40,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks holiday ties link in footer" do
-        footer_page.click_holiday_ties :il
+        footer_page.click_holiday_ties :il # step is duplicated below
       end
 
       step "User clicks boys easter ties icon redirected on page" do
@@ -49,7 +49,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks holiday ties link in footer" do
-        sleep 3 #wait wor lazy loading
         footer_page.click_holiday_ties
       end
 
@@ -57,6 +56,8 @@ describe 'Preconditions' do
         holidays_page.click_nautical_ties_icon
         holidays_page.should_see_nautical_h1
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -68,6 +69,7 @@ describe 'Preconditions' do
       step "User clicks boys christmas ties icon redirected on page" do
         check_element_path :xpath, TheTiebarHolidaysPage::BOYS_CHRISTMAS_TIES_TA, TheTiebarHolidaysPage::BOYS_CHRISTMAS_TIES_IL
         holidays_page.click_boys_christmas_ties_icon
+
         check_element_path :xpath, TheTiebarHolidaysPage::BOYS_CHRISTMAS_TIES_H1_TA, TheTiebarHolidaysPage::BOYS_CHRISTMAS_TIES_H1_IL
         holidays_page.should_see_boys_christmas_h1
       end
@@ -80,6 +82,7 @@ describe 'Preconditions' do
       step "User clicks thanksgiving ties icon redirected on page" do
         check_element_path :xpath, TheTiebarHolidaysPage::THANKSGIVING_TIES_TA, TheTiebarHolidaysPage::THANKSGIVING_TIES_IL
         holidays_page.click_thanksgiving_ties_icon
+
         check_element_path :xpath, TheTiebarHolidaysPage::THANKSGIVING_TIES_H1_TA, TheTiebarHolidaysPage::THANKSGIVING_TIES_H1_IL
         holidays_page.should_see_thanksgiving_h1
       end
@@ -92,6 +95,7 @@ describe 'Preconditions' do
       step "User clicks boys easter ties icon redirected on page" do
         check_element_path :xpath, TheTiebarHolidaysPage::BOYS_EASTER_TIES_TA, TheTiebarHolidaysPage::BOYS_EASTER_TIES_IL
         holidays_page.click_boys_easter_ties_icon
+
         check_element_path :xpath, TheTiebarHolidaysPage::BOYS_EASTER_TIES_H1_TA, TheTiebarHolidaysPage::BOYS_EASTER_TIES_H1_IL
         holidays_page.should_see_boys_easter_h1
       end
@@ -104,9 +108,12 @@ describe 'Preconditions' do
       step "User clicks nautical ties icon redirected on page" do
         check_element_path :xpath, TheTiebarHolidaysPage::NAUTICAL_TIES_TA, TheTiebarHolidaysPage::NAUTICAL_TIES_IL
         holidays_page.click_nautical_ties_icon
+
         check_element_path :xpath, TheTiebarHolidaysPage::NAUTICAL_TIES_H1_TA, TheTiebarHolidaysPage::NAUTICAL_TIES_H1_IL
         holidays_page.should_see_nautical_h1
       end
+
+      sleep 3
     end
 
     # Element Picker from Repository

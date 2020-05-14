@@ -11,7 +11,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Filtering product page' do
@@ -42,9 +42,8 @@ describe 'Preconditions' do
       step "User click to select 28 waist" do
         product_page.click_28_waist
       end
+
       sleep 3
-
-
     end
 
     scenario 'Searching IL', il: true do
@@ -77,8 +76,8 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarProductPage::WAIST_28_TA, TheTiebarProductPage::WAIST_28_IL
         product_page.click_28_waist
       end
-      sleep 3
 
+      sleep 3
     end
 
     # Element Picker from Repository

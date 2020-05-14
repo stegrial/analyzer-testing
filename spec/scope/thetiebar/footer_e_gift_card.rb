@@ -3,6 +3,8 @@ require_relative '../../../helpers/special_methods'
 require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/thetiebar/*.rb"
 
+include ElementSearchValidation
+
 gift_cart_page = TheTiebarGiftCartPage.new
 
 describe 'Preconditions' do
@@ -54,6 +56,7 @@ describe 'Preconditions' do
         gift_cart_page.click_add_e_gift_card
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -102,6 +105,7 @@ describe 'Preconditions' do
         gift_cart_page.click_add_e_gift_card
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository

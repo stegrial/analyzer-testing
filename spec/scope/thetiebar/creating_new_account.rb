@@ -12,7 +12,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Creating new account' do
@@ -60,6 +60,7 @@ describe 'Preconditions' do
         login_page.click_create_acc_btn
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -113,6 +114,7 @@ describe 'Preconditions' do
         login_page.click_create_acc_btn
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository

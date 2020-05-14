@@ -13,7 +13,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Canada Page exploring' do
@@ -39,6 +39,8 @@ describe 'Preconditions' do
         canada_page.click_shirts_shop
         pdp.should_see_shirts_h1
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -50,6 +52,7 @@ describe 'Preconditions' do
       step "User clicks on wedding shop link and redirected on wedding ties page" do
         check_element_path :xpath, TheTiebarCanada::SHOP_WEDDING_LINK_TA, TheTiebarCanada::SHOP_WEDDING_LINK_IL
         canada_page.click_wedding_shop
+
         check_element_path :xpath, TheTiebarProductPage::WEDDING_TIES_H1_TA, TheTiebarProductPage::WEDDING_TIES_H1_IL
         pdp.should_see_wedding_ties_h1
       end
@@ -57,6 +60,7 @@ describe 'Preconditions' do
       step "User clicks on the Canada link in footer and redirected on Canada ties page" do
         check_element_path :xpath, TheTiebarFooterPage::CANADA_TA, TheTiebarFooterPage::CANADA_IL
         footer_page.click_canada
+
         check_element_path :xpath, TheTiebarCanada::THE_TIABAR_CANADA_H1_TA, TheTiebarCanada::THE_TIABAR_CANADA_H1_IL
         canada_page.should_see_canada_h1
       end
@@ -64,10 +68,12 @@ describe 'Preconditions' do
       step "User clicks on shirts shop link and redirected on shirts page" do
         check_element_path :xpath, TheTiebarCanada::SHIRTS_SHOP_LINK_TA, TheTiebarCanada::SHIRTS_SHOP_LINK_IL
         canada_page.click_shirts_shop
+
         check_element_path :xpath, TheTiebarProductPage::SHIRTS_H1_TA, TheTiebarProductPage::SHIRTS_H1_IL
         pdp.should_see_shirts_h1
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository

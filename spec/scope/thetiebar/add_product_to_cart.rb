@@ -11,7 +11,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Add product to cart' do
@@ -42,6 +42,8 @@ describe 'Preconditions' do
       step "User clicks the add to cart button" do
         product_page.click_add_to_cart_btn
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -72,9 +74,11 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_TA, TheTiebarProductPage::ADD_TO_CART_IL
         product_page.click_add_to_cart_btn
       end
+
+      sleep 3
     end
 
-  # Element Picker from Repository
+    # Element Picker from Repository
     scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('thetiebar')['shirts_page'] do |url|
