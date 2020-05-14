@@ -7,7 +7,7 @@ include ElementSearchValidation
 
 home_page = HomePage.new
 login_page = LoginPage.new
-header_page = HeaderPage.new
+banner_page = BannerPage.new
 
 describe 'Preconditions' do
 
@@ -23,7 +23,7 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        header_page.close_banner
+        banner_page.close_banner
       end
 
       step "User clicks login link on home page"  do
@@ -31,7 +31,7 @@ describe 'Preconditions' do
       end
 
       step "User fills email", settings('annieselke')['email'] do |email|
-        header_page.close_banner
+        banner_page.close_banner
         login_page.fill_email_input(email)
       end
 
@@ -47,27 +47,27 @@ describe 'Preconditions' do
     scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        header_page.close_banner
+        banner_page.close_banner
       end
 
       step "User clicks login link on home page"  do
-        check_element_path :xpath, Home_Page::LOGIN_LINK_TA, Home_Page::LOGIN_LINK_IL
+        check_element_path :xpath, HomePage::LOGIN_LINK_TA, HomePage::LOGIN_LINK_IL
         home_page.click_login_link
       end
 
       step "User fills email", settings('annieselke')['email'] do |email|
-        header_page.close_banner
-        check_element_path :xpath, Login_Page::EMAIL_FIELD_TA, Login_Page::EMAIL_FIELD_IL
+        banner_page.close_banner
+        check_element_path :xpath, LoginPage::EMAIL_FIELD_TA, LoginPage::EMAIL_FIELD_IL
         login_page.fill_email_input(email)
       end
 
       step "User fills pass", settings('annieselke')['pass'] do |pass|
-        check_element_path :xpath, Login_Page::PASS_FIELD_TA, Login_Page::PASS_FIELD_IL
+        check_element_path :xpath, Login_Page::PASS_FIELD_TA, LoginPage::PASS_FIELD_IL
         login_page.fill_pass_input(pass)
       end
 
       step "User clicks login button" do
-        check_element_path :xpath, Login_Page::LOGIN_BTN_TA, Login_Page::LOGIN_BTN_IL
+        check_element_path :xpath, LoginPage::LOGIN_BTN_TA, LoginPage::LOGIN_BTN_IL
         login_page.click_login_btn
       end
     end

@@ -6,7 +6,7 @@ required_relative_all "/pages/annieselke/*.rb"
 include ElementSearchValidation
 
 home_page = HomePage.new
-header_page = HeaderPage.new
+banner_page = BannerPage.new
 
 describe 'Preconditions' do
 
@@ -22,11 +22,11 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        header_page.close_banner
+        banner_page.close_banner
       end
 
       step "Search items"  do |value|
-        header_page.close_banner
+        banner_page.close_banner
         home_page.fill_search_input(value)
       end
       step "Check cart"  do
@@ -45,26 +45,26 @@ describe 'Preconditions' do
     scenario 'Searching IL', il: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        header_page.close_banner
+        banner_page.close_banner
       end
 
       step "Search items"  do |value|
-        header_page.close_banner
-        check_element_path :xpath, Home_Page::SEARCH_FIELD_TA, Home_Page::SEARCH_FIELD_IL
+        banner_page.close_banner
+        check_element_path :xpath, HomePage::SEARCH_FIELD_TA, HomePage::SEARCH_FIELD_IL
         home_page.fill_search_input(value)
       end
       step "Check cart"  do
-        check_element_path :xpath, Home_Page::CART_LINK_TA, Home_Page::CART_LINK_IL
+        check_element_path :xpath, HomePage::CART_LINK_TA, HomePage::CART_LINK_IL
         home_page.move_to_cart_link
       end
 
       step "Click View Cart"  do
-        check_element_path :xpath, Home_Page::VIEW_CART_TA, Home_Page::VIEW_CART_IL
+        check_element_path :xpath, HomePage::VIEW_CART_TA, HomePage::VIEW_CART_IL
         home_page.click_view_cart_btn
       end
 
       step "Click to cart link"  do
-        check_element_path :xpath, Home_Page::CART_LINK_TA, Home_Page::CART_LINK_IL
+        check_element_path :xpath, HomePage::CART_LINK_TA, HomePage::CART_LINK_IL
         home_page.click_cart_link
       end
     end
