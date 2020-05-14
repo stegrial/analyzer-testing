@@ -7,6 +7,7 @@ include ElementSearchValidation
 
 home_page = HomePage.new
 banner_page = BannerPage.new
+footer_page = FooterPage.new
 
 describe 'Preconditions' do
 
@@ -30,31 +31,33 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Fresh American Style blog" do
-        home_page.click_blog_link
+        footer_page.click_blog_link
       end
 
       sleep 5 # wait until page and tree is load
 
       step "User clicks on Social networks icons" do
         banner_page.close_cupon_banner
-        home_page.click_on_facebook_icon
+        footer_page.click_on_facebook_icon
 
         move_between_tabs
         banner_page.close_cupon_banner
-        home_page.click_on_twitter_icon
+        footer_page.click_on_twitter_icon
 
         move_between_tabs
         banner_page.close_cupon_banner
-        home_page.click_on_pinterest_icon
+        footer_page.click_on_pinterest_icon
 
         move_between_tabs
         banner_page.close_cupon_banner
-        home_page.click_on_youtube_icon
+        footer_page.click_on_youtube_icon
 
         move_between_tabs
         banner_page.close_cupon_banner
-        home_page.click_on_instagram_icon
+        footer_page.click_on_instagram_icon
       end
+
+      sleep 3
     end
 
 
@@ -69,35 +72,37 @@ describe 'Preconditions' do
       end
 
       step "User clicks on Fresh American Style blog" do
-        check_element_path :xpath, HomePage::BLOG_LINK_TA, HomePage::BLOG_LINK_IL
-        home_page.click_blog_link
+        check_element_path :xpath, FooterPage::BLOG_LINK_TA, FooterPage::BLOG_LINK_IL
+        footer_page.click_blog_link
       end
 
       step "User clicks on Social networks icons" do
         banner_page.close_cupon_banner
-        check_element_path :xpath, HomePage::SOCIAL_NETWORKS_TA[:facebook], HomePage::SOCIAL_NETWORKS_IL[:facebook]
-        home_page.click_on_facebook_icon
+        check_element_path :xpath, FooterPage::SOCIAL_NETWORKS_TA[:facebook], FooterPage::SOCIAL_NETWORKS_IL[:facebook]
+        footer_page.click_on_facebook_icon
 
         move_between_tabs
         banner_page.close_cupon_banner
-        check_element_path :xpath, HomePage::SOCIAL_NETWORKS_TA[:twitter], HomePage::SOCIAL_NETWORKS_IL[:twitter]
-        home_page.click_on_twitter_icon
+        check_element_path :xpath, FooterPage::SOCIAL_NETWORKS_TA[:twitter], FooterPage::SOCIAL_NETWORKS_IL[:twitter]
+        footer_page.click_on_twitter_icon
 
         move_between_tabs
         banner_page.close_cupon_banner
-        check_element_path :xpath, HomePage::SOCIAL_NETWORKS_TA[:pinterest], HomePage::SOCIAL_NETWORKS_IL[:pinterest]
-        home_page.click_on_pinterest_icon
+        check_element_path :xpath, FooterPage::SOCIAL_NETWORKS_TA[:pinterest], FooterPage::SOCIAL_NETWORKS_IL[:pinterest]
+        footer_page.click_on_pinterest_icon
 
         move_between_tabs
         banner_page.close_cupon_banner
-        check_element_path :xpath, HomePage::SOCIAL_NETWORKS_TA[:youtube], HomePage::SOCIAL_NETWORKS_IL[:youtube]
-        home_page.click_on_youtube_icon
+        check_element_path :xpath, FooterPage::SOCIAL_NETWORKS_TA[:youtube], FooterPage::SOCIAL_NETWORKS_IL[:youtube]
+        footer_page.click_on_youtube_icon
 
         move_between_tabs
         banner_page.close_cupon_banner
-        check_element_path :xpath, HomePage::SOCIAL_NETWORKS_TA[:instagram], HomePage::SOCIAL_NETWORKS_IL[:instagram]
-        home_page.click_on_instagram_icon
+        check_element_path :xpath, FooterPage::SOCIAL_NETWORKS_TA[:instagram], FooterPage::SOCIAL_NETWORKS_IL[:instagram]
+        footer_page.click_on_instagram_icon
       end
+
+      sleep 3
     end
   end
 end

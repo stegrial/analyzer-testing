@@ -8,6 +8,7 @@ include ElementSearchValidation
 home_page = HomePage.new
 login_page = LoginPage.new
 banner_page = BannerPage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -26,15 +27,15 @@ describe 'Preconditions' do
         banner_page.close_banner
       end
 
-      step "User clicks login link on home page"  do
-        home_page.click_login_link
+      step "User clicks login link on home page" do
+        header_page.click_login_link
       end
 
-      step "User clicks Create New Account arrow button"  do
+      step "User clicks Create New Account arrow button" do
         login_page.click_create_new_account_arrow
       end
 
-      step "User clicks dropdown arrow", "ms"  do |value|
+      step "User clicks dropdown arrow", "ms" do |value|
         login_page.click_dropdown_arrow
         login_page.select_dropdown value
         banner_page.close_banner
@@ -62,9 +63,11 @@ describe 'Preconditions' do
         banner_page.close_banner
       end
 
-      step "User clicks Register  button"   do
+      step "User clicks Register  button" do
         login_page.click_register_button
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', search: true do
@@ -73,17 +76,17 @@ describe 'Preconditions' do
         banner_page.close_banner
       end
 
-      step "User clicks login link on home page"  do
-        check_element_path :xpath, HomePage::LOGIN_LINK_TA, HomePage::LOGIN_LINK_IL
-        home_page.click_login_link
+      step "User clicks login link on home page" do
+        check_element_path :xpath, HeaderPage::LOGIN_LINK_TA, HeaderPage::LOGIN_LINK_IL
+        header_page.click_login_link
       end
 
-      step "User clicks Create New Account arrow button"  do
+      step "User clicks Create New Account arrow button" do
         check_element_path :xpath, LoginPage::CREATE_NEW_ACCOUNT_ARROW_TA, LoginPage::CREATE_NEW_ACCOUNT_ARROW_IL
         login_page.click_create_new_account_arrow
       end
 
-      step "User clicks dropdown arrow", "ms"  do |value|
+      step "User clicks dropdown arrow", "ms" do |value|
         check_element_path :xpath, LoginPage::DROPDOWN_ARROW_TA, LoginPage::DROPDOWN_ARROW_IL
         login_page.click_dropdown_arrow
 
@@ -118,11 +121,12 @@ describe 'Preconditions' do
         banner_page.close_banner
       end
 
-      step "User clicks Register  button"   do
+      step "User clicks Register  button" do
         check_element_path :xpath, LoginPage::REGISTER_BTN_TA, LoginPage::REGISTER_BTN_IL
         login_page.click_register_button
       end
+
+      sleep 3
     end
   end
-
 end

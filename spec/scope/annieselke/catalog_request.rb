@@ -9,6 +9,7 @@ home_page = HomePage.new
 catalog_page = CatalogPage.new
 request_catalog_page = RequestCatalogPage.new
 banner_page = BannerPage.new
+footer_page = FooterPage.new
 
 describe 'Preconditions' do
 
@@ -28,7 +29,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks 'Catalog'" do
-        home_page.click_companies"Catalog"
+        footer_page.click_companies "Catalog"
       end
 
       step "User clicks Request a catalog" do
@@ -55,7 +56,7 @@ describe 'Preconditions' do
         request_catalog_page.fill_city 'City'
       end
 
-      step "User selects state" , "GA"  do |value|
+      step "User selects state", "GA" do |value|
         request_catalog_page.click_dropdown_arrow_state
         request_catalog_page.select_dropdown_state value
       end
@@ -71,6 +72,8 @@ describe 'Preconditions' do
       step "User clicks Request a catalog button" do
         request_catalog_page.click_request_catalog
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', search: true do
@@ -80,8 +83,8 @@ describe 'Preconditions' do
       end
 
       step "User clicks 'Catalog'" do
-        check_element_path :xpath, home_page.search_categories(:ta, 'Catalog'), home_page.search_categories(:il, 'Catalog')
-        home_page.click_companies"Catalog"
+        check_element_path :xpath, footer_page.search_categories(:ta, 'Catalog'), footer_page.search_categories(:il, 'Catalog')
+        footer_page.click_companies "Catalog"
       end
 
       step "User clicks Request a catalog" do
@@ -114,7 +117,7 @@ describe 'Preconditions' do
         request_catalog_page.fill_city 'City'
       end
 
-      step "User selects state" , "GA"  do |value|
+      step "User selects state", "GA" do |value|
         check_element_path :xpath, RequestCatalogPage::STATE_TA, RequestCatalogPage::STATE_IL
         request_catalog_page.click_dropdown_arrow_state
 
@@ -136,6 +139,8 @@ describe 'Preconditions' do
         check_element_path :xpath, RequestCatalogPage::REQUEST_CATALOG_BTN_TA, RequestCatalogPage::REQUEST_CATALOG_BTN_IL
         request_catalog_page.click_request_catalog
       end
+
+      sleep 3
     end
   end
 end

@@ -9,6 +9,7 @@ home_page = HomePage.new
 designer_page = DesignerPage.new
 account_request_page = AccountRequestPage.new
 banner_page = BannerPage.new
+footer_page = FooterPage.new
 
 describe 'Preconditions' do
 
@@ -29,7 +30,7 @@ describe 'Preconditions' do
 
       step "User clicks 'Request a Design Account'" do
         banner_page.close_banner
-        home_page.click_companies"Design Concierge"
+        footer_page.click_companies "Design Concierge"
       end
 
       step "User signs up" do
@@ -37,13 +38,13 @@ describe 'Preconditions' do
         designer_page.click_sign_up
       end
 
-      step "User selects country" , "CA"  do |value|
+      step "User selects country", "CA" do |value|
         account_request_page.click_dropdown_arrow_country
         account_request_page.select_dropdown_country value
         banner_page.close_banner
       end
 
-      step "User selects title" , "ms"  do |value|
+      step "User selects title", "ms" do |value|
         account_request_page.click_dropdown_arrow_title
         account_request_page.select_dropdown_title value
       end
@@ -64,7 +65,7 @@ describe 'Preconditions' do
         account_request_page.fill_city(city)
       end
 
-      step "User selects state", "CA-AB"  do |value|
+      step "User selects state", "CA-AB" do |value|
         account_request_page.click_dropdown_arrow_state
         account_request_page.select_dropdown_state value
       end
@@ -73,7 +74,7 @@ describe 'Preconditions' do
         account_request_page.fill_post_code(code)
       end
 
-      step "User selects sales types", "Catalog"  do |value|
+      step "User selects sales types", "Catalog" do |value|
         account_request_page.click_dropdown_arrow_sales
         account_request_page.select_dropdown_sales_types value
       end
@@ -97,8 +98,9 @@ describe 'Preconditions' do
       step "User clicks Account Request" do
         account_request_page.click_request_account
       end
-    end
 
+      sleep 3
+    end
 
     scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
@@ -107,17 +109,17 @@ describe 'Preconditions' do
       end
 
       step "User clicks 'Request a Design Account'" do
-        check_element_path :xpath, home_page.search_categories(:ta, 'Design Concierge'), home_page.search_categories(:il, 'Design Concierge')
-        home_page.click_companies"Design Concierge"
+        check_element_path :xpath, footer_page.search_categories(:ta, 'Design Concierge'), footer_page.search_categories(:il, 'Design Concierge')
+        footer_page.click_companies "Design Concierge"
       end
 
       step "User signs up" do
         banner_page.close_banner
-        check_element_path :xpath, Designer_Page::SIGN_UP_TODAY_TA, Designer_Page::SIGN_UP_TODAY_IL
+        check_element_path :xpath, DesignerPage::SIGN_UP_TODAY_TA, DesignerPage::SIGN_UP_TODAY_IL
         designer_page.click_sign_up
       end
 
-      step "User selects country" , "CA"  do |value|
+      step "User selects country", "CA" do |value|
         account_request_page.move_to_tab
         check_element_path :xpath, AccountRequestPage::COUNTRY_SELECT_TA, AccountRequestPage::COUNTRY_SELECT_IL
         account_request_page.click_dropdown_arrow_country
@@ -127,7 +129,7 @@ describe 'Preconditions' do
         banner_page.close_banner
       end
 
-      step "User selects title" , "ms"  do |value|
+      step "User selects title", "ms" do |value|
         account_request_page.move_to_tab
         check_element_path :xpath, AccountRequestPage::TITLE_SELECT_TA, AccountRequestPage::TITLE_SELECT_IL
         account_request_page.click_dropdown_arrow_title
@@ -156,7 +158,7 @@ describe 'Preconditions' do
         account_request_page.fill_city(city)
       end
 
-      step "User selects state", "CA-AB"  do |value|
+      step "User selects state", "CA-AB" do |value|
         check_element_path :xpath, AccountRequestPage::STATE_REGION_TA, AccountRequestPage::STATE_REGION_IL
         account_request_page.click_dropdown_arrow_state
 
@@ -169,7 +171,7 @@ describe 'Preconditions' do
         account_request_page.fill_post_code(code)
       end
 
-      step "User selects sales types", "Catalog"  do |value|
+      step "User selects sales types", "Catalog" do |value|
         check_element_path :xpath, AccountRequestPage::TYPE_SALES_TA, AccountRequestPage::TYPE_SALES_IL
         account_request_page.click_dropdown_arrow_sales
 
@@ -202,6 +204,7 @@ describe 'Preconditions' do
         account_request_page.click_request_account
       end
 
+      sleep 3
     end
   end
 end
