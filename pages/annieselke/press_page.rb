@@ -7,8 +7,6 @@ class PressPage
   include RSpec::Matchers
   include PageExtension
 
-  CLOSE_BANNER_BTN = "//button[@class='offer-control close']"
-
   PRESS_CATALOG_IL = "//div[@class='collections-grid-item first'][1]/a[1]"
   PRESS_CATALOG_TA = "annieselke:home_page:press_page:catalog_item"
 
@@ -28,14 +26,6 @@ class PressPage
     locator_by key,
                "//select[@name='productCodePost']/option[2]",
                "annieselke:home_page:press_page:#{ta_name('item_option')}"
-  end
-
-  def close_banner
-    within_frame(:xpath,"//div[@class='fcopt_modal'") do
-      find(:xpath, CLOSE_BANNER_BTN).click
-    end
-  rescue
-    puts 'Banner doesnt exist'
   end
 
   def click_first_catalog(key=nil)

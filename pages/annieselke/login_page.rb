@@ -7,8 +7,6 @@ class LoginPage
   include RSpec::Matchers
   include PageExtension
 
-  CLOSE_BANNER_BTN = "//button[@title='Close Dialog']"
-
   EMAIL_FIELD_IL = "//input[@class='text']"
   EMAIL_FIELD_TA = "annieselke:login_page:email_input"
   
@@ -51,13 +49,6 @@ class LoginPage
                "annieselke:login_page:#{ta_name(name)}"
   end
 
-  def close_banner
-    within_frame(1) do
-      find(:xpath, CLOSE_BANNER_BTN).click
-    end
-  rescue
-    puts 'Banner doesnt exist'
-  end
 
   def fill_email_input(key = nil, value)
     find_element_path(key, :xpath, EMAIL_FIELD_TA, EMAIL_FIELD_IL).set(value)

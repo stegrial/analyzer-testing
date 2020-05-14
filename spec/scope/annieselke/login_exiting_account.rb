@@ -7,6 +7,7 @@ include ElementSearchValidation
 
 home_page = HomePage.new
 login_page = LoginPage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -22,7 +23,7 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks login link on home page"  do
@@ -30,7 +31,7 @@ describe 'Preconditions' do
       end
 
       step "User fills email", settings('annieselke')['email'] do |email|
-        home_page.close_banner
+        header_page.close_banner
         login_page.fill_email_input(email)
       end
 
@@ -46,7 +47,7 @@ describe 'Preconditions' do
     scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks login link on home page"  do
@@ -55,7 +56,7 @@ describe 'Preconditions' do
       end
 
       step "User fills email", settings('annieselke')['email'] do |email|
-        home_page.close_banner
+        header_page.close_banner
         check_element_path :xpath, Login_Page::EMAIL_FIELD_TA, Login_Page::EMAIL_FIELD_IL
         login_page.fill_email_input(email)
       end

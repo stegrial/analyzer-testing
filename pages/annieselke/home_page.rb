@@ -7,16 +7,13 @@ class HomePage
   include RSpec::Matchers
   include PageExtension
 
-  CLOSE_BANNER_BTN = "//button[@title='Close Dialog']"
-  CLOSE_CUPON_BANNER_BTN = "//button[@class='offer-control close']"
-
   SEARCH_FIELD_IL = "//input[@id='search']"
   SEARCH_FIELD_TA = "annieselke:home_page:search_input"
 
   LOGIN_LINK_IL = "//a[@href='/login']"
   LOGIN_LINK_TA = "annieselke:home_page:login_link"
 
-  BLOG_LINK_IL = "//a[@href='https://blog.annieselke.com/']"
+  BLOG_LINK_IL = "(//a[@href='https://blog.annieselke.com/'])[3]"
   BLOG_LINK_TA  = "annieselke:home_page:blog_link"
 
   EMAIL_SUBSCRIPTION_IL = "//input[@id='newsletter.email']"
@@ -31,7 +28,7 @@ class HomePage
   VIEW_CART_IL = "//div[@class='mini-cart-links']//a[@class='button primary']"
   VIEW_CART_TA = "annieselke:home_page:view_cart_btn"
 
-  SOCIAL_NETWORKS_IL = {facebook: "//a[@href = 'https://www.facebook.com/annieselke/']",
+  SOCIAL_NETWORKS_IL = {facebook: "//div[@class='social']/a[@class='facebook']",
                         twitter: "//a[@href = 'https://twitter.com/annieselkeco/']", pinterest: "//a[@href = 'https://www.pinterest.com/AnnieSelke/']",
                         youtube: "//a[@href = 'http://www.youtube.com/annieselkecompanies']", instagram: "//a[@href = 'https://www.instagram.com/annieselke/']"}
 
@@ -48,21 +45,6 @@ class HomePage
                "annieselke:home_page:categories:#{ta_name(name)}"
   end
 
-  def close_banner
-    within_frame(1) do
-      find(:xpath, CLOSE_BANNER_BTN).click
-    end
-  rescue
-    puts 'Banner doesnt exist'
-  end
-
-  def close_cupon_banner
-    within_frame(1) do
-      find(:xpath, CLOSE_CUPON_BANNER_BTN).click
-    end
-  rescue
-    puts 'Banner doesnt exist'
-  end
 
   def fill_search_input(key = nil, value)
     find_element_path(key, :xpath, SEARCH_FIELD_TA, SEARCH_FIELD_IL).set(value)

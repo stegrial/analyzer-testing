@@ -8,6 +8,7 @@ include ElementSearchValidation
 home_page = HomePage.new
 designer_page = DesignerPage.new
 account_request_page = AccountRequestPage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -23,22 +24,23 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks 'Request a Design Account'" do
+        header_page.close_banner
         home_page.click_companies"Design Concierge"
       end
 
       step "User signs up" do
-        home_page.close_banner
+        header_page.close_banner
         designer_page.click_sign_up
       end
 
       step "User selects country" , "CA"  do |value|
         account_request_page.click_dropdown_arrow_country
         account_request_page.select_dropdown_country value
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User selects title" , "ms"  do |value|
@@ -101,7 +103,7 @@ describe 'Preconditions' do
     scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks 'Request a Design Account'" do
@@ -110,7 +112,7 @@ describe 'Preconditions' do
       end
 
       step "User signs up" do
-        home_page.close_banner
+        header_page.close_banner
         check_element_path :xpath, Designer_Page::SIGN_UP_TODAY_TA, Designer_Page::SIGN_UP_TODAY_IL
         designer_page.click_sign_up
       end
@@ -122,7 +124,7 @@ describe 'Preconditions' do
 
         check_element_path :xpath, Account_Request_Page.search_country_item(:ta, value), Account_Request_Page.search_country_item(:il, value)
         account_request_page.select_dropdown_country value
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User selects title" , "ms"  do |value|

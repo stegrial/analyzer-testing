@@ -6,6 +6,7 @@ required_relative_all "/pages/annieselke/*.rb"
 include ElementSearchValidation
 
 home_page = HomePage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -24,8 +25,8 @@ describe 'Preconditions' do
       end
 
       step "Close banners" do
-        home_page.close_banner
-        home_page.close_cupon_banner
+        header_page.close_banner
+        header_page.close_cupon_banner
       end
 
       step "User fills email", settings('annieselke')['email'] do |email|
@@ -43,8 +44,8 @@ describe 'Preconditions' do
 
       end
       step "Close banners" do
-        home_page.close_banner
-        home_page.close_cupon_banner
+        header_page.close_banner
+        header_page.close_cupon_banner
       end
 
       step "User fills email", settings('annieselke')['email'] do |email|
