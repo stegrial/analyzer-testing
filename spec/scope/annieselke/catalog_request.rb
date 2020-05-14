@@ -8,6 +8,7 @@ include ElementSearchValidation
 home_page = HomePage.new
 catalog_page = CatalogPage.new
 request_catalog_page = RequestCatalogPage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -23,7 +24,7 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks 'Catalog'" do
@@ -75,7 +76,7 @@ describe 'Preconditions' do
     scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks 'Catalog'" do

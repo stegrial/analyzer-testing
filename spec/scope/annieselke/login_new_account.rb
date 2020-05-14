@@ -7,6 +7,7 @@ include ElementSearchValidation
 
 home_page = HomePage.new
 login_page = LoginPage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -22,7 +23,7 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks login link on home page"  do
@@ -36,7 +37,7 @@ describe 'Preconditions' do
       step "User clicks dropdown arrow", "ms"  do |value|
         login_page.click_dropdown_arrow
         login_page.select_dropdown value
-        login_page.close_banner
+        header_page.close_banner
       end
 
       step "User fills first name", settings('annieselke')['first_name'] do |first_name|
@@ -44,6 +45,7 @@ describe 'Preconditions' do
       end
 
       step "User fills last name", settings('annieselke')['last_name'] do |last_name|
+        header_page.close_banner
         login_page.fill_last_name(last_name)
       end
 
@@ -57,7 +59,7 @@ describe 'Preconditions' do
 
       step "User confirms pass", settings('annieselke')['email'] do |pass|
         login_page.confirm_pass(pass)
-        login_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks Register  button"   do
@@ -68,7 +70,7 @@ describe 'Preconditions' do
     scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks login link on home page"  do
@@ -87,6 +89,7 @@ describe 'Preconditions' do
 
         check_element_path :xpath, login_page.search_item(:ta, value), login_page.search_item(:il, value)
         login_page.select_dropdown value
+        header_page.close_banner
       end
 
       step "User fills first name", settings('annieselke')['first_name'] do |first_name|
@@ -112,7 +115,7 @@ describe 'Preconditions' do
       step "User confirms pass", settings('annieselke')['email'] do |pass|
         check_element_path :xpath, Login_Page::CONFIRM_PASS_TA, Login_Page::CONFIRM_PASS_IL
         login_page.confirm_pass(pass)
-        login_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks Register  button"   do

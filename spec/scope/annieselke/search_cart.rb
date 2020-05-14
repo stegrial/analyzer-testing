@@ -6,6 +6,7 @@ required_relative_all "/pages/annieselke/*.rb"
 include ElementSearchValidation
 
 home_page = HomePage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -21,10 +22,11 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "Search items"  do |value|
+        header_page.close_banner
         home_page.fill_search_input(value)
       end
       step "Check cart"  do
@@ -43,10 +45,11 @@ describe 'Preconditions' do
     scenario 'Searching IL', il: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "Search items"  do |value|
+        header_page.close_banner
         check_element_path :xpath, Home_Page::SEARCH_FIELD_TA, Home_Page::SEARCH_FIELD_IL
         home_page.fill_search_input(value)
       end

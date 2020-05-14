@@ -7,6 +7,7 @@ include ElementSearchValidation
 
 home_page = HomePage.new
 press_page = PressPage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -22,7 +23,7 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks 'Press'" do
@@ -30,7 +31,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks first catalog on the page" do
-        press_page.close_banner
+        header_page.close_banner
         press_page.click_first_catalog
       end
 
@@ -44,7 +45,7 @@ describe 'Preconditions' do
 
       step "User fills quantity" do
         press_page.set_quantity '2'
-        press_page.close_banner
+        header_page.close_banner
       end
 
       step "User adds item to cart" do
@@ -55,7 +56,7 @@ describe 'Preconditions' do
     scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        header_page.close_banner
       end
 
       step "User clicks 'Press'" do
@@ -64,7 +65,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks first catalog on the page" do
-        press_page.close_banner
+        header_page.close_banner
         check_element_path :xpath, Press_Page::PRESS_CATALOG_TA, Press_Page::PRESS_CATALOG_IL
         press_page.click_first_catalog
       end
@@ -82,7 +83,7 @@ describe 'Preconditions' do
       step "User fills quantity" do
         check_element_path :xpath, Press_Page::QUANTITY_FIELD_TA, Press_Page::QUANTITY_FIELD_IL
         press_page.set_quantity '2'
-        press_page.close_banner
+        header_page.close_banner
       end
 
       step "User adds item to cart" do
