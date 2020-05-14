@@ -7,7 +7,7 @@ include ElementSearchValidation
 
 home_page = HomePage.new
 press_page = PressPage.new
-header_page = HeaderPage.new
+banner_page = BannerPage.new
 
 describe 'Preconditions' do
 
@@ -23,7 +23,7 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        header_page.close_banner
+        banner_page.close_banner
       end
 
       step "User clicks 'Press'" do
@@ -31,7 +31,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks first catalog on the page" do
-        header_page.close_banner
+        banner_page.close_banner
         press_page.click_first_catalog
       end
 
@@ -45,7 +45,7 @@ describe 'Preconditions' do
 
       step "User fills quantity" do
         press_page.set_quantity '2'
-        header_page.close_banner
+        banner_page.close_banner
       end
 
       step "User adds item to cart" do
@@ -56,7 +56,7 @@ describe 'Preconditions' do
     scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        header_page.close_banner
+        banner_page.close_banner
       end
 
       step "User clicks 'Press'" do
@@ -65,29 +65,29 @@ describe 'Preconditions' do
       end
 
       step "User clicks first catalog on the page" do
-        header_page.close_banner
-        check_element_path :xpath, Press_Page::PRESS_CATALOG_TA, Press_Page::PRESS_CATALOG_IL
+        banner_page.close_banner
+        check_element_path :xpath, PressPage::PRESS_CATALOG_TA, PressPage::PRESS_CATALOG_IL
         press_page.click_first_catalog
       end
 
       step "User clicks Choose Items below" do
-        check_element_path :xpath, Press_Page::CHOOSE_ITEMS_TA, Press_Page::CHOOSE_ITEMS_IL
+        check_element_path :xpath, PressPage::CHOOSE_ITEMS_TA, PressPage::CHOOSE_ITEMS_IL
         press_page.click_choose_items
       end
 
       step "User selects first element" do
-        check_element_path :xpath, Press_Page::SELECT_SIZE_TA, Press_Page::SELECT_SIZE_IL
+        check_element_path :xpath, PressPage::SELECT_SIZE_TA, PressPage::SELECT_SIZE_IL
         press_page.select_size
       end
 
       step "User fills quantity" do
-        check_element_path :xpath, Press_Page::QUANTITY_FIELD_TA, Press_Page::QUANTITY_FIELD_IL
+        check_element_path :xpath, PressPage::QUANTITY_FIELD_TA, PressPage::QUANTITY_FIELD_IL
         press_page.set_quantity '2'
-        header_page.close_banner
+        banner_page.close_banner
       end
 
       step "User adds item to cart" do
-        check_element_path :xpath, Press_Page::ADD_TO_CARD_TA, Press_Page::ADD_TO_CARD_IL
+        check_element_path :xpath, PressPage::ADD_TO_CARD_TA, PressPage::ADD_TO_CARD_IL
         press_page.add_to_card
       end
     end
