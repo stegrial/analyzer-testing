@@ -8,17 +8,15 @@ class Modal
   include RSpec::Matchers
   include PageExtension
 
-  CLOSE_DISCOUNT_BUTTON_IL = "button#buttoniqClose"
+  CLOSE_DISCOUNT_BUTTON_IL = "cloudiqClose" # "button#buttoniqClose"
   CLOSE_DISCOUNT_BUTTON_TA = "planetblue:modal:close_discount_button"
 
   CLOSE_POLICIES_BUTTON_IL = "(//*[text()=\"We've Updated Our Policies\"]//ancestor::div[contains(@class, 'klaviyo-form')]//button)[1]"
   CLOSE_POLICIES_BUTTON_TA = "planetblue:modal:close_policies_button"
 
   def click_close_discount_button_if_exists(key = nil)
-    begin
+    within_frame 0 do
       find_element_path(key, :id, CLOSE_DISCOUNT_BUTTON_TA, CLOSE_DISCOUNT_BUTTON_IL).click
-    rescue Exception => e
-      puts "Skipping non-existing close button. " + e.message
     end
   end
 

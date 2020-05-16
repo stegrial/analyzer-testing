@@ -42,13 +42,17 @@ describe 'Preconditions' do
       end
 
       step "User clicks Collection Item" do
-        modal.click_close_discount_button_if_exists
         planetblue.click_collection_item_by_num 1
       end
 
       step "User clicks Whishlist button" do
         page.execute_script "window.scrollBy(0,500)"
+        modal.click_close_discount_button_if_exists
         product_details.click_whishlist_button
+      end
+
+      step "Navigate to Whishlist" do
+        page.visit settings('planetblue')['page'] + 'apps/giftregistry/wishlist/'
       end
 
       step "User checks input field with link" do

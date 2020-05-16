@@ -23,6 +23,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks Shipping dropdown" do
+        modal.click_close_policies_button
         shipping.click_shipping_dropdown
       end
 
@@ -47,7 +48,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks Shipping dropdown" do
-        check_element_path :css, shipping.SHIPPING_DROPDOWN_TA, shipping.SHIPPING_DROPDOWN_IL
+        modal.click_close_policies_button :ta
         shipping.click_shipping_dropdown :ta
       end
 

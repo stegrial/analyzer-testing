@@ -104,11 +104,6 @@ class PlanetBlue
                "planetblue:collection_item:#{ta_name(name)}:image"
   end
 
-  def collection_item_price(key, name)
-    locator_by key, "#{_collection_item name}//span[contains(text(), '$')]",
-               "planetblue:collection_item:#{ta_name(name)}:price"
-  end
-
   def collection_item_color(key, name, color)
     locator_by key, "#{_collection_item name}//div[contains(@amp-bind, 'color.selected.id')]//img[@alt='#{color}']",
                "planetblue:collection_item:#{ta_name(name)}:color"
@@ -118,7 +113,6 @@ class PlanetBlue
         find_element_path(key, :xpath, collection_item_link(:ta, name), collection_item_link(:il, name))
         find_element_path(key, :xpath, collection_item_title(:ta, name), collection_item_title(:il, name))
         find_element_path(key, :xpath, collection_item_image(:ta, name), collection_item_image(:il, name))
-        find_element_path(key, :xpath, collection_item_price(:ta, name), collection_item_price(:il, name))
         find_element_path(key, :xpath, collection_item_color(:ta, name, color), collection_item_color(:il, name, color))
   end
 

@@ -7,6 +7,7 @@ include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 menu = Menu.new
+modal = Modal.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -44,6 +45,7 @@ describe 'Preconditions' do
       end
 
       step "User checks Collection Items", 'RUTH TUNIC | New', 'Bright Rose' do |name, color|
+        modal.click_close_discount_button_if_exists
         planetblue.find_collection_item_details name, color
       end
 

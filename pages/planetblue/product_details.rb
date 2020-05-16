@@ -38,6 +38,9 @@ class ProductDetails
   WHISHLIST_BUTTON_TA = "planetblue:whishlist_button"
   WHISHLIST_BUTTON_IL = "button[aria-label='Wishlist']"
 
+  WHISHLIST_PROGRESS_BAR_BUTTON_TA = "planetblue:whishlist_progressbar_button"
+  WHISHLIST_PROGRESS_BAR_BUTTON_IL = "[role='progressbar']"
+
   def _product_image_container(name)
     "//span[text()='#{name}']//ancestor::form//div[@style='flex-direction: column;']"
   end
@@ -82,6 +85,10 @@ class ProductDetails
 
   def find_product_designer(key = nil)
     find_element_path key, :xpath, PRODUCT_DESIGNER_TA, PRODUCT_DESIGNER_IL
+  end
+
+  def find_progressbar(key = nil)
+    find_element_path key, :css, WHISHLIST_PROGRESS_BAR_BUTTON_TA, WHISHLIST_PROGRESS_BAR_BUTTON_IL
   end
 
   def find_whishlist_button(key = nil)
