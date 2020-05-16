@@ -9,7 +9,6 @@ planetblue = PlanetBlue.new
 menu = Menu.new
 product_details = ProductDetails.new
 login = Login.new
-order_details = OrderDetails.new
 modal = Modal.new
 wishlist = Whishlist.new
 
@@ -43,6 +42,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks Collection Item" do
+        modal.click_close_discount_button_if_exists
         planetblue.click_collection_item_by_num 1
       end
 

@@ -128,7 +128,7 @@ class PlanetBlue
   end
 
   def collection_item_by_num(key, number)
-    locator_by key, "(//*[@style='align-items:stretch;flex-direction:column']//img)[#{number}]",
+    locator_by key, "(//*[contains(@style, 'flex-direction:')]//a//img)[#{number}]",
                "planetblue:collection_item:number_#{number}"
   end
 

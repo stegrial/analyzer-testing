@@ -17,7 +17,7 @@ class Modal
   def click_close_discount_button_if_exists(key = nil)
     begin
       find_element_path(key, :id, CLOSE_DISCOUNT_BUTTON_TA, CLOSE_DISCOUNT_BUTTON_IL).click
-    rescue RuntimeError => e
+    rescue Exception => e
       puts "Skipping non-existing close button. " + e.message
     end
   end

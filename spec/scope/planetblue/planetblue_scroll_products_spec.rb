@@ -31,13 +31,14 @@ describe 'Preconditions' do
       end
 
       step "User checks Collection Items and scroll down" do
+        page.execute_script "window.scrollBy(0,1000)"
         modal.click_close_discount_button_if_exists
         planetblue.find_collection_item_by_num 1
-        page.execute_script "window.scrollBy(0,1000)"
       end
 
       step "User checks Collection Items" do
         planetblue.find_collection_item_by_num 7
+        modal.click_close_discount_button_if_exists
       end
 
       step "User clicks 'Back to top' button" do
