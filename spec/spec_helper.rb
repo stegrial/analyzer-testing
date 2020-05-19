@@ -84,7 +84,7 @@ end
 
 def define_run_parameters
   $tag = 'NO_TAG'
-  $tag = ARGV.detect { |arg| arg.start_with?('--tag') }.split('=').last unless ARGV[1] == nil
+  $tag = ARGV.detect {|arg| arg.start_with?('--tag')}.split('=').last if ARGV.to_s.include?("--tag")
 
   $run_parameters = $tag.split(',')
   $run_count = $run_parameters.count

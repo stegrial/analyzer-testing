@@ -69,93 +69,91 @@ class CloudBeesComponents < PageExtension
   CONFIRM_DELETE_COMPONENT_TA = 'cloud_bees:components:confirm_delete_component'
 
   def click_new_component(key = nil)
-    check_element_path(:xpath, NEW_COMPONENTS_BTN_TA, NEW_COMPONENTS_BTN_IL) if $check_path
-    find_element(key, il_type: :xpath, tl: NEW_COMPONENTS_BTN_TA, il: NEW_COMPONENTS_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: NEW_COMPONENTS_BTN_TA, il: NEW_COMPONENTS_BTN_IL, check_path: $check_path).click
   end
 
   def click_create_new_component(key = nil)
-    check_element_path(:xpath, CREATE_NEW_COMPONENTS_TA, CREATE_NEW_COMPONENTS_IL) if $check_path
-    find_element(key, il_type: :xpath, tl: CREATE_NEW_COMPONENTS_TA, il: CREATE_NEW_COMPONENTS_IL).click
+    find_element(key, il_type: :xpath, tl: CREATE_NEW_COMPONENTS_TA, il: CREATE_NEW_COMPONENTS_IL, check_path: $check_path).click
   end
 
   def fill_component_name_field(key = nil, component_name)
-    find_element(key, il_type: :xpath, tl: COMPONENT_NAME_TA, il: COMPONENT_NAME_IL).set(component_name)
+    find_element(key, il_type: :xpath, tl: COMPONENT_NAME_TA, il: COMPONENT_NAME_IL, check_path: $check_path).set(component_name)
   end
 
   def click_on_select_project(key = nil)
-    find_element(key, il_type: :xpath, tl: SELECT_PROJECT_TA, il: SELECT_PROJECT_IL).click
+    find_element(key, il_type: :xpath, tl: SELECT_PROJECT_TA, il: SELECT_PROJECT_IL, check_path: $check_path).click
   end
 
   def select_default_project(key = nil)
-    find_element(key, il_type: :xpath, tl: SELECT_DEFAULT_PROJECT_TA, il: SELECT_DEFAULT_PROJECT_IL).click
+    find_element(key, il_type: :xpath, tl: SELECT_DEFAULT_PROJECT_TA, il: SELECT_DEFAULT_PROJECT_IL, check_path: $check_path).click
   end
 
   def confirm_create_new_component(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_COMPONENT_TA, il: CONFIRM_NEW_COMPONENT_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_COMPONENT_TA, il: CONFIRM_NEW_COMPONENT_IL, check_path: $check_path).click
   end
 
   def click_on_content_location(key = nil)
-    find_element(key, il_type: :xpath, tl: CONTENT_LOCATION_TA, il: CONTENT_LOCATION_IL).click
+    find_element(key, il_type: :xpath, tl: CONTENT_LOCATION_TA, il: CONTENT_LOCATION_IL, check_path: $check_path).click
   end
 
   def select_ec_artifact(key = nil)
-    find_element(key, il_type: :xpath, tl: SELECT_EC_ARTIFACT_TA, il: SELECT_EC_ARTIFACT_IL).click
+    find_element(key, il_type: :xpath, tl: SELECT_EC_ARTIFACT_TA, il: SELECT_EC_ARTIFACT_IL, check_path: $check_path).click
   end
 
   def fill_artifact_name_field(key = nil, artname)
-    find_element(key, il_type: :xpath, tl: ARTIFACT_NAME_TA, il: ARTIFACT_NAME_IL).set(artname)
+    find_element(key, il_type: :xpath, tl: ARTIFACT_NAME_TA, il: ARTIFACT_NAME_IL, check_path: $check_path).set(artname)
   end
 
   def confirm_new_artifact(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_ARTIFACT_TA, il: CONFIRM_NEW_ARTIFACT_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_ARTIFACT_TA, il: CONFIRM_NEW_ARTIFACT_IL, check_path: $check_path).click
   end
 
   def find_component_name_field(key = nil, find_comp)
-    find_element(key, il_type: :xpath, tl: FIND_COMPONENT_NAME_TA, il: FIND_COMPONENT_NAME_IL).set(find_comp)
+    find_element(key, il_type: :xpath, tl: FIND_COMPONENT_NAME_TA, il: FIND_COMPONENT_NAME_IL, check_path: $check_path).set(find_comp)
   end
 
   def click_context_menu_of_content(key = nil)
-    find_element(key, il_type: :css, tl: CONTEXT_MENU_BTN_TA, il: CONTEXT_MENU_BTN_IL).click
+    find_element(key, il_type: :css, tl: CONTEXT_MENU_BTN_TA, il: CONTEXT_MENU_BTN_IL, check_path: $check_path).click
   end
 
   def click_parameters_menu(key = nil)
-    find_element(key, il_type: :xpath, tl: PARAMETERS_MENU_TA, il: PARAMETERS_MENU_IL).click
+    find_element(key, il_type: :xpath, tl: PARAMETERS_MENU_TA, il: PARAMETERS_MENU_IL, check_path: $check_path).click
   end
 
   def click_add_one_parameters(key = nil)
-    find_element(key, il_type: :xpath, tl: ADD_ONE_PARAMETERS_TA, il: ADD_ONE_PARAMETERS_IL).click
+    find_element(key, il_type: :xpath, tl: ADD_ONE_PARAMETERS_TA, il: ADD_ONE_PARAMETERS_IL, check_path: $check_path).click
   end
 
   def fill_parameter_name_field(key = nil, param_name)
-    find_element(key, il_type: :xpath, tl: PARAMETER_NAME_TA, il: PARAMETER_NAME_IL).set(param_name)
+    find_element(key, il_type: :xpath, tl: PARAMETER_NAME_TA, il: PARAMETER_NAME_IL, check_path: $check_path).set(param_name)
   end
 
   def click_parameter_type(key = nil)
-    find_element(key, il_type: :xpath, tl: PARAMETER_TYPE_TA, il: PARAMETER_TYPE_IL).click
+    find_element(key, il_type: :xpath, tl: PARAMETER_TYPE_TA, il: PARAMETER_TYPE_IL, check_path: $check_path).click
   end
 
   def select_checkbox_type(key = nil)
-    find_element(key, il_type: :xpath, tl: CHECKBOX_TYPE_TA, il: CHECKBOX_TYPE_IL).click
+    find_element(key, il_type: :xpath, tl: CHECKBOX_TYPE_TA, il: CHECKBOX_TYPE_IL, check_path: $check_path).click
   end
 
   def confirm_new_parameter(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_PARAMETER_TA, il: CONFIRM_NEW_PARAMETER_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_PARAMETER_TA, il: CONFIRM_NEW_PARAMETER_IL, check_path: $check_path).click
   end
 
   def click_close_parameters(key = nil)
-    find_element(key, il_type: :xpath, tl: CLOSE_PARAMETERS_TA, il: CLOSE_PARAMETERS_IL).click
+    find_element(key, il_type: :xpath, tl: CLOSE_PARAMETERS_TA, il: CLOSE_PARAMETERS_IL, check_path: $check_path).click
   end
 
   def select_master_component_from_list(key = nil)
-    find_element(key, il_type: :css, tl: MASTER_COMPONENT_LIST_TA, il: MASTER_COMPONENT_LIST_IL).click
+    find_element(key, il_type: :css, tl: MASTER_COMPONENT_LIST_TA, il: MASTER_COMPONENT_LIST_IL, check_path: $check_path).click
   end
 
   def click_delete_component(key = nil)
-    find_element(key, il_type: :xpath, tl: DELETE_COMPONENT_TA, il: DELETE_COMPONENT_IL).click
+    find_element(key, il_type: :xpath, tl: DELETE_COMPONENT_TA, il: DELETE_COMPONENT_IL, check_path: $check_path).click
   end
 
   def confirm_delete_component(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_DELETE_COMPONENT_TA, il: CONFIRM_DELETE_COMPONENT_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_DELETE_COMPONENT_TA, il: CONFIRM_DELETE_COMPONENT_IL, check_path: $check_path).click
   end
 
 end
