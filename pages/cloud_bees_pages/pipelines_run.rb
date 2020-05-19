@@ -47,58 +47,58 @@ class CloudBeesPipelinesRuns < PageExtension
   APPLY_RUN_STATUS_TA = "cloud_bees:pipelines_runs:apply_run_status"
 
   def click_to_select_proj(key = nil)
-    find_element(key, il_type: :xpath, tl: PROJ_SELECT_TA, il: PROJ_SELECT_IL).click
+    find_element(key, il_type: :xpath, tl: PROJ_SELECT_TA, il: PROJ_SELECT_IL, check_path: $check_path).click
   end
 
   def click_to_select_ec_examples_proj(key = nil)
-    find_element(key, il_type: :xpath, tl: EC_EXAMPLES_PROJ_TA, il: EC_EXAMPLES_PROJ_IL).click
+    find_element(key, il_type: :xpath, tl: EC_EXAMPLES_PROJ_TA, il: EC_EXAMPLES_PROJ_IL, check_path: $check_path).click
   end
 
   def click_to_accept_proj(key = nil)
-    find_element(key, il_type: :css, tl: ACCEPT_DROPDOWN_SELECTION_TA, il: ACCEPT_DROPDOWN_SELECTION_IL).click
+    find_element(key, il_type: :css, tl: ACCEPT_DROPDOWN_SELECTION_TA, il: ACCEPT_DROPDOWN_SELECTION_IL, check_path: $check_path).click
   end
 
   def click_to_run_status(key = nil)
-    find_element(key, il_type: :xpath, tl: RUN_STATUS_SELECT_TA, il: RUN_STATUS_SELECT_IL).click
+    find_element(key, il_type: :xpath, tl: RUN_STATUS_SELECT_TA, il: RUN_STATUS_SELECT_IL, check_path: $check_path).click
   end
 
   def click_to_select_successful_status(key = nil)
-    find_element(key, il_type: :css, tl: SUCCESSFUL_RUN_STATUS_TA, il: SUCCESSFUL_RUN_STATUS_IL).click
+    find_element(key, il_type: :css, tl: SUCCESSFUL_RUN_STATUS_TA, il: SUCCESSFUL_RUN_STATUS_IL, check_path: $check_path).click
   end
 
   def click_to_select_error_status(key = nil)
-    find_element(key, il_type: :css, tl: ERROR_RUN_STATUS_TA, il: ERROR_RUN_STATUS_IL).click
+    find_element(key, il_type: :css, tl: ERROR_RUN_STATUS_TA, il: ERROR_RUN_STATUS_IL, check_path: $check_path).click
   end
 
   def click_to_apply_status(key = nil)
-    find_element(key, il_type: :css, tl: APPLY_RUN_STATUS_TA, il: APPLY_RUN_STATUS_IL).click
+    find_element(key, il_type: :css, tl: APPLY_RUN_STATUS_TA, il: APPLY_RUN_STATUS_IL, check_path: $check_path).click
   end
 
   def click_multi_action_menu(key = nil)
-    find_element(key, il_type: :xpath, tl: FIRST_MULTI_MENU_TA, il: FIRST_MULTI_MENU_IL).click
+    find_element(key, il_type: :xpath, tl: FIRST_MULTI_MENU_TA, il: FIRST_MULTI_MENU_IL, check_path: $check_path).click
   end
 
   def click_properties_multi_menu(key = nil)
-    find_element(key, il_type: :xpath, tl: PROPERTIES_MULTI_MENU_TA, il: PROPERTIES_MULTI_MENU_IL).click
+    find_element(key, il_type: :xpath, tl: PROPERTIES_MULTI_MENU_TA, il: PROPERTIES_MULTI_MENU_IL, check_path: $check_path).click
   end
 
   def click_access_control_multi_menu(key = nil)
-    find_element(key, il_type: :xpath, tl: ACCESS_CONTROL_MULTI_MENU_TA, il: ACCESS_CONTROL_MULTI_MENU_IL).click
+    find_element(key, il_type: :xpath, tl: ACCESS_CONTROL_MULTI_MENU_TA, il: ACCESS_CONTROL_MULTI_MENU_IL, check_path: $check_path).click
   end
 
   def click_change_history_multi_menu(key = nil)
-    find_element(key, il_type: :xpath, tl: CHANGE_HISTORY_MULTI_MENU_TA, il: CHANGE_HISTORY_MULTI_MENU_IL).click
+    find_element(key, il_type: :xpath, tl: CHANGE_HISTORY_MULTI_MENU_TA, il: CHANGE_HISTORY_MULTI_MENU_IL, check_path: $check_path).click
   end
 
   def click_close_modal_properties(key = nil)
-    find_element(key, il_type: :css, tl: CLOSE_MODAL_PROPERTIES_ICON_TA, il: CLOSE_MODAL_PROPERTIES_ICON_IL).click
+    find_element(key, il_type: :css, tl: CLOSE_MODAL_PROPERTIES_ICON_TA, il: CLOSE_MODAL_PROPERTIES_ICON_IL, check_path: $check_path).click
   end
 
   def click_close_modal_access(key = nil)
-    find_element(key, il_type: :css, tl: CLOSE_MODAL_ACCESS_ICON_TA, il: CLOSE_MODAL_ACCESS_ICON_IL).click
+    find_element(key, il_type: :css, tl: CLOSE_MODAL_ACCESS_ICON_TA, il: CLOSE_MODAL_ACCESS_ICON_IL, check_path: $check_path).click
   end
 
   def click_history_close_modal(key = nil)
-    find_element(key, il_type: :css, tl: HISTORY_CLOSE_MODAL_ICON_TA, il: HISTORY_CLOSE_MODAL_ICON_IL).click
+    find_element(key, il_type: :css, tl: HISTORY_CLOSE_MODAL_ICON_TA, il: HISTORY_CLOSE_MODAL_ICON_IL, check_path: $check_path).click
   end
 end
