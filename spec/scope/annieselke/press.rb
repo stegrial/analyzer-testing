@@ -8,6 +8,7 @@ include ElementSearchValidation
 home_page = HomePage.new
 press_page = PressPage.new
 banner_page = BannerPage.new
+footer_page = FooterPage.new
 
 describe 'Preconditions' do
 
@@ -27,7 +28,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks 'Press'" do
-        home_page.click_companies"Press"
+        footer_page.click_companies "Press"
       end
 
       step "User clicks first catalog on the page" do
@@ -51,6 +52,8 @@ describe 'Preconditions' do
       step "User adds item to cart" do
         press_page.add_to_card
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', search: true do
@@ -60,8 +63,8 @@ describe 'Preconditions' do
       end
 
       step "User clicks 'Press'" do
-        check_element_path :xpath, home_page.search_categories(:ta, 'Press'), home_page.search_categories(:il, 'Press')
-        home_page.click_companies"Press"
+        check_element_path :xpath, footer_page.search_categories(:ta, 'Press'), footer_page.search_categories(:il, 'Press')
+        footer_page.click_companies "Press"
       end
 
       step "User clicks first catalog on the page" do
@@ -90,6 +93,8 @@ describe 'Preconditions' do
         check_element_path :xpath, PressPage::ADD_TO_CARD_TA, PressPage::ADD_TO_CARD_IL
         press_page.add_to_card
       end
+
+      sleep 3
     end
   end
 end

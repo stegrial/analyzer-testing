@@ -8,6 +8,7 @@ include ElementSearchValidation
 home_page = HomePage.new
 login_page = LoginPage.new
 banner_page = BannerPage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -26,8 +27,8 @@ describe 'Preconditions' do
         banner_page.close_banner
       end
 
-      step "User clicks login link on home page"  do
-        home_page.click_login_link
+      step "User clicks login link on home page" do
+        header_page.click_login_link
       end
 
       step "User fills email", settings('annieselke')['email'] do |email|
@@ -42,6 +43,8 @@ describe 'Preconditions' do
       step "User clicks login button" do
         login_page.click_login_btn
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', search: true do
@@ -50,9 +53,9 @@ describe 'Preconditions' do
         banner_page.close_banner
       end
 
-      step "User clicks login link on home page"  do
-        check_element_path :xpath, HomePage::LOGIN_LINK_TA, HomePage::LOGIN_LINK_IL
-        home_page.click_login_link
+      step "User clicks login link on home page" do
+        check_element_path :xpath, HeaderPage::LOGIN_LINK_TA, HeaderPage::LOGIN_LINK_IL
+        header_page.click_login_link
       end
 
       step "User fills email", settings('annieselke')['email'] do |email|
@@ -62,7 +65,7 @@ describe 'Preconditions' do
       end
 
       step "User fills pass", settings('annieselke')['pass'] do |pass|
-        check_element_path :xpath, Login_Page::PASS_FIELD_TA, LoginPage::PASS_FIELD_IL
+        check_element_path :xpath, LoginPage::PASS_FIELD_TA, LoginPage::PASS_FIELD_IL
         login_page.fill_pass_input(pass)
       end
 
@@ -70,6 +73,8 @@ describe 'Preconditions' do
         check_element_path :xpath, LoginPage::LOGIN_BTN_TA, LoginPage::LOGIN_BTN_IL
         login_page.click_login_btn
       end
+
+      sleep 3
     end
   end
 end

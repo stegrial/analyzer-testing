@@ -6,6 +6,7 @@ required_relative_all "/pages/annieselke/*.rb"
 include ElementSearchValidation
 
 home_page = HomePage.new
+header_page = HeaderPage.new
 product_page = ProductPage.new
 banner_page = BannerPage.new
 
@@ -32,15 +33,14 @@ describe 'Preconditions' do
       end
 
       step "Set mirrors in search field", "mirror\n" do |value|
-        home_page.fill_search_input(value)
-
+        header_page.fill_search_input(value)
       end
 
       step "Click 'Tia Mirror' on product page" do
         product_page.click_tia_mirror_link
       end
 
-      step "User clicks size dropdown arrow", "/D%C3%A9cor-%26-Pillows/Tia-Mirror/p/ASH8714-ACS"  do |value|
+      step "User clicks size dropdown arrow", "/D%C3%A9cor-%26-Pillows/Tia-Mirror/p/ASH8714-ACS" do |value|
         product_page.click_dropdown_arrow
         product_page.select_dropdown value
         banner_page.close_banner
@@ -69,12 +69,14 @@ describe 'Preconditions' do
       end
 
       step "User fill quantity", "2" do |value|
-        product_page.fill_qty (value)
+        product_page.fill_qty(value)
       end
 
       step "User clicks Add to cart" do
         product_page.click_add_to_cart
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', search: true do
@@ -88,9 +90,8 @@ describe 'Preconditions' do
       end
 
       step "Set mirrors in search field", "mirror\n" do |value|
-        check_element_path :xpath, ProductPage::SEARCH_FIELD_TA, ProductPage::SEARCH_FIELD_IL
-        home_page.fill_search_input(value)
-
+        check_element_path :xpath, HeaderPage::SEARCH_FIELD_TA, HeaderPage::SEARCH_FIELD_IL
+        header_page.fill_search_input(value)
       end
 
       step "Click 'Tia Mirror' on product page" do
@@ -98,7 +99,7 @@ describe 'Preconditions' do
         product_page.click_tia_mirror_link
       end
 
-      step "User clicks size dropdown arrow", "/D%C3%A9cor-%26-Pillows/Tia-Mirror/p/ASH8714-ACS"  do |value|
+      step "User clicks size dropdown arrow", "/D%C3%A9cor-%26-Pillows/Tia-Mirror/p/ASH8714-ACS" do |value|
         check_element_path :xpath, ProductPage::DROPDOWN_ARROW_TA, ProductPage::DROPDOWN_ARROW_IL
         product_page.click_dropdown_arrow
 
@@ -137,13 +138,15 @@ describe 'Preconditions' do
 
       step "User fill quantity", "2" do |value|
         check_element_path :xpath, ProductPage::QUANTITY_TA, ProductPage::QUANTITY_IL
-        product_page.fill_qty (value)
+        product_page.fill_qty(value)
       end
 
       step "User clicks Add to cart" do
         check_element_path :xpath, ProductPage::ADD_TO_CART_TA, ProductPage::ADD_TO_CART_IL
         product_page.click_add_to_cart
       end
+
+      sleep 3
     end
   end
 end

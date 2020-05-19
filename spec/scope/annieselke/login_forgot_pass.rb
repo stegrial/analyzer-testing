@@ -9,6 +9,7 @@ home_page = HomePage.new
 login_page = LoginPage.new
 forgotten_pass_page = ForgottenPassPage.new
 banner_page = BannerPage.new
+header_page = HeaderPage.new
 
 describe 'Preconditions' do
 
@@ -27,8 +28,8 @@ describe 'Preconditions' do
         banner_page.close_banner
       end
 
-      step "User clicks login link on home page"  do
-        home_page.click_login_link
+      step "User clicks login link on home page" do
+        header_page.click_login_link
       end
 
       step "User clicks Oops! I forgot my password." do
@@ -46,6 +47,8 @@ describe 'Preconditions' do
       step "User clicks Return to login button" do
         forgotten_pass_page.click_return_login_btn
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', search: true do
@@ -54,9 +57,9 @@ describe 'Preconditions' do
         banner_page.close_banner
       end
 
-      step "User clicks login link on home page"  do
-        check_element_path :xpath, HomePage::LOGIN_LINK_TA, HomePage::LOGIN_LINK_IL
-        home_page.click_login_link
+      step "User clicks login link on home page" do
+        check_element_path :xpath, HeaderPage::LOGIN_LINK_TA, HeaderPage::LOGIN_LINK_IL
+        header_page.click_login_link
       end
 
       step "User clicks Oops! I forgot my password." do
@@ -78,6 +81,8 @@ describe 'Preconditions' do
         check_element_path :xpath, ForgottenPassPage::RETURN_LOGIN_BTN_TA, ForgottenPassPage::RETURN_LOGIN_BTN_IL
         forgotten_pass_page.click_return_login_btn
       end
+
+      sleep 3
     end
   end
 end
