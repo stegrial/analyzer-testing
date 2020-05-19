@@ -22,11 +22,11 @@ class Whishlist
   end
 
   def product_card(key, number)
-    locator_by key, "planetblue:product_card:#{number}:container", "//*[contains(@class, 'product-card'][#{number}]')]"
+    locator_by key, "//*[contains(@class, 'product-card'][#{number}]')]", "planetblue:product_card:#{number}:container"
   end
 
   def whishlist_remove_button(key, number)
-    locator_by key, "planetblue:product_card:#{number}:remove_button", "//*[contains(@class, 'product-card'][#{number}]')]" + "//*[contains(@class, 'wishlist__remove-button']"
+    locator_by key, "//*[contains(@class, 'product-card'][#{number}]')]" + "//*[contains(@class, 'wishlist__remove-button']", "planetblue:product_card:#{number}:remove_button"
   end
 
   def find_product_card(key = nil, number)

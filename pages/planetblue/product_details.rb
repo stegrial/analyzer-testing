@@ -33,7 +33,10 @@ class ProductDetails
   ADD_TO_BAG_BUTTON_IL = "button[data-th='add-to-cart']"
 
   CHECKOUT_BUTTON_TA = "planetblue:product_details:checkout_button"
-  CHECKOUT_BUTTON_IL = "a[href*='checkout']"
+  CHECKOUT_BUTTON_IL = "[style='flex-direction: column;'] button[data-th='add-to-cart']"
+
+  CHECKOUT_CONFIRM_BUTTON_TA = "planetblue:product_details:checkout_confirm_button"
+  CHECKOUT_CONFIRM_BUTTON_IL = "input[value='Check Out']"
 
   WHISHLIST_BUTTON_TA = "planetblue:whishlist_button"
   WHISHLIST_BUTTON_IL = "button[aria-label='Wishlist']"
@@ -142,6 +145,10 @@ class ProductDetails
 
   def click_checkout_button(key = nil)
     find_element_path(key, :css, CHECKOUT_BUTTON_TA, CHECKOUT_BUTTON_IL).click
+  end
+
+  def click_checkout_confirm_button(key = nil)
+    find_element_path(key, :css, CHECKOUT_CONFIRM_BUTTON_TA, CHECKOUT_CONFIRM_BUTTON_IL).click
   end
 
   def social_share_button(key, name)

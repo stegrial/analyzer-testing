@@ -7,6 +7,7 @@ include ElementSearchValidation
 
 product_details = ProductDetails.new
 order_details = OrderDetails.new
+modal = Modal.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -29,52 +30,30 @@ describe 'Preconditions' do
       end
 
       step "User clicks CHECKOUT button" do
+        modal.click_close_discount_button_if_exists
         product_details.click_checkout_button
       end
 
-      step "User clicks Order toggle button" do
-        order_details.click_toggle_order_button
-      end
-
-      step "User checks payment methods buttons" do
-        order_details.find_payment_button 'Google Pay'
-        order_details.find_payment_button 'PayPal'
-        order_details.find_payment_button 'Amazon Pay'
-      end
-
-      step "User checks 'Log In' link" do
-        order_details.find_payment_login_link
-      end
-
-      step "User checks News Checkbox" do
-        order_details.find_payment_news_checkbox
+      step "User clicks Checkout confirm button" do
+        page.execute_script "window.scrollBy(0,1000)"
+        product_details.click_checkout_confirm_button
       end
 
       step "User checks Order Fields" do
         [
-            "First name (optional)",
-            "Last name",
-            "Address",
-            "Apartment, suite, etc. (optional)",
-            "City",
-            "Phone (optional)"
+            "First Name",
+            "Last Name",
+            "Email",
+            "Address Line 1",
+            "City / Suburb",
+            "Mobile Phone"
         ].each { |name|
           order_details.find_order_field name
         }
       end
 
-      step "User clicks Continue button" do
-        order_details.click_continue_button
-      end
-
-      step "User checks Alerts for required Order Fields" do
-        [
-            "Last name",
-            "Address",
-            "City"
-        ].each { |name|
-          order_details.find_order_alert_field name
-        }
+      step "User clicks 'Pay and place order' button" do
+        order_details.find_pay_button
       end
 
     end
@@ -125,8 +104,8 @@ describe 'Preconditions' do
       end
 
       step "User clicks Continue button" do
-        check_element_path :css, order_details.CONTINUE_BUTTON_TA, order_details.CONTINUE_BUTTON_IL
-        order_details.click_continue_button :ta
+        check_element_path :css, order_details.PAY_BUTTON_TA, order_details.PAY_BUTTON_IL
+        order_details.find_pay_button :ta
       end
 
       step "User checks Alerts for required Order Fields" do

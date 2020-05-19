@@ -7,6 +7,7 @@ include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 product_details = ProductDetails.new
+modal = Modal.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -35,6 +36,7 @@ describe 'Preconditions' do
       end
 
       step "User checks Breadcrumbs", 'Home', 'THE JESSIE MIDI' do |breadcrumb1, breadcrumb2|
+        modal.click_close_discount_button_if_exists
         planetblue.find_breadcrumb breadcrumb1, true
         planetblue.find_breadcrumb breadcrumb2, false
       end

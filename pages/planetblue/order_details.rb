@@ -23,8 +23,8 @@ class OrderDetails
   PAYMENT_NEWS_CHECKBOX_TA = "planetblue:order_details:payment_news_checkbox"
   PAYMENT_NEWS_CHECKBOX_IL = "input[data-trekkie-id='buyer_accepts_marketing_field']"
 
-  CONTINUE_BUTTON_TA = "planetblue:order_details:continue_button"
-  CONTINUE_BUTTON_IL = "#continue_button"
+  PAY_BUTTON_TA = "planetblue:order_details:continue_button"
+  PAY_BUTTON_IL = "#btnPay"
 
   INPUT_FIELD_WITH_LINK_TA = "planetblue:order_details:input_field_with_link"
   INPUT_FIELD_WITH_LINK_IL = "input.giftreggie-permalink.form-control"
@@ -61,26 +61,20 @@ class OrderDetails
   end
 
   def order_field(key, name)
-    locator_by key, ".main__content form.edit_checkout [placeholder='#{name}']",
+    locator_by key, "#BillingAddressFormContainer [placeholder='#{name}']",
                "planetblue:order_details:order_field:#{ta_name(name)}:field"
   end
 
   def find_order_field(key = nil, name)
-    find_element_path key, :css, order_field(:ta, name), order_field(:il, name)
+    within_frame 'Intrnl_CO_Container' do
+      find_element_path key, :css, order_field(:ta, name), order_field(:il, name)
+    end
   end
 
-  def order_alert_field(key, name)
-    find(:css, '#checkout_shipping_address_first_name')
-    locator_by key, "//input[@placeholder='#{name}']//following::p[contains(@class, 'field__message--error')]",
-               "planetblue:order_details:order_field:#{ta_name(name)}:alert"
-  end
-
-  def find_order_alert_field(key = nil, name)
-    find_element_path key, :xpath, order_alert_field(:ta, name), order_alert_field(:il, name)
-  end
-
-  def click_continue_button(key = nil)
-    find_element_path(key, :css, CONTINUE_BUTTON_TA, CONTINUE_BUTTON_IL).click
+  def find_pay_button(key = nil)
+    within_frame 'Intrnl_CO_Container' do
+      find_element_path(key, :css, PAY_BUTTON_TA, PAY_BUTTON_IL)
+    end
   end
 
   def find_order_header(key = nil)
