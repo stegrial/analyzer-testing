@@ -8,6 +8,8 @@ include ElementSearchValidation
 home_page = HomePage.new
 designer_page = DesignerPage.new
 account_request_page = AccountRequestPage.new
+banner_page = BannerPage.new
+footer_page = FooterPage.new
 
 describe 'Preconditions' do
 
@@ -23,25 +25,26 @@ describe 'Preconditions' do
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        banner_page.close_banner
       end
 
       step "User clicks 'Request a Design Account'" do
-        home_page.click_companies"Design Concierge"
+        banner_page.close_banner
+        footer_page.click_companies "Design Concierge"
       end
 
       step "User signs up" do
-        home_page.close_banner
+        banner_page.close_banner
         designer_page.click_sign_up
       end
 
-      step "User selects country" , "CA"  do |value|
+      step "User selects country", "CA" do |value|
         account_request_page.click_dropdown_arrow_country
         account_request_page.select_dropdown_country value
-        home_page.close_banner
+        banner_page.close_banner
       end
 
-      step "User selects title" , "ms"  do |value|
+      step "User selects title", "ms" do |value|
         account_request_page.click_dropdown_arrow_title
         account_request_page.select_dropdown_title value
       end
@@ -62,7 +65,7 @@ describe 'Preconditions' do
         account_request_page.fill_city(city)
       end
 
-      step "User selects state", "CA-AB"  do |value|
+      step "User selects state", "CA-AB" do |value|
         account_request_page.click_dropdown_arrow_state
         account_request_page.select_dropdown_state value
       end
@@ -71,7 +74,7 @@ describe 'Preconditions' do
         account_request_page.fill_post_code(code)
       end
 
-      step "User selects sales types", "Catalog"  do |value|
+      step "User selects sales types", "Catalog" do |value|
         account_request_page.click_dropdown_arrow_sales
         account_request_page.select_dropdown_sales_types value
       end
@@ -95,111 +98,113 @@ describe 'Preconditions' do
       step "User clicks Account Request" do
         account_request_page.click_request_account
       end
-    end
 
+      sleep 3
+    end
 
     scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
         home_page.visit url
-        home_page.close_banner
+        banner_page.close_banner
       end
 
       step "User clicks 'Request a Design Account'" do
-        check_element_path :xpath, home_page.search_categories(:ta, 'Design Concierge'), home_page.search_categories(:il, 'Design Concierge')
-        home_page.click_companies"Design Concierge"
+        check_element_path :xpath, footer_page.search_categories(:ta, 'Design Concierge'), footer_page.search_categories(:il, 'Design Concierge')
+        footer_page.click_companies "Design Concierge"
       end
 
       step "User signs up" do
-        home_page.close_banner
-        check_element_path :xpath, Designer_Page::SIGN_UP_TODAY_TA, Designer_Page::SIGN_UP_TODAY_IL
+        banner_page.close_banner
+        check_element_path :xpath, DesignerPage::SIGN_UP_TODAY_TA, DesignerPage::SIGN_UP_TODAY_IL
         designer_page.click_sign_up
       end
 
-      step "User selects country" , "CA"  do |value|
+      step "User selects country", "CA" do |value|
         account_request_page.move_to_tab
-        check_element_path :xpath, Account_Request_Page::COUNTRY_SELECT_TA, Account_Request_Page::COUNTRY_SELECT_IL
+        check_element_path :xpath, AccountRequestPage::COUNTRY_SELECT_TA, AccountRequestPage::COUNTRY_SELECT_IL
         account_request_page.click_dropdown_arrow_country
 
-        check_element_path :xpath, Account_Request_Page.search_country_item(:ta, value), Account_Request_Page.search_country_item(:il, value)
+        check_element_path :xpath, AccountRequestPage.search_country_item(:ta, value), AccountRequestPage.search_country_item(:il, value)
         account_request_page.select_dropdown_country value
-        home_page.close_banner
+        banner_page.close_banner
       end
 
-      step "User selects title" , "ms"  do |value|
+      step "User selects title", "ms" do |value|
         account_request_page.move_to_tab
-        check_element_path :xpath, Account_Request_Page::TITLE_SELECT_TA, Account_Request_Page::TITLE_SELECT_IL
+        check_element_path :xpath, AccountRequestPage::TITLE_SELECT_TA, AccountRequestPage::TITLE_SELECT_IL
         account_request_page.click_dropdown_arrow_title
 
-        check_element_path :xpath, Account_Request_Page.search_title_item(:ta, value), Account_Request_Page.search_title_item(:il, value)
+        check_element_path :xpath, AccountRequestPage.search_title_item(:ta, value), AccountRequestPage.search_title_item(:il, value)
         account_request_page.select_dropdown_title value
       end
 
       step "User fills first name", settings('annieselke')['fisrt_name'] do |first_name|
-        check_element_path :xpath, Account_Request_Page::FIRST_NAME_TA, Account_Request_Page::FIRST_NAME_IL
+        check_element_path :xpath, AccountRequestPage::FIRST_NAME_TA, AccountRequestPage::FIRST_NAME_IL
         account_request_page.fill_first_name(first_name)
       end
 
       step "User fills last name", settings('annieselke')['last_name'] do |last_name|
-        check_element_path :xpath, Account_Request_Page::LAST_NAME_TA, Account_Request_Page::LAST_NAME_IL
+        check_element_path :xpath, AccountRequestPage::LAST_NAME_TA, AccountRequestPage::LAST_NAME_IL
         account_request_page.fill_last_name(last_name)
       end
 
       step "User fills address line", "address1" do |address|
-        check_element_path :xpath, Account_Request_Page::ADDRESS_LINE_TA, Account_Request_Page::ADDRESS_LINE_IL
+        check_element_path :xpath, AccountRequestPage::ADDRESS_LINE_TA, AccountRequestPage::ADDRESS_LINE_IL
         account_request_page.fill_address_line(address)
       end
 
       step "User fills City", "City" do |city|
-        check_element_path :xpath, Account_Request_Page::CITY_FIELD_TA, Account_Request_Page::CITY_FIELD_IL
+        check_element_path :xpath, AccountRequestPage::CITY_FIELD_TA, AccountRequestPage::CITY_FIELD_IL
         account_request_page.fill_city(city)
       end
 
-      step "User selects state", "CA-AB"  do |value|
-        check_element_path :xpath, Account_Request_Page::STATE_REGION_TA, Account_Request_Page::STATE_REGION_IL
+      step "User selects state", "CA-AB" do |value|
+        check_element_path :xpath, AccountRequestPage::STATE_REGION_TA, AccountRequestPage::STATE_REGION_IL
         account_request_page.click_dropdown_arrow_state
 
-        check_element_path :xpath, Account_Request_Page.search_state_item(:ta, value), Account_Request_Page.search_state_item(:il, value)
+        check_element_path :xpath, AccountRequestPage.search_state_item(:ta, value), AccountRequestPage.search_state_item(:il, value)
         account_request_page.select_dropdown_state value
       end
 
       step "User fills post code", "48001" do |code|
-        check_element_path :xpath, Account_Request_Page::POST_CODE_TA, Account_Request_Page::POST_CODE_IL
+        check_element_path :xpath, AccountRequestPage::POST_CODE_TA, AccountRequestPage::POST_CODE_IL
         account_request_page.fill_post_code(code)
       end
 
-      step "User selects sales types", "Catalog"  do |value|
-        check_element_path :xpath, Account_Request_Page::TYPE_SALES_TA, Account_Request_Page::TYPE_SALES_IL
+      step "User selects sales types", "Catalog" do |value|
+        check_element_path :xpath, AccountRequestPage::TYPE_SALES_TA, AccountRequestPage::TYPE_SALES_IL
         account_request_page.click_dropdown_arrow_sales
 
-        check_element_path :xpath, Account_Request_Page.search_type_sales_item(:ta, value), Account_Request_Page.search_type_sales_item(:il, value)
+        check_element_path :xpath, AccountRequestPage.search_type_sales_item(:ta, value), AccountRequestPage.search_type_sales_item(:il, value)
         account_request_page.select_dropdown_sales_types value
       end
 
       step "User fills Company", "Intersog" do |company|
-        check_element_path :xpath, Account_Request_Page::COMPANY_TA, Account_Request_Page::COMPANY_IL
+        check_element_path :xpath, AccountRequestPage::COMPANY_TA, AccountRequestPage::COMPANY_IL
         account_request_page.fill_company(company)
       end
 
       step "User fills phone number", "12345" do |phone|
-        check_element_path :xpath, Account_Request_Page::PHONE_NUMBER_TA, Account_Request_Page::PHONE_NUMBER_IL
+        check_element_path :xpath, AccountRequestPage::PHONE_NUMBER_TA, AccountRequestPage::PHONE_NUMBER_IL
         account_request_page.fill_phone(phone)
       end
 
       step "User fills email address", "12345" do |email|
-        check_element_path :xpath, Account_Request_Page::EMAIL_TA, Account_Request_Page::EMAIL_IL
+        check_element_path :xpath, AccountRequestPage::EMAIL_TA, AccountRequestPage::EMAIL_IL
         account_request_page.fill_email(email)
       end
 
       step "User fills resale number", "12345" do |phone|
-        check_element_path :xpath, Account_Request_Page::PHONE_NUMBER_TA, Account_Request_Page::PHONE_NUMBER_IL
+        check_element_path :xpath, AccountRequestPage::PHONE_NUMBER_TA, AccountRequestPage::PHONE_NUMBER_IL
         account_request_page.fill_resale_number(phone)
       end
 
       step "User clicks Account Request" do
-        check_element_path :xpath, Account_Request_Page::ACCOUNT_REQUEST_BTN_TA, Account_Request_Page::ACCOUNT_REQUEST_BTN_IL
+        check_element_path :xpath, AccountRequestPage::ACCOUNT_REQUEST_BTN_TA, AccountRequestPage::ACCOUNT_REQUEST_BTN_IL
         account_request_page.click_request_account
       end
 
+      sleep 3
     end
   end
 end

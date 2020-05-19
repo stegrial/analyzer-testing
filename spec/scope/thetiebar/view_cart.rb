@@ -13,19 +13,19 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'View Cart  - adding quantity in cart page' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', il1: true do
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
       end
+
       step "User clicks the shirts category" do
-        sleep 3
         header_page.click_socks_category
       end
 
@@ -35,15 +35,15 @@ describe 'Preconditions' do
 
       step "User clicks the add to cart button" do
         product_page.click_add_to_cart_btn
+        sleep 2 # wait for cart load
       end
-
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
       end
 
       step "User click cart button" do
-        sleep 2
+        sleep 2 # wait for cart load
         header_page.click_cart_icon
       end
 
@@ -58,6 +58,8 @@ describe 'Preconditions' do
       step "User click checkout button" do
         cart_page.click_checkout_now_btn
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -67,7 +69,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks the shirts category" do
-        sleep 3
         check_element_path :xpath, TheTiebarHeader::SOCKS_CATEGORY_TA, TheTiebarHeader::SOCKS_CATEGORY_IL
         header_page.click_socks_category
       end
@@ -80,21 +81,15 @@ describe 'Preconditions' do
       step "User clicks the add to cart button" do
         check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_TA, TheTiebarProductPage::ADD_TO_CART_IL
         product_page.click_add_to_cart_btn
+        sleep 2 # wait for cart load
       end
-
-      step "User clicks the checkout now button" do
-        check_element_path :xpath, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_TA, TheTiebarCartPage::CHECKOUT_NOW_BTN_MODAL_IL
-        cart_page.click_checkout_now_btn_modal
-      end
-
-
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
       end
 
       step "User click cart button" do
-        sleep 2
+        sleep 2 # wait for cart load
         check_element_path :xpath, TheTiebarHeader::CART_BTN_TA, TheTiebarHeader::CART_BTN_IL
         header_page.click_cart_icon
       end
@@ -113,9 +108,11 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarCartPage::CHECKOUT_NOW_BTN_TA, TheTiebarCartPage::CHECKOUT_NOW_BTN_IL
         cart_page.click_checkout_now_btn
       end
+
+      sleep 3
     end
 
-  # Element Picker from Repository
+    # Element Picker from Repository
     scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('thetiebar')['shirts_page'] do |url|

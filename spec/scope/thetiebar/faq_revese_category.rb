@@ -11,7 +11,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'FAQ page -  revise Categories' do
@@ -28,7 +28,7 @@ describe 'Preconditions' do
       end
 
       step "User breadcrumb tiebar" do
-        faq_page.click_breadcrumb_tiebar
+        faq_page.click_breadcrumb_tiebar :il # step is duplicated below
       end
 
       step "User clicks about the tiebar section" do
@@ -36,7 +36,7 @@ describe 'Preconditions' do
       end
 
       step "User breadcrumb tiebar" do
-        faq_page.click_breadcrumb_tiebar
+        faq_page.click_breadcrumb_tiebar :il # step is duplicated below
       end
 
       step "User clicks sizing section" do
@@ -44,7 +44,7 @@ describe 'Preconditions' do
       end
 
       step "User breadcrumb tiebar" do
-        faq_page.click_breadcrumb_tiebar
+        faq_page.click_breadcrumb_tiebar :il # step is duplicated below
       end
 
       step "User clicks products section" do
@@ -52,7 +52,7 @@ describe 'Preconditions' do
       end
 
       step "User breadcrumb tiebar" do
-        faq_page.click_breadcrumb_tiebar
+        faq_page.click_breadcrumb_tiebar :il # step is duplicated below
       end
 
       step "User clicks styling section" do
@@ -60,7 +60,7 @@ describe 'Preconditions' do
       end
 
       step "User breadcrumb tiebar" do
-        faq_page.click_breadcrumb_tiebar
+        faq_page.click_breadcrumb_tiebar :il # step is duplicated below
       end
 
       step "User clicks bulk wholysale section" do
@@ -68,7 +68,7 @@ describe 'Preconditions' do
       end
 
       step "User breadcrumb tiebar" do
-        faq_page.click_breadcrumb_tiebar
+        faq_page.click_breadcrumb_tiebar :il # step is duplicated below
       end
 
       step "User clicks products section" do
@@ -76,7 +76,7 @@ describe 'Preconditions' do
       end
 
       step "User breadcrumb tiebar" do
-        faq_page.click_breadcrumb_tiebar
+        faq_page.click_breadcrumb_tiebar :il # step is duplicated below
       end
 
       step "User clicks shipping section" do
@@ -84,7 +84,7 @@ describe 'Preconditions' do
       end
 
       step "User breadcrumb tiebar" do
-        faq_page.click_breadcrumb_tiebar
+        faq_page.click_breadcrumb_tiebar :il # step is duplicated below
       end
 
       step "User clicks holiday section" do
@@ -95,6 +95,7 @@ describe 'Preconditions' do
         faq_page.click_breadcrumb_tiebar
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -109,7 +110,7 @@ describe 'Preconditions' do
       end
 
       step "User breadcrumb tiebar" do
-        check_element_path :xpath, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_TA, TheTiebarFaqPage::INTERNATIONAL_SECTION_IL
+        check_element_path :xpath, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_TA, TheTiebarFaqPage::TIE_BAR_BREADCRUMBS_IL
         faq_page.click_breadcrumb_tiebar
       end
 
@@ -193,6 +194,7 @@ describe 'Preconditions' do
         faq_page.click_breadcrumb_tiebar
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository

@@ -3,6 +3,8 @@ require_relative '../../../helpers/special_methods'
 require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/thetiebar/*.rb"
 
+include ElementSearchValidation
+
 product_page = TheTiebarProductPage.new
 cart_page = TheTiebarCartPage.new
 header_page = TheTiebarHeader.new
@@ -12,7 +14,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Add product to cart' do
@@ -26,7 +28,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks the shirts category" do
-        sleep 3
         header_page.click_socks_category
       end
 
@@ -62,22 +63,36 @@ describe 'Preconditions' do
         checkout_page.fill_last_name last_name
       end
 
-        step "User fill company name field", "BigWorld" do |company_name|
+      step "User fill company name field", "BigWorld" do |company_name|
         checkout_page.fill_company company_name
       end
 
-        step "User fill country field", "United States" do |usa|
+      step "User fill country field", "United States" do |usa|
         checkout_page.fill_country_field usa
-          sleep 2
       end
 
-      step "User fill address field", "Av" do |street|
+      step "User fill address field", "AlaskaMid" do |street|
         checkout_page.fill_address_field street
-        sleep 2
       end
 
-      step "User fill select address from dropdown field" do
-        checkout_page.click_select_address_field
+      step "User fill address two field", "AlaskaTop" do |street|
+        checkout_page.fill_address_two_field street
+      end
+
+      step "User fill city field", "Anchorage" do |city|
+        checkout_page.fill_city_field city
+      end
+
+      step "User fill state field", "Alaska" do |state|
+        checkout_page.fill_state_field state
+      end
+
+      step "User fill zip field", "35816" do |zip|
+        checkout_page.fill_zip_field zip
+      end
+
+      step "User fill phone field", "1111111111" do |phone|
+        checkout_page.fill_phone_field phone
       end
 
       step "User click continue to pay btn" do
@@ -120,6 +135,7 @@ describe 'Preconditions' do
         checkout_page.click_place_to_order
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -129,7 +145,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks the shirts category" do
-        sleep 3
         check_element_path :xpath, TheTiebarHeader::SOCKS_CATEGORY_TA, TheTiebarHeader::SOCKS_CATEGORY_IL
         header_page.click_socks_category
       end
@@ -184,14 +199,34 @@ describe 'Preconditions' do
         checkout_page.fill_country_field usa
       end
 
-      step "User fill address field", "Av" do |street|
+      step "User fill address field", "AlaskaMid" do |street|
         check_element_path :xpath, TheTiebarCheckoutPage::ADDRESS_FIELD_TA, TheTiebarCheckoutPage::ADDRESS_FIELD_IL
         checkout_page.fill_address_field street
       end
 
-      step "User fill select address from dropdown field" do
-        check_element_path :xpath, TheTiebarCheckoutPage::SELECT_ADDRESS_TA, TheTiebarCheckoutPage::SELECT_ADDRESS_IL
-        checkout_page.click_select_address_field
+      step "User fill address two field", "AlaskaTop" do |street|
+        check_element_path :xpath, TheTiebarCheckoutPage::ADDRESS_TWO_FIELD_TA, TheTiebarCheckoutPage::ADDRESS_TWO_FIELD_IL
+        checkout_page.fill_address_two_field street
+      end
+
+      step "User fill city field", "Anchorage" do |city|
+        check_element_path :xpath, TheTiebarCheckoutPage::CITY_FIELD_TA, TheTiebarCheckoutPage::CITY_FIELD_IL
+        checkout_page.fill_city_field city
+      end
+
+      step "User fill state field", "Alaska" do |state|
+        check_element_path :xpath, TheTiebarCheckoutPage::STATE_FIELD_TA, TheTiebarCheckoutPage::STATE_FIELD_IL
+        checkout_page.fill_state_field state
+      end
+
+      step "User fill zip field", "35816" do |zip|
+        check_element_path :xpath, TheTiebarCheckoutPage::ZIP_FIELD_TA, TheTiebarCheckoutPage::ZIP_FIELD_IL
+        checkout_page.fill_zip_field zip
+      end
+
+      step "User fill phone field", "1111111111" do |phone|
+        check_element_path :xpath, TheTiebarCheckoutPage::PHONE_FIELD_TA, TheTiebarCheckoutPage::PHONE_FIELD_IL
+        checkout_page.fill_phone_field phone
       end
 
       step "User click continue to pay btn" do
@@ -199,12 +234,12 @@ describe 'Preconditions' do
         checkout_page.click_continue_to_pay_btn
       end
 
-      step "User click use entered address in modal  " do
+      step "User click use entered address in modal" do
         check_element_path :xpath, TheTiebarCheckoutPage::USE_ENTERED_ADDRESS_TA, TheTiebarCheckoutPage::USE_ENTERED_ADDRESS_IL
         checkout_page.click_use_entered_address
       end
 
-      step "User click continue button  " do
+      step "User click continue button" do
         check_element_path :xpath, TheTiebarCheckoutPage::CONTINUE_BTN_TA, TheTiebarCheckoutPage::CONTINUE_BTN_IL
         checkout_page.click_continue_btn
       end
@@ -244,10 +279,10 @@ describe 'Preconditions' do
         checkout_page.click_place_to_order
       end
 
-
+      sleep 3
     end
 
-  # Element Picker from Repository
+    # Element Picker from Repository
     scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
@@ -297,7 +332,7 @@ describe 'Preconditions' do
 
       step "User fill last name field", "Tester" do |last_name|
         check_element_path :xpath, TheTiebarCheckoutPage::LAST_NAME_EP, TheTiebarCheckoutPage::LAST_NAME_IL
-        checkout_page.fill_last_name  :ep, last_name
+        checkout_page.fill_last_name :ep, last_name
       end
 
       step "User fill company name field", "BigWorld" do |company_name|

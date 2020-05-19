@@ -13,7 +13,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Remove products from cart page' do
@@ -47,19 +47,17 @@ describe 'Preconditions' do
 
       step "User clicks the add to cart button" do
         product_page.click_add_to_cart_btn
-        sleep 4
+        sleep 2 # wait for cart load
       end
-
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
       end
 
       step "User click cart icon" do
-        sleep 2
+        sleep 2 # wait for cart load
         header_page.click_cart_icon
       end
-
 
       step "User click view cart link" do
         cart_page.click_view_cart_link
@@ -68,6 +66,8 @@ describe 'Preconditions' do
       step "User click remove link " do
         cart_page.click_remove_link_from_cart_page
       end
+
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -102,7 +102,7 @@ describe 'Preconditions' do
       step "User clicks the add to cart button" do
         check_element_path :xpath, TheTiebarProductPage::ADD_TO_CART_TA, TheTiebarProductPage::ADD_TO_CART_IL
         product_page.click_add_to_cart_btn
-        sleep 4
+        sleep 2 # wait for cart load
       end
 
 
@@ -111,7 +111,7 @@ describe 'Preconditions' do
       end
 
       step "User click cart button" do
-        sleep 2
+        sleep 2 # wait for cart load
         check_element_path :xpath, TheTiebarHeader::CART_BTN_TA, TheTiebarHeader::CART_BTN_IL
         header_page.click_cart_icon
       end
@@ -125,9 +125,11 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarCartPage::REMOVE_LINK_FROM_CART_TA, TheTiebarCartPage::REMOVE_LINK_FROM_CART_IL
         cart_page.click_remove_link_from_cart_page
       end
+
+      sleep 3
     end
 
-  # Element Picker from Repository
+    # Element Picker from Repository
     scenario 'Searching EP', ep: true do
 
       step "User goes to the page", settings('thetiebar')['shirts_page'] do |url|

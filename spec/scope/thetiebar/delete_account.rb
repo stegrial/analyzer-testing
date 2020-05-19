@@ -12,7 +12,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Delete account' do
@@ -34,11 +34,11 @@ describe 'Preconditions' do
 
       step "User clicks on the Sign In button" do
         login_page.click_sing_in
-        sleep 3
+        sleep 2 # wait for page load
       end
 
       step "User clicks delete account button" do
-        account_page.click_delete_account_btn
+        account_page.click_delete_account_btn :il # step is duplicated below
       end
 
       step "User clicks cancel delete button" do
@@ -53,6 +53,7 @@ describe 'Preconditions' do
         account_page.click_close_delete_modal_icon
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -74,7 +75,7 @@ describe 'Preconditions' do
       step "User clicks on the Sign In button" do
         check_element_path :xpath, TheTiebarLoginPage::SIGN_IN_TA, TheTiebarLoginPage::SIGN_IN_IL
         login_page.click_sing_in
-        sleep 3
+        sleep 2 # wait for page load
       end
 
       step "User clicks delete account button" do
@@ -83,7 +84,6 @@ describe 'Preconditions' do
       end
 
       step "User clicks cancel delete button" do
-        sleep 3
         check_element_path :xpath, TheTiebarAccount_page::CANCEL_DELETE_BTN_TA, TheTiebarAccount_page::CANCEL_DELETE_BTN_IL
         account_page.click_cancel_delete_btn
       end
@@ -98,6 +98,7 @@ describe 'Preconditions' do
         account_page.click_close_delete_modal_icon
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository

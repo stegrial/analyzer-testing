@@ -57,7 +57,7 @@ describe 'Preconditions' do
         menu.click_user_button :ta
       end
 
-      step "User fills EMAIL, PASSWORD Fields and clicks 'Login' Button",
+      step "User fills EMAIL, PASSWORD Fields and clicks 'Sign In' Button",
            settings('planetblue')['email'],
            settings('planetblue')['pass'] do |email, password|
 

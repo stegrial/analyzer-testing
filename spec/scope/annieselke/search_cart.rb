@@ -5,7 +5,8 @@ required_relative_all "/pages/annieselke/*.rb"
 
 include ElementSearchValidation
 
-home_page = HomePage.new
+header_page = HeaderPage.new
+banner_page = BannerPage.new
 
 describe 'Preconditions' do
 
@@ -20,50 +21,56 @@ describe 'Preconditions' do
 
     scenario 'Recording IL', record: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
-        home_page.visit url
-        home_page.close_banner
+        header_page.visit url
+        banner_page.close_banner
       end
 
-      step "Search items"  do |value|
-        home_page.fill_search_input(value)
+      step "Search items" do |value|
+        banner_page.close_banner
+        header_page.fill_search_input(value)
       end
-      step "Check cart"  do
-        home_page.move_to_cart_link
-      end
-
-      step "Click View Cart"  do
-        home_page.click_view_cart_btn
+      step "Check cart" do
+        header_page.move_to_cart_link
       end
 
-      step "Click to cart link"  do
-        home_page.click_cart_link
+      step "Click View Cart" do
+        header_page.click_view_cart_btn
       end
+
+      step "Click to cart link" do
+        header_page.click_cart_link :il # step is duplicated below
+      end
+
+      sleep 3
     end
 
-    scenario 'Searching IL', il: true do
+    scenario 'Searching IL', search: true do
       step "User goes to the page", settings('annieselke')['page'] do |url|
-        home_page.visit url
-        home_page.close_banner
+        header_page.visit url
+        banner_page.close_banner
       end
 
-      step "Search items"  do |value|
-        check_element_path :xpath, Home_Page::SEARCH_FIELD_TA, Home_Page::SEARCH_FIELD_IL
-        home_page.fill_search_input(value)
+      step "Search items" do |value|
+        banner_page.close_banner
+        check_element_path :xpath, HeaderPage::SEARCH_FIELD_TA, HeaderPage::SEARCH_FIELD_IL
+        header_page.fill_search_input(value)
       end
-      step "Check cart"  do
-        check_element_path :xpath, Home_Page::CART_LINK_TA, Home_Page::CART_LINK_IL
-        home_page.move_to_cart_link
-      end
-
-      step "Click View Cart"  do
-        check_element_path :xpath, Home_Page::VIEW_CART_TA, Home_Page::VIEW_CART_IL
-        home_page.click_view_cart_btn
+      step "Check cart" do
+        check_element_path :xpath, HeaderPage::CART_LINK_TA, HeaderPage::CART_LINK_IL
+        header_page.move_to_cart_link
       end
 
-      step "Click to cart link"  do
-        check_element_path :xpath, Home_Page::CART_LINK_TA, Home_Page::CART_LINK_IL
-        home_page.click_cart_link
+      step "Click View Cart" do
+        check_element_path :xpath, HeaderPage::VIEW_CART_TA, HeaderPage::VIEW_CART_IL
+        header_page.click_view_cart_btn
       end
+
+      step "Click to cart link" do
+        check_element_path :xpath, HeaderPage::CART_LINK_TA, HeaderPage::CART_LINK_IL
+        header_page.click_cart_link
+      end
+
+      sleep 3
     end
   end
 end

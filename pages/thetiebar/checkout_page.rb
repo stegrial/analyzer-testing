@@ -41,9 +41,25 @@ class TheTiebarCheckoutPage
   ADDRESS_FIELD_TA = "thetiebar:checkout_page:address"
   ADDRESS_FIELD_EP = "EP:thetiebar:checkout_page:address"
 
-  SELECT_ADDRESS_IL = "(//div[contains(@class, 'cb-item')])[1]"
-  SELECT_ADDRESS_TA = "thetiebar:checkout_page:select_address"
-  SELECT_ADDRESS_EP = "EP:thetiebar:checkout_page:select_address"
+  ADDRESS_TWO_FIELD_IL = "//input[@id='shippingAddress2']"
+  ADDRESS_TWO_FIELD_TA = "thetiebar:checkout_page:address_two"
+  ADDRESS_TWO_FIELD_EP = "EP:thetiebar:checkout_page:address_two"
+
+  CITY_FIELD_IL = "//input[@id='CityInput']"
+  CITY_FIELD_TA = "thetiebar:checkout_page:city"
+  CITY_FIELD_EP = "EP:thetiebar:checkout_page:city"
+
+  STATE_FIELD_IL = "//select[@id='stateSelect']"
+  STATE_FIELD_TA = "thetiebar:checkout_page:state"
+  STATE_FIELD_EP = "EP:thetiebar:checkout_page:state"
+
+  ZIP_FIELD_IL = "//input[@id='ZipInput']"
+  ZIP_FIELD_TA = "thetiebar:checkout_page:zip"
+  ZIP_FIELD_EP = "EP:thetiebar:checkout_page:zip"
+
+  PHONE_FIELD_IL = "//input[@id='phone']"
+  PHONE_FIELD_TA = "thetiebar:checkout_page:phone"
+  PHONE_FIELD_EP = "EP:thetiebar:checkout_page:phone"
 
   CONTINUE_TO_PAY_BTN_IL = "//button[contains(text(), 'Continue to Pay ›')]"
   CONTINUE_TO_PAY_BTN_TA = "thetiebar:checkout_page:continue_to_pay_btn"
@@ -125,11 +141,43 @@ class TheTiebarCheckoutPage
     end
   end
 
-  def click_select_address_field(key = nil)
+  def fill_address_two_field(key = nil, value)
     post_processing key do
-      return find(ta(SELECT_ADDRESS_EP)).click if key == :ep
-      return find(:xpath, SELECT_ADDRESS_IL).click if key == :il
-      find(:xpath, ta(SELECT_ADDRESS_TA, SELECT_ADDRESS_IL)).click
+      return find(ta(ADDRESS_TWO_FIELD_EP)).set(value) if key == :ep
+      return find(:xpath, ADDRESS_TWO_FIELD_IL).set(value) if key == :il
+      find(:xpath, ta(ADDRESS_TWO_FIELD_TA, ADDRESS_TWO_FIELD_IL)).set(value)
+    end
+  end
+
+  def fill_city_field(key = nil, value)
+    post_processing key do
+      return find(ta(CITY_FIELD_EP)).set(value) if key == :ep
+      return find(:xpath, CITY_FIELD_IL).set(value) if key == :il
+      find(:xpath, ta(CITY_FIELD_TA, CITY_FIELD_IL)).set(value)
+    end
+  end
+
+  def fill_state_field(key = nil, value)
+    post_processing key do
+      return find(ta(STATE_FIELD_EP)).select(value) if key == :ep
+      return find(:xpath, STATE_FIELD_IL).select(value) if key == :il
+      find(:xpath, ta(STATE_FIELD_TA, STATE_FIELD_IL)).select(value)
+    end
+  end
+
+  def fill_zip_field(key = nil, value)
+    post_processing key do
+      return find(ta(ZIP_FIELD_EP)).set(value) if key == :ep
+      return find(:xpath, ZIP_FIELD_IL).set(value) if key == :il
+      find(:xpath, ta(ZIP_FIELD_TA, ZIP_FIELD_IL)).set(value)
+    end
+  end
+
+  def fill_phone_field(key = nil, value)
+    post_processing key do
+      return find(ta(PHONE_FIELD_EP)).set(value) if key == :ep
+      return find(:xpath, PHONE_FIELD_IL).set(value) if key == :il
+      find(:xpath, ta(PHONE_FIELD_TA, PHONE_FIELD_IL)).set(value)
     end
   end
 

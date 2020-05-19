@@ -11,14 +11,14 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Search result product page' do
 
     # Initial locators with Recording
 
-    scenario 'Recording IL', il: true do
+    scenario 'Recording IL', il1: true do
 
       step "User goes to the page", settings('thetiebar')['main_page'] do |url|
         page.visit url
@@ -31,6 +31,7 @@ describe 'Preconditions' do
       step "User click the account button" do
         header_page.click_enter_search_result
       end
+
       sleep 3
     end
 
@@ -49,6 +50,7 @@ describe 'Preconditions' do
         check_element_path :xpath, TheTiebarHeader::SEARCH_FIELD_TA, TheTiebarHeader::SEARCH_FIELD_IL
         header_page.click_enter_search_result
       end
+
       sleep 3
     end
 

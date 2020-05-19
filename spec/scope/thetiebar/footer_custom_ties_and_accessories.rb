@@ -3,13 +3,16 @@ require_relative '../../../helpers/special_methods'
 require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/thetiebar/*.rb"
 
+include ElementSearchValidation
+
 custom_page = TheTiebarCusromPage.new
+about_us_page = TheTiebarAboutUs.new
 
 describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Footer: CUSTOM TIES AND ACCESSORIES' do
@@ -19,6 +22,10 @@ describe 'Preconditions' do
     scenario 'Recording IL', il: true do
       step "User goes to the page", settings('thetiebar')['custom_page'] do |url|
         page.visit url
+      end
+
+      step "User click the close cookies div" do
+        about_us_page.click_close_coolies_div
       end
 
       step "User fill first name in field", "test_name" do |first_name|
@@ -66,16 +73,22 @@ describe 'Preconditions' do
       end
 
       step "User click submit button" do
-       sleep 3
+        #sleep 3
         custom_page.click_submit_btn
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
 
       step "User goes to the page", settings('thetiebar')['custom_page'] do |url|
         page.visit url
+      end
+
+      step "User click the close cookies div" do
+        check_element_path :xpath, TheTiebarAboutUs::COOKIES_CLOSE_DIV_TA, TheTiebarAboutUs::COOKIES_CLOSE_DIV_IL
+        about_us_page.click_close_coolies_div
       end
 
       step "User fill first name in field", "test_name" do |first_name|
@@ -138,6 +151,7 @@ describe 'Preconditions' do
         custom_page.click_submit_btn
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -154,7 +168,7 @@ describe 'Preconditions' do
 
       step "User fill last name in field", "last_test_name" do |last_name|
         check_element_path :xpath, TheTiebarCusromPage::LAST_NAME_EP, TheTiebarCusromPage::LAST_NAME_IL
-        custom_page.fill_last_name_field  :ep, last_name
+        custom_page.fill_last_name_field :ep, last_name
       end
 
       step "User fill email  in field", "email.test@gmail.com" do |email|

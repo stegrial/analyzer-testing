@@ -11,7 +11,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'FAQ page - search query' do
@@ -24,20 +24,19 @@ describe 'Preconditions' do
       end
 
       step "User fill FAQ search input", 'size' do |search_query|
-        faq_page.fill_faq_search_input  search_query
+        faq_page.fill_faq_search_input :il, search_query # step is duplicated below
       end
 
-      step "User  clicks to select search query" do
-        sleep 3
+      step "User clicks to select search query" do
         faq_page.click_size_neckties
       end
 
       step "User breadcrumb tiebar" do
-        faq_page.click_breadcrumb_tiebar
+        faq_page.click_breadcrumb_tiebar :il # step is duplicated below
       end
 
       step "User fill FAQ search input", 'size' do |search_query|
-        faq_page.fill_faq_search_input  search_query
+        faq_page.fill_faq_search_input search_query
       end
 
       step "User clicks search button" do
@@ -52,6 +51,7 @@ describe 'Preconditions' do
         faq_page.click_breadcrumb_tiebar
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -62,7 +62,7 @@ describe 'Preconditions' do
 
       step "User fill FAQ search input", 'size' do |search_query|
         check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_INPUT_TA, TheTiebarFaqPage::FAQ_SEARCH_INPUT_IL
-        faq_page.fill_faq_search_input  search_query
+        faq_page.fill_faq_search_input search_query
       end
 
       step "User  clicks to select search query" do
@@ -77,7 +77,7 @@ describe 'Preconditions' do
 
       step "User fill FAQ search input", 'size' do |search_query|
         check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_INPUT_TA, TheTiebarFaqPage::FAQ_SEARCH_INPUT_IL
-        faq_page.fill_faq_search_input  search_query
+        faq_page.fill_faq_search_input search_query
       end
 
       step "User clicks search button" do
@@ -95,6 +95,7 @@ describe 'Preconditions' do
         faq_page.click_breadcrumb_tiebar
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository
@@ -106,7 +107,7 @@ describe 'Preconditions' do
 
       step "User fill FAQ search input", 'size' do |search_query|
         check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_INPUT_EP, TheTiebarFaqPage::FAQ_SEARCH_INPUT_IL
-        faq_page.fill_faq_search_input  :ep, search_query
+        faq_page.fill_faq_search_input :ep, search_query
       end
 
       step "User  clicks to select search query" do
@@ -121,7 +122,7 @@ describe 'Preconditions' do
 
       step "User fill FAQ search input", 'size' do |search_query|
         check_element_path :xpath, TheTiebarFaqPage::FAQ_SEARCH_INPUT_EP, TheTiebarFaqPage::FAQ_SEARCH_INPUT_IL
-        faq_page.fill_faq_search_input  :ep, search_query
+        faq_page.fill_faq_search_input :ep, search_query
       end
 
       step "User clicks search button" do

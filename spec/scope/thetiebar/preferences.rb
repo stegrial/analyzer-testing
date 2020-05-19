@@ -12,7 +12,7 @@ describe 'Preconditions' do
 
   before(:all) do
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440,800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
   feature 'Preferences Page' do
@@ -34,7 +34,7 @@ describe 'Preconditions' do
 
       step "User clicks on the Sign In button" do
         login_page.click_sing_in
-        sleep 3
+        sleep 2 # wait for page load
       end
 
       step "User clicks subscribe email togler" do
@@ -46,7 +46,7 @@ describe 'Preconditions' do
       end
 
       step "User clicks twice catalog togler" do
-        account_page.click_print_catalog_togler
+        account_page.click_print_catalog_togler :il # step is duplicated below
         account_page.click_print_catalog_togler
       end
 
@@ -70,6 +70,7 @@ describe 'Preconditions' do
         account_page.should_see_privacy_policy_page
       end
 
+      sleep 3
     end
 
     scenario 'Searching IL', il: true do
@@ -91,11 +92,11 @@ describe 'Preconditions' do
       step "User clicks on the Sign In button" do
         check_element_path :xpath, TheTiebarLoginPage::SIGN_IN_TA, TheTiebarLoginPage::SIGN_IN_IL
         login_page.click_sing_in
-        sleep 3
+        sleep 2 # wait for page load
       end
 
       step "User clicks subscribe email togler" do
-        check_element_path :xpath, TheTiebarAccount_page::SUBSCRIBE_EMAIL_TA, TheTiebarAccount_page::SUBSCRIBE_EMAIL_IL
+        #check_element_path :xpath, TheTiebarAccount_page::SUBSCRIBE_EMAIL_TA, TheTiebarAccount_page::SUBSCRIBE_EMAIL_IL
         account_page.click_subscribe_email_togler
       end
 
@@ -107,6 +108,8 @@ describe 'Preconditions' do
       step "User clicks twice catalog togler" do
         check_element_path :xpath, TheTiebarAccount_page::SUBSCRIBE_PRINT_CATALOG_TA, TheTiebarAccount_page::SUBSCRIBE_PRINT_CATALOG_IL
         account_page.click_print_catalog_togler
+
+        check_element_path :xpath, TheTiebarAccount_page::SUBSCRIBE_PRINT_CATALOG_TA, TheTiebarAccount_page::SUBSCRIBE_PRINT_CATALOG_IL
         account_page.click_print_catalog_togler
       end
 
@@ -135,6 +138,7 @@ describe 'Preconditions' do
         account_page.should_see_privacy_policy_page
       end
 
+      sleep 3
     end
 
     # Element Picker from Repository
