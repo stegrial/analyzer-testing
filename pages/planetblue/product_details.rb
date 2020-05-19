@@ -162,7 +162,7 @@ class ProductDetails
   end
 
   def bottom_section_item(key, section, name, price)
-    locator_by key, "//h2[text()='#{section}']/../..//h4[text()='#{name}']//following-sibling::h6[text()='#{price}']",
+    locator_by key, "//h2[text()='#{section}']/../..//h4[text()='#{name}']//following-sibling::h6[contains(text(), '#{price}')]",
                "planetblue:product_details:bottom_section_item:#{ta_name(section)}:#{ta_name(name)}_#{ta_name(price)}"
   end
 

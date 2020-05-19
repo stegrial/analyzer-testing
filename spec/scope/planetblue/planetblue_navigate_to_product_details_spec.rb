@@ -101,13 +101,13 @@ describe 'Preconditions' do
       end
 
       step "User checks section 'You may also like'" do
-        product_details.find_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI', '$219.00'
-        product_details.find_bottom_section_item 'You May Also Like', 'BAYLEE DRESS', '$198.00'
+        product_details.find_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI', '6,600'
+        product_details.find_bottom_section_item 'You May Also Like', 'BAYLEE DRESS', '5,950'
       end
 
       step "User checks section 'Complete the look'"  do
-        product_details.find_bottom_section_item 'Complete the Look', 'BELL JUMPER', '$134.00'
-        product_details.find_bottom_section_item 'Complete the Look', 'BELL JUMPER', '$143.00'
+        product_details.find_bottom_section_item 'Complete the Look', 'BELL JUMPER', '4,050'
+        product_details.find_bottom_section_item 'Complete the Look', 'BELL JUMPER', '4,300'
       end
 
     end
