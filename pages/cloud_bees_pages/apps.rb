@@ -1,10 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
 class CloudBeesApps < PageExtension
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
 
   APPLICATION_FROM_LIST_IL = "//a[@title='app_with_artifacts_gwt_field(scope)']"
   APPLICATION_FROM_LIST_TA = "cloud_bees:apps:application_from_list"

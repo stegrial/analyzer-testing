@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class CloudBeesEnv
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class CloudBeesEnv < PageExtension
 
   # SVG CREATE_ENV_PLUS_BTN_IL = ".at-button-create-new"
   CREATE_ENV_PLUS_BTN_IL = ".list-controls__add-new"

@@ -1,35 +1,24 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
 class CloudBeesUsers < PageExtension
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  # include PageExtension
 
   CREATE_USER_BTN_IL = "//td[@id='pageHeader_actionList_actionList0']/a"
   CREATE_USER_BTN_TA = 'cloud_bees:users:create_user_btn'
-  CREATE_USER_BTN_EP = 'EP:cloud_bees:users:create_user_btn'
 
   USER_FILTER_FIELD_IL = '[id=filter]'
   USER_FILTER_FIELD_TA = 'cloud_bees:users:user_filter_fld'
-  USER_FILTER_FIELD_EP = 'EP:cloud_bees:users:user_filter_fld'
 
   APPLY_USER_FILTER_IL = '[id=submitButton]'
   APPLY_USER_FILTER_TA = 'cloud_bees:users:apply_user_filter_btn'
-  APPLY_USER_FILTER_EP = 'EP:cloud_bees:users:apply_user_filter_btn'
 
   EDIT_USER_BTN_IL = '.edit-icon'
   EDIT_USER_BTN_TA = 'cloud_bees:users:edit_user_btn'
-  EDIT_USER_BTN_EP = 'EP:cloud_bees:users:edit_user_btn'
 
   DELETE_USER_BTN_IL = '.delete-icon'
   DELETE_USER_BTN_TA = 'cloud_bees:users:delete_user_btn'
-  DELETE_USER_BTN_EP = 'EP:cloud_bees:users:delete_user_btn'
 
   CONFIRM_USER_DELETION_BTN_IL = "//div[@id='jsDialogWindow']//input[@value='OK']"
   CONFIRM_USER_DELETION_BTN_TA = 'cloud_bees:users:delete_user_popup:confirm_btn'
-  CONFIRM_USER_DELETION_BTN_EP = 'EP:cloud_bees:users:delete_user_popup:confirm_btn'
 
   def press_create_user_btn(key = nil)
     within_frame(0) do

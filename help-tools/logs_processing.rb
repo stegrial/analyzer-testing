@@ -250,17 +250,17 @@ class Logs
 end
 
 processing = Logs.new
-# processing.rm_invalid_tree
-# processing.rm_analyzer
+processing.rm_invalid_tree
+processing.rm_analyzer
 processing.rm_no_current_url
 
-# processing.filter_array.rm_same_requests
+processing.filter_array.rm_same_requests
 
-# processing.rename_undefined
+processing.rename_undefined
 
-# processing.modify_html
-# processing.create_signature_sources
-#
-# processing.filter_array.move_signature_address
-#
-# processing.rm_excess_data
+processing.modify_html
+processing.create_signature_sources
+
+processing.filter_array.move_signature_address
+
+processing.rm_excess_data

@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
 class CloudBeesPipelinesRuns < PageExtension
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  # include PageExtension
 
   FIRST_MULTI_MENU_IL = "(//span[contains(@class,'at-multi-actions-btn')])[1]"
   FIRST_MULTI_MENU_TA = "cloud_bees:pipelines_runs:first_multi_action_menu"

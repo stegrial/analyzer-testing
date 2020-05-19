@@ -1,12 +1,7 @@
-require 'spec_helper'
 require 'securerandom'
 require_relative '../page_extension'
 
-class CloudBeesAppsEditor
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class CloudBeesAppsEditor < PageExtension
 
   ADD_NEW_COMPONENT_IL = "span.at-add-comp-to-tier-btn"
   ADD_NEW_COMPONENT_TA = "cloud_bees:apps_editor:add_new_component"

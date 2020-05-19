@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
 class CloudBeesPipelines < PageExtension
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  # include PageExtension
 
   CHOOSE_PIPELINE_TA866_IL = "//div/a[@title='pipelineTA-866']"
   CHOOSE_PIPELINE_TA866_TA = "cloud_bees:pipeline:choose_pipeline_ta866"

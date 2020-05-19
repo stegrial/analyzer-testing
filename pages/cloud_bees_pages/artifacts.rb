@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class CloudBeesArtifact
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class CloudBeesArtifact < PageExtension
 
   CREATE_ARTIFACT_LINK_IL = "//a[text()='Create Artifact']"
   CREATE_ARTIFACT_LINK_TA = 'cloud_bees:artifact:create_artifact_link'

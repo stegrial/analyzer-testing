@@ -17,7 +17,7 @@ describe 'Preconditions' do
 
   feature 'Surfing on Platform home page' do
 
-    scenario 'Test - Recording', record: true do
+    scenario 'Test - Recording' do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -62,9 +62,10 @@ describe 'Preconditions' do
         sleep 2 # for wait fully load page
       end
 
-      step "Admin sorts the Event Log" do
-        platform_page.click_sort_link :il # step is duplicated below
-      end
+      # step "Admin sorts the Event Log" do
+      #   sleep 30
+      #   platform_page.click_sort_link :il # step is duplicated below
+      # end
 
       step "Admin clicks on second row of run reports" do
         platform_page.click_to_open_second_row_run_report

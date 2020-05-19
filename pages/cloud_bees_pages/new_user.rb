@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class CloudBeesNewUser
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class CloudBeesNewUser < PageExtension
 
   USER_NAME_FIELD_IL = '[id=userName]'
   USER_NAME_FIELD_TA = 'cloud_bees:new_user:user_name_fld'
