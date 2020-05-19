@@ -45,8 +45,11 @@ RSpec.configure do |config|
   #     'userAgent' => "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
   # }}
 
+  client = Selenium::WebDriver::Remote::Http::Default.new
+  client.timeout = 100
+
   Capybara.register_driver :true_automation_driver do |app|
-    TrueAutomation::Driver::Capybara.new(app, desired_capabilities: $caps_chrome)
+    TrueAutomation::Driver::Capybara.new(app, desired_capabilities: $caps_chrome, http_client: client)
   end
 
   Capybara.configure do |capybara|
@@ -78,6 +81,17 @@ RSpec.configure do |config|
     config.include Module.const_get(klass)
   }
 end
+
+def define_run_parameters
+  $tag = 'NO_TAG'
+  $tag = ARGV.detect { |arg| arg.start_with?('--tag') }.split('=').last unless ARGV[1] == nil
+
+  $run_parameters = $tag.split(',')
+  $run_count = $run_parameters.count
+  $check_path = true if $run_parameters.include?('search') && $run_count == 1
+end
+
+define_run_parameters
 
 def settings(site)
   @settings ||= YAML::load_file(File.open("helpers/data/settings.yml"))[site]

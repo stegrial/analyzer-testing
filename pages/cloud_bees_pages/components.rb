@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class CloudBeesComponents
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class CloudBeesComponents < PageExtension
 
   NEW_COMPONENTS_BTN_IL = "//div[text()='New']"
   NEW_COMPONENTS_BTN_TA = 'cloud_bees:components:new_component'
@@ -74,10 +69,12 @@ class CloudBeesComponents
   CONFIRM_DELETE_COMPONENT_TA = 'cloud_bees:components:confirm_delete_component'
 
   def click_new_component(key = nil)
+    check_element_path(:xpath, NEW_COMPONENTS_BTN_TA, NEW_COMPONENTS_BTN_IL) if $check_path
     find_element(key, il_type: :xpath, tl: NEW_COMPONENTS_BTN_TA, il: NEW_COMPONENTS_BTN_IL).click
   end
 
   def click_create_new_component(key = nil)
+    check_element_path(:xpath, CREATE_NEW_COMPONENTS_TA, CREATE_NEW_COMPONENTS_IL) if $check_path
     find_element(key, il_type: :xpath, tl: CREATE_NEW_COMPONENTS_TA, il: CREATE_NEW_COMPONENTS_IL).click
   end
 

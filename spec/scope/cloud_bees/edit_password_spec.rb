@@ -30,9 +30,7 @@ describe 'Preconditions' do
 
   feature 'Editing user password by Admin' do
 
-    # Initial locators with Recording
-
-    scenario 'Recording IL', il: true do
+    scenario 'Test - Recording', record: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -85,7 +83,7 @@ describe 'Preconditions' do
       sleep 3
     end
 
-    scenario 'Searching IL', il: true do
+    scenario 'Test - Searching', search: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -165,90 +163,6 @@ describe 'Preconditions' do
 
       sleep 3
     end
-
-    # Element Picker from Repository
-
-    scenario 'Searching EP', ep: true do
-      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
-        page.visit url
-      end
-
-      step "Admin do login", settings('cloud_bees') do |credentials|
-        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field :ep, credentials['username']
-
-        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field :ep, credentials['pass']
-
-        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
-        login_page.click_sign_in_button :ep
-      end
-
-      step "Admin clicks on the Hamburger menu button" do
-        check_element_path :css, CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu :ep
-      end
-
-      step "Admin chooses the Users section in the Hamburger menu" do
-        check_element_path :xpath, CloudBeesGlobal::USERS_SECTION_EP, CloudBeesGlobal::USERS_SECTION_IL
-        global_page.choose_users_section :ep
-      end
-
-      step "Admin presses the Create Local User button" do
-        within_frame(0) { check_element_path :xpath, CloudBeesUsers::CREATE_USER_BTN_EP, CloudBeesUsers::CREATE_USER_BTN_IL }
-        users_page.press_create_user_btn :ep
-      end
-
-      step "Admin creates new user", settings('cloud_bees') do |user_data|
-        within_frame(0) { check_element_path :css, CloudBeesNewUser::USER_NAME_FIELD_EP, CloudBeesNewUser::USER_NAME_FIELD_IL }
-        new_user_page.fill_user_name_field :ep, user_data['user_username']
-
-        within_frame(0) { check_element_path :css, CloudBeesNewUser::REAL_NAME_FIELD_EP, CloudBeesNewUser::REAL_NAME_FIELD_IL }
-        new_user_page.fill_real_name_field :ep, user_data['user_realname']
-
-        within_frame(0) { check_element_path :css, CloudBeesNewUser::EMAIL_FIELD_EP, CloudBeesNewUser::EMAIL_FIELD_IL }
-        new_user_page.fill_email_field :ep, user_data['user_email']
-
-        within_frame(0) { check_element_path :css, CloudBeesNewUser::PASSWORD_FIELD_EP, CloudBeesNewUser::PASSWORD_FIELD_IL }
-        new_user_page.fill_password_field :ep, user_data['user_password']
-
-        within_frame(0) { check_element_path :css, CloudBeesNewUser::REPASSWORD_FIELD_EP, CloudBeesNewUser::REPASSWORD_FIELD_IL }
-        new_user_page.fill_repassword_field :ep, user_data['user_password']
-
-        within_frame(0) {  check_element_path :css, CloudBeesNewUser::CONFIRM_NEW_USER_EP, CloudBeesNewUser::CONFIRM_NEW_USER_IL }
-        new_user_page.confirm_create_new_user :ep
-      end
-
-      step "Admin filters the user", settings('cloud_bees') do |user_data|
-        within_frame(0) { check_element_path :css, CloudBeesUsers::USER_FILTER_FIELD_EP, CloudBeesUsers::USER_FILTER_FIELD_IL }
-        users_page.fill_user_filter_field :ep, user_data['user_username']
-
-        within_frame(0) { check_element_path :css, CloudBeesUsers::APPLY_USER_FILTER_EP, CloudBeesUsers::APPLY_USER_FILTER_IL }
-        users_page.apply_user_filter :ep
-      end
-
-      step "Admin presses the Edit user button" do
-        within_frame(0) { check_element_path :css, CloudBeesUsers::EDIT_USER_BTN_EP, CloudBeesUsers::EDIT_USER_BTN_IL }
-        users_page.press_edit_user_btn :ep
-      end
-
-      step "Admin updates user password", settings('cloud_bees') do |data|
-        within_frame(0) { check_element_path :css, CloudBeesEditUser::ADMIN_PASS_FIELD_EP, CloudBeesEditUser::ADMIN_PASS_FIELD_IL }
-        edit_user_page.fill_admin_password_field :ep, data['pass']
-
-        within_frame(0) { check_element_path :css, CloudBeesEditUser::USER_PASS_FIELD_EP, CloudBeesEditUser::USER_PASS_FIELD_IL }
-        edit_user_page.fill_new_user_password :ep, data['user_password']
-
-        within_frame(0) { check_element_path :css, CloudBeesEditUser::USER_REPASS_FIELD_EP, CloudBeesEditUser::USER_REPASS_FIELD_IL }
-        edit_user_page.fill_new_user_repassword :ep, data['user_password']
-
-        within_frame(0) { check_element_path :css, CloudBeesEditUser::UPDATE_USER_DATA_BTN_EP, CloudBeesEditUser::UPDATE_USER_DATA_BTN_IL }
-        edit_user_page.update_user_data :ep
-      end
-
-      sleep 3
-    end
-
 
   end
 end

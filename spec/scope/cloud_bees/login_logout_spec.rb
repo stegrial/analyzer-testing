@@ -17,9 +17,7 @@ describe 'Preconditions' do
 
   feature 'Authorization (Login and Logout)' do
 
-    # Initial locators with Recording
-
-    scenario 'Recording IL', il: true do
+    scenario 'Test - Recording', record: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -47,7 +45,7 @@ describe 'Preconditions' do
       sleep 3
     end
 
-    scenario 'Searching IL', il: true do
+    scenario 'Test - Searching', search: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -75,41 +73,6 @@ describe 'Preconditions' do
       step "User clicks on the Logout button" do
         check_element_path :xpath, CloudBeesGlobal::LOGOUT_BTN_TA, CloudBeesGlobal::LOGOUT_BTN_IL
         global_page.click_logout_button
-      end
-
-      sleep 3
-    end
-
-    # Element Picker from Repository
-
-    scenario 'Searching EP', ep: true do
-      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
-        page.visit url
-      end
-
-      step "User fills the Username field", settings('cloud_bees')['username'] do |username|
-        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field :ep, username
-      end
-
-      step "User fills the Password field", settings('cloud_bees')['pass'] do |pass|
-        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field :ep, pass
-      end
-
-      step "User clicks on the Sign In button" do
-        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
-        login_page.click_sign_in_button :ep
-      end
-
-      step "User clicks on the Hamburger menu button" do
-        check_element_path :xpath, CloudBeesGlobal::ADMIN_MENU_EP, CloudBeesGlobal::ADMIN_MENU_IL
-        global_page.click_admin_menu :ep
-      end
-
-      step "User clicks on the Logout button" do
-        check_element_path :xpath, CloudBeesGlobal::LOGOUT_BTN_EP, CloudBeesGlobal::LOGOUT_BTN_IL
-        global_page.click_logout_button :ep
       end
 
       sleep 3

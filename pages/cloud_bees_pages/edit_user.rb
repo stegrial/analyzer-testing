@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class CloudBeesEditUser
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class CloudBeesEditUser < PageExtension
 
   ADMIN_PASS_FIELD_IL = '[id=sessionPassword]'
   ADMIN_PASS_FIELD_TA = 'cloud_bees:edit_user:admin_password_fld'

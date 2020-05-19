@@ -17,9 +17,7 @@ describe 'Preconditions' do
 
   feature 'Cloud Bees - Сhanging projects on Pipeline Runs page' do
 
-    # Initial locators with Recording
-
-    scenario 'Recording IL', il: true do
+    scenario 'Test - Recording', record: true do
 
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
@@ -62,7 +60,7 @@ describe 'Preconditions' do
       sleep 3
     end
 
-    scenario 'Searching IL', il: true do
+    scenario 'Test - Searching', search: true do
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
       end
@@ -113,61 +111,6 @@ describe 'Preconditions' do
       end
 
       sleep 3
-    end
-
-    # Element Picker from Repository
-
-    scenario 'Searching EP', ep: true do
-
-      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
-        page.visit url
-      end
-
-      step "Admin do login", settings('cloud_bees') do |credentials|
-        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field :ep, credentials['username']
-
-        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field :ep, credentials['pass']
-
-        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
-        login_page.click_sign_in_button :ep
-      end
-
-      step "User goes to the page", settings('cloud_bees')['pipelines_run_page'] do |url|
-        page.visit url
-      end
-
-
-      step "User clicks to select project" do
-        check_element_path :xpath, CloudBeesPipelinesRuns::PROJ_SELECT_EP, CloudBeesPipelinesRuns::PROJ_SELECT_IL
-        pipelines_runs.click_to_select_proj :ep
-      end
-
-      step "User clicks to select ec-examples project" do
-        check_element_path :xpath, CloudBeesPipelinesRuns::EC_EXAMPLES_PROJ_EP, CloudBeesPipelinesRuns::EC_EXAMPLES_PROJ_IL
-        pipelines_runs.click_to_select_ec_examples_proj :ep
-      end
-
-      step "User clicks on accept button" do
-        check_element_path :css, CloudBeesPipelinesRuns::ACCEPT_DROPDOWN_SELECTION_EP, CloudBeesPipelinesRuns::ACCEPT_DROPDOWN_SELECTION_IL
-        pipelines_runs.click_to_accept_proj :ep
-      end
-
-      step "User clicks to select project" do
-        check_element_path :xpath, CloudBeesPipelinesRuns::PROJ_SELECT_EP, CloudBeesPipelinesRuns::PROJ_SELECT_IL
-        pipelines_runs.click_to_select_proj :ep
-      end
-
-      step "User clicks to unselect ec-examples project" do
-        check_element_path :xpath, CloudBeesPipelinesRuns::EC_EXAMPLES_PROJ_EP, CloudBeesPipelinesRuns::EC_EXAMPLES_PROJ_IL
-        pipelines_runs.click_to_select_ec_examples_proj :ep
-      end
-
-      step "User clicks on accept button" do
-        check_element_path :css, CloudBeesPipelinesRuns::ACCEPT_DROPDOWN_SELECTION_EP, CloudBeesPipelinesRuns::ACCEPT_DROPDOWN_SELECTION_IL
-        pipelines_runs.click_to_accept_proj :ep
-      end
     end
 
   end

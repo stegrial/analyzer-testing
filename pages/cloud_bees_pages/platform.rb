@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class CloudBeesPlatformHomePage
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class CloudBeesPlatformHomePage < PageExtension
 
   PROJECTS_LINK_IL = "//a[@title='Projects (ALT+O)']"
   PROJECTS_LINK_TA = "cloud_bees:platform:projects_link"

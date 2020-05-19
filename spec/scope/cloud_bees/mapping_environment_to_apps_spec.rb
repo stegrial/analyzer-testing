@@ -42,9 +42,7 @@ describe 'Preconditions' do
 
   feature 'Mapping Environment to Application' do
 
-    # Initial locators with Recording
-
-    scenario 'Recording IL', il: true do
+    scenario 'Test - Recording', record: true do
 
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
@@ -193,7 +191,7 @@ describe 'Preconditions' do
     end
 
 
-    scenario 'Searching IL', il: true do
+    scenario 'Test - Searching', search: true do
 
       step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
         page.visit url
@@ -294,7 +292,6 @@ describe 'Preconditions' do
         apps_page.confirm_new_artifact
       end
 
-
       step "Admin goes to the page", settings('cloud_bees')['environments_page'] do |url|
         page.visit url
       end
@@ -381,207 +378,6 @@ describe 'Preconditions' do
 
       sleep 3
     end
-
-    # Element Picker from Repository
-
-    scenario 'Searching EP', ep: true do
-
-      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
-        page.visit url
-      end
-
-      step "User goes to the page", settings('cloud_bees')['login_page'] do |url|
-        page.visit url
-      end
-
-      step "Admin do login", settings('cloud_bees') do |credentials|
-        check_element_path :css, CloudBeesLogin::USERNAME_FIELD_EP, CloudBeesLogin::USERNAME_FIELD_IL
-        login_page.fill_username_field :ep, credentials['username']
-
-        check_element_path :css, CloudBeesLogin::PASSWORD_FIELD_EP, CloudBeesLogin::PASSWORD_FIELD_IL
-        login_page.fill_pass_field :ep, credentials['pass']
-
-        check_element_path :css, CloudBeesLogin::SIGN_IN_BTN_EP, CloudBeesLogin::SIGN_IN_BTN_IL
-        login_page.click_sign_in_button :ep
-      end
-
-      step "User clicks on humburg bth" do
-        check_element_path :css  , CloudBeesGlobal::HAM_MENU_BTN_EP, CloudBeesGlobal::HAM_MENU_BTN_IL
-        global_page.click_hamburger_menu :ep
-      end
-
-      step "Admin chooses the Applications section in the Hamburger menu" do
-        check_element_path :css  , CloudBeesGlobal::APPS_SECTION_EP, CloudBeesGlobal::APPS_SECTION_IL
-        global_page.click_applications :ep
-      end
-
-      step "Admin clicks on the new application button" do
-        check_element_path :xpath  , CloudBeesApps::NEW_APPLICATION_BTN_EP, CloudBeesApps::NEW_APPLICATION_BTN_IL
-        apps_page.click_new_application :ep
-      end
-
-      step "Admin clicks on the create new application button" do
-        check_element_path :xpath  , CloudBeesApps::CREATE_NEW_APPLICATION_EP, CloudBeesApps::CREATE_NEW_APPLICATION_IL
-        apps_page.create_new_application :ep
-      end
-
-      step "Admin fills the application name field", 'appName' do |appname|
-        check_element_path :xpath  , CloudBeesApps::APPLICATION_NAME_EP, CloudBeesApps::APPLICATION_NAME_IL
-        apps_page.fill_application_name_field  :ep, appname
-      end
-
-      step "Admin clicks on the Select project drop-down" do
-        check_element_path :xpath  , CloudBeesApps::SELECT_PROJECT_EP, CloudBeesApps::SELECT_PROJECT_IL
-        apps_page.click_on_select_project :ep
-      end
-
-      step "Admin select on the drop-down Default project" do
-        sleep 3
-        check_element_path :xpath  , CloudBeesApps::SELECT_DEFAULT_PROJECT_EP, CloudBeesApps::SELECT_DEFAULT_PROJECT_IL
-        apps_page.select_default_project :ep
-      end
-
-      step "Admin confirm new application" do
-        check_element_path :xpath  , CloudBeesApps::CONFIRM_NEW_APPLICATION_EP, CloudBeesApps::CONFIRM_NEW_APPLICATION_IL
-        apps_page.confirm_create_new_application :ep
-      end
-
-      step "Admin clicks on the Component tier" do
-        sleep 3
-        check_element_path :xpath  , CloudBeesApps::COMPONENT_TIER_EP, CloudBeesApps::COMPONENT_TIER_IL
-        apps_page.click_component_tier :ep
-      end
-
-      step "Admin clicks on the Create new  Component" do
-        check_element_path :xpath  , CloudBeesApps::CREATE_NEW_COMPONENT_EP, CloudBeesApps::CREATE_NEW_COMPONENT_IL
-        apps_page.create_new_component :ep
-      end
-
-      step "Admin fills the component name field", 'compName' do |compname|
-        check_element_path :xpath  , CloudBeesApps::COMPONENT_NAME_EP, CloudBeesApps::COMPONENT_NAME_IL
-        apps_page.fill_component_name_field :ep, compname
-      end
-
-      step "Admin clicks on the Next button in the modal component" do
-        check_element_path :xpath  , CloudBeesApps::COMPONENT_NEXT_EP, CloudBeesApps::COMPONENT_NEXT_IL
-        apps_page.click_component_next :ep
-      end
-
-      step "Admin clicks on the Content location drop-down" do
-        sleep 3
-        check_element_path :xpath  , CloudBeesApps::CONTENT_LOCATION_EP, CloudBeesApps::CONTENT_LOCATION_IL
-        apps_page.click_on_content_location :ep
-      end
-
-      step "Admin select on the drop-down EC-Artifact" do
-        check_element_path :xpath  , CloudBeesApps::SELECT_EC_ARTIFACT_EP, CloudBeesApps::SELECT_EC_ARTIFACT_IL
-        apps_page.select_ec_artifact :ep
-      end
-
-      step "Admin fills the artifact name field", 'artName' do |artname|
-        check_element_path :xpath  , CloudBeesApps::ARTIFACT_NAME_EP, CloudBeesApps::ARTIFACT_NAME_IL
-        apps_page.fill_artifact_name_field :ep, artname
-      end
-
-      step "Admin click on the OK button" do
-        check_element_path :xpath  , CloudBeesApps::CONFIRM_NEW_ARTIFACT_EP, CloudBeesApps::CONFIRM_NEW_ARTIFACT_IL
-        apps_page.confirm_new_artifact :ep
-      end
-
-      sleep 5
-
-      step "Admin goes to the page", settings('cloud_bees')['environments_page'] do |url|
-        page.visit url
-      end
-
-      step "Admin clicks create plus icon for new env " do
-        check_element_path :css  , CloudBeesEnv::CREATE_ENV_PLUS_BTN_EP, CloudBeesEnv::CREATE_ENV_PLUS_BTN_IL
-        env.create_new_env :ep
-      end
-
-      step "Admin clicks create new env button" do
-        check_element_path :xpath  , CloudBeesEnv::CREATE_NEW_ENV_MODAL_BTN_EP, CloudBeesEnv::CREATE_NEW_ENV_MODAL_BTN_IL
-        env.click_new_env_btn :ep
-      end
-
-      step "Admin fills the env name field",'envName' do |envName|
-        check_element_path :xpath  , CloudBeesEnv::ENV_NAME_EP, CloudBeesEnv::ENV_NAME_IL
-        env.fill_env_name_field :ep, envName
-      end
-
-      step "Admin click on Select Project dropdown" do
-        check_element_path :xpath  , CloudBeesEnv::SELECT_PROJECT_EP, CloudBeesEnv::SELECT_PROJECT_IL
-        env.click_on_select_project :ep
-      end
-
-      step "Admin select project from dropdown" do
-        sleep 3
-        check_element_path :xpath  , CloudBeesEnv::SELECT_DEFAULT_PROJECT_EP, CloudBeesEnv::SELECT_DEFAULT_PROJECT_IL
-        env.click_to_select_default_project :ep
-      end
-
-      step "Admin click confirm button" do
-        check_element_path :xpath  , CloudBeesEnv::CONFIRM_NEW_ENV_EP, CloudBeesEnv::CONFIRM_NEW_ENV_IL
-        env.click_to_confirm_create_new_env :ep
-      end
-
-      step "Admin clicks to create resource tier" do
-        sleep 4
-        check_element_path :xpath  , CloudBeesEnvEditor::RESOURCE_TIER_EP, CloudBeesEnvEditor::RESOURCE_TIER_IL
-        env_editor.click_resource_tier :ep
-      end
-
-      step "Admin clicks to add resource" do
-        sleep 2
-        check_element_path :css  , CloudBeesEnvEditor::ADD_RESOURCE_BTN_EP, CloudBeesEnvEditor::ADD_RESOURCE_BTN_IL
-        env_editor.click_to_add_resource :ep
-      end
-
-      step "Admin select resource from list" do
-        check_element_path :xpath  , CloudBeesEnvEditor::SELECT_RESOURCE_FROM_LIST_EP, CloudBeesEnvEditor::SELECT_RESOURCE_FROM_LIST_IL
-        env_editor.select_resource_from_list :ep
-      end
-
-      step "Admin clicks close button" do
-        check_element_path :css  , CloudBeesEnvEditor::CLOSE_BTN_EP, CloudBeesEnvEditor::CLOSE_BTN_IL
-        env_editor.click_to_close_to_close_modal :ep
-      end
-
-      step "Admin clicks map to application link in hierarchy menu" do
-        check_element_path :css  , CloudBeesEnvEditor::MAP_TO_APP_BTN_EP, CloudBeesEnvEditor::MAP_TO_APP_BTN_IL
-        env_editor.click_map_to_app_hierarchy_menu :ep
-      end
-
-      step "Admin set application in search field", 'appName' do |appName|
-        sleep 3
-        check_element_path :css  , CloudBeesEnvEditor::APPNAME_IN_SEARCH_FIELD_EP, CloudBeesEnvEditor::APPNAME_IN_SEARCH_FIELD_IL
-        env_editor.set_app_in_search :ep, appName
-      end
-
-      step "Admin select application from map list " do
-        check_element_path :css  , CloudBeesEnvEditor::APPS_NAME_IN_MAPPING_MODAL_EP, CloudBeesEnvEditor::APPS_NAME_IN_MAPPING_MODAL_IL
-        env_editor.select_app_from_maplist :ep
-      end
-
-      step "Admin clicks hamburger menu button to mapping" do
-        check_element_path :css  , CloudBeesEnvEditor::MAPPING_SELECT_BTN_EP, CloudBeesEnvEditor::MAPPING_SELECT_BTN_IL
-        env_editor.click_mapping_select_btn :ep
-      end
-
-      step "Admin select tier map from popover" do
-        check_element_path :css  , CloudBeesEnvEditor::TIER_MAPPING_POPOVER_EP, CloudBeesEnvEditor::TIER_MAPPING_POPOVER_IL
-        sleep 3
-        env_editor.click_to_select_tier_for_map :ep
-      end
-
-      step "Admin clicks close button" do
-        check_element_path :css  , CloudBeesEnvEditor::CLOSE_BTN_EP, CloudBeesEnvEditor::CLOSE_BTN_IL
-        env_editor.click_to_close_to_close_modal :ep
-      end
-
-      sleep 3
-    end
-
 
   end
 end

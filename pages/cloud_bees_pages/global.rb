@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class CloudBeesGlobal
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class CloudBeesGlobal < PageExtension
 
   HAM_MENU_BTN_IL = '.at-main-menu-btn'
   HAM_MENU_BTN_TA = 'cloud_bees:ham_menu'
