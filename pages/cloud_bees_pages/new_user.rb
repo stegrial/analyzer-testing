@@ -23,37 +23,37 @@ class CloudBeesNewUser < PageExtension
 
   def fill_user_name_field(key = nil, name)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: USER_NAME_FIELD_TA, il: USER_NAME_FIELD_IL).set(name)
+      find_element(key, il_type: :css, tl: USER_NAME_FIELD_TA, il: USER_NAME_FIELD_IL, check_path: $check_path).set(name)
     end
   end
 
   def fill_real_name_field(key = nil, name)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: REAL_NAME_FIELD_TA, il: REAL_NAME_FIELD_IL).set(name)
+      find_element(key, il_type: :css, tl: REAL_NAME_FIELD_TA, il: REAL_NAME_FIELD_IL, check_path: $check_path).set(name)
     end
   end
 
   def fill_email_field(key = nil, email)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: EMAIL_FIELD_TA, il: EMAIL_FIELD_IL).set(email)
+      find_element(key, il_type: :css, tl: EMAIL_FIELD_TA, il: EMAIL_FIELD_IL, check_path: $check_path).set(email)
     end
   end
 
   def fill_password_field(key = nil, pass)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: PASSWORD_FIELD_TA, il: PASSWORD_FIELD_IL).set(pass)
+      find_element(key, il_type: :css, tl: PASSWORD_FIELD_TA, il: PASSWORD_FIELD_IL, check_path: $check_path).set(pass)
     end
   end
 
   def fill_repassword_field(key = nil, repass)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: REPASSWORD_FIELD_TA, il: REPASSWORD_FIELD_IL).set(repass)
+      find_element(key, il_type: :css, tl: REPASSWORD_FIELD_TA, il: REPASSWORD_FIELD_IL, check_path: $check_path).set(repass)
     end
   end
 
   def confirm_create_new_user(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: CONFIRM_NEW_USER_TA, il: CONFIRM_NEW_USER_IL).click
+      find_element(key, il_type: :css, tl: CONFIRM_NEW_USER_TA, il: CONFIRM_NEW_USER_IL, check_path: $check_path).click
     end
   end
 

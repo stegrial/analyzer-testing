@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/thetiebar/*.rb"
-
-include ElementSearchValidation
 
 main_page = TheTiebarMainPage.new
 header_page = TheTiebarHeader.new
@@ -11,136 +8,54 @@ header_page = TheTiebarHeader.new
 describe 'Preconditions' do
 
   before(:all) do
+    $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
   end
 
+  after(:each) do
+    $check_path = true if $run_parameters.include?('search')
+  end
+
   feature 'Newest styles and offers' do
 
-    # Initial locators with Recording
+    $run_count.times do
+      scenario 'Test - Recording', "#{$tag}": true do
+        step "User goes to the page", settings('thetiebar')['main_page'] do |url|
+          page.visit url
+        end
 
-    scenario 'Recording IL', il: true do
+        step "User clicks terms to use link" do
+          main_page.click_terms_to_use
+        end
 
-      step "User goes to the page", settings('thetiebar')['main_page'] do |url|
-        page.visit url
-      end
+        step "User clicks for redirecting on main pag" do
+          header_page.click_logo :il # step is duplicated below
+        end
 
-      step "User clicks terms to use link" do
-        main_page.click_terms_to_use
-      end
+        step "User clicks terms to use link" do
+          main_page.click_privacy_police
+        end
 
-      step "User clicks for redirecting on main pag" do
-        header_page.click_logo :il # step is duplicated below
-      end
+        step "User clicks for redirecting on main page" do
+          header_page.click_logo
+        end
 
-      step "User clicks terms to use link" do
-        main_page.click_privacy_police
-      end
+        step "User fills search query field", "testtest@test.com" do |email|
+          main_page.fill_singup_field email
+        end
 
-      step "User clicks for redirecting on main page" do
-        header_page.click_logo
-      end
+        step "User click join button" do
+          main_page.click_join_btn
+        end
 
-      step "User fills search query field", "testtest@test.com" do |email|
-        main_page.fill_singup_field email
-      end
+        step "User check congrats text" do
+          main_page.check_congrats_text
+        end
 
-      step "User click join button" do
-        main_page.click_join_btn
-      end
-
-      step "User check congrats text" do
-        main_page.check_congrats_text
-      end
-
-      sleep 3
-    end
-
-    scenario 'Searching IL', il: true do
-      step "User goes to the page", settings('thetiebar')['main_page'] do |url|
-        page.visit url
-      end
-
-      step "User clicks terms to use link" do
-        check_element_path :xpath, TheTiebarMainPage::TERMS_TO_USE_LINK_TA, TheTiebarMainPage::TERMS_TO_USE_LINK_IL
-        main_page.click_terms_to_use
-      end
-
-      step "User clicks for redirecting on main pag" do
-        check_element_path :xpath, TheTiebarHeader::LOGO_TA, TheTiebarHeader::LOGO_IL
-        header_page.click_logo
-      end
-
-      step "User clicks terms to use link" do
-        check_element_path :xpath, TheTiebarMainPage::PRIVACY_POLICE_LINK_TA, TheTiebarMainPage::PRIVACY_POLICE_LINK_IL
-        main_page.click_privacy_police
-      end
-
-      step "User clicks for redirecting on main page" do
-        check_element_path :xpath, TheTiebarHeader::LOGO_TA, TheTiebarHeader::LOGO_IL
-        header_page.click_logo
-      end
-
-      step "User fills search query field", "testtest@test.com" do |email|
-        check_element_path :xpath, TheTiebarMainPage::SING_UP_INPUT_TA, TheTiebarMainPage::SING_UP_INPUT_IL
-        main_page.fill_singup_field email
-      end
-
-      step "User click join button" do
-        check_element_path :xpath, TheTiebarMainPage::JOIN_BTN_TA, TheTiebarMainPage::JOIN_BTN_IL
-        main_page.click_join_btn
-      end
-
-      step "User check congrats text" do
-        check_element_path :xpath, TheTiebarMainPage::CONGRATS_TEXT_TA, TheTiebarMainPage::CONGRATS_TEXT_IL
-        main_page.check_congrats_text
-      end
-
-      sleep 3
-    end
-
-    # Element Picker
-
-    scenario 'Searching EP', ep: true do
-
-      step "User goes to the page", settings('thetiebar')['main_page'] do |url|
-        page.visit url
-      end
-
-      step "User clicks terms to use link" do
-        check_element_path :xpath, TheTiebarMainPage::TERMS_TO_USE_LINK_EP, TheTiebarMainPage::TERMS_TO_USE_LINK_IL
-        main_page.click_terms_to_use :ep
-      end
-
-      step "User clicks for redirecting on main pag" do
-        check_element_path :xpath, TheTiebarHeader::LOGO_EP, TheTiebarHeader::LOGO_IL
-        header_page.click_logo :ep
-      end
-
-      step "User clicks terms to use link" do
-        check_element_path :xpath, TheTiebarMainPage::PRIVACY_POLICE_LINK_EP, TheTiebarMainPage::PRIVACY_POLICE_LINK_IL
-        main_page.click_privacy_police :ep
-      end
-
-      step "User clicks for redirecting on main page" do
-        check_element_path :xpath, TheTiebarHeader::LOGO_EP, TheTiebarHeader::LOGO_IL
-        header_page.click_logo :ep
-      end
-
-      step "User fills search query field", "testtest@test.com" do |email|
-        check_element_path :xpath, TheTiebarMainPage::SING_UP_INPUT_EP, TheTiebarMainPage::SING_UP_INPUT_IL
-        main_page.fill_singup_field :ep, email
-      end
-
-      step "User click join button" do
-        check_element_path :xpath, TheTiebarMainPage::JOIN_BTN_EP, TheTiebarMainPage::JOIN_BTN_IL
-        main_page.click_join_btn :ep
-      end
-
-      step "User check congrats text" do
-        check_element_path :xpath, TheTiebarMainPage::CONGRATS_TEXT_УЗ, TheTiebarMainPage::CONGRATS_TEXT_IL
-        main_page.check_congrats_text :ep
+        sleep 3
       end
     end
+
   end
 end

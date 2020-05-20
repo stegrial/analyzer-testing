@@ -93,120 +93,119 @@ class CloudBeesCatalogs < PageExtension
 
 
   def click_to_create_new_catalog(key = nil)
-    find_element(key, il_type: :css, tl: CREATE_NEW_CATALOG_TA, il: CREATE_NEW_CATALOG_IL).click
+    find_element(key, il_type: :css, tl: CREATE_NEW_CATALOG_TA, il: CREATE_NEW_CATALOG_IL, check_path: $check_path).click
   end
 
   def click_to_create_new_btn(key = nil)
-    find_element(key, il_type: :css, tl: CREATE_NEW_BUTTON_TA, il: CREATE_NEW_BUTTON_IL).click
+    find_element(key, il_type: :css, tl: CREATE_NEW_BUTTON_TA, il: CREATE_NEW_BUTTON_IL, check_path: $check_path).click
   end
 
   def set_catalog_name(key = nil, value)
-    find_element(key, il_type: :css, tl: CATALOGS_NAME_FLD_TA, il: CATALOGS_NAME_FLD_IL).set(value)
+    find_element(key, il_type: :css, tl: CATALOGS_NAME_FLD_TA, il: CATALOGS_NAME_FLD_IL, check_path: $check_path).set(value)
   end
 
   def click_to_open_proj_drpodown(key = nil)
-    find_element(key, il_type: :css, tl: PROJECT_DROPDOWN_TA, il: PROJECT_DROPDOWN_IL).click
+    find_element(key, il_type: :css, tl: PROJECT_DROPDOWN_TA, il: PROJECT_DROPDOWN_IL, check_path: $check_path).click
   end
 
   def select_proj_from_list(key = nil)
-    find_element(key, il_type: :xpath, tl: DEFAULT_PROJECT_TA, il: DEFAULT_PROJECT_IL).click
+    find_element(key, il_type: :xpath, tl: DEFAULT_PROJECT_TA, il: DEFAULT_PROJECT_IL, check_path: $check_path).click
   end
 
   def click_ok_in_modal_btn(key = nil)
-    find_element(key, il_type: :css, tl: OK_IN_MODAL_BTN_TA, il: OK_IN_MODAL_BTN_IL).click
+    find_element(key, il_type: :css, tl: OK_IN_MODAL_BTN_TA, il: OK_IN_MODAL_BTN_IL, check_path: $check_path).click
   end
 
   def set_name_in_form(key = nil, value)
-    find_element(key, il_type: :css, tl: CATALOGS_NAME_FORM_TA, il: CATALOGS_NAME_FORM_IL).set(value)
+    find_element(key, il_type: :css, tl: CATALOGS_NAME_FORM_TA, il: CATALOGS_NAME_FORM_IL, check_path: $check_path).set(value)
   end
 
   def set_description_in_form(key = nil, value)
-    find_element(key, il_type: :css, tl: CATALOGS_DESCRIPTION_FORM_TA, il: CATALOGS_DESCRIPTION_FORM_IL).set(value)
+    find_element(key, il_type: :css, tl: CATALOGS_DESCRIPTION_FORM_TA, il: CATALOGS_DESCRIPTION_FORM_IL, check_path: $check_path).set(value)
   end
 
   def click_add_another(key = nil)
-    find_element(key, il_type: :css, tl: ADD_ANOTHER_BTN_TA, il: ADD_ANOTHER_BTN_IL).click
+    find_element(key, il_type: :css, tl: ADD_ANOTHER_BTN_TA, il: ADD_ANOTHER_BTN_IL, check_path: $check_path).click
   end
 
   def click_define_btn(key = nil)
-    find_element(key, il_type: :css, tl: DEFINE_BTN_TA, il: DEFINE_BTN_IL).click
+    find_element(key, il_type: :css, tl: DEFINE_BTN_TA, il: DEFINE_BTN_IL, check_path: $check_path).click
   end
 
   def click_to_select_cloud_bees_icon(key = nil)
-    find_element(key, il_type: :xpath, tl: CLOUD_BEES_ICON_TA, il: CLOUD_BEES_ICON_IL).click
+    find_element(key, il_type: :xpath, tl: CLOUD_BEES_ICON_TA, il: CLOUD_BEES_ICON_IL, check_path: $check_path).click
   end
 
   def click_to_select_label(key = nil)
-    find_element(key, il_type: :css, tl: SELECT_BTN_LABEL_TA, il: SELECT_BTN_LABEL_IL).click
+    find_element(key, il_type: :css, tl: SELECT_BTN_LABEL_TA, il: SELECT_BTN_LABEL_IL, check_path: $check_path).click
   end
 
   def click_to_select_execute_option(key = nil)
-    find_element(key, il_type: :css, tl: EXECUTE_OPTION_TA, il: EXECUTE_OPTION_IL).click
+    find_element(key, il_type: :css, tl: EXECUTE_OPTION_TA, il: EXECUTE_OPTION_IL, check_path: $check_path).click
   end
 
   def click_on_procedure_definition (key = nil)
-    find_element(key, il_type: :xpath, tl: PROCEDURE_DEFINITION_TA, il: PROCEDURE_DEFINITION_IL).click
+    find_element(key, il_type: :xpath, tl: PROCEDURE_DEFINITION_TA, il: PROCEDURE_DEFINITION_IL, check_path: $check_path).click
   end
 
   def click_procedure_proj_dropdown(key = nil)
-    find_element(key, il_type: :xpath, tl: PROCEDURE_PROJ_TA, il: PROCEDURE_PROJ_IL).click
+    find_element(key, il_type: :xpath, tl: PROCEDURE_PROJ_TA, il: PROCEDURE_PROJ_IL, check_path: $check_path).click
   end
 
   def click_to_select_ec_example_proj(key = nil)
-    find_element(key, il_type: :xpath, tl: PROCEDURE_EC_EXAMPLE_PROJ_TA, il: PROCEDURE_EC_EXAMPLE_PROJ_IL).click
+    find_element(key, il_type: :xpath, tl: PROCEDURE_EC_EXAMPLE_PROJ_TA, il: PROCEDURE_EC_EXAMPLE_PROJ_IL, check_path: $check_path).click
   end
 
   def click_select_procedure(key = nil)
-    find_element(key, il_type: :xpath, tl: SELECT_PROCEDURE_TA, il: SELECT_PROCEDURE_IL).click
+    find_element(key, il_type: :xpath, tl: SELECT_PROCEDURE_TA, il: SELECT_PROCEDURE_IL, check_path: $check_path).click
   end
 
   def click_select_approve_procedure(key = nil)
-    find_element(key, il_type: :css, tl: SELECT_APPROVE_PROCEDURE_TA, il: SELECT_APPROVE_PROCEDURE_IL).click
+    find_element(key, il_type: :css, tl: SELECT_APPROVE_PROCEDURE_TA, il: SELECT_APPROVE_PROCEDURE_IL, check_path: $check_path).click
   end
 
   def click_all_catalogs(key = nil)
-    find_element(key, il_type: :css, tl: ALL_CATALOGS_TA, il: ALL_CATALOGS_IL).click
+    find_element(key, il_type: :css, tl: ALL_CATALOGS_TA, il: ALL_CATALOGS_IL, check_path: $check_path).click
   end
 
   def click_to_select_created_catalog(key = nil, catalogName)
-    find_element(key, il_type: :css, tl: CREATED_CATALOG_TA, il: CREATED_CATALOG_IL).set(catalogName)
+    find_element(key, il_type: :css, tl: CREATED_CATALOG_TA, il: CREATED_CATALOG_IL, check_path: $check_path).set(catalogName)
   end
 
   def select_created_catalog(key = nil)
-    find_element(key, il_type: :css, tl: SELECT_CATALOG_TA, il: SELECT_CATALOG_IL).click
+    find_element(key, il_type: :css, tl: SELECT_CATALOG_TA, il: SELECT_CATALOG_IL, check_path: $check_path).click
   end
 
-
   def click_editor_catalog(key = nil)
-    find_element(key, il_type: :xpath, tl: CATALOG_EDITOR_TA, il: CATALOG_EDITOR_IL).click
+    find_element(key, il_type: :xpath, tl: CATALOG_EDITOR_TA, il: CATALOG_EDITOR_IL, check_path: $check_path).click
   end
 
   def click_catalog_menu(key = nil)
-    find_element(key, il_type: :css, tl: CATALOG_HAMBURGER_MENU_TA, il: CATALOG_HAMBURGER_MENU_IL).click
+    find_element(key, il_type: :css, tl: CATALOG_HAMBURGER_MENU_TA, il: CATALOG_HAMBURGER_MENU_IL, check_path: $check_path).click
   end
 
   def click_delete_catalog(key = nil)
-    find_element(key, il_type: :css, tl: DELETE_CATALOG_TA, il: DELETE_CATALOG_IL).click
+    find_element(key, il_type: :css, tl: DELETE_CATALOG_TA, il: DELETE_CATALOG_IL, check_path: $check_path).click
   end
 
   def click_ok_btn_for_accept_delete(key = nil)
-    find_element(key, il_type: :css, tl: ACCEPT_DELETE_CATALOG_TA, il: ACCEPT_DELETE_CATALOG_IL).click
+    find_element(key, il_type: :css, tl: ACCEPT_DELETE_CATALOG_TA, il: ACCEPT_DELETE_CATALOG_IL, check_path: $check_path).click
   end
 
   def click_to_open_catalog_list(key = nil)
-    find_element(key, il_type: :css, tl: CATALOGS_LIST_TA, il: CATALOGS_LIST_IL).click
+    find_element(key, il_type: :css, tl: CATALOGS_LIST_TA, il: CATALOGS_LIST_IL, check_path: $check_path).click
   end
 
   def click_apps_in_catalog_list(key = nil)
-    find_element(key, il_type: :css, tl: APPS_IN_CATALOG_LIST_TA, il: APPS_IN_CATALOG_LIST_IL).click
+    find_element(key, il_type: :css, tl: APPS_IN_CATALOG_LIST_TA, il: APPS_IN_CATALOG_LIST_IL, check_path: $check_path).click
   end
 
   def click_containers_in_catalog_list(key = nil)
-    find_element(key, il_type: :css, tl: CONTAINERS_IN_CATALOG_LIST_TA, il: CONTAINERS_IN_CATALOG_LIST_IL).click
+    find_element(key, il_type: :css, tl: CONTAINERS_IN_CATALOG_LIST_TA, il: CONTAINERS_IN_CATALOG_LIST_IL, check_path: $check_path).click
   end
 
   def click_utility_in_catalog_list(key = nil)
-    find_element(key, il_type: :css, tl: UTILITY_IN_CATALOG_LIST_TA, il: UTILITY_IN_CATALOG_LIST_IL).click
+    find_element(key, il_type: :css, tl: UTILITY_IN_CATALOG_LIST_TA, il: UTILITY_IN_CATALOG_LIST_IL, check_path: $check_path).click
   end
 
 end

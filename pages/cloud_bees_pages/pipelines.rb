@@ -72,95 +72,95 @@ class CloudBeesPipelines < PageExtension
   CONFIRM_COMPLETED_TASK_TA = 'cloud_bees:pipeline:confirm_completed_task'
 
   def choose_pipeline_ta866_from_list(key = nil)
-    find_element(key, il_type: :xpath, tl: CHOOSE_PIPELINE_TA866_TA, il: CHOOSE_PIPELINE_TA866_IL).click
+    find_element(key, il_type: :xpath, tl: CHOOSE_PIPELINE_TA866_TA, il: CHOOSE_PIPELINE_TA866_IL, check_path: $check_path).click
   end
 
   def click_new_pipeline(key = nil)
-    find_element(key, il_type: :xpath, tl: NEW_PIPELINE_BTN_TA, il: NEW_PIPELINE_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: NEW_PIPELINE_BTN_TA, il: NEW_PIPELINE_BTN_IL, check_path: $check_path).click
   end
 
   def create_new_pipeline(key = nil)
-    find_element(key, il_type: :xpath, tl: CREATE_NEW_PIPELINE_TA, il: CREATE_NEW_PIPELINE_IL).click
+    find_element(key, il_type: :xpath, tl: CREATE_NEW_PIPELINE_TA, il: CREATE_NEW_PIPELINE_IL, check_path: $check_path).click
   end
 
   def fill_pipeline_name_field(key = nil, pipename)
-    find_element(key, il_type: :xpath, tl: PIPELINE_NAME_TA, il: PIPELINE_NAME_IL).set(pipename)
+    find_element(key, il_type: :xpath, tl: PIPELINE_NAME_TA, il: PIPELINE_NAME_IL, check_path: $check_path).set(pipename)
   end
 
   def click_on_select_project(key = nil)
-    find_element(key, il_type: :xpath, tl: SELECT_PROJECT_TA, il: SELECT_PROJECT_IL).click
+    find_element(key, il_type: :xpath, tl: SELECT_PROJECT_TA, il: SELECT_PROJECT_IL, check_path: $check_path).click
   end
 
   def select_default_project(key = nil)
-    find_element(key, il_type: :xpath, tl: SELECT_DEFAULT_PROJECT_TA, il: SELECT_DEFAULT_PROJECT_IL).click
+    find_element(key, il_type: :xpath, tl: SELECT_DEFAULT_PROJECT_TA, il: SELECT_DEFAULT_PROJECT_IL, check_path: $check_path).click
   end
 
   def confirm_create_new_pipeline(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_PIPELINE_TA, il: CONFIRM_NEW_PIPELINE_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_PIPELINE_TA, il: CONFIRM_NEW_PIPELINE_IL, check_path: $check_path).click
   end
 
   def click_new_task(key = nil)
-    find_element(key, il_type: :xpath, tl: NEW_TASK_BTN_TA, il: NEW_TASK_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: NEW_TASK_BTN_TA, il: NEW_TASK_BTN_IL, check_path: $check_path).click
   end
 
   def fill_task_name_field(key = nil, taskname)
-    find_element(key, il_type: :xpath, tl: TASK_NAME_TA, il: TASK_NAME_IL).set(taskname)
+    find_element(key, il_type: :xpath, tl: TASK_NAME_TA, il: TASK_NAME_IL, check_path: $check_path).set(taskname)
   end
 
   def select_task_type(key = nil)
-    find_element(key, il_type: :xpath, tl: SELECT_TASK_TYPE_TA, il: SELECT_TASK_TYPE_IL).click
+    find_element(key, il_type: :xpath, tl: SELECT_TASK_TYPE_TA, il: SELECT_TASK_TYPE_IL, check_path: $check_path).click
   end
 
   def manual_task_type(key = nil)
-    find_element(key, il_type: :xpath, tl: MANUAL_TASK_TYPE_TA, il: MANUAL_TASK_TYPE_IL).click
+    find_element(key, il_type: :xpath, tl: MANUAL_TASK_TYPE_TA, il: MANUAL_TASK_TYPE_IL, check_path: $check_path).click
   end
 
   def confirm_new_task(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_TASK_TA, il: CONFIRM_NEW_TASK_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_TASK_TA, il: CONFIRM_NEW_TASK_IL, check_path: $check_path).click
   end
 
   def find_pipeline_name_field(key = nil, pipename)
-    find_element(key, il_type: :xpath, tl: FIND_PIPELINE_FIELD_TA, il: FIND_PIPELINE_FIELD_IL).set(pipename)
+    find_element(key, il_type: :xpath, tl: FIND_PIPELINE_FIELD_TA, il: FIND_PIPELINE_FIELD_IL, check_path: $check_path).set(pipename)
   end
 
   def select_pipeline_from_list(key = nil)
-    find_element(key, il_type: :css, tl: PIPELINE_LIST_ITEM_TA, il: PIPELINE_LIST_ITEM_IL).click
+    find_element(key, il_type: :css, tl: PIPELINE_LIST_ITEM_TA, il: PIPELINE_LIST_ITEM_IL, check_path: $check_path).click
   end
 
   def delete_pipeline(key = nil)
-    find_element(key, il_type: :xpath, tl: DELETE_PIPELINE_TA, il: DELETE_PIPELINE_IL).click
+    find_element(key, il_type: :xpath, tl: DELETE_PIPELINE_TA, il: DELETE_PIPELINE_IL, check_path: $check_path).click
   end
 
   def confirm_delete_pipeline(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_DELETE_PIPELINE_TA, il: CONFIRM_DELETE_PIPELINE_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_DELETE_PIPELINE_TA, il: CONFIRM_DELETE_PIPELINE_IL, check_path: $check_path).click
   end
 
   def click_run_pipeline(key = nil)
-    find_element(key, il_type: :xpath, tl: RUN_PIPELINE_BTN_TA, il: RUN_PIPELINE_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: RUN_PIPELINE_BTN_TA, il: RUN_PIPELINE_BTN_IL, check_path: $check_path).click
   end
 
   def click_new_run_pipeline(key = nil)
-    find_element(key, il_type: :xpath, tl: NEW_RUN_PIPELINE_BTN_TA, il: NEW_RUN_PIPELINE_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: NEW_RUN_PIPELINE_BTN_TA, il: NEW_RUN_PIPELINE_BTN_IL, check_path: $check_path).click
   end
 
   def confirm_run_pipeline(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_RUN_PIPELINE_TA, il: CONFIRM_RUN_PIPELINE_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_RUN_PIPELINE_TA, il: CONFIRM_RUN_PIPELINE_IL, check_path: $check_path).click
   end
 
   def click_response_required(key = nil)
-    find_element(key, il_type: :xpath, tl: RESPONSE_REQUIRED_BNT_TA, il: RESPONSE_REQUIRED_BNT_IL).click
+    find_element(key, il_type: :xpath, tl: RESPONSE_REQUIRED_BNT_TA, il: RESPONSE_REQUIRED_BNT_IL, check_path: $check_path).click
   end
 
   def click_manual_task_on_stage(key = nil)
-    find_element(key, il_type: :xpath, tl: MANUAL_TASK_TA, il: MANUAL_TASK_IL).click
+    find_element(key, il_type: :xpath, tl: MANUAL_TASK_TA, il: MANUAL_TASK_IL, check_path: $check_path).click
   end
 
   def click_completed_radio_button(key = nil)
-    find_element(key, il_type: :xpath, tl: COMPLETED_RADIO_BTN_TA, il: COMPLETED_RADIO_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: COMPLETED_RADIO_BTN_TA, il: COMPLETED_RADIO_BTN_IL, check_path: $check_path).click
   end
 
   def confirm_completed_task(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_COMPLETED_TASK_TA, il: CONFIRM_COMPLETED_TASK_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_COMPLETED_TASK_TA, il: CONFIRM_COMPLETED_TASK_IL, check_path: $check_path).click
   end
 
   def check_no_default_project(key = nil)

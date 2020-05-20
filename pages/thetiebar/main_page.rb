@@ -1,85 +1,49 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-
-class TheTiebarMainPage
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
-
+class TheTiebarMainPage < PageExtension
 
   SING_UP_INPUT_IL = "//input[@id='signUpEmail']"
   SING_UP_INPUT_TA = "thetiebar:main_page:singup_input"
-  SING_UP_INPUT_EP = "EP:thetiebar:main_page:singup_input"
 
-  JOIN_BTN_IL = "//span[contains(text(), 'Join')]"
+  JOIN_BTN_IL = "//span[text()='Sign Up']"
   JOIN_BTN_TA = "thetiebar:main_page:join_btn"
-  JOIN_BTN_EP = "EP:thetiebar:main_page:join_btn"
 
-  CONGRATS_TEXT_IL = "//p[contains(text(), 'on the list, enjoy.')]"
+  CONGRATS_TEXT_IL = "//p[contains(text(), 'Congrats!')]"
   CONGRATS_TEXT_TA = "thetiebar:main_page:congrats_text"
-  CONGRATS_TEXT_EP = "EP:thetiebar:main_page:congrats_text"
 
-  TERMS_TO_USE_LINK_IL = "//a[contains(text(), 'terms of use')]"
-  TERMS_TO_USE_LINK_TA =  "thetiebar:main_page:terms_to_use_link"
-  TERMS_TO_USE_LINK_EP = "EP:thetiebar:main_page:terms_to_use_link"
+  TERMS_TO_USE_LINK_IL = "//a[contains(text(), 'Terms of Use')]"
+  TERMS_TO_USE_LINK_TA = "thetiebar:main_page:terms_to_use_link"
 
-  PRIVACY_POLICE_LINK_IL = "//a[contains(text(), 'privacy policy')]"
+  PRIVACY_POLICE_LINK_IL = "//a[contains(text(), 'Privacy Notice')]"
   PRIVACY_POLICE_LINK_TA = "thetiebar:main_page:privacy_police_link"
-  PRIVACY_POLICE_LINK_EP = "EP:thetiebar:main_page:privacy_police_link"
 
   COOKIES_CLOSE_BUTTON_IL = "//button[@aria-label='close']"
   COOKIES_CLOSE_BUTTON_TA = "thetiebar:main_page:cookies_close_btn"
-  COOKIES_CLOSE_BUTTON_EP = "EP:thetiebar:main_page:cookies_close_btn"
 
 
   def fill_singup_field(key = nil, value)
-    post_processing key do
-      return find(ta(SING_UP_INPUT_EP)).set(value) if key == :ep
-      return find(:xpath, SING_UP_INPUT_IL).set(value) if key == :il
-      find(:xpath, ta(SING_UP_INPUT_TA, SING_UP_INPUT_IL)).set(value)
-    end
+    find_element(key, il_type: :xpath, tl: SING_UP_INPUT_TA, il: SING_UP_INPUT_IL, check_path: $check_path).set(value)
   end
 
   def click_join_btn(key = nil)
-    post_processing key do
-      return find(ta(JOIN_BTN_EP)).click if key == :ep
-      return find(:xpath, JOIN_BTN_IL).click if key == :il
-      find(:xpath, ta(JOIN_BTN_TA, JOIN_BTN_IL)).click
-    end
+    find_element(key, il_type: :xpath, tl: JOIN_BTN_TA, il: JOIN_BTN_IL, check_path: $check_path).click
   end
 
-  def check_congrats_text(key=nil)
-    post_processing key do
-      return assert_selector(ta(CONGRATS_TEXT_EP)) if key == :ep
-      return assert_selector(:xpath, CONGRATS_TEXT_IL) if key == :il
-      assert_selector(:xpath, ta(CONGRATS_TEXT_TA, CONGRATS_TEXT_IL))
-    end
+  def check_congrats_text(key = nil)
+    return assert_selector(:xpath, CONGRATS_TEXT_IL) if key == :il
+    assert_selector(:xpath, ta(CONGRATS_TEXT_TA, CONGRATS_TEXT_IL))
   end
 
   def click_terms_to_use(key = nil)
-    post_processing key do
-      return find(ta(TERMS_TO_USE_LINK_EP)).click if key == :ep
-      return find(:xpath, TERMS_TO_USE_LINK_IL).click if key == :il
-      find(:xpath, ta(TERMS_TO_USE_LINK_TA, TERMS_TO_USE_LINK_IL)).click
-    end
+    find_element(key, il_type: :xpath, tl: TERMS_TO_USE_LINK_TA, il: TERMS_TO_USE_LINK_IL, check_path: $check_path).click
   end
 
   def click_privacy_police(key = nil)
-    post_processing key do
-      return find(ta(PRIVACY_POLICE_LINK_EP)).click if key == :ep
-      return find(:xpath, PRIVACY_POLICE_LINK_IL).click if key == :il
-      find(:xpath, ta(PRIVACY_POLICE_LINK_TA, PRIVACY_POLICE_LINK_IL)).click
-    end
+    find_element(key, il_type: :xpath, tl: PRIVACY_POLICE_LINK_TA, il: PRIVACY_POLICE_LINK_IL, check_path: $check_path).click
   end
 
   def click_close_coolies_btn(key = nil)
-    post_processing key do
-      return find(ta(COOKIES_CLOSE_BUTTON_EP)).click if key == :ep
-      return find(:xpath, COOKIES_CLOSE_BUTTON_IL).click if key == :il
-      find(:xpath, ta(COOKIES_CLOSE_BUTTON_TA, COOKIES_CLOSE_BUTTON_IL)).click
-    end
+    find_element(key, il_type: :xpath, tl: COOKIES_CLOSE_BUTTON_TA, il: COOKIES_CLOSE_BUTTON_IL, check_path: $check_path).click
   end
 
 end

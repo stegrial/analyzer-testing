@@ -55,103 +55,103 @@ class CloudBeesResources < PageExtension
 
   def click_add_new_resource(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: ADD_NEW_RESOURCE_TA, il: ADD_NEW_RESOURCE_IL).click
+      find_element(key, il_type: :xpath, tl: ADD_NEW_RESOURCE_TA, il: ADD_NEW_RESOURCE_IL, check_path: $check_path).click
     end
   end
 
   def click_create_resource_btn(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: CREATE_RESOURCE_BTN_TA, il: CREATE_RESOURCE_BTN_IL).click
+      find_element(key, il_type: :xpath, tl: CREATE_RESOURCE_BTN_TA, il: CREATE_RESOURCE_BTN_IL, check_path: $check_path).click
     end
   end
 
   def set_resource_name(key = nil, name)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: RESOURCE_NAME_TA, il: RESOURCE_NAME_IL).set(name)
-      end
+      find_element(key, il_type: :xpath, tl: RESOURCE_NAME_TA, il: RESOURCE_NAME_IL, check_path: $check_path).set(name)
+    end
   end
 
   def set_description_of_resource(key = nil, value)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: RESOURCE_DESCRIPTION_TA, il: RESOURCE_DESCRIPTION_IL).set(value)
+      find_element(key, il_type: :xpath, tl: RESOURCE_DESCRIPTION_TA, il: RESOURCE_DESCRIPTION_IL, check_path: $check_path).set(value)
     end
   end
 
   def set_host_of_resource(key = nil, value)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: RESOURCE_HOST_NAME_TA, il: RESOURCE_HOST_NAME_IL).set(value)
+      find_element(key, il_type: :xpath, tl: RESOURCE_HOST_NAME_TA, il: RESOURCE_HOST_NAME_IL, check_path: $check_path).set(value)
     end
   end
 
   def set_port_of_resource(key = nil, value)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: RESOURCE_PORT_TA, il: RESOURCE_PORT_IL).set(value)
+      find_element(key, il_type: :xpath, tl: RESOURCE_PORT_TA, il: RESOURCE_PORT_IL, check_path: $check_path).set(value)
     end
   end
 
   def set_pools_of_resource(key = nil, value)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: RESOURCE_POOLS_TA, il: RESOURCE_POOLS_IL).set(value)
+      find_element(key, il_type: :xpath, tl: RESOURCE_POOLS_TA, il: RESOURCE_POOLS_IL, check_path: $check_path).set(value)
     end
   end
 
   def set_shell_of_resource(key = nil, value)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: RESOURCE_SHELL_TA, il: RESOURCE_SHELL_IL).set(value)
+      find_element(key, il_type: :xpath, tl: RESOURCE_SHELL_TA, il: RESOURCE_SHELL_IL, check_path: $check_path).set(value)
     end
   end
 
   def set_step_limit_of_resource(key = nil, value)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: RESOURCE_STEP_LIMIT_TA, il: RESOURCE_STEP_LIMIT_IL).set(value)
+      find_element(key, il_type: :xpath, tl: RESOURCE_STEP_LIMIT_TA, il: RESOURCE_STEP_LIMIT_IL, check_path: $check_path).set(value)
     end
   end
 
   def set_cache_directory_of_resource(key = nil, value)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: RESOURCE_CACHE_DIRECTORY_TA, il: RESOURCE_CACHE_DIRECTORY_IL).set(value)
+      find_element(key, il_type: :xpath, tl: RESOURCE_CACHE_DIRECTORY_TA, il: RESOURCE_CACHE_DIRECTORY_IL, check_path: $check_path).set(value)
     end
   end
 
   def set_tags_of_resource(key = nil, value)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: RESOURCE_TAGS_TA, il: RESOURCE_TAGS_IL).set(value)
+      find_element(key, il_type: :xpath, tl: RESOURCE_TAGS_TA, il: RESOURCE_TAGS_IL, check_path: $check_path).set(value)
     end
   end
 
   def click_ok_button(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: RESOURCE_OK_BTN_TA, il: RESOURCE_OK_BTN_IL).click
+      find_element(key, il_type: :css, tl: RESOURCE_OK_BTN_TA, il: RESOURCE_OK_BTN_IL, check_path: $check_path).click
     end
   end
 
   def click_quick_search(key = nil, value)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: QUICK_SEARCH_INPUT_TA, il: QUICK_SEARCH_INPUT_IL).set(value)
+      find_element(key, il_type: :xpath, tl: QUICK_SEARCH_INPUT_TA, il: QUICK_SEARCH_INPUT_IL, check_path: $check_path).set(value)
     end
   end
 
   def click_filter_button(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: FILTER_OK_BTN_TA, il: FILTER_OK_BTN_IL).click
+      find_element(key, il_type: :css, tl: FILTER_OK_BTN_TA, il: FILTER_OK_BTN_IL, check_path: $check_path).click
     end
   end
 
   def click_to_select_checkbox(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: SELECT_CHECKBOX_TA, il: SELECT_CHECKBOX_IL).click
+      find_element(key, il_type: :xpath, tl: SELECT_CHECKBOX_TA, il: SELECT_CHECKBOX_IL, check_path: $check_path).click
     end
   end
 
   def click_to_delete_new_resource(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: DELETE_NEW_RESOURCE_TA, il: DELETE_NEW_RESOURCE_IL).click
+      find_element(key, il_type: :xpath, tl: DELETE_NEW_RESOURCE_TA, il: DELETE_NEW_RESOURCE_IL, check_path: $check_path).click
     end
   end
 
   def click_ok_to_delete_new_resource(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: ACCEPT_DELETE_RESOURCE_TA, il: ACCEPT_DELETE_RESOURCE_IL).click
+      find_element(key, il_type: :xpath, tl: ACCEPT_DELETE_RESOURCE_TA, il: ACCEPT_DELETE_RESOURCE_IL, check_path: $check_path).click
     end
   end
 

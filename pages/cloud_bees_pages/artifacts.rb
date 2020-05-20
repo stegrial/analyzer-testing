@@ -35,61 +35,61 @@ class CloudBeesArtifact < PageExtension
 
   def create_new_artifact(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: CREATE_ARTIFACT_LINK_TA, il: CREATE_ARTIFACT_LINK_IL).click
+      find_element(key, il_type: :xpath, tl: CREATE_ARTIFACT_LINK_TA, il: CREATE_ARTIFACT_LINK_IL, check_path: $check_path).click
     end
   end
 
   def fill_group_id_name_field(key = nil, group_id)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: GROUP_ID_NAME_TA, il: GROUP_ID_NAME_IL).set(group_id)
+      find_element(key, il_type: :xpath, tl: GROUP_ID_NAME_TA, il: GROUP_ID_NAME_IL, check_path: $check_path).set(group_id)
     end
   end
 
   def fill_artifact_key_name_field(key = nil, art_key)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: ARTIFACT_KEY_NAME_TA, il: ARTIFACT_KEY_NAME_IL).set(art_key)
+      find_element(key, il_type: :xpath, tl: ARTIFACT_KEY_NAME_TA, il: ARTIFACT_KEY_NAME_IL, check_path: $check_path).set(art_key)
     end
   end
 
   def fill_description_field(key = nil, description)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: DESCRIPTION_TEXTAREA_TA, il: DESCRIPTION_TEXTAREA_IL).set(description)
+      find_element(key, il_type: :xpath, tl: DESCRIPTION_TEXTAREA_TA, il: DESCRIPTION_TEXTAREA_IL, check_path: $check_path).set(description)
     end
   end
 
   def fill_artifact_version_name_field(key = nil, version_name)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: ARTIFACT_VERSION_NAME_TA, il: ARTIFACT_VERSION_NAME_IL).set(version_name)
+      find_element(key, il_type: :xpath, tl: ARTIFACT_VERSION_NAME_TA, il: ARTIFACT_VERSION_NAME_IL, check_path: $check_path).set(version_name)
     end
   end
 
   def fill_tags_name_field(key = nil, tag_name)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: TAGS_NAME_TA, il: TAGS_NAME_IL).set(tag_name)
+      find_element(key, il_type: :xpath, tl: TAGS_NAME_TA, il: TAGS_NAME_IL, check_path: $check_path).set(tag_name)
     end
   end
 
   def click_publish_artifact_version(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: PUBLISH_ARTIFACT_VERSION_TA, il: PUBLISH_ARTIFACT_VERSION_IL).click
+      find_element(key, il_type: :xpath, tl: PUBLISH_ARTIFACT_VERSION_TA, il: PUBLISH_ARTIFACT_VERSION_IL, check_path: $check_path).click
     end
   end
 
   def fill_version_name_field(key = nil, ver_name)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: VERSION_NAME_TA, il: VERSION_NAME_IL).set(ver_name)
+      find_element(key, il_type: :xpath, tl: VERSION_NAME_TA, il: VERSION_NAME_IL, check_path: $check_path).set(ver_name)
     end
   end
 
   def fill_publish_tag_name_field(key = nil, tag_name)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: PUBLISH_TAGS_NAME_TA, il: PUBLISH_TAGS_NAME_IL).set(tag_name)
+      find_element(key, il_type: :xpath, tl: PUBLISH_TAGS_NAME_TA, il: PUBLISH_TAGS_NAME_IL, check_path: $check_path).set(tag_name)
     end
   end
 
   def click_confirm_artifact(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: CONFIRM_ARTIFACT_TA, il: CONFIRM_ARTIFACT_IL).click
+      find_element(key, il_type: :xpath, tl: CONFIRM_ARTIFACT_TA, il: CONFIRM_ARTIFACT_IL, check_path: $check_path).click
     end
   end
 

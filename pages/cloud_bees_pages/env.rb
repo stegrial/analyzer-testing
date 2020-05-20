@@ -35,43 +35,43 @@ class CloudBeesEnv < PageExtension
 
 
   def create_new_env(key = nil)
-    find_element(key, il_type: :css, tl: CREATE_ENV_PLUS_BTN_TA, il: CREATE_ENV_PLUS_BTN_IL).click
+    find_element(key, il_type: :css, tl: CREATE_ENV_PLUS_BTN_TA, il: CREATE_ENV_PLUS_BTN_IL, check_path: $check_path).click
   end
 
   def find_env_name_field(key = nil, envName)
-    find_element(key, il_type: :xpath, tl: FIND_ENV_FIELD_TA, il: FIND_ENV_FIELD_IL).set(envName)
+    find_element(key, il_type: :xpath, tl: FIND_ENV_FIELD_TA, il: FIND_ENV_FIELD_IL, check_path: $check_path).set(envName)
   end
 
   def click_new_env_btn(key = nil)
-    find_element(key, il_type: :xpath, tl: CREATE_NEW_ENV_MODAL_BTN_TA, il: CREATE_NEW_ENV_MODAL_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: CREATE_NEW_ENV_MODAL_BTN_TA, il: CREATE_NEW_ENV_MODAL_BTN_IL, check_path: $check_path).click
   end
 
   def fill_env_name_field(key = nil, envName)
-    find_element(key, il_type: :xpath, tl: ENV_NAME_TA, il: ENV_NAME_IL).set(envName)
+    find_element(key, il_type: :xpath, tl: ENV_NAME_TA, il: ENV_NAME_IL, check_path: $check_path).set(envName)
   end
 
   def click_on_select_project(key = nil)
-    find_element(key, il_type: :xpath, tl: SELECT_PROJECT_TA, il: SELECT_PROJECT_IL).click
+    find_element(key, il_type: :xpath, tl: SELECT_PROJECT_TA, il: SELECT_PROJECT_IL, check_path: $check_path).click
   end
 
   def click_to_select_default_project(key = nil)
-    find_element(key, il_type: :xpath, tl: SELECT_DEFAULT_PROJECT_TA, il: SELECT_DEFAULT_PROJECT_IL).click
+    find_element(key, il_type: :xpath, tl: SELECT_DEFAULT_PROJECT_TA, il: SELECT_DEFAULT_PROJECT_IL, check_path: $check_path).click
   end
 
   def click_to_confirm_create_new_env(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_ENV_TA, il: CONFIRM_NEW_ENV_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_NEW_ENV_TA, il: CONFIRM_NEW_ENV_IL, check_path: $check_path).click
   end
 
   def choose_env(key = nil)
-    find_element(key, il_type: :css, tl: CHOOSE_ENV_TA, il: CHOOSE_ENV_IL).click
+    find_element(key, il_type: :css, tl: CHOOSE_ENV_TA, il: CHOOSE_ENV_IL, check_path: $check_path).click
   end
 
   def delete_env(key = nil)
-    find_element(key, il_type: :xpath, tl: DELETE_ENV_TA, il: DELETE_ENV_IL).click
+    find_element(key, il_type: :xpath, tl: DELETE_ENV_TA, il: DELETE_ENV_IL, check_path: $check_path).click
   end
 
   def confirm_delete_env(key = nil)
-    find_element(key, il_type: :xpath, tl: CONFIRM_DELETE_ENV_TA, il: CONFIRM_DELETE_ENV_IL).click
+    find_element(key, il_type: :xpath, tl: CONFIRM_DELETE_ENV_TA, il: CONFIRM_DELETE_ENV_IL, check_path: $check_path).click
   end
 
 end
