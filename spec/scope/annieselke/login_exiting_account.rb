@@ -5,7 +5,6 @@ required_relative_all "/pages/annieselke/*.rb"
 
 include ElementSearchValidation
 
-home_page = HomePage.new
 login_page = LoginPage.new
 banner_page = BannerPage.new
 header_page = HeaderPage.new
@@ -13,68 +12,44 @@ header_page = HeaderPage.new
 describe 'Preconditions' do
 
   before(:all) do
+    $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+  end
+
+  after(:each) do
+    $check_path = true if $run_parameters.include?('search')
   end
 
   feature 'Login via existing account' do
 
     # Initial locators with Recording
+    $run_count.times do
+      scenario 'Test - Recording', "#{$tag}": true do
+        step "User goes to the page", settings('annieselke')['page'] do |url|
+          page.visit url
+          banner_page.close_banner
+        end
 
-    scenario 'Recording IL', record: true do
-      step "User goes to the page", settings('annieselke')['page'] do |url|
-        home_page.visit url
-        banner_page.close_banner
+        step "User clicks login link on home page" do
+          header_page.click_login_link
+        end
+
+        step "User fills email", settings('annieselke')['email'] do |email|
+          banner_page.close_banner
+          login_page.fill_email_input(email)
+        end
+
+        step "User fills pass", settings('annieselke')['pass'] do |pass|
+          login_page.fill_pass_input(pass)
+        end
+
+        step "User clicks login button" do
+          login_page.click_login_btn
+        end
+
+        sleep 3
       end
-
-      step "User clicks login link on home page" do
-        header_page.click_login_link
-      end
-
-      step "User fills email", settings('annieselke')['email'] do |email|
-        banner_page.close_banner
-        login_page.fill_email_input(email)
-      end
-
-      step "User fills pass", settings('annieselke')['pass'] do |pass|
-        login_page.fill_pass_input(pass)
-      end
-
-      step "User clicks login button" do
-        login_page.click_login_btn
-      end
-
-      sleep 3
-    end
-
-    scenario 'Searching IL', search: true do
-      step "User goes to the page", settings('annieselke')['page'] do |url|
-        home_page.visit url
-        banner_page.close_banner
-      end
-
-      step "User clicks login link on home page" do
-        check_element_path :xpath, HeaderPage::LOGIN_LINK_TA, HeaderPage::LOGIN_LINK_IL
-        header_page.click_login_link
-      end
-
-      step "User fills email", settings('annieselke')['email'] do |email|
-        banner_page.close_banner
-        check_element_path :xpath, LoginPage::EMAIL_FIELD_TA, LoginPage::EMAIL_FIELD_IL
-        login_page.fill_email_input(email)
-      end
-
-      step "User fills pass", settings('annieselke')['pass'] do |pass|
-        check_element_path :xpath, LoginPage::PASS_FIELD_TA, LoginPage::PASS_FIELD_IL
-        login_page.fill_pass_input(pass)
-      end
-
-      step "User clicks login button" do
-        check_element_path :xpath, LoginPage::LOGIN_BTN_TA, LoginPage::LOGIN_BTN_IL
-        login_page.click_login_btn
-      end
-
-      sleep 3
     end
   end
 end

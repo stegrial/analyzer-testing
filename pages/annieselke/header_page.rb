@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class HeaderPage
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class HeaderPage < PageExtension
 
   SEARCH_FIELD_IL = "//input[@id='search']"
   SEARCH_FIELD_TA = "annieselke:header_page:search_input"
@@ -69,88 +64,88 @@ class HeaderPage
 
 
   def fill_search_input(key = nil, value)
-    find_element_path(key, :xpath, SEARCH_FIELD_TA, SEARCH_FIELD_IL).set(value)
+    find_element(key, il_type: :xpath, tl: SEARCH_FIELD_TA, il: SEARCH_FIELD_IL, check_path: $check_path).set(value)
   end
 
   def click_login_link(key = nil)
-    find_element_path(key, :xpath, LOGIN_LINK_TA, LOGIN_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: LOGIN_LINK_TA, il: LOGIN_LINK_IL, check_path: $check_path).click
   end
 
   def move_to_cart_link(key = nil)
-    find_element_path(key, :xpath, CART_LINK_TA, CART_LINK_IL).hover
+    find_element(key, il_type: :xpath, tl: CART_LINK_TA, il: CART_LINK_IL, check_path: $check_path).hover
   end
 
   def click_cart_link(key = nil)
-    find_element_path(key, :xpath, CART_LINK_TA, CART_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: CART_LINK_TA, il: CART_LINK_IL, check_path: $check_path).click
   end
 
   def click_view_cart_btn(key = nil)
-    find_element_path(key, :xpath, VIEW_CART_TA, VIEW_CART_IL).click
+    find_element(key, il_type: :xpath, tl: VIEW_CART_TA, il: VIEW_CART_IL, check_path: $check_path).click
     page.go_back
   end
 
   def click_rugs_link(key = nil)
-    find_element_path(key, :xpath, RUGS_LINK_TA, RUGS_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: RUGS_LINK_TA, il: RUGS_LINK_IL, check_path: $check_path).click
   end
 
   def click_bedding_link(key = nil)
-    find_element_path(key, :xpath, BEDDING_LINK_TA, BEDDING_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: BEDDING_LINK_TA, il: BEDDING_LINK_IL, check_path: $check_path).click
   end
 
   def click_furniture_link(key = nil)
-    find_element_path(key, :xpath, FURNITURE_LINK_TA, FURNITURE_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: FURNITURE_LINK_TA, il: FURNITURE_LINK_IL, check_path: $check_path).click
   end
 
   def click_decor_pillows_link(key = nil)
-    find_element_path(key, :xpath, DECOR_PILLOWS_LINK_TA, DECOR_PILLOWS_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: DECOR_PILLOWS_LINK_TA, il: DECOR_PILLOWS_LINK_IL, check_path: $check_path).click
   end
 
   def click_bath_link(key = nil)
-    find_element_path(key, :xpath, BATH_LINK_TA, BATH_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: BATH_LINK_TA, il: BATH_LINK_IL, check_path: $check_path).click
   end
 
   def click_window_link(key = nil)
-    find_element_path(key, :xpath, WINDOW_LINK_TA, WINDOW_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: WINDOW_LINK_TA, il: WINDOW_LINK_IL, check_path: $check_path).click
   end
 
   def click_apparel_link(key = nil)
-    find_element_path(key, :xpath, APPAREL_LINK_TA, APPAREL_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: APPAREL_LINK_TA, il: APPAREL_LINK_IL, check_path: $check_path).click
   end
 
   def click_pet_link(key = nil)
-    find_element_path(key, :xpath, PET_LINK_TA, PET_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: PET_LINK_TA, il: PET_LINK_IL, check_path: $check_path).click
   end
 
   def click_collections_link(key = nil)
-    find_element_path(key, :xpath, COLLECTIONS_LINK_TA, COLLECTIONS_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: COLLECTIONS_LINK_TA, il: COLLECTIONS_LINK_IL, check_path: $check_path).click
   end
 
   def click_gifts_link(key = nil)
-    find_element_path(key, :xpath, GIFTS_LINK_TA, GIFTS_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: GIFTS_LINK_TA, il: GIFTS_LINK_IL, check_path: $check_path).click
   end
 
   def click_sale_link(key = nil)
-    find_element_path(key, :xpath, SALE_LINK_TA, SALE_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: SALE_LINK_TA, il: SALE_LINK_IL, check_path: $check_path).click
   end
 
   def click_pine_cone_hill_link(key = nil)
-    find_element_path(key, :xpath, PINE_CONE_HILL_LINK_TA, PINE_CONE_HILL_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: PINE_CONE_HILL_LINK_TA, il: PINE_CONE_HILL_LINK_IL, check_path: $check_path).click
   end
 
   def click_dash_an_albert_link(key = nil)
-    find_element_path(key, :xpath, DASH_AN_ALBERT_LINK_TA, DASH_AN_ALBERT_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: DASH_AN_ALBERT_LINK_TA, il: DASH_AN_ALBERT_LINK_IL, check_path: $check_path).click
   end
 
   def click_the_outlet_link(key = nil)
-    find_element_path(key, :xpath, THE_OUTLET_LINK_TA, THE_OUTLET_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: THE_OUTLET_LINK_TA, il: THE_OUTLET_LINK_IL, check_path: $check_path).click
   end
 
   def click_ideals_inspiration_link(key = nil)
-    find_element_path(key, :xpath, IDEAS_INSPIRATION_LINK_TA, IDEAS_INSPIRATION_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: IDEAS_INSPIRATION_LINK_TA, il: IDEAS_INSPIRATION_LINK_IL, check_path: $check_path).click
   end
 
   def click_annie_selke_link(key = nil)
-    find_element_path(key, :xpath, ANNIE_SELKE_LINK_TA, ANNIE_SELKE_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: ANNIE_SELKE_LINK_TA, il: ANNIE_SELKE_LINK_IL, check_path: $check_path).click
   end
 
 end

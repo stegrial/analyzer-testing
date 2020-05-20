@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class LoginPage
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class LoginPage < PageExtension
 
   EMAIL_FIELD_IL = "//input[@class='text']"
   EMAIL_FIELD_TA = "annieselke:login_page:email_input"
@@ -43,63 +38,63 @@ class LoginPage
   REGISTER_BTN_IL = "//button[text()='Register']"
   REGISTER_BTN_TA = "annieselke:login_page:register_btn"
 
+
   def search_item(key, name)
     locator_by key,
                "//select[@name='titleCode']/option[@value='#{name}']",
                "annieselke:login_page:#{ta_name(name)}"
   end
 
-
   def fill_email_input(key = nil, value)
-    find_element_path(key, :xpath, EMAIL_FIELD_TA, EMAIL_FIELD_IL).set(value)
+    find_element(key, il_type: :xpath, tl: EMAIL_FIELD_TA, il: EMAIL_FIELD_IL, check_path: $check_path).set(value)
   end
 
   def fill_pass_input(key = nil, value)
-    find_element_path(key, :xpath, PASS_FIELD_TA, PASS_FIELD_IL).set(value)
+    find_element(key, il_type: :xpath, tl: PASS_FIELD_TA, il: PASS_FIELD_IL, check_path: $check_path).set(value)
   end
 
   def click_login_btn(key = nil)
-    find_element_path(key, :xpath, LOGIN_BTN_TA, LOGIN_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: LOGIN_BTN_TA, il: LOGIN_BTN_IL, check_path: $check_path).click
   end
 
   def click_forgot_pass_link(key=nil)
-    find_element_path(key, :xpath, FORGOTTEN_PASS_LINK_TA, FORGOTTEN_PASS_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: FORGOTTEN_PASS_LINK_TA, il: FORGOTTEN_PASS_LINK_IL, check_path: $check_path).click
   end
 
   def click_create_new_account_arrow (key=nil)
-    find_element_path(key, :xpath, CREATE_NEW_ACCOUNT_ARROW_TA, CREATE_NEW_ACCOUNT_ARROW_IL).click
+    find_element(key, il_type: :xpath, tl: CREATE_NEW_ACCOUNT_ARROW_TA, il: CREATE_NEW_ACCOUNT_ARROW_IL, check_path: $check_path).click
   end
 
   def click_dropdown_arrow (key=nil)
-    find_element_path(key, :xpath, DROPDOWN_ARROW_TA, DROPDOWN_ARROW_IL).click
+    find_element(key, il_type: :xpath, tl: DROPDOWN_ARROW_TA, il: DROPDOWN_ARROW_IL, check_path: $check_path).click
   end
 
   def select_dropdown(key=nil, name)
-    find_element_path(key, :xpath, search_item(:ta, name), search_item(:il, name)).click
+    find_element(key, il_type: :xpath, tl: search_item(:ta, name), il: search_item(:il, name), check_path: $check_path).click
   end
 
   def fill_first_name(key = nil, value)
-    find_element_path(key, :xpath, FIRST_NAME_TA, FIRST_NAME_IL).set(value)
+    find_element(key, il_type: :xpath, tl: FIRST_NAME_TA, il: FIRST_NAME_IL, check_path: $check_path).set(value)
   end
 
   def fill_last_name(key = nil, value)
-    find_element_path(key, :xpath, LAST_NAME_TA, LAST_NAME_IL).set(value)
+    find_element(key, il_type: :xpath, tl: LAST_NAME_TA, il: LAST_NAME_IL, check_path: $check_path).set(value)
   end
 
   def fill_email_name(key = nil, value)
-    find_element_path(key, :xpath, EMAIL_TA, EMAIL_IL).set(value)
+    find_element(key, il_type: :xpath, tl: EMAIL_TA, il: EMAIL_IL, check_path: $check_path).set(value)
   end
 
   def fill_pass(key = nil, value)
-    find_element_path(key, :xpath, PASS_TA, PASS_IL).set(value)
+    find_element(key, il_type: :xpath, tl: PASS_TA, il: PASS_IL, check_path: $check_path).set(value)
   end
 
   def confirm_pass(key = nil, value)
-    find_element_path(key, :xpath, CONFIRM_PASS_TA, CONFIRM_PASS_IL).set(value)
+    find_element(key, il_type: :xpath, tl: CONFIRM_PASS_TA, il: CONFIRM_PASS_IL, check_path: $check_path).set(value)
   end
 
   def click_register_button(key=nil)
-    find_element_path(key, :xpath, REGISTER_BTN_TA, REGISTER_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: REGISTER_BTN_TA, il: REGISTER_BTN_IL, check_path: $check_path).click
   end
 
 end

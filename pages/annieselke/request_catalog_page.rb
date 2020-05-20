@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class RequestCatalogPage
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class RequestCatalogPage < PageExtension
 
   FIRST_NAME_IL = "//input[@id='first_name']"
   FIRST_NAME_TA = "annieselke:account_request_page:request_catalog_page:first_name"
@@ -36,23 +31,23 @@ class RequestCatalogPage
 
 
   def fill_first_name(key = nil, value)
-    find_element_path(key, :xpath, FIRST_NAME_TA, FIRST_NAME_IL).set(value)
+    find_element(key, il_type: :xpath, tl: FIRST_NAME_TA, il: FIRST_NAME_IL, check_path: $check_path).set(value)
   end
 
   def fill_last_name(key = nil, value)
-    find_element_path(key, :xpath, LAST_NAME_TA, LAST_NAME_IL).set(value)
+    find_element(key, il_type: :xpath, tl: LAST_NAME_TA, il: LAST_NAME_IL, check_path: $check_path).set(value)
   end
 
   def fill_email(key = nil, value)
-    find_element_path(key, :xpath, EMAIL_TA, EMAIL_IL).set(value)
+    find_element(key, il_type: :xpath, tl: EMAIL_TA, il: EMAIL_IL, check_path: $check_path).set(value)
   end
 
   def fill_address(key = nil, value)
-    find_element_path(key, :xpath, ADDRESS_TA, ADDRESS_IL).set(value)
+    find_element(key, il_type: :xpath, tl: ADDRESS_TA, il: ADDRESS_IL, check_path: $check_path).set(value)
   end
 
   def fill_city(key = nil, value)
-    find_element_path(key, :xpath, CITY_TA, CITY_IL).set(value)
+    find_element(key, il_type: :xpath, tl: CITY_TA, il: CITY_IL, check_path: $check_path).set(value)
   end
 
   def search_state_item(key, name)
@@ -62,23 +57,24 @@ class RequestCatalogPage
   end
 
   def click_dropdown_arrow_state(key=nil)
-    find_element_path(key, :xpath, STATE_TA, STATE_IL).click
+    find_element(key, il_type: :xpath, tl: STATE_TA, il: STATE_IL, check_path: $check_path).click
   end
 
   def select_dropdown_state(key=nil, name)
-    find_element_path(key, :xpath, search_state_item(:ta, name), search_state_item(:il, name)).click
+    find_element(key, il_type: :xpath, tl: search_state_item(:ta, name), il: search_state_item(:il, name), check_path: $check_path).click
   end
 
   def fill_zip_code(key = nil, value)
-    find_element_path(key, :xpath, ZIP_CODE_TA, ZIP_CODE_IL).set(value)
+    find_element(key, il_type: :xpath, tl: ZIP_CODE_TA, il: ZIP_CODE_IL, check_path: $check_path).set(value)
   end
 
   def click_request_catalog(key=nil)
-    find_element_path(key, :xpath, REQUEST_CATALOG_BTN_TA, REQUEST_CATALOG_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: REQUEST_CATALOG_BTN_TA, il: REQUEST_CATALOG_BTN_IL, check_path: $check_path).click
   end
 
   def click_add_email(key=nil)
-    find_element_path(key, :xpath, ADD_EMAIL_LIST_TA, ADD_EMAIL_LIST_IL).click
+    find_element(key, il_type: :xpath, tl: ADD_EMAIL_LIST_TA, il: ADD_EMAIL_LIST_IL, check_path: $check_path).click
   end
+
 end
 

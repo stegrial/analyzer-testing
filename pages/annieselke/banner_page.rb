@@ -1,15 +1,9 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class BannerPage
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class BannerPage  < PageExtension
 
   CLOSE_BANNER_BTN = "//button[@title='Close Dialog']"
   CLOSE_CUPON_BANNER_BTN = "//button[@class='offer-control close']"
-
 
   def close_banner
     if page.has_xpath?("//iframe[contains(@title, 'Sign up and receive')]")
