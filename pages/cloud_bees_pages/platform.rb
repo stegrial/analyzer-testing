@@ -39,51 +39,51 @@ class CloudBeesPlatformHomePage < PageExtension
   SORT_LINK_TA = "cloud_bees:platform:administration:sort_link"
 
   def click_projects_link(key = nil)
-    find_element(key, il_type: :xpath, tl: PROJECTS_LINK_TA, il: PROJECTS_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: PROJECTS_LINK_TA, il: PROJECTS_LINK_IL, check_path: $check_path).click
   end
 
   def click_jobs_link(key = nil)
-    find_element(key, il_type: :xpath, tl: JOBS_LINK_TA, il: JOBS_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: JOBS_LINK_TA, il: JOBS_LINK_IL, check_path: $check_path).click
   end
 
   def click_workflows_link(key = nil)
-    find_element(key, il_type: :xpath, tl: WORKFLOWS_LINK_TA, il: WORKFLOWS_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: WORKFLOWS_LINK_TA, il: WORKFLOWS_LINK_IL, check_path: $check_path).click
   end
 
   def click_cloud_link(key = nil)
-    find_element(key, il_type: :xpath, tl: CLOUD_LINK_TA, il: CLOUD_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: CLOUD_LINK_TA, il: CLOUD_LINK_IL, check_path: $check_path).click
   end
 
   def click_artifacts_link(key = nil)
-    find_element(key, il_type: :xpath, tl: ARTIFACTS_LINK_TA, il: ARTIFACTS_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: ARTIFACTS_LINK_TA, il: ARTIFACTS_LINK_IL, check_path: $check_path).click
   end
 
   def click_search_link(key = nil)
-    find_element(key, il_type: :xpath, tl: SEARCH_LINK_TA, il: SEARCH_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: SEARCH_LINK_TA, il: SEARCH_LINK_IL, check_path: $check_path).click
   end
 
   def click_administration_link(key = nil)
-    find_element(key, il_type: :xpath, tl: ADMINISTRATION_LINK_TA, il: ADMINISTRATION_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: ADMINISTRATION_LINK_TA, il: ADMINISTRATION_LINK_IL, check_path: $check_path).click
   end
 
   def click_to_open_second_row_run_report(key = nil)
-    find_element(key, il_type: :xpath, tl: JOB_RUN_REPORTS_SECOND_LINE_TA, il: JOB_RUN_REPORTS_SECOND_LINE_IL).click
+    find_element(key, il_type: :xpath, tl: JOB_RUN_REPORTS_SECOND_LINE_TA, il: JOB_RUN_REPORTS_SECOND_LINE_IL, check_path: $check_path).click
   end
 
   def click_to_switch_parameters_in_table(key = nil)
-    find_element(key, il_type: :xpath, tl: PARAMETERS_TA, il: PARAMETERS_IL).click
+    find_element(key, il_type: :xpath, tl: PARAMETERS_TA, il: PARAMETERS_IL, check_path: $check_path).click
   end
 
   def click_to_switch_diagnostics_in_table(key = nil)
-    find_element(key, il_type: :xpath, tl: DIAGNOSTICS_TA, il: DIAGNOSTICS_IL).click
+    find_element(key, il_type: :xpath, tl: DIAGNOSTICS_TA, il: DIAGNOSTICS_IL, check_path: $check_path).click
   end
 
   def click_to_open_second_subject_row(key = nil)
-    find_element(key, il_type: :css, tl: SUBJECT_SECOND_ROW_TA, il: SUBJECT_SECOND_ROW_IL).click
+    find_element(key, il_type: :css, tl: SUBJECT_SECOND_ROW_TA, il: SUBJECT_SECOND_ROW_IL, check_path: $check_path).click
   end
 
   def click_sort_link(key = nil)
-    find_element(key, il_type: :xpath, tl: SORT_LINK_TA, il: SORT_LINK_IL).click
+    find_element(key, il_type: :xpath, tl: SORT_LINK_TA, il: SORT_LINK_IL, check_path: $check_path).click
   end
 
 end

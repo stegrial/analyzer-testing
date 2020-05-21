@@ -17,25 +17,25 @@ class CloudBeesEditUser < PageExtension
 
   def fill_admin_password_field(key = nil, name)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: ADMIN_PASS_FIELD_TA, il: ADMIN_PASS_FIELD_IL).set(name)
+      find_element(key, il_type: :css, tl: ADMIN_PASS_FIELD_TA, il: ADMIN_PASS_FIELD_IL, check_path: $check_path).set(name)
     end
   end
 
   def fill_new_user_password(key = nil, name)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: USER_PASS_FIELD_TA, il: USER_PASS_FIELD_IL).set(name)
+      find_element(key, il_type: :css, tl: USER_PASS_FIELD_TA, il: USER_PASS_FIELD_IL, check_path: $check_path).set(name)
     end
   end
 
   def fill_new_user_repassword(key = nil, name)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: USER_REPASS_FIELD_TA, il: USER_REPASS_FIELD_IL).set(name)
+      find_element(key, il_type: :css, tl: USER_REPASS_FIELD_TA, il: USER_REPASS_FIELD_IL, check_path: $check_path).set(name)
     end
   end
 
   def update_user_data(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: UPDATE_USER_DATA_BTN_TA, il: UPDATE_USER_DATA_BTN_IL).click
+      find_element(key, il_type: :css, tl: UPDATE_USER_DATA_BTN_TA, il: UPDATE_USER_DATA_BTN_IL, check_path: $check_path).click
     end
   end
 

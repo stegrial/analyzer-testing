@@ -22,37 +22,37 @@ class CloudBeesUsers < PageExtension
 
   def press_create_user_btn(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: CREATE_USER_BTN_TA, il: CREATE_USER_BTN_IL).click
+      find_element(key, il_type: :xpath, tl: CREATE_USER_BTN_TA, il: CREATE_USER_BTN_IL, check_path: $check_path).click
     end
   end
 
   def fill_user_filter_field(key = nil, name)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: USER_FILTER_FIELD_TA, il: USER_FILTER_FIELD_IL).set(name)
+      find_element(key, il_type: :css, tl: USER_FILTER_FIELD_TA, il: USER_FILTER_FIELD_IL, check_path: $check_path).set(name)
     end
   end
 
   def apply_user_filter(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: APPLY_USER_FILTER_TA, il: APPLY_USER_FILTER_IL).click
+      find_element(key, il_type: :css, tl: APPLY_USER_FILTER_TA, il: APPLY_USER_FILTER_IL, check_path: $check_path).click
     end
   end
 
   def press_edit_user_btn(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: EDIT_USER_BTN_TA, il: EDIT_USER_BTN_IL).click
+      find_element(key, il_type: :css, tl: EDIT_USER_BTN_TA, il: EDIT_USER_BTN_IL, check_path: $check_path).click
     end
   end
 
   def press_delete_user_btn(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :css, tl: DELETE_USER_BTN_TA, il: DELETE_USER_BTN_IL).click
+      find_element(key, il_type: :css, tl: DELETE_USER_BTN_TA, il: DELETE_USER_BTN_IL, check_path: $check_path).click
     end
   end
 
   def confirm_user_deletion(key = nil)
     within_frame(0) do
-      find_element(key, il_type: :xpath, tl: CONFIRM_USER_DELETION_BTN_TA, il: CONFIRM_USER_DELETION_BTN_IL).click
+      find_element(key, il_type: :xpath, tl: CONFIRM_USER_DELETION_BTN_TA, il: CONFIRM_USER_DELETION_BTN_IL, check_path: $check_path).click
     end
   end
 

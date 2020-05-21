@@ -59,75 +59,75 @@ class CloudBeesAppsEditor < PageExtension
 
 
   def click_add_new_component(key = nil)
-    find_element(key, il_type: :css, tl: ADD_NEW_COMPONENT_TA, il: ADD_NEW_COMPONENT_IL).click
+    find_element(key, il_type: :css, tl: ADD_NEW_COMPONENT_TA, il: ADD_NEW_COMPONENT_IL, check_path: $check_path).click
   end
 
   def click_component_btn(key = nil)
-    find_element(key, il_type: :css, tl: ADD_COMPONENT_BTN_TA, il: ADD_COMPONENT_BTN_IL).click
+    find_element(key, il_type: :css, tl: ADD_COMPONENT_BTN_TA, il: ADD_COMPONENT_BTN_IL, check_path: $check_path).click
   end
 
   def click_for_create_new_app_component(key = nil)
-    find_element(key, il_type: :css, tl: CREATE_NEW_APP_COMPONENT_TA, il: CREATE_NEW_APP_COMPONENT_IL).click
+    find_element(key, il_type: :css, tl: CREATE_NEW_APP_COMPONENT_TA, il: CREATE_NEW_APP_COMPONENT_IL, check_path: $check_path).click
   end
 
   def set_new_name(key = nil, value)
-    find_element(key, il_type: :css, tl: NEW_COMPONENT_NAME_TA, il: NEW_COMPONENT_NAME_IL).set(value + SecureRandom.hex(5))
+    find_element(key, il_type: :css, tl: NEW_COMPONENT_NAME_TA, il: NEW_COMPONENT_NAME_IL, check_path: $check_path).set(value + SecureRandom.hex(5))
   end
 
   def set_description(key = nil, value)
-    find_element(key, il_type: :css, tl: COMPONENT_DESCRIPTION_TA, il: COMPONENT_DESCRIPTION_IL).set(value + SecureRandom.hex(10))
+    find_element(key, il_type: :css, tl: COMPONENT_DESCRIPTION_TA, il: COMPONENT_DESCRIPTION_IL, check_path: $check_path).set(value + SecureRandom.hex(10))
   end
 
   def click_component_dropdown(key = nil)
-    find_element(key, il_type: :css, tl: COMPONENT_DROPDOWN_TA, il: COMPONENT_DROPDOWN_IL).click
+    find_element(key, il_type: :css, tl: COMPONENT_DROPDOWN_TA, il: COMPONENT_DROPDOWN_IL, check_path: $check_path).click
   end
 
   def click_artifactory(key = nil)
-    find_element(key, il_type: :xpath, tl: EC_ARTIFACTORY_TA, il: EC_ARTIFACTORY_IL).click
+    find_element(key, il_type: :xpath, tl: EC_ARTIFACTORY_TA, il: EC_ARTIFACTORY_IL, check_path: $check_path).click
   end
 
   def set_configuration(key = nil, value)
-    find_element(key, il_type: :xpath, tl: CONFIGURATION_TA, il: CONFIGURATION_IL).set(value)
+    find_element(key, il_type: :xpath, tl: CONFIGURATION_TA, il: CONFIGURATION_IL, check_path: $check_path).set(value)
   end
 
   def set_repository_key(key = nil, value)
-    find_element(key, il_type: :xpath, tl: REPOSITORY_KEY_TA, il: REPOSITORY_KEY_IL).set(value)
+    find_element(key, il_type: :xpath, tl: REPOSITORY_KEY_TA, il: REPOSITORY_KEY_IL, check_path: $check_path).set(value)
   end
 
   def set_organization_path(key = nil, value)
-    find_element(key, il_type: :xpath, tl: ORGANIZATION_PATH_TA, il: ORGANIZATION_PATH_IL).set(value)
+    find_element(key, il_type: :xpath, tl: ORGANIZATION_PATH_TA, il: ORGANIZATION_PATH_IL, check_path: $check_path).set(value)
   end
 
   def set_artifact(key = nil, value)
-    find_element(key, il_type: :xpath, tl: ARTIFACT_TA, il: ARTIFACT_IL).set(value)
+    find_element(key, il_type: :xpath, tl: ARTIFACT_TA, il: ARTIFACT_IL, check_path: $check_path).set(value)
   end
 
   def set_version(key = nil, value)
-    find_element(key, il_type: :xpath, tl: VERSION_TA, il: VERSION_IL).set(value)
+    find_element(key, il_type: :xpath, tl: VERSION_TA, il: VERSION_IL, check_path: $check_path).set(value)
   end
 
   def set_extention(key = nil, value)
-    find_element(key, il_type: :xpath, tl: EXTENSION_TA, il: EXTENSION_IL).set(value)
+    find_element(key, il_type: :xpath, tl: EXTENSION_TA, il: EXTENSION_IL, check_path: $check_path).set(value)
   end
 
   def click_warning_ok_btn(key = nil)
-    find_element(key, il_type: :xpath, tl: OK_WARNING_TA, il: OK_WARNING_IL).click
+    find_element(key, il_type: :xpath, tl: OK_WARNING_TA, il: OK_WARNING_IL, check_path: $check_path).click
   end
 
   def click_ok_in_modal_btn(key = nil)
-    find_element(key, il_type: :css, tl: OK_IN_MODAL_TA, il: OK_IN_MODAL_IL).click
+    find_element(key, il_type: :css, tl: OK_IN_MODAL_TA, il: OK_IN_MODAL_IL, check_path: $check_path).click
   end
 
   def click_next_btn(key = nil)
-    find_element(key, il_type: :xpath, tl: NEXT_BTN_TA, il: NEXT_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: NEXT_BTN_TA, il: NEXT_BTN_IL, check_path: $check_path).click
   end
 
   def click_multi_menu(key = nil)
-    find_element(key, il_type: :css, tl: MULTI_MENU_BTN_TA, il: MULTI_MENU_BTN_IL).click
+    find_element(key, il_type: :css, tl: MULTI_MENU_BTN_TA, il: MULTI_MENU_BTN_IL, check_path: $check_path).click
   end
 
   def click_delete(key = nil)
-    find_element(key, il_type: :css, tl: DELETE_TA, il: DELETE_IL).click
+    find_element(key, il_type: :css, tl: DELETE_TA, il: DELETE_IL, check_path: $check_path).click
   end
 
 end
