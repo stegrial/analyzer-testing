@@ -17,7 +17,7 @@ class TheTiebarAboutUs < PageExtension
   FIND_STORE_BTN_IL = "//a[text()='Find a store near you']"
   FIND_STORE_BTN_TA = "thetiebar:about_us:find_store_btn"
 
-  ABOUT_OUR_STORES_H1_IL = "//h1[contains(text(),'about our tie bar stores')]"
+  ABOUT_OUR_STORES_H1_IL = "//h1[text()='about our tie bar stores']"
   ABOUT_OUR_STORES_H1_TA = "thetiebar:returns_page:about_our_stores_h1"
 
   COOKIES_CLOSE_DIV_IL = "//div[contains(@class, 'cookie-x')]"

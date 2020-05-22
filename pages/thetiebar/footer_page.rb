@@ -2,34 +2,34 @@ require_relative '../page_extension'
 
 class TheTiebarFooterPage < PageExtension
 
-  CONTACT_IL = "//p[text()='Contact']"
+  CONTACT_IL = "//div[contains(., 'Need Help')]//a[contains(., 'Contact')]"
   CONTACT_TA = "thetiebar:footer_page:need_help_section:contact"
 
-  SHIPPING_IL = "//p[text()='Shipping']"
+  SHIPPING_IL = "//div[contains(., 'Need Help')]//a[contains(., 'Shipping')]"
   SHIPPING_TA = "thetiebar:footer_page:need_help_section:shipping"
 
-  RETURNS_IL = "//p[text()='Returns']"
+  RETURNS_IL = "//div[contains(., 'Need Help')]//a[contains(., 'Returns')]"
   RETURNS_TA = "thetiebar:footer_page:need_help_section:returns"
 
-  TRACK_MY_ORDER_IL = "//p[text()='Track My Order']"
+  TRACK_MY_ORDER_IL = "//div[contains(., 'Need Help')]//a[contains(., 'Track My Order')]"
   TRACK_MY_ORDER_TA = "thetiebar:footer_page:need_help_section:track_my_order"
 
-  ABOUT_US_IL = "//p[text()='About Us']"
+  ABOUT_US_IL = "//div[contains(., 'Need Help')]//a[contains(., 'About Us')]"
   ABOUT_US_TA = "thetiebar:footer_page:need_help_section:about_us"
 
-  ABOUT_OUR_STORES_IL = "//p[text()='About Our Stores']"
+  ABOUT_OUR_STORES_IL = "//div[contains(., 'Need Help')]//a[contains(., 'About Our Stores')]"
   ABOUT_OUR_STORES_TA = "thetiebar:footer_page:need_help_section:about_our_stores"
 
-  FAQ_IL = "//p[text()='FAQ']"
+  FAQ_IL = "//div[contains(., 'Need Help')]//a[contains(., 'FAQ')]"
   FAQ_TA = "thetiebar:footer_page:need_help_section:faq"
 
-  CAREERS_IL = "//p[text()='Careers']"
+  CAREERS_IL = "//div[contains(., 'Need Help')]//a[contains(., 'Careers')]"
   CAREERS_TA = "thetiebar:footer_page:need_help_section:Careers"
 
-  CANADA_IL = "//a[contains(@href, 'canada')]"
+  CANADA_IL = "//div[contains(., 'Need Help')]//a[contains(., 'Canada')]"
   CANADA_TA = "thetiebar:footer_page:need_help_section:Canada"
 
-  PROMOTIONS_IL = "//a[contains(@href, '/promocode')]"
+  PROMOTIONS_IL = "//div[contains(., 'Need Help')]//a[contains(., 'Promotions')]"
   PROMOTIONS_TA = "thetiebar:footer_page:need_help_section:promotions"
 
   HOLIDAY_TIES_IL = "//a[@href='https://www.thetiebar.com/pages/holiday-ties']"
@@ -38,25 +38,25 @@ class TheTiebarFooterPage < PageExtension
   CONTACT_US_H1_IL = "//h1[contains(text(),'contact us')]"
   CONTACT_US_H1_TA = "thetiebar:contact_page:contact_us"
 
-  SHIPPING_H1_IL = "//h1[contains(text(),'shipping')]"
+  SHIPPING_H1_IL = "//h1[text()='shipping']"
   SHIPPING_H1_TA = "thetiebar:shipping_page:shipping_h1"
 
-  RETURNS_H1_IL = "//h1[contains(text(),'returns')]"
+  RETURNS_H1_IL = "//h1[text()='returns']"
   RETURNS_H1_TA = "thetiebar:returns_page:returns_h1"
 
-  TRACK_MY_ORDER_H1_IL = "//h1[contains(text(),'track my order')]"
+  TRACK_MY_ORDER_H1_IL = "//h1[text()='track my order']"
   TRACK_MY_ORDER_H1_TA = "thetiebar:track_page:track_my_order_h1"
 
   ABOUT_US_H1_IL = "//h1[contains(text(),'about Tie Bar')]"
   ABOUT_US_H1_TA = "thetiebar:about_page:about_tiebar_h1"
 
-  FAQ_H1_IL = "(//h1[contains(text(),'FAQ')])[1]"
+  FAQ_H1_IL = "//h1[text()='FAQ']"
   FAQ_H1_TA = "thetiebar:faq_page:FAQ_h1"
 
-  CURRENT_OPEN_POSITIONS_H1_IL = "//h1[contains(text(),'current open positions')]"
+  CURRENT_OPEN_POSITIONS_H1_IL = "//h1[text()='current open positions']"
   CURRENT_OPEN_POSITIONS_H1_TA = "thetiebar:jobs_page:current_posittions_h1"
 
-  PROMOTIONS_H1_IL = "//h1[contains(text(),'Tie Bar promotions')]"
+  PROMOTIONS_H1_IL = "//h1[text()='Tie Bar promotions']"
   PROMOTIONS_H1_TA = "thetiebar:promocode_page:promotions_h1"
 
 
