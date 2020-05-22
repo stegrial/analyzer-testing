@@ -46,7 +46,7 @@ RSpec.configure do |config|
   # }}
 
   client = Selenium::WebDriver::Remote::Http::Default.new
-  client.timeout = 100
+  client.read_timeout = 100
 
   Capybara.register_driver :true_automation_driver do |app|
     TrueAutomation::Driver::Capybara.new(app, desired_capabilities: $caps_chrome, http_client: client)
@@ -71,7 +71,7 @@ RSpec.configure do |config|
   end
 
   config.after(:context) do
-    # delete_saved_elements unless config.filter.rules[:ep]
+    delete_saved_elements unless config.filter.rules[:ep]
     Capybara.current_session.driver.quit
   end
 

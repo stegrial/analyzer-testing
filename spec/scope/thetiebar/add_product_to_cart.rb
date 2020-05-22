@@ -9,7 +9,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -28,7 +28,8 @@ describe 'Preconditions' do
           product_page.click_second_shirt_on_product
         end
 
-        step "User clicks the trim  button" do
+        step "User clicks the trim button" do
+          sleep 5 # need sleep because page freezes when searching the element
           product_page.click_fit_trim_btn
         end
 

@@ -41,7 +41,6 @@ class PageExtension
   # tl - trueautomation locator
   # il - initial locator
   def find_element(key, il_type: nil, tl: nil, il: nil, visible: true, check_path:)
-
     check_element_path(il_type, tl, il) if check_path && key != :il
 
     wait_for_element = 18
@@ -76,6 +75,18 @@ class PageExtension
     puts initial_path
 
     expect(ta_path).to eq initial_path
+  end
+
+  RSpec::Matchers.define :be_visible do
+    match 'Assertion, element is existing and visible on the page' do |actual|
+      actual != nil && actual.visible? == true
+    end
+    failure_message do
+      "Element is not visible on the page"
+    end
+    failure_message_when_negated do
+      "Expected, element should NOT be visible on the page"
+    end
   end
 
 end

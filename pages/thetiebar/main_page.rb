@@ -30,8 +30,10 @@ class TheTiebarMainPage < PageExtension
   end
 
   def check_congrats_text(key = nil)
-    return assert_selector(:xpath, CONGRATS_TEXT_IL) if key == :il
-    assert_selector(:xpath, ta(CONGRATS_TEXT_TA, CONGRATS_TEXT_IL))
+    element = find_element(key, il_type: :xpath, tl: CONGRATS_TEXT_TA, il: CONGRATS_TEXT_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, CONGRATS_TEXT_IL) if key == :il
+    # assert_selector(:xpath, ta(CONGRATS_TEXT_TA, CONGRATS_TEXT_IL))
   end
 
   def click_terms_to_use(key = nil)

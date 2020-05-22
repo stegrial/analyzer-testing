@@ -13,8 +13,10 @@ class TheTiebarCanada < PageExtension
 
 
   def should_see_canada_h1(key = nil)
-    return assert_selector(:xpath, THE_TIABAR_CANADA_H1_IL) if key == :il
-    assert_selector(:xpath, ta(THE_TIABAR_CANADA_H1_TA, THE_TIABAR_CANADA_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: THE_TIABAR_CANADA_H1_TA, il: THE_TIABAR_CANADA_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, THE_TIABAR_CANADA_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(THE_TIABAR_CANADA_H1_TA, THE_TIABAR_CANADA_H1_IL))
   end
 
   def click_wedding_shop(key = nil)
