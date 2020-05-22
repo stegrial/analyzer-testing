@@ -9,7 +9,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -36,7 +36,7 @@ describe 'Preconditions' do
           about_us_page.click_previous_slider
         end
 
-        step "User click next history  button" do
+        step "User click next history button" do
           about_us_page.click_next_history_slider
         end
 

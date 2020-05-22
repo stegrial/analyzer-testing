@@ -105,43 +105,59 @@ class TheTiebarFooterPage < PageExtension
   end
 
   def should_see_contact_h1(key = nil)
-    return assert_selector(:xpath, CONTACT_US_H1_IL) if key == :il
-    assert_selector(:xpath, ta(CONTACT_US_H1_TA, CONTACT_US_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: CONTACT_US_H1_TA, il: CONTACT_US_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, CONTACT_US_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(CONTACT_US_H1_TA, CONTACT_US_H1_IL))
   end
 
   def should_see_shipping_h1(key = nil)
-    return assert_selector(:xpath, SHIPPING_H1_IL) if key == :il
-    assert_selector(:xpath, ta(SHIPPING_H1_TA, SHIPPING_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: SHIPPING_H1_TA, il: SHIPPING_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, SHIPPING_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(SHIPPING_H1_TA, SHIPPING_H1_IL))
   end
 
   def should_see_returns_h1(key = nil)
-    return assert_selector(:xpath, RETURNS_H1_IL) if key == :il
-    assert_selector(:xpath, ta(RETURNS_H1_TA, RETURNS_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: RETURNS_H1_TA, il: RETURNS_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, RETURNS_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(RETURNS_H1_TA, RETURNS_H1_IL))
   end
 
   def should_see_track_my_order_h1(key = nil)
-    return assert_selector(:xpath, TRACK_MY_ORDER_H1_IL) if key == :il
-    assert_selector(:xpath, ta(TRACK_MY_ORDER_H1_TA, TRACK_MY_ORDER_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: TRACK_MY_ORDER_H1_TA, il: TRACK_MY_ORDER_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, TRACK_MY_ORDER_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(TRACK_MY_ORDER_H1_TA, TRACK_MY_ORDER_H1_IL))
   end
 
   def should_see_about_us_h1(key = nil)
-    return assert_selector(:xpath, ABOUT_US_H1_IL) if key == :il
-    assert_selector(:xpath, ta(ABOUT_US_H1_TA, ABOUT_US_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: ABOUT_US_H1_TA, il: ABOUT_US_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, ABOUT_US_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(ABOUT_US_H1_TA, ABOUT_US_H1_IL))
   end
 
   def should_see_faq_h1(key = nil)
-    return assert_selector(:xpath, FAQ_H1_IL) if key == :il
-    assert_selector(:xpath, ta(FAQ_H1_TA, FAQ_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: FAQ_H1_TA, il: FAQ_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, FAQ_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(FAQ_H1_TA, FAQ_H1_IL))
   end
 
   def should_see_current_posittions_h1(key = nil)
-    return assert_selector(:xpath, CURRENT_OPEN_POSITIONS_H1_IL) if key == :il
-    assert_selector(:xpath, ta(CURRENT_OPEN_POSITIONS_H1_TA, CURRENT_OPEN_POSITIONS_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: CURRENT_OPEN_POSITIONS_H1_TA, il: CURRENT_OPEN_POSITIONS_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, CURRENT_OPEN_POSITIONS_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(CURRENT_OPEN_POSITIONS_H1_TA, CURRENT_OPEN_POSITIONS_H1_IL))
   end
 
   def should_see_promotions_h1(key = nil)
-    return assert_selector(:xpath, PROMOTIONS_H1_IL) if key == :il
-    assert_selector(:xpath, ta(PROMOTIONS_H1_TA, PROMOTIONS_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: PROMOTIONS_H1_TA, il: PROMOTIONS_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, PROMOTIONS_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(PROMOTIONS_H1_TA, PROMOTIONS_H1_IL))
   end
 
 end

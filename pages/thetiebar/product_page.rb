@@ -83,13 +83,17 @@ class TheTiebarProductPage < PageExtension
 
 
   def should_see_wedding_ties_h1(key = nil)
-    return assert_selector(:xpath, WEDDING_TIES_H1_IL) if key == :il
-    assert_selector(:xpath, ta(WEDDING_TIES_H1_TA, WEDDING_TIES_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: WEDDING_TIES_H1_TA, il: WEDDING_TIES_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, WEDDING_TIES_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(WEDDING_TIES_H1_TA, WEDDING_TIES_H1_IL))
   end
 
   def should_see_shirts_h1(key = nil)
-    return assert_selector(:xpath, SHIRTS_H1_IL) if key == :il
-    assert_selector(:xpath, ta(SHIRTS_H1_TA, SHIRTS_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: SHIRTS_H1_TA, il: SHIRTS_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, SHIRTS_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(SHIRTS_H1_TA, SHIRTS_H1_IL))
   end
 
   def click_second_shirt_on_product(key = nil)

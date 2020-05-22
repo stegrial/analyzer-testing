@@ -10,8 +10,10 @@ class TheTiebarPromoPage < PageExtension
 
 
   def should_see_whats_new_h1(key = nil)
-    return assert_selector(:xpath, WHATS_NEW_H1_IL) if key == :il
-    assert_selector(:xpath, ta(WHATS_NEW_H1_TA, WHATS_NEW_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: WHATS_NEW_H1_TA, il: WHATS_NEW_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, WHATS_NEW_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(WHATS_NEW_H1_TA, WHATS_NEW_H1_IL))
   end
 
   def click_new_arrivals_btn(key = nil)

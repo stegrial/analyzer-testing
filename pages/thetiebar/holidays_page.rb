@@ -44,23 +44,31 @@ class TheTiebarHolidaysPage < PageExtension
   end
 
   def should_see_boys_christmas_h1(key = nil)
-    return assert_selector(:xpath, BOYS_CHRISTMAS_TIES_H1_IL) if key == :il
-    assert_selector(:xpath, ta(BOYS_CHRISTMAS_TIES_H1_TA, BOYS_CHRISTMAS_TIES_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: BOYS_CHRISTMAS_TIES_H1_TA, il: BOYS_CHRISTMAS_TIES_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, BOYS_CHRISTMAS_TIES_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(BOYS_CHRISTMAS_TIES_H1_TA, BOYS_CHRISTMAS_TIES_H1_IL))
   end
 
   def should_see_thanksgiving_h1(key = nil)
-    return assert_selector(:xpath, THANKSGIVING_TIES_H1_IL) if key == :il
-    assert_selector(:xpath, ta(THANKSGIVING_TIES_H1_TA, THANKSGIVING_TIES_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: THANKSGIVING_TIES_H1_TA, il: THANKSGIVING_TIES_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, THANKSGIVING_TIES_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(THANKSGIVING_TIES_H1_TA, THANKSGIVING_TIES_H1_IL))
   end
 
   def should_see_boys_easter_h1(key = nil)
-    return assert_selector(:xpath, BOYS_EASTER_TIES_H1_IL) if key == :il
-    assert_selector(:xpath, ta(BOYS_EASTER_TIES_H1_TA, BOYS_EASTER_TIES_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: BOYS_EASTER_TIES_H1_TA, il: BOYS_EASTER_TIES_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, BOYS_EASTER_TIES_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(BOYS_EASTER_TIES_H1_TA, BOYS_EASTER_TIES_H1_IL))
   end
 
   def should_see_nautical_h1(key = nil)
-    return assert_selector(:xpath, NAUTICAL_TIES_H1_IL) if key == :il
-    assert_selector(:xpath, ta(NAUTICAL_TIES_H1_TA, NAUTICAL_TIES_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: NAUTICAL_TIES_H1_TA, il: NAUTICAL_TIES_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, NAUTICAL_TIES_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(NAUTICAL_TIES_H1_TA, NAUTICAL_TIES_H1_IL))
   end
 
 end

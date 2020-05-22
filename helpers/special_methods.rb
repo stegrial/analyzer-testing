@@ -2,12 +2,12 @@ require 'net/http'
 require 'uri'
 
 def step(name, *args)
-  begin
+  # begin
     puts '-' + name
     yield(*args)
-  rescue Exception => e
-    raise e.message
-  end
+  # rescue StandardError => ex
+  #   raise ex
+  # end
 end
 
 def project_root

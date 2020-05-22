@@ -150,8 +150,10 @@ class TheTiebarAccount_page < PageExtension
   end
 
   def should_see_privacy_policy_page(key = nil)
-    return assert_selector(:xpath, MAIN_TEXT_PRIVACY_POLICY_IL) if key == :il
-    assert_selector(:xpath, ta(MAIN_TEXT_PRIVACY_POLICY_TA, MAIN_TEXT_PRIVACY_POLICY_IL))
+    element = find_element(key, il_type: :xpath, tl: MAIN_TEXT_PRIVACY_POLICY_TA, il: MAIN_TEXT_PRIVACY_POLICY_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, MAIN_TEXT_PRIVACY_POLICY_IL) if key == :il
+    # assert_selector(:xpath, ta(MAIN_TEXT_PRIVACY_POLICY_TA, MAIN_TEXT_PRIVACY_POLICY_IL))
   end
 
   def click_delete_account_btn(key = nil)

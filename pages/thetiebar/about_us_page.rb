@@ -45,8 +45,10 @@ class TheTiebarAboutUs < PageExtension
   end
 
   def should_see_about_our_stores_h1(key = nil)
-    return assert_selector(:xpath, ABOUT_OUR_STORES_H1_IL) if key == :il
-    assert_selector(:xpath, ta(ABOUT_OUR_STORES_H1_TA, ABOUT_OUR_STORES_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: ABOUT_OUR_STORES_H1_TA, il: ABOUT_OUR_STORES_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, ABOUT_OUR_STORES_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(ABOUT_OUR_STORES_H1_TA, ABOUT_OUR_STORES_H1_IL))
   end
 
   def click_close_coolies_div(key = nil)
