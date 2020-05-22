@@ -22,11 +22,11 @@ class Whishlist
   end
 
   def product_card(key, number)
-    locator_by key, "//*[contains(@class, 'product-card'][#{number}]')]", "planetblue:product_card:#{number}:container"
+    locator_by key, "//*[contains(@class, 'product-card')][#{number}]", "planetblue:product_card:#{number}:container"
   end
 
   def whishlist_remove_button(key, number)
-    locator_by key, "//*[contains(@class, 'product-card'][#{number}]')]" + "//*[contains(@class, 'wishlist__remove-button']", "planetblue:product_card:#{number}:remove_button"
+    locator_by key, "//*[contains(@class, 'product-card')][#{number}]" + "//*[contains(@class, 'wishlist__remove-button')]", "planetblue:product_card:#{number}:remove_button"
   end
 
   def find_product_card(key = nil, number)
@@ -34,7 +34,7 @@ class Whishlist
   end
 
   def click_whishlist_remove_button(key = nil, card_id)
-    find_element_path(key, :css, whishlist_remove_button(:ta, card_id), whishlist_remove_button(:il, card_id)).click
+    find_element_path(key, :xpath, whishlist_remove_button(:ta, card_id), whishlist_remove_button(:il, card_id)).click
   end
 
   def find_copy_link_button(key = nil)
