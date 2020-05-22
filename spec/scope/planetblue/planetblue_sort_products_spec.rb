@@ -6,8 +6,7 @@ required_relative_all "/pages/planetblue/*.rb"
 include ElementSearchValidation
 
 planetblue = PlanetBlue.new
-designers = Designers.new
-menu = Menu.new
+modal = Modal.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -31,11 +30,12 @@ describe 'Preconditions' do
         planetblue.find_page_header title
       end
 
-      step "User checks Collection Items", 'ZAFARI PLAY DRESS | New', 'zafari-play-dress-exclusive?' do |name, link|
-        planetblue.find_collection_item name, link
+      step "User checks Collection Items" do
+        planetblue.find_collection_item_by_num 1
       end
 
       step "User selects Category Dropdown value", 'Oldest first'  do |value|
+        modal.click_close_discount_button_if_exists
         planetblue.select_from_sort_dropdown value
       end
 

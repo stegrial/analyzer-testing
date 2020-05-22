@@ -27,13 +27,9 @@ TODO fixes:
 
 ```
 TODO tests:
-- purchase product if logged in
-- find products with sale label (and check discount price)
-- navigate to new products using link on main page
-- find accessories details
-- visit accessibility statement page
-- change shipping country and currency
-- leave review and check reviews
-- visit students discounts
-- visit all customer care links in a footer
-- check header and footer
+rspec ./spec/scope/planetblue/planetblue_add_item_to_whishlist.rb:24 # Preconditions Planet Blue - Add item to whishlist Recording Locators
+rspec ./spec/scope/planetblue/planetblue_filter_products_spec.rb:20 # Preconditions Planet Blue - Filter Products Recording Locators
+rspec ./spec/scope/planetblue/planetblue_navigate_to_product_details_spec.rb:20 # Preconditions Planet Blue - Find Product Details Recording Locators
+rspec ./spec/scope/planetblue/planetblue_scroll_products_spec.rb:19 # Preconditions Planet Blue - Scroll Products Recording Locators
+rspec ./spec/scope/planetblue/planetblue_sort_products_spec.rb:20 # Preconditions Planet Blue - Sort Products Recording Locators
+

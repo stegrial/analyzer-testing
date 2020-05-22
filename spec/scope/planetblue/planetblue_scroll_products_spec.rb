@@ -38,7 +38,6 @@ describe 'Preconditions' do
 
       step "User checks Collection Items" do
         planetblue.find_collection_item_by_num 7
-        modal.click_close_discount_button_if_exists
       end
 
       step "User clicks 'Back to top' button" do
@@ -46,24 +45,13 @@ describe 'Preconditions' do
       end
 
       step "User scroll down to the bottom of the page" do
-        page.execute_script "window.scrollBy(0,5000)"
-      end
-
-      step "User scroll down to the bottom of the page" do
-        5000.each { |pixels|
-          sleep 1
-          page.execute_script "window.scrollBy(0,#{pixels})"
+        (1..10).each {
+          page.execute_script "window.scrollBy(0,10000)"
         }
       end
 
       step "User click 'Load More' button" do
         planetblue.click_load_more_button
-      end
-
-      step "User checks social links on the bottom of the page",%w(Facebook Instagram Twitter YouTube Pinterest) do |links|
-        links.each { |link|
-          planetblue.find_social_link link
-        }
       end
 
     end
