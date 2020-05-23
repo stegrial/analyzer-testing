@@ -47,7 +47,7 @@ class PlanetBlue
   end
 
   def refine_category_block(key, value)
-    locator_by key, "//h6[text()='#{value}']/parent::*/parent::*/parent::*",
+    locator_by key, "(//h6[text()='#{value}']/parent::*/parent::*/parent::*)[2]",
                "planetblue:category_dropdown:refine_category_block:#{value}"
   end
 

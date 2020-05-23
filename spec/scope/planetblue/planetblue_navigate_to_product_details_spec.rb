@@ -101,13 +101,13 @@ describe 'Preconditions' do
       end
 
       step "User checks section 'You may also like'" do
-        product_details.find_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI', '6,600'
-        product_details.find_bottom_section_item 'You May Also Like', 'BAYLEE DRESS', '5,950'
+        product_details.find_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI'
+        product_details.find_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI | New'
       end
 
       step "User checks section 'Complete the look'"  do
-        product_details.find_bottom_section_item 'Complete the Look', 'BELL JUMPER', '4,050'
-        product_details.find_bottom_section_item 'Complete the Look', 'BELL JUMPER', '4,300'
+        product_details.find_bottom_section_item 'Complete the Look', 'WHAT IF MAXI DRESS | New'
+        product_details.find_bottom_section_item 'Complete the Look', 'THE BLUFFS MAXI DRESS | New'
       end
 
     end
@@ -226,21 +226,21 @@ describe 'Preconditions' do
       end
 
       step "User checks section 'You may also like'" do
-        check_element_path :xpath, product_details.bottom_section_item(:ta, 'You May Also Like', 'THE JESSIE MIDI', '$219.00'),
-                           product_details.bottom_section_item(:il, 'You May Also Like', 'THE JESSIE MIDI', '$219.00')
-        check_element_path :xpath, product_details.bottom_section_item(:ta, 'You May Also Like', 'BAYLEE DRESS', '$198.00'),
-                           product_details.bottom_section_item(:il, 'You May Also Like', 'BAYLEE DRESS', '$198.00')
-        product_details.find_bottom_section_item :ta, 'You May Also Like', 'THE JESSIE MIDI', '$219.00'
-        product_details.find_bottom_section_item :ta,'You May Also Like', 'BAYLEE DRESS', '$198.00'
+        check_element_path :xpath, product_details.bottom_section_item_price(:ta, 'You May Also Like', 'THE JESSIE MIDI', '$219.00'),
+                           product_details.bottom_section_item_price(:il, 'You May Also Like', 'THE JESSIE MIDI', '$219.00')
+        check_element_path :xpath, product_details.bottom_section_item_price(:ta, 'You May Also Like', 'BAYLEE DRESS', '$198.00'),
+                           product_details.bottom_section_item_price(:il, 'You May Also Like', 'BAYLEE DRESS', '$198.00')
+        product_details.find_bottom_section_item_price :ta, 'You May Also Like', 'THE JESSIE MIDI', '$219.00'
+        product_details.find_bottom_section_item_price :ta, 'You May Also Like', 'BAYLEE DRESS', '$198.00'
       end
 
       step "User checks section 'Complete the look'"  do
-        check_element_path :xpath, product_details.bottom_section_item(:ta, 'Complete the Look', 'BELL JUMPER', '$134.00'),
-                           product_details.bottom_section_item(:il, 'Complete the Look', 'BELL JUMPER', '$134.00')
-        check_element_path :xpath, product_details.bottom_section_item(:ta, 'Complete the Look', 'BELL JUMPER', '$143.00'),
-                           product_details.bottom_section_item(:il, 'Complete the Look', 'BELL JUMPER', '$143.00')
-        product_details.find_bottom_section_item :ta, 'Complete the Look', 'BELL JUMPER', '$134.00'
-        product_details.find_bottom_section_item :ta, 'Complete the Look', 'BELL JUMPER', '$143.00'
+        check_element_path :xpath, product_details.bottom_section_item_price(:ta, 'Complete the Look', 'BELL JUMPER', '$134.00'),
+                           product_details.bottom_section_item_price(:il, 'Complete the Look', 'BELL JUMPER', '$134.00')
+        check_element_path :xpath, product_details.bottom_section_item_price(:ta, 'Complete the Look', 'BELL JUMPER', '$143.00'),
+                           product_details.bottom_section_item_price(:il, 'Complete the Look', 'BELL JUMPER', '$143.00')
+        product_details.find_bottom_section_item_price :ta, 'Complete the Look', 'BELL JUMPER', '$134.00'
+        product_details.find_bottom_section_item_price :ta, 'Complete the Look', 'BELL JUMPER', '$143.00'
       end
 
     end

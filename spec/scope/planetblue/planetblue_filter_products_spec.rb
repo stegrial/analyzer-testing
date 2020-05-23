@@ -6,8 +6,7 @@ required_relative_all "/pages/planetblue/*.rb"
 include ElementSearchValidation
 
 planetblue = PlanetBlue.new
-designers = Designers.new
-menu = Menu.new
+modal = Modal.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -32,6 +31,7 @@ describe 'Preconditions' do
       end
 
       step "User checks Collection Items", 'CAMO PULLOVER | New', 'camo-pullover?' do |name, link|
+        modal.click_close_discount_button_if_exists
         planetblue.find_collection_item name, link
       end
 
