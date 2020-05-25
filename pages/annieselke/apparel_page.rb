@@ -8,8 +8,8 @@ class ApparelPage < PageExtension
 
 
   def should_see_apparel_h1(key = nil)
-      return assert_selector(:xpath, APPAREL_H1_IL) if key == :il
-      assert_selector(:xpath, ta(APPAREL_H1_TA, APPAREL_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: APPAREL_H1_TA, il: APPAREL_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

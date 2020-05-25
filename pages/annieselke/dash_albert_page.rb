@@ -8,8 +8,8 @@ class DashAlbertPage < PageExtension
 
 
   def should_see_dash_an_albert_img(key = nil)
-      return assert_selector(:xpath, DASH_AN_ALBERT_IMG_IL) if key == :il
-      assert_selector(:xpath, ta(DASH_AN_ALBERT_IMG_TA, DASH_AN_ALBERT_IMG_IL))
+    element = find_element(key, il_type: :xpath, tl: DASH_AN_ALBERT_IMG_TA, il: DASH_AN_ALBERT_IMG_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

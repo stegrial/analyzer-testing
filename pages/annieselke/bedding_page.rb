@@ -7,8 +7,8 @@ class BeddingPage < PageExtension
 
 
   def should_see_bedding_h1(key = nil)
-      return assert_selector(:xpath, BEDDING_H1_IL) if key == :il
-      assert_selector(:xpath, ta(BEDDING_H1_TA, BEDDING_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: BEDDING_H1_TA, il: BEDDING_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

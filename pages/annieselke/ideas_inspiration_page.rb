@@ -7,8 +7,8 @@ class IdeasInspirationPage < PageExtension
 
 
   def should_see_ideas_and_ins_h2(key = nil)
-      return assert_selector(:xpath, IDEAS_INSPIRATION_H2_IL) if key == :il
-      assert_selector(:xpath, ta(IDEAS_INSPIRATION_H2_TA, IDEAS_INSPIRATION_H2_IL))
+    element = find_element(key, il_type: :xpath, tl: IDEAS_INSPIRATION_H2_TA, il: IDEAS_INSPIRATION_H2_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

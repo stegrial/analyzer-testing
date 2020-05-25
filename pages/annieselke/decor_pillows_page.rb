@@ -7,8 +7,8 @@ class DecorPillowsPage < PageExtension
 
 
   def should_see_decor_pillows_h1(key = nil)
-      return assert_selector(:xpath, DECOR_PILLOWS_H1_IL) if key == :il
-      assert_selector(:xpath, ta(DECOR_PILLOWS_H1_TA, DECOR_PILLOWS_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: DECOR_PILLOWS_H1_TA, il: DECOR_PILLOWS_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

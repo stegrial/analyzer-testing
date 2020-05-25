@@ -7,8 +7,8 @@ class RugsPage < PageExtension
 
 
   def should_see_rugs_h1(key = nil)
-      return assert_selector(:xpath, RUGS_H1_IL) if key == :il
-      assert_selector(:xpath, ta(RUGS_H1_TA, RUGS_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: RUGS_H1_TA, il: RUGS_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

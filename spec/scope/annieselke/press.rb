@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 press_page = PressPage.new
 banner_page = BannerPage.new
@@ -14,7 +11,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -23,15 +20,16 @@ describe 'Preconditions' do
 
   feature 'Select Press details on home page' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('annieselke')['page'] do |url|
           page.visit url
           banner_page.close_banner
+          banner_page.close_cupon_banner
         end
 
         step "User clicks 'Press'" do
+          scroll_to_element 7000
           footer_page.click_companies "Press"
         end
 
@@ -60,5 +58,6 @@ describe 'Preconditions' do
         sleep 3
       end
     end
+
   end
 end

@@ -81,6 +81,7 @@ class HeaderPage < PageExtension
 
   def click_view_cart_btn(key = nil)
     find_element(key, il_type: :xpath, tl: VIEW_CART_TA, il: VIEW_CART_IL, check_path: $check_path).click
+    sleep 3 # wait for page load
     page.go_back
   end
 

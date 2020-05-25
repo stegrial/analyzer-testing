@@ -7,8 +7,8 @@ class WindowPage < PageExtension
 
 
   def should_see_window_h1(key = nil)
-      return assert_selector(:xpath, WINDOW_H1_IL) if key == :il
-      assert_selector(:xpath, ta(WINDOW_H1_TA, WINDOW_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: WINDOW_H1_TA, il: WINDOW_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

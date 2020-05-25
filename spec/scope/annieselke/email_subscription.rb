@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 banner_page = BannerPage.new
 footer_page = FooterPage.new
@@ -13,7 +10,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -22,7 +19,6 @@ describe 'Preconditions' do
 
   feature 'Subscribe to news via email' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('annieselke')['page'] do |url|
@@ -41,7 +37,10 @@ describe 'Preconditions' do
         step "User clicks Submit button" do
           footer_page.click_email_subscription_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

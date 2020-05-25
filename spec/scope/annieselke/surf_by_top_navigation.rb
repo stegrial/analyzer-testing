@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 banner_page = BannerPage.new
 header_page = HeaderPage.new
@@ -32,7 +29,6 @@ describe 'Preconditions' do
 
   feature 'Surfing by top navigation' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('annieselke')['page'] do |url|
@@ -93,7 +89,10 @@ describe 'Preconditions' do
         step "User clicks Sale link on top navigation" do
           header_page.click_sale_link
         end
+
+        sleep 3
       end
     end
+
   end
 end

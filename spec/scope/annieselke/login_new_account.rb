@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 login_page = LoginPage.new
 banner_page = BannerPage.new
@@ -14,7 +11,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -23,7 +20,6 @@ describe 'Preconditions' do
 
   feature 'Login to new account' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('annieselke')['page'] do |url|
@@ -43,6 +39,7 @@ describe 'Preconditions' do
           login_page.click_dropdown_arrow
           login_page.select_dropdown value
           banner_page.close_banner
+          banner_page.close_cupon_banner
         end
 
         step "User fills first name", settings('annieselke')['first_name'] do |first_name|
@@ -59,6 +56,7 @@ describe 'Preconditions' do
         end
 
         step "User fills pass", settings('annieselke')['pass'] do |pass|
+          scroll_to_element 300
           login_page.fill_pass(pass)
         end
 
@@ -70,7 +68,10 @@ describe 'Preconditions' do
         step "User clicks Register  button" do
           login_page.click_register_button
         end
+
+        sleep 3
       end
     end
+
   end
 end

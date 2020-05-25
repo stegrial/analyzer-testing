@@ -49,8 +49,8 @@ class PetPage < PageExtension
 
 
   def should_see_pet_h1(key = nil)
-      return assert_selector(:xpath, PET_H1_IL) if key == :il
-      assert_selector(:xpath, ta(PET_H1_TA, PET_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: PET_H1_TA, il: PET_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
   def click_on_filter_size_medium(key = nil)
@@ -58,8 +58,8 @@ class PetPage < PageExtension
   end
 
   def should_see_filter_size_medium(key = nil)
-      return assert_selector(:xpath, SEARCH_SIZE_MEDIUM_IL) if key == :il
-      assert_selector(:xpath, ta(SEARCH_SIZE_MEDIUM_TA, SEARCH_SIZE_MEDIUM_IL))
+    element = find_element(key, il_type: :xpath, tl: SEARCH_SIZE_MEDIUM_TA, il: SEARCH_SIZE_MEDIUM_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
   def click_on_filter_size_med_lar(key = nil)
@@ -67,8 +67,8 @@ class PetPage < PageExtension
   end
 
   def should_see_filter_size_med_lar(key = nil)
-      return assert_selector(:xpath, SEARCH_SIZE_MEDIUM_LARGE_IL) if key == :il
-      assert_selector(:xpath, ta(SEARCH_SIZE_MEDIUM_LARGE_TA, SEARCH_SIZE_MEDIUM_LARGE_IL))
+    element = find_element(key, il_type: :xpath, tl: SEARCH_SIZE_MEDIUM_LARGE_TA, il: SEARCH_SIZE_MEDIUM_LARGE_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
   def click_on_dropdown_colors(key = nil)
@@ -80,8 +80,8 @@ class PetPage < PageExtension
   end
 
   def should_see_filter_color_grey(key = nil)
-      return assert_selector(:xpath, SEARCH_GREY_IL) if key == :il
-      assert_selector(:xpath, ta(SEARCH_GREY_TA, SEARCH_GREY_IL))
+    element = find_element(key, il_type: :xpath, tl: SEARCH_GREY_TA, il: SEARCH_GREY_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
   def click_on_dropdown_pattern(key = nil)
@@ -93,8 +93,8 @@ class PetPage < PageExtension
   end
 
   def should_see_filter_pat_stripe(key = nil)
-      return assert_selector(:xpath, SEARCH_STRIPE_IL) if key == :il
-      assert_selector(:xpath, ta(SEARCH_STRIPE_TA, SEARCH_STRIPE_IL))
+    element = find_element(key, il_type: :xpath, tl: SEARCH_STRIPE_TA, il: SEARCH_STRIPE_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
   def click_on_dropdown_material(key = nil)
@@ -106,8 +106,8 @@ class PetPage < PageExtension
   end
 
   def should_see_filter_mater_polyp(key = nil)
-      return assert_selector(:xpath, SEARCH_POLYPROPYLENE_IL) if key == :il
-      assert_selector(:xpath, ta(SEARCH_POLYPROPYLENE_TA, SEARCH_POLYPROPYLENE_IL))
+    element = find_element(key, il_type: :xpath, tl: SEARCH_POLYPROPYLENE_TA, il: SEARCH_POLYPROPYLENE_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
   def click_on_first_product(key = nil)

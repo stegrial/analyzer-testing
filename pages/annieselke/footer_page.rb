@@ -72,8 +72,8 @@ class FooterPage < PageExtension
   end
 
   def should_see_annie_selke_img(key = nil)
-      return assert_selector(:xpath, ANNIE_SELKE_IMG_IL) if key == :il
-      assert_selector(:xpath, ta(ANNIE_SELKE_IMG_TA, ANNIE_SELKE_IMG_IL))
+    element = find_element(key, il_type: :xpath, tl: ANNIE_SELKE_IMG_TA, il: ANNIE_SELKE_IMG_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end
