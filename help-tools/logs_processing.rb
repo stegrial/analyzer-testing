@@ -23,8 +23,8 @@ class Logs
     # sleep 5
 
     logs_root.each do |path|
-      html = path + '/data.html'
-      new_page = File.open(html) { |file| Nokogiri.HTML(file) }
+      data_html = path + '/data.html'
+      new_data_html = File.open(data_html) { |file| Nokogiri.HTML(file) }
       # new_page = Nokogiri.HTML(page.driver.browser.page_source)
 
       # head = new_page.search('head').first
@@ -34,7 +34,7 @@ class Logs
       current_url_parsed = URI.parse(current_url.chomp)
       FileUtils.mkdir path + '/data_files'
 
-      styles = new_page.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
+      styles = new_data_html.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
       # puts styles
 
       styles.each do |style|
@@ -42,7 +42,7 @@ class Logs
 
         unless href.start_with?('data:text/css') || href.start_with?('data:image/png')
           unless href.start_with? 'http'
-            if href.start_with? '/'
+            if (href.start_with? '/') && (href[1] != '/')
               href = current_url_parsed.scheme + '://' + current_url_parsed.host + href
             elsif href.start_with? '..'
               css_array = href.split('/')
@@ -54,6 +54,8 @@ class Logs
 
               url_array = url_array.concat(css_array)
               href = url_array.join('/')
+            elsif href.start_with? '//'
+              href = current_url_parsed.scheme + ':' + href
             else
               href = '/' + href unless current_url_parsed.path[-1] == '/'
               href = current_url_parsed.scheme + '://' + current_url_parsed.host + current_url_parsed.path + href
@@ -86,8 +88,32 @@ class Logs
         end
       end
 
-      file = File.new(html, "w")
-      file.puts(new_page)
+      file = File.new(data_html, "w")
+      file.puts(new_data_html)
+      file.close
+    end
+  end
+
+  def create_signature_sources
+    logs_root.each do |path|
+      file_names = { '/data.html' => '/signature.html',
+                     '/data_files' => '/signature_files',
+                     '/element_address.txt' => '/signature_address.txt' }
+      file_names.each do |source, target|
+        FileUtils.cp_r path + source, path + target if File.exist?(path + source)
+      end
+
+      signature_html = path + '/signature.html'
+      new_signature_html = File.open(signature_html) { |file| Nokogiri.HTML(file) }
+      styles = new_signature_html.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
+
+      styles.each do |style|
+        style['href'] = 'signature_files/' + style['href'].split('/').last if style['href']
+        style['src'] = 'signature_files/' + style['src'].split('/').last if style['src']
+      end
+
+      file = File.new(signature_html, "w")
+      file.puts(new_signature_html)
       file.close
     end
   end
@@ -109,7 +135,7 @@ class Logs
       probability = path + '/probability.txt'
       if File.exist?(probability)
         FileUtils.rm_rf(path)
-        puts "\n" + "\e[33mREMOVED - analyzer request found: \e[0m" + path
+        puts "\e[33mREMOVED - analyzer request found: \e[0m" + path
       end
     end
   end
@@ -128,7 +154,7 @@ class Logs
       data = path + '/data.json'
       if File.exist?(data) && File.read(data) == 'undefined'
         FileUtils.rm_rf(path)
-        puts "\n" + "\e[33mREMOVED - invalid data.json: \e[0m" + path
+        puts "\e[33mREMOVED - invalid data.json: \e[0m" + path
       end
     end
   end
@@ -138,27 +164,16 @@ class Logs
       data = path + '/current_url.txt'
       unless File.exist?(data)
         FileUtils.rm_rf(path)
-        puts "\n" + "\e[33mREMOVED - current url is missing: \e[0m" + path
+        puts "\e[33mREMOVED - current url is missing: \e[0m" + path
       end
     end
   end
 
   def rm_excess_data
     logs_root.each do |path|
-      data = %w(/data.json /signature.json /current_url.txt)
+      data = %w(/data.json /current_url.txt)
       data.each do |file|
         FileUtils.rm(path + file) if File.exist?(path + file)
-      end
-    end
-  end
-
-  def create_signature_sources
-    logs_root.each do |path|
-      file_names = { '/data.html' => '/signature.html',
-                     '/data_files' => '/signature_files',
-                     '/element_address.txt' => '/signature_address.txt' }
-      file_names.each do |source, target|
-        FileUtils.cp_r path + source, path + target if File.exist?(path + source)
       end
     end
   end
@@ -185,12 +200,13 @@ class Logs
   def rm_same_requests
     array_to_remove = []
     @filter_array.each_with_index do |value, index|
-      # if value[1] == 4 && @filter_array[index + 1][1] == 4 # to leave only last request
-      if value[1] == 4 && @filter_array[index - 1][1] == 4 && @filter_array[index + 1][1] == 4 # to leave first and last requests
+      if value[1] == 4 && @filter_array[index + 1][1] == 4 # to leave only last request
+      # if value[1] == 4 && @filter_array[index - 1][1] == 4 && @filter_array[index + 1][1] == 4 # to leave first and last requests
         array_to_remove << value[0]
       end
     end
 
+    puts "\n" + "\e[33mSame Requests:\e[0m"
     puts array_to_remove
     FileUtils.rm_rf(array_to_remove)
   end
@@ -214,21 +230,18 @@ class Logs
     @filter_array.length - 1
   end
 
-  def move_signature(index = last_index)
-    signature = @filter_array[index][0] + '/signature.json'
-    if @filter_array[index - 1][1] == 3
-      FileUtils.cp(signature, @filter_array[index - 1][0])
-    end
-    move_signature(index - 1) if index > 0
-  end
+  def move_signature_data(index = last_index)
+    data = %w(/signature.html /signature_files /signature_address.txt /signature.json)
+    data.each do |object|
+      signature_address = @filter_array[index][0] + object
+      if @filter_array[index - 1][1] == 6
+        puts "\e[33mMoving Signature Request: \e[0m" + @filter_array[index - 1][0] + object
 
-  def move_signature_address(index = last_index)
-    signature_address = @filter_array[index][0] + '/signature_address.txt'
-    if @filter_array[index - 1][1] == 6
-      puts @filter_array[index - 1][0] + '/signature_address.txt'
-      FileUtils.cp(signature_address, @filter_array[index - 1][0] + '/signature_address.txt')
+        FileUtils.rm_rf(@filter_array[index - 1][0] + object)
+        FileUtils.cp_r(signature_address, @filter_array[index - 1][0] + (object.include?('.') ? object : ''))
+      end
     end
-    move_signature_address(index - 1) if index > 0
+    move_signature_data(index - 1) if index > 0
   end
 
   def rename_log_directories # to rename directories containing data
@@ -261,6 +274,6 @@ processing.rename_undefined
 processing.modify_html
 processing.create_signature_sources
 
-processing.filter_array.move_signature_address
+processing.filter_array.move_signature_data
 
 processing.rm_excess_data
