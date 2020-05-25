@@ -5,7 +5,7 @@ def step(name, *args)
   # begin
     puts '-' + name
     yield(*args)
-  # rescue StandardError => ex
+  # rescue Exception => ex
   #   raise ex
   # end
 end
