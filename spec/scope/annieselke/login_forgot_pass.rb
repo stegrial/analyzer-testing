@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 login_page = LoginPage.new
 forgotten_pass_page = ForgottenPassPage.new
@@ -15,7 +12,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -24,7 +21,6 @@ describe 'Preconditions' do
 
   feature 'Password recovery' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('annieselke')['page'] do |url|
@@ -51,7 +47,10 @@ describe 'Preconditions' do
         step "User clicks Return to login button" do
           forgotten_pass_page.click_return_login_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

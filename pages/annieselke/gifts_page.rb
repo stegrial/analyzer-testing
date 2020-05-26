@@ -7,8 +7,8 @@ class GiftsPage < PageExtension
 
 
   def should_see_gifts_h1(key = nil)
-      return assert_selector(:xpath, GIFTS_H1_IL) if key == :il
-      assert_selector(:xpath, ta(GIFTS_H1_TA, GIFTS_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: GIFTS_H1_TA, il: GIFTS_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

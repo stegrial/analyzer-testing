@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 designer_page = DesignerPage.new
 account_request_page = AccountRequestPage.new
@@ -24,7 +21,6 @@ describe 'Preconditions' do
 
   feature 'Request design account' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('annieselke')['page'] do |url|
@@ -33,19 +29,21 @@ describe 'Preconditions' do
         end
 
         step "User clicks 'Request a Design Account'" do
-          banner_page.close_banner
+          banner_page.close_cupon_banner
+          scroll_to_element 7000
           footer_page.click_companies "Design Concierge"
         end
 
         step "User signs up" do
-          banner_page.close_banner
+          banner_page.close_cupon_banner
+          scroll_to_element 300
           designer_page.click_sign_up
         end
 
         step "User selects country", "CA" do |value|
           account_request_page.click_dropdown_arrow_country
           account_request_page.select_dropdown_country value
-          banner_page.close_banner
+          banner_page.close_cupon_banner
         end
 
         step "User selects title", "ms" do |value|
@@ -66,6 +64,7 @@ describe 'Preconditions' do
         end
 
         step "User fills City", "City" do |city|
+          scroll_to_element 500
           account_request_page.fill_city(city)
         end
 

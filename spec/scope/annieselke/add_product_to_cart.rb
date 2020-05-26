@@ -1,21 +1,17 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 header_page = HeaderPage.new
 product_page = ProductPage.new
 banner_page = BannerPage.new
-
 
 describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -24,7 +20,6 @@ describe 'Preconditions' do
 
   feature 'Navigation and adding product to cart' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('annieselke')['page'] do |url|
@@ -51,6 +46,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks gallery img to change view" do
+          scroll_to_element 700
           product_page.click_to_change_gallery_img
         end
 
@@ -79,7 +75,10 @@ describe 'Preconditions' do
         step "User clicks Add to cart" do
           product_page.click_add_to_cart
         end
+
+        sleep 3
       end
     end
+
   end
 end

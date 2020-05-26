@@ -7,8 +7,8 @@ class OutletPage < PageExtension
 
 
   def should_see_outlet_img(key = nil)
-      return assert_selector(:xpath, OUTLET_IMG_IL) if key == :il
-      assert_selector(:xpath, ta(OUTLET_IMG_TA, OUTLET_IMG_IL))
+    element = find_element(key, il_type: :xpath, tl: OUTLET_IMG_TA, il: OUTLET_IMG_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

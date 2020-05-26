@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 banner_page = BannerPage.new
 header_page = HeaderPage.new
@@ -14,7 +11,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -23,7 +20,6 @@ describe 'Preconditions' do
 
   feature 'Filtering Pet product' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('annieselke')['page'] do |url|
@@ -51,11 +47,13 @@ describe 'Preconditions' do
         end
 
         step "User clicks grey color" do
+          scroll_to_element 300
           pet_page.click_on_grey_color
           pet_page.should_see_filter_color_grey
         end
 
         step "User clicks dropdown pattern" do
+          scroll_to_element 400
           pet_page.click_on_dropdown_pattern
         end
 
@@ -65,6 +63,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks dropdown material" do
+          scroll_to_element 500
           pet_page.click_on_dropdown_material
         end
 
@@ -74,9 +73,13 @@ describe 'Preconditions' do
         end
 
         step "User clicks First product link" do
+          scroll_to_element 700
           pet_page.click_on_first_product
         end
+
+        sleep 3
       end
     end
+
   end
 end

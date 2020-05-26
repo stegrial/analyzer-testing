@@ -8,8 +8,8 @@ class BathPage < PageExtension
 
 
   def should_see_bath_h1(key = nil)
-      return assert_selector(:xpath, BATH_H1_IL) if key == :il
-      assert_selector(:xpath, ta(BATH_H1_TA, BATH_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: BATH_H1_TA, il: BATH_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

@@ -13,7 +13,6 @@ class ForgottenPassPage < PageExtension
   end
 
   def click_return_login_btn(key=nil)
-    find_element_path(key, :xpath, RETURN_LOGIN_BTN_TA, RETURN_LOGIN_BTN_IL).click
     find_element(key, il_type: :xpath, tl: RETURN_LOGIN_BTN_TA, il: RETURN_LOGIN_BTN_IL, check_path: $check_path).click
   end
 end

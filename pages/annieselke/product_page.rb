@@ -2,7 +2,7 @@ require_relative '../page_extension'
 
 class ProductPage < PageExtension
 
-  TIA_MIRROR_LINK_IL = "//a[contains(@title, 'Tia Mirror')]"
+  TIA_MIRROR_LINK_IL = "(//a[@title='Tia Mirror'])[1]"
   TIA_MIRROR_LINK_TA = "annieselke:product_page:tia_mirror"
 
   DROPDOWN_ARROW_IL = "//select[@id='variant']"

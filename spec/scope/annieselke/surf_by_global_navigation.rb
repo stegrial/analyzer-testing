@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 banner_page = BannerPage.new
 header_page = HeaderPage.new
@@ -27,7 +24,6 @@ describe 'Preconditions' do
 
   feature 'Surfing by global navigation' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('annieselke')['page'] do |url|
@@ -59,8 +55,10 @@ describe 'Preconditions' do
           header_page.click_annie_selke_link
           home_page.should_see_annie_selke_img
         end
-      end
 
+        sleep 3
+      end
     end
+
   end
 end

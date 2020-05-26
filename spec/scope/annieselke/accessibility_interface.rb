@@ -1,20 +1,16 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
-
-include ElementSearchValidation
 
 ai_page = AccessibilityInterfacePage.new
 banner_page = BannerPage.new
-
 
 describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 1200)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -23,10 +19,8 @@ describe 'Preconditions' do
 
   feature 'Navigation and adding product to cart' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
-
         step "User goes to the page", settings('annieselke')['page'] do |url|
           page.visit url
         end
@@ -81,29 +75,32 @@ describe 'Preconditions' do
         end
 
         step "User clicks", "test_name" do |value|
-          ai_page.fill_full_name (value)
+          ai_page.fill_full_name(value)
         end
 
         step "User clicks", "test@email.com" do |value|
-          ai_page.fill_email_address (value)
+          ai_page.fill_email_address(value)
         end
 
         step "User clicks", "380911234567" do |value|
-          ai_page.fill_phone_number (value)
+          ai_page.fill_phone_number(value)
         end
 
         step "User clicks", "test text" do |value|
-          ai_page.fill_your_feedback (value)
+          ai_page.fill_your_feedback(value)
         end
 
         step "User clicks" do
           ai_page.click_agreement_checkbox
-          end
+        end
 
         step "User clicks" do
           ai_page.click_send_feedback
         end
+
+        sleep 3
       end
     end
+
   end
 end

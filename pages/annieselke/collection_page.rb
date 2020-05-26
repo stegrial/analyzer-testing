@@ -8,8 +8,8 @@ class CollectionsPage < PageExtension
 
 
   def should_see_collections_h1(key = nil)
-      return assert_selector(:xpath, COLLECTIONS_H1_IL) if key == :il
-      assert_selector(:xpath, ta(COLLECTIONS_H1_TA, COLLECTIONS_H1_IL))
+    element = find_element(key, il_type: :xpath, tl: COLLECTIONS_H1_TA, il: COLLECTIONS_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

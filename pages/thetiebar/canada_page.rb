@@ -8,7 +8,7 @@ class TheTiebarCanada < PageExtension
   SHIRTS_SHOP_LINK_IL = "//a[@href='/shirts']"
   SHIRTS_SHOP_LINK_TA = "thetiebar:canada_page:shirts_shop"
 
-  THE_TIABAR_CANADA_H1_IL = "//h1[contains(text(),'Tie Bar Canada')]"
+  THE_TIABAR_CANADA_H1_IL = "//h1[text()='Tie Bar Canada']"
   THE_TIABAR_CANADA_H1_TA = "thetiebar:canada_page:canada_h1"
 
 
