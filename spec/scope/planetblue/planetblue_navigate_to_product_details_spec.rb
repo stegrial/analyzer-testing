@@ -36,7 +36,7 @@ describe 'Preconditions' do
       end
 
       step "User checks Breadcrumbs", 'Home', 'THE JESSIE MIDI' do |breadcrumb1, breadcrumb2|
-        modal.click_close_discount_button_if_exists
+        modal.click_close_discount_button
         planetblue.find_breadcrumb breadcrumb1, true
         planetblue.find_breadcrumb breadcrumb2, false
       end
@@ -226,21 +226,21 @@ describe 'Preconditions' do
       end
 
       step "User checks section 'You may also like'" do
-        check_element_path :xpath, product_details.bottom_section_item_price(:ta, 'You May Also Like', 'THE JESSIE MIDI', '$219.00'),
-                           product_details.bottom_section_item_price(:il, 'You May Also Like', 'THE JESSIE MIDI', '$219.00')
-        check_element_path :xpath, product_details.bottom_section_item_price(:ta, 'You May Also Like', 'BAYLEE DRESS', '$198.00'),
-                           product_details.bottom_section_item_price(:il, 'You May Also Like', 'BAYLEE DRESS', '$198.00')
-        product_details.find_bottom_section_item_price :ta, 'You May Also Like', 'THE JESSIE MIDI', '$219.00'
-        product_details.find_bottom_section_item_price :ta, 'You May Also Like', 'BAYLEE DRESS', '$198.00'
+        check_element_path :xpath, product_details.find_bottom_section_item(:ta, 'You May Also Like', 'THE JESSIE MIDI'),
+                           product_details.find_bottom_section_item(:il, 'You May Also Like', 'THE JESSIE MIDI')
+        check_element_path :xpath, product_details.find_bottom_section_item(:ta, 'You May Also Like', 'THE JESSIE MIDI | New'),
+                           product_details.find_bottom_section_item(:il, 'You May Also Like', 'THE JESSIE MIDI | New')
+        product_details.find_bottom_section_item :ta,'You May Also Like', 'THE JESSIE MIDI'
+        product_details.find_bottom_section_item :ta, 'You May Also Like', 'THE JESSIE MIDI | New'
       end
 
       step "User checks section 'Complete the look'"  do
-        check_element_path :xpath, product_details.bottom_section_item_price(:ta, 'Complete the Look', 'BELL JUMPER', '$134.00'),
-                           product_details.bottom_section_item_price(:il, 'Complete the Look', 'BELL JUMPER', '$134.00')
-        check_element_path :xpath, product_details.bottom_section_item_price(:ta, 'Complete the Look', 'BELL JUMPER', '$143.00'),
-                           product_details.bottom_section_item_price(:il, 'Complete the Look', 'BELL JUMPER', '$143.00')
-        product_details.find_bottom_section_item_price :ta, 'Complete the Look', 'BELL JUMPER', '$134.00'
-        product_details.find_bottom_section_item_price :ta, 'Complete the Look', 'BELL JUMPER', '$143.00'
+        check_element_path :xpath, product_details.find_bottom_section_item(:ta, 'Complete the Look', 'THE JESSIE MIDI'),
+                           product_details.find_bottom_section_item(:il, 'Complete the Look', 'THE JESSIE MIDI')
+        check_element_path :xpath, product_details.find_bottom_section_item(:ta, 'Complete the Look', 'THE JESSIE MIDI | New'),
+                           product_details.find_bottom_section_item(:il, 'Complete the Look', 'THE JESSIE MIDI | New')
+        product_details.find_bottom_section_item :ta,'You May Also Like', 'THE JESSIE MIDI'
+        product_details.find_bottom_section_item :ta, 'You May Also Like', 'THE JESSIE MIDI | New'
       end
 
     end

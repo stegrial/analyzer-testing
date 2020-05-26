@@ -45,7 +45,7 @@ describe 'Preconditions' do
       end
 
       step "User checks Collection Items", 'RUTH TUNIC | New', 'Bright Rose' do |name, color|
-        modal.click_close_discount_button_if_exists
+        modal.click_close_discount_button
         planetblue.find_collection_item_details name, color
       end
 
@@ -89,7 +89,6 @@ describe 'Preconditions' do
         check_element_path( :xpath, collection_item_link(:ta, name), collection_item_link(:il, name))
         check_element_path( :xpath, collection_item_title(:ta, name), collection_item_title(:il, name))
         check_element_path( :xpath, collection_item_image(:ta, name), collection_item_image(:il, name))
-        check_element_path( :xpath, collection_item_price(:ta, name), collection_item_price(:il, name))
         check_element_path( :xpath, collection_item_color(:ta, name, color), collection_item_color(:il, name, color))
         
         planetblue.find_collection_item_details :ta, name, color

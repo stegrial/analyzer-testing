@@ -31,7 +31,7 @@ describe 'Preconditions' do
       end
 
       step "User checks Collection Items", 'CAMO PULLOVER | New', 'camo-pullover?' do |name, link|
-        modal.click_close_discount_button_if_exists
+        modal.click_close_discount_button
         planetblue.find_collection_item name, link
       end
 

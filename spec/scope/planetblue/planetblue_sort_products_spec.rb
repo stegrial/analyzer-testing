@@ -35,7 +35,7 @@ describe 'Preconditions' do
       end
 
       step "User selects Category Dropdown value", 'Oldest first'  do |value|
-        modal.click_close_discount_button_if_exists
+        modal.click_close_discount_button
         planetblue.select_from_sort_dropdown value
       end
 
@@ -61,25 +61,24 @@ describe 'Preconditions' do
         planetblue.find_page_header :ta, title
       end
 
-      step "User checks Collection Items",
-           'ZAFARI PLAY DRESS | New', 'zafari-play-dress-exclusive?' do |name, link|
-        check_element_path :xpath, planetblue.collection_item_by_link(:ta, name, link),
-                           planetblue.collection_item_by_link(:il, name, link)
-        planetblue.find_collection_item :ta, name, link
+      step "User checks Collection Items" do
+        check_element_path :xpath, planetblue.collection_item_by_num(:ta, 1),
+                           planetblue.collection_item_by_num(:il, 1)
+        planetblue.find_collection_item_by_num :ta, 1
       end
 
-      step "User selects Category Dropdown value",
-           'Sort', 'Oldest first'  do |dropdown, value|
-        check_element_path :xpath, planetblue.category_dropdown(:ta, dropdown),
-                           planetblue.category_dropdown(:il, dropdown)
+      step "User selects Category Dropdown value", 'Oldest first'  do |value|
+        check_element_path :css, modal.CLOSE_DISCOUNT_BUTTON_TA, planetblue.CLOSE_DISCOUNT_BUTTON_IL
+        modal.click_close_discount_button :ta
+        check_element_path :css, planetblue.category_dropdown(:ta, "Sort"), planetblue.category_dropdown(:il, "Sort")
+        check_element_path :css, planetblue.sort_dropdown_value(:ta, value), planetblue.sort_dropdown_value(:il, value)
         planetblue.select_from_sort_dropdown :ta, value
       end
 
-      step "User checks Collection Items",
-           'SEINE DOUBLE COIN', 'seine-double-coin?' do |name, link|
+      step "User checks Collection Items", 'SEINE DOUBLE COIN', 'seine-double-coin?' do |name, link|
         check_element_path :xpath, planetblue.collection_item_by_link(:ta, name, link),
-                           planetblue.collection_item_by_link(:il, name, link)
-        planetblue.find_collection_item :ta, name, link
+                            planetblue.collection_item_by_link(:il, name, link)
+        planetblue.find_collection_item name, link
       end
 
     end

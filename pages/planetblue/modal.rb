@@ -14,7 +14,7 @@ class Modal
   CLOSE_POLICIES_BUTTON_IL = "(//*[text()=\"We've Updated Our Policies\"]//ancestor::div[contains(@class, 'klaviyo-form')]//button)[1]"
   CLOSE_POLICIES_BUTTON_TA = "planetblue:modal:close_policies_button"
 
-  def click_close_discount_button_if_exists(key = nil)
+  def click_close_discount_button(key = nil)
     within_frame 0 do
       find_element_path(key, :id, CLOSE_DISCOUNT_BUTTON_TA, CLOSE_DISCOUNT_BUTTON_IL).click
     end

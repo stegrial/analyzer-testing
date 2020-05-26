@@ -47,7 +47,7 @@ describe 'Preconditions' do
 
       step "User clicks Whishlist button" do
         page.execute_script "window.scrollBy(0,500)"
-        modal.click_close_discount_button_if_exists
+        modal.click_close_discount_button
         product_details.click_whishlist_button
       end
 
@@ -88,6 +88,11 @@ describe 'Preconditions' do
            settings('planetblue')['pass'] do |email, password|
         menu.click_user_button :ta
         page.execute_script "window.scrollBy(0,400)"
+
+        check_element_path :css, login.EMAIL_FIELD_TA, login.EMAIL_FIELD_IL
+        check_element_path :css, login.PASSWORD_FIELD_TA, login.PASSWORD_FIELD_IL
+        check_element_path :css, login.SIGN_IN_BUTTON_TA, login.SIGN_IN_BUTTON_IL
+
         login.fill_email_field :ta, email
         login.fill_password_field :ta, password
         login.click_sign_in_button :ta
@@ -105,6 +110,7 @@ describe 'Preconditions' do
 
       step "User clicks Whishlist button" do
         page.execute_script "window.scrollBy(0,500)"
+        modal.click_close_discount_button :ta
         check_element_path :css, planetblue.WHISHLIST_BUTTON_TA, planetblue.WHISHLIST_BUTTON_IL
         product_details.click_whishlist_button :ta
       end

@@ -7,7 +7,6 @@ include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 designers = Designers.new
-menu = Menu.new
 describe 'Preconditions' do
 
   before(:all) do

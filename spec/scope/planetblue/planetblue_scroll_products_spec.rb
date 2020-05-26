@@ -32,7 +32,7 @@ describe 'Preconditions' do
 
       step "User checks Collection Items and scroll down" do
         page.execute_script "window.scrollBy(0,1000)"
-        modal.click_close_discount_button_if_exists
+        modal.click_close_discount_button
         planetblue.find_collection_item_by_num 1
       end
 
@@ -73,7 +73,7 @@ describe 'Preconditions' do
       end
 
       step "User checks Collection Items and scroll down" do
-        modal.click_close_discount_button_if_exists
+        modal.click_close_discount_button
         check_element_path :xpath, planetblue.collection_item_by_num(:ta, 1),
                            planetblue.collection_item_by_num(:il, 1)
         planetblue.find_collection_item_by_num :ta, 1
@@ -99,16 +99,15 @@ describe 'Preconditions' do
         }
       end
 
-      step "User click 'Load More' button" do
-        check_element_path :xpath, planetblue.LOAD_MORE_BUTTON_TA, planetblue.LOAD_MORE_BUTTON_IL
-        planetblue.click_load_more_button :ta
+      step "User scroll down to the bottom of the page" do
+        (1..10).each {
+          page.execute_script "window.scrollBy(0,10000)"
+        }
       end
 
-      step "User checks social links on the bottom of the page",%w(Facebook Instagram Twitter YouTube Pinterest) do |links|
-        links.each { |link|
-          check_element_path :css, planetblue.social_link(:ta, link), planetblue.social_link(:il, link)
-          planetblue.find_social_link :ta, link
-        }
+      step "User click 'Load More' button" do
+        check_element_path :css, planetblue.LOAD_MORE_BUTTON_TA, planetblue.LOAD_MORE_BUTTON_IL
+        planetblue.click_load_more_button :ta
       end
 
     end
