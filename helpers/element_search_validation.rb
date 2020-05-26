@@ -1,6 +1,5 @@
-require 'capybara/rspec'
 require 'json'
-require_relative '../helpers/special_methods'
+require_relative './special_methods'
 
 module ElementSearchValidation
   class DataControl
@@ -30,10 +29,12 @@ module ElementSearchValidation
         @address = address
       end
       page['children'].select { |el| el['node_type'] == 'Element' }.each_with_index { |el, index| search(el, address + '.' + index.to_s, condition) }
+      # puts page.dig('css') if address == '0.1.10.1.0.0.0.2.0.0.1.0.0.2.2.1'
     end
 
     def check_process
       begin
+        # puts @signature.dig('css').sort.to_h
         search(@data, '0', %w(text_value))
         # search(@data, '0', %w(class text_value))
         # search(@data, '0', %w(class)) if @found_elements == 0
@@ -62,20 +63,24 @@ module ElementSearchValidation
   end
 
   # <<< DataControl testing >>>
-
   # dir = project_root + "/logs/" + ARGV[0]
   #
   # test = DataControl.new(dir)
   # test.check_process
   # test.result
 
-  # <<< Requests definition: >>>
-
-  def check_requests
+  # <<< Request definition: >>>
+  def define_new_request
     current_test = Dir[project_root + '/logs/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.last
-    responses = Dir[current_test + '/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.select { |a| a.scan(/\d+/)[-1].to_i > $last_dir }
-    $last_dir = responses.last.scan(/\d+/)[-1].to_i
-    responses.each do |dir|
+    Dir[current_test + '/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }.select { |a| a.scan(/\d+/)[-1].to_i > $last_dir }
+  end
+
+  def save_last_request
+    $last_dir = define_new_request.last.scan(/\d+/)[-1].to_i
+  end
+
+  def check_new_request
+    define_new_request.each do |dir|
       begin
         if File.exist?(dir + '/signature.json')
           instance = DataControl.new(dir)
@@ -88,20 +93,22 @@ module ElementSearchValidation
     end
   end
 
-  def check_element_path(locator_type, ta_locator, initial_locator)
-    ta_path = find(ta(ta_locator), visible: false).path
-    check_requests
-    puts ta_path
+  def define_last_request
+    Dir[project_root + '/logs/*/*'].sort_by { |a| [ a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i ] }.last
+  end
 
-    case locator_type
-      when :css then initial_path = find(:css, initial_locator).path
-      when :id then initial_path = find(:id, initial_locator).path
-      when :xpath then initial_path = find(:xpath, initial_locator).path
-      else p 'Selector type is not set, must be one of: :css, :id, :xpath'
+  def check_last_request
+    begin
+      if File.exist?(define_last_request + '/signature.json')
+        instance = DataControl.new(define_last_request)
+        instance.check_process
+        instance.result
+      end
+    rescue StandardError => ex
+      puts ex
+    ensure
+      return 'oh'
     end
-    puts initial_path
-
-    expect(ta_path).to eq initial_path
   end
 
 end

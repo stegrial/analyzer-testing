@@ -1,4 +1,4 @@
-address = "0.1.35.1.0.1"
+address = "0.1.1.0.1.1.0.0.0.3.1.2.0.1.0.0.0.0.0.0.1"
 
 if address.include? '.'
   array = address.split(".")

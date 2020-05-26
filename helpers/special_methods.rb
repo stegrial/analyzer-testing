@@ -2,17 +2,21 @@ require 'net/http'
 require 'uri'
 
 def step(name, *args)
-  begin
+  # begin
     puts '-' + name
     yield(*args)
-  rescue Exception => e
-    raise e.message
-  end
+  # rescue Exception => ex
+  #   raise ex
+  # end
 end
 
 def project_root
   dir = __dir__.split("/")
   dir[0..dir.length-2].join("/")
+end
+
+def get_current_time
+  Time.now.to_i
 end
 
 def required_relative_all(path)
@@ -60,5 +64,4 @@ def move_between_tabs
     page.driver.browser.close
     page.driver.browser.switch_to.window(window.first)
   end
-
 end

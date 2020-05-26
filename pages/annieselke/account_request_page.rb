@@ -1,11 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class AccountRequestPage
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class AccountRequestPage < PageExtension
 
   CLOSE_BANNER_BTN = "//button[@class='offer-control close']"
 
@@ -80,74 +75,74 @@ class AccountRequestPage
 
   def click_dropdown_arrow_country (key=nil)
     move_to_tab
-    find_element_path(key, :xpath, COUNTRY_SELECT_TA, COUNTRY_SELECT_IL).click
+    find_element(key, il_type: :xpath, tl: COUNTRY_SELECT_TA, il: COUNTRY_SELECT_IL, check_path: $check_path).click
   end
 
   def select_dropdown_country(key=nil, name)
-    find_element_path(key, :xpath, search_country_item(:ta, name), search_country_item(:il, name)).click
+    find_element(key, il_type: :xpath, tl: search_country_item(:ta, name), il: search_country_item(:il, name), check_path: $check_path).click
   end
 
   def click_dropdown_arrow_title (key=nil)
-    find_element_path(key, :xpath, TITLE_SELECT_TA, TITLE_SELECT_IL).click
+    find_element(key, il_type: :xpath, tl: TITLE_SELECT_TA, il: TITLE_SELECT_IL, check_path: $check_path).click
   end
 
   def select_dropdown_title(key=nil, name)
-    find_element_path(key, :xpath, search_title_item(:ta, name), search_title_item(:il, name)).click
+    find_element(key, il_type: :xpath, tl: search_title_item(:ta, name), il: search_title_item(:il, name), check_path: $check_path).click
   end
 
   def fill_first_name(key = nil, value)
-    find_element_path(key, :xpath, FIRST_NAME_TA, FIRST_NAME_IL).set(value)
+    find_element(key, il_type: :xpath, tl: FIRST_NAME_TA, il: FIRST_NAME_IL, check_path: $check_path).set(value)
   end
 
   def fill_last_name(key = nil, value)
-    find_element_path(key, :xpath, LAST_NAME_TA, LAST_NAME_IL).set(value)
+    find_element(key, il_type: :xpath, tl: LAST_NAME_TA, il: LAST_NAME_IL, check_path: $check_path).set(value)
   end
 
   def fill_address_line(key = nil, value)
-    find_element_path(key, :xpath, ADDRESS_LINE_TA, ADDRESS_LINE_IL).set(value)
+    find_element(key, il_type: :xpath, tl: ADDRESS_LINE_TA, il: ADDRESS_LINE_IL, check_path: $check_path).set(value)
   end
 
   def fill_city(key = nil, value)
-    find_element_path(key, :xpath, CITY_FIELD_TA, CITY_FIELD_IL).set(value)
+    find_element(key, il_type: :xpath, tl: CITY_FIELD_TA, il: CITY_FIELD_IL, check_path: $check_path).set(value)
   end
 
   def fill_post_code(key = nil, value)
-    find_element_path(key, :xpath, POST_CODE_TA, POST_CODE_IL).set(value)
+    find_element(key, il_type: :xpath, tl: POST_CODE_TA, il: POST_CODE_IL, check_path: $check_path).set(value)
   end
   def click_dropdown_arrow_state (key=nil)
-    find_element_path(key, :xpath, STATE_REGION_TA, STATE_REGION_IL).click
+    find_element(key, il_type: :xpath, tl: STATE_REGION_TA, il: STATE_REGION_IL, check_path: $check_path).click
   end
 
   def select_dropdown_state(key=nil, name)
-    find_element_path(key, :xpath, search_state_item(:ta, name), search_state_item(:il, name)).click
+    find_element(key, il_type: :xpath, tl: search_state_item(:ta, name), il: search_state_item(:il, name), check_path: $check_path).click
   end
 
   def click_dropdown_arrow_sales (key=nil)
-    find_element_path(key, :xpath, TYPE_SALES_TA, TYPE_SALES_IL).click
+    find_element(key, il_type: :xpath, tl: TYPE_SALES_TA, il: TYPE_SALES_IL, check_path: $check_path).click
   end
 
   def select_dropdown_sales_types(key=nil, name)
-    find_element_path(key, :xpath, search_type_sales_item(:ta, name), search_type_sales_item(:il, name)).click
+    find_element(key, il_type: :xpath, tl: search_type_sales_item(:ta, name), il: search_type_sales_item(:il, name), check_path: $check_path).click
   end
 
   def fill_company(key = nil, value)
-    find_element_path(key, :xpath, COMPANY_TA, COMPANY_IL).set(value)
+    find_element(key, il_type: :xpath, tl: COMPANY_TA, il: COMPANY_IL, check_path: $check_path).set(value)
   end
 
   def fill_phone(key = nil, value)
-    find_element_path(key, :xpath, PHONE_NUMBER_TA, PHONE_NUMBER_IL).set(value)
+    find_element(key, il_type: :xpath, tl: PHONE_NUMBER_TA, il: PHONE_NUMBER_IL, check_path: $check_path).set(value)
   end
 
   def fill_email(key = nil, value)
-    find_element_path(key, :xpath, WEBSITE_TA, WEBSITE_IL).set(value)
+    find_element(key, il_type: :xpath, tl: WEBSITE_TA, il: WEBSITE_IL, check_path: $check_path).set(value)
   end
 
   def fill_resale_number(key = nil, value)
-    find_element_path(key, :xpath, RESALE_NUMBER_TA, RESALE_NUMBER_IL).set(value)
+    find_element(key, il_type: :xpath, tl: RESALE_NUMBER_TA, il: RESALE_NUMBER_IL, check_path: $check_path).set(value)
   end
 
   def click_request_account(key=nil)
-    find_element_path(key, :xpath, ACCOUNT_REQUEST_BTN_TA, ACCOUNT_REQUEST_BTN_IL).click
+    find_element(key, il_type: :xpath, tl: ACCOUNT_REQUEST_BTN_TA, il: ACCOUNT_REQUEST_BTN_IL, check_path: $check_path).click
   end
 
   def move_to_tab

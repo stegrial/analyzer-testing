@@ -1,49 +1,30 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-
-class TheTiebarCanada
-
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class TheTiebarCanada < PageExtension
 
   SHOP_WEDDING_LINK_IL = "//div[@id='canada-content']//a[@href='/wedding-ties']"
   SHOP_WEDDING_LINK_TA = "thetiebar:canada_page:wedding_shop"
-  SHOP_WEDDING_LINK_EP = "EP:thetiebar:canada_page:wedding_shop"
 
   SHIRTS_SHOP_LINK_IL = "//a[@href='/shirts']"
   SHIRTS_SHOP_LINK_TA = "thetiebar:canada_page:shirts_shop"
-  SHIRTS_SHOP_LINK_EP = "EP:thetiebar:canada_page:shirts_shop"
 
-  THE_TIABAR_CANADA_H1_IL = "//h1[contains(text(),'The Tie Bar Canada')]"
+  THE_TIABAR_CANADA_H1_IL = "//h1[text()='Tie Bar Canada']"
   THE_TIABAR_CANADA_H1_TA = "thetiebar:canada_page:canada_h1"
-  THE_TIABAR_CANADA_H1_EP = "EP:thetiebar:canada_page:canada_h1"
 
 
   def should_see_canada_h1(key = nil)
-    post_processing key do
-      return assert_selector(ta(THE_TIABAR_CANADA_H1_EP)) if key == :ep
-      return assert_selector(:xpath, THE_TIABAR_CANADA_H1_IL) if key == :il
-      assert_selector(:xpath, ta(THE_TIABAR_CANADA_H1_TA, THE_TIABAR_CANADA_H1_IL))
-    end
+    element = find_element(key, il_type: :xpath, tl: THE_TIABAR_CANADA_H1_TA, il: THE_TIABAR_CANADA_H1_IL, check_path: $check_path)
+    expect(element).to be_visible
+    # return assert_selector(:xpath, THE_TIABAR_CANADA_H1_IL) if key == :il
+    # assert_selector(:xpath, ta(THE_TIABAR_CANADA_H1_TA, THE_TIABAR_CANADA_H1_IL))
   end
 
   def click_wedding_shop(key = nil)
-    post_processing key do
-      return find(ta(SHOP_WEDDING_LINK_EP)).click if key == :ep
-      return find(:xpath, SHOP_WEDDING_LINK_IL).click if key == :il
-      find(:xpath, ta(SHOP_WEDDING_LINK_TA, SHOP_WEDDING_LINK_IL)).click
-    end
+    find_element(key, il_type: :xpath, tl: SHOP_WEDDING_LINK_TA, il: SHOP_WEDDING_LINK_IL, check_path: $check_path).click
   end
 
   def click_shirts_shop(key = nil)
-    post_processing key do
-      return find(ta(SHIRTS_SHOP_LINK_EP)).click if key == :ep
-      return find(:xpath, SHIRTS_SHOP_LINK_IL).click if key == :il
-      find(:xpath, ta(SHIRTS_SHOP_LINK_TA, SHIRTS_SHOP_LINK_IL)).click
-    end
+    find_element(key, il_type: :xpath, tl: SHIRTS_SHOP_LINK_TA, il: SHIRTS_SHOP_LINK_IL, check_path: $check_path).click
   end
 
 end

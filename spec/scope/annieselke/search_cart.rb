@@ -1,69 +1,50 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/annieselke/*.rb"
 
-include ElementSearchValidation
-
-home_page = HomePage.new
+header_page = HeaderPage.new
+banner_page = BannerPage.new
 
 describe 'Preconditions' do
 
   before(:all) do
+    $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 800)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
+  end
+
+  after(:each) do
+    $check_path = true if $run_parameters.include?('search')
   end
 
   feature 'Search items on home page and check cart' do
 
-    # Initial locators with Recording
+    $run_count.times do
+      scenario 'Test - Recording', "#{$tag}": true do
+        step "User goes to the page", settings('annieselke')['page'] do |url|
+          page.visit url
+          banner_page.close_banner
+          banner_page.close_cupon_banner
+        end
 
-    scenario 'Recording IL', record: true do
-      step "User goes to the page", settings('annieselke')['page'] do |url|
-        home_page.visit url
-        home_page.close_banner
-      end
+        step "Search items", "GA" do |value|
+          header_page.fill_search_input(value)
+        end
+        step "Check cart" do
+          header_page.move_to_cart_link :il #step is duplicated below
+        end
 
-      step "Search items"  do |value|
-        home_page.fill_search_input(value)
-      end
-      step "Check cart"  do
-        home_page.move_to_cart_link
-      end
+        step "Click View Cart" do
+          header_page.click_view_cart_btn
+        end
 
-      step "Click View Cart"  do
-        home_page.click_view_cart_btn
-      end
+        step "Click to cart link" do
+          header_page.click_cart_link
+        end
 
-      step "Click to cart link"  do
-        home_page.click_cart_link
+        sleep 3
       end
     end
 
-    scenario 'Searching IL', il: true do
-      step "User goes to the page", settings('annieselke')['page'] do |url|
-        home_page.visit url
-        home_page.close_banner
-      end
-
-      step "Search items"  do |value|
-        check_element_path :xpath, Home_Page::SEARCH_FIELD_TA, Home_Page::SEARCH_FIELD_IL
-        home_page.fill_search_input(value)
-      end
-      step "Check cart"  do
-        check_element_path :xpath, Home_Page::CART_LINK_TA, Home_Page::CART_LINK_IL
-        home_page.move_to_cart_link
-      end
-
-      step "Click View Cart"  do
-        check_element_path :xpath, Home_Page::VIEW_CART_TA, Home_Page::VIEW_CART_IL
-        home_page.click_view_cart_btn
-      end
-
-      step "Click to cart link"  do
-        check_element_path :xpath, Home_Page::CART_LINK_TA, Home_Page::CART_LINK_IL
-        home_page.click_cart_link
-      end
-    end
   end
 end
