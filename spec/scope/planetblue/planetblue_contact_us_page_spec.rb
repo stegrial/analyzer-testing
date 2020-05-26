@@ -11,36 +11,43 @@ menu = Menu.new
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
+    $check_path = false if $run_count > 1
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
+  after(:each) do
+    $check_path = true if $run_parameters.include?('search')
+  end
 
   feature 'Planet Blue - Navigate to Contact Us Page' do
 
-    scenario 'Recording Locators', record: true do
+    $run_count.times do
+      scenario 'Recording Locators', "#{$tag}": true do
 
-      step "User goes to the page", settings('planetblue')['page'] do |url|
-        page.visit url
+        step "User goes to the page", settings('planetblue')['page'] do |url|
+          page.visit url
+        end
+
+        step "User clicks on Menu button" do
+          menu.click_menu_button
+        end
+
+        step "User clicks on Menu Category", 'Contact Us' do |value|
+          menu.click_menu_item value
+        end
+
+        step "User checks page Header", 'Contact Us' do |title|
+          scroll_to_element 700
+          planetblue.find_page_header title
+        end
+
+        step "User checks Contacts Us Items" do
+          contact_us.find_contact_us_item 'Call Us', 'Mon - Thu : 8 AM PST - 2 PM PST'
+          contact_us.find_contact_us_item 'Email Us', 'orders@shopplanetblue.com'
+        end
+
       end
-
-      step "User clicks on Menu button" do
-        menu.click_menu_button
-      end
-
-      step "User clicks on Menu Category", 'Contact Us' do |value|
-        menu.click_menu_item value
-      end
-
-      step "User checks page Header", 'Contact Us' do |title|
-        page.execute_script "window.scrollBy(0,700)"
-        planetblue.find_page_header title
-      end
-
-      step "User checks Contacts Us Items" do
-        contact_us.find_contact_us_item 'Call Us', 'Mon - Thu : 8 AM PST - 2 PM PST'
-        contact_us.find_contact_us_item 'Email Us', 'orders@shopplanetblue.com'
-      end
-
     end
   end
 end

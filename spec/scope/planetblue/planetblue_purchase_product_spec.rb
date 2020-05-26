@@ -8,16 +8,23 @@ include ElementSearchValidation
 product_details = ProductDetails.new
 order_details = OrderDetails.new
 modal = Modal.new
+
 describe 'Preconditions' do
 
   before(:all) do
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
+    $check_path = false if $run_count > 1
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
+  after(:each) do
+    $check_path = true if $run_parameters.include?('search')
+  end
 
   feature 'Planet Blue - Purchase Product (without Login)' do
 
-    scenario 'Recording Locators', record: true do
+    $run_count.times do
+    scenario 'Recording Locators', "#{$tag}": true do
 
       step "User goes to the page",
            settings('planetblue')['page'] + 'products/the-jessie-midi-2?variant=31773312122964' do |url|
@@ -56,6 +63,7 @@ describe 'Preconditions' do
         order_details.find_pay_button
       end
 
+    end
     end
   end
 end
