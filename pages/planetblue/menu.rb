@@ -1,12 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class Menu
-
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class Menu < PageExtension
 
   MENU_BUTTON_IL = "[aria-label='Menu']"
   MENU_BUTTON_TA = "planetblue:menu:menu_button"
@@ -21,7 +15,7 @@ class Menu
   MENU_USER_BUTTON_IL = "a[href*='/account/login']"
 
   def click_menu_button(key = nil)
-    find_element_path(key, :css, MENU_BUTTON_TA, MENU_BUTTON_IL).click
+    find_element(key, il_type: :css, tl: MENU_BUTTON_TA, il: MENU_BUTTON_IL, check_path: $check_path).click
   end
 
   def menu_category(key, name)
@@ -30,7 +24,7 @@ class Menu
   end
 
   def click_menu_category(key = nil, name)
-    find_element_path(key, :xpath, menu_category(:ta, name), menu_category(:il, name)).click
+    find_element(key, il_type: :xpath, tl: menu_category(:ta, name), il: menu_category(:il, name), check_path: $check_path).click
   end
 
   def menu_item(key, name)
@@ -39,15 +33,15 @@ class Menu
   end
 
   def click_menu_item(key = nil, name)
-    find_element_path(key, :xpath, menu_item(:ta, name), menu_item(:il, name)).click
+    find_element(key, il_type: :xpath, tl: menu_item(:ta, name), il: menu_item(:il, name), check_path: $check_path).click
   end
 
   def click_search_button(key = nil)
-    find_element_path(key, :css, SEARCH_BUTTON_TA, SEARCH_BUTTON_IL).click
+    find_element(key, il_type: :css, tl: SEARCH_BUTTON_TA, il: SEARCH_BUTTON_IL, check_path: $check_path).click
   end
 
   def fill_search_field(key = nil, value)
-    find_element_path(key, :css, SEARCH_FIELD_TA, SEARCH_FIELD_IL).fill_in with: value
+    find_element(key, il_type: :css, tl: SEARCH_FIELD_TA, il: SEARCH_FIELD_IL, check_path: $check_path).fill_in with: value
   end
 
   def search_item(key, name)
@@ -56,11 +50,11 @@ class Menu
   end
 
   def click_search_item(key = nil, name)
-    find_element_path(key, :xpath, search_item(:ta, name), search_item(:il, name)).click
+    find_element(key, il_type: :xpath, tl: search_item(:ta, name), il: search_item(:il, name), check_path: $check_path).click
   end
 
   def click_user_button(key = nil)
-    find_element_path(key, :css, MENU_USER_BUTTON_TA, MENU_USER_BUTTON_IL).click
+    find_element(key, il_type: :css, tl: MENU_USER_BUTTON_TA, il: MENU_USER_BUTTON_IL, check_path: $check_path).click
   end
 
 end

@@ -38,8 +38,8 @@ describe 'Preconditions' do
         end
 
         step "User checks Designers List Item", '#', 'Y' do |value1, value2|
-          designers.find_designers_list_section value1
-          designers.find_designers_list_section value2
+          designers.should_see_designers_list_section value1
+          designers.should_see_designers_list_section value2
         end
 
         step "User clicks Designer Item", '27 MILES MALIBU' do |value|

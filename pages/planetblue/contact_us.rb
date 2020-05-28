@@ -1,20 +1,16 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class ContactUs
-
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class ContactUs < PageExtension
 
   def contact_us_item(key, name, text)
     locator_by key, "//*[@class='panel__title' and text()='#{name}']//ancestor::*[@class='content-grid__item']//*[@class='panel__body']//*[text()='#{text}']",
                "planetblue:contact_us:item:#{ta_name(name)}"
   end
 
-  def find_contact_us_item(key = nil, name, text)
-    find_element_path key, :xpath, contact_us_item(:ta, name, text), contact_us_item(:il, name, text)
+  def should_see_contact_us_item(key = nil, name, text)
+    element = find_element key, il_type: xpath, tl: contact_us_item(:ta, name, text),
+                           il: contact_us_item(:il, name, text), check_path: $check_path
+    expect(element).to be_visible
   end
 
 end

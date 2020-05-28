@@ -62,15 +62,15 @@ describe 'Preconditions' do
         end
 
         step "User checks input field with link" do
-          wishlist.find_input_field_with_link
+          wishlist.should_see_input_field_with_link
         end
 
         step "User checks Copy Link button" do
-          wishlist.find_copy_link_button
+          wishlist.should_see_copy_link_button
         end
 
         step "User checks Product Card" do
-          wishlist.find_product_card 1
+          wishlist.should_see_product_card 1
         end
 
         step "User clicks Remove Card button" do

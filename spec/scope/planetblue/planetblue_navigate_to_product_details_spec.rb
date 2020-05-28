@@ -49,72 +49,72 @@ describe 'Preconditions' do
         end
 
         step "User checks product image", 'THE JESSIE MIDI' do |name|
-          product_details.find_product_scale_image name
-          product_details.find_product_image name
+          product_details.should_see_product_scale_image name
+          product_details.should_see_product_image name
         end
 
         step "User checks product title", 'THE JESSIE MIDI' do |name|
-          product_details.find_product_title name
+          product_details.should_see_product_title name
         end
 
         step "User checks product radiobuttons", 'THE JESSIE MIDI', 5 do |name, number|
           (1..number).each { |num|
-            product_details.find_product_radiobutton name, num
+            product_details.should_see_product_radiobutton name, num
           }
         end
 
         step "User checks product designer" do
-          product_details.find_product_designer
+          product_details.should_see_product_designer
         end
 
         step "User checks product ID" do
-          product_details.find_product_id
+          product_details.should_see_product_id
         end
 
         step "User checks product price" do
-          product_details.find_product_price
+          product_details.should_see_product_price
         end
 
         step "User checks product payment details" do
-          product_details.find_payment_details
+          product_details.should_see_payment_details
         end
 
         step "User checks 'Learn more' link" do
-          product_details.find_learn_more_link
+          product_details.should_see_learn_more_link
         end
 
         step "User checks product payment details" do
-          product_details.find_reviews_number
+          product_details.should_see_reviews_number
         end
 
         step "User checks product sizes guide link" do
-          product_details.find_sizes_guide_link
+          product_details.should_see_sizes_guide_link
         end
 
         step "User checks product sizes items", %w(XS S M L) do |sizes|
           sizes.each { |size|
-            product_details.find_size_item size
+            product_details.should_see_size_item size
           }
         end
 
         step "User checks 'Add to bag' button" do
-          product_details.find_add_to_bag_button
+          product_details.should_see_add_to_bag_button
         end
 
         step "User checks Social Share buttons", %w(facebook twitter pinterest) do |social_sharing_buttons|
           social_sharing_buttons.each { |button|
-            product_details.find_social_share_button button
+            product_details.should_see_social_share_button button
           }
         end
 
         step "User checks section 'You may also like'" do
-          product_details.find_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI'
-          product_details.find_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI | New'
+          product_details.should_see_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI'
+          product_details.should_see_bottom_section_item 'You May Also Like', 'THE JESSIE MIDI | New'
         end
 
         step "User checks section 'Complete the look'" do
-          product_details.find_bottom_section_item 'Complete the Look', 'WHAT IF MAXI DRESS | New'
-          product_details.find_bottom_section_item 'Complete the Look', 'THE BLUFFS MAXI DRESS | New'
+          product_details.should_see_bottom_section_item 'Complete the Look', 'WHAT IF MAXI DRESS | New'
+          product_details.should_see_bottom_section_item 'Complete the Look', 'THE BLUFFS MAXI DRESS | New'
         end
 
       end

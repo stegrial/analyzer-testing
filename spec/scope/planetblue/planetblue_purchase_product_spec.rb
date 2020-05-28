@@ -55,12 +55,12 @@ describe 'Preconditions' do
             "City / Suburb",
             "Mobile Phone"
         ].each { |name|
-          order_details.find_order_field name
+          order_details.should_see_order_field name
         }
       end
 
       step "User clicks 'Pay and place order' button" do
-        order_details.find_pay_button
+        order_details.should_see_pay_button
       end
 
     end

@@ -1,14 +1,8 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class Modal
+class Modal < PageExtension
 
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
-
-  CLOSE_DISCOUNT_BUTTON_IL = "cloudiqClose" # "button#buttoniqClose"
+  CLOSE_DISCOUNT_BUTTON_IL = "cloudiqClose"
   CLOSE_DISCOUNT_BUTTON_TA = "planetblue:modal:close_discount_button"
 
   CLOSE_POLICIES_BUTTON_IL = "(//*[text()=\"We've Updated Our Policies\"]//ancestor::div[contains(@class, 'klaviyo-form')]//button)[1]"
@@ -16,12 +10,12 @@ class Modal
 
   def click_close_discount_button(key = nil)
     within_frame 0 do
-      find_element_path(key, :id, CLOSE_DISCOUNT_BUTTON_TA, CLOSE_DISCOUNT_BUTTON_IL).click
+      find_element(key, il_type: :id, tl: CLOSE_DISCOUNT_BUTTON_TA, il: CLOSE_DISCOUNT_BUTTON_IL, check_path: $check_path).click
     end
   end
 
   def click_close_policies_button(key = nil)
-      find_element_path(key, :xpath, CLOSE_POLICIES_BUTTON_TA, CLOSE_POLICIES_BUTTON_IL).click
+      find_element(key, il_type: :xpath, tl: CLOSE_POLICIES_BUTTON_TA, il: CLOSE_POLICIES_BUTTON_IL, check_path: $check_path).click
   end
 
 end

@@ -47,8 +47,8 @@ describe 'Preconditions' do
         end
 
         step "User checks Category Dropdowns", 'REFINE', 'Sort' do |value1, value2|
-          planetblue.find_category_dropdown value1
-          planetblue.find_category_dropdown value2
+          planetblue.should_see_category_dropdown value1
+          planetblue.should_see_category_dropdown value2
         end
 
         step "User checks Collection Items", 'RUTH TUNIC | New', 'Bright Rose' do |name, color|

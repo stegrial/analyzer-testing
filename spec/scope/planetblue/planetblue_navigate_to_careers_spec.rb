@@ -29,15 +29,15 @@ describe 'Preconditions' do
         end
 
         step "User checks Careers Header" do
-          careers.find_careers_header
+          careers.should_see_careers_header
         end
 
         step "User checks Career item", 'Ala Moana Store', 'Assistant Store Manager' do |store, name|
-          careers.find_career_item store, name
+          careers.should_see_career_item store, name
         end
 
         step "User checks Career item", 'Venice Store', 'Keyholder' do |store, name|
-          careers.find_career_item store, name
+          careers.should_see_career_item store, name
         end
 
       end

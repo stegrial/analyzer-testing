@@ -43,11 +43,11 @@ describe 'Preconditions' do
         end
 
         step "User checks Store item", 'Planet Blue | Newport Beach' do |title|
-          find_a_store.find_store_item_details title
+          find_a_store.should_see_store_item_details title
         end
 
         step "User checks Store item", 'Planet Blue | Dallas' do |title|
-          find_a_store.find_store_item_details title
+          find_a_store.should_see_store_item_details title
         end
 
       end

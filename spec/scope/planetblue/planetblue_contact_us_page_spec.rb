@@ -43,8 +43,8 @@ describe 'Preconditions' do
         end
 
         step "User checks Contacts Us Items" do
-          contact_us.find_contact_us_item 'Call Us', 'Mon - Thu : 8 AM PST - 2 PM PST'
-          contact_us.find_contact_us_item 'Email Us', 'orders@shopplanetblue.com'
+          contact_us.should_see_contact_us_item 'Call Us', 'Mon - Thu : 8 AM PST - 2 PM PST'
+          contact_us.should_see_contact_us_item 'Email Us', 'orders@shopplanetblue.com'
         end
 
       end

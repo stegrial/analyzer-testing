@@ -1,12 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class Whishlist
-
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class Whishlist < PageExtension
 
   INPUT_FIELD_WITH_LINK_TA = "planetblue:whishlist:input_field_with_link"
   INPUT_FIELD_WITH_LINK_IL = "input.giftreggie-permalink.form-control"
@@ -17,8 +11,10 @@ class Whishlist
   WISHLIST_BACK_BUTTON_TA = "planetblue:whishlist:back_button"
   WISHLIST_BACK_BUTTON_IL = ".wishlist__back-button"
 
-  def find_input_field_with_link(key = nil)
-    find_element_path(key, :css, INPUT_FIELD_WITH_LINK_TA, INPUT_FIELD_WITH_LINK_IL)
+  def should_see_input_field_with_link(key = nil)
+    element = find_element(key, il_type: :css, tl: INPUT_FIELD_WITH_LINK_TA,
+                 il: INPUT_FIELD_WITH_LINK_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
   def product_card(key, number)
@@ -29,20 +25,26 @@ class Whishlist
     locator_by key, "//*[contains(@class, 'product-card')][#{number}]" + "//*[contains(@class, 'wishlist__remove-button')]", "planetblue:product_card:#{number}:remove_button"
   end
 
-  def find_product_card(key = nil, number)
-    find_element_path(key, :xpath, product_card(:ta, number), product_card(:il, number))
+  def should_see_product_card(key = nil, number)
+    element = find_element(key, il_type: :xpath, tl: product_card(:ta, number),
+                           il: product_card(:il, number), check_path: $check_path)
+    expect(element).to be_visible
   end
 
   def click_whishlist_remove_button(key = nil, card_id)
-    find_element_path(key, :xpath, whishlist_remove_button(:ta, card_id), whishlist_remove_button(:il, card_id)).click
+    find_element(key, il_type: :xpath, tl: whishlist_remove_button(:ta, card_id),
+                 il: whishlist_remove_button(:il, card_id), check_path: $check_path).click
   end
 
-  def find_copy_link_button(key = nil)
-    find_element_path(key, :css, COPY_LINK_BUTTON_TA, COPY_LINK_BUTTON_IL)
+  def should_see_copy_link_button(key = nil)
+    element = find_element(key, il_type: :css, tl: COPY_LINK_BUTTON_TA,
+                           il: COPY_LINK_BUTTON_IL, check_path: $check_path)
+    expect(element).to be_visible
   end
 
   def click_whishlist_back_button(key = nil)
-    find_element_path(key, :css, WISHLIST_BACK_BUTTON_TA, WISHLIST_BACK_BUTTON_IL).click
+    find_element(key, il_type: :css, tl: WISHLIST_BACK_BUTTON_TA,
+                 il: WISHLIST_BACK_BUTTON_IL, check_path: $check_path).click
   end
 
 end
