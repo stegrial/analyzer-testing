@@ -14,7 +14,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
+    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
   after(:each) do
@@ -44,11 +44,6 @@ describe 'Preconditions' do
 
         step "User clicks on Menu Category", 'Basics' do |value|
           menu.click_menu_category value
-        end
-
-        step "User checks Category Dropdowns", 'REFINE', 'Sort' do |value1, value2|
-          planetblue.should_see_category_dropdown value1
-          planetblue.should_see_category_dropdown value2
         end
 
         step "User checks Collection Items", 'RUTH TUNIC | New', 'Bright Rose' do |name, color|

@@ -1,9 +1,7 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
 
-include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 modal = Modal.new
@@ -13,7 +11,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
+    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
   after(:each) do
@@ -34,17 +32,17 @@ describe 'Preconditions' do
         end
 
         step "User checks page Header", "What's New" do |title|
-          planetblue.find_page_header title
+          planetblue.should_see_page_header title
         end
 
         step "User checks Collection Items and scroll down" do
           page.execute_script "window.scrollBy(0,1000)"
           modal.click_close_discount_button
-          planetblue.find_collection_item_by_num 1
+          planetblue.should_see_collection_item_by_num 1
         end
 
         step "User checks Collection Items" do
-          planetblue.find_collection_item_by_num 7
+          planetblue.should_see_collection_item_by_num 7
         end
 
         step "User clicks 'Back to top' button" do
@@ -53,7 +51,7 @@ describe 'Preconditions' do
 
         step "User scroll down to the bottom of the page" do
           (1..10).each {
-            page.execute_script "window.scrollBy(0,10000)"
+            scroll_to_element 10000
           }
         end
 

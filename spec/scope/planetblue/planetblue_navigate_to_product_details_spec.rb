@@ -1,9 +1,7 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
 
-include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 product_details = ProductDetails.new
@@ -14,7 +12,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
+    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
   after(:each) do
@@ -35,7 +33,7 @@ describe 'Preconditions' do
         end
 
         step "User checks page Header", 'Clothing' do |title|
-          planetblue.find_page_header title
+          planetblue.should_see_page_header title
         end
 
         step "User clicks Collection Item", 'THE JESSIE MIDI', 'the-jessie-midi-2?' do |name, link|
@@ -44,8 +42,8 @@ describe 'Preconditions' do
 
         step "User checks Breadcrumbs", 'Home', 'THE JESSIE MIDI' do |breadcrumb1, breadcrumb2|
           modal.click_close_discount_button
-          planetblue.find_breadcrumb breadcrumb1, true
-          planetblue.find_breadcrumb breadcrumb2, false
+          planetblue.should_see_breadcrumb breadcrumb1, true
+          planetblue.should_see_breadcrumb breadcrumb2, false
         end
 
         step "User checks product image", 'THE JESSIE MIDI' do |name|
@@ -98,7 +96,7 @@ describe 'Preconditions' do
         end
 
         step "User checks 'Add to bag' button" do
-          product_details.should_see_add_to_bag_button
+          product_details.click_add_to_bag_button
         end
 
         step "User checks Social Share buttons", %w(facebook twitter pinterest) do |social_sharing_buttons|

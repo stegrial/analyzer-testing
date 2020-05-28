@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
-
-include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 menu = Menu.new
@@ -17,7 +14,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
+    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
   after(:each) do
@@ -27,7 +24,7 @@ describe 'Preconditions' do
   feature 'Planet Blue - Add item to whishlist' do
 
     $run_count.times do
-      scenario 'Recording Locators', "#{tag}": true do
+      scenario 'Recording Locators', "#{$ag}": true do
 
         step "User goes to the page", settings('planetblue')['page'] do |url|
           page.visit url

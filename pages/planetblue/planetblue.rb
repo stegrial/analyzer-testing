@@ -22,26 +22,16 @@ class PlanetBlue < PageExtension
                "planetblue:category_dropdown:#{ta_name(name)}"
   end
 
-  def should_see_category_dropdown(key = nil, name)
-    element = find_element(key, il_type: :xpath, tl: category_dropdown(:ta, name),
-                 il: category_dropdown(:il, name), check_path: $check_path)
-    expect(element).to be_visible
-  end
-
   def sort_dropdown_value(key, value)
     locator_by key, "//span[text()='#{value}']/parent::button",
                "planetblue:category_dropdown:sort_value:#{ta_name(value)}"
   end
 
-  def should_see_sort_dropdown_value(key = nil, value)
-    element = find_element(key, il_type: :xpath, tl: sort_dropdown_value(:ta, value),
-                           il: sort_dropdown_value(:il, value), check_path: $check_path)
-    expect(element).to be_visible
-  end
-
   def select_from_sort_dropdown(key = nil, value)
-    should_see_category_dropdown(key, 'Sort').click
-    should_see_sort_dropdown_value(key, value).click
+    find_element(key, il_type: :xpath, tl: category_dropdown(:ta, 'Sort'),
+                 il: category_dropdown(:il, 'Sort'), check_path: $check_path).click
+    find_element(key, il_type: :xpath, tl: sort_dropdown_value(:ta, value),
+                 il: sort_dropdown_value(:il, value), check_path: $check_path).click
   end
 
   def refine_category_block(key, value)
@@ -67,25 +57,18 @@ class PlanetBlue < PageExtension
     expect(element).to be_visible
   end
 
-  def should_see_close_dropdown_button(key = nil)
-    element = find_element key, il_type: :css, tl: CLOSE_DROPDOWN_BUTTON_TA,
-                           il: CLOSE_DROPDOWN_BUTTON_IL, check_path: $check_path
-    expect(element).to be_visible
-  end
-
-  def click_apply_dropdown_button(key = nil)
-    element = find_element key, il_type: :xpath, tl: APPLY_BUTTON_TA, il: APPLY_BUTTON_IL, check_path: $check_path
-    expect(element).to be_visible
-  end
-
   def select_from_refine_dropdown(key = nil, section, values)
-    should_see_category_dropdown(key, 'REFINE').click
-    should_see_refine_category_block(key, section).click
+    find_element(key, il_type: :xpath, tl: category_dropdown(:ta, 'REFINE'),
+                 il: category_dropdown(:il, 'REFINE'), check_path: $check_path).click
+    find_element(key, il_type: :xpath, tl: refine_category_block(:ta, section),
+                 il: refine_category_block(:il, section), check_path: $check_path).click
     values.each do |value|
-      should_see_refine_dropdown_checkbox(key, section, value).click
+      find_element(key, il_type: :xpath, tl: refine_dropdown_checkbox(:ta, section, value),
+                   il: refine_dropdown_checkbox(:il, section, value), check_path: $check_path).click
     end
-    should_see_close_dropdown_button(key)
-    click_apply_dropdown_button(key)
+    find_element(key, il_type: :css, tl: CLOSE_DROPDOWN_BUTTON_TA,
+                 il: CLOSE_DROPDOWN_BUTTON_IL, check_path: $check_path).click
+    find_element(key, il_type: :xpath, tl: APPLY_BUTTON_TA, il: APPLY_BUTTON_IL, check_path: $check_path).click
   end
 
   def _collection_item(name, link = nil)
@@ -138,24 +121,26 @@ class PlanetBlue < PageExtension
                "planetblue:collection_item:number_#{number}"
   end
 
-  def find_collection_item(key = nil, name, link)
+  def should_see_collection_item(key = nil, name, link)
     element = find_element(key, il_type: :xpath, tl: collection_item_by_link(:ta, name, link),
                            il: collection_item_by_link(:il, name, link), check_path: $check_path)
     expect(element).to be_visible
   end
 
-  def find_collection_item_by_num(key = nil, number)
+  def should_see_collection_item_by_num(key = nil, number)
     element = find_element(key, il_type: :xpath, tl: collection_item_by_num(:ta, number),
                            il: collection_item_by_num(:il, number), check_path: $check_path)
     expect(element).to be_visible
   end
 
   def click_collection_item(key = nil, name, link)
-    find_collection_item(key, name, link).click
+    find_element(key, il_type: :xpath, tl: collection_item_by_link(:ta, name, link),
+                 il: collection_item_by_link(:il, name, link), check_path: $check_path).click
   end
 
   def click_collection_item_by_num(key = nil, number)
-    find_collection_item_by_num(key, number).click
+    find_element(key, il_type: :xpath, tl: collection_item_by_num(:ta, number),
+                il: collection_item_by_num(:il, number), check_path: $check_path).click
   end
 
   def click_back_to_top_button(key = nil)
@@ -170,14 +155,15 @@ class PlanetBlue < PageExtension
     locator_by key, "a[name='#{name}']", "planetblue:social_link:#{ta_name(name)}"
   end
 
-  def find_social_link(key = nil, name)
-    element = find_element(key, il_type: :css, tl: find_social_link(:ta, name),
-                           il: find_social_link(:il, name), check_path: $check_path)
+  def should_see_social_link(key = nil, name)
+    element = find_element(key, il_type: :css, tl: social_link(:ta, name),
+                           il: social_link(:il, name), check_path: $check_path)
     expect(element).to be_visible
   end
 
   def click_social_link(key = nil, name)
-    find_social_link(key, name).click
+    find_element(key, il_type: :css, tl: social_link(:ta, name),
+                 il: social_link(:il, name), check_path: $check_path).click
   end
 
   def total_items(key = nil, number)
@@ -185,7 +171,7 @@ class PlanetBlue < PageExtension
                "planetblue:total_items"
   end
 
-  def find_total_items(key = nil, number)
+  def should_see_total_items(key = nil, number)
     element = find_element(key, il_type: :xpath, tl: total_items(:ta, number),
                            il: total_items(:il, number), check_path: $check_path)
     expect(element).to be_visible
@@ -196,7 +182,7 @@ class PlanetBlue < PageExtension
                "planetblue:page_header_title:#{ta_name(title)}"
   end
 
-  def find_page_header(key = nil, title)
+  def should_see_page_header(key = nil, title)
     element = find_element key, il_type: :xpath, tl: page_header(:ta, title),
                            il: page_header(:il, title), check_path: $check_path
     expect(element).to be_visible
@@ -217,7 +203,7 @@ class PlanetBlue < PageExtension
     locator_by key, el,"planetblue:breadcrumbs:#{ta_name(name)}"
   end
 
-  def find_breadcrumb(key = nil, value, with_link)
+  def should_see_breadcrumb(key = nil, value, with_link)
     element = find_element(key, il_type: :xpath, tl: breadcrumb(:ta, value, with_link),
                            il: breadcrumb(:il, value, with_link), check_path: $check_path)
     expect(element).to be_visible
@@ -235,7 +221,8 @@ class PlanetBlue < PageExtension
   end
 
   def click_content_card_button(key = nil, name)
-    find_content_card_button(key, name).click
+    find_element(key, il_type: :xpath, tl: content_card_button(:ta, name),
+                 il: content_card_button(:il, name), check_path: $check_path).click
   end
 
   def click_header_logo(key = nil)

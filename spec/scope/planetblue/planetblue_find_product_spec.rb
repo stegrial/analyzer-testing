@@ -13,7 +13,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
+    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
   after(:each) do
@@ -43,8 +43,8 @@ describe 'Preconditions' do
 
         step "User checks found items", 'RUTH TUNIC | New' do |value|
           planetblue.total_items 2
-          planetblue.find_collection_item value, 'ruth-tunic?'
-          planetblue.find_collection_item value, 'ruth-tunic-1?'
+          planetblue.should_see_collection_item value, 'ruth-tunic?'
+          planetblue.should_see_collection_item value, 'ruth-tunic-1?'
         end
 
       end
