@@ -40,7 +40,13 @@ class Logs
       styles.each do |style|
         href = style['href'] ? style['href'] : style['src']
 
-        unless href.start_with?('data:text/css') || href.start_with?('data:image/png')
+        # anniesalke update
+        # href = style['href'] if style['href']
+        # href = style['data-yo-src'] if style['src'] && style['data-yo-src']
+        # href = style['src'] if style['src'] && style['data-yo-src'] == nil
+
+
+        unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//)   # Used to be `data:image/png`
           unless href.start_with? 'http'
             if (href.start_with? '/') && (href[1] != '/')
               href = current_url_parsed.scheme + '://' + current_url_parsed.host + href
@@ -66,6 +72,12 @@ class Logs
             puts href
             file_name = URI.parse(href).path.split('/').last
             # style_code = Net::HTTP.get(URI.parse(href))
+
+            # anniesalke update
+            # href = URI.escape(href) if href.include?(' ')
+            # file_name = URI.parse(href).path.split('/').last
+            # file_name = URI.unescape(file_name)
+
             open(path + '/data_files/' + file_name, 'wb') do |file|
               file << open(href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
             end
