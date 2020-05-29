@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/ta_pages/*.rb"
-
-include ElementSearchValidation
 
 header_navigation = HeaderNavigation.new
 login_page = LogInPage.new
@@ -14,7 +11,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 1200)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -23,7 +20,6 @@ describe 'Preconditions' do
 
   feature 'Surf by login page' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('ta')['home_page'] do |url|
@@ -68,14 +64,14 @@ describe 'Preconditions' do
 
         step "User sees error reset message" do
           login_page.should_see_error_reset_message
-          end
+        end
 
         step "User click sign in button" do
           login_page.click_sign_in_btn
         end
 
         step "User sees login title" do
-          login_page.should_see_login_title :il
+          login_page.should_see_login_title :il #step is duplicated below
         end
 
         step "User click sign up button" do
@@ -84,20 +80,23 @@ describe 'Preconditions' do
 
         step "User sees sign up text" do
           sign_up_page.should_see_sign_up_text
-          end
+        end
 
         step "User fill sign up email field", "test" do |value|
           sign_up_page.fill_sign_up_email_field value
         end
 
         step "User fill sign up button" do
-          sign_up_page.click_sign_up_btn :il
-          end
+          sign_up_page.click_sign_up_btn :il #step is duplicated below
+        end
 
         step "User sees error message" do
           sign_up_page.should_see_error_message
         end
+
+        sleep 3
       end
     end
+
   end
 end

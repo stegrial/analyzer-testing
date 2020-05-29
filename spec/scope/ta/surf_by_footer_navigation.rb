@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/ta_pages/*.rb"
-
-include ElementSearchValidation
 
 footer_navigation = FooterNavigation.new
 doc_page = DocPage.new
@@ -14,7 +11,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 1200)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -23,7 +20,6 @@ describe 'Preconditions' do
 
   feature 'Surf by footer navigation' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('ta')['product_page'] do |url|
@@ -47,20 +43,18 @@ describe 'Preconditions' do
         end
 
         step "User sees main text on home page" do
-          home_page.should_see_main_text :il
+          home_page.should_see_main_text :il #step is duplicated below
         end
 
         step "User linkedin icon" do
           footer_navigation.click_linkedin_icon
+          move_between_tabs
         end
-
-        move_between_tabs
 
         step "User facebook icon" do
           footer_navigation.click_facebook_icon
+          move_between_tabs
         end
-
-        move_between_tabs
 
         step "User click documentation button" do
           footer_navigation.click_documentation_link
@@ -69,7 +63,10 @@ describe 'Preconditions' do
         step "User sees install client text" do
           doc_page.should_see_install_client
         end
+
+        sleep 3
       end
     end
+
   end
 end

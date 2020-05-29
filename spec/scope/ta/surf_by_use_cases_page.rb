@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/ta_pages/*.rb"
-
-include ElementSearchValidation
 
 demo_page = DemoPage.new
 use_cases_page = UseCasesPage.new
@@ -14,7 +11,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 1200)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
 
   end
 
@@ -24,7 +21,6 @@ describe 'Preconditions' do
 
   feature 'Surf by use cases page' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the product page", settings('ta')['use_cases_page'] do |url|
@@ -72,7 +68,7 @@ describe 'Preconditions' do
         end
 
         step "User sees sign up text" do
-          sign_up_page.should_see_sign_up_text :il
+          sign_up_page.should_see_sign_up_text :il #step is duplicated below
         end
 
         step "User goes to the product page", settings('ta')['use_cases_page'] do |url|
@@ -86,7 +82,10 @@ describe 'Preconditions' do
         step "User clicks request a demo button" do
           demo_page.should_see_live_demo_text
         end
+
+        sleep 3
       end
     end
+
   end
 end
