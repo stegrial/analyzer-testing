@@ -7,3 +7,4 @@ help-tools/draft.rb
 analyzer-testing.iml
 trueautomation.json
 vendor/
+Gemfile.lock
