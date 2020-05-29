@@ -45,12 +45,14 @@ describe 'Preconditions' do
         end
 
         step "User clicks Collection Item" do
+          modal.click_close_discount_button
+          scroll_to_element 300
           planetblue.click_collection_item_by_num 1
         end
 
         step "User clicks Whishlist button" do
           scroll_to_element 500
-          modal.click_close_discount_button
+          sleep 15
           product_details.click_whishlist_button
         end
 

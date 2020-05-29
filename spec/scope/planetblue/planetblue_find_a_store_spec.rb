@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
-
-include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 find_a_store = FindAStore.new
@@ -30,12 +27,8 @@ describe 'Preconditions' do
           page.visit url
         end
 
-        step "User clicks on Menu button" do
-          menu.click_menu_button
-        end
-
-        step "User clicks on Menu Item", 'Find a store' do |value|
-          menu.click_menu_item value
+        step "User clicks Navigation Bar Link", 'Stores' do |value|
+          planetblue.click_navbar_link value
         end
 
         step "User checks page Header", 'Find A Store' do |title|

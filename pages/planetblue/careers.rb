@@ -3,7 +3,7 @@ require_relative '../page_extension'
 class Careers < PageExtension
 
   CAREERS_HEADER_TA = "planetblue:careers:header"
-  CAREERS_HEADER_IL = ".page-hero-page-careers"
+  CAREERS_HEADER_IL = "h1.page-hero__title"
 
   def should_see_careers_header(key = nil)
     element = find_element key, il_type: :css, tl: CAREERS_HEADER_TA, il: CAREERS_HEADER_IL, check_path: $check_path

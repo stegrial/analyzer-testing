@@ -66,8 +66,8 @@ class PlanetBlue < PageExtension
       find_element(key, il_type: :xpath, tl: refine_dropdown_checkbox(:ta, section, value),
                    il: refine_dropdown_checkbox(:il, section, value), check_path: $check_path).click
     end
-    find_element(key, il_type: :css, tl: CLOSE_DROPDOWN_BUTTON_TA,
-                 il: CLOSE_DROPDOWN_BUTTON_IL, check_path: $check_path).click
+    # find_element(key, il_type: :css, tl: CLOSE_DROPDOWN_BUTTON_TA,
+    #              il: CLOSE_DROPDOWN_BUTTON_IL, check_path: $check_path).click
     find_element(key, il_type: :xpath, tl: APPLY_BUTTON_TA, il: APPLY_BUTTON_IL, check_path: $check_path).click
   end
 

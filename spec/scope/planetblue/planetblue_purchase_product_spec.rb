@@ -1,9 +1,7 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
 
-include ElementSearchValidation
 
 product_details = ProductDetails.new
 order_details = OrderDetails.new
@@ -32,17 +30,17 @@ describe 'Preconditions' do
       end
 
       step "User clicks Add to Bag button" do
-        page.execute_script "window.scrollBy(0,700)"
+        scroll_to_element 800
+        modal.click_close_discount_button
         product_details.click_add_to_bag_button
       end
 
       step "User clicks CHECKOUT button" do
-        modal.click_close_discount_button
         product_details.click_checkout_button
       end
 
       step "User clicks Checkout confirm button" do
-        page.execute_script "window.scrollBy(0,1000)"
+        scroll_to_element 1000
         product_details.click_checkout_confirm_button
       end
 

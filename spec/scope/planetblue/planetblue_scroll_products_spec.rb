@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/planetblue/*.rb"
 
-
 planetblue = PlanetBlue.new
 modal = Modal.new
 
@@ -36,7 +35,7 @@ describe 'Preconditions' do
         end
 
         step "User checks Collection Items and scroll down" do
-          page.execute_script "window.scrollBy(0,1000)"
+          scroll_to_element 1000
           modal.click_close_discount_button
           planetblue.should_see_collection_item_by_num 1
         end
@@ -50,7 +49,7 @@ describe 'Preconditions' do
         end
 
         step "User scroll down to the bottom of the page" do
-          (1..10).each {
+          (1..15).each {
             scroll_to_element 10000
           }
         end

@@ -95,10 +95,6 @@ describe 'Preconditions' do
           }
         end
 
-        step "User checks 'Add to bag' button" do
-          product_details.click_add_to_bag_button
-        end
-
         step "User checks Social Share buttons", %w(facebook twitter pinterest) do |social_sharing_buttons|
           social_sharing_buttons.each { |button|
             product_details.should_see_social_share_button button

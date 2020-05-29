@@ -24,7 +24,7 @@ class ProductDetails < PageExtension
   SIZES_GUIDE_LINK_IL = "//a/button/span[text()='Size Guide']"
 
   ADD_TO_BAG_BUTTON_TA = "planetblue:product_details:add_to_cart_button"
-  ADD_TO_BAG_BUTTON_IL = "button[data-th='add-to-cart']"
+  ADD_TO_BAG_BUTTON_IL = "//span[text()='Add to Bag']"
 
   CHECKOUT_BUTTON_TA = "planetblue:product_details:checkout_button"
   CHECKOUT_BUTTON_IL = "[style='flex-direction: column;'] button[data-th='add-to-cart']"
@@ -143,7 +143,7 @@ class ProductDetails < PageExtension
   end
 
   def click_add_to_bag_button(key = nil)
-    find_element(key, il_type: :css, tl: ADD_TO_BAG_BUTTON_TA, il: ADD_TO_BAG_BUTTON_IL, check_path: $check_path).click
+    find_element(key, il_type: :xpath, tl: ADD_TO_BAG_BUTTON_TA, il: ADD_TO_BAG_BUTTON_IL, check_path: $check_path).click
   end
 
   def click_checkout_button(key = nil)
