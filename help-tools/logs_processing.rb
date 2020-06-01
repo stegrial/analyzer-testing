@@ -24,7 +24,7 @@ class Logs
 
     logs_root.each do |path|
       data_html = path + '/data.html'
-      new_data_html = File.open(data_html) {|file| Nokogiri.HTML(file)}
+      new_data_html = File.open(data_html) { |file| Nokogiri.HTML(file) }
       # new_page = Nokogiri.HTML(page.driver.browser.page_source)
 
       # head = new_page.search('head').first
@@ -34,7 +34,7 @@ class Logs
       current_url_parsed = URI.parse(current_url.chomp)
       FileUtils.mkdir path + '/data_files'
 
-      styles = new_data_html.search('link', 'img').select {|style| style['rel'] == 'stylesheet' || style['src']}
+      styles = new_data_html.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
       # puts styles
 
       styles.each do |style|
@@ -54,11 +54,11 @@ class Logs
               href = current_url_parsed.scheme + '://' + current_url_parsed.host + href
             elsif href.start_with? '..'
               css_array = href.split('/')
-              i = css_array.count {|url_part| url_part == '..'}
-              i.times {css_array.shift}
+              i = css_array.count { |url_part| url_part == '..' }
+              i.times { css_array.shift }
 
               url_array = current_url.split('/')
-              (i + 1).times {url_array.pop}
+              (i + 1).times { url_array.pop }
 
               url_array = url_array.concat(css_array)
               href = url_array.join('/')
@@ -81,7 +81,7 @@ class Logs
             # file_name = URI.unescape(file_name)
 
             open(path + '/data_files/' + file_name, 'wb') do |file|
-              file << open(href, {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}).read
+              file << open(href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
             end
           rescue StandardError => ex
             # open_new_window :tab
@@ -110,16 +110,16 @@ class Logs
 
   def create_signature_sources
     logs_root.each do |path|
-      file_names = {'/data.html' => '/signature.html',
+      file_names = { '/data.html' => '/signature.html',
                     '/data_files' => '/signature_files',
-                    '/element_address.txt' => '/signature_address.txt'}
+                    '/element_address.txt' => '/signature_address.txt' }
       file_names.each do |source, target|
         FileUtils.cp_r path + source, path + target if File.exist?(path + source)
       end
 
       signature_html = path + '/signature.html'
-      new_signature_html = File.open(signature_html) {|file| Nokogiri.HTML(file)}
-      styles = new_signature_html.search('link', 'img').select {|style| style['rel'] == 'stylesheet' || style['src']}
+      new_signature_html = File.open(signature_html) { |file| Nokogiri.HTML(file) }
+      styles = new_signature_html.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
 
       styles.each do |style|
         href = style['href'] ? style['href'] : style['src']
@@ -209,8 +209,8 @@ class Logs
 
   def filter_array
     @filter_array = logs_root.
-        sort_by {|a| [a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i]}.
-        map {|path| [path, Dir[File.join(path, '*')].count {|file| File.file?(file)}]}
+        sort_by { |a| [a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i] }.
+        map { |path| [path, Dir[File.join(path, '*')].count { |file| File.file?(file) }] }
     self
   end
 
@@ -262,7 +262,7 @@ class Logs
   end
 
   def rename_log_directories # to rename directories containing data
-    path_array = Dir[@root + '/logs/20200129091902/*'].sort_by {|a| a.scan(/\d+/)[-1].to_i}
+    path_array = Dir[@root + '/logs/20200129091902/*'].sort_by { |a| a.scan(/\d+/)[-1].to_i }
     i = 1
     path_array.each do |path|
       dir = path.split("/")
