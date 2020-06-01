@@ -1,12 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class FindAStore
-
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class FindAStore < PageExtension
 
   def store_item_details(key, title)
     locator_by key,
@@ -14,8 +8,10 @@ class FindAStore
                "planetblue:find_a_store:list_item:#{ta_name(title)}"
   end
 
-  def find_store_item_details(key = nil, title)
-    find_element_path key, :xpath, store_item_details(:ta, title), store_item_details(:il, title)
+  def should_see_store_item_details(key = nil, title)
+    element = find_element key, il_type: :xpath, tl: store_item_details(:ta, title),
+                           il: store_item_details(:il, title), check_path: $check_path
+    expect(element).to be_visible
   end
 
 end

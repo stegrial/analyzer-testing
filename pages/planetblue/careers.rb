@@ -1,18 +1,13 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class Careers
-
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class Careers < PageExtension
 
   CAREERS_HEADER_TA = "planetblue:careers:header"
-  CAREERS_HEADER_IL = ".page-hero-page-careers"
+  CAREERS_HEADER_IL = "h1.page-hero__title"
 
-  def find_careers_header(key = nil)
-    locator_by key, CAREERS_HEADER_TA, CAREERS_HEADER_IL
+  def should_see_careers_header(key = nil)
+    element = find_element key, il_type: :css, tl: CAREERS_HEADER_TA, il: CAREERS_HEADER_IL, check_path: $check_path
+    expect(element).to be_visible
   end
 
   def career_item(key, store, name)
@@ -20,8 +15,10 @@ class Careers
                "planetblue:careers:item"
   end
 
-  def find_career_item(key = nil, store, name)
-    find_element_path key, :xpath, career_item(:ta, store, name), career_item(:il, store, name)
+  def should_see_career_item(key = nil, store, name)
+    element = find_element key, il_type: :xpath, tl: career_item(:ta, store, name),
+                           il: career_item(:il, store, name), check_path: $check_path
+    expect(element).to be_visible
   end
 
 end

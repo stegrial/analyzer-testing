@@ -1,12 +1,6 @@
-require 'spec_helper'
 require_relative '../page_extension'
 
-class Login
-
-  include TrueAutomation::DSL
-  include Capybara::DSL
-  include RSpec::Matchers
-  include PageExtension
+class Login < PageExtension
 
   EMAIL_FIELD_TA = "planetblue:login:email_field"
   EMAIL_FIELD_IL = "#customer_login input[type='email']"
@@ -18,15 +12,15 @@ class Login
   SIGN_IN_BUTTON_IL = "#customer_login [type='submit']"
 
   def fill_email_field(key = nil, value)
-    find_element_path(key, :css, EMAIL_FIELD_TA, EMAIL_FIELD_IL).fill_in with: value
+    find_element(key, il_type: :css, tl: EMAIL_FIELD_TA, il: EMAIL_FIELD_IL, check_path: $check_path).fill_in with: value
   end
 
   def fill_password_field(key = nil, value)
-    find_element_path(key, :css, PASSWORD_FIELD_TA, PASSWORD_FIELD_IL).fill_in with: value
+    find_element(key, il_type: :css, tl: PASSWORD_FIELD_TA, il: PASSWORD_FIELD_IL, check_path: $check_path).fill_in with: value
   end
 
   def click_sign_in_button(key = nil)
-    find_element_path(key, :css, SIGN_IN_BUTTON_TA, SIGN_IN_BUTTON_IL).click
+    find_element(key, il_type: :css, tl: SIGN_IN_BUTTON_TA, il: SIGN_IN_BUTTON_IL, check_path: $check_path).click
   end
 
 end
