@@ -15,10 +15,10 @@ class LogInPage < PageExtension
   LOGIN_BTN_IL = "//button[@class='btn login-btn']"
   LOGIN_BTN_TA = "ta:login_page:login_btn"
 
-  ERROR_MESSAGE_IL = "//div[@class='error-message-container error']"
+  ERROR_MESSAGE_IL = "//div[@class='error-message-container error']/p"
   ERROR_MESSAGE_TA = "ta:login_page:error_message"
 
-  FORGOT_PASS_IL = "//a[@class='forgot-pass']"
+  FORGOT_PASS_IL = "//a[@href='forgot']"
   FORGOT_PASS_TA = "ta:login_page:forgot_pass"
 
   RESET_EMAIL_IL = "//input[@name='email']"

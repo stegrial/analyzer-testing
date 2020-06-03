@@ -13,7 +13,7 @@ class Logs
 
   def logs_root
     dir = __dir__.split("/")
-    project_root = dir[0..dir.length-2].join("/")
+    project_root = dir[0..dir.length - 2].join("/")
     Dir[project_root + '/logs/*/*']
   end
 
@@ -46,7 +46,9 @@ class Logs
         # href = style['src'] if style['src'] && style['data-yo-src'] == nil
 
 
-        unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//)   # Used to be `data:image/png`
+        unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
+          # Used to be `data:image/png` || add new exception `href == ''`
+
           unless href.start_with? 'http'
             if (href.start_with? '/') && (href[1] != '/')
               href = current_url_parsed.scheme + '://' + current_url_parsed.host + href
@@ -109,8 +111,8 @@ class Logs
   def create_signature_sources
     logs_root.each do |path|
       file_names = { '/data.html' => '/signature.html',
-                     '/data_files' => '/signature_files',
-                     '/element_address.txt' => '/signature_address.txt' }
+                    '/data_files' => '/signature_files',
+                    '/element_address.txt' => '/signature_address.txt' }
       file_names.each do |source, target|
         FileUtils.cp_r path + source, path + target if File.exist?(path + source)
       end
@@ -120,8 +122,11 @@ class Logs
       styles = new_signature_html.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
 
       styles.each do |style|
-        style['href'] = 'signature_files/' + style['href'].split('/').last if style['href']
-        style['src'] = 'signature_files/' + style['src'].split('/').last if style['src']
+        href = style['href'] ? style['href'] : style['src']
+        unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == '' # add exception
+          style['href'] = 'signature_files/' + style['href'].split('/').last if style['href']
+          style['src'] = 'signature_files/' + style['src'].split('/').last if style['src']
+        end
       end
 
       file = File.new(signature_html, "w")
@@ -204,8 +209,8 @@ class Logs
 
   def filter_array
     @filter_array = logs_root.
-      sort_by { |a| [ a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i ] }.
-      map { |path| [path, Dir[File.join(path, '*')].count { |file| File.file?(file) }] }
+        sort_by { |a| [a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i] }.
+        map { |path| [path, Dir[File.join(path, '*')].count { |file| File.file?(file) }] }
     self
   end
 
@@ -213,7 +218,7 @@ class Logs
     array_to_remove = []
     @filter_array.each_with_index do |value, index|
       if value[1] == 4 && @filter_array[index + 1][1] == 4 # to leave only last request
-      # if value[1] == 4 && @filter_array[index - 1][1] == 4 && @filter_array[index + 1][1] == 4 # to leave first and last requests
+        # if value[1] == 4 && @filter_array[index - 1][1] == 4 && @filter_array[index + 1][1] == 4 # to leave first and last requests
         array_to_remove << value[0]
       end
     end
@@ -261,7 +266,7 @@ class Logs
     i = 1
     path_array.each do |path|
       dir = path.split("/")
-      new_path = dir[0..dir.length-2].join("/")
+      new_path = dir[0..dir.length - 2].join("/")
       FileUtils.mv path, "#{new_path}/Search-AT-141-#{i}"
       i += 1
     end

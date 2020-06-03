@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/ta_pages/*.rb"
-
-include ElementSearchValidation
 
 doc_page = DocPage.new
 
@@ -12,7 +9,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 1200)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -21,7 +18,6 @@ describe 'Preconditions' do
 
   feature 'Surf by documentation page' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('ta')['doc_page'] do |url|
@@ -42,7 +38,7 @@ describe 'Preconditions' do
 
         step "User click clear button in search field" do
           doc_page.click_clear_btn
-          end
+        end
 
         step "User click next button" do
           doc_page.click_next_btn
@@ -57,7 +53,7 @@ describe 'Preconditions' do
         end
 
         step "User sees TA commands page" do
-          doc_page.should_see_ta_commands_page :il
+          doc_page.should_see_ta_commands_page :il #step is duplicated below
         end
 
         step "User click previous button" do
@@ -71,7 +67,10 @@ describe 'Preconditions' do
         step "User check sidebar is hidden" do
           doc_page.check_sidebar_hidden
         end
+
+        sleep 3
       end
     end
+
   end
 end

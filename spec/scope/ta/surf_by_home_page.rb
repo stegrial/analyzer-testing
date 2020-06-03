@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/ta_pages/*.rb"
-
-include ElementSearchValidation
 
 header_navigation = HeaderNavigation.new
 demo_page = DemoPage.new
@@ -17,7 +14,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 1200)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -26,7 +23,6 @@ describe 'Preconditions' do
 
   feature 'Surf by home page' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('ta')['home_page'] do |url|
@@ -66,7 +62,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks home btn for come back on home page" do
-          header_navigation.click_home_btn :il
+          header_navigation.click_home_btn :il #step is duplicated below
         end
 
         step "User clicks cover more button" do
@@ -78,7 +74,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks home btn for come back on home page" do
-          header_navigation.click_home_btn :il
+          header_navigation.click_home_btn :il #step is duplicated below
         end
 
         step "User clicks minimize maintenance button" do
@@ -90,7 +86,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks home btn for come back on home page" do
-          header_navigation.click_home_btn :il
+          header_navigation.click_home_btn :il #step is duplicated below
         end
 
         step "User clicks try the solution" do
@@ -98,11 +94,11 @@ describe 'Preconditions' do
         end
 
         step "User sees sign up text" do
-          sign_up_page.should_see_sign_up_text :il
+          sign_up_page.should_see_sign_up_text :il #step is duplicated below
         end
 
         step "User clicks back to main button" do
-          sign_up_page.click_back_to_main_btn :il
+          sign_up_page.click_back_to_main_btn :il #step is duplicated below
         end
 
         step "User clicks learn more TA works button" do
@@ -114,8 +110,8 @@ describe 'Preconditions' do
         end
 
         step "User clicks home btn for come back on home page" do
-          header_navigation.click_home_btn :il
-          end
+          header_navigation.click_home_btn :il #step is duplicated below
+        end
 
         step "User clicks request a demo button" do
           home_page.click_request_a_demo_btn
@@ -124,7 +120,10 @@ describe 'Preconditions' do
         step "User clicks request a demo button" do
           demo_page.should_see_live_demo_text
         end
+
+        sleep 3
       end
     end
+
   end
 end

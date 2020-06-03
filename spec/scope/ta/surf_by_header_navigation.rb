@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/ta_pages/*.rb"
-
-include ElementSearchValidation
 
 header_navigation = HeaderNavigation.new
 doc_page = DocPage.new
@@ -16,7 +13,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    Capybara.page.driver.browser.manage.window.resize_to(1440, 1200)
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -25,7 +22,6 @@ describe 'Preconditions' do
 
   feature 'Surf by header navigation' do
 
-    # Initial locators with Recording
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('ta')['home_page'] do |url|
@@ -45,7 +41,7 @@ describe 'Preconditions' do
         end
 
         step "User hover product dropdown link" do
-          header_navigation.hover_product_dropdown :il
+          header_navigation.hover_product_dropdown :il #step is duplicated below
         end
 
         step "User click capability link" do
@@ -69,7 +65,7 @@ describe 'Preconditions' do
         end
 
         step "User hover use cases dropdown link" do
-          header_navigation.hover_use_cases_link :il
+          header_navigation.hover_use_cases_link :il #step is duplicated below
         end
 
         step "User click cover more technologies link" do
@@ -89,7 +85,7 @@ describe 'Preconditions' do
         end
 
         step "User hover use cases dropdown link" do
-          header_navigation.hover_use_cases_link :il
+          header_navigation.hover_use_cases_link :il #step is duplicated below
         end
 
         step "User click maintain_less link" do
@@ -105,8 +101,8 @@ describe 'Preconditions' do
         end
 
         step "User sees main text on home page" do
-          home_page.should_see_main_text :il
-          end
+          home_page.should_see_main_text :il #step is duplicated below
+        end
 
         step "User click documentation button" do
           header_navigation.click_documentation_link
@@ -115,7 +111,10 @@ describe 'Preconditions' do
         step "User sees install client text" do
           doc_page.should_see_install_client
         end
+
+        sleep 3
       end
     end
+
   end
 end
