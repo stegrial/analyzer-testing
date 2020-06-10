@@ -51,7 +51,7 @@ describe 'Preconditions' do
           account_request_page.select_dropdown_title value
         end
 
-        step "User fills first name", settings('annieselke')['fisrt_name'] do |first_name|
+        step "User fills first name", settings('annieselke')['first_name'] do |first_name|
           account_request_page.fill_first_name(first_name)
         end
 
