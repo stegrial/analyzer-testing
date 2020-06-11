@@ -86,7 +86,9 @@ cloud_bees:
 
 amazon:
   page: "https://www.amazon.com/"
-
+  covid: "https://blog.aboutamazon.com/company-news/amazons-actions-to-help-employees-communities-and-customers-affected-by-covid-19"
+  email: "trueautomation.testteam@gmail.com"
+  password: "1234tesT"
 olx:
   page: "https://www.olx.ua/"
 
