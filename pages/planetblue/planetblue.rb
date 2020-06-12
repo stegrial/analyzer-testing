@@ -1,7 +1,7 @@
 require_relative '../page_extension'
 
 class PlanetBlue < PageExtension
-  
+
   CLOSE_DROPDOWN_BUTTON_TA = "planetblue:category_dropdown:close_button"
   CLOSE_DROPDOWN_BUTTON_IL = "[role] button svg"
 
@@ -60,6 +60,7 @@ class PlanetBlue < PageExtension
   def select_from_refine_dropdown(key = nil, section, values)
     find_element(key, il_type: :xpath, tl: category_dropdown(:ta, 'REFINE'),
                  il: category_dropdown(:il, 'REFINE'), check_path: $check_path).click
+    sleep 5 # wait for page load
     find_element(key, il_type: :xpath, tl: refine_category_block(:ta, section),
                  il: refine_category_block(:il, section), check_path: $check_path).click
     values.each do |value|
@@ -91,12 +92,7 @@ class PlanetBlue < PageExtension
                "planetblue:collection_item:#{ta_name(name)}:image"
   end
 
-  def collection_item_color(key, name, color)
-    locator_by key, "#{_collection_item name}//div[contains(@amp-bind, 'color.selected.id')]//img[@alt='#{color}']",
-               "planetblue:collection_item:#{ta_name(name)}:color"
-  end
-
-  def find_collection_item_details(key = nil, name, color)
+  def find_collection_item_details(key = nil, name)
     [
         find_element(key, il_type: :xpath, tl: collection_item_link(:ta, name),
                      il: collection_item_link(:il, name), check_path: $check_path),
@@ -104,8 +100,6 @@ class PlanetBlue < PageExtension
                      il: collection_item_title(:il, name), check_path: $check_path),
         find_element(key, il_type: :xpath, tl: collection_item_image(:ta, name),
                      il: collection_item_image(:il, name), check_path: $check_path),
-        find_element(key, il_type: :xpath, tl: collection_item_color(:ta, name, color),
-                     il: collection_item_color(:il, name, color), check_path: $check_path),
     ].each { |element|
       expect(element).to be_visible
     }
@@ -167,7 +161,7 @@ class PlanetBlue < PageExtension
   end
 
   def total_items(key = nil, number)
-    locator_by key, "//div[@style='align-items: center; flex-direction: row;']/span[contains(text(), '#{number}') and contains(text(), 'total items')]",
+    locator_by key, "//div[@style='align-items: center; flex-direction: row;']/span[contains(text(), '#{number}')]",
                "planetblue:total_items"
   end
 

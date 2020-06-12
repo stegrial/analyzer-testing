@@ -12,7 +12,7 @@ class Menu < PageExtension
   SEARCH_FIELD_TA = "planetblue:menu:search_field"
 
   MENU_USER_BUTTON_TA = "planetblue:menu:user_button"
-  MENU_USER_BUTTON_IL = "a[href*='/account/login']"
+  MENU_USER_BUTTON_IL = "(//a[contains(@href, '/account/login')])[2]"
 
   def click_menu_button(key = nil)
     find_element(key, il_type: :css, tl: MENU_BUTTON_TA, il: MENU_BUTTON_IL, check_path: $check_path).click
@@ -54,7 +54,7 @@ class Menu < PageExtension
   end
 
   def click_user_button(key = nil)
-    find_element(key, il_type: :css, tl: MENU_USER_BUTTON_TA, il: MENU_USER_BUTTON_IL, check_path: $check_path).click
+    find_element(key, il_type: :xpath, tl: MENU_USER_BUTTON_TA, il: MENU_USER_BUTTON_IL, check_path: $check_path).click
   end
 
 end

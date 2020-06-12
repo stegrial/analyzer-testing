@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
-
-include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 modal = Modal.new
@@ -44,6 +41,7 @@ describe 'Preconditions' do
 
         step "User selects Refine Category Dropdown values", 'Category',
              ['Rompers + Jumpsuits', 'Shorts'] do |section, values|
+          scroll_to_element 300
           planetblue.select_from_refine_dropdown section, values
         end
 
@@ -52,7 +50,9 @@ describe 'Preconditions' do
           planetblue.should_see_collection_item 'BIKER SHORT WITH TRIM | Sale', 'biker-short-with-trim?'
         end
 
+        sleep 3
       end
     end
+
   end
 end

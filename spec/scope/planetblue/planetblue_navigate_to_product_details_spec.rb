@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/planetblue/*.rb"
 
-
 planetblue = PlanetBlue.new
 product_details = ProductDetails.new
 modal = Modal.new
@@ -52,6 +51,7 @@ describe 'Preconditions' do
         end
 
         step "User checks product title", 'THE JESSIE MIDI' do |name|
+          scroll_to_element 700
           product_details.should_see_product_title name
         end
 
@@ -90,6 +90,7 @@ describe 'Preconditions' do
         end
 
         step "User checks product sizes items", %w(XS S M L) do |sizes|
+          scroll_to_element 1000
           sizes.each { |size|
             product_details.should_see_size_item size
           }
@@ -111,7 +112,9 @@ describe 'Preconditions' do
           product_details.should_see_bottom_section_item 'Complete the Look', 'THE BLUFFS MAXI DRESS | New'
         end
 
+        sleep 3
       end
     end
+
   end
 end

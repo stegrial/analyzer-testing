@@ -10,12 +10,14 @@ class Modal < PageExtension
 
   def click_close_discount_button(key = nil)
     within_frame 0 do
+      sleep 2 # wait for page load
       find_element(key, il_type: :id, tl: CLOSE_DISCOUNT_BUTTON_TA, il: CLOSE_DISCOUNT_BUTTON_IL, check_path: $check_path).click
     end
   end
 
   def click_close_policies_button(key = nil)
-      find_element(key, il_type: :xpath, tl: CLOSE_POLICIES_BUTTON_TA, il: CLOSE_POLICIES_BUTTON_IL, check_path: $check_path).click
+    sleep 2 # wait for page load
+    find_element(key, il_type: :xpath, tl: CLOSE_POLICIES_BUTTON_TA, il: CLOSE_POLICIES_BUTTON_IL, check_path: $check_path).click
   end
 
 end

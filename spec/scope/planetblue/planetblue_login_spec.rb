@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
-
-include ElementSearchValidation
 
 menu = Menu.new
 login = Login.new
@@ -34,6 +31,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks User Account Button" do
+          scroll_to_element 300
           menu.click_user_button
         end
 
@@ -46,7 +44,9 @@ describe 'Preconditions' do
           login.click_sign_in_button
         end
 
+        sleep 3
       end
     end
+
   end
 end
