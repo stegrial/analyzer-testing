@@ -24,7 +24,7 @@ describe 'Preconditions' do
   feature 'Planet Blue - Add item to whishlist' do
 
     $run_count.times do
-      scenario 'Recording Locators', "#{$ag}": true do
+      scenario 'Recording Locators', "#{$tag}": true do
 
         step "User goes to the page", settings('planetblue')['page'] do |url|
           page.visit url
