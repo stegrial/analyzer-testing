@@ -33,7 +33,7 @@ class CovidPage < PageExtension
   OUR_POSITION_IL = "//a[text()='Our Positions']"
   OUR_POSITION_TA = "amazon:covid_page:our_position"
 
-  AMAZON_COVID_BLOG_IL = "//a[contains(text(), 'COVID-19 blog')]"
+  AMAZON_COVID_BLOG_IL = "//li/a[contains(text(), 'COVID-19 blog')]"
   AMAZON_COVID_BLOG_TA = "amazon:covid_page:covid_blog_link"
 
   FACEBOOK_TOP_ICON_IL = "(//a[@title='Facebook Share'])[1]"

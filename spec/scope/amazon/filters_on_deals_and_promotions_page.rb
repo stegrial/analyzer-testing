@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 header_navigation = HeaderNavigation.new
 deals_page = DealsPage.new
 
@@ -67,7 +66,10 @@ describe 'Preconditions' do
         step "User clicks on three stars up" do
           deals_page.click_three_stars_up
         end
+
+        sleep 3
       end
     end
+
   end
 end

@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 header_navigation = HeaderNavigation.new
 plp = ProductListPage.new
 sign_in_page = SignInPage.new
@@ -73,7 +72,10 @@ describe 'Preconditions' do
         step "User sees Sign-In h1" do
           sign_in_page.should_see_sign_in_h1
         end
+
+        sleep 3
       end
     end
+
   end
 end

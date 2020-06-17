@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 header_navigation = HeaderNavigation.new
 gift_card_page = GiftCardPage.new
 
@@ -75,7 +74,10 @@ describe 'Preconditions' do
         step "User fill mobile number field", "test" do |value|
           gift_card_page.fill_message_input value
         end
+
+        sleep 3
       end
     end
+
   end
 end

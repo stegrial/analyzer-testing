@@ -3,7 +3,7 @@ require_relative '../page_extension'
 class SellingPage < PageExtension
 
 
-  SELLING_PAGE_IL = "(//a[contains(text(), 'Start selling')])[1]"
+  SELLING_PAGE_IL = "//h2[text()='Sell on Amazon']"
   SELLING_PAGE_TA = "amazon:selling_page:sell_page"
 
 

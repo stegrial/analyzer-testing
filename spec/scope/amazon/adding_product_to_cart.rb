@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 product_page = ProductPage.new
 plp = ProductListPage.new
 header_navigation = HeaderNavigation.new
@@ -52,7 +51,10 @@ describe 'Preconditions' do
         step "User clicks add to cart button" do
           product_page.click_for_add_to_cart
         end
+
+        sleep 3
       end
     end
+
   end
 end

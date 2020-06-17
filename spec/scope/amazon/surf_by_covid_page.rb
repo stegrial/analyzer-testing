@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 covid_page = CovidPage.new
 
 
@@ -66,7 +65,7 @@ describe 'Preconditions' do
         end
 
         step "User click our position link" do
-          covid_page.click_our_position_link
+          covid_page.click_our_position_link :il #step is duplicated below
           move_between_tabs
         end
 
@@ -99,7 +98,10 @@ describe 'Preconditions' do
         step "User click Learn More button" do
           covid_page.click_learn_more_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

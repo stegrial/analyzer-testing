@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 header_navigation = HeaderNavigation.new
 help_page = HelpPage.new
 
@@ -67,7 +66,10 @@ describe 'Preconditions' do
         step "User sees 'Quick Solutions' text" do
           help_page.should_see_quick_solutions
         end
+
+        sleep 3
       end
     end
+
   end
 end

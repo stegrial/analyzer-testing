@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 footer_nav = FooterNavigation.new
 
 
@@ -86,11 +85,15 @@ describe 'Preconditions' do
 
         step "User sees website region" do
           footer_nav.should_see_website_region
-          end
+        end
+
         step "User click cancel button link" do
           footer_nav.click_cancel_region_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end
