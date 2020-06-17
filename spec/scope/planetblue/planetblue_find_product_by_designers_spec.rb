@@ -1,12 +1,10 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
-
-include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 designers = Designers.new
+modal = Modal.new
 
 describe 'Preconditions' do
 
@@ -34,6 +32,7 @@ describe 'Preconditions' do
         end
 
         step "User checks page Header", 'Designers' do |title|
+          modal.click_close_policies_button
           planetblue.should_see_page_header title
         end
 
@@ -43,6 +42,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks Designer Item", '27 MILES MALIBU' do |value|
+          scroll_to_element -500
           designers.click_designers_list_item value
         end
 
@@ -51,7 +51,9 @@ describe 'Preconditions' do
           planetblue.should_see_collection_item name, link
         end
 
+        sleep 3
       end
     end
+
   end
 end

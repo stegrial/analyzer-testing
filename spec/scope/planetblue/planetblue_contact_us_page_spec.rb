@@ -1,13 +1,12 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
-
-include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 contact_us = ContactUs.new
 menu = Menu.new
+modal = Modal.new
+
 describe 'Preconditions' do
 
   before(:all) do
@@ -35,6 +34,7 @@ describe 'Preconditions' do
 
         step "User clicks on Menu Category", 'Contact Us' do |value|
           menu.click_menu_item value
+          modal.click_close_policies_button
         end
 
         step "User checks page Header", 'Contact Us' do |title|
@@ -47,7 +47,9 @@ describe 'Preconditions' do
           contact_us.should_see_contact_us_item 'Email Us', 'orders@shopplanetblue.com'
         end
 
+        sleep 3
       end
     end
+
   end
 end

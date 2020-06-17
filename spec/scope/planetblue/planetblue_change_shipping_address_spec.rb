@@ -1,9 +1,6 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
-
-include ElementSearchValidation
 
 shipping = Shipping.new
 modal = Modal.new
@@ -46,7 +43,9 @@ describe 'Preconditions' do
           shipping.click_save_button
         end
 
+        sleep 3
       end
     end
+
   end
 end

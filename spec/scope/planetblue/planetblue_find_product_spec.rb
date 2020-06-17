@@ -1,12 +1,10 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
-
-include ElementSearchValidation
 
 planetblue = PlanetBlue.new
 menu = Menu.new
+modal = Modal.new
 
 describe 'Preconditions' do
 
@@ -42,12 +40,17 @@ describe 'Preconditions' do
         end
 
         step "User checks found items", 'RUTH TUNIC | New' do |value|
-          planetblue.total_items 2
+          modal.click_close_policies_button
+          scroll_to_element 200
+          modal.click_close_discount_button
+          planetblue.should_see_total_items 2
           planetblue.should_see_collection_item value, 'ruth-tunic?'
           planetblue.should_see_collection_item value, 'ruth-tunic-1?'
         end
 
+        sleep 3
       end
     end
+
   end
 end

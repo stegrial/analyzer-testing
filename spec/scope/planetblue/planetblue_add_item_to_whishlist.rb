@@ -14,7 +14,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
+    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {:deviceName => 'iPhone 5'}
   end
 
   after(:each) do
@@ -34,6 +34,8 @@ describe 'Preconditions' do
              settings('planetblue')['email'],
              settings('planetblue')['pass'] do |email, password|
           menu.click_user_button
+          modal.click_close_policies_button
+
           scroll_to_element 400
           login.fill_email_field email
           login.fill_password_field password
@@ -58,6 +60,7 @@ describe 'Preconditions' do
 
         step "Navigate to Whishlist" do
           page.visit settings('planetblue')['page'] + 'apps/giftregistry/wishlist/'
+          sleep 5 # wait for page load
         end
 
         step "User checks input field with link" do
@@ -65,14 +68,17 @@ describe 'Preconditions' do
         end
 
         step "User checks Copy Link button" do
+          scroll_to_element 200
           wishlist.should_see_copy_link_button
         end
 
         step "User checks Product Card" do
+          scroll_to_element 400
           wishlist.should_see_product_card 1
         end
 
         step "User clicks Remove Card button" do
+
           wishlist.click_whishlist_remove_button 1
         end
 
@@ -80,7 +86,9 @@ describe 'Preconditions' do
           wishlist.click_whishlist_back_button
         end
 
+        sleep 3
       end
     end
+
   end
 end
