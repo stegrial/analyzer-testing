@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 footer_nav = FooterNavigation.new
 advertising_page = AdvertisingPage.new
 
@@ -85,7 +84,10 @@ describe 'Preconditions' do
         step "User sees 'FAQ' h1" do
           advertising_page.should_see_faq_h1
         end
+
+        sleep 3
       end
     end
+
   end
 end

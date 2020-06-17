@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 header_navigation = HeaderNavigation.new
 covid_page = CovidPage.new
 help_page = HelpPage.new
@@ -76,7 +75,10 @@ describe 'Preconditions' do
         step "User click and check COVID 19 block" do
           covid_page.click_and_check_covid_19
         end
+
+        sleep 3
       end
     end
+
   end
 end

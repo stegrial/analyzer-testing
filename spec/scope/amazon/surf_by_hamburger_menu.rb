@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 left_side_menu = LeftSideMenu.new
 header_navigation = HeaderNavigation.new
 product_list_page = ProductListPage.new
@@ -60,7 +59,10 @@ describe 'Preconditions' do
         step "User sees jewelry selected in main search" do
           header_navigation.should_see_jewelry_in_search
         end
+
+        sleep 3
       end
     end
+
   end
 end

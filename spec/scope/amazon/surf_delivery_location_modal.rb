@@ -2,7 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/amazon/*.rb"
 
-
 header_navigation = HeaderNavigation.new
 location_modal = DeliveryLocationModal.new
 
@@ -63,7 +62,10 @@ describe 'Preconditions' do
         step "User sees delivery Vietnam button" do
           header_navigation.should_see_delivery_vietnam
         end
+
+        sleep 3
       end
     end
+
   end
 end
