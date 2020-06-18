@@ -30,7 +30,7 @@ class ProductDetails < PageExtension
   CHECKOUT_BUTTON_IL = "[style='flex-direction: column;'] button[data-th='add-to-cart']"
 
   CHECKOUT_CONFIRM_BUTTON_TA = "planetblue:product_details:checkout_confirm_button"
-  CHECKOUT_CONFIRM_BUTTON_IL = "input[value='Check Out']"
+  CHECKOUT_CONFIRM_BUTTON_IL = "input[name='checkout']"
 
   WHISHLIST_BUTTON_TA = "planetblue:whishlist_button"
   WHISHLIST_BUTTON_IL = "button[aria-label='Wishlist']"
@@ -65,7 +65,7 @@ class ProductDetails < PageExtension
   end
 
   def product_title(key, name)
-    locator_by key, "//h4[text()='#{name}']",
+    locator_by key, "//h2[text()='#{name}']",
                "planetblue:product_details:#{ta_name(name)}:title"
   end
 
@@ -132,7 +132,7 @@ class ProductDetails < PageExtension
   end
 
   def size_item(key, size)
-    locator_by key, "[amp-bind*='#{size}']",
+    locator_by key, "[amp-bind*='moovAmpState.size.selected.id==\"#{size}\"']",
                "planetblue:product_details:size_item:#{size}"
   end
 

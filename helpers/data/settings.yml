@@ -86,7 +86,9 @@ cloud_bees:
 
 amazon:
   page: "https://www.amazon.com/"
-
+  covid: "https://blog.aboutamazon.com/company-news/amazons-actions-to-help-employees-communities-and-customers-affected-by-covid-19"
+  email: "trueautomation.testteam@gmail.com"
+  password: "1234tesT"
 olx:
   page: "https://www.olx.ua/"
 
@@ -120,8 +122,14 @@ ta:
   doc_page: "https://trueautomation.io/docs/"
 
 flipkart:
-  page: "https://www.flipkart.com"
+  main_page: "https://www.flipkart.com"
   dresses_page: "https://www.flipkart.com/women/dresses/pr?sid=2oq,c1r,ha6,xzt,3y0&otracker=categorytree&otracker=nmenu_sub_Women_0_Dresses&otracker=nmenu_sub_Women_0_Dresses&otracker=nmenu_sub_Women_0_Dresses"
+  flight_page: "https://www.flipkart.com/travel/flights?otracker=nmenu_Flights"
+  press_page: "https://stories.flipkart.com/category/top-stories/news/"
+  faq_page: "https://www.flipkart.com/helpcentre"
+  advertise_page: "http://52.172.39.71/?otracker=ch_vn_advertise_header"
+  sitemap_page: "https://www.flipkart.com/sitemap?otracker=undefined_footer_navlinks"
+  stories_page: "https://stories.flipkart.com/"
 
 thetiebar:
   main_page: "https://www.thetiebar.com/"

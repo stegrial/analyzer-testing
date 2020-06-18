@@ -1,11 +1,9 @@
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
-require_relative '../../../helpers/element_search_validation'
 required_relative_all "/pages/planetblue/*.rb"
 
-include ElementSearchValidation
-
 careers = Careers.new
+modal = Modal.new
 
 describe 'Preconditions' do
 
@@ -29,6 +27,7 @@ describe 'Preconditions' do
         end
 
         step "User checks Careers Header" do
+          modal.click_close_policies_button
           careers.should_see_careers_header
         end
 
@@ -40,7 +39,9 @@ describe 'Preconditions' do
           careers.should_see_career_item store, name
         end
 
+        sleep 3
       end
     end
+
   end
 end

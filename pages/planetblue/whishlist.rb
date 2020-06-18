@@ -18,7 +18,7 @@ class Whishlist < PageExtension
   end
 
   def product_card(key, number)
-    locator_by key, "//*[contains(@class, 'product-card')][#{number}]", "planetblue:product_card:#{number}:container"
+    locator_by key, "//*[contains(@id, 'product-card')][#{number}]", "planetblue:product_card:#{number}:container"
   end
 
   def whishlist_remove_button(key, number)

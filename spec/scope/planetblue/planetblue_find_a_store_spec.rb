@@ -4,7 +4,7 @@ required_relative_all "/pages/planetblue/*.rb"
 
 planetblue = PlanetBlue.new
 find_a_store = FindAStore.new
-menu = Menu.new
+modal = Modal.new
 
 describe 'Preconditions' do
 
@@ -32,6 +32,7 @@ describe 'Preconditions' do
         end
 
         step "User checks page Header", 'Find A Store' do |title|
+          modal.click_close_policies_button
           planetblue.should_see_page_header title
         end
 
@@ -43,7 +44,9 @@ describe 'Preconditions' do
           find_a_store.should_see_store_item_details title
         end
 
+        sleep 3
       end
     end
+
   end
 end

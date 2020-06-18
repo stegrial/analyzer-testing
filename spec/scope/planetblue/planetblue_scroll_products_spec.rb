@@ -52,13 +52,16 @@ describe 'Preconditions' do
           (1..15).each {
             scroll_to_element 10000
           }
+          modal.click_close_policies_button
         end
 
         step "User click 'Load More' button" do
           planetblue.click_load_more_button
         end
 
+        sleep 3
       end
     end
+
   end
 end
