@@ -64,4 +64,14 @@ def move_between_tabs
     page.driver.browser.close
     page.driver.browser.switch_to.window(window.first)
   end
+
+  # example of moving between tabs in browser
+
+  # open_new_window :tab
+  # tab = page.driver.browser.window_handles
+  # page.driver.browser.switch_to.window(tab.last)
+  # visit href
+  # style_code = page.driver.browser.page_source
+  # page.driver.browser.close
+  # page.driver.browser.switch_to.window(tab.first)
 end

@@ -1,3 +1,6 @@
+require 'capybara/rspec'
+require 'selenium-webdriver'
+require 'json'
 require 'fileutils'
 require 'nokogiri'
 require 'net/http'
@@ -6,6 +9,8 @@ require 'openssl'
 require 'uri'
 
 class Logs
+  include Capybara::DSL
+  include RSpec::Matchers
 
   def initialize
     @filter_array = []
@@ -18,21 +23,37 @@ class Logs
   end
 
   def modify_html
-    # original_href = 'https://google.com'
-    # visit original_href
-    # sleep 5
-
     logs_root.each do |path|
       data_html = path + '/data.html'
-      new_data_html = File.open(data_html) { |file| Nokogiri.HTML(file) }
-      # new_page = Nokogiri.HTML(page.driver.browser.page_source)
 
-      # head = new_page.search('head').first
-      # current_url = URI.parse(page.current_url)
+      data = File.read(data_html)
+      result = ''
+      flag = false
+      data.each_line do |line|
+        flag = line.match(/<head/) if !flag
+        if flag
+          line = line.gsub(/<iframe.+?iframe>/, '')
+          flag = !line.match(/\/head>/)
+        end
+        result << line
+      end
+
+      # new_data_html = File.open(data_html) { |file| Nokogiri.HTML(file) }
+      new_data_html = Nokogiri.HTML(result)
+
+      head = new_data_html.search('head').first
+      head.search("*").each do |node|
+        node.remove unless %w(title style base link meta script noscript).include? node.name
+      end
+
+      # anniesalke update
+      # broken_src = 'https://cdn-fsly.yottaa.net/582d2c4c32f01c22a2000001/599c8950b4440136e0f1123dfe2baf36.yottaa.net/v~4b.d2/js/jquery.fa-functions.js?yocs=D_G_J_'
+      # broken_script = new_data_html.search('script').detect { |script| script['src'] == broken_src }
+      # broken_script['src'] = ''
 
       current_url = File.read(path + '/current_url.txt')
       current_url_parsed = URI.parse(current_url.chomp)
-      FileUtils.mkdir path + '/data_files'
+      FileUtils.mkdir path + '/data_files' unless File.exists?(path + '/data_files')
 
       styles = new_data_html.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
       # puts styles
@@ -84,14 +105,6 @@ class Logs
               file << open(href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
             end
           rescue StandardError => ex
-            # open_new_window :tab
-            # tab = page.driver.browser.window_handles
-            # page.driver.browser.switch_to.window(tab.last)
-            # visit href
-            # style_code = page.driver.browser.page_source
-            # page.driver.browser.close
-            # page.driver.browser.switch_to.window(tab.first)
-
             puts "\n" + "\e[33m!href can be wrong: \e[0m" + href
             puts ex
           ensure
@@ -106,6 +119,54 @@ class Logs
       file.puts(new_data_html)
       file.close
     end
+  end
+
+  def check_data_consistency
+    args = { args: %w(--disable-notifications --headless --disable-gpu) }
+    options = Selenium::WebDriver::Chrome::Options.new(args)
+
+    Capybara.register_driver :chrome_driver do |app|
+      Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+    end
+
+    Capybara.configure do |capybara|
+      capybara.run_server = false
+      capybara.default_max_wait_time = 6
+      capybara.default_driver = :chrome_driver
+    end
+
+    logs_root.each do |path|
+      puts "\n" + path
+      html_path = path + '/data.html'
+      page.visit 'file://' + html_path
+
+      relative_locator = JSON.parse(File.read(path + '/current_locator.json'))
+      begin
+        if File.read(path + '/element_address.txt') != 'NOT_FOUND'
+          expected_path = find(relative_locator['type'].to_sym, relative_locator['value']).path
+          puts expected_path
+
+          absolute_locator = []
+          absolute_address = File.read(path + '/element_address.txt').split(".")
+          absolute_address.each do |i|
+            i = "/*[#{i.to_i + 1}]"
+            absolute_locator << i
+          end
+          absolute_locator = absolute_locator.join('')
+          actual_path = find(:xpath, absolute_locator).path
+          puts actual_path
+
+          expect(actual_path).to eq expected_path
+        else
+          expect(page).not_to have_selector(relative_locator['type'].to_sym, relative_locator['value'])
+          puts 'NOT_FOUND'
+        end
+      rescue RSpec::Expectations::ExpectationNotMetError, Capybara::ElementNotFound => ex
+        puts ex
+        puts "\e[33m!data is not consistency\e[0m"
+      end
+    end
+    Capybara.current_session.driver.quit
   end
 
   def create_signature_sources
@@ -188,7 +249,7 @@ class Logs
 
   def rm_excess_data
     logs_root.each do |path|
-      data = %w(/data.json /current_url.txt)
+      data = %w(/data.json /current_url.txt /current_locator.json)
       data.each do |file|
         FileUtils.rm(path + file) if File.exist?(path + file)
       end
@@ -217,8 +278,8 @@ class Logs
   def rm_same_requests
     array_to_remove = []
     @filter_array.each_with_index do |value, index|
-      if value[1] == 4 && @filter_array[index + 1][1] == 4 # to leave only last request
-        # if value[1] == 4 && @filter_array[index - 1][1] == 4 && @filter_array[index + 1][1] == 4 # to leave first and last requests
+      if value[1] == 5 && @filter_array[index + 1][1] == 5 # to leave only last request
+        # if value[1] == 5 && @filter_array[index - 1][1] == 5 && @filter_array[index + 1][1] == 5 # to leave first and last requests
         array_to_remove << value[0]
       end
     end
@@ -251,7 +312,7 @@ class Logs
     data = %w(/signature.html /signature_files /signature_address.txt /signature.json)
     data.each do |object|
       signature_address = @filter_array[index][0] + object
-      if @filter_array[index - 1][1] == 6
+      if @filter_array[index - 1][1] == 7
         puts "\e[33mMoving Signature Request: \e[0m" + @filter_array[index - 1][0] + object
 
         FileUtils.rm_rf(@filter_array[index - 1][0] + object)
@@ -289,6 +350,7 @@ processing.filter_array.rm_same_requests
 processing.rename_undefined
 
 processing.modify_html
+processing.check_data_consistency
 processing.create_signature_sources
 
 processing.filter_array.move_signature_data
