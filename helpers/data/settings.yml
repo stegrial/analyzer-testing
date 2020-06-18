@@ -7,6 +7,8 @@ venus:
   order_history_page: 'https://www.venus.com/secure/accounthistory.aspx'
   wish_list_page: 'https://www.venus.com/wishlist.aspx'
   mail_options_page: 'https://www.venus.com/secure/mailoptions.aspx'
+  contact_us_page: 'https://www.venus.com/contact.aspx'
+  get_card_page: 'https://www.venus.com/Venus-Card/'
   email: 'denys.shutko@moovweb.com'
   pass: 'asdffdsA1'
   first_name: 'Denys'

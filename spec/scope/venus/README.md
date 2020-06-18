@@ -1,0 +1,23 @@
+# Run Tests
+
+* Run all elements recording scenarios:
+
+```
+rspec spec/scope/venus/*.rb 
+```
+
+todo:
+planetblue_add_item_to_whishlist.rb
+planetblue_category_selecting_spec.rb
+planetblue_change_shipping_address_spec.rb
+planetblue_contact_us_page_spec.rb
+planetblue_filter_products_spec.rb
+planetblue_find_a_store_spec.rb
+planetblue_find_product_by_designers_spec.rb
+planetblue_find_product_spec.rb
+planetblue_login_spec.rb
+planetblue_navigate_to_careers_spec.rb
+planetblue_navigate_to_product_details_spec.rb
+planetblue_purchase_product_spec.rb
+planetblue_scroll_products_spec.rb
+planetblue_sort_products_spec.rb
