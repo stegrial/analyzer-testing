@@ -1,5 +1,5 @@
 require_relative '../helpers/element_search_validation'
-require_relative '../helpers/getting_logs'
+require_relative '../helpers/get_extra_data'
 
 class PageExtension
   include TrueAutomation::DSL
@@ -7,9 +7,9 @@ class PageExtension
   include RSpec::Matchers
   include ElementSearchValidation
 
-  def processing
-    current_url = GetCurrentUrl.new
-    current_url.save
+  def processing(locator)
+    extra_data = GetExtraData.new(locator)
+    extra_data.save
     check_last_request
   end
 
@@ -46,11 +46,11 @@ class PageExtension
     wait_for_element = 18
     start_time = get_current_time
     begin
-      return find(ta(tl), wait: 0, visible: visible) { processing } if key == :ta
+      return find(ta(tl), wait: 0, visible: visible) { processing({ type: il_type, value: il }) } if key == :ta
       return find(il_type, il, visible: visible) if key == :il
-      find(il_type, ta(tl, il), wait: 0, visible: visible) { processing }
+      find(il_type, ta(tl, il), wait: 0, visible: visible) { processing({ type: il_type, value: il }) }
     rescue
-      find('html') { processing }
+      find('html') { processing({ type: il_type, value: il }) }
       retry if get_current_time - start_time < wait_for_element
     end
   end
