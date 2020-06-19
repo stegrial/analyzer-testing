@@ -31,6 +31,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks the trim  button" do
+          sleep 3 # wait for page load
           product_page.click_fit_trim_btn
         end
 

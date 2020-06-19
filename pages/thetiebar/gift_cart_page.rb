@@ -23,7 +23,7 @@ class TheTiebarGiftCartPage < PageExtension
   GIFT_MESSAGE_IL = "//textarea[@id='giftMessage']"
   GIFT_MESSAGE_TA = "thetiebar:gifr_page:gift_message"
 
-  ADD_E_GIFT_CART_IL = "//div[contains(@class,'addToCartCtaInner')]"
+  ADD_E_GIFT_CART_IL = "//button[contains(@class,'addToCartCtaOuter')]"
   ADD_E_GIFT_CART_TA = "thetiebar:gifr_page:add_e_gift_card"
 
 

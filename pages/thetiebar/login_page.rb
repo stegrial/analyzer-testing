@@ -8,7 +8,7 @@ class TheTiebarLoginPage < PageExtension
   LOGIN_PASS_IL = "//input[contains(@id, 'LoginPassword')]"
   LOGIN_PASS_TA = "thetiebar:login_page:login_pass"
 
-  SIGN_IN_IL = "//input[contains(@id, 'btnSignIn')]"
+  SIGN_IN_IL = "//button[@id='btnSignIn']"
   SIGN_IN_TA = "thetiebar:login_page:signIn"
 
   CREATE_ACCOUNT_TAB_IL = "//a[contains(text(), 'Create an Account')]"
@@ -32,7 +32,7 @@ class TheTiebarLoginPage < PageExtension
   OPTION_INPUT_IL = "//input[contains(@id, 'OptIn')]"
   OPTION_INPUT_TA = "thetiebar:login_page:option_checkbox"
 
-  CREATE_ACCOUNT_BTN_IL = "//input[contains(@id, 'signupButton')]"
+  CREATE_ACCOUNT_BTN_IL = "//button[@id='signupButton']"
   CREATE_ACCOUNT_BTN_TA = "thetiebar:login_page:create_acc"
 
 

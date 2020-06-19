@@ -68,7 +68,7 @@ class TheTiebarCheckoutPage < PageExtension
   CONTINUE_TO_REVIEW_BTN_IL = "//button[text()='Continue to Review ›']"
   CONTINUE_TO_REVIEW_BTN_TA = "thetiebar:checkout_page:continue_btn"
 
-  PLACE_ORDER_BTN_IL = "//div[text()='Place Order']"
+  PLACE_ORDER_BTN_IL = "//span[text()='Place Order']"
   PLACE_ORDER_BTN_TA = "thetiebar:checkout_page:place_order_btn"
 
 

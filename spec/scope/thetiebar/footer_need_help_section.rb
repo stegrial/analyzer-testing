@@ -6,6 +6,7 @@ footer_page = TheTiebarFooterPage.new
 faq_page = TheTiebarFaqPage.new
 about_us_page = TheTiebarAboutUs.new
 canada_page = TheTiebarCanada.new
+main_page = TheTiebarMainPage.new
 
 describe 'Preconditions' do
 
@@ -28,6 +29,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks on the Contact link" do
+          main_page.click_close_coolies_btn
           footer_page.click_contact
           footer_page.should_see_contact_h1
         end
