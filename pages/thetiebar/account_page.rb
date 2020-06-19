@@ -23,19 +23,19 @@ class TheTiebarAccount_page < PageExtension
   ORDERS_IL = "//a[contains(@href, '/Customer/Orders')]/div"
   ORDERS_TA = "thetiebar:my_acc_page:orders"
 
-  PAYMENT_IL = "(//img[contains(@alt, 'Payment')])[1]"
+  PAYMENT_IL = "//h5[contains(text(), 'Payment')]"
   PAYMENT_TA = "thetiebar:my_acc_page:payment"
 
-  ADDRESS_BOOK_IL = "//img[contains(@alt, 'Address Book')]"
+  ADDRESS_BOOK_IL = "//h5[contains(text(), 'Address Book')]"
   ADDRESS_BOOK_TA = "thetiebar:my_acc_page:address_book"
 
-  WISHLIST_IL = "//img[contains(@alt, 'Wishlist')]"
+  WISHLIST_IL = "//h5[contains(text(), 'Wishlist')]"
   WISHLIST_TA = "thetiebar:my_acc_page:wishlist"
 
-  GIFTCARDS_CREDIT_IL = "//div[contains(text(), 'Gift Cards & Credit')]"
+  GIFTCARDS_CREDIT_IL = "//h5[contains(text(), 'Gift Cards & Credit')]"
   GIFTCARDS_CREDIT_TA = "thetiebar:my_acc_page:gift_credit"
 
-  SIGN_OUT_LINK_IL = "//a[contains(text(), 'Sign Out')]"
+  SIGN_OUT_LINK_IL = "(//a[contains(text(), 'Sign Out')])[1]"
   SIGN_OUT_LINK_TA = "thetiebar:my_acc_page:sing_out"
 
   SUBSCRIBE_EMAIL_IL = "(//span[contains(@class, 'mbsc-switch-track')])[1]"
@@ -69,7 +69,7 @@ class TheTiebarAccount_page < PageExtension
   CANCEL_DELETE_BTN_IL = "(//a[contains(text(), 'Cancel')])[2]"
   CANCEL_DELETE_BTN_TA = "thetiebar:preferences_page:cancel_delete_acc_btn"
 
-  CLOSE_DELETE_MODAL_ICON_IL = "(//img[contains(@alt, 'close icon')])[1]"
+  CLOSE_DELETE_MODAL_ICON_IL = "//img[contains(@class, 'x-icon')]"
   CLOSE_DELETE_MODAL_ICON_TA = "thetiebar:preferences_page:close_modal_icon"
 
 

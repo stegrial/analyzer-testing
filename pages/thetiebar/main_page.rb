@@ -20,6 +20,9 @@ class TheTiebarMainPage < PageExtension
   COOKIES_CLOSE_BUTTON_IL = "//button[@aria-label='close']"
   COOKIES_CLOSE_BUTTON_TA = "thetiebar:main_page:cookies_close_btn"
 
+  SUBSCRIBE_CLOSE_BUTTON_IL = " //button[@alt='Close form']"
+  SUBSCRIBE_CLOSE_BUTTON_TA = "thetiebar:main_page:subscribe_close_btn"
+
 
   def fill_singup_field(key = nil, value)
     find_element(key, il_type: :xpath, tl: SING_UP_INPUT_TA, il: SING_UP_INPUT_IL, check_path: $check_path).set(value)
@@ -46,6 +49,10 @@ class TheTiebarMainPage < PageExtension
 
   def click_close_coolies_btn(key = nil)
     find_element(key, il_type: :xpath, tl: COOKIES_CLOSE_BUTTON_TA, il: COOKIES_CLOSE_BUTTON_IL, check_path: $check_path).click
+  end
+
+  def click_close_subscribe_btn(key = nil)
+    find_element(key, il_type: :xpath, tl: SUBSCRIBE_CLOSE_BUTTON_TA, il: SUBSCRIBE_CLOSE_BUTTON_IL, check_path: $check_path).click
   end
 
 end

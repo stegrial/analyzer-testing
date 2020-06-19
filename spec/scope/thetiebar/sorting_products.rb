@@ -29,6 +29,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks to select black color filter" do
+          sleep 2 # wait for dropdown opened
           product_page.click_newest_soring
         end
 
