@@ -143,7 +143,7 @@ class Logs
       relative_locator = JSON.parse(File.read(path + '/current_locator.json'))
       begin
         if File.read(path + '/element_address.txt') != 'NOT_FOUND'
-          expected_path = find(relative_locator['type'].to_sym, relative_locator['value']).path
+          expected_path = find(relative_locator['type'].to_sym, relative_locator['value'], visible: false).path
           puts expected_path
 
           absolute_locator = []
@@ -153,12 +153,12 @@ class Logs
             absolute_locator << i
           end
           absolute_locator = absolute_locator.join('')
-          actual_path = find(:xpath, absolute_locator).path
+          actual_path = find(:xpath, absolute_locator, visible: false).path
           puts actual_path
 
           expect(actual_path).to eq expected_path
         else
-          expect(page).not_to have_selector(relative_locator['type'].to_sym, relative_locator['value'])
+          expect(page).not_to have_selector(relative_locator['type'].to_sym, relative_locator['value'], visible: false)
           puts 'NOT_FOUND'
         end
       rescue RSpec::Expectations::ExpectationNotMetError, Capybara::ElementNotFound => ex
@@ -279,7 +279,7 @@ class Logs
     array_to_remove = []
     @filter_array.each_with_index do |value, index|
       if value[1] == 5 && @filter_array[index + 1][1] == 5 # to leave only last request
-        # if value[1] == 5 && @filter_array[index - 1][1] == 5 && @filter_array[index + 1][1] == 5 # to leave first and last requests
+      # if value[1] == 5 && @filter_array[index - 1][1] == 5 && @filter_array[index + 1][1] == 5 # to leave first and last requests
         array_to_remove << value[0]
       end
     end
