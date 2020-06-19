@@ -11,7 +11,7 @@ class TheTiebarAccount_page < PageExtension
   CLOSE_EDIT_BTN_IL = "//img[contains(@class, 'modal-close')]"
   CLOSE_EDIT_BTN_TA = "thetiebar:my_acc_page:close_edit_profile"
 
-  PREFERENCES_IL = "//a[contains(text(), 'Preferences')]"
+  PREFERENCES_IL = "(//a[contains(text(), 'Preferences')])[1]"
   PREFERENCES_TA = "thetiebar:my_acc_page:preferences"
 
   CHANGE_PASSWORD_IL = "//a[contains(text(), 'Change Password')]"

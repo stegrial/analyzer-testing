@@ -29,7 +29,7 @@ class TheTiebarFooterPage < PageExtension
   CANADA_IL = "//div[contains(., 'Need Help')]//a[contains(., 'Canada')]"
   CANADA_TA = "thetiebar:footer_page:need_help_section:Canada"
 
-  PROMOTIONS_IL = "//div[contains(., 'Need Help')]//a[contains(., 'Promotions')]"
+  PROMOTIONS_IL = "//a[contains(., 'Promotions')]//p[text()='Promotions']"
   PROMOTIONS_TA = "thetiebar:footer_page:need_help_section:promotions"
 
   HOLIDAY_TIES_IL = "//a[@href='https://www.thetiebar.com/pages/holiday-ties']"
