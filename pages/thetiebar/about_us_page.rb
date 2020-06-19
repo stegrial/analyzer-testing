@@ -8,10 +8,10 @@ class TheTiebarAboutUs < PageExtension
   PREVIOUS_IMG_SLIDER_IL = "//*[contains(@class, 'main-carousel-previous')]"
   PREVIOUS_IMG_SLIDER_TA = "thetiebar:about_us:previous_btn"
 
-  NEXT_HISTORY_SLIDER_IL = "//*[contains(@class, 'history-carousel-next')]"
+  NEXT_HISTORY_SLIDER_IL = "(//*[contains(@class, 'history-carousel-next')])[1]"
   NEXT_HISTORY_SLIDER_TA = "thetiebar:about_us:next_history_btn"
 
-  PREVIOUS_HISTORY_SLIDER_IL = "//*[contains(@class, 'history-carousel-previous')]"
+  PREVIOUS_HISTORY_SLIDER_IL = "(//*[contains(@class, 'history-carousel-previous')])[1]"
   PREVIOUS_HISTORY_SLIDER_TA = "thetiebar:about_us:previous_history_btn"
 
   FIND_STORE_BTN_IL = "//a[text()='Find a store near you']"
