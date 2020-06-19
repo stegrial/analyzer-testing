@@ -5,7 +5,7 @@ class TheTiebarProductPage < PageExtension
   SECOND_SHIRT_PDP_IL = "(//img[contains(@alt, 'Shirt')])[2]"
   SECOND_SHIRT_PDP_TA = "thetiebar:header:shirts"
 
-  SECOND_SQUARE_PDP_IL = "(//a[@data-th='product-link']//img[contains(@alt, 'Square')])[2]"
+  SECOND_SQUARE_PDP_IL = "(//a[@data-th='product-link']/div)[2]"
   SECOND_SQUARE_PDP_TA = "thetiebar:header:square"
 
   SIZE_145_IL = "//div[@id='SizeWidget']//button[not(contains(@tabindex, '-1'))]//h5[text()='14.5']"

@@ -3,6 +3,8 @@ require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/thetiebar/*.rb"
 
 product_page = TheTiebarProductPage.new
+main_page = TheTiebarMainPage.new
+about_us_page = TheTiebarAboutUs.new
 
 describe 'Preconditions' do
 
@@ -22,6 +24,11 @@ describe 'Preconditions' do
       scenario 'Test - Recording', "#{$tag}": true do
         step "User goes to the page", settings('thetiebar')['shirts_page'] do |url|
           page.visit url
+        end
+
+        step "User click the close cookies div" do
+          sleep 2 # wait for page load
+          main_page.click_close_coolies_btn
         end
 
         step "User clicks the second shirt on product" do
