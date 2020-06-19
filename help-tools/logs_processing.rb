@@ -135,19 +135,19 @@ class Logs
       capybara.default_driver = :chrome_driver
     end
 
-    logs_root.each do |path|
-      puts "\n" + path
-      html_path = path + '/data.html'
+    @filter_array.each_with_index do |value, index|
+      puts "\n" + value[0]
+      html_path = value[0] + '/data.html'
       page.visit 'file://' + html_path
 
-      relative_locator = JSON.parse(File.read(path + '/current_locator.json'))
+      relative_locator = JSON.parse(File.read(value[0] + '/current_locator.json'))
       begin
-        if File.read(path + '/element_address.txt') != 'NOT_FOUND'
+        if File.read(value[0] + '/element_address.txt') != 'NOT_FOUND'
           expected_path = find(relative_locator['type'].to_sym, relative_locator['value'], visible: false).path
           puts expected_path
 
           absolute_locator = []
-          absolute_address = File.read(path + '/element_address.txt').split(".")
+          absolute_address = File.read(value[0] + '/element_address.txt').split(".")
           absolute_address.each do |i|
             i = "/*[#{i.to_i + 1}]"
             absolute_locator << i
@@ -164,6 +164,19 @@ class Logs
       rescue RSpec::Expectations::ExpectationNotMetError, Capybara::ElementNotFound => ex
         puts ex
         puts "\e[33m!data is not consistency\e[0m"
+
+        array_to_remove = []
+        array_to_remove << value[0]
+        if @filter_array[index - 1][1] == 'NOT_FOUND' && @filter_array[index - 2][1] == 'NOT_FOUND'
+          array_to_remove << @filter_array[index - 1][0] if Dir.exists?(@filter_array[index - 1][0])
+          array_to_remove << @filter_array[index - 2][0] if Dir.exists?(@filter_array[index - 2][0])
+        elsif @filter_array[index - 1][1] == 'NOT_FOUND'
+          array_to_remove << @filter_array[index - 1][0] if Dir.exists?(@filter_array[index - 1][0])
+        end
+
+        puts "\n" + "\e[33mRemoved requests:\e[0m"
+        puts array_to_remove
+        FileUtils.rm_rf(array_to_remove)
       end
     end
     Capybara.current_session.driver.quit
@@ -272,14 +285,17 @@ class Logs
     @filter_array = logs_root.
         sort_by { |a| [a.scan(/\d+/)[-2].to_i, a.scan(/\d+/)[-1].to_i] }.
         map { |path| [path, Dir[File.join(path, '*')].count { |file| File.file?(file) }] }
+    @filter_array.each_index do |index|
+      @filter_array[index][1] == 5 || @filter_array[index][1] == 7 ? @filter_array[index][1] = 'NOT_FOUND' : @filter_array[index][1] = 'FOUND'
+    end
     self
   end
 
   def rm_same_requests
     array_to_remove = []
     @filter_array.each_with_index do |value, index|
-      if value[1] == 5 && @filter_array[index + 1][1] == 5 # to leave only last request
-      # if value[1] == 5 && @filter_array[index - 1][1] == 5 && @filter_array[index + 1][1] == 5 # to leave first and last requests
+      if value[1] == 'NOT_FOUND' && @filter_array[index + 1][1] == 'NOT_FOUND' # to leave only last request
+      # if value[1] == 'NOT_FOUND' && @filter_array[index - 1][1] == 'NOT_FOUND' && @filter_array[index + 1][1] == 'NOT_FOUND' # to leave first and last requests
         array_to_remove << value[0]
       end
     end
@@ -289,21 +305,6 @@ class Logs
     FileUtils.rm_rf(array_to_remove)
   end
 
-  # <<< The first version of signature movement: >>>
-  #
-  # new_array = []
-  # filter.each { |pair| new_array << pair }
-  #
-  # new_array.each_with_index do |value, index|
-  #   signature = "#{value[0]}/signature.json"
-  #   if value[1] == 3 and new_array[index - 1][1] == 2 and new_array[index - 2][1] == 2
-  #     FileUtils.cp(signature, new_array[index - 1][0])
-  #     FileUtils.cp(signature, new_array[index - 2][0])
-  #   elsif value[1] == 3 and new_array[index - 1][1] == 2
-  #     FileUtils.cp(signature, new_array[index - 1][0])
-  #   end
-  # end
-
   def last_index
     @filter_array.length - 1
   end
@@ -312,7 +313,7 @@ class Logs
     data = %w(/signature.html /signature_files /signature_address.txt /signature.json)
     data.each do |object|
       signature_address = @filter_array[index][0] + object
-      if @filter_array[index - 1][1] == 7
+      if @filter_array[index - 1][1] == 'NOT_FOUND'
         puts "\e[33mMoving Signature Request: \e[0m" + @filter_array[index - 1][0] + object
 
         FileUtils.rm_rf(@filter_array[index - 1][0] + object)
@@ -350,7 +351,7 @@ processing.filter_array.rm_same_requests
 processing.rename_undefined
 
 processing.modify_html
-processing.check_data_consistency
+processing.filter_array.check_data_consistency
 processing.create_signature_sources
 
 processing.filter_array.move_signature_data
