@@ -9,7 +9,6 @@ describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
-    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
@@ -39,7 +38,7 @@ describe 'Preconditions' do
         end
 
         step "User selects Category Dropdown value", 'Oldest first' do |value|
-          modal.click_close_discount_button
+          #modal.click_close_discount_button  # if modal appears
           planetblue.select_from_sort_dropdown value
         end
 

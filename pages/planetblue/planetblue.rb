@@ -6,7 +6,7 @@ class PlanetBlue < PageExtension
   CLOSE_DROPDOWN_BUTTON_IL = "[role] button svg"
 
   APPLY_BUTTON_TA = "planetblue:category_dropdown:apply_button"
-  APPLY_BUTTON_IL = "//span[text()='Apply']/parent::button"
+  APPLY_BUTTON_IL = "(//span[text()='Apply']/parent::button)[2]"
 
   BACK_TO_TOP_BUTTON_TA = "blueplanet:back_to_top_button"
   BACK_TO_TOP_BUTTON_IL = "button[title='back to top']"

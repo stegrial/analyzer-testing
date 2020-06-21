@@ -10,7 +10,6 @@ describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
-    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
@@ -40,7 +39,7 @@ describe 'Preconditions' do
         end
 
         step "User checks Breadcrumbs", 'Home', 'THE JESSIE MIDI' do |breadcrumb1, breadcrumb2|
-          modal.click_close_discount_button
+          #modal.click_close_discount_button  # if modal appears
           planetblue.should_see_breadcrumb breadcrumb1, true
           planetblue.should_see_breadcrumb breadcrumb2, false
         end

@@ -9,7 +9,6 @@ describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
-    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
@@ -35,19 +34,20 @@ describe 'Preconditions' do
         end
 
         step "User checks Collection Items", 'CAMO PULLOVER | New', 'camo-pullover?' do |name, link|
-          modal.click_close_discount_button
+          #modal.click_close_discount_button # if modal appears
           planetblue.should_see_collection_item name, link
         end
 
         step "User selects Refine Category Dropdown values", 'Category',
-             ['Rompers + Jumpsuits', 'Shorts'] do |section, values|
+             ['Rompers + Jumpsuits', 'Pants'] do |section, values|
           scroll_to_element 300
           planetblue.select_from_refine_dropdown section, values
         end
 
         step "User checks Collection Items" do
+          modal.click_close_policies_button
           planetblue.should_see_collection_item 'BRITTON JUMPSUIT', 'britton-jumpsuit?'
-          planetblue.should_see_collection_item 'BIKER SHORT WITH TRIM | Sale', 'biker-short-with-trim?'
+          planetblue.should_see_collection_item 'COZY SWEATS | Sale', 'cozy-sweats?'
         end
 
         sleep 3

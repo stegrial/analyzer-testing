@@ -10,7 +10,6 @@ describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
-    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {:deviceName => 'iPhone 5'}
   end
 
@@ -30,7 +29,7 @@ describe 'Preconditions' do
 
         step "User clicks Add to Bag button" do
           scroll_to_element 800
-          modal.click_close_discount_button
+          #modal.click_close_discount_button  # if modal appears
           product_details.click_add_to_bag_button
         end
 
@@ -39,8 +38,10 @@ describe 'Preconditions' do
         end
 
         step "User clicks Checkout confirm button" do
+          sleep  5  # wait for page load
           modal.click_close_policies_button
-          modal.click_close_discount_button :il
+          sleep 2
+          modal.click_close_discount_button
           scroll_to_element 500
           product_details.click_checkout_confirm_button
         end

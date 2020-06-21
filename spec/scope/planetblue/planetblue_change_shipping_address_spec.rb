@@ -9,7 +9,6 @@ describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
-    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
@@ -27,7 +26,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks Shipping dropdown" do
-          modal.click_close_policies_button
+          #modal.click_close_policies_button  # if modal appears
           shipping.click_shipping_dropdown
         end
 

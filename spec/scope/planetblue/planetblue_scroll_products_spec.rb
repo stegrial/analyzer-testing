@@ -9,7 +9,6 @@ describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
-    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
     $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
   end
 
@@ -36,7 +35,7 @@ describe 'Preconditions' do
 
         step "User checks Collection Items and scroll down" do
           scroll_to_element 1000
-          modal.click_close_discount_button
+          #modal.click_close_discount_button  # if modal appears
           planetblue.should_see_collection_item_by_num 1
         end
 
@@ -53,10 +52,6 @@ describe 'Preconditions' do
             scroll_to_element 10000
           }
           modal.click_close_policies_button
-        end
-
-        step "User click 'Load More' button" do
-          planetblue.click_load_more_button
         end
 
         sleep 3
