@@ -105,7 +105,7 @@ class Logs
               file << open(href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
             end
           rescue StandardError => ex
-            puts "\n" + "\e[33m!href can be wrong: \e[0m" + href
+            puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
             puts ex
           ensure
             # head << '<style>' + style_code + '</style>'
@@ -136,7 +136,7 @@ class Logs
     end
 
     @filter_array.each_with_index do |value, index|
-      puts "\n" + value[0]
+      puts "\n" + "\e[36m#{value[0]}\e[0m"
       html_path = value[0] + '/data.html'
       page.visit 'file://' + html_path
 
