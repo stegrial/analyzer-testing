@@ -7,7 +7,8 @@ class GetExtraData
   include ElementSearchValidation
 
   def initialize(current_locator)
-    @current_url = page.current_url
+    script = File.read('./helpers/help-functions/get_href.js')
+    @current_href = page.evaluate_script(script)
     @current_locator = current_locator
   end
 
@@ -15,9 +16,11 @@ class GetExtraData
     begin
       return if File.exist?(define_last_request + '/current_url.txt')
       return if File.exist?(define_last_request + '/current_locator.txt')
-      file_url = File.new(define_last_request + '/current_url.txt', "w")
-      file_url.puts @current_url
+
+      file_url = File.new(define_last_request + '/current_href.txt', "w")
+      file_url.puts @current_href
       file_url.close
+
       file_locator = File.new(define_last_request + '/current_locator.json', "w")
       file_locator.puts @current_locator.to_json
       file_locator.close
