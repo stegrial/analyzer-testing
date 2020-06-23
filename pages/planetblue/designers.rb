@@ -4,7 +4,7 @@ class Designers < PageExtension
 
   def designers_list_section(key, name)
     (name == '#') ? formatted_name = 'other' : formatted_name = ta_name(name)
-    locator_by key, "//ul[@class='designers-list']//h3[text()='#{name}']",
+    locator_by key, "//a[contains(@href, '/collections/') and text()='#{name}']",
                "planetblue:designers:list_section:#{formatted_name}"
   end
 

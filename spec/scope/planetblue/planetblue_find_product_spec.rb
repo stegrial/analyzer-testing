@@ -11,7 +11,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -25,10 +25,7 @@ describe 'Preconditions' do
 
         step "User goes to the page", settings('planetblue')['page'] do |url|
           page.visit url
-        end
-
-        step "User clicks Search Button" do
-          menu.click_search_button
+          modal.click_close_continue_shop_button
         end
 
         step "User fills Search Field", 'RUTH TUNIC | New' do |value|
@@ -41,11 +38,9 @@ describe 'Preconditions' do
 
         step "User checks found items", 'RUTH TUNIC | New' do |value|
           modal.click_close_policies_button
-          scroll_to_element 200
-          modal.click_close_discount_button
-          planetblue.should_see_total_items 2
+
+          planetblue.should_see_total_items 1
           planetblue.should_see_collection_item value, 'ruth-tunic?'
-          planetblue.should_see_collection_item value, 'ruth-tunic-1?'
         end
 
         sleep 3

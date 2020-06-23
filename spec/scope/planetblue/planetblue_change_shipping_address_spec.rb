@@ -4,13 +4,14 @@ required_relative_all "/pages/planetblue/*.rb"
 
 shipping = Shipping.new
 modal = Modal.new
+login = Login.new
 
 describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -24,10 +25,13 @@ describe 'Preconditions' do
 
         step "User goes to the page", settings('planetblue')['page'] + 'pages/student-discounts' do |url|
           page.visit url
+          sleep 3
+          login.click_sign_up_close_button
+          modal.click_close_continue_shop_button
+          modal.click_close_policies_button
         end
 
         step "User clicks Shipping dropdown" do
-          modal.click_close_policies_button
           shipping.click_shipping_dropdown
         end
 
