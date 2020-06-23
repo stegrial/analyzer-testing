@@ -18,12 +18,12 @@ class PlanetBlue < PageExtension
   HEADER_LOGO_IL = "a.header-logo"
 
   def category_dropdown(key, name)
-    locator_by key, "//div[@style='align-items: center; flex-direction: row;']//span[text()='#{name}']",
+    locator_by key, "//div[@style='flex-direction: column;']//span[text()='#{name}']",
                "planetblue:category_dropdown:#{ta_name(name)}"
   end
 
   def sort_dropdown_value(key, value)
-    locator_by key, "//span[text()='#{value}']/parent::button",
+    locator_by key, "//li[text()='#{value}']",
                "planetblue:category_dropdown:sort_value:#{ta_name(value)}"
   end
 
@@ -35,7 +35,7 @@ class PlanetBlue < PageExtension
   end
 
   def refine_category_block(key, value)
-    locator_by key, "(//h6[text()='#{value}']/parent::*/parent::*/parent::*)[2]",
+    locator_by key, "(//h6[text()='#{value}']/parent::*/parent::*/parent::*)",
                "planetblue:category_dropdown:refine_category_block:#{value}"
   end
 
@@ -58,18 +58,12 @@ class PlanetBlue < PageExtension
   end
 
   def select_from_refine_dropdown(key = nil, section, values)
-    find_element(key, il_type: :xpath, tl: category_dropdown(:ta, 'REFINE'),
-                 il: category_dropdown(:il, 'REFINE'), check_path: $check_path).click
-    sleep 5 # wait for page load
     find_element(key, il_type: :xpath, tl: refine_category_block(:ta, section),
                  il: refine_category_block(:il, section), check_path: $check_path).click
     values.each do |value|
       find_element(key, il_type: :xpath, tl: refine_dropdown_checkbox(:ta, section, value),
                    il: refine_dropdown_checkbox(:il, section, value), check_path: $check_path).click
     end
-    # find_element(key, il_type: :css, tl: CLOSE_DROPDOWN_BUTTON_TA,
-    #              il: CLOSE_DROPDOWN_BUTTON_IL, check_path: $check_path).click
-    find_element(key, il_type: :xpath, tl: APPLY_BUTTON_TA, il: APPLY_BUTTON_IL, check_path: $check_path).click
   end
 
   def _collection_item(name, link = nil)

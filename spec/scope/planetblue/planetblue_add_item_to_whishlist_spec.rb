@@ -13,7 +13,8 @@ describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {:deviceName => 'iPhone 5'}
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -27,15 +28,20 @@ describe 'Preconditions' do
 
         step "User goes to the page", settings('planetblue')['page'] do |url|
           page.visit url
+          modal.click_close_continue_shop_button
+        end
+
+        step "User clicks User header button" do
+          modal.click_close_policies_button
+          menu.click_user_header_button
         end
 
         step "User logs in",
              settings('planetblue')['email'],
              settings('planetblue')['pass'] do |email, password|
-          menu.click_user_header_button
-          modal.click_close_policies_button
 
-          scroll_to_element 400
+          login.click_sign_up_close_button
+
           login.fill_email_field email
           login.fill_password_field password
           login.click_sign_in_button
@@ -46,14 +52,11 @@ describe 'Preconditions' do
         end
 
         step "User clicks Collection Item" do
-          #modal.click_close_discount_button  # if modal appears
-          scroll_to_element 300
           planetblue.click_collection_item_by_num 1
         end
 
         step "User clicks Whishlist button" do
-          scroll_to_element 500
-          sleep 15
+          sleep 7 # wait for wishlist button is loaded
           product_details.click_whishlist_button
         end
 
@@ -67,17 +70,15 @@ describe 'Preconditions' do
         end
 
         step "User checks Copy Link button" do
-          scroll_to_element 200
           wishlist.should_see_copy_link_button
         end
 
         step "User checks Product Card" do
-          scroll_to_element 400
+          scroll_to_element 500
           wishlist.should_see_product_card 1
         end
 
         step "User clicks Remove Card button" do
-
           wishlist.click_whishlist_remove_button 1
         end
 

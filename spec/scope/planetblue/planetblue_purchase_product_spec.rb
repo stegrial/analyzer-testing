@@ -5,12 +5,14 @@ required_relative_all "/pages/planetblue/*.rb"
 product_details = ProductDetails.new
 order_details = OrderDetails.new
 modal = Modal.new
+login = Login.new
 
 describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = {:deviceName => 'iPhone 5'}
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -25,24 +27,22 @@ describe 'Preconditions' do
         step "User goes to the page",
              settings('planetblue')['page'] + 'products/the-jessie-midi-2?variant=31773312122964' do |url|
           page.visit url
+          modal.click_close_continue_shop_button
         end
 
         step "User clicks Add to Bag button" do
-          scroll_to_element 800
-          #modal.click_close_discount_button  # if modal appears
           product_details.click_add_to_bag_button
         end
 
         step "User clicks CHECKOUT button" do
           product_details.click_checkout_button
+          sleep  20  # wait for page load
         end
 
         step "User clicks Checkout confirm button" do
-          sleep  5  # wait for page load
+          login.click_sign_up_close_button
           modal.click_close_policies_button
           sleep 2
-          modal.click_close_discount_button
-          scroll_to_element 500
           product_details.click_checkout_confirm_button
         end
 

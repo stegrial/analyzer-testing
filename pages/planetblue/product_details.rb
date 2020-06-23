@@ -76,7 +76,7 @@ class ProductDetails < PageExtension
   end
 
   def product_image_radiobutton(key, name, number)
-    locator_by key, "(#{_product_image_container(name)}/div/div/div)[2]",
+    locator_by key, "(#{_product_image_container(name)}//div//button[@role='tab'])[#{number}]",
                "planetblue:product_details:#{ta_name(name)}:radiobutton:#{number}"
   end
 

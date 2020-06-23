@@ -4,12 +4,14 @@ required_relative_all "/pages/planetblue/*.rb"
 
 careers = Careers.new
 modal = Modal.new
+login = Login.new
 
 describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
+    $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -23,10 +25,12 @@ describe 'Preconditions' do
 
         step "User goes to the page", settings('planetblue')['page'] + 'pages/careers' do |url|
           page.visit url
+          login.click_sign_up_close_button
+          modal.click_close_continue_shop_button
+          modal.click_close_policies_button
         end
 
         step "User checks Careers Header" do
-          modal.click_close_policies_button
           careers.should_see_careers_header
         end
 
