@@ -24,8 +24,8 @@ class ProductListPage < PageExtension
   PAGINATION_2_IL = "//span[@cel_widget_id='MAIN-PAGINATION']//a[text()='2']"
   PAGINATION_2_TA = "amazon:product_list_page:pagination_2"
 
-  BRANDS_IN_SEARCH_IL = "//div[@class='threepsl-header']/*[text()='Brands related to your search']"
-  BRANDS_IN_SEARCH_TA = "amazon:product_list_page:brands_in_search"
+  BOOK_LANGUAGE_IL = "//span[text()='Book Language']"
+  BOOK_LANGUAGE_TA = "amazon:product_list_page:book_language"
 
   SPONSORED_PRODUCT_IN_SEARCH_IL = "//h2[contains(text(),'Sponsored products related to this search')]"
   SPONSORED_PRODUCT_IN_SEARCH_TA = "amazon:product_list_page:sponsored_product_in_search"
@@ -81,8 +81,8 @@ class ProductListPage < PageExtension
     find_element(key, il_type: :xpath, tl: PAGINATION_2_TA, il: PAGINATION_2_IL, check_path: $check_path).click
   end
 
-  def should_see_brands_in_search(key = nil)
-    element = find_element(key, il_type: :xpath, tl: BRANDS_IN_SEARCH_TA, il: BRANDS_IN_SEARCH_IL, check_path: $check_path)
+  def should_see_book_language(key = nil)
+    element = find_element(key, il_type: :xpath, tl: BOOK_LANGUAGE_TA, il: BOOK_LANGUAGE_IL, check_path: $check_path)
     expect(element).to be_visible
   end
 
