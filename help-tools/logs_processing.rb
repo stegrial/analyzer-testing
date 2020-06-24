@@ -30,6 +30,7 @@ class Logs
         unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
           begin
             puts href
+            href = URI.escape(href)
             file_name = URI.parse(href.chomp).path.split('/').last
 
             # anniesalke update
@@ -38,7 +39,7 @@ class Logs
             # file_name = URI.unescape(file_name)
 
             open(path + '/data_files/' + file_name, 'wb') do |file|
-              file << open(href.chomp, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
+              file << open(URI.unescape(href.chomp), { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
             end
           rescue StandardError => ex
             puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
@@ -90,40 +91,46 @@ class Logs
         # href = style['src'] if style['src'] && style['data-yo-src'] == nil
 
         unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
-          file_name = URI.parse(href).path.split('/').last
+          begin
+            href = URI.escape(href)
+            file_name = URI.parse(href).path.split('/').last
 
-          # anniesalke update
-          # href = URI.escape(href) if href.include?(' ')
-          # file_name = URI.parse(href).path.split('/').last
-          # file_name = URI.unescape(file_name)
+            # anniesalke update
+            # href = URI.escape(href) if href.include?(' ')
+            # file_name = URI.parse(href).path.split('/').last
+            # file_name = URI.unescape(file_name)
 
-          style['href'] = 'data_files/' + file_name if style['href']
-          style['src'] = 'data_files/' + file_name if style['src']
+            style['href'] = 'data_files/' + file_name if style['href']
+            style['src'] = 'data_files/' + file_name if style['src']
 
-          # unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
-          #
-          #   unless href.start_with? 'http'
-          #     if (href.start_with? '/') && (href[1] != '/')
-          #       href = current_url_parsed.scheme + '://' + current_url_parsed.host + href
-          #     elsif href.start_with? '..'
-          #       css_array = href.split('/')
-          #       i = css_array.count { |url_part| url_part == '..' }
-          #       i.times { css_array.shift }
-          #
-          #       url_array = current_url.split('/')
-          #       (i + 1).times { url_array.pop }
-          #
-          #       url_array = url_array.concat(css_array)
-          #       href = url_array.join('/')
-          #     elsif href.start_with? '//'
-          #       href = current_url_parsed.scheme + ':' + href
-          #     else
-          #       href = '/' + href unless current_url_parsed.path[-1] == '/'
-          #       href = current_url_parsed.scheme + '://' + current_url_parsed.host + current_url_parsed.path + href
-          #     end
-          #   end
+            # unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
+            #
+            #   unless href.start_with? 'http'
+            #     if (href.start_with? '/') && (href[1] != '/')
+            #       href = current_url_parsed.scheme + '://' + current_url_parsed.host + href
+            #     elsif href.start_with? '..'
+            #       css_array = href.split('/')
+            #       i = css_array.count { |url_part| url_part == '..' }
+            #       i.times { css_array.shift }
+            #
+            #       url_array = current_url.split('/')
+            #       (i + 1).times { url_array.pop }
+            #
+            #       url_array = url_array.concat(css_array)
+            #       href = url_array.join('/')
+            #     elsif href.start_with? '//'
+            #       href = current_url_parsed.scheme + ':' + href
+            #     else
+            #       href = '/' + href unless current_url_parsed.path[-1] == '/'
+            #       href = current_url_parsed.scheme + '://' + current_url_parsed.host + current_url_parsed.path + href
+            #     end
+            #   end
 
-          # style_code = Net::HTTP.get(URI.parse(href))
+            # style_code = Net::HTTP.get(URI.parse(href))
+          rescue StandardError, InvalidURIError => ex
+            puts "\n" + "\e[31m!href value is not modified: \e[0m" + href + ' in request: ' + path
+            puts ex
+          end
         end
       end
 
