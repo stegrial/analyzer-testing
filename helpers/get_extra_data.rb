@@ -17,9 +17,9 @@ class GetExtraData
       return if File.exist?(define_last_request + '/current_url.txt')
       return if File.exist?(define_last_request + '/current_locator.txt')
 
-      file_url = File.new(define_last_request + '/current_href.txt', "w")
-      file_url.puts @current_href
-      file_url.close
+      file_href = File.new(define_last_request + '/current_href.txt', "w")
+      file_href.puts @current_href
+      file_href.close
 
       file_locator = File.new(define_last_request + '/current_locator.json', "w")
       file_locator.puts @current_locator.to_json
