@@ -52,8 +52,8 @@ describe 'Preconditions' do
           plp.click_pagination_2
         end
 
-        step "User sees brands in search" do
-          plp.should_see_brands_in_search
+        step "User sees book language" do
+          plp.should_see_book_language
         end
 
         step "User sees need help block" do

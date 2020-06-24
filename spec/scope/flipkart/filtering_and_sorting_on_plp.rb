@@ -39,6 +39,7 @@ describe 'Preconditions' do
         end
 
         step "User sees products category h1 on top of page" do
+          sleep 3 # wait for page load
           plp.should_see_products_category_h1
         end
 
@@ -81,8 +82,11 @@ describe 'Preconditions' do
         step "User click Blue color" do
           plp.click_blue_color
         end
+
+        sleep 3
       end
     end
+
   end
 end
 

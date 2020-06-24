@@ -36,16 +36,22 @@ class ProductPageFlipkart < PageExtension
   end
 
   def should_see_available_offers(key = nil)
-    element = find_element(key, il_type: :xpath, tl: AVAILABLE_OFFERS_TA, il: AVAILABLE_OFFERS_IL, check_path: $check_path)
-    expect(element).to be_visible
+    if page.has_xpath?("//div[text()='Available offers']")
+      element = find_element(key, il_type: :xpath, tl: AVAILABLE_OFFERS_TA, il: AVAILABLE_OFFERS_IL, check_path: $check_path)
+      expect(element).to be_visible
+    end
   end
 
   def click_to_choose_color(key = nil)
-    find_element(key, il_type: :xpath, tl: COLOR_BTN_TA, il: COLOR_BTN_IL, check_path: $check_path).click
+    if page.has_xpath?("(//div[@class='_2fXpRR _2RncVR _2UBURg'])[2]")
+      find_element(key, il_type: :xpath, tl: COLOR_BTN_TA, il: COLOR_BTN_IL, check_path: $check_path).click
+    end
   end
 
   def click_to_choose_size(key = nil)
-    find_element(key, il_type: :xpath, tl: SIZE_BTN_TA, il: SIZE_BTN_IL, check_path: $check_path).click
+    if page.has_xpath?("(//a[@class='_1TJldG _2I_hq9 _2UBURg'])[1]")
+      find_element(key, il_type: :xpath, tl: SIZE_BTN_TA, il: SIZE_BTN_IL, check_path: $check_path).click
+    end
   end
 
   def click_add_to_cart(key = nil)

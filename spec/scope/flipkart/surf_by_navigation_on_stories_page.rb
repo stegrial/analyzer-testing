@@ -64,8 +64,11 @@ describe 'Preconditions' do
         step "User click on faq Search result" do
           navi_on_stories_page.click_on_faq_search_result
         end
+
+        sleep 3
       end
     end
+
   end
 end
 

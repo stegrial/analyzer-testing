@@ -65,8 +65,11 @@ describe 'Preconditions' do
         step "User click close button" do
           faq_page.click_close_postal_modal_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end
 

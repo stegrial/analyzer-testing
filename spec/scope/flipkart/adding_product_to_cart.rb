@@ -41,6 +41,7 @@ describe 'Preconditions' do
         end
 
         step "User clicks second dress link" do
+          sleep 3 # wait for page load
           plp.click_second_dress_link
         end
 
@@ -73,10 +74,14 @@ describe 'Preconditions' do
         end
 
         step "User sees My Cart text on page" do
+          sleep 2
           cart_page.should_see_my_cart
         end
+
+        sleep 3
       end
     end
+
   end
 end
 
