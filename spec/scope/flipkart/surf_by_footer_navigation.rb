@@ -1,4 +1,3 @@
-
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/flipkart/*.rb"
@@ -78,7 +77,10 @@ describe 'Preconditions' do
         step "User sees Help Center  in footer" do
           footer_page.should_see_help_center_link
         end
+
+        sleep 3
       end
     end
+
   end
 end

@@ -89,7 +89,10 @@ describe 'Preconditions' do
         step "User click Search button" do
           flight_page.click_search_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

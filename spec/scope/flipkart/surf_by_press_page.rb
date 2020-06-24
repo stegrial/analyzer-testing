@@ -76,8 +76,11 @@ describe 'Preconditions' do
         step "User fill subscribe email", "test@email.com" do |value|
           press_page.fill_subscribe_email value
         end
+
+        sleep 3
       end
     end
+
   end
 end
 

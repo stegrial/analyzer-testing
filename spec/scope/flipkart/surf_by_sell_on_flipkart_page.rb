@@ -87,8 +87,11 @@ describe 'Preconditions' do
         step "User click Growth text on page" do
           sell_on_page.should_see_growth_text
         end
+
+        sleep 3
       end
     end
+
   end
 end
 

@@ -3,10 +3,10 @@ require_relative '../page_extension'
 class OfferPageFlipkart < PageExtension
 
 
-  FASHION_TOP_DEALS_H2_IL = "//h2[text()='Fashion Top Deals']"
+  FASHION_TOP_DEALS_H2_IL = "//h2[text()='TVs and Appliances']"
   FASHION_TOP_DEALS_H2_TA = "flipkart:offer_page:fashion_top_deals"
 
-  MOBILE_NEW_LAUNCHES_IL = "//h2[text()='Mobile New Launches']"
+  MOBILE_NEW_LAUNCHES_IL = "//h2[text()='Best of Electronics']"
   MOBILE_NEW_LAUNCHES_TA = "flipkart:offer_page:mobile_new_launches"
 
 
