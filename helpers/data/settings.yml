@@ -98,7 +98,13 @@ pinterest:
   password: "4321test"
 
 walmart:
-  page: "https://www.walmart.com/"
+  main_page: "https://www.walmart.com/"
+  login: "trueautomation.testteam@gmail.com"
+  password: "1234tesT"
+  delivery_page: "https://grocery.walmart.com/?"
+  walmartmedia_page: "https://www.walmartmedia.com/"
+  help_page: "https://help.walmart.com/"
+  weekly_page: "https://www.walmart.com/store/2648-san-leandro-ca/weekly-ads"
 
 epicgames:
   page: "https://www.epicgames.com"
