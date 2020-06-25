@@ -36,7 +36,7 @@ class HeaderNavigationFlipkart < PageExtension
   LOGO_IMG_IL = "//a/img[@alt='Flipkart']"
   LOGO_IMG_TA = "flipkart:header_nav:logo_img"
 
-  MORE_DROPDOWN_IL = "//div[text()='More']"
+  MORE_DROPDOWN_IL = "//div[@class='_2aUbKa']"
   MORE_DROPDOWN_TA = "flipkart:header_nav:more_dropdown"
 
   SEARCH_INPUT_IL = "//input[@class='LM6RPg']"
