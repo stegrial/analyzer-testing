@@ -1,4 +1,3 @@
-
 require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/flipkart/*.rb"
@@ -59,6 +58,7 @@ describe 'Preconditions' do
         end
 
         step "User sees Fashion Top Deals on page" do
+          sleep 3 # wait for page load
           offer_page.should_see_fashion_top_deals
         end
 
@@ -97,7 +97,10 @@ describe 'Preconditions' do
         step "User sees Login text in modal" do
           header_nav.should_see_login_text_in_modal
         end
+
+        sleep 3
       end
     end
+
   end
 end

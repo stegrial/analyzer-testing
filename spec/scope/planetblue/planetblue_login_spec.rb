@@ -4,13 +4,14 @@ required_relative_all "/pages/planetblue/*.rb"
 
 menu = Menu.new
 login = Login.new
+modal = Modal.new
 
 describe 'Preconditions' do
 
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -24,21 +25,20 @@ describe 'Preconditions' do
 
         step "User goes to the page", settings('planetblue')['page'] do |url|
           page.visit url
-        end
-
-        step "User clicks Menu Button" do
-          menu.click_menu_button
+          modal.click_close_continue_shop_button
         end
 
         step "User clicks User Account Button" do
-          scroll_to_element 300
           menu.click_user_button
+          sleep 3 # wait for page load
         end
 
         step "User fills EMAIL, PASSWORD Fields and clicks 'Login' Button",
              settings('planetblue')['email'],
              settings('planetblue')['pass'] do |email, password|
-          scroll_to_element 400
+          login.click_sign_up_close_button
+          modal.click_close_policies_button
+
           login.fill_email_field email
           login.fill_password_field password
           login.click_sign_in_button

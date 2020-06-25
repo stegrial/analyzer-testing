@@ -22,6 +22,34 @@ class Logs
     Dir[project_root + '/logs/*/*']
   end
 
+  def download_data_files
+    logs_root.each do |path|
+      FileUtils.mkdir path + '/data_files' unless Dir.exists?(path + '/data_files')
+      current_href = File.read(path + '/current_href.txt')
+      current_href.each_line do |href|
+        unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
+          begin
+            puts href
+            href = URI.escape(href.chomp)
+            file_name = URI.parse(href).path.split('/').last
+
+            # anniesalke update
+            # href = URI.escape(href) if href.include?(' ')
+            # file_name = URI.parse(href).path.split('/').last
+            # file_name = URI.unescape(file_name)
+
+            open(path + '/data_files/' + file_name, 'wb') do |file|
+              file << open(URI.unescape(href.chomp), { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
+            end
+          rescue StandardError => ex
+            puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
+            puts ex
+          end
+        end
+      end
+    end
+  end
+
   def modify_html
     logs_root.each do |path|
       data_html = path + '/data.html'
@@ -51,14 +79,15 @@ class Logs
       # broken_script = new_data_html.search('script').detect { |script| script['src'] == broken_src }
       # broken_script['src'] = ''
 
-      current_url = File.read(path + '/current_url.txt')
-      current_url_parsed = URI.parse(current_url.chomp)
-      FileUtils.mkdir path + '/data_files' unless File.exists?(path + '/data_files')
+      scripts = new_data_html.search('script')
+      scripts.each do |script|
+        script['src'] = '' if script['src']
+        script.content = ''
+      end
 
       styles = new_data_html.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
-      # puts styles
-
       styles.each do |style|
+        # puts styles
         href = style['href'] ? style['href'] : style['src']
 
         # anniesalke update
@@ -66,51 +95,46 @@ class Logs
         # href = style['data-yo-src'] if style['src'] && style['data-yo-src']
         # href = style['src'] if style['src'] && style['data-yo-src'] == nil
 
-
         unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
-          # Used to be `data:image/png` || add new exception `href == ''`
-
-          unless href.start_with? 'http'
-            if (href.start_with? '/') && (href[1] != '/')
-              href = current_url_parsed.scheme + '://' + current_url_parsed.host + href
-            elsif href.start_with? '..'
-              css_array = href.split('/')
-              i = css_array.count { |url_part| url_part == '..' }
-              i.times { css_array.shift }
-
-              url_array = current_url.split('/')
-              (i + 1).times { url_array.pop }
-
-              url_array = url_array.concat(css_array)
-              href = url_array.join('/')
-            elsif href.start_with? '//'
-              href = current_url_parsed.scheme + ':' + href
-            else
-              href = '/' + href unless current_url_parsed.path[-1] == '/'
-              href = current_url_parsed.scheme + '://' + current_url_parsed.host + current_url_parsed.path + href
-            end
-          end
-
           begin
-            puts href
+            href = URI.escape(href)
             file_name = URI.parse(href).path.split('/').last
-            # style_code = Net::HTTP.get(URI.parse(href))
 
             # anniesalke update
             # href = URI.escape(href) if href.include?(' ')
             # file_name = URI.parse(href).path.split('/').last
             # file_name = URI.unescape(file_name)
 
-            open(path + '/data_files/' + file_name, 'wb') do |file|
-              file << open(href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
-            end
-          rescue StandardError => ex
-            puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
-            puts ex
-          ensure
-            # head << '<style>' + style_code + '</style>'
             style['href'] = 'data_files/' + file_name if style['href']
             style['src'] = 'data_files/' + file_name if style['src']
+
+            # unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
+            #
+            #   unless href.start_with? 'http'
+            #     if (href.start_with? '/') && (href[1] != '/')
+            #       href = current_url_parsed.scheme + '://' + current_url_parsed.host + href
+            #     elsif href.start_with? '..'
+            #       css_array = href.split('/')
+            #       i = css_array.count { |url_part| url_part == '..' }
+            #       i.times { css_array.shift }
+            #
+            #       url_array = current_url.split('/')
+            #       (i + 1).times { url_array.pop }
+            #
+            #       url_array = url_array.concat(css_array)
+            #       href = url_array.join('/')
+            #     elsif href.start_with? '//'
+            #       href = current_url_parsed.scheme + ':' + href
+            #     else
+            #       href = '/' + href unless current_url_parsed.path[-1] == '/'
+            #       href = current_url_parsed.scheme + '://' + current_url_parsed.host + current_url_parsed.path + href
+            #     end
+            #   end
+
+            # style_code = Net::HTTP.get(URI.parse(href))
+          rescue StandardError, InvalidURIError => ex
+            puts "\n" + "\e[31m!href value is not modified: \e[0m" + href + ' in request: ' + path
+            puts ex
           end
         end
       end
@@ -250,19 +274,19 @@ class Logs
     end
   end
 
-  def rm_no_current_url
+  def rm_no_href
     logs_root.each do |path|
-      data = path + '/current_url.txt'
+      data = path + '/current_href.txt'
       unless File.exist?(data)
         FileUtils.rm_rf(path)
-        puts "\e[33mREMOVED - current url is missing: \e[0m" + path
+        puts "\e[33mREMOVED - href is missing: \e[0m" + path
       end
     end
   end
 
   def rm_excess_data
     logs_root.each do |path|
-      data = %w(/data.json /current_url.txt /current_locator.json)
+      data = %w(/data.json /current_href.txt /current_locator.json)
       data.each do |file|
         FileUtils.rm(path + file) if File.exist?(path + file)
       end
@@ -344,12 +368,12 @@ end
 processing = Logs.new
 processing.rm_invalid_tree
 processing.rm_analyzer
-processing.rm_no_current_url
+processing.rm_no_href
 
 processing.filter_array.rm_same_requests
-
 processing.rename_undefined
 
+processing.download_data_files
 processing.modify_html
 processing.filter_array.check_data_consistency
 processing.create_signature_sources

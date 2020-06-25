@@ -8,23 +8,35 @@ class Menu < PageExtension
   SEARCH_BUTTON_IL = "button[aria-label='Search']"
   SEARCH_BUTTON_TA = "planetblue:menu:search_button"
 
-  SEARCH_FIELD_IL = "input[aria-label='Search']"
+  SEARCH_FIELD_IL = "input[id='searchLabel']"
   SEARCH_FIELD_TA = "planetblue:menu:search_field"
 
   MENU_USER_BUTTON_TA = "planetblue:menu:user_button"
   MENU_USER_BUTTON_IL = "(//a[contains(@href, '/account/login')])[2]"
+
+  HEADER_USER_BUTTON_TA = "planetblue:menu:user_button_header"
+  HEADER_USER_BUTTON_IL = "(//a[contains(@href, '/account/login')])[1]"
 
   def click_menu_button(key = nil)
     find_element(key, il_type: :css, tl: MENU_BUTTON_TA, il: MENU_BUTTON_IL, check_path: $check_path).click
   end
 
   def menu_category(key, name)
-    locator_by key, "//div[@role='button']/div[text()='#{name}']",
+    locator_by key, "//a[@data-th='nav']//span[contains(text(), '#{name}')]",
                "planetblue:menu:menu_button:#{ta_name(name)}"
   end
 
-  def click_menu_category(key = nil, name)
-    find_element(key, il_type: :xpath, tl: menu_category(:ta, name), il: menu_category(:il, name), check_path: $check_path).click
+  def menu_category_menu(key, name)
+    locator_by key, "//div[@class='header-dropdown__menu']//a[text()='#{name}']",
+               "planetblue:menu:menu_menu_button:#{ta_name(name)}"
+  end
+
+  def click_menu_category_menu(key = nil, name)
+    find_element(key, il_type: :xpath, tl: menu_category_menu(:ta, name), il: menu_category_menu(:il, name), check_path: $check_path).click
+  end
+
+  def hover_menu_category(key = nil, name)
+    find_element(key, il_type: :xpath, tl: menu_category(:ta, name), il: menu_category(:il, name), check_path: $check_path).hover
   end
 
   def menu_item(key, name)
@@ -55,6 +67,10 @@ class Menu < PageExtension
 
   def click_user_button(key = nil)
     find_element(key, il_type: :xpath, tl: MENU_USER_BUTTON_TA, il: MENU_USER_BUTTON_IL, check_path: $check_path).click
+  end
+
+  def click_user_header_button(key = nil)
+    find_element(key, il_type: :xpath, tl: HEADER_USER_BUTTON_TA, il: HEADER_USER_BUTTON_IL, check_path: $check_path).click
   end
 
 end

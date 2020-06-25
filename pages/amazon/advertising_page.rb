@@ -11,8 +11,8 @@ class AdvertisingPage < PageExtension
   MAIN_VIDEO_IL = "//div[@class='video-container']/video"
   MAIN_VIDEO_TA = "amazon:advertising_page:main_video"
 
-  GET_STARTED_NOW_IL = "//h2[text()='Get started now']"
-  GET_STARTED_NOW_TA = "amazon:advertising_page:get_started_now"
+  SPONSORED_PRODUCTS_IL = "//h3[text()='Sponsored Products']"
+  SPONSORED_PRODUCTS_TA = "amazon:advertising_page:sponsored_products"
 
   SPONSORED_POPUP_IL = "//a[@data-popup-id='sponsored-products-popup']"
   SPONSORED_POPUP_TA = "amazon:advertising_page:sponsored_popup"
@@ -29,7 +29,7 @@ class AdvertisingPage < PageExtension
   LEARN_MORE_PRODUCTS_IL = "(//div[@class='tile-container__inner']//a[text()='Learn More'])[2]"
   LEARN_MORE_PRODUCTS_TA = "amazon:advertising_page:learn_more_product"
 
-  VIDEO_ADS_H1_IL = "//h1[text()='Video ads']"
+  VIDEO_ADS_H1_IL = "//h1[contains(@class, 'title')]"
   VIDEO_ADS_H1_TA = "amazon:advertising_page:video_ads_h1"
 
   MORE_RESOURCES_IL = "//h2[text()='More resources']"
@@ -58,7 +58,7 @@ class AdvertisingPage < PageExtension
   end
 
   def should_see_get_started_now(key = nil)
-    element = find_element(key, il_type: :xpath, tl: GET_STARTED_NOW_TA, il: GET_STARTED_NOW_IL, check_path: $check_path)
+    element = find_element(key, il_type: :xpath, tl: SPONSORED_PRODUCTS_TA, il: SPONSORED_PRODUCTS_IL, check_path: $check_path)
     expect(element).to be_visible
   end
 

@@ -68,7 +68,10 @@ describe 'Preconditions' do
         step "User click Submit button" do
           advertise_page.click_on_submit_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

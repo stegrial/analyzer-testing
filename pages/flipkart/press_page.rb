@@ -33,7 +33,7 @@ class PressPageFlipkart < PageExtension
   IFRAME_TWITTER_IL = "#twitter-widget-0"
   IFRAME_TWITTER_TA = "flipkart:press_page:iframe_twitter"
 
-  TWEETAUTHOR_IL= "//a[@class='TweetAuthor-link Identity u-linkBlend']"
+  TWEETAUTHOR_IL= "(//a[@class='TweetAuthor-link Identity u-linkBlend'])[1]"
   TWEETAUTHOR_TA= "flipkart:press_page:TweetAuthor"
 
   DISCOVER_BTN_IL = "//a[text()='DISCOVER']"

@@ -12,7 +12,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -26,19 +26,15 @@ describe 'Preconditions' do
 
         step "User goes to the page", settings('planetblue')['page'] do |url|
           page.visit url
-        end
-
-        step "User clicks on Menu button" do
-          menu.click_menu_button
+          modal.click_close_continue_shop_button
         end
 
         step "User clicks on Menu Category", 'Contact Us' do |value|
-          menu.click_menu_item value
           modal.click_close_policies_button
+          menu.click_menu_item value
         end
 
         step "User checks page Header", 'Contact Us' do |title|
-          scroll_to_element 700
           planetblue.should_see_page_header title
         end
 

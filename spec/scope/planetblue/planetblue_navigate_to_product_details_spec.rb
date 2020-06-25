@@ -11,7 +11,7 @@ describe 'Preconditions' do
   before(:all) do
     $check_path = false if $run_count > 1
     $caps_chrome['goog:chromeOptions'].delete('mobileEmulation')
-    $caps_chrome['goog:chromeOptions']['mobileEmulation'] = { :deviceName => 'iPhone 5' }
+    Capybara.page.driver.browser.manage.window.resize_to(1440, 900)
   end
 
   after(:each) do
@@ -23,26 +23,18 @@ describe 'Preconditions' do
     $run_count.times do
       scenario 'Recording Locators', "#{$tag}": true do
 
-        step "User goes to the page", settings('planetblue')['page'] do |url|
+        step "User goes to the page", settings('planetblue')['page'] + 'collections/boho-clothing' do |url|
           page.visit url
-        end
-
-        step "User clicks Navigation Bar Link", 'Clothing' do |value|
-          planetblue.click_navbar_link value
+          modal.click_close_continue_shop_button
         end
 
         step "User checks page Header", 'Clothing' do |title|
           planetblue.should_see_page_header title
+          modal.click_close_policies_button
         end
 
         step "User clicks Collection Item", 'THE JESSIE MIDI', 'the-jessie-midi-2?' do |name, link|
           planetblue.click_collection_item name, link
-        end
-
-        step "User checks Breadcrumbs", 'Home', 'THE JESSIE MIDI' do |breadcrumb1, breadcrumb2|
-          modal.click_close_discount_button
-          planetblue.should_see_breadcrumb breadcrumb1, true
-          planetblue.should_see_breadcrumb breadcrumb2, false
         end
 
         step "User checks product image", 'THE JESSIE MIDI' do |name|
@@ -51,7 +43,6 @@ describe 'Preconditions' do
         end
 
         step "User checks product title", 'THE JESSIE MIDI' do |name|
-          scroll_to_element 700
           product_details.should_see_product_title name
         end
 
