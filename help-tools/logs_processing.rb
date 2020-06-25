@@ -30,8 +30,8 @@ class Logs
         unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
           begin
             puts href
-            href = URI.escape(href)
-            file_name = URI.parse(href.chomp).path.split('/').last
+            href = URI.escape(href.chomp)
+            file_name = URI.parse(href).path.split('/').last
 
             # anniesalke update
             # href = URI.escape(href) if href.include?(' ')
@@ -79,10 +79,15 @@ class Logs
       # broken_script = new_data_html.search('script').detect { |script| script['src'] == broken_src }
       # broken_script['src'] = ''
 
-      styles = new_data_html.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
-      # puts styles
+      scripts = new_data_html.search('script')
+      scripts.each do |script|
+        script['src'] = '' if script['src']
+        script.content = ''
+      end
 
+      styles = new_data_html.search('link', 'img').select { |style| style['rel'] == 'stylesheet' || style['src'] }
       styles.each do |style|
+        # puts styles
         href = style['href'] ? style['href'] : style['src']
 
         # anniesalke update
