@@ -3,7 +3,7 @@ require_relative '../page_extension'
 class FaqPageFlipkart < PageExtension
 
 
-  LOG_IN_BTN_IL = "//button[text()='Log in']"
+  LOG_IN_BTN_IL = "//button[contains(., 'Log in')]"
   LOG_IN_BTN_TA = "flipkart:faq_page:log_in_btn"
 
   CLOSE_MODAL_BTN_IL = "//button[text()='✕']"
