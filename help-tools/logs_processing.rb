@@ -14,6 +14,7 @@ class Logs
 
   def initialize
     @filter_array = []
+    @files = []
   end
 
   def logs_root
@@ -26,20 +27,28 @@ class Logs
     logs_root.each do |path|
       FileUtils.mkdir path + '/data_files' unless Dir.exists?(path + '/data_files')
       current_href = File.read(path + '/current_href.txt')
-      current_href.each_line do |href|
+      current_href.each_line.with_index do |href, index|
         unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
           begin
             puts href
-            href = URI.escape(href.chomp)
+            href = href.chomp
+            old_href = href
+
             file_name = URI.parse(href).path.split('/').last
+            ext_name = File.extname(file_name)
+            new_href = 'data_files/file_name' + index.to_s + ext_name
+            @files.push({
+              old_href: old_href,
+              new_href: new_href
+            })
 
             # anniesalke update
             # href = URI.escape(href) if href.include?(' ')
             # file_name = URI.parse(href).path.split('/').last
             # file_name = URI.unescape(file_name)
 
-            open(path + '/data_files/' + file_name, 'wb') do |file|
-              file << open(URI.unescape(href.chomp), { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
+            open(File.join(path, new_href), 'wb') do |file|
+              file << open(old_href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
             end
           rescue StandardError => ex
             puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
@@ -58,7 +67,7 @@ class Logs
       result = ''
       flag = false
       data.each_line do |line|
-        flag = line.match(/<head/) if !flag
+        flag = line.match(/<head\W/) if !flag
         if flag
           line = line.gsub(/<iframe.+?iframe>/, '')
           flag = !line.match(/\/head>/)
@@ -97,16 +106,15 @@ class Logs
 
         unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
           begin
-            href = URI.escape(href)
-            file_name = URI.parse(href).path.split('/').last
+            new_href = (@files.detect { |file| URI.unescape(file[:old_href]).include? href } || {}).dig(:new_href) || href
 
             # anniesalke update
             # href = URI.escape(href) if href.include?(' ')
             # file_name = URI.parse(href).path.split('/').last
             # file_name = URI.unescape(file_name)
 
-            style['href'] = 'data_files/' + file_name if style['href']
-            style['src'] = 'data_files/' + file_name if style['src']
+            style['href'] = new_href if style['href']
+            style['src'] = new_href if style['src']
 
             # unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
             #
