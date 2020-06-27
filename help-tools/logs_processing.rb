@@ -23,6 +23,12 @@ class Logs
     Dir[project_root + '/logs/*/*']
   end
 
+  def file_rename
+    logs_root.each do |path|
+      File.rename(path + '/current_href.txt', path + '/sources_href.txt') if File.exists?(path + '/current_href.txt')
+    end
+  end
+
   def filter_sources_href
     logs_root.each do |path|
       sources_href = File.read(path + '/sources_href.txt')
@@ -221,7 +227,7 @@ class Logs
 
         puts "\n" + "\e[33mRemoved requests:\e[0m"
         puts array_to_remove
-        FileUtils.rm_rf(array_to_remove)
+        # FileUtils.rm_rf(array_to_remove)
       end
     end
     Capybara.current_session.driver.quit
@@ -387,6 +393,7 @@ class Logs
 end
 
 processing = Logs.new
+processing.file_rename
 processing.rm_invalid_tree
 processing.rm_analyzer
 processing.rm_no_href
