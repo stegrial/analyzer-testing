@@ -23,11 +23,22 @@ class Logs
     Dir[project_root + '/logs/*/*']
   end
 
-  def download_data_files
+  def filter_sources_href
+    logs_root.each do |path|
+      sources_href = File.read(path + '/sources_href.txt')
+      filter_array = []
+      sources_href.each_line { |href| filter_array << href }
+      file = File.new(path + '/sources_href.txt', "w")
+      file.puts(filter_array.uniq)
+      file.close
+    end
+  end
+
+  def get_sources_data
     logs_root.each do |path|
       FileUtils.mkdir path + '/data_files' unless Dir.exists?(path + '/data_files')
-      current_href = File.read(path + '/current_href.txt')
-      current_href.each_line.with_index do |href, index|
+      sources_href = File.read(path + '/sources_href.txt')
+      sources_href.each_line.with_index do |href, index|
         unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
           begin
             puts href
@@ -56,11 +67,12 @@ class Logs
           end
         end
       end
+      modify_html path
     end
   end
 
-  def modify_html
-    logs_root.each do |path|
+  def modify_html(path)
+    # logs_root.each do |path|
       data_html = path + '/data.html'
 
       data = File.read(data_html)
@@ -150,7 +162,8 @@ class Logs
       file = File.new(data_html, "w")
       file.puts(new_data_html)
       file.close
-    end
+      @files = []
+    # end
   end
 
   def check_data_consistency
@@ -284,7 +297,7 @@ class Logs
 
   def rm_no_href
     logs_root.each do |path|
-      data = path + '/current_href.txt'
+      data = path + '/sources_href.txt'
       unless File.exist?(data)
         FileUtils.rm_rf(path)
         puts "\e[33mREMOVED - href is missing: \e[0m" + path
@@ -294,7 +307,7 @@ class Logs
 
   def rm_excess_data
     logs_root.each do |path|
-      data = %w(/data.json /current_href.txt /current_locator.json)
+      data = %w(/data.json /sources_href.txt /current_locator.json)
       data.each do |file|
         FileUtils.rm(path + file) if File.exist?(path + file)
       end
@@ -326,8 +339,8 @@ class Logs
   def rm_same_requests
     array_to_remove = []
     @filter_array.each_with_index do |value, index|
-      if value[1] == 'NOT_FOUND' && @filter_array[index + 1][1] == 'NOT_FOUND' # to leave only last request
-      # if value[1] == 'NOT_FOUND' && @filter_array[index - 1][1] == 'NOT_FOUND' && @filter_array[index + 1][1] == 'NOT_FOUND' # to leave first and last requests
+      # if value[1] == 'NOT_FOUND' && @filter_array[index + 1][1] == 'NOT_FOUND' # to leave only last request
+      if value[1] == 'NOT_FOUND' && @filter_array[index - 1][1] == 'NOT_FOUND' && @filter_array[index + 1][1] == 'NOT_FOUND' # to leave first and last requests
         array_to_remove << value[0]
       end
     end
@@ -381,8 +394,9 @@ processing.rm_no_href
 processing.filter_array.rm_same_requests
 processing.rename_undefined
 
-processing.download_data_files
-processing.modify_html
+processing.filter_sources_href
+processing.get_sources_data
+
 processing.filter_array.check_data_consistency
 processing.create_signature_sources
 
