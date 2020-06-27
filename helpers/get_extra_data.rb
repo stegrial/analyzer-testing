@@ -17,7 +17,7 @@ class GetExtraData
       return if File.exist?(define_last_request + '/current_url.txt')
       return if File.exist?(define_last_request + '/current_locator.txt')
 
-      file_href = File.new(define_last_request + '/current_href.txt', "w")
+      file_href = File.new(define_last_request + '/sources_href.txt', "w")
       file_href.puts @current_href
       file_href.close
 
