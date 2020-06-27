@@ -227,7 +227,7 @@ class Logs
 
         puts "\n" + "\e[33mRemoved requests:\e[0m"
         puts array_to_remove
-        # FileUtils.rm_rf(array_to_remove)
+        FileUtils.rm_rf(array_to_remove)
       end
     end
     Capybara.current_session.driver.quit
