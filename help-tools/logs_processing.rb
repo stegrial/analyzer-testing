@@ -87,8 +87,14 @@ class Logs
       data.each_line do |line|
         flag = line.match(/<head\W/) if !flag
         if flag
-          line = line.gsub(/<iframe.+?iframe>/, '')
-          flag = !line.match(/\/head>/)
+          if line.index(/\/head>/).to_i == 0
+            line = line.gsub(/<iframe.+?iframe>/, '')
+          else
+            line = line.gsub(/<iframe.+?iframe>/) do |iframe|
+              Regexp.last_match.begin(0) < line.index(/\/head>/).to_i ? '' : iframe
+            end
+            flag = false
+          end
         end
         result << line
       end
