@@ -26,6 +26,10 @@ describe 'Preconditions' do
           page.visit url
         end
 
+        step "User click No thanks on alert" do
+          press_page.click_no_thanks_btn
+        end
+
         step "User sees NEWS h1 on page" do
           press_page.should_see_news_h1
         end
