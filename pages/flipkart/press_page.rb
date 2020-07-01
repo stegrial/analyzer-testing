@@ -12,10 +12,10 @@ class PressPageFlipkart < PageExtension
   YOU_ALSO_LIKE_H2_IL = "//h2[text()='You May Also Like']"
   YOU_ALSO_LIKE_H2_TA = "flipkart:press_page:you_also_like_h2"
 
-  SHOP_WITH_UPTO_IL = "//div[@class='cactus-widget-posts-content']//a[contains(text(),'Shop with upto')]"
+  SHOP_WITH_UPTO_IL = "(//a[text()='Top Stories'])[1]"
   SHOP_WITH_UPTO_TA = "flipkart:press_page:shop_with_upto"
 
-  SHOP_WITH_UPTO_H1_IL = "//h1[contains(text(),'Shop with upto')]"
+  SHOP_WITH_UPTO_H1_IL = "//h1[contains(.,'Top Stories')]"
   SHOP_WITH_UPTO_H1_TA = "flipkart:press_page:shop_with_upto_h1"
 
   STUDIO34_PODCASTS_LIST_IL = "//h2[contains(text(),'STUDIO34 PODCASTS')]"
@@ -45,6 +45,8 @@ class PressPageFlipkart < PageExtension
   SUBSCRIBE_EMAIL_IL = "//input[@name='subscribe-email']"
   SUBSCRIBE_EMAIL_TA = "flipkart:press_page:subscribe_email"
 
+  NO_THANKS_BTN_IL = "//button[contains(@id, 'cancel-button')]"
+  NO_THANKS_BTN_TA = "flipkart:press_page:no_thanks_btn"
 
   def should_see_news_h1(key = nil)
     element = find_element(key, il_type: :xpath, tl: NEWS_H1_TA, il: NEWS_H1_IL, check_path: $check_path)
@@ -100,6 +102,10 @@ class PressPageFlipkart < PageExtension
 
   def fill_subscribe_email(key = nil, value)
     find_element(key, il_type: :xpath, tl: SUBSCRIBE_EMAIL_TA, il: SUBSCRIBE_EMAIL_IL, check_path: $check_path).set(value)
+  end
+
+  def click_no_thanks_btn(key = nil)
+    find_element(key, il_type: :xpath, tl: NO_THANKS_BTN_TA, il: NO_THANKS_BTN_IL, check_path: $check_path).click
   end
 
 end

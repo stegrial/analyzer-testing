@@ -3,7 +3,7 @@ require_relative '../page_extension'
 class TravelPageFlipkart < PageExtension
 
 
-  TRAVEL_PAGE_IL = "//div[contains(text(),'Travel') and @class='_1C_HYs']"
+  TRAVEL_PAGE_IL = "//div[contains(.,'Travel') and @class='_1C_HYs']"
   TRAVEL_PAGE_TA = "flipkart:travel_page:travel_Page"
 
 
