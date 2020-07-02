@@ -9,6 +9,8 @@ venus:
   mail_options_page: 'https://www.venus.com/secure/mailoptions.aspx'
   contact_us_page: 'https://www.venus.com/contact.aspx'
   get_card_page: 'https://www.venus.com/Venus-Card/'
+  size_chart_page: 'https://www.venus.com/sizechart.aspx'
+  customer_care_page: 'https://www.venus.com/customerservice.aspx'
   email: 'denys.shutko@moovweb.com'
   pass: 'asdffdsA1'
   first_name: 'Denys'
