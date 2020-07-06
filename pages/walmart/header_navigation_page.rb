@@ -21,13 +21,13 @@ class HeaderNavigationPageWalmart < PageExtension
   SIGN_IN_LINK_IL = "//a[@title='Sign In']"
   SIGN_IN_LINK_TA = "walmart:header_navigation:sign_in"
 
-  TRACK_ORDERS_LINK_IL = "//a[@title='Track Orders']"
+  TRACK_ORDERS_LINK_IL = "(//a[@title='Track Orders'])[2]"
   TRACK_ORDERS_LINK_TA = "walmart:header_navigation:track_orders"
 
-  ACCOUNT_LINK_IL = "//a[contains(@data-tl-id, 'GlobalAccountMenu') and @title='Account']"
+  ACCOUNT_LINK_IL = "//a[@title='Account']"
   ACCOUNT_LINK_TA = "walmart:header_navigation:account_link"
 
-  HELP_LINK_IL = "//a[@title='Help']"
+  HELP_LINK_IL = "(//a[@title='Help'])[2]"
   HELP_LINK_TA = "walmart:header_navigation:help_link"
 
   CLOSE_ACC_MENU_IL = "#account-menu-close-button"

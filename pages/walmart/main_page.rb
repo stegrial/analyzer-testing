@@ -21,7 +21,7 @@ class MainPageWalmart < PageExtension
   EXPERIENCE_TEXT_IL= "//div[text()='How was your experience?']"
   EXPERIENCE_TEXT_TA= "walmart:main_page:how_was_your_experience_text"
 
-  GOOD_STAR_IL = "//button[@aria-label='Good']"
+  GOOD_STAR_IL = "//button[@aria-label='Good rating']"
   GOOD_STAR_TA = "walmart:main_page:good_star"
 
   ADD_COMMENT_IL = "//textarea[@name='feedback-comments']"

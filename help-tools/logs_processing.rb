@@ -89,10 +89,14 @@ class Logs
         if flag
           if line.index(/\/head>/).to_i == 0
             line = line.gsub(/<iframe.+?iframe>/, '')
+            line = line.gsub(/<a.+?a>/, '')
           else
             line = line.gsub(/<iframe.+?iframe>/) do |iframe|
               Regexp.last_match.begin(0) < line.index(/\/head>/).to_i ? '' : iframe
             end
+             line = line.gsub(/<a.+?a>/) do |a|
+               Regexp.last_match.begin(0) < line.index(/\/head>/).to_i ? '' : a
+             end
             flag = false
           end
         end

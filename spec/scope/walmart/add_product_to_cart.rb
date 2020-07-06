@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/walmart/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNavigationPageWalmart.new
 plp = ProductsListPageWalmart.new
 cart_page = CartPageWalmart.new
@@ -44,10 +42,12 @@ describe 'Preconditions' do
 
         step "User clicks to select gender unisex" do
           plp.click_gender_unisex
+          sleep 3 # wait for page load
         end
 
         step "User clicks to select free pickup" do
           plp.click_free_pickup
+          sleep 3 # wait for page load
         end
 
         step "User clicks to select product" do
@@ -70,7 +70,9 @@ describe 'Preconditions' do
           checkout_page.should_see_checkout_text
         end
 
+        sleep 3
       end
     end
+
   end
 end

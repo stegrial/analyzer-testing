@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/walmart/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNavigationPageWalmart.new
 plp = ProductsListPageWalmart.new
 
@@ -75,7 +73,10 @@ describe 'Preconditions' do
         step "User select brand from list" do
           plp.click_to_select_brand
         end
+
+        sleep 3
       end
     end
+
   end
 end

@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/walmart/*.rb"
 
-include ElementSearchValidation
-
 delivery_page = PickupAndDeliveryPageWalmart.new
 
 describe 'Preconditions' do
@@ -78,7 +76,10 @@ describe 'Preconditions' do
         step "User sees 'Check out' button" do
           delivery_page.should_see_checkout_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

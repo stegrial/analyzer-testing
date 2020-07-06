@@ -6,7 +6,7 @@ class ProductsListPageWalmart < PageExtension
   UNISEX_IL = "//span[text()='Unisex']"
   UNISEX_TA = "walmart:page:unisex_gender"
 
-  FREE_PICKUP_IL = "(//span[text()='Free pickup'])[1]"
+  FREE_PICKUP_IL = "(//span[contains(.,'Free pickup')]/span)[1]"
   FREE_PICKUP_TA = "walmart:page:purees"
 
   ADD_TO_CART_IL = "(//button[contains(@aria-label, 'Add to cart')])[2]"
