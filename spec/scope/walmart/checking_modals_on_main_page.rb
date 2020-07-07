@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/walmart/*.rb"
 
-include ElementSearchValidation
-
 main_page = MainPageWalmart.new
 
 describe 'Preconditions' do
@@ -62,7 +60,10 @@ describe 'Preconditions' do
         step "User click Submit button" do
           main_page.click_submit_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/walmart/*.rb"
 
-include ElementSearchValidation
-
 media_page = WalmartMediaPage.new
 contact_page = WalmartMediaContactPage.new
 
@@ -83,7 +81,10 @@ describe 'Preconditions' do
         step "User click Continue button" do
           contact_page.click_continue_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

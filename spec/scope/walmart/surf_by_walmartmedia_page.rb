@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/walmart/*.rb"
 
-include ElementSearchValidation
-
 media_page = WalmartMediaPage.new
 
 describe 'Preconditions' do
@@ -74,7 +72,10 @@ describe 'Preconditions' do
         step "User 'Read More' button" do
           media_page.click_read_more_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

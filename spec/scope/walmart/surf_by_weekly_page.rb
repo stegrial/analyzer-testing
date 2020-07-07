@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/walmart/*.rb"
 
-include ElementSearchValidation
-
 weekly_page = WeeklyPageWalmart.new
 
 describe 'Preconditions' do
@@ -66,7 +64,10 @@ describe 'Preconditions' do
         step "User click Back button" do
           weekly_page.click_back_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

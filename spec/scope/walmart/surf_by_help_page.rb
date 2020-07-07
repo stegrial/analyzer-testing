@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/walmart/*.rb"
 
-include ElementSearchValidation
-
 help_page = HelpPageWalmart.new
 
 describe 'Preconditions' do
@@ -83,7 +81,10 @@ describe 'Preconditions' do
         step "User sees Search result line" do
           help_page.should_see_search_result_line
         end
+
+        sleep 3
       end
     end
+
   end
 end
