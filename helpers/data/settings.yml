@@ -175,4 +175,7 @@ aliexpress:
 youtube:
   page: "https://www.youtube.com/"
 
+semantic:
+  main_page: "https://semantic-ui.com/"
+
 
