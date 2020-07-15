@@ -21,7 +21,8 @@ how_to_get_money:
   page: 'https://maanimo.com/helpful/142606-kak-zarabotat-dengi-v-ukraine'
 
 facebook:
-  page: 'https://www.facebook.com'
+  main_page: 'https://www.facebook.com'
+  community_page: "https://www.facebook.com/Trueautomation_test1-107632524346384/?modal=admin_todo_tour"
   login: 'eshapovalov298@gmail.com'
   pass: 'Tester1234'
   new_post: 'test_test'
