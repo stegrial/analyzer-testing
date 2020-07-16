@@ -16,7 +16,7 @@ describe 'Preconditions' do
     $check_path = true if $run_parameters.include?('search')
   end
 
-  feature 'Planet Blue - Navigate to Contact Us Page' do
+  feature 'Venus - Navigate to Contact Us Page' do
 
     $run_count.times do
       scenario 'Recording Locators', "#{$tag}": true do

@@ -11,6 +11,7 @@ venus:
   get_card_page: 'https://www.venus.com/Venus-Card/'
   size_chart_page: 'https://www.venus.com/sizechart.aspx'
   customer_care_page: 'https://www.venus.com/customerservice.aspx'
+  about_us_page: 'https://www.venus.com/about.aspx'
   email: 'denys.shutko@moovweb.com'
   pass: 'asdffdsA1'
   first_name: 'Denys'

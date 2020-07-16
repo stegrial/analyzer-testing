@@ -34,7 +34,7 @@ class VenusNavigation < PageExtension
   MENU_BUTTON_TA = "venus:navigation_page:menu_button"
 
   def page_header(key, name)
-    locator_by key, "//h1[@class='mw-main-title' and text() = '#{name}']",
+    locator_by key, "//h1[contains(@class, 'mw-main-title') and text() = '#{name}']",
                "venus:navigation_page:header:#{ta_name(name)}"
   end
 
@@ -60,19 +60,19 @@ class VenusNavigation < PageExtension
   end
 
   def click_search_button(key = nil)
-    find_element(key, il_type: :css, tl: SEARCH_BUTTON_TA, il: SEARCH_BUTTON_IL, check_path: $check_path).click
+    find_element(key, il_type: :xpath, tl: SEARCH_BUTTON_TA, il: SEARCH_BUTTON_IL, check_path: $check_path).click
   end
 
   def enter_search_value(key = nil, value)
-    find_element(key, il_type: :css, tl: SEARCH_FIELD_TA, il: SEARCH_FIELD_IL, check_path: $check_path).fill_in with: value
+    find_element(key, il_type: :xpath, tl: SEARCH_FIELD_TA, il: SEARCH_FIELD_IL, check_path: $check_path).fill_in with: value
   end
 
   def click_find_button(key = nil)
-    find_element(key, il_type: :css, tl: FIND_BUTTON_TA, il: FIND_BUTTON_IL, check_path: $check_path).click
+    find_element(key, il_type: :xpath, tl: FIND_BUTTON_TA, il: FIND_BUTTON_IL, check_path: $check_path).click
   end
 
   def click_clothing_cat(key = nil)
-    find_element(key, il_type: :css, tl: CLOTHING_CAT_TA, il: CLOTHING_CAT_IL, check_path: $check_path).click
+    find_element(key, il_type: :xpath, tl: CLOTHING_CAT_TA, il: CLOTHING_CAT_IL, check_path: $check_path).click
   end
 
   def click_menu_button(key = nil)

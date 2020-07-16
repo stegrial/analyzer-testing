@@ -2,7 +2,8 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/venus/*.rb"
 
-customer_care_page = CustomerCarePage.new
+navigation = VenusNavigation.new
+about_us_page = AboutUsPage.new
 describe 'Preconditions' do
 
   before(:all) do
@@ -15,29 +16,25 @@ describe 'Preconditions' do
     $check_path = true if $run_parameters.include?('search')
   end
 
-  feature 'Venus - Navigate to Customer Care Page' do
+  feature 'Venus - Navigate to About Us Page' do
 
     $run_count.times do
       scenario 'Recording Locators', "#{$tag}": true do
 
-        step "User goes to the page", settings('venus')['customer_care_page'] do |url|
+        step "User goes to the page", settings('venus')['about_us_page'] do |url|
           page.visit url
         end
 
-        step "User checks links", 'FAQ' do |link|
-          customer_care_page.should_see_link link
+        step "User checks page Header", 'ABOUT US' do |title|
+          navigation.should_see_page_header title
         end
 
-        step "User checks links", 'Track My Order' do |link|
-          customer_care_page.should_see_link link
+        step "User checks About Us text" do
+          about_us_page.should_see_about_us_text 'At VENUS, we believe apparel and swimwear are empowering.'
         end
 
-        step "User checks links", 'Order Status' do |link|
-          customer_care_page.should_see_link link
-        end
-
-        step "User checks links", 'Contact Us' do |link|
-          customer_care_page.should_see_link link
+        step "User checks About Us Image" do
+          about_us_page.should_see_about_us_image
         end
 
       end
