@@ -15,7 +15,7 @@ class OfferPageFacebook < PageExtension
   DISCOUNTED_ITEMS_IL = "//div[@class='uiScrollableAreaContent']//input[contains(@placeholder, 'Add items or services to this offer')]"
   DISCOUNTED_ITEMS_TA = "facebook:offer_page:discounted_items"
 
-  ADD_DESCRIPTION_IL = "//div[@class='uiScrollableAreaContent']//a[contains(text(), 'Add description')]"
+  ADD_DESCRIPTION_IL = "//div[@class='uiScrollableAreaContent']//a[contains(., 'Add description')]"
   ADD_DESCRIPTION_TA = "facebook:offer_page:add_description"
 
   FILL_DESCRIPTION_IL = "(//div[@class='uiScrollableAreaContent']//textarea)[1]"
@@ -24,7 +24,7 @@ class OfferPageFacebook < PageExtension
   EXPIRES_DATE_IL = "//div[@class='uiScrollableAreaContent']//input[contains(@placeholder, 'mm/dd/yyyy')]"
   EXPIRES_DATE_TA = "facebook:offer_page:expires_date"
 
-  IN_STORE_CHECKBOX_IL = "(//input[@type='checkbox'])[8]"
+  IN_STORE_CHECKBOX_IL = "(//input[@type='checkbox'])[2]/parent::label"
   IN_STORE_CHECKBOX_TA = "facebook:offer_page:in_store_checkbox"
 
   PRIMARY_ACTION_IL= "(//div[@class='uiScrollableAreaContent']//button[contains(@data-testid, 'SUIAbstractMenu/button')])[2]"
@@ -33,7 +33,7 @@ class OfferPageFacebook < PageExtension
   SEND_MSG_IL = "(//div[@class='uiScrollableAreaContent']//div[contains(text(), 'Send Message')])[1]"
   SEND_MSG_TA = "facebook:offer_page:send_message"
 
-  ADD_TERMS_AND_CONDITIONS_IL = "(//div[@class='uiScrollableAreaContent']//a[contains(text(), 'Add terms and conditions')])[1]"
+  ADD_TERMS_AND_CONDITIONS_IL = "(//div[@class='uiScrollableAreaContent']//a[contains(., 'Add terms and conditions')])[1]"
   ADD_TERMS_AND_CONDITIONS_TA = "facebook:offer_page:terms_and_conditions"
 
   FILL_TERMS_AND_CONDITIONS_IL = "(//div[@class='uiScrollableAreaContent']//textarea)[2]"
@@ -98,6 +98,7 @@ class OfferPageFacebook < PageExtension
 
   def click_publish_offer_btn(key = nil)
     find_element(key, il_type: :xpath, tl: PUBLISH_OFFER_BTN_TA, il: PUBLISH_OFFER_BTN_IL, check_path: $check_path).click
+    sleep 7 #wait for offer loaded
   end
 
   def click_first_photo(key = nil)

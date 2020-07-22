@@ -31,7 +31,7 @@ class HeaderNaviPageFacebook < PageExtension
   BODY_TA = "facebook:header_nav:body"
 
   SEARCH_INPUT_IL = "//input[@data-testid='search_input']"
-  SEARCH_INPUT_TA =  "facebook:header_nav:search_input"
+  SEARCH_INPUT_TA = "facebook:header_nav:search_input"
 
   CREATE_HEADER_BTN_IL = "#creation_hub_entrypoint"
   CREATE_HEADER_BTN_TA = "facebook:header_nav:create_btn"
@@ -64,7 +64,7 @@ class HeaderNaviPageFacebook < PageExtension
   SEE_MORE_HELP_TA = "facebook:header_nav:see_more_help"
 
   PAGE_TITLE_IL = "(//a[contains(@href, 'hc_global_nav')]//span[contains(text(), 'Help Center')])[1]"
-  PAGE_TITLE_TA =  "facebook:help_center:help_center_text"
+  PAGE_TITLE_TA = "facebook:help_center:help_center_text"
 
   CREATE_PAGE_IL = "(//a[contains(@title, 'Page Connect and share with customers or fans')])[1]"
   CREATE_PAGE_TA = "facebook:header_nav:create_page_community"
@@ -87,7 +87,12 @@ class HeaderNaviPageFacebook < PageExtension
   end
 
   def click_login_btn(key = nil)
-    find_element(key, il_type: :css, tl: LOGIN_BTN_TA, il: LOGIN_BTN_IL, check_path: $check_path).click
+    if page.has_xpath?("//label[@id='loginbutton']")
+      find_element(key, il_type: :css, tl: LOGIN_BTN_TA, il: LOGIN_BTN_IL, check_path: $check_path).click
+    else
+      page.has_xpath?("//button[@name='login']")
+      find_element(key, il_type: :xpath, tl: LOGIN_BTN_TA, il: "//button[@name='login']", check_path: $check_path).click
+    end
   end
 
   def escape(key = nil)

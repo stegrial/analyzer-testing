@@ -3,7 +3,7 @@ require_relative '../page_extension'
 class CommunityPageFacebook < PageExtension
 
 
-  TA_COMMUNITY_IL = "//a[text()='TrueAutomation.io']"
+  TA_COMMUNITY_IL = "(//a[text()='TrueAutomation.io'])[1]"
   TA_COMMUNITY_TA = "facebook:community_page:TA_community"
 
   EASY_TA_SEARCH_IN_SOCIAL_IL = "//a[text()='@trueautomation']"

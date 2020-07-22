@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 profile_page = ProfilePageFacebook.new
 
@@ -69,7 +67,7 @@ describe 'Preconditions' do
         end
 
         step "Need to press escape" do
-          header_nav.escape :il
+          header_nav.escape :il #step is duplicated below
         end
 
         step "User click edit cover photo" do
@@ -87,7 +85,10 @@ describe 'Preconditions' do
         step "User sees 'Add cover photo' text after deleting" do
           profile_page.sees_add_cover_photo_text
         end
+
+        sleep 3
       end
     end
+
   end
 end

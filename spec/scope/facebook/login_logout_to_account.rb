@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 
 describe 'Preconditions' do
@@ -58,7 +56,10 @@ describe 'Preconditions' do
         step "User sees Create New Account text" do
           header_nav.should_see_create_new_acc_text
         end
+
+        sleep 3
       end
     end
+
   end
 end

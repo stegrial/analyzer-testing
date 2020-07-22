@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 community_page = CommunityPageFacebook.new
 offer_modal = OfferPageFacebook.new
@@ -76,9 +74,9 @@ describe 'Preconditions' do
           offer_modal.fill_expires_date value
         end
 
-        # step "User click In-store checkbox" do
-        #   offer_modal.click_in_store_checkbox
-        # end
+        step "User click In-store checkbox" do
+          offer_modal.click_in_store_checkbox
+        end
 
         step "User click Primary Action dropdown" do
           offer_modal.click_primary_action
@@ -108,22 +106,22 @@ describe 'Preconditions' do
           offer_modal.click_publish_offer_btn
         end
 
-        # step "User  click to open community story option" do
-        #   community_page.click_to_open_story_option
-        # end
-        #
-        # step "User click Delete from Page" do
-        #   community_page.click_to_delete_post
-        # end
-        #
-        # step "User  click to accept delete post in community" do
-        #   community_page.click_to_accept_delete_post
-        # end
+        step "User  click to open community story option" do
+          scroll_to_element 1000
+          community_page.click_to_open_story_option
+        end
+
+        step "User click Delete from Page" do
+          community_page.click_to_delete_post
+        end
+
+        step "User  click to accept delete post in community" do
+          community_page.click_to_accept_delete_post
+        end
+
+        sleep 3
       end
     end
+
   end
 end
-
-
-# закоментированный елемент click_in_store_checkbox является псевдоелементом, на который не получается кликнуть6
-# поэтому три последних степа закоментены - это удаление созданного оффера

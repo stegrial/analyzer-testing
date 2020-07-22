@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 business_page = BusinessPageFacebook.new
 
@@ -94,10 +92,14 @@ describe 'Preconditions' do
         step "User click Continue button" do
           business_page.click_continue_btn
         end
+
         step "User sees error message" do
           business_page.should_see_error_text
         end
+
+        sleep 3
       end
     end
+
   end
 end
