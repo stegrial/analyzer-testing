@@ -88,6 +88,10 @@ class VenusNavigation < PageExtension
     expect(element).to be_visible
   end
 
+  def click_cart_button(key = nil)
+    find_element(key, il_type: :xpath, tl: CART_BUTTON_TA, il: CART_BUTTON_IL, check_path: $check_path).click
+  end
+
   #
   # def find_items_on_cart(key = nil)
   #   find_element(key, il_type: :css, tl: , il: ACCOUNT_BUTTON_IL, check_path: $check_path).click
