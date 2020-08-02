@@ -6,7 +6,7 @@ class VenusProduct < PageExtension
   def list_size(locator, size)
     case locator
     when :il then "(//button[./span[text()='#{size}']])[1]"
-    when :ta then "venus:product_page:list_size:#{size.tr('^A-Za-z0-9_', '')}"
+    when :ta then "venus:product_page:list_size:#{ta_name(size)}"
     else p 'Locator type is not set'
     end
   end
@@ -47,58 +47,51 @@ class VenusProduct < PageExtension
     end
   end
 
-
   def choose_list_size(key = nil, size)
     post_processing key do
-      return find(:xpath, list_size(:il, size)).click if key == :il
-      find(:xpath, ta(list_size(:ta, size), list_size(:il, size))).click
+      find_element(key, il_type: :xpath, tl: list_size(:ta, size), il: list_size(:il, size), check_path: $check_path).click
     end
   end
 
   def open_qty_dropdown(key = nil)
     post_processing key do
-      return find(:xpath, QTY_DROPDOWN_IL).click if key == :il
-      find(:xpath, ta(QTY_DROPDOWN_TA, QTY_DROPDOWN_IL)).click
+      find_element(key, il_type: :xpath, tl: QTY_DROPDOWN_TA, il: QTY_DROPDOWN_IL, check_path: $check_path).click
     end
   end
 
   def select_quantity(key = nil, qty)
     post_processing key do
-      return find(:xpath, quantity(:il, qty)).click if key == :il
-      find(:xpath, ta(quantity(:ta, qty), quantity(:il, qty))).click
+      find_element(key, il_type: :xpath, tl: quantity(:ta, qty), il: quantity(:il, qty), check_path: $check_path).click
     end
   end
 
   def click_wish_list_button(key = nil)
     post_processing key do
-      return find(:xpath, WISH_LIST_BTN_IL).click if key == :il
-      find(:xpath, ta(WISH_LIST_BTN_TA, WISH_LIST_BTN_IL)).click
+      find_element(key, il_type: :xpath, tl: WISH_LIST_BTN_TA, il: WISH_LIST_BTN_IL, check_path: $check_path).click
     end
   end
 
   def click_add_to_bag_button(key = nil)
     post_processing key do
-      return find(:xpath, ADD_TO_BAG_BTN_IL).click if key == :il
-      find(:xpath, ta(ADD_TO_BAG_BTN_TA, ADD_TO_BAG_BTN_IL)).click
+      find_element(key, il_type: :xpath, tl: ADD_TO_BAG_BTN_TA, il: ADD_TO_BAG_BTN_IL, check_path: $check_path).click
     end
   end
 
   def should_see_price_on_product(key = nil)
     post_processing key do
-      return find(:xpath, PRICE_ON_PRODUCT_IL) if key == :il
-      find(:xpath, ta(PRICE_ON_PRODUCT_TA, PRICE_ON_PRODUCT_IL))
+      find_element(key, il_type: :xpath, tl: PRICE_ON_PRODUCT_TA, il: PRICE_ON_PRODUCT_IL, check_path: $check_path).click
     end
   end
 
   def choose_image(key = nil, image)
     post_processing key do
-      return find(:xpath, image_gallery(:il, image)).click if key == :il
-      find(:xpath, ta(image_gallery(:ta, image), image_gallery(:il, image))).click
+      find_element(key, il_type: :xpath, tl: image_gallery(:ta, image), il: image_gallery(:il, image), check_path: $check_path).click
     end
   end
 
   def should_see_main_image_on_product(key = nil, image)
-    find_element(key, il_type: :xpath, tl: main_image(:ta, image), il: main_image(:il, image), check_path: $check_path).click
+    element = find_element(key, il_type: :xpath, tl: main_image(:ta, image), il: main_image(:il, image), check_path: $check_path)
+    expect(element).to be_visible
   end
 
 end

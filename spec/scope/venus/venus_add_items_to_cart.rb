@@ -3,10 +3,11 @@ require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/venus/*.rb"
 
 
-product_page = ProductDetails.new
+product_page = VenusProduct.new
 navigation_page = VenusNavigation.new
-order_page = OrderDetails.new
-modal = Modal.new
+order_details = OrderDetails.new
+login_page = VenusLogin.new
+shipping_page = ShippingPage.new
 
 describe 'Preconditions' do
 
@@ -30,7 +31,8 @@ describe 'Preconditions' do
           page.visit url
         end
 
-        step "User selects Size", 8 do |size|
+        step "User selects Size", 'S' do |size|
+          scroll_to_element 1000
           product_page.choose_list_size size
         end
 
@@ -50,22 +52,33 @@ describe 'Preconditions' do
           navigation_page.click_cart_button
         end
 
-        step "User checks checkout image", "BASIC HIGH NECK DRESS" do |name|
-          order_page.should_see_order_image image
-        end
-
-        step "User checks checkout item name", "BASIC HIGH NECK DRESS" do |name|
-          order_page.should_see_order_item name
+        step "User checks checkout item name", "STRIPED SWEATER DRESS" do |name|
+          order_details.should_see_order_item name
         end
 
         step "User clicks Checkout confirm button" do
-          order_page.clicks_checkout_button
+          order_details.clicks_checkout_button
+        end
+
+        step "User logs in" do
+          login_page.fill_email_field email
+          login_page.fill_pass_field pass
+          login_page.click_sign_in_button
         end
 
         step "User checks Order Fields" do
-
+          shipping_page.should_see_first_name_field
+          shipping_page.should_see_last_name_field
+          shipping_page.should_see_country_field
+          shipping_page.should_see_address_line_field
+          shipping_page.should_see_address_line_optional_field
+          shipping_page.should_see_city_field
+          shipping_page.should_see_state_field
+          shipping_page.should_see_postal_code_field
+          shipping_page.should_see_phone_field
+          shipping_page.should_see_shipping_option_selector
+          shipping_page.should_see_billing_button
         end
-
 
       end
     end
