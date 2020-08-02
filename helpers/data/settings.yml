@@ -13,6 +13,7 @@ venus:
   customer_care_page: 'https://www.venus.com/customerservice.aspx'
   about_us_page: 'https://www.venus.com/about.aspx'
   view_product_page: 'https://www.venus.com/viewproduct.aspx'
+  preorder_page: 'https://www.venus.com/preview.aspx?storeid=1'
   email: 'denys.shutko@moovweb.com'
   pass: 'asdffdsA1'
   first_name: 'Denys'

@@ -3,24 +3,8 @@ require_relative '../page_extension'
 
 class VenusProduct < PageExtension
 
-  def list_size(locator, size)
-    case locator
-    when :il then "(//button[./span[text()='#{size}']])[1]"
-    when :ta then "venus:product_page:list_size:#{ta_name(size)}"
-    else p 'Locator type is not set'
-    end
-  end
-
   QTY_DROPDOWN_IL = "//div[./div[text()='Qty:']]//div[@role='button']"
   QTY_DROPDOWN_TA = 'venus:product_page:qty_dropdown'
-
-  def quantity(locator, qty)
-    case locator
-    when :il then "//ul[@role='listbox']/li[text()='#{qty}']"
-    when :ta then "venus:product_page:qty_dropdown:quantity_#{qty.tr('^A-Za-z0-9_', '')}"
-    else p 'Locator type is not set'
-    end
-  end
 
   WISH_LIST_BTN_IL = "//button[./span[text()='+ wish list']]"
   WISH_LIST_BTN_TA = 'venus:product_page:wish_list_btn'
@@ -30,6 +14,19 @@ class VenusProduct < PageExtension
 
   PRICE_ON_PRODUCT_IL = "(//div[contains(@data-page, 'Product')]//span[contains(., '$')])[1]"
   PRICE_ON_PRODUCT_TA = 'venus:product_page:price_on_product'
+
+  def list_size(key, size)
+    locator_by(key, "(//button[./span[text()='#{size}']])[1]",
+               "venus:product_page:size_list:#{ta_name(size)}")
+  end
+
+  def quantity(locator, qty)
+    case locator
+    when :il then "//ul[@role='listbox']/li[text()='#{qty}']"
+    when :ta then "venus:product_page:qty_dropdown:quantity_#{ta_name(qty)}"
+    else p 'Locator type is not set'
+    end
+  end
 
   def image_gallery(locator, image_index)
     case locator
