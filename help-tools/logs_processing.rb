@@ -65,7 +65,9 @@ class Logs
             # file_name = URI.unescape(file_name)
 
             open(File.join(path, new_href), 'wb') do |file|
-              file << open(old_href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
+              open(old_href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }) do |file_content|
+                file_content.each_line { |line| file << line }
+              end
             end
           rescue StandardError => ex
             puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
