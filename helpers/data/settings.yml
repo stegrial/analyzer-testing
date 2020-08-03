@@ -179,4 +179,9 @@ youtube:
 semantic:
   main_page: "https://semantic-ui.com/"
 
+sencha:
+  examples_page: "https://examples.sencha.com/"
+  ext_js_page: "https://examples.sencha.com/extjs/7.2.0/"
+  admin_dashboard_ext_js_page: "https://examples.sencha.com/extjs/7.2.0/examples/admin-dashboard/#dashboard"
+
 
