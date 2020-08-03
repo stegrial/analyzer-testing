@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 community_page = CommunityPageFacebook.new
 
@@ -99,7 +97,10 @@ describe 'Preconditions' do
         step "User click close chat button" do
           community_page.click_close_chat
         end
+
+        sleep 3
       end
     end
+
   end
 end

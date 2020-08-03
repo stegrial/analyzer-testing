@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 profile_page = ProfilePageFacebook.new
 bio_page = BioPageFacebook.new
@@ -59,8 +57,10 @@ describe 'Preconditions' do
         step "User  click About button" do
           profile_page.click_about_btn
         end
+
         step "User  click 'Work At'" do
           bio_page.should_see_work_at
+          scroll_to_element 500
         end
 
         step "User  click '+ Add a school' " do
@@ -68,6 +68,7 @@ describe 'Preconditions' do
         end
 
         step "User  click '+Add professional skill' input" do
+          scroll_to_element 100
           bio_page.click_add_prof_skill
         end
 
@@ -96,9 +97,12 @@ describe 'Preconditions' do
         end
 
         step "User click 'Save Changes' button" do
-          bio_page.click_save_changes
+          bio_page.click_save_changes :il #step is duplicated below
         end
+
+        sleep 3
       end
     end
+
   end
 end

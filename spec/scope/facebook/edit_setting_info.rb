@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 setting_page = SettingsPageFacebook.new
 
@@ -83,7 +81,10 @@ describe 'Preconditions' do
         step "User click close memorialization settings btn" do
           setting_page.click_close_memorialization_settings
         end
+
+        sleep 3
       end
     end
+
   end
 end

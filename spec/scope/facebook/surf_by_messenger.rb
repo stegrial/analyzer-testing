@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 home_page = HomePageFacebook.new
 chat_page = ChatPageFacebook.new
@@ -54,15 +52,16 @@ describe 'Preconditions' do
         end
 
         step "Need to press escape" do
-          header_nav.escape :il
+          header_nav.escape :il #step is duplicated below
         end
 
         step "User fill search field", "Mark Soza" do |value|
           chat_page.fill_search_input value
+          sleep 3 # wait for filter apply
         end
 
         step "User sees Contacts in left side chat menu" do
-          chat_page.should_see_contacts_in_chat
+          chat_page.should_see_contacts_in_chat :il #step is duplicated below
         end
 
         step "User sees Businesses in left side chat menu" do
@@ -96,7 +95,10 @@ describe 'Preconditions' do
         step "User sees Privacy and Support button in right side menu" do
           chat_page.should_see_privacy_support_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end

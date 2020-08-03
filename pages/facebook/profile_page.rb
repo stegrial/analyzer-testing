@@ -56,6 +56,7 @@ class ProfilePageFacebook < PageExtension
 
   ADD_COVER_PHOTO_TEXT_IL = "(//span[contains(text(), 'Add Cover Photo')])[1]"
   ADD_COVER_PHOTO_TEXT_TA = "facebook:profile_page:add_cover_photo_text"
+
   def click_new_post_btn(key = nil)
     find_element(key, il_type: :xpath, tl: NEW_POST_TA, il: NEW_POST_IL, check_path: $check_path).click
   end
@@ -99,7 +100,9 @@ class ProfilePageFacebook < PageExtension
   end
 
   def click_ok_btn_layer_confirm(key = nil)
-    find_element(key, il_type: :xpath, tl: LAYER_CONFIRM_OK_BTN_TA, il: LAYER_CONFIRM_OK_BTN_IL, check_path: $check_path).click
+    if page.has_xpath?("(//button[contains(@class, 'layerConfirm')])[1]")
+      find_element(key, il_type: :xpath, tl: LAYER_CONFIRM_OK_BTN_TA, il: LAYER_CONFIRM_OK_BTN_IL, check_path: $check_path).click
+    end
   end
 
   def click_select_artwork(key = nil)

@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 search_page = SearchPageFacebook.new
 
@@ -83,7 +81,10 @@ describe 'Preconditions' do
         step "User click See All link" do
           search_page.click_see_all_link
         end
+
+        sleep 3
       end
     end
+
   end
 end
