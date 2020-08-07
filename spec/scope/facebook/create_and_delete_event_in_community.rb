@@ -69,6 +69,7 @@ describe 'Preconditions' do
 
         step "User fill Odessa in location field", "odessa\n" do |value|
           community_page.fill_location_event_input value
+          community_page.click_just_odessa
         end
 
         step "User fill description field", "test" do |value|

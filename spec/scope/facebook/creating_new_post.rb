@@ -62,10 +62,6 @@ describe 'Preconditions' do
           profile_page.should_see_new_post_created
         end
 
-        step "User  fill comment field for created post", "new comment for created post\n"  do |value|
-          profile_page.fill_comment_field value
-        end
-
         step "User  click to open story option" do
           profile_page.click_to_open_story_option
         end

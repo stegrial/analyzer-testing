@@ -55,6 +55,8 @@ describe 'Preconditions' do
         end
 
         step "User  click About button" do
+          sleep 4 # wait for il locator(very quickly)
+          header_nav.escape :il
           profile_page.click_about_btn
         end
 

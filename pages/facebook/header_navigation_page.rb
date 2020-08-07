@@ -3,13 +3,13 @@ require_relative '../page_extension'
 class HeaderNaviPageFacebook < PageExtension
 
 
-  EMAIL_IL = "//input[@name='email']"
+  EMAIL_IL = "(//input[@name='email'])[1]"
   EMAIL_TA = "facebook:header_nav:email"
 
-  PASS_IL = "//input[@name='pass']"
+  PASS_IL = "(//input[@name='pass'])[1]"
   PASS_TA = "facebook:header_nav:pass"
 
-  LOGIN_BTN_IL = "#loginbutton"
+  LOGIN_BTN_IL = "#loginbutton:first-child"
   LOGIN_BTN_TA = "facebook:header_nav:login_btn"
 
   PROFILE_NAME_IL = "//a[@title='Profile']//*[text()='Mark']"

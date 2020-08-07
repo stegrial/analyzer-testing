@@ -53,10 +53,6 @@ describe 'Preconditions' do
           header_nav.click_menu_logout_btn
         end
 
-        step "User sees Create New Account text" do
-          header_nav.should_see_create_new_acc_text
-        end
-
         sleep 3
       end
     end
