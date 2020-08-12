@@ -8,6 +8,9 @@ class ExamplesPage < PageExtension
   HERO_HEADER_IL = "//h1[text()='Sencha Examples']"
   HERO_HEADER_TA = "sencha:examples_page:hero_header"
 
+  TEXT_HEADER_IL = "//div[@id='heroText']/p"
+  TEXT_HEADER_TA = "sencha:examples_page:text_header"
+
   DOCS_LINK_IL = "//a[text()='Docs']"
   DOCS_LINK_TA = "sencha:examples_page:docs_link"
 
@@ -38,6 +41,9 @@ class ExamplesPage < PageExtension
   GITHUB_LINK_IL = "//a[@href='https://github.com/sencha']"
   GITHUB_LINK_TA = "sencha:examples_page:github_link"
 
+  SENCHA_INC_IL = "//li[@class='footer-text']"
+  SENCHA_INC_TA = "sencha:examples_page:sencha_inc"
+
   PRIVACY_POLICY_LINK_IL = "(//a[@id='footer-link'])[1]"
   PRIVACY_POLICY_LINK_TA = "sencha:examples_page:privacy_police_link"
 
@@ -53,26 +59,14 @@ class ExamplesPage < PageExtension
   EXT_ANGULAR_EXAMPLES_NAME_IL = "//h2[text()='ExtAngular Examples']"
   EXT_ANGULAR_EXAMPLES_NAME_TA = "sencha:examples_page:ext_angular_examples"
 
-  EXT_ANGULAR_EXAMPLES_FREE_TRIAL_IL = "//a[@href='https://www.sencha.com/products/extangular/evaluate/earlyaccess']"
-  EXT_ANGULAR_EXAMPLES_FREE_TRIAL_TA = "sencha:examples_page:ext_angular_examples_free_trial"
-
   EXT_WEB_COMPONENTS_EXAMPLES_NAME_IL = "//h2[text()='ExtWebComponents Examples']"
   EXT_WEB_COMPONENTS_EXAMPLES_NAME_TA = "sencha:examples_page:ext_web_components_examples"
-
-  EXT_WEB_COMPONENTS_EXAMPLES_FREE_TRIAL_IL = "//a[@href='https://www.sencha.com/products/extwebcomponents/evaluate/earlyaccess/']"
-  EXT_WEB_COMPONENTS_EXAMPLES_FREE_TRIAL_TA = "sencha:examples_page:ext_web_components_examples_free_trial"
 
   EXT_REACT_EXAMPLES_NAME_IL = "//h2[text()='ExtReact Examples']"
   EXT_REACT_EXAMPLES_NAME_TA = "sencha:examples_page:ext_react_examples"
 
-  EXT_REACT_FREE_TRIAL_IL = "//a[@href='https://www.sencha.com/products/extreact/evaluate/']"
-  EXT_REACT_FREE_TRIAL_TA = "sencha:examples_page:ext_react_examples_free_trial"
-
   GXT_EXAMPLES_NAME_IL = "//h2[text()='GXT Examples']"
   GXT_EXAMPLES_NAME_TA = "sencha:examples_page:gxt_examples"
-
-  GXT_FREE_TRIAL_IL = "//a[@href='https://www.sencha.com/products/gxt/evaluate/']"
-  GXT_FREE_TRIAL_TA = "sencha:examples_page:gxt_examples_free_trial"
 
   EXT_JS_VIEW_EXAMPLES_IL = "(//a[@href='/extjs'])[3]"
   EXT_JS_VIEW_EXAMPLES_TA = "sencha:examples_page:ext_js_view_examples_button"
@@ -85,6 +79,11 @@ class ExamplesPage < PageExtension
 
   def should_see_hero_header(key = nil)
     element = find_element(key, il_type: :xpath, tl: HERO_HEADER_TA, il: HERO_HEADER_IL, check_path: $check_path)
+    expect(element).to be_visible
+  end
+
+  def should_see_text_header(key = nil)
+    element = find_element(key, il_type: :xpath, tl: TEXT_HEADER_TA, il: TEXT_HEADER_IL, check_path: $check_path)
     expect(element).to be_visible
   end
 
@@ -135,6 +134,11 @@ class ExamplesPage < PageExtension
     expect(element).to be_visible
   end
 
+  def should_see_sencha_inc(key = nil)
+    element = find_element(key, il_type: :xpath, tl: SENCHA_INC_TA, il: SENCHA_INC_IL, check_path: $check_path)
+    expect(element).to be_visible
+  end
+
   def should_see_privacy_police_link(key = nil)
     element = find_element(key, il_type: :xpath, tl: PRIVACY_POLICY_LINK_TA, il: PRIVACY_POLICY_LINK_IL, check_path: $check_path)
     expect(element).to be_visible
@@ -145,49 +149,28 @@ class ExamplesPage < PageExtension
     expect(element).to be_visible
   end
 
-  def should_see_ext_js_examples_name(key = nil)
-    element = find_element(key, il_type: :xpath, tl: EXT_JS_EXAMPLES_NAME_TA, il: EXT_JS_EXAMPLES_NAME_IL, check_path: $check_path)
-    expect(element).to be_visible
-  end
-
   def click_ext_js_examples_free_trial(key = nil)
     find_element(key, il_type: :xpath, tl: EXT_JS_EXAMPLES_FREE_TRIAL_TA, il: EXT_JS_EXAMPLES_FREE_TRIAL_IL, check_path: $check_path).click
   end
 
-  def should_see_ext_angular_examples_name(key = nil)
-    element = find_element(key, il_type: :xpath, tl: EXT_ANGULAR_EXAMPLES_NAME_TA, il: EXT_ANGULAR_EXAMPLES_NAME_IL, check_path: $check_path)
-    expect(element).to be_visible
+  def click_ext_js_examples_name(key = nil)
+    find_element(key, il_type: :xpath, tl: EXT_JS_EXAMPLES_NAME_TA, il: EXT_JS_EXAMPLES_NAME_IL, check_path: $check_path).click
   end
 
-  def click_ext_angular_examples_free_trial(key = nil)
-    find_element(key, il_type: :xpath, tl: EXT_ANGULAR_EXAMPLES_FREE_TRIAL_TA, il: EXT_ANGULAR_EXAMPLES_FREE_TRIAL_IL, check_path: $check_path).click
+  def click_ext_angular_examples_name(key = nil)
+    find_element(key, il_type: :xpath, tl: EXT_ANGULAR_EXAMPLES_NAME_TA, il: EXT_ANGULAR_EXAMPLES_NAME_IL, check_path: $check_path).click
   end
 
-  def should_see_ext_web_components_examples_name(key = nil)
-    element = find_element(key, il_type: :xpath, tl: EXT_WEB_COMPONENTS_EXAMPLES_NAME_TA, il: EXT_WEB_COMPONENTS_EXAMPLES_NAME_IL, check_path: $check_path)
-    expect(element).to be_visible
+  def click_ext_web_components_examples_name(key = nil)
+    find_element(key, il_type: :xpath, tl: EXT_WEB_COMPONENTS_EXAMPLES_NAME_TA, il: EXT_WEB_COMPONENTS_EXAMPLES_NAME_IL, check_path: $check_path).click
   end
 
-  def click_ext_web_components_examples_free_trial(key = nil)
-    find_element(key, il_type: :xpath, tl: EXT_WEB_COMPONENTS_EXAMPLES_FREE_TRIAL_TA, il: EXT_WEB_COMPONENTS_EXAMPLES_FREE_TRIAL_IL, check_path: $check_path).click
+  def click_ext_react_examples_name(key = nil)
+    find_element(key, il_type: :xpath, tl: EXT_REACT_EXAMPLES_NAME_TA, il: EXT_REACT_EXAMPLES_NAME_IL, check_path: $check_path).click
   end
 
-  def should_see_ext_react_examples_name(key = nil)
-    element = find_element(key, il_type: :xpath, tl: EXT_REACT_EXAMPLES_NAME_TA, il: EXT_REACT_EXAMPLES_NAME_IL, check_path: $check_path)
-    expect(element).to be_visible
-  end
-
-  def click_ext_react_examples_free_trial(key = nil)
-    find_element(key, il_type: :xpath, tl: EXT_REACT_FREE_TRIAL_TA, il: EXT_REACT_FREE_TRIAL_IL, check_path: $check_path).click
-  end
-
-  def should_see_gxt_examples_name(key = nil)
-    element = find_element(key, il_type: :xpath, tl: GXT_EXAMPLES_NAME_TA, il: GXT_EXAMPLES_NAME_IL, check_path: $check_path)
-    expect(element).to be_visible
-  end
-
-  def click_gxt_examples_free_trial(key = nil)
-    find_element(key, il_type: :xpath, tl: GXT_FREE_TRIAL_TA, il: GXT_FREE_TRIAL_IL, check_path: $check_path).click
+  def click_gxt_examples_name(key = nil)
+    find_element(key, il_type: :xpath, tl: GXT_EXAMPLES_NAME_TA, il: GXT_EXAMPLES_NAME_IL, check_path: $check_path).click
   end
 
   def click_ext_js_view_examples(key = nil)

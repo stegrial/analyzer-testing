@@ -16,7 +16,7 @@ describe 'Preconditions' do
     $check_path = true if $run_parameters.include?('search')
   end
 
-  feature 'View hidden header Ext JS page' do
+  feature 'View closed headers Ext JS page' do
 
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do

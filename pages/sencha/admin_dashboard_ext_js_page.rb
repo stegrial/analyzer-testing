@@ -229,87 +229,17 @@ class AdminDashboardExtJSPage < PageExtension
     end
   end
 
-  def should_see_email_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: EMAIL_MENU_TA, il: EMAIL_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
-  def should_see_profile_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: PROFILE_MENU_TA, il: PROFILE_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
-  def should_see_search_results_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: SEARCH_RESULTS_MENU_TA, il: SEARCH_RESULTS_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
-  def should_see_faq_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: FAQ_MENU_TA, il: FAQ_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
-  def click_pages_menu(key = nil)
-    within_frame(0) do
-      find_element(key, il_type: :xpath, tl: PAGES_MENU_TA, il: PAGES_MENU_IL, check_path: $check_path).click
-    end
-  end
-
-  def should_see_blank_page_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: BLANK_PAGE_MENU_TA, il: BLANK_PAGE_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
-  def should_see_error_404_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: ERROR_404_MENU_TA, il: ERROR_404_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
-  def should_see_error_500_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: ERROR_500_MENU_TA, il: ERROR_500_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
-  def should_see_widgets_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: WIDGETS_MENU_TA, il: WIDGETS_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
-  def should_see_forms_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: FORMS_MENU_TA, il: FORMS_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
-  def should_see_charts_menu(key = nil)
-    within_frame(0) do
-      element = find_element(key, il_type: :xpath, tl: CHARTS_MENU_TA, il: CHARTS_MENU_IL, check_path: $check_path)
-      expect(element).to be_visible
-    end
-  end
-
   def click_hamburger_menu(key = nil)
     within_frame(0) do
       find_element(key, il_type: :xpath, tl: HAMBURGER_MENU_TA, il: HAMBURGER_MENU_IL, check_path: $check_path).click
     end
   end
+
+
+
+
+
+
 
   def click_mobile_switch_menu(key = nil)
     within_frame(0) do
@@ -721,6 +651,12 @@ class AdminDashboardExtJSPage < PageExtension
   def click_login_login_btn(key = nil)
     within_frame(0) do
       find_element(key, il_type: :xpath, tl: LOGIN_LOGIN_TA, il: LOGIN_LOGIN_IL, check_path: $check_path).click
+    end
+  end
+
+  def click_pages_menu(key = nil)
+    within_frame(0) do
+      find_element(key, il_type: :xpath, tl: PAGES_MENU_TA, il: PAGES_MENU_IL, check_path: $check_path).click
     end
   end
 

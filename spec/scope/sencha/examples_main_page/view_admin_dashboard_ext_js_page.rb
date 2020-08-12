@@ -33,37 +33,6 @@ describe 'Preconditions' do
           admin_dashboard_ext_js_page.should_see_dashboard_menu
         end
 
-        step "User sees Email menu" do
-          admin_dashboard_ext_js_page.should_see_email_menu
-        end
-
-        step "User sees Profile menu" do
-          admin_dashboard_ext_js_page.should_see_profile_menu
-        end
-
-        step "User sees Search results menu" do
-          admin_dashboard_ext_js_page.should_see_search_results_menu
-        end
-
-        step "User sees FAQ menu" do
-          admin_dashboard_ext_js_page.should_see_faq_menu
-        end
-
-        step "User clicks Pages menu and sess pages menu" do
-          admin_dashboard_ext_js_page.click_pages_menu
-          admin_dashboard_ext_js_page.should_see_blank_page_menu
-          admin_dashboard_ext_js_page.should_see_error_404_menu
-          admin_dashboard_ext_js_page.should_see_error_500_menu
-        end
-
-        step "User sees Widgets menu" do
-          admin_dashboard_ext_js_page.should_see_widgets_menu
-        end
-
-        step "User sees Charts menu" do
-          admin_dashboard_ext_js_page.should_see_charts_menu
-        end
-
         step "User clicks Hamburger menu" do
           admin_dashboard_ext_js_page.click_hamburger_menu
         end

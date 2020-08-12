@@ -3,6 +3,7 @@ require_relative '../../../../helpers/special_methods'
 required_relative_all "/pages/sencha/*.rb"
 
 examples_page = ExamplesPage.new
+ext_js_page = ExtJSPage.new
 
 describe 'Preconditions' do
 
@@ -16,7 +17,7 @@ describe 'Preconditions' do
     $check_path = true if $run_parameters.include?('search')
   end
 
-  feature 'View Examples page' do
+  feature 'View Ext JS technology' do
 
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
@@ -24,20 +25,13 @@ describe 'Preconditions' do
           page.visit url
         end
 
-        step "User sees header" do
-          examples_page.should_see_logo
-          examples_page.should_see_hero_header
+        step "User clicks Ext JS examples name" do
+          examples_page.click_ext_js_examples_name
         end
 
-        step "User sees footer" do
-          examples_page.should_see_facebook_link
-          examples_page.should_see_twitter_link
-          examples_page.should_see_linkedin_link
-          examples_page.should_see_google_link
-          examples_page.should_see_vimeo_link
-          examples_page.should_see_github_link
-          examples_page.should_see_privacy_police_link
-          examples_page.should_see_terms_of_use_link
+        step "User sees Ext JS header" do
+          ext_js_page.should_see_hero_header
+          ext_js_page.should_see_hero_text
         end
 
 
