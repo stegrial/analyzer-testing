@@ -12,10 +12,10 @@ class HeaderNavigationPageWalmart < PageExtension
   NEW_ARRIVALS_IL = "(//div[text()='New Arrivals'])[4]"
   NEW_ARRIVALS_TA = "walmart:header_navigation:new_arrivals"
 
-  CART_ICON_IL = "#header-cart-link"
+  CART_ICON_IL = "#hf-cart"
   CART_ICON_TA = "walmart:header_navigation:cart_icon"
 
-  ACCOUNT_BTN_IL = "#header-account-toggle"
+  ACCOUNT_BTN_IL = "#hf-account-flyout"
   ACCOUNT_BTN_TA = "walmart:header_navigation:account_btn"
 
   SIGN_IN_LINK_IL = "//a[@title='Sign In']"
@@ -30,7 +30,7 @@ class HeaderNavigationPageWalmart < PageExtension
   HELP_LINK_IL = "(//a[@title='Help'])[2]"
   HELP_LINK_TA = "walmart:header_navigation:help_link"
 
-  CLOSE_ACC_MENU_IL = "#account-menu-close-button"
+  CLOSE_ACC_MENU_IL = "//button[@aria-label='Close Account Menu']"
   CLOSE_ACC_MENU_TA = "walmart:header_navigation:close_acc_menu"
 
   LOGO_IL = "#hf-home-link"
@@ -109,7 +109,7 @@ class HeaderNavigationPageWalmart < PageExtension
   end
 
   def click_close_acc_menu(key = nil)
-    find_element(key, il_type: :css, tl: CLOSE_ACC_MENU_TA, il: CLOSE_ACC_MENU_IL, check_path: $check_path).click
+    find_element(key, il_type: :xpath, tl: CLOSE_ACC_MENU_TA, il: CLOSE_ACC_MENU_IL, check_path: $check_path).click
   end
 
   def should_see_logo(key = nil)

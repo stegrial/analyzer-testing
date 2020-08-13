@@ -64,10 +64,6 @@ describe 'Preconditions' do
           chat_page.should_see_contacts_in_chat :il #step is duplicated below
         end
 
-        step "User sees Businesses in left side chat menu" do
-          chat_page.should_see_businesses_in_chat
-        end
-
         step "User click X btn for clear search field" do
           chat_page.click_clear_search_field
         end

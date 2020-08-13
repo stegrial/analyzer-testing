@@ -67,6 +67,7 @@ describe 'Preconditions' do
         end
 
         step "Need to press escape" do
+          sleep 2 # wait for il locator(very quickly)
           header_nav.escape :il #step is duplicated below
         end
 

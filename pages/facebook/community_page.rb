@@ -15,13 +15,13 @@ class CommunityPageFacebook < PageExtension
   CONTACT_INFO_TEXT_IL = "//div[contains(text(),'CONTACT INFO')]"
   CONTACT_INFO_TEXT_TA = "facebook:community_page:contact_info_text"
 
-  SUGGEST_EDIT_IL = "//div[contains(text(),'Suggest Edits')]"
+  SUGGEST_EDIT_IL = "//a[contains(@ajaxify, '/pages/suggest/edits/dialog/')]/parent::div"
   SUGGEST_EDIT_TA = "facebook:community_page:suggest_edits"
 
   BASIC_INFO_TEXT_IL = "//div[contains(text(),'Basic Information')]"
   BASIC_INFO_TEXT_TA = "facebook:community_page:basic_info_test"
 
-  ADD_DUPLICATE_URL_IL = "//div[contains(text(),'Add Duplicate URL')]"
+  ADD_DUPLICATE_URL_IL = "//div[text()='Add Duplicate URL']"
   ADD_DUPLICATE_URL_TA = "facebook:community_page:add_duplicate_url"
 
   URL_INFO_IL= "//div[contains(text(),'Copy the URL of the duplicate place')]"
@@ -59,6 +59,9 @@ class CommunityPageFacebook < PageExtension
 
   LOCATION_IL = "(//input[contains(@placeholder, 'Include a place or address')])[1]"
   LOCATION_TA = "facebook:community_page:location_event"
+
+  JUST_ODESSA_IL = "//span[text()='Just use \"odessa\"']"
+  JUST_ODESSA_TA = "facebook:community_page:just_odessa"
 
   SELECT_CATEGORY_IL = "//span[text()='Select Category']"
   SELECT_CATEGORY_TA = "facebook:community_page:select_category"
@@ -187,6 +190,10 @@ class CommunityPageFacebook < PageExtension
 
   def fill_location_event_input(key = nil, value)
     find_element(key, il_type: :xpath, tl: LOCATION_TA, il: LOCATION_IL, check_path: $check_path).set(value)
+  end
+
+  def click_just_odessa(key = nil)
+    find_element(key, il_type: :xpath, tl: JUST_ODESSA_TA, il: JUST_ODESSA_IL, check_path: $check_path).click
   end
 
   def click_select_category(key = nil)

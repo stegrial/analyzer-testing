@@ -15,9 +15,6 @@ class ProfilePageFacebook < PageExtension
   NEW_POST_TEXT_IL = "//div[@data-testid='post_message']//p[text()='new post for test']"
   NEW_POST_TEXT_TA = "facebook:profile_page:new_post_created"
 
-  WRITE_COMMENT_IL = "(//form//div[@aria-label='Write a comment...'])[1]"
-  WRITE_COMMENT_TA = "facebook:profile_page:write_a_comment"
-
   STORY_OPTION_IL = "(//a[@aria-label='Story options'])[1]"
   STORY_OPTION_TA = "facebook:profile_page:story_option"
 
@@ -72,10 +69,6 @@ class ProfilePageFacebook < PageExtension
   def should_see_new_post_created(key = nil)
     element = find_element(key, il_type: :xpath, tl: NEW_POST_TEXT_TA, il: NEW_POST_TEXT_IL, check_path: $check_path)
     expect(element).to be_visible
-  end
-
-  def fill_comment_field(key = nil, value)
-    find_element(key, il_type: :xpath, tl: WRITE_COMMENT_TA, il: WRITE_COMMENT_IL, check_path: $check_path).set(value)
   end
 
   def click_to_open_story_option(key = nil)

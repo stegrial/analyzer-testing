@@ -27,7 +27,7 @@ class PickupAndDeliveryPageWalmart < PageExtension
   SEE_TIMES_BTN_IL = "//a[contains(@data-automation-id, 'signInLink') and text()='See times']"
   SEE_TIMES_BTN_TA = "walmart:delivery_page:see_times"
 
-  CART_HEADER_IL = "//span[contains(@data-automation-id, 'cartHeader')]"
+  CART_HEADER_IL = "//h2[contains(@data-automation-id, 'cartHeader')]"
   CART_HEADER_TA = "walmart:delivery_page:cart_header"
 
   YOUR_CART_IS_EMPTY_TEXT_IL = "//div[contains(text(), 'Your cart is currently empty.')]"
