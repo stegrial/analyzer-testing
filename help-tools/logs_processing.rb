@@ -17,6 +17,24 @@ class Logs
     @files = []
   end
 
+  def create_capybara_driver(*arg)
+    args = { args: %w(--disable-notifications --headless --disable-gpu) }
+    options = Selenium::WebDriver::Chrome::Options.new(args)
+
+    Capybara.register_driver :chrome_driver do |app|
+      Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+    end
+
+    Capybara.configure do |capybara|
+      capybara.run_server = false
+      capybara.default_max_wait_time = 6
+      capybara.default_driver = :chrome_driver
+    end
+
+    yield(*arg)
+    Capybara.current_session.driver.quit
+  end
+
   def logs_root
     dir = __dir__.split("/")
     project_root = dir[0..dir.length - 2].join("/")
@@ -41,41 +59,46 @@ class Logs
   end
 
   def get_sources_data
-    logs_root.each do |path|
-      FileUtils.mkdir path + '/data_files' unless Dir.exists?(path + '/data_files')
-      sources_href = File.read(path + '/sources_href.txt')
-      sources_href.each_line.with_index do |href, index|
-        unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
-          begin
-            puts href
-            href = href.chomp
-            old_href = href
+    create_capybara_driver do
+      logs_root.each do |path|
+        FileUtils.mkdir path + '/data_files' unless Dir.exists?(path + '/data_files')
+        sources_href = File.read(path + '/sources_href.txt')
+        sources_href.each_line.with_index do |href, index|
+          unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
+            begin
+              puts href
+              href = href.chomp
+              old_href = href
 
-            file_name = URI.parse(href).path.split('/').last
-            ext_name = File.extname(file_name)
-            new_href = 'data_files/file_name' + index.to_s + ext_name
-            @files.push({
-              old_href: old_href,
-              new_href: new_href
-            })
+              file_name = URI.parse(href).path.split('/').last
+              ext_name = File.extname(file_name)
+              new_href = 'data_files/file_name' + index.to_s + ext_name
+              @files.push({
+                old_href: old_href,
+                new_href: new_href
+              })
 
-            # anniesalke update
-            # href = URI.escape(href) if href.include?(' ')
-            # file_name = URI.parse(href).path.split('/').last
-            # file_name = URI.unescape(file_name)
+              # anniesalke update
+              # href = URI.escape(href) if href.include?(' ')
+              # file_name = URI.parse(href).path.split('/').last
+              # file_name = URI.unescape(file_name)
 
-            open(File.join(path, new_href), 'wb') do |file|
-              open(old_href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }) do |file_content|
-                file_content.each_line { |line| file << line }
+              open(File.join(path, new_href), 'wb') do |file|
+                if File.extname(new_href) == '.css'
+                  visit old_href
+                  file << find('body')['innerText']
+                else
+                  file << open(old_href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
+                end
               end
+            rescue StandardError => ex
+              puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
+              puts ex
             end
-          rescue StandardError => ex
-            puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
-            puts ex
           end
         end
+        modify_html path
       end
-      modify_html path
     end
   end
 
@@ -185,64 +208,52 @@ class Logs
   end
 
   def check_data_consistency
-    args = { args: %w(--disable-notifications --headless --disable-gpu) }
-    options = Selenium::WebDriver::Chrome::Options.new(args)
+    create_capybara_driver do
+      @filter_array.each_with_index do |value, index|
+        puts "\n" + "\e[36m#{value[0]}\e[0m"
+        html_path = value[0] + '/data.html'
+        page.visit 'file://' + html_path
 
-    Capybara.register_driver :chrome_driver do |app|
-      Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
-    end
+        relative_locator = JSON.parse(File.read(value[0] + '/current_locator.json'))
+        begin
+          if File.read(value[0] + '/element_address.txt') != 'NOT_FOUND'
+            expected_path = find(relative_locator['type'].to_sym, relative_locator['value'], visible: false).path
+            puts expected_path
 
-    Capybara.configure do |capybara|
-      capybara.run_server = false
-      capybara.default_max_wait_time = 6
-      capybara.default_driver = :chrome_driver
-    end
+            absolute_locator = []
+            absolute_address = File.read(value[0] + '/element_address.txt').split(".")
+            absolute_address.each do |i|
+              i = "/*[#{i.to_i + 1}]"
+              absolute_locator << i
+            end
+            absolute_locator = absolute_locator.join('')
+            actual_path = find(:xpath, absolute_locator, visible: false).path
+            puts actual_path
 
-    @filter_array.each_with_index do |value, index|
-      puts "\n" + "\e[36m#{value[0]}\e[0m"
-      html_path = value[0] + '/data.html'
-      page.visit 'file://' + html_path
-
-      relative_locator = JSON.parse(File.read(value[0] + '/current_locator.json'))
-      begin
-        if File.read(value[0] + '/element_address.txt') != 'NOT_FOUND'
-          expected_path = find(relative_locator['type'].to_sym, relative_locator['value'], visible: false).path
-          puts expected_path
-
-          absolute_locator = []
-          absolute_address = File.read(value[0] + '/element_address.txt').split(".")
-          absolute_address.each do |i|
-            i = "/*[#{i.to_i + 1}]"
-            absolute_locator << i
+            expect(actual_path).to eq expected_path
+          else
+            expect(page).not_to have_selector(relative_locator['type'].to_sym, relative_locator['value'], visible: false)
+            puts 'NOT_FOUND'
           end
-          absolute_locator = absolute_locator.join('')
-          actual_path = find(:xpath, absolute_locator, visible: false).path
-          puts actual_path
+        rescue RSpec::Expectations::ExpectationNotMetError, Capybara::ElementNotFound => ex
+          puts ex
+          puts "\e[33m!data is not consistency\e[0m"
 
-          expect(actual_path).to eq expected_path
-        else
-          expect(page).not_to have_selector(relative_locator['type'].to_sym, relative_locator['value'], visible: false)
-          puts 'NOT_FOUND'
+          array_to_remove = []
+          array_to_remove << value[0]
+          if @filter_array[index - 1][1] == 'NOT_FOUND' && @filter_array[index - 2][1] == 'NOT_FOUND'
+            array_to_remove << @filter_array[index - 1][0] if Dir.exists?(@filter_array[index - 1][0])
+            array_to_remove << @filter_array[index - 2][0] if Dir.exists?(@filter_array[index - 2][0])
+          elsif @filter_array[index - 1][1] == 'NOT_FOUND'
+            array_to_remove << @filter_array[index - 1][0] if Dir.exists?(@filter_array[index - 1][0])
+          end
+
+          puts "\n" + "\e[33mRemoved requests:\e[0m"
+          puts array_to_remove
+          FileUtils.rm_rf(array_to_remove)
         end
-      rescue RSpec::Expectations::ExpectationNotMetError, Capybara::ElementNotFound => ex
-        puts ex
-        puts "\e[33m!data is not consistency\e[0m"
-
-        array_to_remove = []
-        array_to_remove << value[0]
-        if @filter_array[index - 1][1] == 'NOT_FOUND' && @filter_array[index - 2][1] == 'NOT_FOUND'
-          array_to_remove << @filter_array[index - 1][0] if Dir.exists?(@filter_array[index - 1][0])
-          array_to_remove << @filter_array[index - 2][0] if Dir.exists?(@filter_array[index - 2][0])
-        elsif @filter_array[index - 1][1] == 'NOT_FOUND'
-          array_to_remove << @filter_array[index - 1][0] if Dir.exists?(@filter_array[index - 1][0])
-        end
-
-        puts "\n" + "\e[33mRemoved requests:\e[0m"
-        puts array_to_remove
-        FileUtils.rm_rf(array_to_remove)
       end
     end
-    Capybara.current_session.driver.quit
   end
 
   def create_signature_sources
