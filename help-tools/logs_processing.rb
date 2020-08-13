@@ -17,7 +17,7 @@ class Logs
     @files = []
   end
 
-  def create_capybara_driver(*arg)
+  def create_capybara_driver
     args = { args: %w(--disable-notifications --headless --disable-gpu) }
     options = Selenium::WebDriver::Chrome::Options.new(args)
 
@@ -31,7 +31,7 @@ class Logs
       capybara.default_driver = :chrome_driver
     end
 
-    yield(*arg)
+    yield
     Capybara.current_session.driver.quit
   end
 
