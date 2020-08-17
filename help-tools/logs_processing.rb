@@ -86,7 +86,27 @@ class Logs
               open(File.join(path, new_href), 'wb') do |file|
                 if File.extname(new_href) == '.css'
                   visit old_href
+
                   file << find('body')['innerText']
+                  # css_content = find('body')['innerText']
+                  # flag = false
+                  # css_content.each_line do |line_content|
+                  #   if line_content.include? '@import'
+                  #     puts "Found in css file `@import`: #{line_content}"
+                  #
+                  #     css_path = line_content.slice(/[\w-]+\.css/)
+                  #     puts "My css path #{css_path}"
+                  #
+                  #     ppath = old_href.gsub(/(?<=\/)[\w-]+\.css/, css_path)
+                  #     puts "My css path #{ppath}"
+                  #
+                  #     final = line_content.gsub(/[\w-]+\.css/, ppath)
+                  #     puts "My final path #{final}"
+                  #     file << final
+                  #     flag = true
+                  #   end
+                  # end
+                  # file << css_content unless flag
                 else
                   file << open(old_href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
                 end
@@ -160,6 +180,7 @@ class Logs
         unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
           begin
             new_href = (@files.detect { |file| URI.unescape(file[:old_href]).include? href } || {}).dig(:new_href) || href
+            #new_href = (@files.detect { |file| URI.unescape(file[:old_href]).match? href } || {}).dig(:new_href) || href
 
             # anniesalke update
             # href = URI.escape(href) if href.include?(' ')
