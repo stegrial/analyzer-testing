@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 notification_page = NotificationsPageFacebook.new
 
@@ -79,7 +77,10 @@ describe 'Preconditions' do
         step "User click SMS switch toggle" do
           notification_page.click_sms_switch_toggle
         end
+
+        sleep 3
       end
     end
+
   end
 end

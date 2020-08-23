@@ -75,3 +75,14 @@ def move_between_tabs
   # page.driver.browser.close
   # page.driver.browser.switch_to.window(tab.first)
 end
+
+#method is needed when user needs to move to last window and close existing one
+def move_last_tab
+  window = page.driver.browser.window_handles
+
+  if window.size > 1
+    page.driver.browser.switch_to.window(window.first)
+    page.driver.browser.close
+    page.driver.browser.switch_to.window(window.last)
+  end
+end

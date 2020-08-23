@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 
 describe 'Preconditions' do
@@ -78,7 +76,10 @@ describe 'Preconditions' do
         step "User sees 'Help Center' title" do
           header_nav.should_see_help_center_text
         end
+
+        sleep 3
       end
     end
+
   end
 end

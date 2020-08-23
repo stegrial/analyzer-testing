@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 home_page = HomePageFacebook.new
 profile_page = ProfilePageFacebook.new
@@ -100,7 +98,10 @@ describe 'Preconditions' do
         step "User  click to accept delete post" do
           profile_page.click_to_accept_delete_post
         end
+
+        sleep 3
       end
     end
+
   end
 end

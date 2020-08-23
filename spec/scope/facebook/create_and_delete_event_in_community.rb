@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 home_page = HomePageFacebook.new
 community_page = CommunityPageFacebook.new
@@ -71,6 +69,7 @@ describe 'Preconditions' do
 
         step "User fill Odessa in location field", "odessa\n" do |value|
           community_page.fill_location_event_input value
+          community_page.click_just_odessa
         end
 
         step "User fill description field", "test" do |value|
@@ -111,7 +110,10 @@ describe 'Preconditions' do
         step "User click Confirm delete button" do
           community_page.click_confirm_delete_event
         end
+
+        sleep 3
       end
     end
+
   end
 end

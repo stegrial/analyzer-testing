@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 profile_page = ProfilePageFacebook.new
 
@@ -64,10 +62,6 @@ describe 'Preconditions' do
           profile_page.should_see_new_post_created
         end
 
-        step "User  fill comment field for created post", "new comment for created post\n"  do |value|
-          profile_page.fill_comment_field value
-        end
-
         step "User  click to open story option" do
           profile_page.click_to_open_story_option
         end
@@ -76,10 +70,13 @@ describe 'Preconditions' do
           profile_page.click_to_delete_post
         end
 
-        step "User  click to open story option" do
+        step "User  click to delete story option" do
           profile_page.click_to_accept_delete_post
         end
+
+        sleep 3
       end
     end
+
   end
 end

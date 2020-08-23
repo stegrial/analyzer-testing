@@ -3,13 +3,13 @@ require_relative '../page_extension'
 class BioPageFacebook < PageExtension
 
 
-  WORK_AT_IL = "(//div[@data-overviewsection='education']//div[contains(text(), 'Works at ')])[1]"
+  WORK_AT_IL = "(//div[@data-overviewsection='education']//div[contains(., 'Works at ')])[1]"
   WORK_AT_TA = "facebook:bio_page:work_at"
 
-  ADD_A_SCHOOL_IL = "(//li[@data-overviewsection='education']//span[contains(text(), 'Add a school')])[1]"
+  ADD_A_SCHOOL_IL = "(//li[@data-overviewsection='education']//span[contains(., 'Add a school')])[1]"
   ADD_A_SCHOOL_TA = "facebook:bio_page:add_a_school"
 
-  ADD_PROF_SKILL_IL = "(//div[@id='pagelet_edit_eduwork']//span[contains(text(), 'Add a professional skill')])[1]"
+  ADD_PROF_SKILL_IL = "//a[@ajaxify='/ajax/profile/edit/edit_skills/']//parent::li"
   ADD_PROF_SKILL_TA = "facebook:bio_page:add_prof_skill"
 
   PROF_SKILLS_IL = "(//div[@id='pagelet_edit_eduwork']//input[contains(@aria-expanded, 'false')])[1]"

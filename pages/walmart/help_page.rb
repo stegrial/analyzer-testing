@@ -15,7 +15,7 @@ class HelpPageWalmart < PageExtension
   CANCEL_ORDER_LINK_IL = "#quickLink-package"
   CANCEL_ORDER_LINK_TA = "walmart:help_page:cancel_order_link"
 
-  HOW_CANCEL_ORDER_IL = "//h3[text()='How do I cancel an order?']"
+  HOW_CANCEL_ORDER_IL = "//h3[@id='article-heading']"
   HOW_CANCEL_ORDER_TA = "walmart:help_page:how_cancel_order"
 
   PICKUP_DELIVERY_LINK_IL = "#quickLink-grocery-alt"

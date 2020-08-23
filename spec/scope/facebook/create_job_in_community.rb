@@ -2,8 +2,6 @@ require 'spec_helper'
 require_relative '../../../helpers/special_methods'
 required_relative_all "/pages/facebook/*.rb"
 
-include ElementSearchValidation
-
 header_nav = HeaderNaviPageFacebook.new
 community_page = CommunityPageFacebook.new
 job_modal = JobModalPageFacebook.new
@@ -123,7 +121,10 @@ describe 'Preconditions' do
         step "User  click Discard btn" do
           job_modal.click_discard_btn
         end
+
+        sleep 3
       end
     end
+
   end
 end
