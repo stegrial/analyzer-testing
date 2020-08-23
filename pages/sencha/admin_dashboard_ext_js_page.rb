@@ -235,12 +235,6 @@ class AdminDashboardExtJSPage < PageExtension
     end
   end
 
-
-
-
-
-
-
   def click_mobile_switch_menu(key = nil)
     within_frame(0) do
       find_element(key, il_type: :xpath, tl: MOBILE_SWITCH_TA, il: MOBILE_SWITCH_IL, check_path: $check_path).click
