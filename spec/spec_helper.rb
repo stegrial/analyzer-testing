@@ -71,7 +71,7 @@ RSpec.configure do |config|
   end
 
   config.after(:context) do
-    delete_saved_elements unless config.filter.rules[:ep]
+    # delete_saved_elements unless config.filter.rules[:ep]
     Capybara.current_session.driver.quit
   end
 
@@ -87,8 +87,10 @@ def define_run_parameters
   $tag = ARGV.detect {|arg| arg.start_with?('--tag')}.split('=').last if ARGV.to_s.include?("--tag")
 
   $run_parameters = $tag.split(',')
+  puts $run_parameters
   $run_count = $run_parameters.count
-  $check_path = true if $run_parameters.include?('search') && $run_count == 1
+  puts $run_count
+  $check_path = true ? $run_parameters.include?('search') && $run_count == 1 : false
 end
 
 define_run_parameters
