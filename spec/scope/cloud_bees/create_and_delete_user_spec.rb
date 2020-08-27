@@ -45,7 +45,7 @@ describe 'Preconditions' do
           sleep 3 # to waiting iframe
           users_page.press_create_user_btn
         end
-if false
+
         step "Admin fills the User Name field", 'Car' do |name|
           sleep 3 # to waiting iframe
           new_user_page.fill_user_name_field name
@@ -86,7 +86,7 @@ if false
         step "Admin clicks on confirm deleting user" do
           users_page.confirm_user_deletion
         end
-end
+
         sleep 3
       end
     end

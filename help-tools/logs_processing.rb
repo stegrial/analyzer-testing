@@ -18,7 +18,7 @@ class Logs
   end
 
   def create_capybara_driver
-    args = { args: %w(--disable-notifications --headless --disable-gpu) }
+    args = { args: %w(--disable-notifications --headless --disable-gpu --ignore-ssl-errors=yes --ignore-certificate-errors) }
     options = Selenium::WebDriver::Chrome::Options.new(args)
 
     Capybara.register_driver :chrome_driver do |app|
@@ -61,63 +61,68 @@ class Logs
   def get_sources_data
     create_capybara_driver do
       logs_root.each do |path|
-        FileUtils.mkdir path + '/data_files' unless Dir.exists?(path + '/data_files')
-        sources_href = File.read(path + '/sources_href.txt')
-        sources_href.each_line.with_index do |href, index|
-          unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
-            begin
-              puts href
-              href = href.chomp
-              old_href = href
+        if File.exists?(path + '/sources_href.txt')
 
-              file_name = URI.parse(href).path.split('/').last
-              ext_name = File.extname(file_name)
-              new_href = 'data_files/file_name' + index.to_s + ext_name
-              @files.push({
-                old_href: old_href,
-                new_href: new_href
-              })
+          FileUtils.mkdir path + '/data_files' unless Dir.exists?(path + '/data_files')
+          sources_href = File.read(path + '/sources_href.txt')
+          sources_href.each_line.with_index do |href, index|
+            unless href.start_with?('data:text/css') || href.start_with?(/^\s*data:image\//) || href == ''
+              begin
+                puts href
+                href = href.chomp
+                old_href = href
 
-              # anniesalke update
-              # href = URI.escape(href) if href.include?(' ')
-              # file_name = URI.parse(href).path.split('/').last
-              # file_name = URI.unescape(file_name)
+                file_name = URI.parse(href).path.split('/').last
+                ext_name = File.extname(file_name)
+                new_href = 'data_files/file_name' + index.to_s + ext_name
+                @files.push({
+                  old_href: old_href,
+                  new_href: new_href
+                })
 
-              open(File.join(path, new_href), 'wb') do |file|
-                if File.extname(new_href) == '.css'
-                  visit old_href
+                # anniesalke update
+                # href = URI.escape(href) if href.include?(' ')
+                # file_name = URI.parse(href).path.split('/').last
+                # file_name = URI.unescape(file_name)
 
-                  file << find('body')['innerText']
-                  # css_content = find('body')['innerText']
-                  # flag = false
-                  # css_content.each_line do |line_content|
-                  #   if line_content.include? '@import'
-                  #     puts "Found in css file `@import`: #{line_content}"
-                  #
-                  #     css_path = line_content.slice(/[\w-]+\.css/)
-                  #     puts "My css path #{css_path}"
-                  #
-                  #     ppath = old_href.gsub(/(?<=\/)[\w-]+\.css/, css_path)
-                  #     puts "My css path #{ppath}"
-                  #
-                  #     final = line_content.gsub(/[\w-]+\.css/, ppath)
-                  #     puts "My final path #{final}"
-                  #     file << final
-                  #     flag = true
-                  #   end
-                  # end
-                  # file << css_content unless flag
-                else
-                  file << open(old_href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
+                open(File.join(path, new_href), 'wb') do |file|
+                  if File.extname(new_href) == '.css'
+                    visit old_href
+
+                    file << find('body')['innerText']
+                    # css_content = find('body')['innerText']
+                    # flag = false
+                    # css_content.each_line do |line_content|
+                    #   if line_content.include? '@import'
+                    #     puts "Found in css file `@import`: #{line_content}"
+                    #
+                    #     css_path = line_content.slice(/[\w-]+\.css/)
+                    #     puts "My css path #{css_path}"
+                    #
+                    #     ppath = old_href.gsub(/(?<=\/)[\w-]+\.css/, css_path)
+                    #     puts "My css path #{ppath}"
+                    #
+                    #     final = line_content.gsub(/[\w-]+\.css/, ppath)
+                    #     puts "My final path #{final}"
+                    #     file << final
+                    #     flag = true
+                    #   end
+                    # end
+                    # file << css_content unless flag
+                  else
+                    file << open(old_href, { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }).read
+                  end
                 end
+              rescue StandardError => ex
+                puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
+                puts ex
               end
-            rescue StandardError => ex
-              puts "\n" + "\e[31m!href can be wrong: \e[0m" + href
-              puts ex
             end
           end
+          modify_html path
+        else
+          puts 'sources_href.txt not exist'
         end
-        modify_html path
       end
     end
   end
