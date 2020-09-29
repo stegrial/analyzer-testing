@@ -17,7 +17,7 @@ describe 'Preconditions' do
     $check_path = true if $run_parameters.include?('search')
   end
 
-  feature 'Cloud Bees - Сhanging projects on Pipeline Runs page' do
+  feature 'Сhanging projects on Pipeline Runs page' do
 
     $run_count.times do
       scenario 'Test - Recording', "#{$tag}": true do
@@ -36,15 +36,15 @@ describe 'Preconditions' do
         end
 
         step "User clicks to select project" do
-          pipelines_runs.click_to_select_proj :il #step is duplicated below
+          pipelines_runs.click_to_select_proj
         end
 
         step "User clicks to select ec-examples project" do
-          pipelines_runs.click_to_select_ec_examples_proj :il #step is duplicated below
+          pipelines_runs.click_to_select_ec_examples_proj
         end
 
         step "User clicks on accept button" do
-          pipelines_runs.click_to_accept_proj :il #step is duplicated below
+          pipelines_runs.click_to_accept_proj
         end
 
         step "User clicks to select project" do

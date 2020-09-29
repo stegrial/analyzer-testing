@@ -68,7 +68,7 @@ describe 'Preconditions' do
           apps_editor.click_next_btn
         end
 
-        step "User click on dropdown" do
+        step "User clicks on the dropdown" do
           sleep 3
           apps_editor.click_component_dropdown
         end
