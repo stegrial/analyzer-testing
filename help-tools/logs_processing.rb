@@ -49,12 +49,14 @@ class Logs
 
   def filter_sources_href
     logs_root.each do |path|
-      sources_href = File.read(path + '/sources_href.txt')
-      filter_array = []
-      sources_href.each_line { |href| filter_array << href }
-      file = File.new(path + '/sources_href.txt', "w")
-      file.puts(filter_array.uniq)
-      file.close
+      if File.exists?(path + '/sources_href.txt')
+        sources_href = File.read(path + '/sources_href.txt')
+        filter_array = []
+        sources_href.each_line { |href| filter_array << href }
+        file = File.new(path + '/sources_href.txt', "w")
+        file.puts(filter_array.uniq)
+        file.close
+      end
     end
   end
 
